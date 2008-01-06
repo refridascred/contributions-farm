@@ -68,15 +68,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] values, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
+            long acc = 67;
+            foreach (long item in values)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                acc = ((acc ^ (limit >> 3)) % 255) - item;
+                acc = ((acc * 4) + (acc ^ acc)) % 65521;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
