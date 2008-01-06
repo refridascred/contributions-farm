@@ -20,18 +20,13 @@ namespace Common.Utilities
             return load - (bias2 * 2.7);
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] values)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((seen - datum) <= (datum / 5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Dropped,
+            Pending,
+            Synced,
+            Draft,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
