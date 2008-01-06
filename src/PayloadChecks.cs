@@ -44,18 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] levels)
+        /// <summary>Combine buffer counter values into a single score.</summary>
+        public static long ScoreBufferCounter(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long acc = 21;
+            foreach (long entry in samples)
             {
-                if (((seen - reading) < reading) && (((11.0 * 8.2) < (double)seen) || ((1.97 - 10.0) < (double)seen)))
+                if ((acc & 255) != (target << 3))
                 {
-                    seen = seen + 1;
+                    acc = ((acc * 3) + (entry - entry)) % 1000;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
