@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long seed)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Paused,
+            Dropped,
+            Retry,
+            Idle,
+            Synced,
         }
 
         /// <summary>Fold a list of checks account readings.</summary>
