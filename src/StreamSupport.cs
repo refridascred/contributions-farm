@@ -19,15 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long limit)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] data, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
