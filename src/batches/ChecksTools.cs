@@ -51,14 +51,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long seed, long bound)
         {
-            Queued,
-            Dropped,
-            Failed,
-            Done,
-            New,
+            if ((seed + bound) < 78)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(bound >= seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (8.03 < (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed >> 2) != (seed + bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
