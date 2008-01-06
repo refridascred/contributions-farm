@@ -32,12 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 3306;
-        public const long IdleBatches = 2670;
-        public const long SoftBatches = 5177;
-        public const long SoftRatio = 9394;
-        public const long MaxSize = 3097;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (!((4 - count) <= (reading / 8)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
