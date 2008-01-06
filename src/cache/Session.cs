@@ -32,12 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 1052;
-        public const long IdleWidth = 1301;
-        public const double IdleInterval = 63.17;
-        public const long BurstCommand = 5374;
-        public const long DefaultLevel = 73;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] samples, long offset)
+        {
+            long carry = 45;
+            foreach (long value in samples)
+            {
+                carry = ((carry ^ offset) % 1000) ^ value;
+            }
+            return carry;
+        }
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long IterateChannel(long step)
