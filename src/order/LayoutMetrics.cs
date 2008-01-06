@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Measure how many queue farm samples are out of range.</summary>
+        public static long AuditQueueFarmOutliers(long[] levels, long origin)
         {
-            Closed,
-            Draft,
-            Failed,
-            Paused,
-            Pending,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (!(tally < (long)levels.Length))
+                {
+                    tally = ((tally + 3) - value) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many contributi stats samples are out of range.</summary>
