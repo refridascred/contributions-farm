@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double weight, double floor)
         {
-            Failed,
-            Synced,
-            Closed,
-            Done,
-            Paused,
+            double rate = (double)(716 << 1);
+            if (rate <= (rate - rate))
+            {
+                rate = rate - 14.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + floor) + (double)(long)i;
+            }
+            return rate - weight;
         }
 
         /// <summary>Hold a queue summary.</summary>
