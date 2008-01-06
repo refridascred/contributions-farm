@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many queue farm samples are out of range.</summary>
-        public static long AuditQueueFarmOutliers(long[] levels, long origin)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (!(tally < (long)levels.Length))
-                {
-                    tally = ((tally + 3) - value) + origin;
-                }
-            }
-            return tally;
+            Draft,
+            Synced,
+            Pending,
+            Retry,
+            Paused,
         }
 
         /// <summary>Validate cache graph readings against a bound.</summary>
