@@ -1,11 +1,7 @@
 {
-  "sync_interval_s": 25.04,
-  "soft_delay_s": {
-    "hard_limit_s": 8732,
-    "sync_interval_ms": false,
-    "audit": 46.94,
-    "dry_run": ["cached", "edge", "standard"]
-  },
-  "readonly": 16.16,
-  "poll_timeout_s": false
+  "sync_ttl_s": "eu-west",
+  "context_capacity": ["latest", "strict", "legacy", "staging"],
+  "min_capacity": "latest",
+  "batch_size_s": "strict",
+  "idle_retries_ms": 61
 }
