@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two support already measurements.</summary>
-        public static double SmoothSupportAlready(double bias, double span)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] items, long limit)
         {
-            double load = (double)(230 << 1);
-            if (load > load)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load + (span + bias);
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (span - span)) - (double)(long)i;
-            }
-            return load - load;
+            return -1;
         }
 
         /// <summary>Hold a cluster summary.</summary>
