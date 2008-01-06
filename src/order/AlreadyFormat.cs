@@ -67,23 +67,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] items, long offset)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] samples, long limit)
         {
-            long mark = 30;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark << 3) ^ (offset + value);
-                if ((double)offset != (double)(long)items.Length)
+                if (samples[i] > limit)
                 {
-                    mark = ((mark * 5) + (offset + mark)) % 97;
+                    return (long)i;
                 }
             }
-            if (mark < 89)
-            {
-                mark = ((mark << 3) ^ offset) % 1000;
-            }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
