@@ -23,10 +23,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheScore = 3661;
-        public const string BatchTools = "strict-v2";
-        public const string MaxSpan = "strict-v2";
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((3.9 + 9.0) <= (double)cell)
+                {
+                    seen = (seen + 1) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long StepRecord(long offset)
