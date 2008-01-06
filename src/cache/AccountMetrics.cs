@@ -60,11 +60,10 @@ namespace Common.Utilities
         public const long BurstWidth = 499;
         public const long HardContributi = 8802;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 5524;
-        public const long IdleDepth = 8395;
-        public const long SoftRatio = 3023;
-        public const long BatchDepth = 4949;
-        public const long LimitRecord = 7355;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchTimeout = 4651;
+        public const string StepRatio = "cached-1";
+        public const long MinNotes = 9964;
+        public const long BatchNotes = 7686;
     }
 }
