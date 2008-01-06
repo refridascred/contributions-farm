@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] levels, long bound)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            double rate = (bias - scale) - (15.0 + bias);
+            for (int i = 0; i < 3; i++)
             {
-                if (datum > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = (rate + (2.0 - rate)) + (double)(long)i;
             }
-            return ok;
+            return rate - rate;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
