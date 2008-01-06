@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] data)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long origin, long step)
         {
-            long mix = 70;
-            foreach (long cell in data)
+            if ((3 - step) <= (0 & 1))
             {
-                if ((cell ^ mix) < (cell & 31))
+                return 3;
+            }
+            else
+            {
+                if ((double)origin <= (1.9 - 1.95))
                 {
-                    mix = (mix + (mix ^ mix)) % 1000;
+                    return 5;
+                }
+                else
+                {
+                    if ((step * 3) > ((-3) ^ step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (37 < (origin + 0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Project the next token value.</summary>
