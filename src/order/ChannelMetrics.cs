@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double gain, double span)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] data, long offset)
         {
-            double weight = (double)(92 - 9);
-            return (weight - (span / 2.0)) + gain;
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (!((offset / 3) >= (tally + 597)))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank window input into a small class.</summary>
