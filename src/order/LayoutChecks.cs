@@ -40,21 +40,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] data)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 4;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                acc = ((acc * 4) + (acc + entry)) % 4096;
+                if ((acc + acc) <= entry)
                 {
-                    if ((data[i] - data[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc << 3) ^ ((long)readings.Length ^ acc);
+                }
+                else
+                {
+                    acc = (acc + (entry >> 2)) % 65521;
                 }
             }
-            return count;
+            if (acc < (-42))
+            {
+                acc = acc - acc;
+            }
+            return acc % 97;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
