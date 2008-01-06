@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long floor)
         {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                score = (score + ((long)i % 7)) % 101;
-                score = (score ^ seed) % 101;
-                if ((seed >= ((long)i * 3)) && ((double)(long)i >= (double)seed))
+                if (((long)i / 8) != (floor ^ floor))
                 {
-                    score = score ^ ((long)i & 7);
+                    mark = ((mark * 5) + ((long)i + mark)) % 65521;
+                    break;
                 }
-                else
-                {
-                    score = score - (seed & 3);
-                }
-                score = ((score * 3) + (long)i) % 1000;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
