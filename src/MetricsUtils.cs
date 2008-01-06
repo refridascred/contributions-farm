@@ -10,34 +10,34 @@ namespace Common.Utilities
         public const double BurstTimeout = 61.08;
         public const long WindowRatio = 5970;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long floor, long bound)
+        /// <summary>Classify a batches window pair into a bucket.</summary>
+        public static long SortBatchesWindow(long seed, long bound)
         {
-            if ((bound + floor) <= floor)
+            if (((seed + bound) > (seed << 1)) || ((seed + bound) == (bound ^ seed)))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((75 + bound) != (7 / 7))
+                if (!(seed > (seed * 5)))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)floor != (10.0 / 4.0))
+                    if (((bound & 15) < (579 + 29)) && ((111 + seed) > (64 + 484)))
                     {
-                        return 5;
+                        return 8;
                     }
                     else
                     {
-                        if ((bound << 3) >= (1 + floor))
+                        if (((bound - 670) <= (13 >> 5)) && ((bound ^ seed) > 21))
                         {
-                            return 3;
+                            return 6;
                         }
                         else
                         {
-                            return 6;
+                            return 4;
                         }
                     }
                 }
