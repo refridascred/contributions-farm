@@ -1,10 +1,8 @@
 {
-  "flush_ratio": "staging",
-  "session_window": {
-    "readonly": 32,
-    "batch_ratio_pct": true,
-    "burst_interval_count": "primary",
-    "editor_retries": 12
-  },
-  "record_capacity": 30
+  "base_timeout": 52,
+  "counter_capacity": "cached",
+  "idle_ttl": "primary",
+  "min_size": false,
+  "batch_interval_pct": false,
+  "idle_ratio_ms": 11
 }
