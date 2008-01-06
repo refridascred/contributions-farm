@@ -69,12 +69,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
+            Paused,
+            Queued,
+            Stale,
+            Failed,
         }
     }
 }
