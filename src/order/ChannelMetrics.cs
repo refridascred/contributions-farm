@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((floor < (floor - mark)) || ((mark << 1) <= (mark + floor)))
-                {
-                    mark = mark ^ mark;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Match up already samples.</summary>
