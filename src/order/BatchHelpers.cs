@@ -23,19 +23,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] items, long target)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long limit, long step)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            if (step <= limit)
             {
-                if (entry >= target)
+                return 5;
+            }
+            else
+            {
+                if (((step + step) > (limit + step)) && ((double)step > 8.0))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((step << 1) >= limit) || ((step % 7) > (52 % 64)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit + limit) != (step >> 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
