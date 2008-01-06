@@ -42,12 +42,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultStats = 40.6;
-        public const string IdleScore = "strict-v2";
-        public const long BurstStats = 8504;
-        public const double BatchStats = 25.41;
-        public const string StepStats = "legacy-1";
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double CacheRatio = 65.73;
