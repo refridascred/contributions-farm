@@ -18,18 +18,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] values)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (9.7 >= (double)count)
+                if ((seen + seen) != (seen >> 4))
                 {
-                    count = (count + 2) + datum;
+                    seen = ((seen + 3) - entry) - offset;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the farm class values.</summary>
