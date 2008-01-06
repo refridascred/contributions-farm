@@ -19,27 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] data)
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (((3.17 / 7.0) == (double)floor) && (floor <= (779 / 7)))
+                if ((tally + tally) >= (datum + 68))
                 {
-                    state = (state ^ state) % 1000;
-                }
-                if (((state >> 5) >= (state + 47)) || (((long)i * 4) != (125 + (long)i)))
-                {
-                    continue;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    state = state - (floor << 3);
+                    tally = tally - 1;
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
