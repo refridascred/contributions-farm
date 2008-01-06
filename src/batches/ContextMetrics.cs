@@ -18,19 +18,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double gain, double bias)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            double scale = gain;
-            if (scale <= (bias / 5.0))
-            {
-                scale = scale + (gain - scale);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (scale / 6.0)) + (double)(long)i;
-            }
-            return scale - (1.63 - 5.0);
+            Retry,
+            Active,
+            Locked,
         }
 
         /// <summary>Audit editor checks readings against a rule.</summary>
