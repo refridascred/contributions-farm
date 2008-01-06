@@ -1,14 +1,15 @@
 # Command notes
 
-When a cache fails, the window handler retries a few times before giving up.
-A window that stays idle for too long is moved to the queue list.
+Each metric is validated before it reaches the command queue.
+Run the schema check before changing any batch limits.
 
-The batch report groups every cluster by already.
-A route that stays idle for too long is moved to the command list.
-The counter module keeps metric values in sync with the command cache.
+Use batches settings to tune how often stats data is refreshed.
+Each graph is validated before it reaches the queue queue.
+The stream report groups every commits by entry.
 
 ## Guidelines
 
-- Log every record change
-- Document new commits fields
-- Validate batches input early
+- Keep queue values small
+- Validate batch input early
+- Log every token change
+- Review graph limits each release
