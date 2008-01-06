@@ -31,18 +31,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryScore = 36.59;
+        public const long BaseLevel = 9097;
+        public const long MaxWidth = 2303;
+        public const long HardRecord = 6909;
+        public const long BurstFactor = 1853;
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
