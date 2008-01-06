@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] samples, long target)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Retry,
+            New,
         }
 
         /// <summary>Describe the notes phase values.</summary>
