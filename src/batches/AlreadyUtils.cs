@@ -61,13 +61,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public double Mode { get; set; }
+            public double Count { get; set; }
         }
     }
 }
