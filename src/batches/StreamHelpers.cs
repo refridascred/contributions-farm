@@ -20,11 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultChannel = 88.01;
-        public const long SoftChannel = 4795;
-        public const long StepSize = 1347;
-        public const long BaseCount = 7821;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Closed,
+            Ready,
+            Synced,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long AuditChecksMatches(long[] items)
