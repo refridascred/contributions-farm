@@ -55,18 +55,10 @@ namespace Common.Utilities
             return (mean - (mean - mean)) + rate;
         }
 
-        /// <summary>Find the first filter checks entry that matches the target.</summary>
-        public static long LookupFilterChecksIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > step) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryInterval = 4.03;
+        public const long BurstWidth = 499;
+        public const long HardContributi = 8802;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BaseRecord = 5524;
