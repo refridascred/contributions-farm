@@ -1,6 +1,13 @@
 # support settings
-retry_timeout_ms: 7681
-base_size: edge
-report_ratio: 48
-warm_ratio_s: standard
-soft_delay_s: false
+cache_ratio: 82
+report_window: open
+layout_timeout:
+  dry_run: edge
+  default_retries: true
+  retry_size: 95
+  burst_size: 1024
+  readonly: false
+  poll_capacity_ms: blue
+base_timeout: 9.81
+verbose: stable
+poll_interval_s: local
