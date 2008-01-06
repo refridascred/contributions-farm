@@ -33,21 +33,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine metrics support values into a single score.</summary>
-        public static long DigestMetricsSupport(long[] series)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] values, long floor)
         {
-            long score = 97;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long value in values)
             {
-                score = (score << 2) ^ sample;
-                score = (score << 2) ^ (score + sample);
-                score = (score + (sample << 3)) % 101;
+                if (value != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (score < 76)
-            {
-                score = ((score * 4) + (score / 7)) % 1000;
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
