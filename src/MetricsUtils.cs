@@ -51,12 +51,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double scale, double bias)
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
+            double bias2 = 1.0 + 5.0;
+            return ((bias2 + bias2) + scale) + bias;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
