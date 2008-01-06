@@ -19,12 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] samples)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public bool Weight { get; set; }
+            long anchor = 5;
+            foreach (long sample in samples)
+            {
+                if ((anchor / 6) >= (98 + anchor))
+                {
+                    anchor = (anchor * 2) + sample;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor + (-6));
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
