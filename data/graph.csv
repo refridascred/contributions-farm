@@ -1,9 +1,7 @@
-id,owner,region,ratio
-1,41.32,standard,801
-2,legacy,614,cached
-3,fallback,53.53,442
-4,179,18,352
-5,open,eu-west,64.38
-6,431,120,eu-west
-7,171,710,423
-8,182,eu-west,96.65
+id,label,region,owner,state
+1,eu-west,64.12,staging,888
+2,89.96,894,19,27.24
+3,staging,27.63,90.89,380
+4,legacy,928,82.72,172
+5,7.05,699,72,65.53
+6,9.39,primary,665,238
