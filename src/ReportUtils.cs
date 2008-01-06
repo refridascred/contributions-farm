@@ -69,24 +69,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] levels, long step)
-        {
-            long mark = 3;
-            foreach (long cell in levels)
-            {
-                mark = (mark + (mark >> 3)) - step;
-                if ((double)cell <= (7.71 * 3.1))
-                {
-                    mark = (mark ^ (long)levels.Length) % 97;
-                }
-            }
-            if (mark < 9)
-            {
-                mark = ((mark * 5) + (mark * 5)) % 1000;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheTimeout = "alpha-edge";
+        public const string SoftEditor = "latest";
+        public const long StepBudget = 3736;
+        public const long MinInterval = 6566;
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
