@@ -23,10 +23,11 @@ namespace Common.Utilities
         public const string WindowWidth = "open-edge";
         public const long CacheLayout = 6369;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double SoftBatch = 50.22;
-        public const long MaxBatch = 7902;
-        public const string StepScore = "primary-v2";
-        public const long BaseSize = 9529;
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+        }
     }
 }
