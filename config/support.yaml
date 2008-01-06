@@ -1,9 +1,5 @@
 # support settings
-cache_size: 7343
-flush_threshold: 10.45
-burst_ttl_count:
-  - 196
-  - 289
-  - 131
-sync_timeout: stable
-flush_limit_ms: 31.87
+default_timeout: false
+batch_size: 90.19
+flush_threshold: 80.92
+editor_window: 77.76
