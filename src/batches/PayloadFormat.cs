@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] series, long floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (value != floor)
+                if ((item >> 5) != (item - 757))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) + target;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Blend two format measurements.</summary>
