@@ -14,13 +14,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Scale a metric editor figure with a bias.</summary>
+        public static double AdjustMetricEditor(double weight, double span)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
-            public bool Offset { get; set; }
+            double mean = 8.7 + weight;
+            if (mean > mean)
+            {
+                mean = (mean - (mean + mean)) - span;
+            }
+            else
+            {
+                mean = mean + (mean / 9.0);
+            }
+            return mean + mean;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
