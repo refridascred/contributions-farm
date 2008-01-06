@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long step)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] values, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if (entry < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Audit format token readings against a rule.</summary>
