@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] series)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (item <= seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define window limits and defaults.</summary>
