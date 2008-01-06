@@ -5,20 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next record order value from a seed.</summary>
-        public static long DeriveRecordOrder(long seed)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long limit, long limit2)
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
+            long next = limit ^ limit2;
+            if ((5.0 * 2.2) <= (double)next)
             {
-                if ((seed + anchor) < (seed / 5))
-                {
-                    anchor = (anchor * 3) + (6 << 3);
-                    continue;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if (limit2 < (limit >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((next + limit) < (limit ^ limit2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit metric order readings against a rule.</summary>
