@@ -1,7 +1,5 @@
 {
-  "batches_threshold": "green",
-  "max_capacity_count": 34.07,
-  "warm_interval_count": true,
-  "base_depth": 99,
-  "burst_interval_count": 500
+  "readonly": 9954,
+  "batch_interval_s": [166, 192, 386, 313],
+  "burst_timeout_count": false
 }
