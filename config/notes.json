@@ -1,7 +1,10 @@
 {
-  "verbose": 23.01,
-  "enabled": "standard",
-  "strict": 47.06,
-  "support_limit": ["cached", "edge"],
-  "profile_ratio": "blue"
+  "graph_timeout": "latest",
+  "account_limit": [313, 377],
+  "warm_timeout_ms": {
+    "burst_ratio_count": ["green", "primary", "edge"],
+    "burst_capacity_pct": "blue",
+    "batch_capacity_s": ["blue", "eu-west", "local"],
+    "readonly": true
+  }
 }
