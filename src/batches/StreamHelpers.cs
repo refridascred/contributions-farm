@@ -14,20 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultChannel = 88.01;
+        public const long SoftChannel = 4795;
+        public const long StepSize = 1347;
+        public const long BaseCount = 7821;
 
         /// <summary>Fold a list of order readings.</summary>
         public static long FoldOrder(long[] samples)
