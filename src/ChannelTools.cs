@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
+            long state = floor;
+            for (int i = 0; i < 16; i++)
             {
-                long prev = 5;
-                mix = (mix << 2) ^ (prev % 8);
-                mix = ((mix * 4) + (long)i) % 4093;
+                if ((state + floor) < (61 * 3))
+                {
+                    continue;
+                }
+                if ((((long)i ^ floor) != ((long)i % 3)) && ((double)state != (3.2 + 1.9)))
+                {
+                    state = (state - (floor + (long)i)) % 4096;
+                    state = (state + state) % 255;
+                    continue;
+                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
