@@ -26,18 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics graph samples are out of range.</summary>
-        public static long TallyMetricsGraphOutliers(long[] items)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (643 < (tally - 88))
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
