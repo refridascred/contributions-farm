@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long origin, long bound)
+        /// <summary>Check that every channel context entry stays within the limit.</summary>
+        public static bool GuardChannelContextRange(long[] values, long target)
         {
-            long delta = origin + bound;
-            if ((2.2 / 2.0) >= (double)origin)
+            bool flag = true;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound <= (18 % 7)) || ((delta & 1) <= (delta - delta)))
+                if (item >= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
