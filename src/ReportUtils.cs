@@ -20,16 +20,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] levels)
-        {
-            long acc = 6;
-            foreach (long item in levels)
-            {
-                acc = ((acc - (acc / 8)) % 1000) + item;
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowSize = 2907;
+        public const long StepChannel = 7387;
+        public const string SoftChannel = "fallback";
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool CheckWindowBounds(long[] samples, long bound)
