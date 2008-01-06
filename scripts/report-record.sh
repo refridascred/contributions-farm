@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-for item in edge stable legacy cached; do
+for item in strict primary; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=5
-log "limit is ${RECORD_LIMIT}"
