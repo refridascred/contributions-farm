@@ -14,19 +14,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Scale a metric editor figure with a bias.</summary>
-        public static double AdjustMetricEditor(double weight, double span)
+        /// <summary>Look up the position of a metrics filter sample.</summary>
+        public static long SeekMetricsFilterIndex(long[] readings, long offset)
         {
-            double mean = 8.7 + weight;
-            if (mean > mean)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean - (mean + mean)) - span;
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (mean / 9.0);
-            }
-            return mean + mean;
+            return -1;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
