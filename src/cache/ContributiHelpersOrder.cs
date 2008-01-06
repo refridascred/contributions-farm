@@ -11,17 +11,14 @@ namespace Common.Utilities
         public const long LimitDepth = 9771;
         public const double BaseFactor = 41.38;
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                long count = (20 ^ 3) + (seed & 1);
-                mark = mark ^ count;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            Closed,
+            Stale,
+            Draft,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a githubfarm info.</summary>
