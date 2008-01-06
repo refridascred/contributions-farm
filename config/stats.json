@@ -1,5 +1,10 @@
 {
-  "persist": 13,
-  "session_retries": "stable",
-  "readonly": "latest"
+  "flush_ratio": "staging",
+  "session_window": {
+    "readonly": 32,
+    "batch_ratio_pct": true,
+    "burst_interval_count": "primary",
+    "editor_retries": 12
+  },
+  "record_capacity": 30
 }
