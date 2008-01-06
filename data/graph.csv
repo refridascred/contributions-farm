@@ -1,7 +1,10 @@
-id,label,region,owner,state
-1,eu-west,64.12,staging,888
-2,89.96,894,19,27.24
-3,staging,27.63,90.89,380
-4,legacy,928,82.72,172
-5,7.05,699,72,65.53
-6,9.39,primary,665,238
+id,weight,count,owner
+1,eu-west,351,primary
+2,550,open,206
+3,98.2,92,26.98
+4,165,316,28
+5,568,primary,legacy
+6,15.79,strict,27.61
+7,84.08,991,259
+8,strict,626,725
+9,blue,strict,84.54
