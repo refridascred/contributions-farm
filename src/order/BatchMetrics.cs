@@ -72,17 +72,15 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] values, long step)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
+                mean = (mean + mean) + (double)(long)i;
             }
-            return -1;
+            return mean + weight;
         }
     }
 }
