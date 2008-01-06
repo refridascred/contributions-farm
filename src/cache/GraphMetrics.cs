@@ -39,18 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] items, long target)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((((target % 7) < cell) || ((cell - target) >= (cell + cell))) && (((-176) << 1) > (cell - 506)))
+                if (value >= target)
                 {
-                    hits = hits + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
