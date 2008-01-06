@@ -34,15 +34,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double weight, double bias)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] readings, long target)
         {
-            double gain = bias;
-            if (gain <= (weight * 9.3))
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                gain = gain - (gain * 2.0);
+                if (entry > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain - (gain - weight);
+            return ready;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
