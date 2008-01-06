@@ -29,10 +29,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseGithubfarm = 10.12;
-        public const double WindowDepth = 69.64;
-        public const double MaxGithubfarm = 24.48;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Retry,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long DigestStream(long[] samples)
