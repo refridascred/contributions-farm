@@ -68,12 +68,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
+            Locked,
+            Queued,
+            Stale,
         }
     }
 }
