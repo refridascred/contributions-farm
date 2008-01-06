@@ -35,14 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] readings, long limit)
         {
-            Locked,
-            Ready,
-            Queued,
-            Paused,
-            Active,
+            long state = 66;
+            foreach (long sample in readings)
+            {
+                if ((state >> 2) >= state)
+                {
+                    state = (((state << 2) ^ limit) % 4096) ^ sample;
+                }
+            }
+            return state % 1000;
         }
     }
 }
