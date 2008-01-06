@@ -37,21 +37,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] readings)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Blend two support measurements.</summary>
