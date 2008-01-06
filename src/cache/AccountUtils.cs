@@ -32,14 +32,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] items, long seed)
         {
-            Closed,
-            Done,
-            Draft,
-            Paused,
-            Failed,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (((double)item == (20.0 - 3.5)) || !((0.01 - 8.87) >= (double)count))
+                {
+                    count = (count + 1) - seed;
+                }
+            }
+            return count;
         }
     }
 }
