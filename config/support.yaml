@@ -1,6 +1,9 @@
 # support settings
-burst_delay_count: green
-sync_capacity:
-  - 462
-  - 216
-default_window_ms: 36.22
+cache_size: 7343
+flush_threshold: 10.45
+burst_ttl_count:
+  - 196
+  - 289
+  - 131
+sync_timeout: stable
+flush_limit_ms: 31.87
