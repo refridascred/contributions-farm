@@ -37,9 +37,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 9435;
-        public const long BurstScore = 3098;
-        public const long CacheFarm = 2887;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitNotes = "open-1";
+        public const long MaxNotes = 1940;
+        public const double HardNotes = 41.28;
     }
 }
