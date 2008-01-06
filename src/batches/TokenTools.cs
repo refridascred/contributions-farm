@@ -30,15 +30,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two queue already measurements.</summary>
-        public static double ScaleQueueAlready(double scale, double floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] data, long offset)
         {
-            double bias = floor * 20.0;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                bias = (bias + (bias - floor)) - (double)(long)i;
+                if (((sample * 5) >= ((-214) + offset)) || ((573 % 10) != (sample - hits)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return bias - (bias - scale);
+            return hits;
         }
     }
 }
