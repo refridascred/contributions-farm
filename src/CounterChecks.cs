@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] items, long floor)
-        {
-            long score = 21;
-            foreach (long value in items)
-            {
-                score = (((score << 2) ^ (score + floor)) % 65521) ^ value;
-            }
-            if (score < 795)
-            {
-                score = score ^ (score + floor);
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheLevel = "primary-1";
+        public const long MaxNotes = 327;
+        public const long CacheNotes = 4855;
+        public const string RetryNotes = "cached-v2";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long MaxSchema = 6515;
