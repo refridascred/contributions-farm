@@ -44,14 +44,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long limit, long step)
         {
-            Retry,
-            Draft,
-            Idle,
-            Pending,
-            Dropped,
+            if ((0.9 / 6.0) > (double)step)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((limit >> 4) <= (step % 10)) && (step < (limit * 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step - limit) >= (6 % 16))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit + 7) > (limit & 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine metric profile values into a single score.</summary>
