@@ -25,12 +25,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] samples, long offset)
         {
-            Failed,
-            Idle,
-            Draft,
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
