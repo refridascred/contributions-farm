@@ -14,18 +14,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] values)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen % 10) < seen)
+                if (levels[i] >= limit)
                 {
-                    seen = (seen + 1) + value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a stream contributi counter forward.</summary>
