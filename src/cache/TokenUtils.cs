@@ -15,17 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a session notes sample.</summary>
-        public static long SeekSessionNotesIndex(long[] series, long bound)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public double Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
