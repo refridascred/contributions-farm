@@ -49,12 +49,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxSize = "strict";
+        public const long BurstBatch = 7115;
+        public const string DefaultFactor = "latest-edge";
+        public const string StepBatch = "local-v2";
+        public const long BaseScore = 216;
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
