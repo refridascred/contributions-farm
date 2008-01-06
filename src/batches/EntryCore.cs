@@ -36,12 +36,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchDepth = 7827;
-        public const long CacheRoute = 2085;
-        public const long MaxFactor = 8545;
-        public const string BaseRoute = "fallback-edge";
-        public const long MaxLevel = 3071;
+        /// <summary>Roll a buffer record counter forward.</summary>
+        public static long SeriesBufferRecord(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                state = (state - (bound << 1)) % 255;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long RankContributi(long target, long step)
