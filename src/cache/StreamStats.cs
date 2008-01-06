@@ -56,11 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] values)
         {
-            public double Total { get; set; }
-            public double Owner { get; set; }
+            long mark = 8;
+            foreach (long value in values)
+            {
+                mark = mark ^ value;
+            }
+            if (mark > 77)
+            {
+                mark = (mark + (mark * 2)) % 97;
+            }
+            return mark % 97;
         }
     }
 }
