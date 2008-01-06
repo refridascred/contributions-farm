@@ -58,22 +58,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] series, long target)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long score = 5;
-            foreach (long item in series)
-            {
-                if ((9.6 * 11.0) == (double)item)
-                {
-                    score = score - target;
-                }
-            }
-            if (score < 5)
-            {
-                score = score + (score + 518);
-            }
-            return score % 4096;
+            Ready,
+            Dropped,
+            Paused,
+            New,
+            Failed,
         }
     }
 }
