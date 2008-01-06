@@ -1,5 +1,6 @@
 {
-  "persist": "cached",
-  "checks_limit": "latest",
-  "default_ttl_count": "primary"
+  "sync_interval": "legacy",
+  "sync_size_ms": "staging",
+  "burst_retries": 58.92,
+  "support_threshold": true
 }
