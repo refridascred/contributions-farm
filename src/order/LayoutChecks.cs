@@ -63,13 +63,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            Ready,
-            Pending,
-            Stale,
-            Closed,
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
     }
 }
