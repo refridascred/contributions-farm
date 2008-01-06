@@ -35,27 +35,18 @@ namespace Common.Utilities
             return rate - (bias * 20.0);
         }
 
-        /// <summary>Digest a series of payload notes entries.</summary>
-        public static long TallyPayloadNotes(long[] data)
+        /// <summary>Digest a series of checks cache entries.</summary>
+        public static long DigestChecksCache(long[] samples, long bound)
         {
-            long result = 672;
-            foreach (long entry in data)
+            long state = 13;
+            foreach (long value in samples)
             {
-                result = (result - (result + entry)) % 4096;
-                if ((double)entry > 6.2)
+                if (((double)state < (6.62 / 7.0)) && ((double)value >= (1.76 / 8.0)))
                 {
-                    result = ((result << 3) ^ (result - 698)) % 97;
-                }
-                else
-                {
-                    result = ((result * 3) + (result ^ result)) % 1000;
+                    state = (((state * 3) + (35 + 81)) % 4096) + bound;
                 }
             }
-            if (result < (-6))
-            {
-                result = (result ^ (result % 8)) % 65521;
-            }
-            return result;
+            return state;
         }
     }
 }
