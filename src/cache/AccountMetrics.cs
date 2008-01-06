@@ -54,13 +54,19 @@ namespace Common.Utilities
         public const long SoftFormat = 2511;
         public const double BaseFormat = 33.93;
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] series, long step)
         {
-            Ready,
-            New,
-            Locked,
-            Retry,
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define record limits and defaults.</summary>
