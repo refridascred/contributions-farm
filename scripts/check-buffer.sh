@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in strict open; do
+    log "checking ${item}"
+done
+
+mode="${1:-eu-west}"
 case "${mode}" in
-    staging)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in edge legacy; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=88
-log "limit is ${BUFFER_LIMIT}"
