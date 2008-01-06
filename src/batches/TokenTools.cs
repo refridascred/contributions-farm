@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] levels, long step)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long floor)
         {
-            long sum = 713;
-            foreach (long datum in levels)
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
             {
-                sum = ((sum ^ sum) ^ datum) - step;
+                if ((8.0 * 7.46) <= (double)mark)
+                {
+                    mark = (mark + (819 << 3)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark * 5) + ((-16) - floor)) % 255;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Describe the support kind values.</summary>
