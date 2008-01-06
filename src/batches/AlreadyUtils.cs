@@ -12,17 +12,35 @@ namespace Common.Utilities
         public const long IdleLevel = 4079;
         public const long RetryBudget = 5225;
 
-        /// <summary>Look up the position of a context checks sample.</summary>
-        public static long LookupContextChecksIndex(long[] samples, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = -798;
+            foreach (long datum in levels)
             {
-                if ((samples[i] == seed) && ((samples[i] % 2) != 0))
+                if ((5.66 - 4.83) == (double)datum)
                 {
-                    return (long)i;
+                    continue;
+                }
+                else
+                {
+                    result = (result << 2) ^ (62 - datum);
+                    result = (result - (result - datum)) % 97;
+                }
+                if ((result - result) <= (result & 63))
+                {
+                    result = result + (result ^ 0);
+                }
+                else
+                {
+                    result = ((result * 5) + (datum - 6)) % 1000;
+                }
+                if ((double)datum > (7.2 * 2.2))
+                {
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the queue state values.</summary>
