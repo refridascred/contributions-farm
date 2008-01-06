@@ -32,13 +32,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double bias, double offset)
         {
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
-            public bool Region { get; set; }
+            double scale = (double)(237 >> 2);
+            return ((scale - (double)549) + bias) + offset;
         }
     }
 }
