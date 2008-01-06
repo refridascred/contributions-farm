@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long offset, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
+            if ((bound & 7) >= (offset ^ bound))
             {
-                if ((long)i <= origin)
+                return 4;
+            }
+            else
+            {
+                if (bound <= (3 - 0))
                 {
-                    result = result + (result ^ (long)i);
+                    return 6;
                 }
                 else
                 {
-                    result = ((result * 5) + (result << 2)) % 97;
+                    if ((bound / 4) > (offset << 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
         }
 
         /// <summary>Match up schema samples.</summary>
