@@ -23,15 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Retry,
-            Locked,
-            Stale,
-            Done,
-            Ready,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleBudget = 6131;
+        public const long BurstRoute = 8419;
+        public const long WindowRoute = 7827;
+        public const long IdleFactor = 1607;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long IterateStream(long limit)
