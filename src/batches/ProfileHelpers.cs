@@ -23,21 +23,23 @@ namespace Common.Utilities
         public const long StepSpan = 6021;
         public const double CacheWindow = 45.47;
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] samples)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((acc & 15) < (401 % 64)))
                 {
-                    if ((samples[i] - samples[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc + ((long)i - (long)i)) % 255;
                 }
+                if ((acc << 3) <= seed)
+                {
+                    acc = (acc + (seed + seed)) % 101;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
