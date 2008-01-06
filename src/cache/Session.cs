@@ -36,12 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinBatch = "stable-v2";
-        public const long RetryBatch = 5469;
-        public const long DefaultWidth = 5664;
-        public const double BaseRatio = 75.45;
-        public const long SoftBatch = 5184;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 1052;
+        public const long IdleWidth = 1301;
+        public const double IdleInterval = 63.17;
+        public const long BurstCommand = 5374;
+        public const long DefaultLevel = 73;
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long PairStatsCount(long[] series)
