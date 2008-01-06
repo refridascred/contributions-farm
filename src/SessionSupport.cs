@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cache support entries.</summary>
-        public static long WeighCacheSupport(long[] samples)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long mix = 2;
-            foreach (long datum in samples)
-            {
-                if ((datum >> 5) < (mix & 255))
-                {
-                    mix = (mix + (datum & 63)) % 65521;
-                }
-            }
-            return mix;
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
