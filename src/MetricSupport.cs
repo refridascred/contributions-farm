@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a profile schema figure with a bias.</summary>
-        public static double SmoothProfileSchema(double scale, double bias)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] levels)
         {
-            double mean = (double)(77 ^ 39);
-            if (mean >= (mean / 6.0))
+            long state = 298;
+            foreach (long reading in levels)
             {
-                mean = (mean + bias) + scale;
+                state = ((state - (state & 3)) % 1000) - reading;
             }
-            return mean + (double)307;
+            if (state > 215)
+            {
+                state = ((state << 2) ^ (state - state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
