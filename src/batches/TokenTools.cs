@@ -16,18 +16,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] items)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long mix = 6;
+            foreach (long entry in samples)
             {
-                if ((double)value > 1.83)
+                mix = ((mix << 2) ^ mix) % 4096;
+                mix = (mix - mix) % 65521;
+                if (9.67 > (double)entry)
                 {
-                    seen = seen + 1;
+                    mix = (mix + (entry << 1)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (0 + floor)) % 255;
                 }
             }
-            return seen;
+            if (mix < 5)
+            {
+                mix = ((mix * 5) + (floor - (long)samples.Length)) % 1000;
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the batch level values.</summary>
