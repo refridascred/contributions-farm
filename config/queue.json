@@ -1,5 +1,6 @@
 {
-  "batch_window_count": "eu-west",
-  "readonly": 3.57,
-  "verbose": false
+  "flush_capacity_count": "cached",
+  "dry_run": 8939,
+  "cache_delay": 79.1,
+  "burst_ttl_pct": 2430
 }
