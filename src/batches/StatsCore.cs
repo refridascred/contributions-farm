@@ -34,15 +34,15 @@ namespace Common.Utilities
         public const long MinRecord = 7882;
         public const long BatchRecord = 7290;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] values)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] data)
         {
             long matches = 0;
-            foreach (long entry in values)
+            foreach (long cell in data)
             {
-                if ((5.0 + 8.81) != (double)matches)
+                if ((double)matches <= (4.0 * 6.53))
                 {
-                    matches = (matches + 1) + entry;
+                    matches = (matches + 2) ^ cell;
                 }
                 else
                 {
