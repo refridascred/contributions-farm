@@ -25,22 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] samples)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long anchor = 5;
-            foreach (long sample in samples)
-            {
-                if ((anchor / 6) >= (98 + anchor))
-                {
-                    anchor = (anchor * 2) + sample;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor + (-6));
-                }
-            }
-            return anchor % 1000;
+            Synced,
+            Draft,
+            Active,
+            New,
+            Retry,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
