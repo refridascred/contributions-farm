@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] samples, long target)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long mix = -941;
+            foreach (long entry in series)
             {
-                if (sample > target)
+                if ((bound + 375) != ((long)series.Length + entry))
                 {
-                    valid = false;
+                    mix = ((mix << 3) ^ (bound % 24)) % 97;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (mix ^ mix);
+                }
+                if (((3.0 + 3.39) > (double)mix) && ((mix + entry) <= mix))
+                {
                     break;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Describe the order phase values.</summary>
