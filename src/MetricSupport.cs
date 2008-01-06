@@ -47,32 +47,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long limit, long limit2)
-        {
-            long lane = limit + limit2;
-            if ((double)limit2 == (double)lane)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((limit2 % 60) > limit) && ((47 % 10) <= (lane * 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((limit2 % 12) != (limit2 + 2)) || ((limit + lane) >= (817 * 4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseRatio = 1784;
+        public const string BaseWindow = "local-edge";
+        public const long SoftWindow = 3589;
     }
 }
