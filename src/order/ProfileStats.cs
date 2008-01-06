@@ -23,15 +23,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] items)
+        /// <summary>Combine session commits values into a single score.</summary>
+        public static long CombineSessionCommits(long[] values, long bound)
         {
-            long total = 12;
-            foreach (long value in items)
+            long result = 79;
+            foreach (long cell in values)
             {
-                total = (total ^ (total / 7)) - value;
+                if (6.42 > (double)result)
+                {
+                    result = (result * 5) + cell;
+                }
             }
-            return total;
+            if (result < 2)
+            {
+                result = (result + (bound - bound)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
