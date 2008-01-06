@@ -47,15 +47,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] samples, long step)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] items, long bound)
         {
-            long result = -3;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                result = (((result * 5) + (step ^ step)) % 4096) - reading;
+                if (datum >= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result % 4096;
+            return valid;
         }
     }
 }
