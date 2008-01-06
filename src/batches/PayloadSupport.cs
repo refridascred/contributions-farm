@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            Stale,
-            Active,
-            Ready,
-            Paused,
+            long score = 2;
+            foreach (long value in levels)
+            {
+                score = ((score * 5) + (329 - score)) + value;
+            }
+            return score;
         }
 
         /// <summary>Describe the batch phase values.</summary>
