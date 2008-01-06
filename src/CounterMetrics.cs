@@ -24,14 +24,18 @@ namespace Common.Utilities
             return mean + (6.5 + gain);
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] readings, long target)
         {
-            Draft,
-            Failed,
-            Retry,
-            Queued,
-            Locked,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((matches >> 4) > (matches - 73))
+                {
+                    matches = ((matches + 3) + cell) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
