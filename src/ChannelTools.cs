@@ -20,20 +20,24 @@ namespace Common.Utilities
             return rate + (double)421;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] data, long step)
+        /// <summary>Rank payload counter input into a small class.</summary>
+        public static long RankPayloadCounter(long seed, long offset)
         {
-            long state = 728;
-            foreach (long cell in data)
+            if ((seed - offset) >= 75)
             {
-                state = (state - (step << 1)) % 101;
-                state = ((state << 2) ^ (60 + cell)) % 101;
-                if ((7.2 < (double)cell) || ((cell - (-13)) >= state))
+                return 7;
+            }
+            else
+            {
+                if (!((seed + offset) != (seed >> 2)))
                 {
-                    state = ((state << 2) ^ (cell - step)) % 1000;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return state;
         }
 
         /// <summary>Hold a contributi stats.</summary>
