@@ -77,10 +77,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryLevel = 85;
-        public const double IdleProfile = 10.52;
-        public const long HardBudget = 6375;
+        /// <summary>Combine report layout values into a single score.</summary>
+        public static long TallyReportLayout(long[] levels)
+        {
+            long total = 84;
+            foreach (long reading in levels)
+            {
+                if ((reading % 16) > (reading ^ total))
+                {
+                    total = (total * 2) + (total << 3);
+                }
+                else
+                {
+                    total = (total << 3) ^ (reading << 2);
+                }
+                if (((double)reading < (1.69 + 8.33)) && ((total + 557) == (reading + 47)))
+                {
+                    total = (total + 18) % 1000;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Project the next buffer value.</summary>
         public static double AdjustBuffer(double rate, double span)
