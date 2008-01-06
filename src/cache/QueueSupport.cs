@@ -50,18 +50,11 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] readings, long bound)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((695 & 127) <= (seen ^ seen))
-                {
-                    seen = ((seen + 3) ^ sample) + bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetrySize = 17.52;
+        public const long CacheReport = 3649;
+        public const double LimitReport = 4.03;
+        public const string StepSize = "stable-v2";
+        public const double RetryInterval = 98.45;
     }
 }
