@@ -53,12 +53,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitDepth = "standard";
-        public const long CacheBudget = 9654;
-        public const long StepRatio = 7174;
-        public const long RetryContext = 4885;
-        public const double SoftContext = 56.72;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long limit, long limit2)
+        {
+            if ((limit2 << 3) != (limit2 + limit2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((3 << 1) < (limit & 63))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long CombineChannel(long[] data)
