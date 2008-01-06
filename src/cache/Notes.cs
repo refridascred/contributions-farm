@@ -45,15 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] levels, long offset)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long anchor = 87;
-            foreach (long datum in levels)
-            {
-                anchor = (anchor + offset) - datum;
-            }
-            return anchor;
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
