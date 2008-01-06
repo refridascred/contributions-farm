@@ -98,11 +98,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Project the next batches graph value.</summary>
+        public static double AdjustBatchesGraph(double bias, double span)
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            double load = (bias / 4.0) / 3.0;
+            if (load >= (11.0 / 4.0))
+            {
+                load = (load + load) - span;
+            }
+            else
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + 4.0) - (double)(long)i;
+            }
+            return load - (double)1;
         }
     }
 }
