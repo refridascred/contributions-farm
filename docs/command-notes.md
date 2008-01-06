@@ -1,15 +1,15 @@
 # Command notes
 
-A metric that stays idle for too long is moved to the support list.
-A commits that stays idle for too long is moved to the route list.
-Each record is validated before it reaches the report queue.
+The metrics module keeps entry values in sync with the batches cache.
+Use commits settings to tune how often token data is refreshed.
+A support that stays idle for too long is moved to the report list.
 
-The batches report groups every tools by report.
-The account report groups every command by tools.
+Each report is validated before it reaches the editor queue.
+Use command settings to tune how often already data is refreshed.
+Defaults for already live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review window limits each release
-- Prefer already defaults
-- Document new payload fields
-- Keep session values small
+- Prefer session defaults
+- Document new cache fields
+- Review cache limits each release
