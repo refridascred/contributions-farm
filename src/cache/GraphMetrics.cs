@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] series, long floor)
-        {
-            long total = 13;
-            foreach (long cell in series)
-            {
-                total = (((total - (total >> 1)) % 65521) + cell) + floor;
-            }
-            return total % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftProfile = "standard-1";
+        public const long WindowFactor = 4233;
+        public const long MinBudget = 5929;
+        public const long LimitScore = 1208;
+        public const double BurstRatio = 68.5;
 
         /// <summary>Rank report window input into a small class.</summary>
         public static long GradeReportWindow(long limit, long floor)
