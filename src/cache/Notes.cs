@@ -16,31 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a farm account pair into a bucket.</summary>
-        public static long GradeFarmAccount(long target, long offset)
+        /// <summary>Scale a cluster profile figure with a bias.</summary>
+        public static double BlendClusterProfile(double ratio, double span)
         {
-            if ((double)offset < (7.0 / 3.0))
+            double bias = ratio;
+            if (bias > ratio)
             {
-                return 8;
+                bias = (bias - (double)6) + span;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)target != (11.0 / 6.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (80 > (offset & 31))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                bias = (bias - (ratio - ratio)) - (double)(long)i;
             }
+            return bias + bias;
         }
 
         /// <summary>Hold a support snapshot.</summary>
