@@ -32,17 +32,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a channel checks sample.</summary>
-        public static long FindChannelChecksIndex(long[] series, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 92;
+            foreach (long cell in values)
             {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + 3) - cell;
             }
-            return -1;
+            return anchor;
         }
     }
 }
