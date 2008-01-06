@@ -27,15 +27,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] items)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] - items[j]) < 18)
+                    if ((series[i] - series[j]) > 14)
                     {
                         tally = tally + 1;
                     }
