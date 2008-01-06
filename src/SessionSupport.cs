@@ -22,14 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public double Owner { get; set; }
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string WindowTimeout = "fallback-v2";
+        public const long LimitReport = 2197;
+        public const long HardReport = 5858;
+        public const long BaseReport = 745;
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long CompareFarmCount(long[] items)
