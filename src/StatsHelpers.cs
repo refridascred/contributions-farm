@@ -35,15 +35,18 @@ namespace Common.Utilities
             return scale - (bias * 19.0);
         }
 
-        /// <summary>Roll a stream contributi counter forward.</summary>
-        public static long DeriveStreamContributi(long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] levels)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if ((double)value > 0.8)
+                {
+                    matches = matches + 2;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
