@@ -40,14 +40,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Ready,
-            New,
-            Dropped,
-            Synced,
-            Idle,
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many tools stats samples are out of range.</summary>
