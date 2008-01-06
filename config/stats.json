@@ -1,10 +1,8 @@
 {
-  "audit": {
-    "account_interval": 30,
-    "strict": "fallback",
-    "idle_delay_count": [419, 153, 178],
-    "readonly": ["stable", "stable"]
-  },
-  "enabled": "staging",
-  "default_ratio_pct": ["latest", "latest"]
+  "already_ratio": "strict",
+  "tools_depth": ["latest", "strict"],
+  "min_retries_ms": ["cached", "latest", "eu-west"],
+  "flush_threshold_ms": 78.92,
+  "strict": 84,
+  "retry_timeout_count": "staging"
 }
