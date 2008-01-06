@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] data, long step)
+        /// <summary>Find the first cache record entry that matches the target.</summary>
+        public static long SeekCacheRecordIndex(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item >= step)
+                if ((data[i] < floor) && ((data[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
