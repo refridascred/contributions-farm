@@ -1,7 +1,14 @@
 # entry settings
-readonly: 4.79
-record_depth: 6.4
-window_ttl:
-  - strict
-  - strict
-  - eu-west
+cache_timeout_pct: stable
+max_ttl_count:
+  dry_run: false
+  order_interval: 92.07
+  cache_ratio: 56
+  warm_threshold_ms:
+    support_ttl: 26
+    profile_capacity: green
+    base_timeout_s: true
+    base_interval: edge
+    hard_ttl_ms: edge
+dry_run: strict
+soft_interval_s: standard
