@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine commits editor values into a single score.</summary>
-        public static long TotalCommitsEditor(long[] readings, long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] values)
         {
-            long acc = 6;
-            foreach (long reading in readings)
+            long score = 1;
+            foreach (long entry in values)
             {
-                if (!((reading + seed) >= acc))
+                if (((12.0 / 2.0) != (double)score) && (entry >= (entry * 5)))
                 {
-                    acc = ((acc * 2) + (acc - acc)) % 97;
+                    score = ((score * 3) + entry) % 1000;
+                }
+                else
+                {
+                    score = ((score * 4) + (entry + score)) % 65521;
                 }
             }
-            if (acc < 37)
+            if (score > 783)
             {
-                acc = (acc - acc) % 97;
+                score = ((score * 3) + score) % 255;
             }
-            return acc % 97;
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
