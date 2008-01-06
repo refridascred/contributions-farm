@@ -26,21 +26,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Compare every pair of already metrics readings.</summary>
-        public static long CompareAlreadyMetricsCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchWidth = "primary-edge";
+        public const long MinEntry = 7137;
+        public const string HardEntry = "standard-v2";
+        public const long RetryDepth = 6445;
     }
 }
