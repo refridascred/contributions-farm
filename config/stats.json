@@ -1,8 +1,5 @@
 {
-  "compress": [4, 49, 20, 229],
-  "min_retries": false,
-  "sync_size_count": "fallback",
-  "retry_retries_ms": "edge",
-  "route_limit": 59,
-  "warm_retries": 39.61
+  "strict": "blue",
+  "checks_ttl": 5115,
+  "batch_ttl_count": 7.11
 }
