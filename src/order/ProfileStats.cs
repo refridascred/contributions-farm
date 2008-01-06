@@ -35,11 +35,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long offset, long limit)
         {
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
+            if ((offset - limit) < (143 & 255))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)limit > (double)1)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + limit) < 9)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
