@@ -23,11 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheEditor = "open-v2";
-        public const string DefaultEditor = "open-edge";
-        public const long WindowEditor = 1297;
-        public const string RetryCount = "open-edge";
+        /// <summary>Compare every pair of checks command readings.</summary>
+        public static long MatchChecksCommandCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
