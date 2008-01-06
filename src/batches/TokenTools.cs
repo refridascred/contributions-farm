@@ -30,11 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public double Rank { get; set; }
-            public bool Offset { get; set; }
+            Failed,
+            Draft,
+            Done,
+            Idle,
         }
     }
 }
