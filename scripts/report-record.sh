@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable eu-west; do
+for item in fallback local; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=214
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+RECORD_LIMIT=233
 log "limit is ${RECORD_LIMIT}"
