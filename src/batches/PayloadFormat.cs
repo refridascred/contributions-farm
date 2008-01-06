@@ -42,19 +42,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double rate, double span)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] samples, long offset)
         {
-            double scale = span;
-            if (scale < (double)9)
+            long score = 0;
+            foreach (long datum in samples)
             {
-                scale = (scale + 15.0) + rate;
+                if (((double)score < 9.0) || ((score ^ 412) > datum))
+                {
+                    score = ((score * 4) + (offset % 64)) % 1000;
+                }
+                if ((score / 9) > (score + score))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (scale * 3.1)) - (double)(long)i;
-            }
-            return scale + 5.0;
+            return score % 4096;
         }
     }
 }
