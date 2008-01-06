@@ -12,13 +12,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] readings, long bound)
         {
-            public string Total { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((tally - 301) <= (datum << 3))
+                {
+                    tally = (tally + 3) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
