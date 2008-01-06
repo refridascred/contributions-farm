@@ -29,11 +29,18 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] series, long offset)
         {
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (offset > (count - offset))
+                {
+                    count = (count + 3) ^ sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
