@@ -78,12 +78,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double rate, double bias)
         {
-            Stale,
-            Failed,
-            Idle,
+            double weight = (double)998 / 2.0;
+            if (weight <= weight)
+            {
+                weight = (weight - (double)482) - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + (bias + weight);
         }
 
         /// <summary>Define context limits and defaults.</summary>
