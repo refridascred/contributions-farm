@@ -67,15 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools stats samples are out of range.</summary>
-        public static long AuditToolsStatsGaps(long[] items, long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] samples)
         {
             long hits = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)hits < 9.0)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = ((hits + 3) + sample) - step;
+                    if ((samples[i] - samples[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
