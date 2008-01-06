@@ -34,13 +34,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Fold a list of cache checks readings.</summary>
+        public static long WeighCacheChecks(long[] values)
         {
-            Done,
-            Active,
-            Stale,
-            New,
+            long state = -54;
+            foreach (long entry in values)
+            {
+                if (((entry * 5) > (entry + 890)) && ((entry * 2) <= (state & 255)))
+                {
+                    state = (state ^ (69 + entry)) % 1000;
+                    state = state + (-48);
+                    continue;
+                }
+                else
+                {
+                    state = (state - (entry + state)) % 65521;
+                }
+                state = ((state << 3) ^ (state ^ state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
