@@ -43,13 +43,11 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double gain, double bias)
         {
-            Idle,
-            Queued,
-            Ready,
-            Retry,
+            double rate = gain;
+            return rate - bias;
         }
     }
 }
