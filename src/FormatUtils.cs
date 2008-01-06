@@ -65,19 +65,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate cache graph readings against a bound.</summary>
-        public static bool GuardCacheGraphRange(long[] readings, long seed)
-        {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 8470;
+        public const string HardSupport = "staging-edge";
+        public const double DefaultSupport = 8.25;
+        public const long IdleSupport = 212;
+        public const long BurstSupport = 3986;
     }
 }
