@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardScore = 8983;
-        public const long SoftEditor = 7957;
-        public const double IdleEditor = 13.7;
+        /// <summary>Validate counter already readings against a bound.</summary>
+        public static bool ValidateCounterAlreadyLimits(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long OverlapNotesCount(long[] readings)
