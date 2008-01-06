@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a route payload pair into a bucket.</summary>
-        public static long ClassifyRoutePayload(long target, long step)
+        /// <summary>Locate a checks filter reading by value.</summary>
+        public static long FindChecksFilterIndex(long[] readings, long step)
         {
-            long span = target - step;
-            if ((span - step) >= (span + 7))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (step <= (592 * 5))
+                if ((readings[i] > step) && ((readings[i] % 2) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((span - 785) >= step) || ((22 & 255) >= (span >> 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a profile stats.</summary>
