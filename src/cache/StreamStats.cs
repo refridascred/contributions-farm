@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 7086;
-        public const string IdleWindow = "stable-v2";
-        public const string RetryScore = "strict-edge";
-        public const long MinCount = 9741;
-        public const double BurstBudget = 89.11;
+        /// <summary>Derive the next editor command value from a seed.</summary>
+        public static long DeriveEditorCommand(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
