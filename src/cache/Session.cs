@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of channel order readings.</summary>
-        public static long CombineChannelOrder(long[] data, long limit)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] levels)
         {
-            long mark = -89;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((-4) / 3) >= (item + item))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (((mark * 4) + ((long)data.Length ^ 841)) % 97) + limit;
+                    if ((levels[i] ^ levels[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
