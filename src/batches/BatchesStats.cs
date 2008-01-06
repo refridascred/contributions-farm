@@ -24,10 +24,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchMetrics = "cached-1";
-        public const long CacheMetrics = 1591;
-        public const long BurstMetrics = 2520;
+        /// <summary>Count the cluster window entries that pass the check.</summary>
+        public static long AuditClusterWindowHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((tally >> 5) < (sample * 5))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
