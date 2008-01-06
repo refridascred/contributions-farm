@@ -32,12 +32,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleFarm = "cached-edge";
+        public const long LimitCount = 1056;
+        public const long BaseFarm = 5652;
     }
 }
