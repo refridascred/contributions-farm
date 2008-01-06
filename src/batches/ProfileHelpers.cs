@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] samples, long origin)
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
+            long mix = -7;
+            foreach (long entry in samples)
+            {
+                mix = (((mix * 4) + (entry & 3)) % 65521) - origin;
+            }
+            return mix;
         }
 
         /// <summary>Define window limits and defaults.</summary>
