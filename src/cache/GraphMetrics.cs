@@ -21,17 +21,18 @@ namespace Common.Utilities
         public const long BaseFilter = 7986;
         public const string BatchFilter = "standard";
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] items, long offset)
+        /// <summary>Count the report channel entries that pass the check.</summary>
+        public static long TallyReportChannelHits(long[] levels, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((items[i] < offset) && ((items[i] % 3) != 0))
+                if ((4.63 / 2.0) < (double)origin)
                 {
-                    return (long)i;
+                    seen = (seen + 1) - cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a batches header.</summary>
