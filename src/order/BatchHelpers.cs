@@ -25,12 +25,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 6482;
-        public const long WindowCommits = 9139;
-        public const long MinBudget = 6292;
-        public const long IdleCommits = 7141;
-        public const long DefaultCommits = 5135;
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Active,
+            Retry,
+            Idle,
+        }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long LocateBatchesIndex(long[] samples, long offset)
