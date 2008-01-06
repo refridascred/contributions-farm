@@ -46,39 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long offset, long bound)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long bound2 = offset ^ bound;
-            if (((2.1 / 5.0) == (double)offset) && ((bound ^ bound2) > (offset % 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound2 & 127) <= (bound + offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((72 - bound) != (bound2 * 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound < (bound + 629)) && ((double)770 >= (double)offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Active,
+            Done,
+            Closed,
         }
 
         /// <summary>Hold a layout summary.</summary>
