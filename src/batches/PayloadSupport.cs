@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitMetric = 76.57;
+        public const double WindowSpan = 65.36;
+        public const string HardMetric = "cached-edge";
+        public const long StepMetric = 7162;
+        public const double DefaultMetric = 44.92;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long CombineSession(long[] items, long origin)
