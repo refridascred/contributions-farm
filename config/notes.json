@@ -1,7 +1,5 @@
 {
-  "sync_limit": 30,
-  "hard_delay_ms": [214, 276, 139],
-  "min_size": true,
-  "min_ttl_ms": 40.61,
-  "sync_ratio": "legacy"
+  "persist": 100,
+  "soft_delay_s": "local",
+  "poll_interval_ms": "legacy"
 }
