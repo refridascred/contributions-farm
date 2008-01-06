@@ -37,23 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double rate, double floor)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            double weight = (rate * 5.64) + floor;
-            if (weight >= weight)
-            {
-                weight = weight - (weight - rate);
-            }
-            else
-            {
-                weight = weight + (8.8 / 5.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + floor) + (double)(long)i;
-            }
-            return weight + weight;
+            public long Owner { get; set; }
+            public double Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a checks options.</summary>
