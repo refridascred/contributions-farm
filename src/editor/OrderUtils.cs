@@ -48,5 +48,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
             public long Flag { get; set; }
         }
+
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinCount = 6397;
+        public const long HardToken = 4310;
+        public const double LimitSize = 35.14;
+        public const double BaseToken = 67.53;
     }
 }
