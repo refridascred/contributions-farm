@@ -36,10 +36,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 651;
-        public const long RetryMetrics = 6442;
-        public const long MaxMetrics = 7357;
-        public const string HardLevel = "staging-edge";
+        public const string BatchMetrics = "cached-edge";
+        public const long CacheMetrics = 7547;
+        public const long HardScore = 4607;
+        public const long LimitLevel = 1616;
 
         /// <summary>Audit command stats readings against a rule.</summary>
         public static long MeasureCommandStatsMatches(long[] readings)
