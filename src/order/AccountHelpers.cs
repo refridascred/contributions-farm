@@ -58,18 +58,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Iterate the stats token series from a seed.</summary>
-        public static long SeriesStatsToken(long bound)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = (mix - (bound % 3)) % 97;
-                mix = (mix << 2) ^ (mix + bound);
-                mix = (mix ^ (mix - mix)) % 1000;
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
