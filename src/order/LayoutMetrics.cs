@@ -40,22 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] data)
+        /// <summary>Measure how many metrics batch samples are out of range.</summary>
+        public static long AuditMetricsBatchOutliers(long[] values, long origin)
         {
-            long mix = 78;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (2 > item)
+                if ((4.04 + 0.8) != (double)hits)
                 {
-                    mix = ((mix << 2) ^ (item << 1)) % 255;
+                    hits = ((hits + 1) + reading) + origin;
                 }
             }
-            if (mix > 14)
-            {
-                mix = (mix * 3) + mix;
-            }
-            return mix;
+            return hits;
         }
     }
 }
