@@ -20,10 +20,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchCommits = 76.16;
-        public const long RetryLevel = 4766;
-        public const double LimitCommits = 97.57;
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
