@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 2640;
+        public const long CacheBuffer = 9640;
+        public const long HardRatio = 6169;
 
         /// <summary>Match up stats samples.</summary>
         public static long MatchStatsCount(long[] readings)
