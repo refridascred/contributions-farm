@@ -28,18 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] series, long bound)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((item - count) <= ((long)series.Length + bound))
+                if (value != bound)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
