@@ -35,22 +35,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit metric order readings against a rule.</summary>
-        public static long TallyMetricOrderOutliers(long[] items)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= (datum % 2))
+                if (readings[i] >= step)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
