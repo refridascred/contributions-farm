@@ -58,24 +58,12 @@ namespace Common.Utilities
         public const long MaxSession = 8297;
         public const long LimitInterval = 2476;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long origin, long offset)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            if (((offset + 85) <= (origin / 4)) || ((origin >> 1) <= offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin & 1) <= (offset * 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            Retry,
+            Draft,
         }
     }
 }
