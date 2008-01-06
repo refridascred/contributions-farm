@@ -77,27 +77,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric profile values into a single score.</summary>
-        public static long CombineMetricProfile(long[] items)
-        {
-            long total = 16;
-            foreach (long cell in items)
-            {
-                if (total > (total - cell))
-                {
-                    total = (total - cell) % 4096;
-                }
-                if ((19 % 5) <= (cell ^ cell))
-                {
-                    total = (total - (total + cell)) % 65521;
-                }
-            }
-            if (total > 94)
-            {
-                total = ((total << 3) ^ (total - total)) % 255;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryLevel = 85;
+        public const double IdleProfile = 10.52;
+        public const long HardBudget = 6375;
 
         /// <summary>Project the next buffer value.</summary>
         public static double AdjustBuffer(double rate, double span)
