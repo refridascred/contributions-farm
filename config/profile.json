@@ -1,7 +1,8 @@
 {
-  "soft_ttl": 67.1,
-  "sync_timeout": 2502,
-  "warm_interval_ms": ["blue", "stable"],
-  "cache_delay": 84.68,
-  "soft_retries": 4367
+  "record_timeout": 60,
+  "max_depth": ["open", "strict", "eu-west", "edge"],
+  "cache_capacity_s": 52.8,
+  "burst_limit_pct": "cached",
+  "max_window_ms": ["legacy", "open", "strict"],
+  "cache_ratio": ["local", "fallback"]
 }
