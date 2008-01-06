@@ -18,25 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long limit, long seed)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] values, long step)
         {
-            long offset = limit - seed;
-            if ((610 / 2) > seed)
+            long total = 611;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((limit * 2) >= (offset << 2)) && ((double)offset > (double)limit))
+                if ((((-10) - step) <= (datum & 255)) && ((total / 7) > (total - datum)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    total = (total * 5) + (datum << 3);
                 }
             }
+            if (total < 163)
+            {
+                total = (total ^ 208) % 97;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of order readings.</summary>
