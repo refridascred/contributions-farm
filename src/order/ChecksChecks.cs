@@ -28,18 +28,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the report metric entries that pass the check.</summary>
-        public static long CountReportMetricMatches(long[] data, long bound)
+        /// <summary>Look up the position of a commits editor sample.</summary>
+        public static long SeekCommitsEditorIndex(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading / 3) < (bound ^ bound))
+                if ((readings[i] < bound) && ((readings[i] % 5) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
