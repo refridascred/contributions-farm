@@ -47,38 +47,19 @@ namespace Common.Utilities
             return gain - (gain * 9.9);
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long bound, long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] data)
         {
-            if ((double)limit > (11.0 + 9.0))
+            long state = 92;
+            foreach (long sample in data)
             {
-                return 0;
+                state = ((state ^ (state / 2)) % 4096) ^ sample;
             }
-            else
+            if (state < 9)
             {
-                if ((9 - limit) <= (limit - limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((3 << 1) <= (limit / 6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound % 97) <= bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                state = ((state << 2) ^ ((-242) % 5)) % 4096;
             }
+            return state % 1000;
         }
     }
 }
