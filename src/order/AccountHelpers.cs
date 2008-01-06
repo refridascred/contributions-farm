@@ -39,21 +39,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up githubfarm checks samples.</summary>
-        public static long CompareGithubfarmChecksCount(long[] items)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Locked,
+            Draft,
         }
 
         /// <summary>Roll a record counter forward.</summary>
