@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] samples, long bound)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((double)bound < 7.79)
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseFormat = "cached-edge";
+        public const long StepFactor = 7938;
+        public const double IdleFormat = 45.01;
+        public const double BatchFormat = 92.7;
 
         /// <summary>Match up stream samples.</summary>
         public static long PairStreamCount(long[] items)
