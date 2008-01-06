@@ -7,20 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-blue}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in edge stable legacy cached; do
+    log "checking ${item}"
+done
 
-RECORD_LIMIT=137
+RECORD_LIMIT=5
 log "limit is ${RECORD_LIMIT}"
