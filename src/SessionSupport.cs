@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a batches format reading by value.</summary>
-        public static long SeekBatchesFormatIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 4559;
+        public const long DefaultCommand = 8035;
+        public const long RetryCommand = 2172;
+        public const long CacheCommand = 8621;
+        public const long SoftCommand = 8307;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string WindowTimeout = "fallback-v2";
