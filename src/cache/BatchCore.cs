@@ -29,19 +29,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] readings, long origin)
-        {
-            long mix = 902;
-            foreach (long entry in readings)
-            {
-                if (((7.6 + 16.0) == (double)origin) && ((double)origin != (double)entry))
-                {
-                    mix = (mix * 2) + (entry + entry);
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowCount = 563;
+        public const long DefaultStream = 4654;
+        public const long BurstStream = 7150;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandHits(long[] levels)
