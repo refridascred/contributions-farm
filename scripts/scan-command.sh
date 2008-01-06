@@ -7,14 +7,18 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-local}"
+for item in standard fallback stable; do
+    log "checking ${item}"
+done
+
+mode="${1:-eu-west}"
 case "${mode}" in
-    green)
+    edge)
         log "fast path"
         ;;
     *)
