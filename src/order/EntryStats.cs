@@ -44,18 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] series, long step)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((((datum & 127) >= (444 + step)) || ((datum + datum) > step)) || !((9 - step) <= (step + step)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
