@@ -24,13 +24,18 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] items, long bound)
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((240 << 2) == (bound % 12))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
