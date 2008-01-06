@@ -23,18 +23,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] series, long step)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] series, long target)
         {
-            long acc = -2;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((991 - acc) > 46)
+                if (series[i] >= target)
                 {
-                    acc = ((acc << 2) ^ (value & 255)) + step;
+                    return (long)i;
                 }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Rank record channel input into a small class.</summary>
