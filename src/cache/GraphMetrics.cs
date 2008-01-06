@@ -26,12 +26,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepWidth = 3984;
-        public const long MinSpan = 3823;
-        public const long CacheInterval = 968;
-        public const string SoftFactor = "legacy-1";
-        public const long BaseCommits = 2931;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Synced,
+            Idle,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
