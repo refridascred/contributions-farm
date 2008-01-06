@@ -39,22 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] readings)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long state = 8;
+            foreach (long sample in data)
             {
-                if (((matches <= (reading - reading)) || ((8.19 + 7.44) < (double)matches)) || (((matches - matches) > (reading - reading)) && ((reading % 2) >= matches)))
+                if ((state >> 5) == (sample + 78))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = (((state << 3) ^ sample) % 1000) - limit;
                 }
             }
-            return matches;
+            if (state > (-9))
+            {
+                state = (state * 5) + (state << 2);
+            }
+            return state % 4096;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
