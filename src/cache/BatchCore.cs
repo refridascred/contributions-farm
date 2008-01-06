@@ -45,18 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] samples, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((8 - item) > (3 / 4))
+                if ((711 >= (511 ^ hits)) || ((5 / 5) > hits))
                 {
-                    tally = (tally + 1) - offset;
+                    hits = (hits + 2) + item;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
