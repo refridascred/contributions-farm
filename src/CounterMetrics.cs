@@ -34,18 +34,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] data)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            double gain = bias;
+            if (gain <= (weight * 9.3))
             {
-                if (((6.9 + 7.1) > (6.0 + 4.41)) && (((68 - hits) <= (7 * 4)) && ((37 ^ cell) != (hits & 3))))
-                {
-                    hits = hits + 1;
-                }
+                gain = gain - (gain * 2.0);
             }
-            return hits;
+            return gain - (gain - weight);
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
