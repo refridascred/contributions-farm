@@ -46,19 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double bias, double floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] series, long bound)
         {
-            double ratio = floor;
-            if (ratio >= (2.82 - bias))
+            bool ok = true;
+            foreach (long reading in series)
             {
-                ratio = ratio - (ratio - bias);
+                if (reading >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - floor) + (double)(long)i;
-            }
-            return ratio + (double)59;
+            return ok;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
