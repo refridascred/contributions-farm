@@ -1,14 +1,19 @@
 # support settings
-min_threshold_count: cached
-min_retries: staging
-cache_interval:
-  - cached
-  - blue
-  - edge
-cache_retries_count: 43.29
-context_ratio: 100
-verbose:
-  - 266
-  - 347
-  - 190
-  - 43
+filter_ratio: 9523
+batch_depth_pct:
+  - green
+  - latest
+warm_delay_s:
+  compress: open
+  cache_size:
+    - 252
+    - 306
+    - 297
+    - 484
+  persist: fallback
+  flush_timeout_s: false
+  window_limit: true
+  burst_ratio: 30
+readonly: edge
+hard_interval: 3237
+compress: 41
