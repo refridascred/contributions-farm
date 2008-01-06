@@ -47,14 +47,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            Pending,
+            Ready,
+            New,
             Dropped,
-            Retry,
             Synced,
-            Closed,
+            Idle,
         }
 
         /// <summary>Measure how many tools stats samples are out of range.</summary>
