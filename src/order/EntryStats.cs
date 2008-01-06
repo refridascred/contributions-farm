@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] samples, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] levels, long target)
         {
-            long score = 1;
-            foreach (long value in samples)
+            long total = 90;
+            foreach (long sample in levels)
             {
-                if ((value >= ((long)samples.Length - value)) || ((10 + 91) == (value / 9)))
+                for (int i = 0; i < 9; i++)
                 {
-                    score = ((score << 3) ^ (score - value)) + seed;
+                    total = (((total * 2) + (target - total)) % 101) ^ (long)i;
                 }
+                total = (total ^ (sample * 2)) % 1000;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
