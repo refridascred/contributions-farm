@@ -26,12 +26,19 @@ namespace Common.Utilities
         public const long StepSize = 1347;
         public const long BaseCount = 7821;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryFactor = 7605;
-        public const double StepNotes = 71.18;
-        public const double MaxNotes = 70.97;
-        public const long MinNotes = 2808;
-        public const double DefaultNotes = 42.2;
+        /// <summary>Digest a series of support channel entries.</summary>
+        public static long WeighSupportChannel(long[] items, long limit)
+        {
+            long score = 237;
+            foreach (long value in items)
+            {
+                if ((5 >= (value ^ (-222))) && ((double)limit >= (double)63))
+                {
+                    score = ((score * 5) + (score + score)) % 255;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
