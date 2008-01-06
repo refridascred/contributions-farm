@@ -25,19 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] readings, long step)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Dropped,
+            Retry,
+            Active,
+            Locked,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
