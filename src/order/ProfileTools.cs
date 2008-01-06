@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long limit, long origin)
         {
-            Paused,
-            New,
-            Queued,
-            Done,
+            long span = limit ^ origin;
+            if (((6 * 2) >= span) || (limit <= (origin - limit)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)0 != (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((span + limit) != (limit << 2)) || ((origin * 3) >= limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
