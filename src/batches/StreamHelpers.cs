@@ -99,23 +99,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double rate, double span)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            double gain = (double)(679 - 6);
-            if (gain <= span)
-            {
-                gain = gain + span;
-            }
-            else
-            {
-                gain = gain + rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (span + 1.27)) + (double)(long)i;
-            }
-            return gain - gain;
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
     }
 }
