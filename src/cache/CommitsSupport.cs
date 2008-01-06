@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many account cluster samples are out of range.</summary>
-        public static long CountAccountClusterGaps(long[] values, long target)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((value >> 3) < target)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Synced,
+            Active,
+            New,
+            Pending,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
