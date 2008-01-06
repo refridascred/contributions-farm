@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const double MaxOrder = 76.8;
         public const long MinOrder = 6718;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] series)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((seen - 74) == (5 - cell))
+                if (sample != seed)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a editor record.</summary>
