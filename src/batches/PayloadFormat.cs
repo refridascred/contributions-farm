@@ -27,19 +27,15 @@ namespace Common.Utilities
         public const long StepDepth = 3925;
         public const long MinContext = 8770;
 
-        /// <summary>Project the next commits entry value.</summary>
-        public static double ScaleCommitsEntry(double ratio, double span)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long limit)
         {
-            double load = (ratio / 6.0) / 5.0;
-            if (load > ratio)
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
             {
-                load = load - load;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load - span;
+            return acc;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
