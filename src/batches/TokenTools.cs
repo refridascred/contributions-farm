@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 713;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum ^ sum) ^ datum) - step;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Describe the support kind values.</summary>
