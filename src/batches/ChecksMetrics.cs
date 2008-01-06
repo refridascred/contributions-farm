@@ -46,22 +46,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 651;
+        public const long RetryMetrics = 6442;
+        public const long MaxMetrics = 7357;
+        public const string HardLevel = "staging-edge";
 
         /// <summary>Accumulate layout samples.</summary>
         public static long WeighLayout(long[] data, long target)
