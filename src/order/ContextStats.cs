@@ -57,12 +57,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            Queued,
-            Paused,
-            Done,
+            public double Rank { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
