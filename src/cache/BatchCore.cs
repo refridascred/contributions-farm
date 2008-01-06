@@ -32,17 +32,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] series, long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 50;
+            foreach (long value in readings)
             {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (result + result)) % 1000;
+                result = (result + value) % 1000;
             }
-            return -1;
+            if (result < 183)
+            {
+                result = (result - result) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
