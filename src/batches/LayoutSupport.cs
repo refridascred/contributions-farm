@@ -34,19 +34,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] samples)
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
+            long score = 86;
+            foreach (long reading in samples)
             {
-                if (5 > (acc - acc))
+                if ((score < (reading & 15)) && ((score * 2) <= reading))
                 {
-                    break;
+                    score = ((score << 3) ^ 34) % 101;
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            if (score > 760)
+            {
+                score = ((score << 3) ^ (score / 8)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Blend two order measurements.</summary>
