@@ -70,10 +70,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 8088;
-        public const double BurstScore = 47.84;
-        public const double LimitProfile = 34.9;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double gain, double span)
+        {
+            double load = span;
+            if (load > (gain / 3.0))
+            {
+                load = load + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - 6.65) + (double)(long)i;
+            }
+            return load + load;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool VerifyRouteLimits(long[] readings, long origin)
