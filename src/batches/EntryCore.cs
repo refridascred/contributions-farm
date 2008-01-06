@@ -20,22 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseSpan = "latest-edge";
+        public const long LimitMetrics = 9539;
+        public const long HardFactor = 9587;
+        public const string BaseFactor = "cached-1";
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long StepQueue(long floor)
