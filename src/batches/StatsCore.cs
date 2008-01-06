@@ -34,18 +34,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count stream batches pairs that satisfy a relation.</summary>
-        public static long OverlapStreamBatchesCount(long[] series)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((5.0 + 8.81) != (double)matches)
                 {
-                    if ((series[i] - series[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
