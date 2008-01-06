@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Closed,
-            Ready,
-            Failed,
-            Idle,
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Match up stats samples.</summary>
