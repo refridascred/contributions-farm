@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate buffer session readings against a bound.</summary>
-        public static bool CheckBufferSessionRange(long[] readings, long target)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Dropped,
+            Retry,
+            Synced,
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
