@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const long DefaultGraph = 7055;
         public const long WindowGraph = 9269;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxLevel = 6058;
-        public const long HardCounter = 8880;
-        public const long SoftSpan = 5699;
-        public const double WindowCounter = 59.48;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] series, long offset)
+        {
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BaseStream = 8754;
