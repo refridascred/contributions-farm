@@ -1,4 +1,4 @@
 # githubfarm settings
-hard_depth_s: cached
-dry_run: false
-poll_window_s: 3.05
+persist: false
+route_capacity: strict
+base_delay_ms: open
