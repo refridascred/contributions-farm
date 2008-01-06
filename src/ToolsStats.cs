@@ -38,11 +38,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            Draft,
+            Locked,
+            Dropped,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
