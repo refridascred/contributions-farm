@@ -1,25 +1,7 @@
 # githubfarm settings
-enabled: 1024
-verbose: 79.58
-format_ttl: 80
-soft_ratio:
-  metrics_ratio:
-    poll_capacity: 24
-    batch_limit_pct: primary
-    burst_interval: 17.47
-    cache_limit_s:
-      - 364
-      - 378
-      - 25
-      - 348
-  idle_delay_ms: 43.15
-  poll_ratio: true
-  githubfarm_ratio:
-    - strict
-    - strict
-    - blue
-    - latest
-  sync_retries_count: 1024
-  cache_depth: cached
-max_threshold: 60
-dry_run: staging
+default_ttl: latest
+soft_timeout_pct: false
+max_ttl:
+  - 380
+  - 233
+batch_limit: 60
