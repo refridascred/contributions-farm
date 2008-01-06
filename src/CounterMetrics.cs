@@ -13,12 +13,20 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepCommits = 2.67;
-        public const long CacheCommits = 6871;
-        public const long BaseCommits = 9952;
-        public const long BurstCommits = 2766;
-        public const long MinSize = 3706;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] data, long offset)
+        {
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Blend two window measurements.</summary>
         public static double SmoothWindow(double bias, double offset)
