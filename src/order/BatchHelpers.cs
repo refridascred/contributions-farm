@@ -23,17 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] series, long step)
+        /// <summary>Digest a series of schema notes entries.</summary>
+        public static long TotalSchemaNotes(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 772;
+            foreach (long datum in samples)
             {
-                if (series[i] <= step)
+                if (!((anchor << 1) < ((long)samples.Length - target)))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ 51) + datum;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the counter class values.</summary>
