@@ -59,13 +59,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Classify a schema tools pair into a bucket.</summary>
+        public static long RankSchemaTools(long step, long origin)
         {
-            Synced,
-            Pending,
-            Locked,
-            Closed,
+            long gap = step - origin;
+            if (((69 * 4) != (origin << 2)) && ((double)step >= (19.0 / 4.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((step + step) > (origin % 12)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step + step) != (5 ^ gap))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
