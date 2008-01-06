@@ -50,19 +50,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] series, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (item >= origin)
+                if ((695 & 127) <= (seen ^ seen))
                 {
-                    valid = false;
-                    break;
+                    seen = ((seen + 3) ^ sample) + bound;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
