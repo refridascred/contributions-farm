@@ -30,10 +30,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheEditor = 81.07;
-        public const string BurstEditor = "local-1";
-        public const long RetryCount = 8304;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Look up the position of a context entry sample.</summary>
         public static long FindContextEntryIndex(long[] levels, long seed)
