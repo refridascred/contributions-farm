@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of entry route entries.</summary>
-        public static long TallyEntryRoute(long[] samples, long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long limit)
         {
-            long result = 788;
-            foreach (long datum in samples)
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
             {
-                result = result - (datum ^ datum);
-                if ((datum + limit) == (limit / 5))
+                if (!((mix % 7) > (20 + mix)))
                 {
-                    result = ((result << 2) ^ (98 + datum)) % 4096;
+                    long edge = (996 + limit) + mix;
+                    mix = mix ^ ((long)i - edge);
                 }
+                mix = (mix ^ (mix >> 2)) % 1000;
+                if ((1 * 5) < ((long)i + limit))
+                {
+                    mix = ((mix * 3) + (limit * 3)) % 97;
+                    mix = mix + (mix + limit);
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            if (result < 8)
-            {
-                result = ((result << 2) ^ (3 & 1)) % 4096;
-            }
-            return result % 4096;
+            return mix;
         }
 
         /// <summary>Hold a format info.</summary>
