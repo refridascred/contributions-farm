@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long origin, long seed)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double gain, double span)
         {
-            if ((seed >> 2) > origin)
+            double bias = gain;
+            if (bias <= gain)
             {
-                return 8;
+                bias = (bias - 16.0) + span;
             }
             else
             {
-                if ((49 % 100) < (origin - seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
+                bias = bias + (9.0 * 5.35);
             }
+            return bias - bias;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
