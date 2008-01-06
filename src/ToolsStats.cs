@@ -61,11 +61,21 @@ namespace Common.Utilities
             return weight + (bias + weight);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultContext = "latest";
-        public const long SoftFactor = 475;
-        public const string LimitContext = "strict-v2";
-        public const long HardScore = 547;
-        public const long StepSize = 5727;
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
