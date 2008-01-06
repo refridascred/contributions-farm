@@ -66,20 +66,17 @@ namespace Common.Utilities
         public const long StepAccount = 3866;
         public const long BurstScore = 7292;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long origin)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] values, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((origin + acc) > (4 ^ origin)) && ((acc - origin) < acc))
+                if (values[i] < step)
                 {
-                    acc = (acc + ((long)i - acc)) % 97;
-                    acc = (acc + (acc * 3)) % 101;
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return -1;
         }
     }
 }
