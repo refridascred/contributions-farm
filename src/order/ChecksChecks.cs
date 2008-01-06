@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] values, long offset)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long anchor = 544;
-            foreach (long item in values)
-            {
-                if (!((offset >> 4) > item))
-                {
-                    anchor = anchor - (item + 916);
-                }
-                anchor = (anchor ^ (offset + offset)) % 101;
-            }
-            return anchor;
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
