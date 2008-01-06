@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] values)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] series, long floor)
         {
-            long carry = 739;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long item in series)
             {
-                carry = (carry + sample) % 4096;
+                if (item < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry % 4096;
+            return found;
         }
 
         /// <summary>Count the context session entries that pass the check.</summary>
