@@ -37,23 +37,11 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] series, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (((limit - limit) >= (hits >> 1)) && ((double)sample >= (18.0 - 2.0)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BatchFilter = "alpha";
+        public const long MinInterval = 8130;
+        public const double BaseFilter = 81.85;
+        public const long StepFilter = 1248;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool ValidateGithubfarmRange(long[] levels, long limit)
