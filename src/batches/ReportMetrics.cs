@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double bias, double offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] values)
         {
-            double scale = (double)(789 ^ 7);
-            if (scale >= (double)568)
+            long carry = 739;
+            foreach (long sample in values)
             {
-                scale = scale + offset;
+                carry = (carry + sample) % 4096;
             }
-            else
-            {
-                scale = scale + (bias - bias);
-            }
-            return scale - bias;
+            return carry % 4096;
         }
 
         /// <summary>Describe the batch mode values.</summary>
