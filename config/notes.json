@@ -1,10 +1,5 @@
 {
-  "max_ratio_s": "stable",
-  "batch_depth_pct": 7820,
-  "audit": {
-    "commits_interval": 80.53,
-    "flush_size": "latest",
-    "readonly": true
-  },
-  "flush_capacity_ms": 39
+  "buffer_window": 41.37,
+  "soft_depth_ms": "edge",
+  "soft_retries": "local"
 }
