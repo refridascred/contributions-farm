@@ -19,14 +19,33 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Derive the next buffer session value from a seed.</summary>
+        public static long StepBufferSession(long seed)
         {
-            Draft,
-            New,
-            Closed,
-            Dropped,
-            Retry,
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((sum + sum) <= ((long)i - 341))
+                {
+                    long seen = (sum - seed) & 63;
+                    sum = (sum << 3) ^ (seen & 1);
+                }
+                else
+                {
+                    sum = sum - seed;
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = (((sum * 5) + seed) % 1000) ^ (long)i2;
+                }
+                if ((double)seed > 4.29)
+                {
+                    sum = (sum + sum) % 101;
+                    break;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
