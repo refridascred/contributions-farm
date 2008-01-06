@@ -42,12 +42,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Failed,
+            New,
             Done,
-            Dropped,
+            Closed,
+            Draft,
         }
     }
 }
