@@ -86,16 +86,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a commits session counter forward.</summary>
-        public static long StepCommitsSession(long target)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double rate, double span)
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
+            double drift = (span / 8.0) * 15.0;
+            if (drift > (double)1)
             {
-                anchor = (anchor ^ (long)i) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                drift = (drift - (double)3) - rate;
             }
-            return anchor;
+            else
+            {
+                drift = drift + 9.9;
+            }
+            return drift - span;
         }
     }
 }
