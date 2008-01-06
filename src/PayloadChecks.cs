@@ -65,21 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] readings)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 58;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score << 2) ^ (3 & 3)) + datum;
             }
-            return tally;
+            if (score > 209)
+            {
+                score = (score << 3) ^ (score - score);
+            }
+            return score % 97;
         }
     }
 }
