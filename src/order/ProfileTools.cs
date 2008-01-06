@@ -51,39 +51,12 @@ namespace Common.Utilities
             return scale + 7.5;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long floor, long limit)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long span = floor ^ limit;
-            if ((0.89 / 7.0) >= (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit - (-789)) == (floor ^ span))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit ^ floor) >= (limit + 151))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)floor == (double)span)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Retry,
+            Pending,
         }
     }
 }
