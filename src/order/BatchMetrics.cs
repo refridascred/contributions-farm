@@ -51,12 +51,12 @@ namespace Common.Utilities
             return ratio + (double)59;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Ready,
             Done,
             Dropped,
+            New,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
