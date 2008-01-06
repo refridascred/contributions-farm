@@ -33,12 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            Done,
+            Active,
+            Stale,
+            New,
         }
 
         /// <summary>Adjust a graph reading.</summary>
