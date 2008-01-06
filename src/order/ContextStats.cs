@@ -44,20 +44,21 @@ namespace Common.Utilities
         public const long WindowSupport = 7324;
         public const long IdleSupport = 7750;
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long floor)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((mix - floor) < mix) && (((-519) - (-646)) <= (floor ^ (long)i))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix ^ (floor + floor)) % 1000;
+                    if ((values[i] ^ values[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = mix ^ (5 * 2);
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Compare every pair of buffer session readings.</summary>
