@@ -62,10 +62,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 3937;
-        public const string BaseQueue = "latest";
-        public const double StepQueue = 22.7;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] samples, long floor)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((((5.8 / 4.0) == (double)floor) && ((double)floor == (double)seen)) && ((seen + floor) <= (175 & 127)))
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BaseRecord = 5524;
