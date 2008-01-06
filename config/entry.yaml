@@ -1,19 +1,8 @@
 # entry settings
-warm_timeout_count:
-  - 284
-  - 124
-  - 253
-  - 380
-farm_threshold: 20.67
-compress: primary
-batch_retries:
-  persist:
-    - stable
-    - open
-    - strict
-    - fallback
-  sync_delay_s: true
-  notes_depth: strict
-  flush_interval: 77.15
-  compress: stable
-metric_window: 8449
+retry_size_count:
+  - eu-west
+  - latest
+sync_timeout_count:
+  - 197
+  - 93
+account_delay: 35.24
