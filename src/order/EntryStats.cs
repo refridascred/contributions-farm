@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] samples, long seed)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            long score = 1;
+            foreach (long value in samples)
+            {
+                if ((value >= ((long)samples.Length - value)) || ((10 + 91) == (value / 9)))
+                {
+                    score = ((score << 3) ^ (score - value)) + seed;
+                }
+            }
+            return score;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
