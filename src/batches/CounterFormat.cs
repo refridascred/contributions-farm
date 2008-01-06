@@ -32,12 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] readings)
         {
-            Stale,
-            Synced,
-            Locked,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
