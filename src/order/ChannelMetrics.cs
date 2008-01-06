@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 390;
-        public const long StepQueue = 6065;
-        public const double SoftQueue = 46.85;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftFactor = 8431;
+        public const string RetrySpan = "alpha-edge";
+        public const long BatchFactor = 4104;
+        public const double IdleContributi = 5.54;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long DefaultSession = 8984;
