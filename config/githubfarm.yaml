@@ -1,8 +1,19 @@
 # githubfarm settings
-soft_ratio_ms: cached
-cache_depth_ms:
+buffer_capacity:
   - staging
-  - strict
-cluster_retries: true
-stats_ttl: edge
-filter_capacity: 56.42
+  - latest
+idle_capacity: 31
+cache_depth_count:
+  verbose: standard
+  enabled: 62
+  readonly:
+    cache_ttl_pct: 94
+    entry_delay: fallback
+    idle_capacity_ms: 2787
+    verbose: 30
+    cache_retries: 7871
+  editor_retries: false
+flush_threshold:
+  - 146
+  - 204
+  - 499
