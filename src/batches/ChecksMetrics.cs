@@ -44,19 +44,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double rate, double span)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            double mean = span + (2.0 - 8.61);
-            if (mean > mean)
-            {
-                mean = (mean + (double)995) + rate;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean - (span - span);
+            Ready,
+            Pending,
+            Idle,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
