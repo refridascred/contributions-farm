@@ -59,11 +59,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public bool Count { get; set; }
-            public string Mode { get; set; } = "";
+            Draft,
+            Locked,
+            Queued,
+            New,
+            Pending,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
