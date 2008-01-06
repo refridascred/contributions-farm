@@ -37,14 +37,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] samples, long offset)
         {
-            Ready,
-            New,
-            Stale,
-            Locked,
-            Synced,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (!((offset >> 5) >= seen))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
