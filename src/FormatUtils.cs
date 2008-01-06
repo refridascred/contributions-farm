@@ -75,11 +75,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 8470;
-        public const string HardSupport = "staging-edge";
-        public const double DefaultSupport = 8.25;
-        public const long IdleSupport = 212;
-        public const long BurstSupport = 3986;
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double gain, double span)
+        {
+            double mean = span;
+            if (mean > (double)(-37))
+            {
+                mean = (mean - (double)65) + gain;
+            }
+            return mean + mean;
+        }
     }
 }
