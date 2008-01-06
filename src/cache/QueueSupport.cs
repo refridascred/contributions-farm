@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] samples, long floor)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long floor)
         {
-            long result = 72;
-            foreach (long value in samples)
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((value <= 4) || (value < (result >> 3)))
+                long gap = anchor - (anchor % 100);
+                anchor = (anchor ^ gap) % 97;
+                if ((5 << 1) != ((long)i - floor))
                 {
-                    result = ((result * 4) + (result ^ (-3))) - floor;
+                    gap = (gap - anchor) % 101;
                 }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Accumulate route samples.</summary>
