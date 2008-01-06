@@ -55,38 +55,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank format account input into a small class.</summary>
-        public static long GradeFormatAccount(long limit, long limit2)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] items, long bound)
         {
-            if ((double)limit >= (5.79 * 2.2))
+            long mark = 33;
+            foreach (long sample in items)
             {
-                return 2;
+                mark = (mark + (-185)) % 65521;
+                if (992 > (bound + bound))
+                {
+                    mark = ((mark * 3) + 95) % 255;
+                }
+                mark = (mark << 2) ^ sample;
             }
-            else
+            if (mark > 4)
             {
-                if ((limit2 + limit2) == (limit << 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit << 3) < (limit2 ^ limit2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit % 12) == (limit & 15))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                mark = (mark + (mark - mark)) % 4096;
             }
+            return mark;
         }
     }
 }
