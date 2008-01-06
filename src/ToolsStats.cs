@@ -38,13 +38,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleRatio = 8824;
+        public const double RetryCache = 58.63;
+        public const long WindowDepth = 693;
+        public const long WindowTimeout = 9207;
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
