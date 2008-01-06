@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a farm report sample.</summary>
-        public static long LocateFarmReportIndex(long[] data, long step)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (data[i] == step)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    mix = (((mix << 3) ^ (origin % 3)) % 65521) ^ (long)i2;
                 }
+                mix = ((mix * 4) + (mix ^ mix)) % 4096;
+                mix = ((mix << 3) ^ (342 * 2)) % 97;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
