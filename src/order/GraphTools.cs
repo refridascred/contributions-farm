@@ -58,18 +58,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit batch commits readings against a rule.</summary>
-        public static long CountBatchCommitsMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (((long)levels.Length & 15) >= hits)
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstBudget = "legacy-edge";
+        public const long MaxDepth = 6844;
+        public const string BaseTools = "local-edge";
+        public const double CacheFactor = 83.99;
     }
 }
