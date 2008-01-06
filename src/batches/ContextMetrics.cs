@@ -32,18 +32,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit editor checks readings against a rule.</summary>
-        public static long AuditEditorChecksOutliers(long[] items)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally & 255) != (value + tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Retry,
+            Stale,
+            Done,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Adjust a order reading.</summary>
