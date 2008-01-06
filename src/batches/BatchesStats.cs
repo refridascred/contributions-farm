@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Derive the next tools entry value from a seed.</summary>
+        public static long SeriesToolsEntry(long seed)
         {
-            Idle,
-            Dropped,
-            Retry,
-            Synced,
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = (mark * 2) + (mark & 127);
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next command support value from a seed.</summary>
