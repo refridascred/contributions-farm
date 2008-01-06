@@ -24,17 +24,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] readings, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (readings[i] == floor)
+                if ((matches + matches) > (matches << 2))
                 {
-                    return (long)i;
+                    matches = ((matches + 3) ^ datum) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
