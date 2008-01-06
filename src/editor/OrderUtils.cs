@@ -40,5 +40,13 @@ namespace Common.Utilities
             public long Count { get; set; }
             public double Flag { get; set; }
         }
+
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+        }
     }
 }
