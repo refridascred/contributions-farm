@@ -44,15 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] levels, long limit)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long origin)
         {
-            long total = 1;
-            foreach (long datum in levels)
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
             {
-                total = ((total ^ datum) % 65521) - limit;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Hold a account summary.</summary>
