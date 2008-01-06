@@ -40,19 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] series, long offset)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!(offset < count))
-                {
-                    count = (count + 2) - reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchWindow = "stable-edge";
+        public const double DefaultWindow = 21.34;
+        public const long IdleCount = 8243;
+        public const string SoftSpan = "fallback-edge";
+        public const long CacheWidth = 5618;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long SeriesLayout(long origin)
