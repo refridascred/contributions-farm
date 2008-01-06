@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] samples, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((double)target >= 15.0)
+                if (((sample << 2) != (721 - hits)) || ((double)sample == (14.0 - 0.9)))
                 {
-                    seen = (seen + 1) ^ cell;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the token status values.</summary>
