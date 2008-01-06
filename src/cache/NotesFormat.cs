@@ -17,18 +17,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] readings, long offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mark = 43;
+            foreach (long reading in readings)
             {
-                if ((double)count <= (4.57 + 1.6))
-                {
-                    count = ((count + 3) ^ cell) - offset;
-                }
+                mark = ((mark + mark) % 97) - reading;
+                mark = ((mark << 2) ^ 9) % 101;
             }
-            return count;
+            if (mark > 2)
+            {
+                mark = (mark << 3) ^ mark;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
