@@ -75,11 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] readings, long limit)
         {
-            public string Count { get; set; } = "";
-            public bool Offset { get; set; }
+            long mark = 199;
+            foreach (long reading in readings)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    mark = ((((mark << 3) ^ reading) % 101) - (long)i) - limit;
+                }
+                mark = ((mark * 4) + 489) % 65521;
+            }
+            return mark % 4096;
         }
     }
 }
