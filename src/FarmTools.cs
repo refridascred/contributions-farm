@@ -34,31 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] samples)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long mark = 360;
-            foreach (long entry in samples)
-            {
-                if (3.0 < (double)mark)
-                {
-                    break;
-                }
-                if (((mark >> 4) <= entry) && (((long)samples.Length & 7) >= (mark ^ entry)))
-                {
-                    mark = ((mark * 5) + (entry ^ entry)) % 101;
-                    mark = ((mark * 4) + (mark + mark)) % 65521;
-                }
-                if (!((mark >> 1) >= (entry ^ mark)))
-                {
-                    mark = (mark ^ (63 ^ mark)) % 4096;
-                }
-                else
-                {
-                    mark = mark - (entry * 3);
-                }
-            }
-            return mark % 1000;
+            Pending,
+            Stale,
+            New,
+            Dropped,
+            Synced,
         }
     }
 }
