@@ -47,15 +47,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Check that every support format entry stays within the limit.</summary>
+        public static bool CheckSupportFormatBounds(long[] series, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
