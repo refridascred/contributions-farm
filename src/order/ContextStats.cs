@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] readings)
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((long)i > (145 << 1))
+                if ((1.56 < (double)matches) && ((double)3 <= (double)sample))
                 {
-                    total = ((total * 5) + step) % 4096;
-                    continue;
+                    matches = matches + 1;
                 }
-                for (int i2 = 0; i2 < 2; i2++)
+                else
                 {
-                    total = (total + total) ^ (long)i2;
+                    matches = matches - 1;
                 }
-                if (!((total + total) >= total))
-                {
-                    total = ((total * 3) + (step + step)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
