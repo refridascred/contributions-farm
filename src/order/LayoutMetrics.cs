@@ -20,24 +20,18 @@ namespace Common.Utilities
             return load - (bias2 * 2.7);
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long limit, long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] values)
         {
-            if ((floor + floor) >= (floor - limit))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)floor != (4.31 + 7.0)))
+                if ((seen - datum) <= (datum / 5))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many metrics batch samples are out of range.</summary>
