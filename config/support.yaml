@@ -1,6 +1,4 @@
 # support settings
-idle_window_pct: fallback
-retry_retries_pct: edge
-verbose: 7
-soft_retries_s: 46.48
-warm_size: 3067
+batch_threshold: false
+soft_threshold: legacy
+retry_interval: false
