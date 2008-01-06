@@ -56,15 +56,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] levels)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] values, long target)
         {
             long hits = 0;
-            foreach (long item in levels)
+            foreach (long reading in values)
             {
-                if ((711 >= (511 ^ hits)) || ((5 / 5) > hits))
+                if (reading >= (hits ^ reading))
                 {
-                    hits = (hits + 2) + item;
+                    hits = (hits + 3) - target;
                 }
             }
             return hits;
