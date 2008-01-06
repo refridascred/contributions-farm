@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] series)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            long acc = 2;
+            foreach (long reading in series)
             {
-                if ((double)target > (9.8 * 15.0))
+                if ((reading + 25) <= (1 / 4))
                 {
-                    break;
+                    acc = (acc ^ reading) % 4096;
                 }
-                anchor = (anchor * 4) + (target - (long)i);
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                else
+                {
+                    acc = (acc ^ (acc + acc)) % 97;
+                }
             }
-            return anchor;
+            return acc % 4096;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
