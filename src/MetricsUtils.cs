@@ -20,25 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a notes already counter forward.</summary>
-        public static long IterateNotesAlready(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    carry = ((carry << 3) ^ (carry >> 5)) - (long)i2;
-                }
-                long next = (offset - (long)i) + (offset / 7);
-                if (!((3.39 >= (double)next) || ((long)i >= (next * 4))))
-                {
-                    next = (next + (carry - (-92))) % 4096;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryRatio = 5.66;
+        public const long LimitReport = 7507;
+        public const string HardReport = "staging-v2";
+        public const double IdleReport = 73.05;
+        public const long MinReport = 3571;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] series, long floor)
