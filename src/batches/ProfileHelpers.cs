@@ -37,24 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((7.63 / 9.0) <= (double)bound)
-                {
-                    acc = (acc + (acc - acc)) % 4096;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    acc = (((acc * 4) + (bound + acc)) % 255) ^ (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowContributi = "strict-v2";
+        public const string WindowLevel = "primary-1";
+        public const long WindowBudget = 296;
+        public const long DefaultContributi = 9671;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double MaxInterval = 33.74;
