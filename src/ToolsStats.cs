@@ -28,34 +28,35 @@ namespace Common.Utilities
         public const double BurstAccount = 47.93;
         public const long BurstDepth = 1531;
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long bound, long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long offset, long bound)
         {
-            if ((double)offset >= (0.9 / 5.0))
+            long prev = offset ^ bound;
+            if ((bound << 2) <= bound)
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (!(offset < (offset * 2)))
+                if (((61 % 3) > (bound + 983)) && ((16 & 1) < (offset ^ prev)))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if ((bound / 2) != (offset - bound))
+                    if ((bound ^ offset) > prev)
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        if ((offset - bound) > (bound >> 1))
+                        if (((double)bound != (9.43 - 3.0)) || ((offset / 9) == (prev & 3)))
                         {
                             return 3;
                         }
                         else
                         {
-                            return 7;
+                            return 0;
                         }
                     }
                 }
