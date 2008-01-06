@@ -28,27 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of githubfarm checks entries.</summary>
-        public static long WeighGithubfarmChecks(long[] series)
+        /// <summary>Count the queue route entries that pass the check.</summary>
+        public static long CountQueueRouteMatches(long[] readings, long seed)
         {
-            long sum = 576;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                sum = sum - (sum + datum);
-                if (((-6) & 7) <= (sum - 8))
+                if ((double)(long)readings.Length > (3.19 * 6.0))
                 {
-                    break;
-                }
-                if ((double)datum < 9.51)
-                {
-                    sum = (sum * 5) + datum;
+                    hits = ((hits + 1) ^ entry) + seed;
                 }
             }
-            if (sum > 17)
-            {
-                sum = (sum ^ sum) % 1000;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
