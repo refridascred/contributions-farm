@@ -39,23 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] data, long limit)
-        {
-            long state = 8;
-            foreach (long sample in data)
-            {
-                if ((state >> 5) == (sample + 78))
-                {
-                    state = (((state << 3) ^ sample) % 1000) - limit;
-                }
-            }
-            if (state > (-9))
-            {
-                state = (state * 5) + (state << 2);
-            }
-            return state % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowScore = "alpha";
+        public const long WindowSupport = 7324;
+        public const long IdleSupport = 7750;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long DeriveNotes(long floor)
