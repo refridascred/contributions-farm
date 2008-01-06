@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((hits * 5) >= 9)
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit metric order readings against a rule.</summary>
