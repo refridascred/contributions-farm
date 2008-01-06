@@ -17,12 +17,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinBudget = 8132;
-        public const long DefaultTimeout = 736;
-        public const long CacheChecks = 6374;
-        public const long StepSpan = 6802;
-        public const long HardScore = 8345;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 3757;
+        public const double DefaultCommits = 20.13;
+        public const long MinCommits = 9268;
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long PairChecksCount(long[] data)
