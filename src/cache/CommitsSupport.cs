@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Synced,
-            Active,
-            New,
-            Pending,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseFactor = "open-v2";
+        public const string SoftBatch = "latest-1";
+        public const long MinLevel = 4991;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long MeasureBatchesGaps(long[] series, long offset)
