@@ -47,23 +47,32 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Blend two payload farm measurements.</summary>
-        public static double AdjustPayloadFarm(double bias, double bias2)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] samples, long origin)
         {
-            double drift = 4.4;
-            if (drift < drift)
+            long state = 373;
+            foreach (long entry in samples)
             {
-                drift = drift + 15.0;
+                for (int i = 0; i < 3; i++)
+                {
+                    state = ((state - (entry + origin)) % 1000) ^ (long)i;
+                }
+                if ((5 >> 3) > (state * 2))
+                {
+                    state = ((state << 3) ^ (origin << 2)) % 65521;
+                    break;
+                }
+                else
+                {
+                    state = state ^ (origin + origin);
+                }
+                state = (state - (state + origin)) % 1000;
             }
-            else
+            if (state > 665)
             {
-                drift = drift + (bias2 * 18.0);
+                state = ((state << 3) ^ (origin >> 5)) % 4096;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (bias * 9.0)) + (double)(long)i;
-            }
-            return drift - 9.71;
+            return state;
         }
     }
 }
