@@ -64,19 +64,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] items, long seed)
-        {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstInterval = 2995;
+        public const string WindowBudget = "latest-v2";
+        public const long BatchBudget = 2320;
+        public const string DefaultStats = "local";
+        public const long BurstScore = 5830;
     }
 }
