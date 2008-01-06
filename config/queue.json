@@ -1,5 +1,5 @@
 {
-  "verbose": "primary",
-  "layout_depth": "strict",
-  "readonly": 80
+  "burst_capacity_pct": 100,
+  "retry_ttl_s": 93.02,
+  "readonly": 20
 }
