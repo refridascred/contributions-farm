@@ -23,19 +23,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] data, long offset)
-        {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryRatio = 7.83;
+        public const string CacheDepth = "stable-v2";
+        public const string HardScore = "staging-edge";
+        public const long HardContext = 8705;
+        public const double WindowContext = 94.53;
     }
 }
