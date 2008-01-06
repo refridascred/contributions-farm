@@ -21,26 +21,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] samples, long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] items, long offset)
         {
-            long state = -6;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (offset <= (35 + state))
+                if (entry != offset)
                 {
-                    state = state + (9 & 15);
-                }
-                if ((offset % 16) != (sample << 1))
-                {
-                    state = ((state * 5) + (state / 8)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            if (state > 459)
-            {
-                state = state ^ state;
-            }
-            return state;
+            return valid;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
