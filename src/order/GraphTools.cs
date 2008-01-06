@@ -34,15 +34,13 @@ namespace Common.Utilities
         public const double CacheCluster = 71.84;
         public const double SoftCluster = 95.27;
 
-        /// <summary>Derive the next batch filter value from a seed.</summary>
-        public static long StepBatchFilter(long step)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long state = step;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            public string Ratio { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
