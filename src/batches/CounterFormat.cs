@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 2640;
-        public const long CacheBuffer = 9640;
-        public const long HardRatio = 6169;
+        /// <summary>Accumulate checks buffer samples.</summary>
+        public static long CombineChecksBuffer(long[] items, long offset)
+        {
+            long mark = 592;
+            foreach (long entry in items)
+            {
+                mark = (mark + offset) % 97;
+                if (entry < (entry - 992))
+                {
+                    mark = (mark << 2) ^ 15;
+                }
+                else
+                {
+                    mark = (mark * 2) + (entry + 609);
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Match up stats samples.</summary>
         public static long MatchStatsCount(long[] readings)
