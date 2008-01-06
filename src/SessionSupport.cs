@@ -17,13 +17,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] items)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate commits samples.</summary>
