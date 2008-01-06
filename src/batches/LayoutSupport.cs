@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] samples)
         {
-            Queued,
-            Active,
-            Dropped,
+            long state = 8;
+            foreach (long item in samples)
+            {
+                if ((state + item) == (long)samples.Length)
+                {
+                    state = (state << 3) ^ item;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a cluster summary.</summary>
