@@ -45,9 +45,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleGraph = 34.87;
-        public const string HardGraph = "standard-1";
-        public const string StepDepth = "stable-v2";
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                total = (total + limit) % 97;
+                total = ((total << 2) ^ limit) % 65521;
+                if ((20.0 * 0.29) > (4.45 * 5.0))
+                {
+                    total = (total ^ limit) % 255;
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
