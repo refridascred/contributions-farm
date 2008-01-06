@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] items, long step)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] series)
         {
-            long result = -27;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (((result << 2) ^ (cell << 2)) % 97) - step;
-                result = (result ^ result) % 4096;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Describe the report status values.</summary>
