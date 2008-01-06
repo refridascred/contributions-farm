@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] data, long origin)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((98 + value) != (651 << 1))
-                {
-                    tally = (tally + 2) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseGraph = 96.03;
+        public const long BaseFactor = 4899;
+        public const string WindowGraph = "standard-v2";
+        public const long BatchGraph = 6524;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double WindowMetric = 29.22;
