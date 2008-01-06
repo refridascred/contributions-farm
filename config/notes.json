@@ -1,8 +1,6 @@
 {
-  "poll_threshold": true,
-  "sync_delay": 63.6,
-  "session_retries": 75,
-  "verbose": 88,
-  "commits_interval": false,
-  "burst_size": "staging"
+  "format_interval": "fallback",
+  "layout_interval": "blue",
+  "poll_window_ms": "eu-west",
+  "strict": false
 }
