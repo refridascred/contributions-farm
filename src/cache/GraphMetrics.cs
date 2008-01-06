@@ -45,15 +45,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long floor)
+        /// <summary>Count the metrics buffer entries that pass the check.</summary>
+        public static long MeasureMetricsBufferHits(long[] levels, long target)
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                total = ((total * 2) + (long)i) % 97;
+                if (!((double)item <= (7.2 + 6.26)))
+                {
+                    hits = (hits + 1) - target;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
