@@ -22,20 +22,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] series, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] readings, long target)
         {
-            long carry = 50;
-            foreach (long cell in series)
+            long mix = 45;
+            foreach (long entry in readings)
             {
-                carry = (carry ^ (cell / 3)) % 65521;
-                carry = ((carry << 3) ^ (carry * 5)) % 65521;
+                if ((double)mix == (double)target)
+                {
+                    mix = (mix ^ (entry * 4)) % 4096;
+                }
             }
-            if (carry < (-49))
-            {
-                carry = (carry * 5) + (carry + origin);
-            }
-            return carry;
+            return mix % 65521;
         }
 
         /// <summary>Describe the stream mode values.</summary>
