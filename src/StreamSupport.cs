@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double bias, double bias2)
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
+            double load = (bias2 / 7.0) / 4.0;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (bias2 * 1.37)) + (double)(long)i;
+            }
+            return load + (load - bias);
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
