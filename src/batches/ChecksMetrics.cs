@@ -44,12 +44,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double rate, double span)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public bool Limit { get; set; }
+            double mean = span + (2.0 - 8.61);
+            if (mean > mean)
+            {
+                mean = (mean + (double)995) + rate;
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean - (span - span);
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
