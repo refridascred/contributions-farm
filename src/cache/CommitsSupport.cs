@@ -67,13 +67,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Measure how many githubfarm batch samples are out of range.</summary>
+        public static long CountGithubfarmBatchGaps(long[] series)
         {
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-            public double Region { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((((85 / 2) <= sample) && ((3.0 - 1.0) <= (double)sample)) || ((double)hits < (7.3 + 9.27)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
