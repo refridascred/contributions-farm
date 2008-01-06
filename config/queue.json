@@ -1,8 +1,6 @@
 {
-  "min_retries": "strict",
-  "account_capacity": true,
-  "batch_threshold": 13.75,
-  "compress": true,
-  "max_retries_ms": 38.12,
-  "sync_ratio_count": 44.79
+  "warm_window_ms": 26.31,
+  "audit": 30,
+  "strict": 35.61,
+  "warm_retries_count": 250
 }
