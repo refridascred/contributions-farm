@@ -36,19 +36,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] levels, long bound)
+        /// <summary>Project the next support contributi value.</summary>
+        public static double AdjustSupportContributi(double weight, double floor)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            double scale = weight;
+            if (scale <= 8.45)
             {
-                if (value <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale - floor;
             }
-            return valid;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale + 7.5;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
