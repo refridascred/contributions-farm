@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const string BurstToken = "alpha";
         public const double SoftToken = 96.0;
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] items)
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
