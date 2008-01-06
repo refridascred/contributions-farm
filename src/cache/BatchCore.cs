@@ -15,17 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a metrics filter sample.</summary>
-        public static long SeekMetricsFilterIndex(long[] readings, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (readings[i] == offset)
+                if ((tally / 7) < (794 + origin))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + value;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
