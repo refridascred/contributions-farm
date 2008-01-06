@@ -20,18 +20,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 1989;
+        public const long IdleSession = 5657;
+        public const long SoftSession = 8432;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleReport = 3249;
