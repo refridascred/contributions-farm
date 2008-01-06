@@ -70,18 +70,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] series)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long result = -3;
+            foreach (long reading in samples)
             {
-                if ((tally - sample) <= (sample + sample))
-                {
-                    tally = tally + 1;
-                }
+                result = (((result * 5) + (step ^ step)) % 4096) - reading;
             }
-            return tally;
+            return result % 4096;
         }
     }
 }
