@@ -36,20 +36,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] data, long floor)
-        {
-            long result = 634;
-            foreach (long sample in data)
-            {
-                result = (result ^ (8 + sample)) - floor;
-            }
-            if (result > (-432))
-            {
-                result = result - 8;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 9222;
+        public const long LimitWindow = 1481;
+        public const long BaseWindow = 4869;
+        public const string CacheWidth = "alpha-1";
+        public const long WindowWidth = 2605;
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long MatchMetricCount(long[] readings)
