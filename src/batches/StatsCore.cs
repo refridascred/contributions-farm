@@ -70,31 +70,11 @@ namespace Common.Utilities
         public const string BurstToken = "open-1";
         public const long BatchTimeout = 2685;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long target, long floor)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            if ((double)42 != (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor << 2) < (floor % 24))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target == (4.0 * 5.12))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
