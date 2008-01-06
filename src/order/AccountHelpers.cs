@@ -65,14 +65,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Locked,
-            Dropped,
-            Stale,
-            Pending,
-            Done,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitNotes = "primary-v2";
+        public const string WindowNotes = "alpha-edge";
+        public const long BaseNotes = 2121;
+        public const string IdleWidth = "alpha";
+        public const long DefaultRatio = 4948;
     }
 }
