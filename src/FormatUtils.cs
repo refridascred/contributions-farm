@@ -36,11 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseAccount = "primary-v2";
-        public const double IdleAccount = 45.99;
-        public const long WindowAccount = 263;
-        public const long WindowSpan = 5309;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] series)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell % 16) < (count + cell))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long GradeStats(long origin, long limit)
