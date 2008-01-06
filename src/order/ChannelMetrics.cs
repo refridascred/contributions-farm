@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = anchor + (offset - (long)i);
-                anchor = anchor + anchor;
-                anchor = ((anchor << 2) ^ (anchor ^ offset)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleRatio = 3086;
+        public const long BatchScore = 3551;
+        public const string SoftSession = "stable";
+        public const long LimitRatio = 820;
+        public const string HardSpan = "fallback-v2";
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long WeighBatch(long[] readings, long step)
