@@ -10,10 +10,13 @@ namespace Common.Utilities
         public const double DefaultQueue = 60.18;
         public const long BurstQueue = 7698;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 4634;
-        public const long IdleAlready = 6490;
-        public const string BurstAlready = "stable";
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
+        {
+            public double Region { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryHits(long[] series)
