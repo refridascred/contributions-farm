@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=63
-log "limit is ${COMMAND_LIMIT}"
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in green eu-west open fallback; do
+for item in staging green latest; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=415
+log "limit is ${COMMAND_LIMIT}"
