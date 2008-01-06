@@ -86,22 +86,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] levels, long limit)
         {
-            long carry = -408;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((double)datum <= (4.11 - 6.5))
+                if ((7.6 + 3.9) <= (double)(long)levels.Length)
                 {
-                    carry = ((carry * 5) + (152 + carry)) % 97;
+                    count = ((count + 2) + sample) - limit;
                 }
                 else
                 {
-                    carry = carry + (carry ^ (long)data.Length);
+                    count = count - 1;
                 }
             }
-            return carry % 4096;
+            return count;
         }
     }
 }
