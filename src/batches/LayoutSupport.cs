@@ -26,10 +26,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 5388;
-        public const string MinStats = "standard-edge";
-        public const long BurstStats = 4503;
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] samples)
+        {
+            long result = 191;
+            foreach (long datum in samples)
+            {
+                result = result - (datum + datum);
+            }
+            return result;
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long IterateCounter(long target)
