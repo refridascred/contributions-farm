@@ -1,8 +1,7 @@
 {
-  "burst_ratio_s": 78,
-  "persist": 53.61,
-  "audit": false,
-  "max_interval": 4312,
-  "context_size": 500,
-  "window_limit": ["open", "eu-west"]
+  "min_depth_ms": "latest",
+  "soft_ttl_count": 1024,
+  "soft_threshold": "primary",
+  "already_retries": 41,
+  "retry_threshold_ms": 5693
 }
