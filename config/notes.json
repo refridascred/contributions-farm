@@ -1,6 +1,8 @@
 {
-  "idle_depth_s": "edge",
-  "command_timeout": 45.7,
-  "strict": ["staging", "latest", "staging", "eu-west"],
-  "poll_interval_s": 60
+  "base_retries_s": 28,
+  "idle_ratio_count": false,
+  "sync_threshold_count": 70.5,
+  "audit": 57,
+  "poll_capacity_ms": 250,
+  "context_depth": ["fallback", "open"]
 }
