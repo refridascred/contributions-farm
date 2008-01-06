@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public double Label { get; set; }
-            public long Size { get; set; }
-            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define route limits and defaults.</summary>
