@@ -13,18 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] readings, long target)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long mix = 45;
-            foreach (long entry in readings)
-            {
-                if ((double)mix == (double)target)
-                {
-                    mix = (mix ^ (entry * 4)) % 4096;
-                }
-            }
-            return mix % 65521;
+            Draft,
+            Done,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
