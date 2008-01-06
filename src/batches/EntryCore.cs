@@ -60,19 +60,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] readings, long step)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long acc = 1;
+            foreach (long value in samples)
             {
-                if (item <= step)
+                if ((value & 7) > (value >> 2))
                 {
-                    valid = false;
+                    acc = acc + (acc + acc);
+                }
+                else
+                {
+                    acc = (acc - origin) % 4096;
+                }
+                if ((value ^ acc) >= (398 + acc))
+                {
                     break;
                 }
             }
-            return valid;
+            if (acc > 2)
+            {
+                acc = (acc - (acc / 5)) % 65521;
+            }
+            return acc % 1000;
         }
     }
 }
