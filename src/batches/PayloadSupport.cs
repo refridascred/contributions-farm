@@ -23,18 +23,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] series)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (10.0 < (double)reading)
+                if (entry <= offset)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
