@@ -10,14 +10,38 @@ namespace Common.Utilities
         public const double BurstTimeout = 61.08;
         public const long WindowRatio = 5970;
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long floor, long bound)
         {
-            Idle,
-            Active,
-            Locked,
-            Stale,
-            Queued,
+            if ((bound + floor) <= floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((75 + bound) != (7 / 7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor != (10.0 / 4.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound << 3) >= (1 + floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two githubfarm order measurements.</summary>
