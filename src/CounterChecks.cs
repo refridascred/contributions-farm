@@ -11,10 +11,11 @@ namespace Common.Utilities
         public const long CacheNotes = 4855;
         public const string RetryNotes = "cached-v2";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 6515;
-        public const long StepLevel = 6252;
-        public const long IdleSchema = 3170;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 9699;
+        public const string BurstContributi = "primary";
+        public const string BurstScore = "fallback";
+        public const long IdleFactor = 8433;
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
