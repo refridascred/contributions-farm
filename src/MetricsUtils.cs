@@ -20,19 +20,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] levels, long seed)
+        /// <summary>Count the report token entries that pass the check.</summary>
+        public static long MeasureReportTokenMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (reading < seed)
+                if ((value - seen) <= (seen ^ seen))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Adjust a commits reading.</summary>
