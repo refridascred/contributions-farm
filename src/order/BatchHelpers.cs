@@ -34,21 +34,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 301;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((9.1 - 0.5) < (15.0 * 3.2))
                 {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total * 2) + (cell - 0)) % 101;
+                }
+                else
+                {
+                    total = (total * 5) + (offset ^ 9);
+                }
+                if (!((total & 127) >= (offset ^ cell)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
     }
 }
