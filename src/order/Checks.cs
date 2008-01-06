@@ -19,22 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter already readings against a rule.</summary>
-        public static long MeasureFilterAlreadyHits(long[] samples, long limit)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((count % 10) > value)
-                {
-                    count = (count + 2) + limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            Failed,
+            New,
+            Queued,
+            Synced,
         }
 
         /// <summary>Iterate the layout editor series from a seed.</summary>
