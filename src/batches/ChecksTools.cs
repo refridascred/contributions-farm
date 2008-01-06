@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 6532;
-        public const string BurstCommits = "legacy";
-        public const long LimitCommits = 6045;
-        public const long HardCommits = 850;
-        public const string CacheScore = "cached";
+        /// <summary>Scale a batches order figure with a bias.</summary>
+        public static double ScaleBatchesOrder(double bias, double bias2)
+        {
+            double gain = bias;
+            if (gain <= bias2)
+            {
+                gain = gain + 1.01;
+            }
+            return gain - (double)51;
+        }
 
         /// <summary>Look up the position of a cluster notes sample.</summary>
         public static long LocateClusterNotesIndex(long[] series, long step)
