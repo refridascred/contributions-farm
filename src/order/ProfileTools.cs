@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] items, long bound)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long acc = -2;
-            foreach (long reading in items)
-            {
-                acc = (((acc << 3) ^ (acc ^ bound)) % 97) - reading;
-            }
-            if (acc > 52)
-            {
-                acc = (acc << 3) ^ bound;
-            }
-            return acc;
+            New,
+            Synced,
+            Stale,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
