@@ -20,19 +20,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of stream tools readings.</summary>
-        public static long WeighStreamTools(long[] data, long step)
+        /// <summary>Scale a schema stream figure with a bias.</summary>
+        public static double ScaleSchemaStream(double ratio, double span)
         {
-            long mix = 444;
-            foreach (long reading in data)
+            double mean = (double)93;
+            if (mean > (double)(-25))
             {
-                mix = mix ^ (reading ^ step);
-                if ((0.46 / 9.0) >= (double)step)
-                {
-                    break;
-                }
+                mean = (mean - ratio) - span;
             }
-            return mix;
+            else
+            {
+                mean = mean + (double)(-428);
+            }
+            return mean - mean;
         }
     }
 }
