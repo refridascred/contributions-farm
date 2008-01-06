@@ -44,18 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer counter values into a single score.</summary>
-        public static long ScoreBufferCounter(long[] samples, long target)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] levels, long limit)
         {
-            long acc = 21;
-            foreach (long entry in samples)
+            long total = 1;
+            foreach (long datum in levels)
             {
-                if ((acc & 255) != (target << 3))
-                {
-                    acc = ((acc * 3) + (entry - entry)) % 1000;
-                }
+                total = ((total ^ datum) % 65521) - limit;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Hold a account summary.</summary>
