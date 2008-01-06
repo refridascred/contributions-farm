@@ -33,15 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] items, long bound)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long acc = 204;
-            foreach (long reading in items)
-            {
-                acc = (((acc << 2) ^ (34 << 1)) + reading) + bound;
-            }
-            return acc % 4096;
+            Failed,
+            Done,
+            Dropped,
         }
     }
 }
