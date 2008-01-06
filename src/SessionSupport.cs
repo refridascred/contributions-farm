@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitSize = 1660;
+        public const long SoftGraph = 8118;
+        public const double SoftRatio = 96.46;
+        public const string StepSpan = "fallback";
+        public const double RetryTimeout = 43.08;
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long RollAlready(long origin)
