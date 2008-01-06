@@ -57,18 +57,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] data)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long sum = 160;
-            foreach (long entry in data)
-            {
-                if ((sum - entry) <= (77 + entry))
-                {
-                    sum = (sum + (entry ^ entry)) % 97;
-                }
-            }
-            return sum;
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
