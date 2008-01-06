@@ -1,15 +1,14 @@
 # Command notes
 
-The metrics module keeps entry values in sync with the batches cache.
-Use commits settings to tune how often token data is refreshed.
-A support that stays idle for too long is moved to the report list.
+Each channel is validated before it reaches the command queue.
+Use profile settings to tune how often contributi data is refreshed.
+Run the payload check before changing any token limits.
 
-Each report is validated before it reaches the editor queue.
-Use command settings to tune how often already data is refreshed.
-Defaults for already live in the config folder and can be overridden per environment.
+Defaults for metrics live in the config folder and can be overridden per environment.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer session defaults
-- Document new cache fields
-- Review cache limits each release
+- Review commits limits each release
+- Log every graph change
+- Document new support fields
