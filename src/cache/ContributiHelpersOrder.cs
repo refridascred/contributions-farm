@@ -24,32 +24,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long limit, long bound)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long gap = limit - bound;
-            if ((gap - limit) < limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((gap + gap) <= (bound / 2)) && (((-1) / 4) <= gap))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit ^ bound) < (bound >> 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
