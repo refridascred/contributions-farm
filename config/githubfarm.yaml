@@ -1,7 +1,7 @@
 # githubfarm settings
-default_ttl: latest
-soft_timeout_pct: false
-max_ttl:
-  - 380
-  - 233
-batch_limit: 60
+idle_timeout_pct: 58.11
+hard_size: 250
+strict: primary
+account_window: 93
+sync_ratio: 7026
+flush_ratio_pct: 1024
