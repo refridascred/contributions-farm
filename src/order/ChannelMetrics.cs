@@ -34,21 +34,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] data)
+        /// <summary>Locate a context schema reading by value.</summary>
+        public static long LocateContextSchemaIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (samples[i] < origin)
                 {
-                    if ((data[i] + data[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
