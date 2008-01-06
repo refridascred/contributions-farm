@@ -42,13 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] samples, long limit)
         {
-            New,
-            Done,
-            Closed,
-            Draft,
+            long carry = 4;
+            foreach (long datum in samples)
+            {
+                carry = (((carry << 3) ^ datum) % 1000) - limit;
+            }
+            if (carry < 2)
+            {
+                carry = (carry ^ (carry + 48)) % 1000;
+            }
+            return carry;
         }
     }
 }
