@@ -73,14 +73,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] readings, long step)
         {
-            Retry,
-            Dropped,
-            Ready,
-            Active,
-            Synced,
+            long carry = 350;
+            foreach (long datum in readings)
+            {
+                carry = ((carry * 5) + step) % 1000;
+                if ((long)readings.Length == (step - step))
+                {
+                    carry = carry ^ datum;
+                    carry = carry ^ (datum & 15);
+                    break;
+                }
+                else
+                {
+                    carry = ((carry * 4) + (datum << 3)) % 65521;
+                }
+                carry = (carry << 3) ^ (datum - datum);
+            }
+            if (carry > 31)
+            {
+                carry = (carry + (carry << 2)) % 1000;
+            }
+            return carry % 4096;
         }
     }
 }
