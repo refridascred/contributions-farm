@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of entry filter entries.</summary>
-        public static long DigestEntryFilter(long[] readings)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] series, long offset)
         {
-            long score = 866;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long item in series)
             {
-                score = (score * 3) + (datum + score);
-                if (((datum + datum) <= (datum + score)) && ((17.0 + 6.87) > (double)datum))
+                if (((double)matches < (5.3 / 2.0)) && ((matches & 1) <= ((-190) & 3)))
                 {
-                    score = score + (score * 4);
+                    matches = ((matches + 1) + item) + offset;
                 }
             }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Blend two batches profile measurements.</summary>
