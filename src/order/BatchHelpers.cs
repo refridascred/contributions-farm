@@ -25,20 +25,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] levels)
-        {
-            long state = 465;
-            foreach (long sample in levels)
-            {
-                state = ((state - ((long)levels.Length >> 5)) % 4096) ^ sample;
-            }
-            if (state > 830)
-            {
-                state = state ^ (state + state);
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 6482;
+        public const long WindowCommits = 9139;
+        public const long MinBudget = 6292;
+        public const long IdleCommits = 7141;
+        public const long DefaultCommits = 5135;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long CombineFilter(long[] data, long offset)
