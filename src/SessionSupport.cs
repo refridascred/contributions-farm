@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] items, long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] values, long offset)
         {
-            long mix = 8;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (((origin << 3) != (origin + (-211))) || (origin <= (long)items.Length))
+                if (!((offset % 10) >= (offset % 2)) && (entry >= (offset - 196)))
                 {
-                    mix = (mix ^ (249 + cell)) % 4096;
-                }
-                if ((origin % 5) > (355 % 64))
-                {
-                    mix = ((mix * 4) + (cell - mix)) % 4096;
+                    matches = matches + 2;
                 }
             }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Accumulate entry samples.</summary>
