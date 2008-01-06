@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit editor tools readings against a rule.</summary>
-        public static long TallyEditorToolsMatches(long[] data, long offset)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((offset / 2) >= (54 * 3))
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public double Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
