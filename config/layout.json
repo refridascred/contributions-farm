@@ -1,8 +1,20 @@
 {
-  "burst_threshold": [454, 80, 341, 483],
-  "counter_threshold": 46,
-  "batches_limit": "green",
-  "profile_interval": "standard",
-  "warm_retries": 5175,
-  "window_capacity": "edge"
+  "editor_interval": {
+    "max_threshold_ms": "primary",
+    "enabled": 7705,
+    "default_capacity_ms": false,
+    "soft_ttl": "local",
+    "flush_limit_count": {
+      "burst_limit": "blue",
+      "default_interval_pct": "cached",
+      "payload_depth": "latest",
+      "route_timeout": 8458,
+      "githubfarm_interval": 61.9,
+      "burst_interval": "legacy"
+    }
+  },
+  "payload_limit": 881,
+  "cache_retries_ms": [314, 463, 294],
+  "idle_ttl_count": "eu-west",
+  "audit": [233, 30, 406]
 }
