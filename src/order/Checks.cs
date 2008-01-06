@@ -30,12 +30,25 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Iterate the layout editor series from a seed.</summary>
+        public static long RollLayoutEditor(long offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public long Count { get; set; }
+            long total = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                total = (total - (offset - total)) % 101;
+                bool stale = (total * 2) == (offset << 1);
+                if (((double)(long)i == (3.0 - 6.72)) && stale)
+                {
+                    stale = (offset >> 5) >= (total % 5);
+                }
+                else
+                {
+                    stale = !((offset / 7) >= 68);
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define format limits and defaults.</summary>
