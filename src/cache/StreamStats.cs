@@ -54,18 +54,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] samples, long limit)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((count - limit) <= (limit & 7))
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
     }
 }
