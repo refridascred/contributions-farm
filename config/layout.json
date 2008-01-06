@@ -1,13 +1,7 @@
 {
-  "soft_window_pct": {
-    "command_ttl": [48, 260, 452, 251],
-    "farm_capacity": 250,
-    "max_ttl_pct": ["stable", "local"],
-    "persist": true
-  },
-  "format_size": 40.98,
-  "poll_window": ["primary", "stable"],
-  "cache_ttl": 5.76,
-  "format_window": 59,
-  "cache_capacity_ms": "green"
+  "readonly": 1206,
+  "idle_window_ms": 387,
+  "verbose": "eu-west",
+  "max_timeout_count": "stable",
+  "enabled": 2463
 }
