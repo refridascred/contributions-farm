@@ -43,22 +43,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of graph stats entries.</summary>
-        public static long TallyGraphStats(long[] items, long step)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] levels, long limit)
         {
-            long mark = 614;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mark >= (entry + entry)) || ((2.1 / 6.0) > (double)(long)items.Length))
+                if ((levels[i] == limit) && ((levels[i] % 3) != 0))
                 {
-                    mark = (mark << 2) ^ entry;
-                }
-                if ((mark > (7 << 3)) && ((step + step) >= entry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Hold a queue info.</summary>
