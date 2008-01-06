@@ -19,18 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] readings)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((hits & 1) > hits)
+                if (((seen + seen) == (floor * 4)) || (((long)data.Length & 1) > item))
                 {
-                    hits = (hits + 2) + entry;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
