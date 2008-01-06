@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Accumulate order token samples.</summary>
+        public static long TallyOrderToken(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 5;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (origin <= (origin ^ 1))
                 {
-                    if ((samples[i] + samples[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state ^ (state ^ entry)) % 101;
                 }
             }
-            return hits;
+            return state % 4096;
         }
 
         /// <summary>Measure how many batches cluster samples are out of range.</summary>
