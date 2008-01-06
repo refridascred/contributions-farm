@@ -20,22 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] samples)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] levels)
         {
-            long mix = -32;
-            foreach (long datum in samples)
+            long acc = 6;
+            foreach (long item in levels)
             {
-                if ((8.3 / 9.0) != (double)datum)
-                {
-                    mix = (mix - mix) % 255;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (datum - mix)) % 4096;
-                }
+                acc = ((acc - (acc / 8)) % 1000) + item;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
