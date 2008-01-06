@@ -20,13 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public bool Label { get; set; }
-            public bool Size { get; set; }
+            Active,
+            Synced,
+            Stale,
+            Done,
+            Paused,
         }
 
         /// <summary>Describe the tools status values.</summary>
