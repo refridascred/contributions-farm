@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] data)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if ((sample >> 1) >= (sample * 3))
+                if (cell >= bound)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Describe the tools state values.</summary>
