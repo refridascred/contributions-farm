@@ -17,14 +17,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long limit, long floor)
         {
-            Active,
-            Synced,
-            Stale,
-            Done,
-            Paused,
+            long lane = limit - floor;
+            if (floor > (limit ^ floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if (limit < (lane & 255))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor > (limit + lane))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((lane & 255) > (floor / 7))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate payload samples.</summary>
