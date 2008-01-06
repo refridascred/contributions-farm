@@ -35,11 +35,25 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long origin, long bound)
         {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
+            long step = origin + bound;
+            if ((origin < bound) && ((double)bound >= (6.23 - 16.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((30 % 12) < (step << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
