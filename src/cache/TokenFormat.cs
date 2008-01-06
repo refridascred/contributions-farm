@@ -13,18 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] levels)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum * 3) < datum)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Idle,
+            Locked,
+            Paused,
         }
 
         /// <summary>Fold a list of stream tools readings.</summary>
