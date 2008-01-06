@@ -36,39 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank already window input into a small class.</summary>
-        public static long ClassifyAlreadyWindow(long seed, long step)
-        {
-            if (!(step >= (seed * 5)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (seed < (step - step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step <= (8.0 - 6.69))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((step - seed) < (seed % 97)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 2516;
+        public const long BaseBatch = 7673;
+        public const double BaseRatio = 36.64;
+        public const long CacheBatch = 3889;
+        public const double SoftRatio = 92.75;
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
