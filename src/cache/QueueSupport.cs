@@ -19,11 +19,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleRoute = "fallback-1";
-        public const double WindowWidth = 1.6;
-        public const string StepCount = "cached";
-        public const long BatchRoute = 6668;
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] series, long origin)
+        {
+            long carry = 50;
+            foreach (long cell in series)
+            {
+                carry = (carry ^ (cell / 3)) % 65521;
+                carry = ((carry << 3) ^ (carry * 5)) % 65521;
+            }
+            if (carry < (-49))
+            {
+                carry = (carry * 5) + (carry + origin);
+            }
+            return carry;
+        }
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
