@@ -25,13 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] readings, long seed)
         {
-            Queued,
-            Locked,
-            Ready,
-            New,
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Project the next route batch value.</summary>
