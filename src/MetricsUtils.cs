@@ -10,38 +10,17 @@ namespace Common.Utilities
         public const double BurstTimeout = 61.08;
         public const long WindowRatio = 5970;
 
-        /// <summary>Classify a batches window pair into a bucket.</summary>
-        public static long SortBatchesWindow(long seed, long bound)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] series, long origin)
         {
-            if (((seed + bound) > (seed << 1)) || ((seed + bound) == (bound ^ seed)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(seed > (seed * 5)))
+                if (series[i] <= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((bound & 15) < (579 + 29)) && ((111 + seed) > (64 + 484)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((bound - 670) <= (13 >> 5)) && ((bound ^ seed) > 21))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two githubfarm order measurements.</summary>
