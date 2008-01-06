@@ -15,14 +15,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] series, long floor)
         {
-            Dropped,
-            Pending,
-            Queued,
-            Failed,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
