@@ -22,15 +22,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] items)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] series, long origin)
         {
-            long anchor = -108;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long value in series)
             {
-                anchor = (anchor ^ (cell & 7)) % 1000;
+                if ((value << 1) >= (value + origin))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
