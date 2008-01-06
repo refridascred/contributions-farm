@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-latest}"
 case "${mode}" in
-    fallback)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in eu-west standard legacy blue; do
-    log "checking ${item}"
-done
