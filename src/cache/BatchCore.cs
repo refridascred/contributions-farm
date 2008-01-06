@@ -40,12 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] values, long bound)
         {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((matches ^ 129) <= (bound - 95))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
         }
     }
 }
