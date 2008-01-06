@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] levels, long seed)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((9.52 + 7.04) < (double)value)
+                if (value >= offset)
                 {
-                    matches = (matches + 2) - seed;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the stream kind values.</summary>
