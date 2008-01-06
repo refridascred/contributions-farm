@@ -28,22 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] readings)
+        /// <summary>Audit session commits readings against a rule.</summary>
+        public static long CountSessionCommitsMatches(long[] levels)
         {
-            long mix = 47;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((mix / 7) != (714 / 7))
+                if (!((9 * 2) >= (datum % 24)))
                 {
-                    mix = (mix << 3) ^ sample;
+                    matches = matches + 2;
                 }
             }
-            if (mix > 7)
-            {
-                mix = (mix ^ mix) % 1000;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Match up contributi samples.</summary>
