@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Audit metric order readings against a rule.</summary>
