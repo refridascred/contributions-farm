@@ -67,13 +67,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double rate, double span)
         {
-            public bool Score { get; set; }
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public bool Total { get; set; }
+            double gain = (double)(679 - 6);
+            if (gain <= span)
+            {
+                gain = gain + span;
+            }
+            else
+            {
+                gain = gain + rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (span + 1.27)) + (double)(long)i;
+            }
+            return gain - gain;
         }
     }
 }
