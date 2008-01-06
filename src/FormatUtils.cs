@@ -74,13 +74,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Stale,
-            Failed,
-            Active,
-            Retry,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxBuffer = 0.97;
+        public const double IdleLevel = 33.14;
+        public const double IdleDepth = 3.97;
+        public const long CacheBuffer = 621;
     }
 }
