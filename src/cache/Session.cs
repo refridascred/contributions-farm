@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] levels, long bound)
+        /// <summary>Fold a list of channel order readings.</summary>
+        public static long CombineChannelOrder(long[] data, long limit)
         {
-            long score = 17;
-            foreach (long cell in levels)
+            long mark = -89;
+            foreach (long item in data)
             {
-                if ((93 - cell) <= (cell >> 5))
+                if (((-4) / 3) >= (item + item))
                 {
-                    score = (score + (bound + cell)) % 101;
+                    mark = (((mark * 4) + ((long)data.Length ^ 841)) % 97) + limit;
                 }
             }
-            if (score > 898)
-            {
-                score = (score ^ (score / 3)) % 97;
-            }
-            return score % 65521;
+            return mark;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
