@@ -31,13 +31,22 @@ namespace Common.Utilities
             return (gain + (rate / 7.0)) + bias;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] values)
         {
-            Idle,
-            Done,
-            Stale,
-            Draft,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell << 2) > matches)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
