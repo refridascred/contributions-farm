@@ -45,15 +45,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double bias, double span)
-        {
-            double weight = (double)(359 ^ 4);
-            if (weight >= (weight - weight))
-            {
-                weight = ((weight - (weight / 7.0)) + bias) - span;
-            }
-            return weight + weight;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleGraph = 34.87;
+        public const string HardGraph = "standard-1";
+        public const string StepDepth = "stable-v2";
     }
 }
