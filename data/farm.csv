@@ -1,7 +1,6 @@
-id,level,token
-1,977,latest
-2,35.02,primary
-3,cached,88.67
-4,390,strict
-5,20.68,cached
-6,31.34,130
+id,state,label,token
+1,20.86,19.55,711
+2,27.44,95.54,40.57
+3,800,56.99,open
+4,54.74,83.13,386
+5,stable,legacy,local
