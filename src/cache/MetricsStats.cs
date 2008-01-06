@@ -29,16 +29,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseGithubfarm = 10.12;
+        public const double WindowDepth = 69.64;
+        public const double MaxGithubfarm = 24.48;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long DigestStream(long[] samples)
