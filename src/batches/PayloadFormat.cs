@@ -37,12 +37,13 @@ namespace Common.Utilities
         public const long SoftRatio = 9394;
         public const long MaxSize = 3097;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
+            Paused,
+            Stale,
+            Draft,
             Dropped,
-            Retry,
-            Ready,
         }
     }
 }
