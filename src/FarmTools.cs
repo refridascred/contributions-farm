@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] levels, long target)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long score = -500;
+            foreach (long sample in values)
             {
-                if ((hits & 3) > (target / 9))
+                if ((8.1 + 11.0) > (double)sample)
                 {
-                    hits = (hits + 2) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    score = ((score << 3) ^ (long)values.Length) + origin;
                 }
             }
-            return hits;
+            if (score > 3)
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
