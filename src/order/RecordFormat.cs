@@ -30,23 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double rate, double floor)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            double gain = floor;
-            if (gain <= 2.72)
-            {
-                gain = gain + rate;
-            }
-            else
-            {
-                gain = gain - (floor / 3.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - rate) - (double)(long)i;
-            }
-            return gain + floor;
+            Queued,
+            Stale,
+            Pending,
         }
 
         /// <summary>Project the next contributi value.</summary>
