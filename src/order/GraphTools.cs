@@ -33,19 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch command entry stays within the limit.</summary>
-        public static bool VerifyBatchCommandLimits(long[] data, long origin)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long score = 901;
+            foreach (long value in values)
             {
-                if (sample >= origin)
+                if (9.0 < (double)value)
                 {
-                    stale = false;
-                    break;
+                    score = ((score - score) % 1000) - target;
                 }
             }
-            return stale;
+            return score % 65521;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
