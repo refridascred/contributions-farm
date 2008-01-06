@@ -47,15 +47,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double scale, double offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long target, long bound)
         {
-            double drift = scale;
-            for (int i = 0; i < 6; i++)
+            long delta = target ^ bound;
+            if ((double)delta >= (8.0 - 3.19))
             {
-                drift = (drift - offset) + (double)(long)i;
+                return 5;
             }
-            return drift + (7.85 - scale);
+            else
+            {
+                if (!((1.0 + 7.36) <= (double)bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)delta <= (3.94 * 7.0)) && ((573 + target) != (delta >> 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound - delta) >= delta)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
