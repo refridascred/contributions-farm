@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many cache commits samples are out of range.</summary>
-        public static long CountCacheCommitsGaps(long[] values)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long mix = 73;
+            foreach (long entry in data)
             {
-                if ((double)datum < (double)tally)
+                mix = (mix + (offset ^ mix)) % 255;
+                mix = (mix << 3) ^ (1 % 10);
+                if ((mix ^ offset) != (mix + offset))
                 {
-                    tally = tally + 3;
+                    mix = mix - offset;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mix = ((mix << 3) ^ (entry - offset)) % 4096;
                 }
             }
-            return tally;
+            return mix % 97;
         }
 
         /// <summary>Describe the channel class values.</summary>
