@@ -29,19 +29,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate context order readings against a bound.</summary>
-        public static bool VerifyContextOrderBounds(long[] data, long step)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long step)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (value != step)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = (anchor ^ (long)i) % 97;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return ok;
+            return anchor;
         }
     }
 }
