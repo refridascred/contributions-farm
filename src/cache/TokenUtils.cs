@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] readings, long step)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (cell > step)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Closed,
+            Done,
+            Stale,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
