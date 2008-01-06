@@ -1,5 +1,43 @@
 # support settings
-enabled: 40
-order_window: standard
-persist: cached
-retry_ttl: 40.82
+soft_delay_count: eu-west
+enabled: local
+idle_retries_s:
+  sync_window_s:
+    poll_window_ms: 8385
+    cache_capacity_s: 59.83
+    strict: true
+  poll_timeout_s: 6.44
+  channel_limit: true
+  cache_retries:
+    max_timeout: primary
+    batch_retries_s:
+      - local
+      - staging
+    enabled: true
+    batch_window: edge
+    audit: 91
+    contributi_limit: 65.89
+  retry_depth_s:
+    - fallback
+    - legacy
+    - cached
+    - standard
+githubfarm_retries: true
+soft_limit: false
+max_threshold_count:
+  default_capacity_ms: 36.21
+  max_interval_s: primary
+  retry_delay:
+    warm_ratio: fallback
+    cache_size_count:
+      - 485
+      - 408
+      - 309
+      - 383
+    soft_ttl_s: 33
+    hard_capacity:
+      - 485
+      - 65
+      - 348
+    sync_limit: 62.27
+    max_size: 250
