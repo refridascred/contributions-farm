@@ -40,18 +40,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 7996;
+        public const string LimitLayout = "staging-1";
+        public const double MinLayout = 91.47;
+        public const string BaseLayout = "primary-v2";
+        public const string StepLayout = "latest";
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long DigestBatches(long[] items)
