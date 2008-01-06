@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Audit filter already readings against a rule.</summary>
+        public static long MeasureFilterAlreadyHits(long[] samples, long limit)
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((count % 10) > value)
+                {
+                    count = (count + 2) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the layout editor series from a seed.</summary>
