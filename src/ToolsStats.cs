@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] items, long target)
         {
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of format entries.</summary>
