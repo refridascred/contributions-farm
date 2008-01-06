@@ -16,18 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] data)
+        /// <summary>Measure how many contributi stats samples are out of range.</summary>
+        public static long CountContributiStatsGaps(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (((matches & 15) > matches) || ((43 >> 3) <= (matches & 7)))
+                if ((3 / 4) <= (count / 8))
                 {
-                    matches = (matches + 2) - item;
+                    count = ((count + 2) - reading) + offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
