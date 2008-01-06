@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long limit, long bound)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long delta = limit - bound;
-            if ((delta % 8) < (limit >> 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((-158) + bound) < (limit + limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (65 <= (bound - bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((34 << 1) > (bound / 9))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate entry samples.</summary>
