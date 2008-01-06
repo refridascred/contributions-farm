@@ -50,17 +50,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = carry - (floor - floor);
-                carry = ((carry << 3) ^ floor) % 65521;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Digest a series of record entries.</summary>
