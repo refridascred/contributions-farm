@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxStats = 63.28;
-        public const long BaseStats = 1519;
-        public const long SoftStats = 84;
-        public const long HardBudget = 4758;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double weight, double offset)
+        {
+            double mean = (double)(195 % 100);
+            if (mean < weight)
+            {
+                mean = mean + weight;
+            }
+            else
+            {
+                mean = mean + (weight * 3.7);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + weight) + (double)(long)i;
+            }
+            return mean + offset;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool ValidateRecordBounds(long[] items, long seed)
