@@ -58,17 +58,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] values, long target)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Project the next window value.</summary>
