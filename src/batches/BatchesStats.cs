@@ -24,19 +24,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((hits - hits) <= (965 + value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchMetrics = "cached-1";
+        public const long CacheMetrics = 1591;
+        public const long BurstMetrics = 2520;
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
