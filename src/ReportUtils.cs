@@ -30,18 +30,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultPayload = "legacy-1";
+        public const long BasePayload = 2089;
+        public const long RetryWidth = 4683;
+        public const long CacheFactor = 227;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long FoldQueue(long[] levels, long step)
