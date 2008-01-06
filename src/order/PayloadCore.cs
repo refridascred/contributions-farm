@@ -29,14 +29,17 @@ namespace Common.Utilities
         public const long WindowEditor = 1297;
         public const string RetryCount = "open-edge";
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] items, long bound)
         {
-            Locked,
-            Failed,
-            Stale,
-            Ready,
-            Active,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= bound) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the command state values.</summary>
