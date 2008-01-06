@@ -68,38 +68,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long floor, long target)
+        /// <summary>Derive the next graph farm value from a seed.</summary>
+        public static long SeriesGraphFarm(long seed)
         {
-            if ((target + floor) < (-83))
+            long score = seed;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((floor & 7) <= (floor >> 4)) && ((floor % 10) > (floor % 3)))
+                if (!(((double)9 != (double)seed) || ((14.0 / 7.0) == (double)(long)i)))
                 {
-                    return 8;
+                    score = (score - (seed >> 1)) % 65521;
                 }
-                else
-                {
-                    if ((0.97 / 7.0) != (double)floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target ^ 6) > (77 << 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                score = (score + (score + score)) % 101;
+                score = ((score * 3) + (long)i) % 101;
             }
+            return score;
         }
     }
 }
