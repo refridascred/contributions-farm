@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Combine profile order values into a single score.</summary>
+        public static long TotalProfileOrder(long[] levels, long origin)
         {
-            Dropped,
-            Failed,
-            Pending,
+            long result = 8;
+            foreach (long value in levels)
+            {
+                result = ((result << 3) ^ (21 + value)) % 101;
+                if (2.0 <= (double)origin)
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate stream samples.</summary>
