@@ -37,14 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Roll a stream contributi counter forward.</summary>
+        public static long DeriveStreamContributi(long bound)
         {
-            Stale,
-            Pending,
-            Ready,
-            Done,
-            Dropped,
+            long result = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
