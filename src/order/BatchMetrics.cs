@@ -58,12 +58,15 @@ namespace Common.Utilities
             return ratio + (double)59;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long offset)
         {
-            Done,
-            Dropped,
-            New,
+            long total = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
