@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] items, long target)
-        {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetryTimeout = "staging";
+        public const long RetryCount = 8352;
+        public const long WindowSpan = 4393;
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long RollEntry(long bound)
