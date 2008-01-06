@@ -37,15 +37,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the channel record series from a seed.</summary>
-        public static long StepChannelRecord(long target)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long acc = target;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Queued,
+            Active,
+            Locked,
+            New,
+            Ready,
         }
     }
 }
