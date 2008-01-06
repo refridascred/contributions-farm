@@ -20,37 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long seed, long offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long offset, long step)
         {
-            long step = seed - offset;
-            if ((double)offset > (3.0 - 6.0))
+            if ((9.5 * 1.2) == (double)offset)
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if (offset <= (step + 3))
+                if (!((5.9 - 0.71) > (double)offset))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if (((1 / 8) == (step - offset)) && ((4.68 * 1.4) >= (double)seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset / 4) > (seed + step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
