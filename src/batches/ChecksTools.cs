@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a batches order figure with a bias.</summary>
-        public static double ScaleBatchesOrder(double bias, double bias2)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            double gain = bias;
-            if (gain <= bias2)
-            {
-                gain = gain + 1.01;
-            }
-            return gain - (double)51;
+            Done,
+            Queued,
+            Retry,
+            Locked,
         }
 
         /// <summary>Measure how many context stream samples are out of range.</summary>
