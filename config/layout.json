@@ -1,7 +1,11 @@
 {
-  "max_depth": "edge",
-  "schema_interval": 79.92,
-  "idle_ttl_s": 9300,
-  "retry_ttl": [144, 250, 471],
-  "editor_retries": 18
+  "warm_ratio_s": 500,
+  "context_timeout": "cached",
+  "compress": 42,
+  "burst_retries": {
+    "batches_delay": 72.7,
+    "idle_ratio_count": 65.35,
+    "persist": "standard"
+  },
+  "min_delay_pct": 5673
 }
