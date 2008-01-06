@@ -61,11 +61,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] levels)
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
