@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a buffer notes value against two limits.</summary>
-        public static long BucketBufferNotes(long origin, long step)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            if ((step - origin) >= (origin + step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin <= 4.5)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (77 >= (origin << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Closed,
+            Ready,
+            Failed,
+            Idle,
         }
 
         /// <summary>Match up stats samples.</summary>
