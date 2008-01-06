@@ -1,6 +1,20 @@
 {
-  "warm_window_ms": 26.31,
-  "audit": 30,
-  "strict": 35.61,
-  "warm_retries_count": 250
+  "cache_interval_s": {
+    "idle_threshold_ms": {
+      "retry_retries": 1743,
+      "audit": "local",
+      "enabled": [179, 490, 340, 38],
+      "poll_delay_s": "blue",
+      "warm_timeout_pct": "open",
+      "notes_size": 42.76
+    },
+    "graph_threshold": [216, 480, 271, 296],
+    "stats_depth": 7965,
+    "stats_delay": true,
+    "cache_depth": "blue"
+  },
+  "contributi_delay": "stable",
+  "idle_limit": 45,
+  "route_ttl": 21,
+  "audit": [51, 117, 219, 462]
 }
