@@ -23,20 +23,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long origin)
         {
-            long anchor = -601;
-            foreach (long sample in readings)
+            long score = origin;
+            for (int i = 0; i < 16; i++)
             {
-                anchor = ((anchor << 3) ^ (sample >> 2)) % 4096;
-                anchor = ((anchor << 3) ^ (anchor + anchor)) % 97;
+                score = (score + origin) % 255;
+                score = ((score * 5) + (score / 7)) % 65521;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            if (anchor < 341)
-            {
-                anchor = (anchor + (anchor + 6)) % 1000;
-            }
-            return anchor;
+            return score;
         }
     }
 }
