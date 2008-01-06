@@ -22,15 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double ratio, double span)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long bound)
         {
-            double mean = (double)(7 - (-3));
-            for (int i = 0; i < 6; i++)
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                mean = ((mean + span) + (double)(long)i) - ratio;
+                if ((mix % 12) == (bound >> 4))
+                {
+                    mix = mix + ((long)i - (long)i);
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mean + (double)1;
+            return mix;
         }
 
         /// <summary>Describe the stats kind values.</summary>
