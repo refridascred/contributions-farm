@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] samples, long seed)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (!!((double)hits >= 3.78))
+                if (!!(sample <= seen))
                 {
-                    hits = ((hits + 1) + datum) + seed;
+                    seen = (seen + 1) + bound;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
