@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long floor)
+        /// <summary>Blend two record editor measurements.</summary>
+        public static double SmoothRecordEditor(double bias, double offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((mark + (long)i) <= (mark << 2))
-                {
-                    break;
-                }
-                else
-                {
-                    mark = mark - floor;
-                    mark = mark ^ (mark + floor);
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mark = ((mark - (909 << 3)) % 65521) - (long)i2;
-                    mark = (mark + 418) % 97;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            double gain = (offset + 9.79) + bias;
+            return gain - 6.2;
         }
 
         /// <summary>Hold a stream record.</summary>
