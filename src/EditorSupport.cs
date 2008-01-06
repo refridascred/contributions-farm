@@ -18,24 +18,21 @@ namespace Common.Utilities
         public const long SoftSpan = 5699;
         public const double WindowCounter = 59.48;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long limit)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] samples)
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((9.0 - 7.91) == (double)limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = state ^ (state ^ (long)i);
+                    if ((samples[i] ^ samples[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = state + state;
-                    state = (state ^ ((long)i2 ^ 4)) % 97;
-                }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the stream mode values.</summary>
