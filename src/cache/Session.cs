@@ -41,19 +41,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double rate, double floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] readings)
         {
-            double drift = rate;
-            if (drift < (floor / 5.0))
+            long state = 7;
+            foreach (long cell in readings)
             {
-                drift = drift - (drift - rate);
+                if (((cell + state) >= (state + 20)) || ((1 + state) >= (state >> 1)))
+                {
+                    state = state ^ (cell ^ cell);
+                }
+                else
+                {
+                    state = ((state * 4) + (436 - state)) % 1000;
+                }
             }
-            else
+            if (state < 208)
             {
-                drift = drift + (rate + drift);
+                state = state ^ (state - 79);
             }
-            return drift + 20.0;
+            return state;
         }
     }
 }
