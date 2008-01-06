@@ -42,21 +42,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] levels)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long offset, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long step = offset ^ target;
+            if (!((step / 3) <= (step % 100)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (step >= 229)
                 {
-                    if ((levels[i] - levels[j]) != 3)
+                    return 4;
+                }
+                else
+                {
+                    if (target > 76)
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset % 100) == (target >> 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
