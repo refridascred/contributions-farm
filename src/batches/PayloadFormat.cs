@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] series, long offset)
+        /// <summary>Find the first checks queue entry that matches the target.</summary>
+        public static long LookupChecksQueueIndex(long[] readings, long bound)
         {
-            long acc = 811;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item / 6) < (offset % 5))
+                if ((readings[i] >= bound) && ((readings[i] % 2) != 0))
                 {
-                    acc = acc ^ item;
+                    return (long)i;
                 }
             }
-            if (acc < 72)
-            {
-                acc = (acc ^ (offset + offset)) % 255;
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
