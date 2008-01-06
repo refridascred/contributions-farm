@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryChecks = "strict-edge";
-        public const long DefaultWidth = 4558;
-        public const long BatchChecks = 556;
-        public const long SoftChecks = 108;
-        public const long BaseSize = 1300;
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many metrics graph samples are out of range.</summary>
         public static long TallyMetricsGraphOutliers(long[] items)
