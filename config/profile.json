@@ -1,7 +1,7 @@
 {
-  "audit": "staging",
-  "stats_ratio": 87,
-  "session_interval": "open",
-  "batch_delay_s": "edge",
-  "base_size": "edge"
+  "max_size": 250,
+  "compress": false,
+  "warm_window_count": "fallback",
+  "readonly": "open",
+  "dry_run": 465
 }
