@@ -70,19 +70,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batches token value.</summary>
-        public static double AdjustBatchesToken(double weight, double span)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] values)
         {
-            double ratio = (double)(7 / 2);
-            if (ratio >= (ratio / 2.0))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio + ratio) - weight;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - span;
-            }
-            return ratio - ratio;
+            return matches;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
