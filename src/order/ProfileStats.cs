@@ -33,15 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] items, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
+            long acc = 204;
+            foreach (long reading in items)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                acc = (((acc << 2) ^ (34 << 1)) + reading) + bound;
             }
-            return mark;
+            return acc % 4096;
         }
     }
 }
