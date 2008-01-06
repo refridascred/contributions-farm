@@ -1,12 +1,14 @@
 # Command notes
 
-Each record is validated before it reaches the counter queue.
-A support that stays idle for too long is moved to the profile list.
-When a queue fails, the commits handler retries a few times before giving up.
+Keep report and order names short and lowercase.
+Defaults for tools live in the config folder and can be overridden per environment.
+The channel helpers are pure functions, so they are safe to call from any thread.
+
+Use format settings to tune how often filter data is refreshed.
+Keep command and githubfarm names short and lowercase.
 
 ## Guidelines
 
-- Validate farm input early
-- Prefer command defaults
-- Review cluster limits each release
-- Keep filter values small
+- Keep order values small
+- Validate record input early
+- Document new record fields
