@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long origin, long seed)
         {
-            public long Total { get; set; }
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            if ((seed >> 2) > origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((49 % 100) < (origin - seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
