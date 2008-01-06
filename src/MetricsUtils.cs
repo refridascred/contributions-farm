@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double LimitBudget = 70.1;
-        public const double BurstTimeout = 61.08;
-        public const long WindowRatio = 5970;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] samples, long bound)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((double)bound < 7.79)
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long PairStreamCount(long[] items)
