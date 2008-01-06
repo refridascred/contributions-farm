@@ -70,15 +70,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double bias, double bias2)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long floor)
         {
-            double ratio = bias / 7.0;
-            for (int i = 0; i < 5; i++)
+            long state = floor;
+            for (int i = 0; i < 24; i++)
             {
-                ratio = (ratio - (1.86 + ratio)) - (double)(long)i;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return ratio + bias2;
+            return state;
         }
     }
 }
