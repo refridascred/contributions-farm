@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double gain, double bias)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long origin, long bound)
         {
-            double mean = bias;
-            if (mean <= 3.0)
+            long delta = origin + bound;
+            if ((2.2 / 2.0) >= (double)origin)
             {
-                mean = mean + bias;
+                return 8;
             }
             else
             {
-                mean = mean - (gain - mean);
+                if ((bound <= (18 % 7)) || ((delta & 1) <= (delta - delta)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (gain / 9.0)) + (double)(long)i;
-            }
-            return mean + (6.5 + gain);
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
