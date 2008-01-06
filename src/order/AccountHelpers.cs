@@ -62,18 +62,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] series)
+        /// <summary>Accumulate window editor samples.</summary>
+        public static long CombineWindowEditor(long[] series)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long anchor = 88;
+            foreach (long sample in series)
             {
-                if (matches < ((long)series.Length * 5))
-                {
-                    matches = (matches + 3) ^ item;
-                }
+                anchor = ((anchor << 2) ^ anchor) - sample;
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Iterate the stats token series from a seed.</summary>
