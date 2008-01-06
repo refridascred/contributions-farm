@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] levels, long offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] samples)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long acc = 278;
+            foreach (long entry in samples)
             {
-                if (datum < offset)
+                if ((acc % 3) >= (acc + acc))
                 {
-                    found = false;
-                    break;
+                    acc = (acc ^ (acc + 269)) - entry;
                 }
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
