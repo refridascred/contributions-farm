@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] series, long bound)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long origin)
         {
-            long mix = -941;
-            foreach (long entry in series)
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((bound + 375) != ((long)series.Length + entry))
-                {
-                    mix = ((mix << 3) ^ (bound % 24)) % 97;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (mix ^ mix);
-                }
-                if (((3.0 + 3.39) > (double)mix) && ((mix + entry) <= mix))
-                {
-                    break;
-                }
+                anchor = (anchor - ((long)i / 6)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Describe the order phase values.</summary>
