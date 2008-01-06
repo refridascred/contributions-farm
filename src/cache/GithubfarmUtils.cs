@@ -22,38 +22,24 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long bound, long seed)
+        /// <summary>Combine order report values into a single score.</summary>
+        public static long CombineOrderReport(long[] levels, long seed)
         {
-            if ((seed - seed) > (bound & 15))
+            long mix = 74;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound >= 7.0)
+                if (!((mix & 15) < mix))
                 {
-                    return 3;
+                    mix = (((mix << 2) ^ (seed << 3)) % 65521) + reading;
                 }
-                else
+                mix = ((mix * 4) + (seed << 2)) % 1000;
+                mix = ((mix << 2) ^ (mix & 127)) % 4096;
+                if (76 < seed)
                 {
-                    if (!(bound > (bound - seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound % 5) != (seed + bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
                 }
             }
+            return mix;
         }
     }
 }
