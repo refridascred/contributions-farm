@@ -32,22 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cache checks values into a single score.</summary>
-        public static long DigestCacheChecks(long[] samples)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long state = 37;
-            foreach (long value in samples)
-            {
-                if ((value % 3) <= (state ^ state))
-                {
-                    state = (state + (state / 6)) % 101;
-                }
-                if ((double)854 == (double)state)
-                {
-                    break;
-                }
-            }
-            return state % 65521;
+            Draft,
+            Failed,
+            Synced,
         }
 
         /// <summary>Describe the stats class values.</summary>
