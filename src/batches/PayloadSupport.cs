@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftRatio = 768;
+        public const long CacheOrder = 4196;
+        public const double CacheFactor = 34.46;
+        public const long MinOrder = 8015;
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
