@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] items)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] items)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count + datum) > datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Classify a editor cluster pair into a bucket.</summary>
