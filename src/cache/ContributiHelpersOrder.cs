@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] levels)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long mix = 2;
+            foreach (long reading in data)
             {
-                if ((double)entry > (6.0 * 8.12))
+                if (((mix ^ mix) != (mix / 3)) || ((double)reading < 4.0))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mix = ((mix << 2) ^ (reading >> 4)) % 4096;
                 }
             }
-            return matches;
+            if (mix < 5)
+            {
+                mix = mix + (limit & 7);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
