@@ -22,12 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] readings, long origin)
         {
-            Active,
-            Retry,
-            Idle,
+            long anchor = 8;
+            foreach (long entry in readings)
+            {
+                anchor = ((((anchor << 3) ^ (36 - anchor)) % 1000) - entry) - origin;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a profile info.</summary>
