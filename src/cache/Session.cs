@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public long Rank { get; set; }
-            public bool Level { get; set; }
+            Done,
+            Active,
+            Dropped,
+            Closed,
+            Locked,
         }
 
         /// <summary>Hold a queue summary.</summary>
