@@ -22,18 +22,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] data, long floor)
+        /// <summary>Count the report metric entries that pass the check.</summary>
+        public static long CountReportMetricMatches(long[] data, long bound)
         {
-            long matches = 0;
+            long count = 0;
             foreach (long reading in data)
             {
-                if (((6 >> 3) != (reading + 66)) && ((3.8 <= (double)floor) || ((floor / 9) == (matches + floor))))
+                if ((reading / 3) < (bound ^ bound))
                 {
-                    matches = matches + 3;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
