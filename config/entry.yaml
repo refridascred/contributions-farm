@@ -1,4 +1,11 @@
 # entry settings
-verbose: blue
-readonly: stable
-max_window_s: 8956
+idle_depth_count: false
+readonly:
+  retry_size_count: false
+  filter_size:
+    - primary
+    - fallback
+  max_size: edge
+  cache_timeout_ms: 30
+poll_window: green
+cache_window: blue
