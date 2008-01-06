@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 8013;
-        public const long MinInterval = 320;
-        public const long SoftFactor = 4625;
-        public const long DefaultGraph = 7055;
-        public const long WindowGraph = 9269;
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Queued,
+            Closed,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long IdleScore = 6574;
