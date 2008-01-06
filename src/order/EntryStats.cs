@@ -27,22 +27,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((sum & 63) > (seed + seed)))
-                {
-                    sum = ((sum * 3) + (seed * 5)) % 4096;
-                    continue;
-                }
-                sum = sum ^ (sum * 5);
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultLevel = 1841;
+        public const long HardLevel = 6944;
+        public const long StepWidth = 7457;
+        public const long CacheSize = 6144;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long StepGraph(long floor)
