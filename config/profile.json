@@ -1,6 +1,16 @@
 {
-  "dry_run": 9215,
-  "support_ttl": 500,
-  "poll_retries_ms": false,
-  "readonly": ["cached", "edge"]
+  "batch_ttl_pct": 6007,
+  "cache_timeout_s": {
+    "batch_depth": {
+      "report_interval": "eu-west",
+      "verbose": 1961,
+      "retry_timeout": ["local", "open", "staging", "stable"],
+      "githubfarm_retries": 250,
+      "editor_timeout": 60,
+      "cache_ratio": "blue"
+    },
+    "max_size_count": 18.12,
+    "already_delay": 5864
+  },
+  "base_ratio": 20
 }
