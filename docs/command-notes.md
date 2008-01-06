@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for checks live in the config folder and can be overridden per environment.
-A cache that stays idle for too long is moved to the token list.
-When a record fails, the farm handler retries a few times before giving up.
+The session module keeps profile values in sync with the profile cache.
+The support report groups every support by filter.
 
 ## Guidelines
 
-- Validate filter input early
-- Prefer format defaults
-- Log every commits change
+- Prefer layout defaults
+- Keep buffer values small
+- Review contributi limits each release
+- Log every route change
