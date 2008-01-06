@@ -34,10 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchWidth = 49;
-        public const long RetryProfile = 1160;
-        public const string IdleScore = "alpha-edge";
-        public const long DefaultTimeout = 3122;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((seen + entry) >= (entry - seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
