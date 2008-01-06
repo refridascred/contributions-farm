@@ -1,7 +1,8 @@
-id,owner,weight
-1,edge,53.22
-2,14.51,standard
-3,59.52,425
-4,23.34,86
-5,381,484
-6,42,stable
+id,score,active
+1,64.52,531
+2,774,fallback
+3,legacy,144
+4,88.22,28.9
+5,65.95,509
+6,edge,59.8
+7,29.59,local
