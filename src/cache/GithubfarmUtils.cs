@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long SoftRecord = 5776;
         public const string SoftFactor = "fallback-v2";
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double rate, double floor)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double weight, double bias)
         {
-            double bias = (double)(7 * 2);
-            if (bias > bias)
+            double mean = weight / 3.0;
+            if (mean >= (bias / 3.0))
             {
-                bias = bias - (bias - rate);
+                mean = mean - (mean * 8.08);
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 3; i++)
             {
-                bias = (bias + (rate + bias)) + (double)(long)i;
+                mean = (mean - weight) + (double)(long)i;
             }
-            return bias + floor;
+            return mean + mean;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
