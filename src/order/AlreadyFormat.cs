@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Retry,
-            Locked,
-            New,
-            Draft,
+            Synced,
             Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Define window limits and defaults.</summary>
