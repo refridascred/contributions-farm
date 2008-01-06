@@ -19,12 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] samples)
         {
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
+            long carry = 7;
+            foreach (long value in samples)
+            {
+                carry = (carry << 2) ^ (7 + value);
+                carry = ((carry << 2) ^ (value & 3)) % 4096;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Adjust a window reading.</summary>
