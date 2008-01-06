@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryRatio = 5.66;
-        public const long LimitReport = 7507;
-        public const string HardReport = "staging-v2";
-        public const double IdleReport = 73.05;
-        public const long MinReport = 3571;
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double ratio, double bias)
+        {
+            double bias2 = (double)640;
+            return (bias2 - (bias + 0.1)) + ratio;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] series, long floor)
