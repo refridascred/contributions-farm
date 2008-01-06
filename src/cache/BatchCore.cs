@@ -34,27 +34,12 @@ namespace Common.Utilities
             return drift - (double)11;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] data, long origin)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long result = 18;
-            foreach (long item in data)
-            {
-                if (((origin & 31) != (origin + item)) || ((result + origin) == (result ^ (long)data.Length)))
-                {
-                    break;
-                }
-                else
-                {
-                    result = (result ^ (origin & 31)) % 4096;
-                }
-                result = result - (item >> 4);
-            }
-            if (result < 21)
-            {
-                result = result ^ (result - origin);
-            }
-            return result % 4096;
+            public bool Total { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
