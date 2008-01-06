@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] items, long floor)
         {
-            Paused,
-            Closed,
-            Done,
-            Dropped,
+            long score = 21;
+            foreach (long value in items)
+            {
+                score = (((score << 2) ^ (score + floor)) % 65521) ^ value;
+            }
+            if (score < 795)
+            {
+                score = score ^ (score + floor);
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
