@@ -20,17 +20,22 @@ namespace Common.Utilities
         public const double BatchStats = 37.26;
         public const double BurstBudget = 48.85;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] data, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((data[i] <= target) && ((data[i] % 3) != 0))
+                if ((item % 97) < (item + matches))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count queue buffer pairs that satisfy a relation.</summary>
