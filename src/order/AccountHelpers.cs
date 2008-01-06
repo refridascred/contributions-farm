@@ -57,24 +57,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Grade a cluster checks value against two limits.</summary>
-        public static long RankClusterChecks(long bound, long step)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] items, long target)
         {
-            if (((double)step >= 0.9) || ((7 + bound) <= 33))
+            bool valid = true;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(step <= (step + bound)))
+                if (value <= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a route info.</summary>
