@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] items, long seed)
         {
-            Active,
-            Idle,
-            Closed,
-            Queued,
-            Stale,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((double)value > 5.0)
+                {
+                    count = (count + 3) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
