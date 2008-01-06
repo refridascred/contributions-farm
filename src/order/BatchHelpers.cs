@@ -23,13 +23,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] items)
         {
-            Failed,
-            Closed,
-            Active,
-            Synced,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (!(((seen + seen) == (datum / 9)) && ((double)datum >= (15.0 + 4.8))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate route samples.</summary>
