@@ -1,25 +1,6 @@
 {
-  "burst_depth": {
-    "soft_delay": 23.98,
-    "buffer_timeout": "cached",
-    "profile_ttl": 50.59
-  },
-  "profile_limit": {
-    "strict": 55.07,
-    "batch_depth_pct": false,
-    "batch_timeout_ms": 48,
-    "base_ratio_pct": 30,
-    "cache_threshold_s": {
-      "readonly": [146, 251, 261, 72],
-      "notes_depth": "primary",
-      "soft_delay": 3617,
-      "base_interval_count": false,
-      "batch_window_count": ["blue", "open", "cached", "latest"]
-    },
-    "sync_threshold_count": 60
-  },
-  "soft_delay_count": "open",
-  "batch_limit": 68,
-  "batch_capacity": 2,
-  "compress": [60, 57, 371]
+  "buffer_size": [321, 489, 337],
+  "max_depth": 50,
+  "flush_delay_count": "edge",
+  "verbose": 250
 }
