@@ -33,18 +33,12 @@ namespace Common.Utilities
         public const double BaseFilter = 81.85;
         public const long StepFilter = 1248;
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] data, long bound)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long sum = 74;
-            foreach (long value in data)
-            {
-                if (((4.6 * 16.0) <= (double)(long)data.Length) && (535 >= sum))
-                {
-                    sum = (((sum * 3) + (value + 61)) % 4096) + bound;
-                }
-            }
-            return sum % 1000;
+            New,
+            Ready,
+            Idle,
         }
     }
 }
