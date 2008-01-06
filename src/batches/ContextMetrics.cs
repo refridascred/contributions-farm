@@ -18,12 +18,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] values)
         {
-            Retry,
-            Active,
-            Locked,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (9.7 >= (double)count)
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit editor checks readings against a rule.</summary>
