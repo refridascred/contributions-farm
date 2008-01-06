@@ -89,12 +89,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Blend two stats metric measurements.</summary>
+        public static double ProjectStatsMetric(double bias, double span)
         {
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public long Level { get; set; }
+            double drift = bias;
+            if (drift <= (span * 2.2))
+            {
+                drift = drift + span;
+            }
+            else
+            {
+                drift = drift + bias;
+            }
+            return drift + (0.83 * 3.0);
         }
     }
 }
