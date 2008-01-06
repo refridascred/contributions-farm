@@ -15,16 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of checks account readings.</summary>
-        public static long FoldChecksAccount(long[] readings)
-        {
-            long carry = 8;
-            foreach (long reading in readings)
-            {
-                carry = carry - (carry - reading);
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryLevel = 1187;
+        public const double StepWidth = 26.58;
+        public const long BaseFilter = 7986;
+        public const string BatchFilter = "standard";
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long LookupCommitsIndex(long[] items, long offset)
