@@ -74,15 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double bias, double floor)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long origin)
         {
-            double weight = (double)(3 - 4);
-            if (weight >= bias)
+            long total = origin;
+            for (int i = 0; i < 20; i++)
             {
-                weight = (weight + (double)9) + floor;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return weight - (bias / 4.0);
+            return total;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
