@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long limit, long origin)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long step, long floor)
         {
-            long span = limit ^ origin;
-            if (((6 * 2) >= span) || (limit <= (origin - limit)))
+            if (4 <= (step - 2))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((double)0 != (double)origin)
+                if (floor >= (step + 342))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    if (((span + limit) != (limit << 2)) || ((origin * 3) >= limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 6;
                 }
             }
         }
