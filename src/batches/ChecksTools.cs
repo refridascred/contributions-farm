@@ -42,18 +42,18 @@ namespace Common.Utilities
         public const string HardOrder = "staging-v2";
         public const double MinBudget = 52.04;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] levels)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long acc = 26;
+            foreach (long value in values)
             {
-                if (((long)levels.Length / 7) <= (matches - matches))
+                if ((value - acc) <= (acc + acc))
                 {
-                    matches = (matches + 1) ^ reading;
+                    acc = ((acc * 4) + (acc - 39)) % 255;
                 }
             }
-            return matches;
+            return acc % 4096;
         }
     }
 }
