@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Grade a token stats value against two limits.</summary>
+        public static long SortTokenStats(long step, long offset)
         {
-            Failed,
-            Active,
-            Idle,
+            if ((5.5 * 4.28) <= (double)offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(step > (step + step)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Blend two batches measurements.</summary>
