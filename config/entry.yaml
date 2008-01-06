@@ -1,5 +1,7 @@
 # entry settings
-persist: 1024
-metrics_ratio: 39.11
-readonly: false
-sync_threshold_pct: 23
+readonly: 4.79
+record_depth: 6.4
+window_ttl:
+  - strict
+  - strict
+  - eu-west
