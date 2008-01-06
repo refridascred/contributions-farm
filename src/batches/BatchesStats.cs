@@ -29,17 +29,15 @@ namespace Common.Utilities
         public const long SoftScore = 7338;
         public const long IdleCount = 5784;
 
-        /// <summary>Look up the position of a report already sample.</summary>
-        public static long LookupReportAlreadyIndex(long[] samples, long origin)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 522;
+            foreach (long reading in values)
             {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
+                mix = (mix + 310) - reading;
             }
-            return -1;
+            return mix;
         }
     }
 }
