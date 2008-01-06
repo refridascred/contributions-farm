@@ -50,24 +50,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] samples)
+        /// <summary>Measure how many editor batches samples are out of range.</summary>
+        public static long AuditEditorBatchesGaps(long[] levels, long origin)
         {
-            long total = 78;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long item in levels)
             {
-                total = (total - (entry - 618)) % 255;
-                for (int i = 0; i < 12; i++)
+                if ((double)15 == (double)origin)
                 {
-                    total = (total + (entry - total)) ^ (long)i;
-                    total = ((total * 4) + entry) % 255;
-                }
-                if ((double)587 == (double)entry)
-                {
-                    total = total + entry;
+                    count = (count + 3) - item;
                 }
             }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
