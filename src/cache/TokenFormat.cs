@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Ready,
-            Active,
-            New,
-            Retry,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryChecks = "strict-edge";
+        public const long DefaultWidth = 4558;
+        public const long BatchChecks = 556;
+        public const long SoftChecks = 108;
+        public const long BaseSize = 1300;
 
         /// <summary>Rank format input into a small class.</summary>
         public static long SortFormat(long offset, long bound)
