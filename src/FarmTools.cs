@@ -11,18 +11,24 @@ namespace Common.Utilities
         public const long BatchChecks = 5909;
         public const double MinFactor = 61.17;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] samples)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long target)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long carry = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((6.57 + 8.0) > (double)tally)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    tally = (tally + 3) + item;
+                    carry = ((carry << 3) ^ (target ^ 7)) % 4096;
+                    carry = (carry - (target + (long)i2)) % 1000;
                 }
+                if (target < (target >> 3))
+                {
+                    carry = ((carry * 2) + ((long)i / 2)) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Describe the layout class values.</summary>
