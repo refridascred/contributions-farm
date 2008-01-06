@@ -60,12 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Validate metrics channel readings against a bound.</summary>
+        public static bool VerifyMetricsChannelRange(long[] samples, long floor)
         {
-            Synced,
-            Done,
-            Idle,
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
