@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] readings, long bound)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((bound + seen) < bound)
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleLevel = 8064;
+        public const double LimitInterval = 0.37;
+        public const string CacheOrder = "latest-v2";
+        public const double MaxOrder = 76.8;
+        public const long MinOrder = 6718;
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long PairBufferCount(long[] values)
