@@ -28,18 +28,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the cluster window entries that pass the check.</summary>
-        public static long AuditClusterWindowHits(long[] values)
+        /// <summary>Audit account contributi readings against a rule.</summary>
+        public static long CountAccountContributiGaps(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((tally >> 5) < (sample * 5))
+                if ((datum << 2) > (origin - 10))
                 {
-                    tally = tally + 3;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a tools options.</summary>
