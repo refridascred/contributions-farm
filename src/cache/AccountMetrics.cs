@@ -47,20 +47,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = (((acc * 5) + origin) % 255) - (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryInterval = 1908;
+        public const string HardTimeout = "latest-1";
+        public const string MinFactor = "local";
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsHits(long[] samples, long floor)
