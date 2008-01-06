@@ -30,12 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] readings, long offset)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public double Weight { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (((long)readings.Length + datum) >= (0 >> 3))
+                {
+                    count = (count + 2) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
