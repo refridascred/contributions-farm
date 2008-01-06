@@ -21,19 +21,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double ratio, double span)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] readings, long offset)
         {
-            double gain = 5.0 / 8.0;
-            if (gain < (ratio + 11.0))
+            bool found = true;
+            foreach (long datum in readings)
             {
-                gain = (gain + (6.43 * 8.7)) - span;
+                if (datum != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (5.0 / 8.0)) - (double)(long)i;
-            }
-            return gain + (ratio / 9.0);
+            return found;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
