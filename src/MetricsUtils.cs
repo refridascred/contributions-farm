@@ -44,21 +44,38 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] levels)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long step, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((step + limit) < limit)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((limit << 1) == (step >> 4)) && (6 >= (limit >> 3)))
                 {
-                    if ((levels[i] + levels[j]) == 2)
+                    return 4;
+                }
+                else
+                {
+                    if ((step + step) >= (limit - limit))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((6 + limit) >= (limit ^ step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
