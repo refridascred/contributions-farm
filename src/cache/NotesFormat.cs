@@ -39,26 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] values, long limit)
         {
-            long mix = 2;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                for (int i = 0; i < 5; i++)
+                if (datum <= limit)
                 {
-                    mix = (mix + (21 + mix)) + (long)i;
-                }
-                if (!(6.04 <= (double)mix))
-                {
-                    mix = ((mix * 4) + (value / 5)) % 255;
-                }
-                if ((value % 97) > value)
-                {
+                    ready = false;
                     break;
                 }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
