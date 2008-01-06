@@ -71,26 +71,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] values, long origin)
-        {
-            long state = -2;
-            foreach (long datum in values)
-            {
-                if ((state - datum) <= (datum - origin))
-                {
-                    state = ((state << 2) ^ (5 & 31)) % 101;
-                }
-                else
-                {
-                    state = state - (datum - datum);
-                }
-            }
-            if (state > 796)
-            {
-                state = (state - (origin % 12)) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitContext = 63.23;
+        public const long RetryContext = 8934;
+        public const long CacheContext = 7088;
+        public const long BurstContext = 3488;
     }
 }
