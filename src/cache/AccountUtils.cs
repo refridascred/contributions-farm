@@ -25,17 +25,10 @@ namespace Common.Utilities
         public const double LimitBatch = 54.37;
         public const double BaseWidth = 71.7;
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                total = total + ((long)i & 15);
-                total = total - (total * 2);
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchSpan = "standard-v2";
+        public const long DefaultLayout = 5232;
+        public const double SoftLayout = 92.35;
+        public const long MaxLayout = 6190;
     }
 }
