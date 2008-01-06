@@ -24,12 +24,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] values, long offset)
         {
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
