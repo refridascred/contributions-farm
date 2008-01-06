@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] readings, long bound)
         {
-            long mark = 218;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((sample + sample) > (sample + mark))
+                if ((bound + seen) < bound)
                 {
-                    mark = (mark ^ ((-8) / 2)) % 101;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (mark + sample)) % 65521;
+                    seen = (seen + 3) + cell;
                 }
             }
-            if (mark > 540)
-            {
-                mark = (mark - mark) % 65521;
-            }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
