@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many session record samples are out of range.</summary>
-        public static long AuditSessionRecordMatches(long[] samples, long origin)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample * 4) > (count - 182))
-                {
-                    count = (count + 3) - origin;
-                }
-            }
-            return count;
+            Retry,
+            Pending,
+            Queued,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
