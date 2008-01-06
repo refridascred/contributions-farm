@@ -26,15 +26,19 @@ namespace Common.Utilities
         public const long CacheNotes = 5625;
         public const long HardWidth = 4591;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Roll a batches report counter forward.</summary>
+        public static long StepBatchesReport(long target)
         {
-            long carry = target;
+            long state = target;
             for (int i = 0; i < 20; i++)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    state = (((state * 2) + (state - state)) % 4096) + (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Describe the contributi status values.</summary>
