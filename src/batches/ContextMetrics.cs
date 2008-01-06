@@ -26,14 +26,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
+            Pending,
+            Draft,
+            New,
+            Active,
             Retry,
-            Stale,
-            Done,
-            Ready,
-            Dropped,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
