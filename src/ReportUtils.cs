@@ -62,18 +62,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] series)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long anchor = 455;
-            foreach (long cell in series)
-            {
-                if ((8.0 / 5.0) < (double)anchor)
-                {
-                    anchor = (((anchor * 4) + (anchor & 63)) % 255) - cell;
-                }
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
