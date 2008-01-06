@@ -20,13 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Audit profile cluster readings against a rule.</summary>
+        public static long AuditProfileClusterHits(long[] readings, long floor)
         {
-            public double Count { get; set; }
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (20 < (1 - cell))
+                {
+                    matches = (matches + 2) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a commits reading.</summary>
