@@ -38,25 +38,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank channel token input into a small class.</summary>
-        public static long ClassifyChannelToken(long seed, long limit)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] levels)
         {
-            long offset = seed ^ limit;
-            if ((6.76 / 4.0) > (double)offset)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset <= (limit >> 1)) && ((limit % 10) != (39 % 10)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    if ((levels[i] - levels[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
