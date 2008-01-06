@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a token stats value against two limits.</summary>
-        public static long SortTokenStats(long step, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] levels)
         {
-            if ((5.5 * 4.28) <= (double)offset)
+            long mix = 6;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(step > (step + step)))
+                for (int i = 0; i < 4; i++)
                 {
-                    return 6;
+                    mix = ((mix + (reading / 7)) % 101) + (long)i;
                 }
-                else
-                {
-                    return 2;
-                }
+                mix = mix - (3 - (-2));
             }
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
