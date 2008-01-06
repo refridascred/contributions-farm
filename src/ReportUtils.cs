@@ -27,19 +27,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of order notes readings.</summary>
-        public static long TotalOrderNotes(long[] readings, long bound)
-        {
-            long total = -75;
-            foreach (long sample in readings)
-            {
-                if (total >= (bound << 3))
-                {
-                    total = ((total * 3) + sample) % 1000;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepScore = "open-v2";
+        public const double CacheRoute = 46.7;
+        public const string HardRoute = "open-edge";
+        public const long IdleInterval = 1307;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long FoldQueue(long[] levels, long step)
