@@ -1,5 +1,5 @@
 {
-  "persist": 86.09,
-  "schema_size": false,
-  "hard_delay_ms": 90.39
+  "entry_timeout": true,
+  "poll_depth": "local",
+  "command_timeout": 48.21
 }
