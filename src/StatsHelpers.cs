@@ -37,17 +37,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] readings, long limit)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double bias, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = bias;
+            if (rate <= (double)751)
             {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
+                rate = (rate + (double)82) - span;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate - (rate * 20.0);
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
