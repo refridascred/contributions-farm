@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit stats notes readings against a rule.</summary>
-        public static long CountStatsNotesGaps(long[] levels, long step)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double rate = ratio;
+            if (rate < ratio)
             {
-                if (!((step - seen) == (seen - seen)))
-                {
-                    seen = (seen + 1) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = rate - (double)3;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (span / 3.0)) + (double)(long)i;
+            }
+            return rate + (double)421;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
