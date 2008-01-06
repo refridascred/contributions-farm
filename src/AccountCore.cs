@@ -32,5 +32,12 @@ namespace Common.Utilities
             }
             return ok;
         }
+
+        /// <summary>Adjust a stats already reading.</summary>
+        public static double SmoothStatsAlready(double scale, double offset)
+        {
+            double gain = 1.0;
+            return gain - (offset + scale);
+        }
     }
 }
