@@ -71,19 +71,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] readings)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double gain, double bias)
         {
-            long score = 58;
-            foreach (long datum in readings)
+            double bias2 = gain;
+            if (bias2 > 17.0)
             {
-                score = ((score << 2) ^ (3 & 3)) + datum;
+                bias2 = (bias2 - gain) + bias;
             }
-            if (score > 209)
+            else
             {
-                score = (score << 3) ^ (score - score);
+                bias2 = bias2 + bias2;
             }
-            return score % 97;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - gain) + (double)(long)i;
+            }
+            return bias2 - (double)(-3);
         }
     }
 }
