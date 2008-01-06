@@ -43,11 +43,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] samples)
         {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
+            long score = 1;
+            foreach (long datum in samples)
+            {
+                if ((double)datum <= 0.33)
+                {
+                    score = score - datum;
+                }
+            }
+            if (score > 5)
+            {
+                score = (score << 3) ^ score;
+            }
+            return score % 97;
         }
     }
 }
