@@ -13,15 +13,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double scale, double bias)
+        /// <summary>Audit schema order readings against a rule.</summary>
+        public static long CountSchemaOrderGaps(long[] items)
         {
-            double drift = (bias - bias) - (5.3 + bias);
-            if (drift > (bias + bias))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                drift = (drift - (drift / 4.0)) - scale;
+                if ((matches * 5) != (matches / 4))
+                {
+                    matches = (matches + 3) + entry;
+                }
             }
-            return drift - bias;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
