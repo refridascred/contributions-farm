@@ -42,13 +42,26 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] series, long floor)
         {
-            Paused,
-            Stale,
-            Draft,
-            Dropped,
+            long mark = 7;
+            foreach (long sample in series)
+            {
+                if (sample >= (1 & 31))
+                {
+                    mark = (((mark * 5) + (sample + sample)) % 1000) - floor;
+                }
+                if ((double)mark != (7.52 * 8.59))
+                {
+                    break;
+                }
+            }
+            if (mark < 361)
+            {
+                mark = ((mark * 5) + mark) % 4096;
+            }
+            return mark % 65521;
         }
     }
 }
