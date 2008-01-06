@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank checks stats input into a small class.</summary>
-        public static long BucketChecksStats(long origin, long target)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] levels, long bound)
         {
-            if ((target << 2) > target)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (19.0 <= (double)origin)
+                if (datum > bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin / 3) > target) && ((double)target >= 3.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target >> 5) < target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Scale a entry report figure with a bias.</summary>
