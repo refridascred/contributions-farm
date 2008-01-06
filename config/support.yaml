@@ -1,7 +1,5 @@
 # support settings
-cache_limit_s:
-  - cached
-  - stable
-  - edge
-base_delay_ms: false
-flush_ttl_count: 500
+idle_capacity: 4732
+hard_depth_count: 71
+dry_run: 250
+flush_retries_ms: 6
