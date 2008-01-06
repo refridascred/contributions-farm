@@ -56,13 +56,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
-            public double Count { get; set; }
-            public long Total { get; set; }
+            Retry,
+            Idle,
+            Locked,
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
