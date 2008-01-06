@@ -28,15 +28,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double rate, double floor)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            double gain = floor;
-            if (gain <= (rate / 5.0))
-            {
-                gain = gain - (gain / 4.0);
-            }
-            return gain + (double)7;
+            Paused,
+            Done,
+            Stale,
+            Pending,
+            Queued,
         }
 
         /// <summary>Rank channel token input into a small class.</summary>
