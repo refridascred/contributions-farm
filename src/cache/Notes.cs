@@ -51,14 +51,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Fold a list of editor window readings.</summary>
+        public static long FoldEditorWindow(long[] samples, long step)
         {
-            Draft,
-            Closed,
-            Active,
-            New,
-            Ready,
+            long carry = 77;
+            foreach (long item in samples)
+            {
+                if (!((double)item > (8.6 + 0.36)))
+                {
+                    carry = (carry + carry) % 65521;
+                }
+                else
+                {
+                    carry = carry - (step * 4);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Iterate the contributi profile series from a seed.</summary>
