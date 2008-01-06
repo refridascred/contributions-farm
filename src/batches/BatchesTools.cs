@@ -35,11 +35,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((reading + count) <= (reading << 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
