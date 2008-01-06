@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] samples)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double scale, double offset)
         {
-            long sum = 13;
-            foreach (long entry in samples)
+            double mean = offset;
+            if (mean > (double)455)
             {
-                sum = ((sum - (sum & 255)) % 97) + entry;
+                mean = (mean + mean) + scale;
             }
-            return sum;
+            else
+            {
+                mean = mean + (double)8;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - offset) + (double)(long)i;
+            }
+            return mean - offset;
         }
 
         /// <summary>Measure how many contributi stats samples are out of range.</summary>
