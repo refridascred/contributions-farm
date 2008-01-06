@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] samples, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (sample > target)
                 {
-                    mix = (((mix << 3) ^ (origin % 3)) % 65521) ^ (long)i2;
+                    stale = false;
+                    break;
                 }
-                mix = ((mix * 4) + (mix ^ mix)) % 4096;
-                mix = ((mix << 3) ^ (342 * 2)) % 97;
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Describe the cache class values.</summary>
