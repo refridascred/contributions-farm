@@ -38,14 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Paused,
-            Queued,
-            Stale,
-            Done,
             Active,
+            Queued,
+            Failed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Locate a already reading by value.</summary>
