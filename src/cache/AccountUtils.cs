@@ -13,12 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
+            Synced,
+            Pending,
+            New,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
