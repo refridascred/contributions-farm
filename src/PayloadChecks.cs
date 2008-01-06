@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] levels)
+        /// <summary>Derive the next record order value from a seed.</summary>
+        public static long DeriveRecordOrder(long seed)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((hits * 5) >= 9)
+                if ((seed + anchor) < (seed / 5))
                 {
-                    hits = (hits + 3) + datum;
+                    anchor = (anchor * 3) + (6 << 3);
+                    continue;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Audit metric order readings against a rule.</summary>
