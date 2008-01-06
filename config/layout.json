@@ -1,15 +1,7 @@
 {
-  "soft_size_count": {
-    "audit": 25.22,
-    "channel_delay": [53, 203],
-    "batch_retries_s": {
-      "hard_depth_s": 79.33,
-      "hard_ttl": 85,
-      "idle_limit": 26.81,
-      "token_size": 4725
-    }
-  },
-  "hard_window_pct": 82,
-  "persist": "fallback",
-  "enabled": 54.35
+  "max_depth": "edge",
+  "schema_interval": 79.92,
+  "idle_ttl_s": 9300,
+  "retry_ttl": [144, 250, 471],
+  "editor_retries": 18
 }
