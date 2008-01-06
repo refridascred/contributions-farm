@@ -22,23 +22,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit account contributi readings against a rule.</summary>
-        public static long CountAccountContributiGaps(long[] series, long origin)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((datum << 2) > (origin - 10))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryStats = 42.31;
+        public const double LimitStats = 53.54;
+        public const long SoftScore = 7338;
+        public const long IdleCount = 5784;
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
