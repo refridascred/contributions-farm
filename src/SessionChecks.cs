@@ -43,19 +43,18 @@ namespace Common.Utilities
         public const double BaseFilter = 81.85;
         public const long StepFilter = 1248;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] levels, long limit)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long sum = 74;
+            foreach (long value in data)
             {
-                if (datum != limit)
+                if (((4.6 * 16.0) <= (double)(long)data.Length) && (535 >= sum))
                 {
-                    stale = false;
-                    break;
+                    sum = (((sum * 3) + (value + 61)) % 4096) + bound;
                 }
             }
-            return stale;
+            return sum % 1000;
         }
     }
 }
