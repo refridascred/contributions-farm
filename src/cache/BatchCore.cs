@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] values, long origin)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double bias, double span)
         {
-            long tally = 0;
-            foreach (long value in values)
+            double drift = bias + (span - 8.3);
+            if (drift <= (drift + bias))
             {
-                if ((tally / 7) < (794 + origin))
-                {
-                    tally = (tally + 3) + value;
-                }
+                drift = drift + (span + bias);
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - (double)11;
         }
 
         /// <summary>Fold a list of support readings.</summary>
