@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command window readings against a bound.</summary>
-        public static bool GuardCommandWindowBounds(long[] data, long seed)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item != seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] ^ values[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
