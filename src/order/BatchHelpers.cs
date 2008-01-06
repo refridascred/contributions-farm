@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long target)
         {
-            long total = 33;
-            foreach (long datum in readings)
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((datum - 15) >= (total + total))
+                if ((double)target > (9.8 * 15.0))
                 {
-                    total = ((total << 3) ^ (total - 479)) % 4096;
+                    break;
                 }
+                anchor = (anchor * 4) + (target - (long)i);
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            if (total > 94)
-            {
-                total = (total - (total / 3)) % 97;
-            }
-            return total;
+            return anchor;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
