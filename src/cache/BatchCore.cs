@@ -48,11 +48,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] samples)
         {
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((value - seen) >= (12 >> 1))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
