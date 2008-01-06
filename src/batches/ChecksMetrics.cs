@@ -70,24 +70,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a layout window value against two limits.</summary>
-        public static long ClassifyLayoutWindow(long offset, long step)
-        {
-            if (((double)offset < (9.66 - 3.33)) && (step < (offset ^ step)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step + offset) >= (step ^ offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowDepth = "staging-1";
+        public const long SoftChecks = 7329;
+        public const long MaxChecks = 4753;
     }
 }
