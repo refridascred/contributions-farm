@@ -70,19 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double gain, double span)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            double load = span;
-            if (load > (gain / 3.0))
-            {
-                load = load + gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - 6.65) + (double)(long)i;
-            }
-            return load + load;
+            public double Size { get; set; }
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
