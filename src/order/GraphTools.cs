@@ -43,16 +43,20 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long limit)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long step)
         {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                result = (result << 3) ^ (limit - (long)i);
-                result = ((result * 4) + (long)i) % 1000;
+                acc = ((acc * 3) + acc) % 65521;
+                if ((step + 618) > ((long)i - (long)i))
+                {
+                    acc = (acc + ((-5) << 1)) % 101;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
