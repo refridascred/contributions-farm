@@ -43,17 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a context entry sample.</summary>
-        public static long FindContextEntryIndex(long[] levels, long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (levels[i] >= seed)
+                if ((bound % 8) < (71 >> 1))
                 {
-                    return (long)i;
+                    count = (count + 3) + cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
