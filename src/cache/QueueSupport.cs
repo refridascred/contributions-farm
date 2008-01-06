@@ -22,18 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a batch support reading by value.</summary>
-        public static long LookupBatchSupportIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleRoute = "fallback-1";
+        public const double WindowWidth = 1.6;
+        public const string StepCount = "cached";
+        public const long BatchRoute = 6668;
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
