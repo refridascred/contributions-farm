@@ -12,21 +12,38 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] samples)
+        /// <summary>Classify a stats metrics pair into a bucket.</summary>
+        public static long RankStatsMetrics(long floor, long floor2)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((floor >> 4) >= (floor + floor))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((floor2 >> 5) != (floor2 << 2))
                 {
-                    if ((samples[i] + samples[j]) > 19)
+                    return 6;
+                }
+                else
+                {
+                    if ((floor2 ^ floor2) == (floor2 ^ floor))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((floor2 / 8) > floor) && (floor >= 951))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a context reading by value.</summary>
