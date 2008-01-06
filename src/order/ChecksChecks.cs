@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] items, long target)
         {
-            public double Region { get; set; }
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long total = 9;
+            foreach (long cell in items)
+            {
+                if ((total + total) > target)
+                {
+                    total = (total + (total % 64)) - cell;
+                }
+            }
+            if (total > 7)
+            {
+                total = ((total * 5) + ((-8) / 3)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Hold a farm options.</summary>
