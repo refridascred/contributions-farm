@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long step, long floor)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            if (4 <= (step - 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor >= (step + 342))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Total { get; set; }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
