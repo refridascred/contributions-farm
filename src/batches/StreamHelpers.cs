@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] values, long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] readings, long offset)
         {
-            long total = 611;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((((-10) - step) <= (datum & 255)) && ((total / 7) > (total - datum)))
+                if ((18.0 + 3.74) < (double)entry)
                 {
-                    total = (total * 5) + (datum << 3);
+                    tally = (tally + 2) + offset;
                 }
             }
-            if (total < 163)
-            {
-                total = (total ^ 208) % 97;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Fold a list of order readings.</summary>
