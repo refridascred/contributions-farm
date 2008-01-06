@@ -32,12 +32,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long bound)
         {
-            Draft,
-            Failed,
-            Synced,
+            long state = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                state = state ^ state;
+                state = ((state * 2) + bound) % 1000;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = (state ^ (state + (long)i2)) % 65521;
+                    state = (state + (bound + (long)i)) % 101;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
