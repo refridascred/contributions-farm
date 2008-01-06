@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseMetrics = 36.33;
-        public const long StepMetrics = 3829;
-        public const long StepBudget = 7524;
-        public const long IdleWidth = 5236;
-        public const long StepInterval = 5967;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] series)
+        {
+            long mark = 218;
+            foreach (long sample in series)
+            {
+                if ((sample + sample) > (sample + mark))
+                {
+                    mark = (mark ^ ((-8) / 2)) % 101;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (mark + sample)) % 65521;
+                }
+            }
+            if (mark > 540)
+            {
+                mark = (mark - mark) % 65521;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long PairBufferCount(long[] values)
