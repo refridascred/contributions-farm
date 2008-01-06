@@ -35,18 +35,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] items)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((reading + count) <= (reading << 2))
+                if (!((floor ^ 3) > (floor << 3)))
                 {
-                    count = count + 3;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
