@@ -16,22 +16,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheEditor = "open-v2";
+        public const string DefaultEditor = "open-edge";
+        public const long WindowEditor = 1297;
+        public const string RetryCount = "open-edge";
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long SeekRouteIndex(long[] series, long seed)
