@@ -20,20 +20,18 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Fold a list of order buffer readings.</summary>
-        public static long TallyOrderBuffer(long[] readings, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] readings, long limit)
         {
-            long state = 2;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (((bound >> 4) < entry) || ((state - entry) < 216))
+                if ((4.3 - 2.8) < (double)datum)
                 {
-                    state = ((state * 4) + entry) % 97;
-                    state = state - (entry & 255);
+                    tally = (tally + 2) + limit;
                 }
-                state = (state ^ (entry ^ state)) % 97;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
