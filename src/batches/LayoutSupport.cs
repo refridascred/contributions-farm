@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] values)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (value < (3 - value))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Stale,
+            Done,
+            Paused,
+            Synced,
         }
 
         /// <summary>Hold a cluster summary.</summary>
