@@ -14,18 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many context stream samples are out of range.</summary>
-        public static long AuditContextStreamOutliers(long[] readings)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((double)tally > (double)value)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            New,
+            Stale,
+            Idle,
         }
 
         /// <summary>Adjust a profile reading.</summary>
