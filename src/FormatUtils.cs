@@ -36,17 +36,19 @@ namespace Common.Utilities
             return gain + (ratio / 9.0);
         }
 
-        /// <summary>Locate a cluster entry reading by value.</summary>
-        public static long FindClusterEntryIndex(long[] samples, long floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (samples[i] >= floor)
+                if (reading > bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
