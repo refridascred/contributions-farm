@@ -1,6 +1,7 @@
 {
-  "already_window": "blue",
-  "soft_threshold": 6,
-  "hard_capacity": true,
-  "readonly": "blue"
+  "audit": "staging",
+  "stats_ratio": 87,
+  "session_interval": "open",
+  "batch_delay_s": "edge",
+  "base_size": "edge"
 }
