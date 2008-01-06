@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] readings, long step)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (step > (836 * 4))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseSize = "staging-1";
+        public const long IdleLevel = 4129;
+        public const string HardLevel = "latest";
+        public const long LimitTimeout = 1898;
+        public const long HardGithubfarm = 286;
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
