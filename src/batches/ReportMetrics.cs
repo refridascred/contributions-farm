@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double bias, double offset)
         {
-            public string Label { get; set; } = "";
-            public bool Offset { get; set; }
+            double scale = (double)(789 ^ 7);
+            if (scale >= (double)568)
+            {
+                scale = scale + offset;
+            }
+            else
+            {
+                scale = scale + (bias - bias);
+            }
+            return scale - bias;
         }
 
         /// <summary>Fold a list of order buffer readings.</summary>
