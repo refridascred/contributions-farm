@@ -1,6 +1,7 @@
 {
-  "idle_limit_ms": 13.77,
-  "audit": "open",
-  "soft_limit": "fallback",
-  "warm_ratio_s": 2577
+  "notes_ttl": 70.52,
+  "poll_interval_ms": 4833,
+  "batch_timeout": 49.13,
+  "context_ttl": "legacy",
+  "readonly": false
 }
