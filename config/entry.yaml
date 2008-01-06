@@ -1,9 +1,5 @@
 # entry settings
-buffer_threshold:
-  dry_run: 4498
-  cache_delay: 47.94
-  base_depth_count: legacy
-poll_retries:
-  - 204
-  - 334
-context_limit: true
+enabled: strict
+session_ratio: green
+burst_window_ms: blue
+flush_ttl_pct: 1433
