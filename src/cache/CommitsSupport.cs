@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Locked,
-            Pending,
-            Idle,
-            Done,
-            Dropped,
+            Ready,
+            Synced,
+            Active,
+            Paused,
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
