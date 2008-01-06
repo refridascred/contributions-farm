@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitMetric = 76.57;
-        public const double WindowSpan = 65.36;
-        public const string HardMetric = "cached-edge";
-        public const long StepMetric = 7162;
-        public const double DefaultMetric = 44.92;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Stale,
+            Active,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long CombineSession(long[] items, long origin)
