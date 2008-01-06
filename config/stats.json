@@ -1,6 +1,6 @@
 {
-  "githubfarm_timeout": "latest",
-  "commits_depth": false,
-  "idle_ttl_pct": "fallback",
-  "strict": 7760
+  "dry_run": false,
+  "counter_ttl": "strict",
+  "metric_interval": [398, 495, 60, 320],
+  "min_interval_count": false
 }
