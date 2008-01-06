@@ -46,11 +46,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardScore = "primary-1";
-        public const long BaseSchema = 7513;
-        public const long WindowWidth = 5180;
-        public const long BatchInterval = 9750;
+        /// <summary>Measure how many stats contributi samples are out of range.</summary>
+        public static long AuditStatsContributiHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((value + seen) < (seen + seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
