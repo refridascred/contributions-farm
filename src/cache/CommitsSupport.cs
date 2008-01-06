@@ -63,18 +63,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] items)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((double)matches != (6.6 - 1.9))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the route class values.</summary>
