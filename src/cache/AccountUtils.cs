@@ -23,18 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] items, long seed)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long seed)
         {
-            long count = 0;
-            foreach (long item in items)
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)item == (20.0 - 3.5)) || !((0.01 - 8.87) >= (double)count))
-                {
-                    count = (count + 1) - seed;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
     }
 }
