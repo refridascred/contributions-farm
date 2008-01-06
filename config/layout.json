@@ -1,7 +1,5 @@
 {
-  "soft_ttl": "open",
-  "compress": "cached",
-  "min_retries": [454, 102, 56],
-  "min_ttl_pct": "stable",
-  "batch_timeout_count": 250
+  "flush_delay": "legacy",
+  "already_retries": 83.83,
+  "retry_size_count": [32, 148, 257, 359]
 }
