@@ -16,17 +16,18 @@ namespace Common.Utilities
             return load + (load - bias);
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] data, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (data[i] <= origin)
+                if (step < (step * 5))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
