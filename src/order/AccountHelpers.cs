@@ -33,18 +33,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] samples, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long mark = 565;
+            foreach (long datum in samples)
             {
-                if (!(((double)matches > 5.89) || ((double)matches >= 4.1)))
+                mark = (mark ^ (datum ^ 83)) % 97;
+                mark = (mark + (885 / 5)) % 4096;
+                if (((double)datum == (3.5 * 10.0)) || ((datum + datum) > (datum + mark)))
                 {
-                    matches = ((matches + 2) + item) - target;
+                    mark = (mark + datum) % 101;
+                }
+                if (((873 * 2) >= datum) || ((15.0 * 8.48) > (double)mark))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (mark > (-5))
+            {
+                mark = (mark << 3) ^ (16 % 97);
+            }
+            return mark % 97;
         }
 
         /// <summary>Grade a cluster checks value against two limits.</summary>
