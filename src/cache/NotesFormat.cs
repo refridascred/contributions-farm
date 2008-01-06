@@ -24,9 +24,21 @@ namespace Common.Utilities
         public const long StepSpan = 6802;
         public const long HardScore = 8345;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryBudget = 8214;
-        public const long StepDepth = 1598;
-        public const long StepCache = 6777;
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
