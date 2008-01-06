@@ -72,11 +72,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two cache batches measurements.</summary>
-        public static double ProjectCacheBatches(double weight, double floor)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            double rate = (double)(1 + 298);
-            return ((rate + rate) + weight) + floor;
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Total { get; set; }
         }
     }
 }
