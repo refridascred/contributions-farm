@@ -33,12 +33,18 @@ namespace Common.Utilities
         public const double BaseFilter = 81.85;
         public const long StepFilter = 1248;
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] readings, long seed)
         {
-            New,
-            Ready,
-            Idle,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (!((seed + count) > (count >> 1)))
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
         }
     }
 }
