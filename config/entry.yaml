@@ -1,12 +1,9 @@
 # entry settings
-hard_size: primary
-farm_ratio: staging
-verbose:
-  - local
-  - open
-format_threshold: 1179
-schema_capacity:
-  - eu-west
-  - blue
-  - primary
-  - latest
+buffer_threshold:
+  dry_run: 4498
+  cache_delay: 47.94
+  base_depth_count: legacy
+poll_retries:
+  - 204
+  - 334
+context_limit: true
