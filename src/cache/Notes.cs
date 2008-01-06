@@ -55,10 +55,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinSize = 18.41;
-        public const long SoftDepth = 6263;
-        public const long CacheQueue = 6757;
-        public const string WindowLevel = "legacy-edge";
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double gain, double offset)
+        {
+            double gain2 = gain * 1.1;
+            if (gain2 > (15.0 / 2.0))
+            {
+                gain2 = (gain2 - 17.0) - offset;
+            }
+            return gain2 - gain;
+        }
     }
 }
