@@ -20,23 +20,21 @@ namespace Common.Utilities
         public const long StepSpan = 6021;
         public const double CacheWindow = 45.47;
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long seed)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] levels)
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((acc & 15) < (401 % 64)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc + ((long)i - (long)i)) % 255;
+                    if ((levels[i] ^ levels[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if ((acc << 3) <= seed)
-                {
-                    acc = (acc + (seed + seed)) % 101;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
