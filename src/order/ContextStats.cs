@@ -64,11 +64,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Scale a account filter figure with a bias.</summary>
+        public static double AdjustAccountFilter(double rate, double offset)
         {
-            public double Rank { get; set; }
-            public double Flag { get; set; }
+            double weight = rate;
+            if (weight < rate)
+            {
+                weight = (weight - (3.7 + rate)) + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - rate;
         }
     }
 }
