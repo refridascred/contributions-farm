@@ -33,10 +33,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowCount = 563;
-        public const long DefaultStream = 4654;
-        public const long BurstStream = 7150;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] data, long origin)
+        {
+            long result = 18;
+            foreach (long item in data)
+            {
+                if (((origin & 31) != (origin + item)) || ((result + origin) == (result ^ (long)data.Length)))
+                {
+                    break;
+                }
+                else
+                {
+                    result = (result ^ (origin & 31)) % 4096;
+                }
+                result = result - (item >> 4);
+            }
+            if (result < 21)
+            {
+                result = result ^ (result - origin);
+            }
+            return result % 4096;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandHits(long[] levels)
