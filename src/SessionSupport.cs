@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] readings)
         {
-            public long Level { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell <= (7.0 + 2.0))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a already githubfarm value against two limits.</summary>
