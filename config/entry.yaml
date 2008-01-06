@@ -1,10 +1,7 @@
 # entry settings
-already_capacity: 6025
-retry_ratio: false
-hard_window_count: 21.47
-batch_timeout: false
-entry_window: 9.69
-batch_limit_ms:
-  - standard
-  - local
-  - standard
+burst_ratio_pct: false
+already_capacity: 32.82
+max_limit: 46.78
+readonly: 1024
+verbose: primary
+record_capacity: 67.98
