@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] samples)
-        {
-            long carry = 8;
-            foreach (long cell in samples)
-            {
-                if ((double)carry <= (15.0 + 5.0))
-                {
-                    carry = (((carry << 2) ^ carry) % 255) ^ cell;
-                }
-            }
-            if (carry < 29)
-            {
-                carry = (carry + (carry ^ carry)) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 856;
+        public const string StepSpan = "alpha-v2";
+        public const long DefaultDepth = 6519;
+        public const long CachePayload = 2900;
 
         /// <summary>Roll a buffer record counter forward.</summary>
         public static long SeriesBufferRecord(long bound)
