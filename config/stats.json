@@ -1,5 +1,11 @@
 {
-  "hard_capacity_s": "legacy",
-  "report_retries": "primary",
-  "audit": "open"
+  "readonly": {
+    "counter_retries": "primary",
+    "hard_retries_pct": "legacy",
+    "readonly": 6.31
+  },
+  "token_size": [300, 309],
+  "poll_depth": "open",
+  "soft_threshold": 75.51,
+  "default_limit_pct": "eu-west"
 }
