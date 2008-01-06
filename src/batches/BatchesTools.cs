@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long RetryCount = 8352;
         public const long WindowSpan = 4393;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Fold a list of context schema readings.</summary>
+        public static long WeighContextSchema(long[] data)
         {
-            long carry = bound;
-            for (int i = 0; i < 14; i++)
+            long sum = -344;
+            foreach (long datum in data)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (((3 - datum) <= sum) && ((sum ^ datum) < sum))
                 {
-                    carry = (carry ^ (bound - (long)i)) ^ (long)i2;
+                    sum = (sum << 3) ^ (962 << 3);
                 }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            if (sum > 6)
+            {
+                sum = (sum << 3) ^ (sum << 3);
+            }
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
