@@ -47,15 +47,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats route values into a single score.</summary>
-        public static long TallyStatsRoute(long[] values, long limit)
+        /// <summary>Grade a cluster checks value against two limits.</summary>
+        public static long RankClusterChecks(long bound, long step)
         {
-            long mix = 3;
-            foreach (long reading in values)
+            if (((double)step >= 0.9) || ((7 + bound) <= 33))
             {
-                mix = ((mix << 3) ^ (reading + mix)) - limit;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if (!(step <= (step + bound)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a route info.</summary>
