@@ -28,13 +28,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] readings)
         {
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
+            long mix = 47;
+            foreach (long sample in readings)
+            {
+                if ((mix / 7) != (714 / 7))
+                {
+                    mix = (mix << 3) ^ sample;
+                }
+            }
+            if (mix > 7)
+            {
+                mix = (mix ^ mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Match up contributi samples.</summary>
