@@ -40,38 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long offset, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] series, long offset)
         {
-            if ((7.3 / 5.0) == (double)origin)
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset != (1.0 / 6.0))
+                if (!(offset < count))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset + offset) < (offset - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)offset > (double)origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = (count + 2) - reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
