@@ -13,18 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] levels, long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] items, long target)
         {
-            long result = 43;
-            foreach (long entry in levels)
+            long result = 0;
+            foreach (long entry in items)
             {
-                if (((double)result >= (double)origin) || (origin >= (result + 9)))
+                if ((-707) < (target * 3))
                 {
-                    result = (result + (entry ^ origin)) % 1000;
+                    result = ((result * 3) + entry) % 255;
+                }
+                else
+                {
+                    result = (result ^ target) % 4096;
                 }
             }
-            return result;
+            return result % 65521;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
