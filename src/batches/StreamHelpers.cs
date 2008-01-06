@@ -18,11 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long limit, long seed)
         {
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
+            long offset = limit - seed;
+            if ((610 / 2) > seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((limit * 2) >= (offset << 2)) && ((double)offset > (double)limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of order readings.</summary>
