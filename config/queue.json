@@ -1,8 +1,12 @@
 {
-  "poll_window_pct": ["eu-west", "local", "open", "open"],
-  "audit": 42.82,
-  "retry_interval": 97.86,
-  "route_limit": 5733,
-  "soft_limit_s": ["standard", "cached"],
-  "verbose": "green"
+  "sync_depth": 4854,
+  "poll_delay_s": "blue",
+  "verbose": 33.97,
+  "metrics_size": true,
+  "session_capacity": {
+    "strict": 5398,
+    "hard_window": 4130,
+    "base_window_count": 30.18
+  },
+  "compress": "blue"
 }
