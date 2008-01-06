@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the layout stats entries that pass the check.</summary>
-        public static long MeasureLayoutStatsMatches(long[] samples, long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] samples)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long sum = 13;
+            foreach (long entry in samples)
             {
-                if (!(((count * 3) == (count + step)) || ((step >> 4) < (step % 97))))
-                {
-                    count = (count + 2) - item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = ((sum - (sum & 255)) % 97) + entry;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Describe the command class values.</summary>
