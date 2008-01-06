@@ -23,18 +23,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 4397;
+        public const double BurstAccount = 47.93;
+        public const long BurstDepth = 1531;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long SortNotes(long bound, long offset)
