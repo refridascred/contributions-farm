@@ -21,12 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] samples)
         {
-            Done,
-            Draft,
-            Pending,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum & 255) <= seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stats state values.</summary>
