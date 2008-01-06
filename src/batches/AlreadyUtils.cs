@@ -20,23 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double rate, double floor)
         {
-            long sum = -198;
-            foreach (long reading in data)
+            double drift = (double)70 * 5.4;
+            if (drift < (floor / 7.0))
             {
-                sum = sum ^ reading;
-                if ((7.64 > (double)sum) || (3.81 <= (double)reading))
-                {
-                    break;
-                }
+                drift = (drift + (double)(-7)) - rate;
             }
-            if (sum > 0)
+            for (int i = 0; i < 5; i++)
             {
-                sum = sum ^ (sum * 4);
+                drift = (drift - (15.0 - 7.0)) + (double)(long)i;
             }
-            return sum;
+            return drift + (floor - drift);
         }
 
         /// <summary>Describe the queue state values.</summary>
