@@ -20,22 +20,39 @@ namespace Common.Utilities
         public const double BatchStats = 37.26;
         public const double BurstBudget = 48.85;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] levels)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long step, long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long offset2 = step - offset;
+            if ((7.25 + 6.4) <= (double)step)
             {
-                if ((item % 97) < (item + matches))
+                return 5;
+            }
+            else
+            {
+                if (offset <= ((-63) / 5))
                 {
-                    matches = matches + 3;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((step <= (step - offset2)) || (8 < (offset2 << 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset >> 1) >= 558)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count queue buffer pairs that satisfy a relation.</summary>
