@@ -20,14 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double scale, double offset)
         {
-            Queued,
-            Pending,
-            Locked,
-            Retry,
-            Dropped,
+            double weight = offset;
+            if (weight >= (2.2 / 7.0))
+            {
+                weight = weight - scale;
+            }
+            else
+            {
+                weight = weight + scale;
+            }
+            return weight + scale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
