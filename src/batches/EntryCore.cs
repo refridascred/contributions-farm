@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] values, long target)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long origin)
         {
-            long mark = 234;
-            foreach (long sample in values)
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
             {
-                mark = ((mark << 2) ^ sample) % 65521;
-            }
-            if (mark > 689)
-            {
-                mark = (mark + (mark - target)) % 1000;
+                mark = mark - mark;
+                mark = mark + 4;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
             return mark;
         }
