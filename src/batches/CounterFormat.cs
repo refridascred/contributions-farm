@@ -35,14 +35,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double bias, double floor)
         {
-            Stale,
-            Active,
-            Done,
-            Closed,
-            Locked,
+            double weight = (double)(904 + 14);
+            return (weight + floor) + bias;
         }
     }
 }
