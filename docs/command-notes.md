@@ -1,11 +1,12 @@
 # Command notes
 
-The payload module keeps batches values in sync with the entry cache.
-The report report groups every profile by commits.
+The schema report groups every payload by commits.
+Each layout is validated before it reaches the command queue.
+Keep payload and entry names short and lowercase.
 
 ## Guidelines
 
-- Document new command fields
-- Prefer report defaults
-- Validate filter input early
-- Keep session values small
+- Document new layout fields
+- Prefer buffer defaults
+- Review entry limits each release
+- Keep metrics values small
