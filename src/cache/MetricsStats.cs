@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = (anchor - ((long)i / 6)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftInterval = 5183;
+        public const long HardScore = 2138;
+        public const long LimitSize = 7443;
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long ClassifyEditor(long limit, long floor)
