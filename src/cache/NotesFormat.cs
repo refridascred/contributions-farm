@@ -26,11 +26,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 3951;
-        public const long BurstFactor = 271;
-        public const long SoftLevel = 5017;
-        public const long MinInterval = 2185;
-        public const long DefaultWidth = 5268;
+        /// <summary>Iterate the channel record series from a seed.</summary>
+        public static long StepChannelRecord(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
+        }
     }
 }
