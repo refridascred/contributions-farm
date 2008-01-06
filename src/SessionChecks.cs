@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchInterval = 1042;
+        public const string IdleToken = "legacy-edge";
+        public const double MaxToken = 41.84;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
