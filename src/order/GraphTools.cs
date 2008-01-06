@@ -35,26 +35,12 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] readings, long limit)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long mix = 3;
-            foreach (long value in readings)
-            {
-                if ((double)value >= (1.58 - 1.6))
-                {
-                    mix = (mix ^ (limit * 3)) % 97;
-                }
-                if ((limit >> 1) == (limit - value))
-                {
-                    break;
-                }
-            }
-            if (mix < 48)
-            {
-                mix = mix ^ (mix % 97);
-            }
-            return mix;
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
