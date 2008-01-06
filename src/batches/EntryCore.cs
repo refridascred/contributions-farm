@@ -60,30 +60,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] samples, long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] series)
         {
-            long acc = 1;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((value & 7) > (value >> 2))
+                if (matches > (entry & 255))
                 {
-                    acc = acc + (acc + acc);
+                    matches = matches + 2;
                 }
                 else
                 {
-                    acc = (acc - origin) % 4096;
-                }
-                if ((value ^ acc) >= (398 + acc))
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (acc > 2)
-            {
-                acc = (acc - (acc / 5)) % 65521;
-            }
-            return acc % 1000;
+            return matches;
         }
     }
 }
