@@ -32,12 +32,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a counter channel sample.</summary>
-        public static long SeekCounterChannelIndex(long[] levels, long bound)
+        /// <summary>Look up the position of a channel checks sample.</summary>
+        public static long FindChannelChecksIndex(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] > bound)
+                if (series[i] <= limit)
                 {
                     return (long)i;
                 }
