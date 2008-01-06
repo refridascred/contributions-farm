@@ -20,11 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double ratio, double bias)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] data, long floor)
         {
-            double bias2 = (double)640;
-            return (bias2 - (bias + 0.1)) + ratio;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
