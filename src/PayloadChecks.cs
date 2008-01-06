@@ -102,19 +102,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double bias, double offset)
+        /// <summary>Adjust a filter cache reading.</summary>
+        public static double ProjectFilterCache(double weight, double floor)
         {
-            double gain = offset;
-            if (gain <= (double)239)
+            double ratio = (weight / 8.0) - weight;
+            if (ratio <= floor)
             {
-                gain = gain + (bias - gain);
+                ratio = ratio + (double)78;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 7; i++)
             {
-                gain = (gain - (gain / 2.0)) + (double)(long)i;
+                ratio = (ratio - (floor / 3.0)) + (double)(long)i;
             }
-            return gain + (gain / 7.0);
+            return ratio - (ratio + 4.0);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
