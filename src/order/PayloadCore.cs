@@ -29,19 +29,11 @@ namespace Common.Utilities
         public const long WindowEditor = 1297;
         public const string RetryCount = "open-edge";
 
-        /// <summary>Accumulate githubfarm cluster samples.</summary>
-        public static long WeighGithubfarmCluster(long[] items, long seed)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long mix = -887;
-            foreach (long cell in items)
-            {
-                if ((7 - (-13)) > cell)
-                {
-                    mix = mix - (mix / 2);
-                }
-                mix = (mix - (seed / 9)) % 1000;
-            }
-            return mix % 97;
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the command state values.</summary>
