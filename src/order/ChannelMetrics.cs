@@ -31,16 +31,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a queue token counter forward.</summary>
-        public static long IterateQueueToken(long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] data, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
+            long anchor = -212;
+            foreach (long item in data)
             {
-                mix = (mix + mix) % 255;
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (item < (step + 1))
+                {
+                    anchor = ((anchor << 3) ^ (item << 3)) % 101;
+                }
             }
-            return mix;
+            if (anchor > (-84))
+            {
+                anchor = anchor - (anchor / 2);
+            }
+            return anchor % 65521;
         }
     }
 }
