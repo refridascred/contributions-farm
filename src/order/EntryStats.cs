@@ -60,17 +60,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] data, long bound)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long offset, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((target << 2) != (target + target)) || ((double)offset != (8.0 + 2.9)))
             {
-                if (data[i] > bound)
+                return 7;
+            }
+            else
+            {
+                if ((target + offset) != (target + 2))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((42 >= target) && ((target ^ target) >= (367 ^ offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
