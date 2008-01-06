@@ -1,6 +1,5 @@
 {
-  "idle_delay_count": "cached",
-  "compress": "cached",
-  "hard_limit": 84,
-  "token_interval": 92.25
+  "cache_window_pct": true,
+  "poll_size_pct": true,
+  "support_limit": 60
 }
