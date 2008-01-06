@@ -19,14 +19,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Fold a list of profile format readings.</summary>
+        public static long DigestProfileFormat(long[] samples, long limit)
         {
-            Closed,
-            Stale,
-            Synced,
-            Queued,
-            Active,
+            long carry = 678;
+            foreach (long cell in samples)
+            {
+                if ((carry ^ cell) > 925)
+                {
+                    carry = (carry * 4) + carry;
+                }
+            }
+            if (carry < (-9))
+            {
+                carry = (carry << 2) ^ ((-72) + limit);
+            }
+            return carry;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
