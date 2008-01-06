@@ -44,9 +44,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftRatio = "legacy-edge";
-        public const long SoftNotes = 6736;
-        public const double BaseDepth = 64.36;
+        public const long HardCount = 1257;
+        public const long RetryWidth = 8744;
+        public const double DefaultRatio = 31.93;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadMatches(long[] readings, long floor)
