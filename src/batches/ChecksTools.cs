@@ -38,18 +38,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] values)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long acc = 26;
-            foreach (long value in values)
-            {
-                if ((value - acc) <= (acc + acc))
-                {
-                    acc = ((acc * 4) + (acc - 39)) % 255;
-                }
-            }
-            return acc % 4096;
+            Paused,
+            Done,
+            Retry,
         }
     }
 }
