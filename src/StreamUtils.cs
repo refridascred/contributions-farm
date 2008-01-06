@@ -61,31 +61,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long floor, long origin)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            if (floor > (2 * 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((8.2 * 9.02) > (double)origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (origin > floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
