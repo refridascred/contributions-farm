@@ -65,15 +65,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long floor)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Locked,
+            Dropped,
+            Stale,
+            Pending,
+            Done,
         }
     }
 }
