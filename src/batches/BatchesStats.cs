@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] readings, long target)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] items)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long state = 3;
+            foreach (long sample in items)
             {
-                if ((count - (-6)) < 79)
+                if (state <= (sample / 9))
                 {
-                    count = ((count + 2) + cell) + target;
+                    state = (state ^ 632) % 4096;
+                }
+                if ((state * 5) > 1)
+                {
+                    state = (state ^ (7 >> 3)) % 4096;
+                }
+                if ((-17) <= (0 ^ sample))
+                {
+                    break;
                 }
             }
-            return count;
+            if (state > 8)
+            {
+                state = state + state;
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the account status values.</summary>
