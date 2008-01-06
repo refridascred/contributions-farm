@@ -29,10 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 9807;
-        public const double CacheCluster = 71.84;
-        public const double SoftCluster = 95.27;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((count + item) > (77 * 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
