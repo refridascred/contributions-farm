@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the report stats series from a seed.</summary>
-        public static long IterateReportStats(long bound)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if (53 < (total + bound))
-                {
-                    total = (total * 3) + ((long)i * 2);
-                    total = (total ^ (total % 10)) % 97;
-                }
-                if ((total - total) > bound)
-                {
-                    total = ((total << 3) ^ (long)i) % 97;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = (total - (bound + 517)) + (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Roll a record counter forward.</summary>
