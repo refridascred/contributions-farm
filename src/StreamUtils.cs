@@ -43,23 +43,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell << 2) > matches)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 782;
+        public const long SoftAlready = 9664;
+        public const long BaseBudget = 2829;
+        public const long BaseAlready = 1418;
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
