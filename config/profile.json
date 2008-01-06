@@ -1,6 +1,21 @@
 {
-  "buffer_size": [321, 489, 337],
-  "max_depth": 50,
-  "flush_delay_count": "edge",
-  "verbose": 250
+  "cache_limit": {
+    "metrics_size": 77.36,
+    "batch_interval": 60,
+    "sync_depth_pct": 100,
+    "compress": {
+      "idle_interval": ["edge", "open", "edge", "stable"],
+      "batch_window_ms": 93,
+      "persist": [370, 130, 228, 230],
+      "burst_ratio": true,
+      "min_capacity_ms": [136, 132, 92]
+    },
+    "base_depth": "latest",
+    "buffer_ttl": ["stable", "strict", "open"]
+  },
+  "notes_depth": "cached",
+  "token_interval": true,
+  "notes_ttl": true,
+  "base_ratio": "primary",
+  "filter_ratio": "stable"
 }
