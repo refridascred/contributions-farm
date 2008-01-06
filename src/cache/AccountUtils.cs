@@ -11,17 +11,10 @@ namespace Common.Utilities
         public const string DefaultSize = "stable-1";
         public const long WindowSupport = 6183;
 
-        /// <summary>Derive the next record contributi value from a seed.</summary>
-        public static long StepRecordContributi(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = (anchor + (anchor + seed)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultDepth = 3481;
+        public const double LimitBatch = 54.37;
+        public const double BaseWidth = 71.7;
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long StepGithubfarm(long seed)
