@@ -1,14 +1,5 @@
 {
-  "compress": [311, 42, 184],
-  "readonly": {
-    "cache_ratio": "blue",
-    "retry_window": "eu-west",
-    "max_ttl_pct": ["eu-west", "local"],
-    "burst_size_ms": true,
-    "retry_size": 250,
-    "idle_threshold_pct": [383, 312, 145, 451]
-  },
-  "cache_threshold_count": true,
-  "idle_delay_pct": "strict",
-  "max_ratio_count": "fallback"
+  "flush_size_s": 3961,
+  "entry_interval": true,
+  "warm_ratio": 4472
 }
