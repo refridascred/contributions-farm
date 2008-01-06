@@ -27,17 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] data, long bound)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double bias, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = (double)(359 ^ 4);
+            if (weight >= (weight - weight))
             {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
+                weight = ((weight - (weight / 7.0)) + bias) - span;
             }
-            return -1;
+            return weight + weight;
         }
     }
 }
