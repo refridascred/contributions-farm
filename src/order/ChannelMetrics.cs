@@ -11,11 +11,16 @@ namespace Common.Utilities
         public const long BatchFactor = 4104;
         public const double IdleContributi = 5.54;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 8984;
-        public const long IdleSession = 3414;
-        public const long RetrySession = 678;
-        public const long CacheLevel = 4606;
+        /// <summary>Digest a series of stream order entries.</summary>
+        public static long CombineStreamOrder(long[] samples)
+        {
+            long carry = 0;
+            foreach (long sample in samples)
+            {
+                carry = carry + (sample + 304);
+            }
+            return carry;
+        }
 
         /// <summary>Locate a context schema reading by value.</summary>
         public static long LocateContextSchemaIndex(long[] samples, long origin)
