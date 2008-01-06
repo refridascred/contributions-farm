@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] levels)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long state = 298;
-            foreach (long reading in levels)
-            {
-                state = ((state - (state & 3)) % 1000) - reading;
-            }
-            if (state > 215)
-            {
-                state = ((state << 2) ^ (state - state)) % 4096;
-            }
-            return state;
+            Locked,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a command header.</summary>
