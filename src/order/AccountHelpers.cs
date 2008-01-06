@@ -10,21 +10,10 @@ namespace Common.Utilities
         public const double DefaultQueue = 60.18;
         public const long BurstQueue = 7698;
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                bool stale = ((long)i + result) != (7 - limit);
-                if (stale)
-                {
-                    result = (result - (result % 60)) % 255;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 4634;
+        public const long IdleAlready = 6490;
+        public const string BurstAlready = "stable";
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
