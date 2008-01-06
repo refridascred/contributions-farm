@@ -20,21 +20,12 @@ namespace Common.Utilities
             return rate + (double)421;
         }
 
-        /// <summary>Match up counter context samples.</summary>
-        public static long PairCounterContextCount(long[] values)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate context samples.</summary>
