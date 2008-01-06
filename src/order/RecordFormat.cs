@@ -30,12 +30,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long floor, long bound)
         {
-            Queued,
-            Stale,
-            Pending,
+            long gap = floor - bound;
+            if ((gap & 31) > (gap - floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((7.55 / 9.0) < (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (gap > (floor + gap))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound > (bound >> 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next contributi value.</summary>
