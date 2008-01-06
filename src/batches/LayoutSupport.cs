@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] levels, long origin)
         {
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)seen != (20.0 - 2.6))
+                {
+                    seen = ((seen + 3) ^ datum) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
