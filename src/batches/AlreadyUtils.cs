@@ -34,11 +34,22 @@ namespace Common.Utilities
             return drift + (floor - drift);
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] values, long step)
         {
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (!((double)value == (2.9 / 2.0)))
+                {
+                    tally = (tally + 2) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the notes kind values.</summary>
