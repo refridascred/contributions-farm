@@ -37,10 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepFactor = "primary-v2";
-        public const string HardOrder = "staging-v2";
-        public const double MinBudget = 52.04;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Paused,
+            Done,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long FoldTools(long[] values)
