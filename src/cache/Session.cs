@@ -39,21 +39,17 @@ namespace Common.Utilities
         public const long BurstCommand = 5374;
         public const long DefaultLevel = 73;
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = step;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (state + (long)i) % 255;
+                state = ((state * 4) + (state + state)) % 97;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
     }
 }
