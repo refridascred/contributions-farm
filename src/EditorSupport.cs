@@ -25,11 +25,17 @@ namespace Common.Utilities
         public const double DefaultGithubfarm = 36.2;
         public const long CacheGithubfarm = 5820;
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Find the first profile stats entry that matches the target.</summary>
+        public static long LocateProfileStatsIndex(long[] values, long step)
         {
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
