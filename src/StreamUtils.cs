@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Scale a cluster metrics figure with a bias.</summary>
+        public static double AdjustClusterMetrics(double gain, double bias)
         {
-            Retry,
-            Idle,
-            Failed,
+            double weight = (double)(8 - 3);
+            if (weight < gain)
+            {
+                weight = weight + (9.6 - bias);
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (8.4 + 13.0)) - (double)(long)i;
+            }
+            return weight + gain;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
