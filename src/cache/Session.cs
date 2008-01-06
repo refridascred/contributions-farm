@@ -41,26 +41,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] readings)
+        /// <summary>Iterate the queue schema series from a seed.</summary>
+        public static long SeriesQueueSchema(long offset)
         {
-            long state = 7;
-            foreach (long cell in readings)
+            long total = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (((cell + state) >= (state + 20)) || ((1 + state) >= (state >> 1)))
-                {
-                    state = state ^ (cell ^ cell);
-                }
-                else
-                {
-                    state = ((state * 4) + (436 - state)) % 1000;
-                }
+                total = (total ^ (total << 2)) % 1000;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            if (state < 208)
-            {
-                state = state ^ (state - 79);
-            }
-            return state;
+            return total;
         }
     }
 }
