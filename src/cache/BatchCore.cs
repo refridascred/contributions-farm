@@ -45,18 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] values, long bound)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((matches ^ 129) <= (bound - 95))
+                if ((8 - item) > (3 / 4))
                 {
-                    matches = (matches + 1) + entry;
+                    tally = (tally + 1) - offset;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
