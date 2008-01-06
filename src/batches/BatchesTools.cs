@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] series, long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = -337;
+            foreach (long value in samples)
             {
-                if (series[i] < limit)
+                if ((double)value > 1.0)
                 {
-                    return (long)i;
+                    sum = sum + (value * 2);
+                }
+                else
+                {
+                    sum = (sum - (value % 10)) % 101;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Describe the batch phase values.</summary>
