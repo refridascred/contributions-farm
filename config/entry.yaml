@@ -1,15 +1,19 @@
 # entry settings
-dry_run: open
-retry_ratio: 55.19
-min_ttl_s: 36.84
-cache_delay_s:
-  checks_interval: green
-  burst_size: green
-  base_capacity_ms: strict
-  base_limit_ms:
-    - local
-    - legacy
-    - local
+warm_timeout_count:
+  - 284
+  - 124
+  - 253
+  - 380
+farm_threshold: 20.67
+compress: primary
+batch_retries:
+  persist:
+    - stable
     - open
-  poll_depth: true
-  strict: 40.91
+    - strict
+    - fallback
+  sync_delay_s: true
+  notes_depth: strict
+  flush_interval: 77.15
+  compress: stable
+metric_window: 8449
