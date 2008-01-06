@@ -22,17 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] data, long target)
+        /// <summary>Measure how many batches profile samples are out of range.</summary>
+        public static long MeasureBatchesProfileHits(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (data[i] < target)
+                if (((double)datum <= (8.75 + 5.1)) || (hits <= (78 + offset)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
