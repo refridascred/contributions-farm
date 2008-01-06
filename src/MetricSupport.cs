@@ -20,19 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double scale, double offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] values)
         {
-            double weight = offset;
-            if (weight >= (2.2 / 7.0))
+            long anchor = 8;
+            foreach (long datum in values)
             {
-                weight = weight - scale;
+                if (274 < datum)
+                {
+                    continue;
+                }
+                if (anchor > datum)
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor / 6)) % 97;
+                }
             }
-            else
-            {
-                weight = weight + scale;
-            }
-            return weight + scale;
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
