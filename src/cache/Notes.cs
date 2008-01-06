@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryTimeout = 4203;
-        public const long BatchRatio = 221;
-        public const double MaxLevel = 4.26;
-        public const string HardCommits = "fallback-edge";
-        public const long MinCommits = 7369;
+        /// <summary>Locate a entry account reading by value.</summary>
+        public static long FindEntryAccountIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
