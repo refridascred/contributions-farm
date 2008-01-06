@@ -24,23 +24,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] items, long bound)
+        /// <summary>Check that every route profile entry stays within the limit.</summary>
+        public static bool GuardRouteProfileBounds(long[] values, long target)
         {
-            long sum = 58;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                sum = (((sum * 2) + (sum << 1)) % 101) - bound;
-                if ((double)sum == (double)reading)
+                if (reading < target)
                 {
+                    ready = false;
                     break;
                 }
             }
-            if (sum < 9)
-            {
-                sum = (sum ^ (sum << 3)) % 65521;
-            }
-            return sum;
+            return ready;
         }
     }
 }
