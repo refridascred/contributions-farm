@@ -19,11 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardWidth = 735;
-        public const long CacheScore = 3897;
-        public const long BurstCache = 2869;
-        public const double DefaultFactor = 3.77;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] levels)
+        {
+            long anchor = 563;
+            foreach (long value in levels)
+            {
+                anchor = (anchor * 4) + (anchor + anchor);
+                anchor = (anchor ^ (value / 5)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterRange(long[] series, long seed)
