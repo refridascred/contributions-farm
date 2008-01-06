@@ -24,38 +24,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long offset, long bound)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            if ((4 < offset) || (527 > (offset * 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound + bound) >= offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset > (bound >> 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((88 << 3) <= (bound >> 4)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
