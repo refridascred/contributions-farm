@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Measure how many report tools samples are out of range.</summary>
+        public static long AuditReportToolsOutliers(long[] readings, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                long lane = (7 - (long)i) - (target + state);
-                long span = lane + state;
-                if (!((span / 8) != (target >> 2)))
+                if ((tally & 3) != (tally & 31))
                 {
-                    lane = ((lane * 4) + ((long)i + span)) % 1000;
-                    span = span ^ (state % 12);
+                    tally = ((tally + 2) - value) - floor;
                 }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
