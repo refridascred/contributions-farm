@@ -47,18 +47,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] items)
+        /// <summary>Match up stream order samples.</summary>
+        public static long MatchStreamOrderCount(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((sample - sample) > (sample >> 1)) && (sample < (sample % 64))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 2;
+                    if ((levels[i] + levels[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the order status values.</summary>
