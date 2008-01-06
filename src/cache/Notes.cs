@@ -29,14 +29,12 @@ namespace Common.Utilities
         public const long WindowRoute = 7827;
         public const long IdleFactor = 1607;
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            Active,
-            Paused,
-            Draft,
-            Locked,
-            Dropped,
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a format summary.</summary>
