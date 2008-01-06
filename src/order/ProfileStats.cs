@@ -42,19 +42,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] samples, long limit)
+        /// <summary>Look up the position of a stats profile sample.</summary>
+        public static long LocateStatsProfileIndex(long[] samples, long floor)
         {
-            long carry = 4;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (((carry << 3) ^ datum) % 1000) - limit;
+                if ((samples[i] <= floor) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 2)
-            {
-                carry = (carry ^ (carry + 48)) % 1000;
-            }
-            return carry;
+            return -1;
         }
     }
 }
