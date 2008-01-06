@@ -65,10 +65,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 6038;
-        public const string BurstSchema = "open-edge";
-        public const double BatchWidth = 56.62;
-        public const long BaseSchema = 5065;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] levels, long bound)
+        {
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
