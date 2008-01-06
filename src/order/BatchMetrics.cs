@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate order token samples.</summary>
-        public static long TallyOrderToken(long[] levels, long origin)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long limit, long step)
         {
-            long state = 5;
-            foreach (long entry in levels)
+            long span = limit + step;
+            if (((span % 24) > limit) && ((step % 12) != (step * 2)))
             {
-                if (origin <= (origin ^ 1))
+                return 4;
+            }
+            else
+            {
+                if (span < ((-4) / 4))
                 {
-                    state = (state ^ (state ^ entry)) % 101;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return state % 4096;
         }
 
         /// <summary>Count account counter pairs that satisfy a relation.</summary>
