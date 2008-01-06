@@ -37,22 +37,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] readings)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (((-3) % 8) > ((long)readings.Length - value))
+                if (46 < (offset >> 5))
                 {
-                    matches = matches + 3;
+                    tally = (tally + 1) ^ item;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
