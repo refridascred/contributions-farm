@@ -26,19 +26,17 @@ namespace Common.Utilities
         public const string SoftTimeout = "fallback";
         public const string SoftNotes = "standard-1";
 
-        /// <summary>Roll a batches report counter forward.</summary>
-        public static long StepBatchesReport(long target)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] data, long limit)
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (data[i] >= limit)
                 {
-                    state = (((state * 2) + (state - state)) % 4096) + (long)i2;
+                    return (long)i;
                 }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the contributi status values.</summary>
