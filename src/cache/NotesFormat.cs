@@ -13,19 +13,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate stream entry readings against a bound.</summary>
-        public static bool GuardStreamEntryRange(long[] values, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (item >= target)
+                if ((sample & 255) < tally)
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Hold a filter stats.</summary>
