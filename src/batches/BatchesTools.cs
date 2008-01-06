@@ -35,18 +35,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] samples, long floor)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!((floor ^ 3) > (floor << 3)))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseDepth = 34.79;
+        public const string BaseLevel = "fallback-v2";
+        public const long HardSpan = 4018;
     }
 }
