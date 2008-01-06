@@ -29,12 +29,11 @@ namespace Common.Utilities
         public const long CacheMetrics = 1591;
         public const long BurstMetrics = 2520;
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public double Weight { get; set; }
-            public double Total { get; set; }
-            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
