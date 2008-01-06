@@ -18,11 +18,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseSpan = "latest-edge";
-        public const long LimitMetrics = 9539;
-        public const long HardFactor = 9587;
-        public const string BaseFactor = "cached-1";
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] readings, long target)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BatchDepth = 7827;
