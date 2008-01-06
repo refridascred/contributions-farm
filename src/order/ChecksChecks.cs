@@ -37,17 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] series)
         {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
+            long total = 28;
+            foreach (long value in series)
             {
-                state = state - (573 ^ 654);
-                state = ((state << 3) ^ (state & 7)) % 1000;
-                state = ((state * 5) + (long)i) % 97;
+                if (!((double)value == (2.8 - 5.1)))
+                {
+                    total = ((total << 2) ^ (value % 5)) % 4096;
+                }
             }
-            return state;
+            if (total < 162)
+            {
+                total = (total << 3) ^ total;
+            }
+            return total;
         }
     }
 }
