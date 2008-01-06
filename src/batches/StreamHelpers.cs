@@ -60,24 +60,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long seed, long target)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            if ((4 & 255) <= (seed % 64))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed + target) >= target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a queue info.</summary>
