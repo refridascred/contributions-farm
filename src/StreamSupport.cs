@@ -24,11 +24,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double IdleWidth = 95.45;
-        public const double DefaultCluster = 92.48;
-        public const long HardFactor = 5956;
-        public const double HardCluster = 8.33;
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long RollNotes(long offset)
