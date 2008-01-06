@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double bias, double offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] items, long offset)
         {
-            double rate = offset;
-            if (rate >= offset)
+            long total = 139;
+            foreach (long sample in items)
             {
-                rate = (rate + rate) - bias;
+                if (!((total - sample) < (756 >> 5)))
+                {
+                    total = (((total * 4) + (sample % 60)) % 4096) - offset;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate + (rate - rate);
+            return total;
         }
 
         /// <summary>Hold a route info.</summary>
