@@ -18,22 +18,11 @@ namespace Common.Utilities
         public const long SoftSpan = 5699;
         public const double WindowCounter = 59.48;
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 8754;
+        public const string CacheStream = "strict-edge";
+        public const long IdleSize = 8825;
+        public const long IdleTimeout = 8585;
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
