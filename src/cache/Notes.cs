@@ -29,12 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a cache options.</summary>
