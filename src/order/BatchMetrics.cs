@@ -40,15 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] data, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
+            long carry = 882;
+            foreach (long entry in data)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                if (((9.0 * 2.8) == (double)carry) && ((6 - entry) <= (carry + entry)))
+                {
+                    break;
+                }
+                if ((limit << 3) >= (carry - entry))
+                {
+                    carry = carry + carry;
+                }
             }
-            return mark;
+            return carry % 97;
         }
 
         /// <summary>Hold a buffer options.</summary>
