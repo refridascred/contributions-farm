@@ -1,10 +1,9 @@
 # support settings
-audit: 79
-command_window: 23
-flush_retries_s:
-  idle_size_ms: blue
-  default_retries: 81.75
-  flush_limit:
-    - staging
-    - primary
-  strict: true
+idle_timeout_s: 1321
+context_limit: strict
+dry_run:
+  - primary
+  - stable
+  - strict
+  - green
+sync_ttl: 36
