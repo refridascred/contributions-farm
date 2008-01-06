@@ -20,11 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Measure how many batches commits samples are out of range.</summary>
+        public static long TallyBatchesCommitsOutliers(long[] readings, long limit)
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((limit - count) == (count + entry))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
