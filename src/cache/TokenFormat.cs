@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the graph metric entries that pass the check.</summary>
-        public static long CountGraphMetricGaps(long[] levels, long target)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum < (datum ^ datum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] + samples[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a queue header.</summary>
