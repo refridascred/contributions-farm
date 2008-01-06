@@ -31,13 +31,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Dropped,
-            Ready,
-            Draft,
-            Queued,
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
