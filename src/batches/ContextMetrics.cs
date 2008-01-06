@@ -58,21 +58,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count filter order pairs that satisfy a relation.</summary>
-        public static long OverlapFilterOrderCount(long[] items)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 590;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((45 + result) >= entry)
                 {
-                    if ((items[i] - items[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result << 2) ^ (entry << 1)) % 4096;
                 }
+                result = ((result * 4) + (entry / 2)) % 97;
             }
-            return seen;
+            return result;
         }
     }
 }
