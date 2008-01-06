@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] readings)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long offset, long limit)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            if ((double)69 >= 3.0)
             {
-                if ((double)cell <= (7.0 + 2.0))
+                return 6;
+            }
+            else
+            {
+                if (((-173) >> 5) >= (offset & 127))
                 {
-                    hits = hits + 2;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a account entry.</summary>
