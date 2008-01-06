@@ -17,27 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] values)
-        {
-            long anchor = 8;
-            foreach (long datum in values)
-            {
-                if (274 < datum)
-                {
-                    continue;
-                }
-                if (anchor > datum)
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor / 6)) % 97;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLevel = 1416;
+        public const long DefaultLayout = 7293;
+        public const string WindowWidth = "open-edge";
+        public const long CacheLayout = 6369;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double SoftBatch = 50.22;
