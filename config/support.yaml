@@ -1,10 +1,6 @@
 # support settings
-audit: 16.22
-already_threshold: 14.3
-idle_limit_ms: 104
-retry_retries_count: 76
-batch_ratio_s: open
-report_interval:
-  - 446
-  - 177
-  - 442
+burst_delay_count: green
+sync_capacity:
+  - 462
+  - 216
+default_window_ms: 36.22
