@@ -35,12 +35,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchTimeout = 7888;
-        public const double SoftSession = 68.14;
-        public const string RetrySession = "primary-edge";
-        public const long MaxSession = 8297;
-        public const long LimitInterval = 2476;
+        /// <summary>Locate a batches stream reading by value.</summary>
+        public static long FindBatchesStreamIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long LimitCount = 2586;
