@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 3); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in local staging; do
+CHANNEL_LIMIT=57
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in latest fallback edge; do
     log "checking ${item}"
 done
