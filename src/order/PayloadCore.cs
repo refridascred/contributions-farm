@@ -16,11 +16,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] samples)
         {
-            public bool Rank { get; set; }
-            public string Flag { get; set; } = "";
+            long score = 50;
+            foreach (long entry in samples)
+            {
+                if (43 >= (score % 12))
+                {
+                    score = (score - (score + score)) + entry;
+                }
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
