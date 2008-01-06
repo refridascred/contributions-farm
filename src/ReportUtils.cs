@@ -27,11 +27,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepScore = "open-v2";
-        public const double CacheRoute = 46.7;
-        public const string HardRoute = "open-edge";
-        public const long IdleInterval = 1307;
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long FoldQueue(long[] levels, long step)
