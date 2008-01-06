@@ -1,20 +1,18 @@
 # entry settings
-burst_ttl_s: false
-sync_retries_s: true
-min_ratio: true
-soft_delay:
-  dry_run: 5
-  report_ttl: edge
-  audit:
-    sync_threshold: 9733
-    readonly: false
-    cache_limit_s: 7433
-    min_window_count:
-      - staging
-      - legacy
-      - blue
-      - legacy
-    burst_window: stable
-    enabled: edge
-  soft_timeout_s: green
-  compress: 74
+base_timeout_count: false
+retry_depth_count: legacy
+dry_run:
+  - 391
+  - 346
+  - 455
+audit: 41
+default_threshold_pct:
+  - cached
+  - eu-west
+  - standard
+  - fallback
+sync_depth_s:
+  - 120
+  - 261
+  - 25
+  - 343
