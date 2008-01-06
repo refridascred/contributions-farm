@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long RetryCount = 4275;
         public const long LimitBudget = 5327;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] values, long limit)
         {
-            public double Limit { get; set; }
-            public bool Stamp { get; set; }
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
