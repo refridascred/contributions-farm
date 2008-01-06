@@ -13,19 +13,24 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] data, long offset)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long floor)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (entry < offset)
+                if ((long)i < (floor * 2))
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor ^ (floor + (long)i)) % 255;
                 }
+                else
+                {
+                    anchor = (anchor + floor) % 1000;
+                }
+                anchor = (anchor ^ (floor ^ 21)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
