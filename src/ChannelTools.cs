@@ -22,12 +22,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public double Score { get; set; }
-            public string Label { get; set; } = "";
-            public bool Offset { get; set; }
+            Pending,
+            Idle,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the format kind values.</summary>
