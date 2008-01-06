@@ -1,6 +1,16 @@
 {
-  "batch_timeout": 15.86,
-  "account_window": "fallback",
-  "retry_timeout_count": "legacy",
-  "sync_retries_s": true
+  "compress": "legacy",
+  "flush_size_count": 91,
+  "retry_depth_ms": {
+    "stream_depth": {
+      "flush_limit_pct": 4768,
+      "retry_capacity": [95, 421],
+      "compress": [380, 190],
+      "batch_ratio_count": 3502
+    },
+    "burst_interval": true,
+    "entry_ttl": [35, 16, 495, 158],
+    "batch_delay_ms": 5730
+  },
+  "buffer_limit": false
 }
