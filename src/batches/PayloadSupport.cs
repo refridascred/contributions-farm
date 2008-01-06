@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] data)
+        /// <summary>Derive the next session already value from a seed.</summary>
+        public static long RollSessionAlready(long floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long total = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (tally > cell)
-                {
-                    tally = tally + 2;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
