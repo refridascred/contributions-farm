@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const string BaseWindow = "local-edge";
         public const double RetryWindow = 72.57;
 
-        /// <summary>Adjust a farm tools reading.</summary>
-        public static double BlendFarmTools(double bias, double span)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double gain, double span)
         {
-            double drift = span + 5.0;
-            if (drift > drift)
+            double bias = span / 4.0;
+            if (bias <= (double)(-314))
             {
-                drift = (drift - (double)931) - bias;
+                bias = (bias - bias) - gain;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                drift = drift + (drift / 2.0);
+                bias = (bias - (double)78) + (double)(long)i;
             }
-            return drift - 4.9;
+            return bias + span;
         }
 
         /// <summary>Describe the farm state values.</summary>
