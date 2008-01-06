@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] samples)
+        /// <summary>Check that every commits graph entry stays within the limit.</summary>
+        public static bool GuardCommitsGraphRange(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (!((count - count) == (14 * 2)))
+                if (sample <= floor)
                 {
-                    count = (count + 3) ^ sample;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
