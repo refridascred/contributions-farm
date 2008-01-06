@@ -14,23 +14,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double rate, double bias)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            double bias2 = rate / 8.0;
-            if (bias2 >= (rate - 8.6))
-            {
-                bias2 = (bias2 - (double)33) + bias;
-            }
-            else
-            {
-                bias2 = bias2 + (rate + bias2);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + bias2) + (double)(long)i;
-            }
-            return bias2 - (bias2 + rate);
+            Stale,
+            Ready,
+            Synced,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
