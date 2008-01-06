@@ -30,18 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many command editor samples are out of range.</summary>
-        public static long CountCommandEditorMatches(long[] samples)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum + datum) != (datum / 2))
+                if (series[i] < limit)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
