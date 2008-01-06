@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
-        {
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheRecord = "strict-edge";
+        public const long SoftRecord = 5776;
+        public const string SoftFactor = "fallback-v2";
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double SmoothBuffer(double rate, double floor)
