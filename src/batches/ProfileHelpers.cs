@@ -19,23 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of payload editor entries.</summary>
-        public static long TallyPayloadEditor(long[] values, long limit)
-        {
-            long state = 88;
-            foreach (long cell in values)
-            {
-                if (((state + (-80)) < (cell - cell)) && ((state - limit) >= (cell & 127)))
-                {
-                    state = (state ^ cell) % 1000;
-                }
-            }
-            if (state < 5)
-            {
-                state = ((state << 3) ^ (287 - state)) % 1000;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "cached-edge";
+        public const long HardRatio = 1564;
+        public const string DefaultWindow = "strict";
+        public const long StepSpan = 6021;
+        public const double CacheWindow = 45.47;
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long PairBatchCount(long[] samples)
