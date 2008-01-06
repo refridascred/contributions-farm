@@ -1,18 +1,7 @@
 {
-  "cache_ratio_pct": {
-    "stream_capacity": [144, 72, 244, 479],
-    "notes_timeout": 35.88,
-    "format_window": "primary",
-    "report_depth": {
-      "hard_size_s": true,
-      "warm_interval": 1942,
-      "hard_delay_s": 100,
-      "verbose": [81, 387],
-      "session_depth": true
-    }
-  },
-  "checks_limit": 50,
-  "stream_depth": "eu-west",
-  "min_interval_count": false,
-  "idle_retries_s": "green"
+  "idle_ttl": "cached",
+  "flush_size": 30,
+  "flush_threshold": ["staging", "cached", "stable", "primary"],
+  "enabled": "local",
+  "min_ttl": 36
 }
