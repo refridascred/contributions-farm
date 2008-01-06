@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a schema stats counter forward.</summary>
-        public static long DeriveSchemaStats(long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] values, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                long cur = offset >> 3;
-                score = (score ^ (score + cur)) % 4096;
-                score = ((score * 3) + (long)i) % 1000;
+                if (hits < ((-762) ^ cell))
+                {
+                    hits = (hits + 3) + step;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a format info.</summary>
