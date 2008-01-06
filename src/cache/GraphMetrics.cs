@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] levels, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 13;
+            foreach (long cell in series)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = (((total - (total >> 1)) % 65521) + cell) + floor;
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
