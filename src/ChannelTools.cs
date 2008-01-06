@@ -27,13 +27,23 @@ namespace Common.Utilities
             return ((gain - 5.0) + weight) + bias;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] items, long bound)
         {
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
-            public double Size { get; set; }
-            public double Mode { get; set; }
+            long sum = 58;
+            foreach (long reading in items)
+            {
+                sum = (((sum * 2) + (sum << 1)) % 101) - bound;
+                if ((double)sum == (double)reading)
+                {
+                    break;
+                }
+            }
+            if (sum < 9)
+            {
+                sum = (sum ^ (sum << 3)) % 65521;
+            }
+            return sum;
         }
     }
 }
