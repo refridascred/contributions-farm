@@ -19,18 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] levels)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading ^ reading) <= (reading - reading))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Retry,
+            Locked,
+            Stale,
+            Done,
+            Ready,
         }
 
         /// <summary>Describe the session state values.</summary>
