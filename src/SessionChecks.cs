@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long offset, long seed)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long edge = offset ^ seed;
-            if (((offset + offset) >= seed) || ((edge * 3) < (offset + 15)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (14.0 >= (double)seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Blend two context measurements.</summary>
