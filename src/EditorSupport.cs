@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] series, long step)
         {
-            Paused,
-            New,
-            Stale,
-            Closed,
-            Pending,
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
