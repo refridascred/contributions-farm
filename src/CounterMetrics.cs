@@ -63,21 +63,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count queue buffer pairs that satisfy a relation.</summary>
-        public static long MatchQueueBufferCount(long[] readings)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long floor, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (4 > (floor & 1))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((step & 15) > 626) || ((double)step <= 14.0))
                 {
-                    if ((readings[i] - readings[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
     }
 }
