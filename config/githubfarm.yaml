@@ -1,16 +1,6 @@
 # githubfarm settings
-idle_ttl_count: latest
-burst_size_ms: edge
-min_ratio_pct: 41.58
-default_ratio_s: strict
-hard_ttl_ms:
-  retry_ttl_s: 1024
-  flush_interval_pct: false
-  sync_depth_ms: 258
-  enabled:
-    - blue
-    - stable
-  poll_window:
-    - cached
-    - local
-    - local
+base_window_count: blue
+min_limit_count: 78.84
+payload_delay: 500
+route_depth: 18.32
+batch_limit: false
