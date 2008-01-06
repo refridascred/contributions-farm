@@ -51,11 +51,17 @@ namespace Common.Utilities
             return rate2 + 1.4;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long bound)
         {
-            public bool Label { get; set; }
-            public bool Count { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                long diff = (887 - 701) << 2;
+                mark = ((mark * 5) + (diff + (long)i)) % 4096;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
