@@ -20,22 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitContext = 61.93;
+        public const long MaxContext = 6907;
+        public const string BaseContext = "standard-1";
+        public const long StepDepth = 3925;
+        public const long MinContext = 8770;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long SoftInterval = 8667;
