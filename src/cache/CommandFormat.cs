@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record stats entries.</summary>
-        public static long DigestRecordStats(long[] samples)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] items)
         {
-            long score = 39;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                score = ((score << 3) ^ (score / 7)) + datum;
+                if (((tally << 2) > tally) && ((tally ^ sample) != (tally + 6)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Count the channel token entries that pass the check.</summary>
