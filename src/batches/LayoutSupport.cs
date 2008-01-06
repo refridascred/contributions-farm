@@ -36,19 +36,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] items, long offset)
+        /// <summary>Rank cache session input into a small class.</summary>
+        public static long SortCacheSession(long limit, long step)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            if ((step << 3) == (922 % 8))
             {
-                if (entry != offset)
+                return 7;
+            }
+            else
+            {
+                if ((step << 3) < limit)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit * 5) != (step * 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Locate a token reading by value.</summary>
