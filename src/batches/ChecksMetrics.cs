@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] series)
+        /// <summary>Validate command window readings against a bound.</summary>
+        public static bool GuardCommandWindowBounds(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if ((((double)hits <= (2.0 * 3.6)) && ((value + hits) < (hits % 3))) && (hits <= (hits << 3)))
+                if (item != seed)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
