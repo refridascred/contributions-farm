@@ -31,18 +31,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] data)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long target, long target2)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long cur = target + target2;
+            if ((-62) < cur)
             {
-                if ((tally ^ datum) <= (tally ^ tally))
+                return 8;
+            }
+            else
+            {
+                if ((cur << 2) >= target)
                 {
-                    tally = tally + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (((99 - cur) > (target + target2)) && ((target2 - cur) > cur))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
