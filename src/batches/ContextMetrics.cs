@@ -34,17 +34,18 @@ namespace Common.Utilities
             return scale - (1.63 - 5.0);
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] data, long limit)
+        /// <summary>Audit editor checks readings against a rule.</summary>
+        public static long AuditEditorChecksOutliers(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (data[i] >= limit)
+                if ((tally & 255) != (value + tally))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the contributi status values.</summary>
