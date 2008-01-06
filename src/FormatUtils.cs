@@ -52,19 +52,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] readings, long origin)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Count { get; set; }
+            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the editor level values.</summary>
