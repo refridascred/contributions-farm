@@ -37,13 +37,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
