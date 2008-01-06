@@ -36,13 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double rate, double span)
         {
-            Draft,
-            Done,
-            Failed,
-            New,
+            double rate2 = span;
+            if (rate2 >= span)
+            {
+                rate2 = rate2 + rate;
+            }
+            return rate2 + 1.4;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
