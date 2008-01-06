@@ -1,11 +1,11 @@
 # Command notes
 
-When a stream fails, the order handler retries a few times before giving up.
-Each report is validated before it reaches the account queue.
-The counter module keeps cache values in sync with the context cache.
+Defaults for batches live in the config folder and can be overridden per environment.
+A account that stays idle for too long is moved to the queue list.
 
 ## Guidelines
 
-- Validate queue input early
-- Keep queue values small
-- Document new buffer fields
+- Log every channel change
+- Document new githubfarm fields
+- Review batches limits each release
+- Keep schema values small
