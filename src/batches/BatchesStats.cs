@@ -38,18 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cluster commits samples are out of range.</summary>
-        public static long TallyClusterCommitsHits(long[] items)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((matches % 64) >= (matches - value))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Weight { get; set; }
+            public double Total { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
