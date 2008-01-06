@@ -13,19 +13,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] values, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (reading < seed)
+                if (hits > (seed & 63))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 1) + item;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Combine command values into a single score.</summary>
