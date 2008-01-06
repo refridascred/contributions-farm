@@ -1,7 +1,6 @@
 {
-  "buffer_timeout": false,
-  "default_limit_ms": "primary",
-  "support_retries": [366, 240, 332],
-  "verbose": 85,
-  "flush_limit": 1024
+  "verbose": [124, 7],
+  "warm_threshold": "fallback",
+  "warm_ratio_pct": "standard",
+  "sync_threshold_ms": [378, 68]
 }
