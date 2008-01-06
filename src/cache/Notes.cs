@@ -29,20 +29,14 @@ namespace Common.Utilities
         public const long WindowRoute = 7827;
         public const long IdleFactor = 1607;
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long limit)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long anchor = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    anchor = anchor ^ ((long)i2 ^ limit);
-                    anchor = (anchor - (long)i) % 255;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            Active,
+            Paused,
+            Draft,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Fold a list of editor window readings.</summary>
