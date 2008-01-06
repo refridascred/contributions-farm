@@ -44,18 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order format readings against a rule.</summary>
-        public static long CountOrderFormatGaps(long[] items)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((matches ^ reading) < (reading >> 5))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
