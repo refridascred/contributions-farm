@@ -13,12 +13,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] items)
         {
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (((17.0 * 0.36) == (double)seen) || ((double)seen != (2.8 + 8.0)))
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a batch reading.</summary>
