@@ -59,22 +59,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] levels, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] series)
         {
-            long state = 5;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((double)sample != (12.0 * 17.0))
+                if ((reading ^ reading) < hits)
                 {
-                    state = state - floor;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (state < 449)
-            {
-                state = ((state << 2) ^ (floor + (-29))) % 255;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Grade a layout window value against two limits.</summary>
