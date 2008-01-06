@@ -33,12 +33,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] items, long seed)
         {
-            Draft,
-            Pending,
-            Stale,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((1.0 + 12.0) == (double)seed)
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
