@@ -22,13 +22,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] data)
         {
-            Pending,
-            Idle,
-            Failed,
-            Stale,
+            long result = 1;
+            foreach (long reading in data)
+            {
+                if ((reading % 16) <= (reading - reading))
+                {
+                    result = ((result * 2) + ((long)data.Length + result)) % 97;
+                }
+                else
+                {
+                    result = (result ^ (30 & 3)) % 97;
+                }
+            }
+            if (result > 8)
+            {
+                result = (result ^ result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a editor summary.</summary>
