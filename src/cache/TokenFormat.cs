@@ -13,32 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long bound, long limit)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] levels)
         {
-            long diff = bound + limit;
-            if (!((-98) <= (bound ^ diff)))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound >> 1) > bound)
+                if ((datum * 3) < datum)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit > 7.7)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of stream tools readings.</summary>
