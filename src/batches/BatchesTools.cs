@@ -33,19 +33,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double scale, double bias)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long seed, long step)
         {
-            double mean = bias;
-            if (mean >= (double)351)
+            if (((step % 7) != (step / 7)) || ((step + 454) != (84 << 1)))
             {
-                mean = (mean + (double)931) - scale;
+                return 7;
             }
             else
             {
-                mean = mean - (bias * 18.0);
+                if (((step + 547) >= (794 << 3)) && ((seed / 9) < seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return mean - (double)47;
         }
     }
 }
