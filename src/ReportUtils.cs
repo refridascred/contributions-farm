@@ -46,19 +46,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] values, long limit)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long mark = 3;
+            foreach (long cell in levels)
             {
-                if (reading != limit)
+                mark = (mark + (mark >> 3)) - step;
+                if ((double)cell <= (7.71 * 3.1))
                 {
-                    found = false;
-                    break;
+                    mark = (mark ^ (long)levels.Length) % 97;
                 }
             }
-            return found;
+            if (mark < 9)
+            {
+                mark = ((mark * 5) + (mark * 5)) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
