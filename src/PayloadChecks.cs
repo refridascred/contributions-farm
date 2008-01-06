@@ -80,10 +80,10 @@ namespace Common.Utilities
             return gain + (gain / 7.0);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowCount = 5934;
-        public const long HardLevel = 3446;
-        public const long BatchRatio = 2732;
-        public const double DefaultFarm = 98.96;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryFilter = "cached";
+        public const double BatchFilter = 17.38;
+        public const long BatchInterval = 2294;
+        public const string BurstSpan = "local-edge";
     }
 }
