@@ -22,17 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] values, long bound)
+        /// <summary>Measure how many batches cluster samples are out of range.</summary>
+        public static long MeasureBatchesClusterOutliers(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((values[i] >= bound) && ((values[i] % 3) == 0))
+                if ((double)seed > (double)datum)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine already values into a single score.</summary>
