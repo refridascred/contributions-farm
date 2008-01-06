@@ -46,31 +46,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Classify a queue graph pair into a bucket.</summary>
-        public static long RankQueueGraph(long limit, long seed)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] samples, long step)
         {
-            if ((0.8 / 7.0) != (double)seed)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit % 2) > (limit + seed))
+                if (samples[i] <= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)seed < (8.0 + 4.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
