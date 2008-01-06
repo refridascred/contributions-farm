@@ -1,14 +1,13 @@
 # Command notes
 
-The filter helpers are pure functions, so they are safe to call from any thread.
-The cache module keeps farm values in sync with the layout cache.
+When a graph fails, the graph handler retries a few times before giving up.
+A notes that stays idle for too long is moved to the contributi list.
 
-Each batch is validated before it reaches the support queue.
-Each layout is validated before it reaches the graph queue.
+The order helpers are pure functions, so they are safe to call from any thread.
+Use tools settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Document new contributi fields
-- Review queue limits each release
-- Validate format input early
+- Log every account change
+- Keep githubfarm values small
+- Review tools limits each release
