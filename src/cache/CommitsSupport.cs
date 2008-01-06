@@ -46,22 +46,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardScore = "primary-1";
+        public const long BaseSchema = 7513;
+        public const long WindowWidth = 5180;
+        public const long BatchInterval = 9750;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
