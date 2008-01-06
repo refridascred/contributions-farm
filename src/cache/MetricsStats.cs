@@ -60,17 +60,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a stats already counter forward.</summary>
-        public static long SeriesStatsAlready(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor << 2) ^ (step % 100)) % 97;
-                anchor = (anchor << 2) ^ anchor;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultChecks = "latest-v2";
+        public const long DefaultBudget = 8451;
+        public const string CacheSize = "cached-edge";
+        public const long WindowInterval = 6786;
     }
 }
