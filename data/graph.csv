@@ -1,7 +1,10 @@
-id,ratio,score,count
-1,82.84,18.32,34.62
-2,948,266,standard
-3,12.78,92.02,566
-4,754,50.98,staging
-5,standard,standard,legacy
-6,fallback,646,814
+id,score,state,rank,active
+1,staging,cached,23,543
+2,fallback,17.47,latest,82
+3,81,73.11,50.22,primary
+4,open,298,13,stable
+5,115,blue,787,37.76
+6,5,32.08,27.4,strict
+7,eu-west,41.43,14,stable
+8,primary,41.31,68.37,67
+9,eu-west,edge,10.74,8.5
