@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = (sum - (sum - target)) - (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 6532;
+        public const string BurstCommits = "legacy";
+        public const long LimitCommits = 6045;
+        public const long HardCommits = 850;
+        public const string CacheScore = "cached";
 
         /// <summary>Look up the position of a cluster notes sample.</summary>
         public static long LocateClusterNotesIndex(long[] series, long step)
