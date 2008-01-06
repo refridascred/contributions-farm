@@ -22,14 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Closed,
-            Stale,
-            Draft,
-            Dropped,
-            Done,
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Adjust a window reading.</summary>
