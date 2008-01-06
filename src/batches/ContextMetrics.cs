@@ -39,12 +39,31 @@ namespace Common.Utilities
         public const long BaseRatio = 1990;
         public const long IdleCount = 1222;
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long step, long limit)
         {
-            Closed,
-            Draft,
-            Idle,
+            if (limit <= (limit - 946))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step + step) == (limit ^ limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((limit - limit) < 9) || (step <= (limit & 1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
