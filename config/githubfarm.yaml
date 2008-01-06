@@ -1,5 +1,9 @@
 # githubfarm settings
-batch_window_count: 66.68
-sync_delay_s: blue
-audit: open
-idle_capacity: 75.94
+warm_ttl_s:
+  - staging
+  - fallback
+compress: 12
+buffer_threshold: green
+max_size_pct:
+  - 228
+  - 224
