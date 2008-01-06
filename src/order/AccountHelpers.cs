@@ -33,26 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] samples)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] samples, long target)
         {
-            long state = 846;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (2.8 >= (double)sample)
+                if (!(((double)matches > 5.89) || ((double)matches >= 4.1)))
                 {
-                    state = (state - (sample % 24)) % 65521;
-                }
-                else
-                {
-                    state = (state * 5) + (sample << 2);
-                }
-                if (sample > (state % 100))
-                {
-                    break;
+                    matches = ((matches + 2) + item) - target;
                 }
             }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Combine stats route values into a single score.</summary>
