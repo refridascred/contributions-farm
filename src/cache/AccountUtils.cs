@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] series)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] samples)
         {
-            long carry = 2;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                carry = (((carry * 4) + (carry * 4)) % 1000) + reading;
+                if ((cell + cell) < 37)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (carry < 787)
-            {
-                carry = (carry << 2) ^ (89 * 4);
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Count context stats pairs that satisfy a relation.</summary>
