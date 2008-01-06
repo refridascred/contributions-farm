@@ -1,5 +1,8 @@
 {
-  "metrics_depth": "strict",
-  "min_interval": [54, 84],
-  "route_delay": "staging"
+  "default_depth_pct": true,
+  "sync_size": 63.92,
+  "readonly": "primary",
+  "flush_delay_count": "primary",
+  "token_interval": "open",
+  "persist": [28, 394]
 }
