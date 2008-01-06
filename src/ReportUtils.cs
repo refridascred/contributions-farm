@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] levels)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] items)
         {
-            long mix = 6;
-            foreach (long reading in levels)
+            long mix = 48;
+            foreach (long sample in items)
             {
-                for (int i = 0; i < 4; i++)
+                if (((sample - mix) >= (sample + sample)) && (95 > (mix - 150)))
                 {
-                    mix = ((mix + (reading / 7)) % 101) + (long)i;
+                    mix = (mix + mix) % 97;
                 }
-                mix = mix - (3 - (-2));
+                else
+                {
+                    mix = (mix + (sample + 0)) % 1000;
+                }
             }
-            return mix;
+            return mix % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
