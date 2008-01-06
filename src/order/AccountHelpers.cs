@@ -41,25 +41,18 @@ namespace Common.Utilities
         public const long DefaultSize = 4994;
         public const string DefaultChannel = "strict-edge";
 
-        /// <summary>Grade a notes batch value against two limits.</summary>
-        public static long BucketNotesBatch(long bound, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] series, long floor)
         {
-            long diff = bound + origin;
-            if ((double)bound != (8.6 / 9.0))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((diff - origin) < (5 & 31)))
+                if (((reading * 4) != (matches + floor)) || ((matches >= (reading >> 5)) || ((floor + floor) <= (reading * 2))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
