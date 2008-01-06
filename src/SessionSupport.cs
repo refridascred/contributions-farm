@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long offset, long limit)
+        /// <summary>Derive the next batch payload value from a seed.</summary>
+        public static long IterateBatchPayload(long bound)
         {
-            if ((double)69 >= 3.0)
+            long carry = bound;
+            for (int i = 0; i < 7; i++)
             {
-                return 6;
+                carry = (carry - (bound + carry)) % 4096;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (((-173) >> 5) >= (offset & 127))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a account entry.</summary>
