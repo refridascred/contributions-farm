@@ -71,22 +71,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of window entry readings.</summary>
-        public static long DigestWindowEntry(long[] series, long floor)
-        {
-            long mix = 87;
-            foreach (long reading in series)
-            {
-                if (!((reading >> 1) < (mix % 100)))
-                {
-                    mix = (mix * 2) + reading;
-                }
-            }
-            if (mix < 8)
-            {
-                mix = (mix << 2) ^ (floor & 7);
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 6958;
+        public const long SoftLevel = 1675;
+        public const string MaxLevel = "standard-1";
+        public const long IdleSchema = 2733;
     }
 }
