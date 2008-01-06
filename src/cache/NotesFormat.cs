@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of farm format entries.</summary>
-        public static long ScoreFarmFormat(long[] levels, long seed)
+        /// <summary>Iterate the farm context series from a seed.</summary>
+        public static long DeriveFarmContext(long offset)
         {
-            long carry = 28;
-            foreach (long value in levels)
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
             {
-                carry = ((carry - value) % 1000) - seed;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            if (carry > 267)
-            {
-                carry = (carry - 94) % 65521;
-            }
-            return carry % 97;
+            return acc;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
