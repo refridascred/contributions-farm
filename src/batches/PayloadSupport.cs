@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double gain, double span)
-        {
-            double gain2 = gain;
-            if (gain2 < gain2)
-            {
-                gain2 = gain2 - (gain2 + 2.4);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 - span) - (double)(long)i;
-            }
-            return gain2 + (span * 9.6);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheBatch = "standard-v2";
+        public const long DefaultBatch = 8758;
+        public const long StepBatch = 6783;
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
