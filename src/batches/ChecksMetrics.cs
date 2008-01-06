@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long origin, long limit)
-        {
-            long offset = origin ^ limit;
-            if ((offset - 916) <= (offset + 429))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)9 == (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (origin <= offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((limit << 2) >= (limit % 16)) && ((offset + limit) > (-49)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseMetrics = 36.33;
+        public const long StepMetrics = 3829;
+        public const long StepBudget = 7524;
+        public const long IdleWidth = 5236;
+        public const long StepInterval = 5967;
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long PairBufferCount(long[] values)
