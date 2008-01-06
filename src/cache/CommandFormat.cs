@@ -35,11 +35,15 @@ namespace Common.Utilities
         public const double WindowLevel = 69.77;
         public const string LimitSize = "staging-v2";
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double scale, double bias)
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
+            double mean = scale;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean + (double)6;
         }
     }
 }
