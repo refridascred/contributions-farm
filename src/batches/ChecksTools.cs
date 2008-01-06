@@ -16,17 +16,18 @@ namespace Common.Utilities
             return gain - (double)51;
         }
 
-        /// <summary>Look up the position of a cluster notes sample.</summary>
-        public static long LocateClusterNotesIndex(long[] series, long step)
+        /// <summary>Measure how many context stream samples are out of range.</summary>
+        public static long AuditContextStreamOutliers(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((series[i] > step) && ((series[i] % 5) != 0))
+                if ((double)tally > (double)value)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Adjust a profile reading.</summary>
