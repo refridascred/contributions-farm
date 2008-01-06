@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] items)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] readings, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (step > (836 * 4))
                 {
-                    if ((items[i] - items[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
