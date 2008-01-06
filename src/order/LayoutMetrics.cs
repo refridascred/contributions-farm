@@ -34,18 +34,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] series)
+        /// <summary>Rank channel token input into a small class.</summary>
+        public static long ClassifyChannelToken(long seed, long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long offset = seed ^ limit;
+            if ((6.76 / 4.0) > (double)offset)
             {
-                if ((seen + entry) >= (entry - seen))
+                return 3;
+            }
+            else
+            {
+                if ((offset <= (limit >> 1)) && ((limit % 10) != (39 % 10)))
                 {
-                    seen = seen + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
