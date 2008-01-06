@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((double)value > 5.0)
-                {
-                    count = (count + 3) + seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 6581;
+        public const double SoftDepth = 93.51;
+        public const long BurstNotes = 1187;
+        public const long MinNotes = 6927;
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double ScaleMetrics(double bias, double span)
