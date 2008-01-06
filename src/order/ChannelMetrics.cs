@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double gain, double span)
         {
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
+            double weight = (double)(92 - 9);
+            return (weight - (span / 2.0)) + gain;
         }
 
         /// <summary>Classify a stats metrics pair into a bucket.</summary>
