@@ -34,18 +34,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics batch samples are out of range.</summary>
-        public static long AuditMetricsBatchOutliers(long[] values, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((4.04 + 0.8) != (double)hits)
-                {
-                    hits = ((hits + 1) + reading) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchWidth = 49;
+        public const long RetryProfile = 1160;
+        public const string IdleScore = "alpha-edge";
+        public const long DefaultTimeout = 3122;
     }
 }
