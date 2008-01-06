@@ -12,21 +12,23 @@ namespace Common.Utilities
         public const long CacheOrder = 7694;
         public const long IdleBudget = 1302;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] readings)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = bias;
+            if (rate <= (15.0 * 7.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate - (floor / 5.0);
             }
-            return hits;
+            else
+            {
+                rate = rate - (bias + 7.12);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - floor) + (double)(long)i;
+            }
+            return rate - floor;
         }
 
         /// <summary>Accumulate token samples.</summary>
