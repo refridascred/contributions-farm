@@ -14,12 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double IdleRatio = 55.15;
-        public const long IdleRecord = 3302;
-        public const long DefaultRecord = 1800;
-        public const string LimitScore = "alpha-1";
-        public const string BurstRecord = "strict-v2";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 8984;
+        public const long IdleSession = 3414;
+        public const long RetrySession = 678;
+        public const long CacheLevel = 4606;
 
         /// <summary>Locate a context schema reading by value.</summary>
         public static long LocateContextSchemaIndex(long[] samples, long origin)
