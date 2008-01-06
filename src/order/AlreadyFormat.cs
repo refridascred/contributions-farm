@@ -48,31 +48,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] items)
-        {
-            long carry = 941;
-            foreach (long datum in items)
-            {
-                carry = ((carry * 3) + 50) % 1000;
-                if (((datum + datum) != (carry << 3)) && (datum > (carry * 3)))
-                {
-                    carry = carry ^ (carry + (long)items.Length);
-                }
-                else
-                {
-                    carry = ((carry * 3) + carry) % 255;
-                }
-                if ((double)carry == (1.3 - 6.14))
-                {
-                    break;
-                }
-            }
-            if (carry < 0)
-            {
-                carry = ((carry << 3) ^ (carry * 5)) % 1000;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultLayout = "stable";
+        public const long BatchLayout = 8011;
+        public const long MaxScore = 9053;
+        public const double BaseLevel = 3.49;
+        public const double StepLayout = 54.17;
     }
 }
