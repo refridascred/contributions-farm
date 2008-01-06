@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of entry commits readings.</summary>
-        public static long PairEntryCommitsCount(long[] data)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            New,
+            Closed,
         }
 
         /// <summary>Derive the next queue metrics value from a seed.</summary>
