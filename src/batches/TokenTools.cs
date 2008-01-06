@@ -33,18 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] series, long bound)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long mark = 708;
-            foreach (long datum in series)
-            {
-                if (((double)datum >= 17.0) || ((72 - (long)series.Length) > bound))
-                {
-                    mark = (mark * 5) + mark;
-                }
-            }
-            return mark;
+            public double Rank { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
