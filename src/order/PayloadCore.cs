@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 8638;
-        public const double SoftWindow = 46.41;
-        public const string IdleWindow = "latest-1";
-        public const long BatchWindow = 2273;
-        public const string MaxWindow = "cached-edge";
+        /// <summary>Accumulate queue contributi samples.</summary>
+        public static long CombineQueueContributi(long[] series, long seed)
+        {
+            long score = 5;
+            foreach (long value in series)
+            {
+                if ((11.0 - 9.4) <= (double)seed)
+                {
+                    score = (score ^ (score >> 1)) ^ value;
+                }
+            }
+            if (score > 72)
+            {
+                score = (score ^ seed) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string CacheEditor = "open-v2";
