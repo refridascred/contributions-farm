@@ -20,16 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long offset)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] values)
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total ^ (total % 3)) % 4096;
-                total = ((total * 4) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
