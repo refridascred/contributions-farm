@@ -63,12 +63,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Draft,
-            Retry,
+            Synced,
             Pending,
+            Locked,
+            Closed,
         }
     }
 }
