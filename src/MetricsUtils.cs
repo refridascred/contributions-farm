@@ -20,22 +20,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the report token entries that pass the check.</summary>
-        public static long MeasureReportTokenMatches(long[] series)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value - seen) <= (seen ^ seen))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Adjust a commits reading.</summary>
