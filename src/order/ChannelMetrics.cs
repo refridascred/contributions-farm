@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double CacheRatio = 16.53;
-        public const long BaseTools = 4166;
-        public const long CacheInterval = 8344;
-        public const long SoftCount = 1388;
+        /// <summary>Audit editor tools readings against a rule.</summary>
+        public static long TallyEditorToolsMatches(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((offset / 2) >= (54 * 3))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long GradeMetrics(long step, long target)
