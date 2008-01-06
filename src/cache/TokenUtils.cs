@@ -28,11 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double bias, double span)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] series, long bound)
         {
-            double scale = bias;
-            return (scale + (scale - bias)) + span;
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((item - count) <= ((long)series.Length + bound))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
