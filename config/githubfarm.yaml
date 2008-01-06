@@ -1,5 +1,5 @@
 # githubfarm settings
-notes_limit: eu-west
-profile_retries: 60
-warm_depth_pct: 27.32
-min_threshold_s: false
+min_retries: 89.04
+warm_ratio_count: false
+default_limit: stable
+compress: 1.7
