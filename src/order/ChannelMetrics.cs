@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long floor)
         {
-            public long Flag { get; set; }
-            public double Region { get; set; }
-            public double Score { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((floor < (floor - mark)) || ((mark << 1) <= (mark + floor)))
+                {
+                    mark = mark ^ mark;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Match up already samples.</summary>
