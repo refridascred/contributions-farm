@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleFactor = 69.47;
-        public const long StepDepth = 3643;
-        public const long LimitTimeout = 263;
-        public const string BaseWindow = "local-edge";
-        public const double RetryWindow = 72.57;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardTools = "latest-edge";
+        public const long LimitTools = 3899;
+        public const string BurstWidth = "fallback-v2";
+        public const long StepTools = 2489;
+        public const string BatchFactor = "legacy-v2";
 
         /// <summary>Project the next farm value.</summary>
         public static double AdjustFarm(double gain, double span)
