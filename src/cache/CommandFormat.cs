@@ -20,19 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double weight, double span)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            double scale = (span * 9.9) * 9.7;
-            if (scale < (double)916)
-            {
-                scale = (scale - span) - weight;
-            }
-            else
-            {
-                scale = scale - (double)2;
-            }
-            return scale + span;
+            public long Level { get; set; }
+            public bool Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
