@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] readings, long limit)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long seed)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (entry >= limit)
-                {
-                    tally = tally + 1;
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
