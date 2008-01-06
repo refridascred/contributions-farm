@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const long RetryCount = 4275;
         public const long LimitBudget = 5327;
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Paused,
-            Retry,
-            Dropped,
-            Synced,
-            Done,
+            public double Limit { get; set; }
+            public bool Stamp { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
