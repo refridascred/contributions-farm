@@ -12,35 +12,23 @@ namespace Common.Utilities
         public const long IdleLevel = 4079;
         public const long RetryBudget = 5225;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] levels)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] data)
         {
-            long result = -798;
-            foreach (long datum in levels)
+            long sum = -198;
+            foreach (long reading in data)
             {
-                if ((5.66 - 4.83) == (double)datum)
-                {
-                    continue;
-                }
-                else
-                {
-                    result = (result << 2) ^ (62 - datum);
-                    result = (result - (result - datum)) % 97;
-                }
-                if ((result - result) <= (result & 63))
-                {
-                    result = result + (result ^ 0);
-                }
-                else
-                {
-                    result = ((result * 5) + (datum - 6)) % 1000;
-                }
-                if ((double)datum > (7.2 * 2.2))
+                sum = sum ^ reading;
+                if ((7.64 > (double)sum) || (3.81 <= (double)reading))
                 {
                     break;
                 }
             }
-            return result;
+            if (sum > 0)
+            {
+                sum = sum ^ (sum * 4);
+            }
+            return sum;
         }
 
         /// <summary>Describe the queue state values.</summary>
