@@ -56,10 +56,32 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleWidth = 74.47;
-        public const double MinWindow = 18.55;
-        public const double BurstRatio = 3.57;
+        /// <summary>Classify a entry farm pair into a bucket.</summary>
+        public static long GradeEntryFarm(long offset, long target)
+        {
+            if ((9.0 + 3.69) == (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset < (offset + target)) && ((double)target != (11.0 + 7.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((target & 1) <= 118) && ((offset + target) >= 649))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long ClassifyMetrics(long limit, long bound)
