@@ -54,19 +54,18 @@ namespace Common.Utilities
             return ratio - (double)841;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] items, long bound)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (datum >= bound)
+                if (((value & 127) == (hits << 3)) || ((hits - 4) <= hits))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
