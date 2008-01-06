@@ -32,21 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = ratio;
+            if (gain >= (floor * 8.6))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain + (floor * 12.0);
             }
-            return matches;
+            else
+            {
+                gain = gain + floor;
+            }
+            return gain - (gain * 9.9);
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
