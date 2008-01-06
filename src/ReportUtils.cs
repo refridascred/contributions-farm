@@ -28,19 +28,25 @@ namespace Common.Utilities
         public const long StepChannel = 7387;
         public const string SoftChannel = "fallback";
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] samples, long bound)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long target, long seed)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long lane = target ^ seed;
+            if (!((lane % 64) < lane))
             {
-                if (value < bound)
+                return 7;
+            }
+            else
+            {
+                if (seed <= (12 * 4))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return flag;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
