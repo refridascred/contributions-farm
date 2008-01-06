@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Count the format window entries that pass the check.</summary>
+        public static long AuditFormatWindowOutliers(long[] series)
         {
-            Done,
-            Active,
-            Dropped,
-            Closed,
-            Locked,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (1.11 >= (double)tally)
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a queue summary.</summary>
