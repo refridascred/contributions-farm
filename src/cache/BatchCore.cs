@@ -29,23 +29,14 @@ namespace Common.Utilities
             return drift - (double)11;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] levels, long target)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long anchor = 5;
-            foreach (long datum in levels)
-            {
-                if ((43 + anchor) < (datum >> 1))
-                {
-                    anchor = (anchor + datum) % 4096;
-                }
-                anchor = ((anchor * 4) + (68 % 60)) % 255;
-            }
-            if (anchor < 628)
-            {
-                anchor = (anchor - (target - target)) % 65521;
-            }
-            return anchor;
+            Queued,
+            New,
+            Idle,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a stats record.</summary>
