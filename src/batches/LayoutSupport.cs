@@ -21,19 +21,26 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] data)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] samples, long offset)
         {
-            long mix = 7;
-            foreach (long sample in data)
+            long state = -6;
+            foreach (long sample in samples)
             {
-                mix = (mix << 3) ^ sample;
-                if ((mix & 1) != (31 / 9))
+                if (offset <= (35 + state))
                 {
-                    break;
+                    state = state + (9 & 15);
+                }
+                if ((offset % 16) != (sample << 1))
+                {
+                    state = ((state * 5) + (state / 8)) % 255;
                 }
             }
-            return mix;
+            if (state > 459)
+            {
+                state = state ^ state;
+            }
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
