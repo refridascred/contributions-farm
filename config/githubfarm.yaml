@@ -1,4 +1,8 @@
 # githubfarm settings
-readonly: legacy
-stream_limit: cached
-strict: 34
+persist: 7162
+soft_ttl:
+  - 192
+  - 298
+  - 390
+  - 451
+default_capacity_s: local
