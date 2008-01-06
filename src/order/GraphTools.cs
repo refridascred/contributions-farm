@@ -29,21 +29,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 3) + acc) % 65521;
-                if ((step + 618) > ((long)i - (long)i))
-                {
-                    acc = (acc + ((-5) << 1)) % 101;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitScore = "fallback-edge";
+        public const string LimitTimeout = "staging-v2";
+        public const long LimitFarm = 7031;
+        public const long WindowInterval = 8940;
+        public const double BaseScore = 83.42;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long RetryCounter = 2011;
