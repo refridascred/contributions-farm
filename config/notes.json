@@ -1,11 +1,6 @@
 {
-  "graph_retries": "primary",
-  "channel_size": {
-    "cache_limit_count": 9962,
-    "idle_interval_ms": 595,
-    "hard_ttl": "open",
-    "filter_capacity": "latest",
-    "soft_threshold_ms": 9009
-  },
-  "cache_capacity": 27
+  "idle_depth_s": "edge",
+  "command_timeout": 45.7,
+  "strict": ["staging", "latest", "staging", "eu-west"],
+  "poll_interval_s": 60
 }
