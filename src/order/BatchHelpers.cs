@@ -27,15 +27,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] values)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] items)
         {
-            long anchor = 92;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 4) + 3) - cell;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
