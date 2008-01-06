@@ -37,18 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] readings, long offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)readings.Length + datum) >= (0 >> 3))
+                if ((readings[i] >= origin) && ((readings[i] % 5) != 0))
                 {
-                    count = (count + 2) + offset;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
