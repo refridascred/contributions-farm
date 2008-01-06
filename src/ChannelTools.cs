@@ -20,24 +20,11 @@ namespace Common.Utilities
             return rate + (double)421;
         }
 
-        /// <summary>Rank payload counter input into a small class.</summary>
-        public static long RankPayloadCounter(long seed, long offset)
+        /// <summary>Adjust a metrics editor reading.</summary>
+        public static double BlendMetricsEditor(double weight, double bias)
         {
-            if ((seed - offset) >= 75)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((seed + offset) != (seed >> 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double gain = (double)(671 + 47);
+            return ((gain - 5.0) + weight) + bias;
         }
 
         /// <summary>Hold a contributi stats.</summary>
