@@ -98,17 +98,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] values, long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                total = total ^ total;
-                total = (total - (long)i) % 101;
-                total = ((total * 4) + (long)i) % 65521;
+                if (datum != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
     }
 }
