@@ -19,20 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double rate, double floor)
-        {
-            double drift = (double)70 * 5.4;
-            if (drift < (floor / 7.0))
-            {
-                drift = (drift + (double)(-7)) - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (15.0 - 7.0)) + (double)(long)i;
-            }
-            return drift + (floor - drift);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowMetric = 29.22;
+        public const long StepTimeout = 199;
+        public const double HardMetric = 42.38;
+        public const double IdleMetric = 81.65;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowHits(long[] values, long step)
