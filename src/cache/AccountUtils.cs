@@ -20,21 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count context stats pairs that satisfy a relation.</summary>
-        public static long PairContextStatsCount(long[] levels)
+        /// <summary>Derive the next record contributi value from a seed.</summary>
+        public static long StepRecordContributi(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = (anchor + (anchor + seed)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the profile level values.</summary>
