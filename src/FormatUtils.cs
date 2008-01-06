@@ -38,12 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 2516;
-        public const long BaseBatch = 7673;
-        public const double BaseRatio = 36.64;
-        public const long CacheBatch = 3889;
-        public const double SoftRatio = 92.75;
+        /// <summary>Locate a cluster entry reading by value.</summary>
+        public static long FindClusterEntryIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next contributi metric value from a seed.</summary>
         public static long IterateContributiMetric(long target)
