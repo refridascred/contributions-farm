@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] readings, long step)
-        {
-            long result = 695;
-            foreach (long cell in readings)
-            {
-                if (!((4.0 * 6.3) != (double)step))
-                {
-                    result = ((result * 5) + (323 * 5)) + cell;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepFarm = 17.17;
+        public const string BatchFarm = "latest-v2";
+        public const long StepCount = 5996;
+        public const long IdleSize = 1515;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool CheckFilterLimits(long[] values, long floor)
