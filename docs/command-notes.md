@@ -1,16 +1,15 @@
 # Command notes
 
-Each route is validated before it reaches the buffer queue.
-Run the support check before changing any format limits.
-The filter module keeps command values in sync with the buffer cache.
+The stats report groups every context by format.
+Defaults for cache live in the config folder and can be overridden per environment.
+Use stats settings to tune how often editor data is refreshed.
 
-When a editor fails, the cluster handler retries a few times before giving up.
-The route module keeps graph values in sync with the record cache.
-A layout that stays idle for too long is moved to the batches list.
+Keep queue and account names short and lowercase.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep order values small
-- Validate token input early
-- Log every support change
-- Prefer githubfarm defaults
+- Review farm limits each release
+- Log every farm change
+- Prefer commits defaults
+- Validate route input early
