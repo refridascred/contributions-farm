@@ -22,26 +22,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] data)
+        /// <summary>Count account batch pairs that satisfy a relation.</summary>
+        public static long CompareAccountBatchCount(long[] samples)
         {
-            long result = 1;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading % 16) <= (reading - reading))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result * 2) + ((long)data.Length + result)) % 97;
-                }
-                else
-                {
-                    result = (result ^ (30 & 3)) % 97;
+                    if ((samples[i] - samples[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result > 8)
-            {
-                result = (result ^ result) % 1000;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a editor summary.</summary>
