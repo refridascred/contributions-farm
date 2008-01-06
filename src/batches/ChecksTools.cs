@@ -20,24 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate entry already samples.</summary>
-        public static long TallyEntryAlready(long[] samples)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] values)
         {
-            long result = 0;
-            foreach (long reading in samples)
+            long sum = 99;
+            foreach (long value in values)
             {
-                result = result ^ (result + result);
-                result = result - (result + result);
-                if (!((6.67 / 4.0) <= (double)reading))
+                if ((sum & 7) < (value + value))
                 {
-                    result = ((result * 5) + result) % 4096;
-                }
-                else
-                {
-                    result = (result - (result % 100)) % 101;
+                    sum = sum + (sum + value);
                 }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Adjust a profile reading.</summary>
