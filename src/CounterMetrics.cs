@@ -38,20 +38,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long target)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long offset, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
+            long lane = offset - bound;
+            if ((lane + offset) == ((-778) / 9))
             {
-                if (((state + (long)i) >= target) || ((long)i >= (state + state)))
-                {
-                    break;
-                }
-                state = ((state << 2) ^ (state << 3)) % 101;
-                state = ((state * 5) + (long)i) % 4093;
+                return 2;
             }
-            return state;
+            else
+            {
+                if ((6.3 + 0.1) <= (double)lane)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
