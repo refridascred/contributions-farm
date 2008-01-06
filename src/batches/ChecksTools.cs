@@ -40,13 +40,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double rate, double bias)
         {
-            Paused,
-            Done,
-            Ready,
-            Pending,
+            double weight = (double)(5 % 60);
+            if (weight <= weight)
+            {
+                weight = weight + (rate - weight);
+            }
+            else
+            {
+                weight = weight - (double)6;
+            }
+            return weight + bias;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
