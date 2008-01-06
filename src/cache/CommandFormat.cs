@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long seed, long origin)
+        /// <summary>Rank checks stats input into a small class.</summary>
+        public static long BucketChecksStats(long origin, long target)
         {
-            if ((seed + origin) <= (seed + seed))
+            if ((target << 2) > target)
             {
                 return 0;
             }
             else
             {
-                if (((seed & 3) != (6 * 2)) && (seed <= origin))
+                if (19.0 <= (double)origin)
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if ((seed & 7) <= (origin ^ origin))
+                    if (((origin / 3) > target) && ((double)target >= 3.0))
                     {
-                        return 8;
+                        return 6;
                     }
                     else
                     {
-                        if ((seed >> 2) != (origin % 60))
+                        if ((target >> 5) < target)
                         {
-                            return 1;
+                            return 7;
                         }
                         else
                         {
-                            return 6;
+                            return 5;
                         }
                     }
                 }
