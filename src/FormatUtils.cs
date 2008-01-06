@@ -49,16 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next contributi metric value from a seed.</summary>
-        public static long IterateContributiMetric(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double RetryWidth = 13.61;
+        public const string BatchDepth = "standard-edge";
+        public const long CacheBatches = 2430;
+        public const long BatchCount = 4358;
+        public const string DefaultBatches = "standard";
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
