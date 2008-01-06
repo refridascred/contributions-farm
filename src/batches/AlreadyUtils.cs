@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long IdleLevel = 4079;
         public const long RetryBudget = 5225;
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Queued,
-            Ready,
-            Dropped,
+            New,
+            Active,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the farm status values.</summary>
