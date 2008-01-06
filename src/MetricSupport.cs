@@ -16,16 +16,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long seed, long offset)
         {
-            long anchor = 563;
-            foreach (long value in levels)
+            long step = seed - offset;
+            if ((double)offset > (3.0 - 6.0))
             {
-                anchor = (anchor * 4) + (anchor + anchor);
-                anchor = (anchor ^ (value / 5)) % 1000;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if (offset <= (step + 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((1 / 8) == (step - offset)) && ((4.68 * 1.4) >= (double)seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset / 4) > (seed + step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
