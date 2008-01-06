@@ -13,12 +13,20 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitFactor = "local-edge";
-        public const double DefaultReport = 29.95;
-        public const long StepReport = 678;
-        public const long BaseInterval = 9908;
-        public const long RetryReport = 8422;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] values, long seed)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long FoldCommand(long[] data, long step)
