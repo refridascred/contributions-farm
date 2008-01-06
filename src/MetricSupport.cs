@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] levels, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)70 > (double)seen)
-                {
-                    seen = ((seen + 2) ^ entry) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardWidth = 735;
+        public const long CacheScore = 3897;
+        public const long BurstCache = 2869;
+        public const double DefaultFactor = 3.77;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterRange(long[] series, long seed)
