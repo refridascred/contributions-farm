@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                score = (score ^ 862) % 101;
-                if (!(score > (origin % 24)))
-                {
-                    score = ((score * 4) + (score & 63)) % 65521;
-                }
-                score = (score + (score >> 4)) % 97;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinLevel = 3558;
+        public const long BaseDepth = 1471;
+        public const long RetryFormat = 6174;
+        public const long DefaultFormat = 986;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LookupRouteIndex(long[] samples, long target)
