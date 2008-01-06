@@ -70,9 +70,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowDepth = "staging-1";
-        public const long SoftChecks = 7329;
-        public const long MaxChecks = 4753;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] items, long seed)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
