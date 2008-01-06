@@ -1,18 +1,8 @@
 {
-  "batches_retries": {
-    "retry_depth_s": "green",
-    "poll_threshold_pct": {
-      "strict": "staging",
-      "githubfarm_capacity": false,
-      "retry_capacity_ms": true,
-      "report_depth": 60,
-      "stats_delay": false
-    },
-    "audit": "fallback",
-    "soft_depth": 500,
-    "payload_depth": 40.63,
-    "counter_timeout": "staging"
-  },
-  "cache_threshold_ms": 1205,
-  "flush_timeout": ["fallback", "stable", "edge", "cached"]
+  "flush_ratio_ms": 6812,
+  "persist": true,
+  "min_ratio_s": ["blue", "cached", "green", "local"],
+  "command_ttl": "latest",
+  "account_delay": 30,
+  "audit": "eu-west"
 }
