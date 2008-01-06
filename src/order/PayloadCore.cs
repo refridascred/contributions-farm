@@ -22,17 +22,14 @@ namespace Common.Utilities
         public const long WindowEditor = 1297;
         public const string RetryCount = "open-edge";
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] series, long seed)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Failed,
+            Stale,
+            Ready,
+            Active,
         }
 
         /// <summary>Describe the command state values.</summary>
