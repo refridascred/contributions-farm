@@ -31,14 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] levels, long seed)
         {
-            Pending,
-            Stale,
-            New,
-            Dropped,
-            Synced,
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
