@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] data)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (matches <= (value - 584))
+                if (sample != offset)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Rank channel token input into a small class.</summary>
