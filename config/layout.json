@@ -1,19 +1,13 @@
 {
-  "warm_window_s": {
-    "idle_size_ms": [26, 412, 213, 176],
-    "support_capacity": 5656,
-    "sync_window_s": {
-      "default_timeout_ms": 43.36,
-      "enabled": true,
-      "batch_threshold_ms": 25.33,
-      "flush_depth": [76, 305, 125, 357],
-      "base_delay_count": 45,
-      "filter_ratio": ["legacy", "local", "green"]
-    },
-    "soft_threshold_ms": 100,
-    "format_retries": [215, 456]
+  "soft_window_pct": {
+    "command_ttl": [48, 260, 452, 251],
+    "farm_capacity": 250,
+    "max_ttl_pct": ["stable", "local"],
+    "persist": true
   },
-  "editor_ratio": 33.64,
-  "readonly": false,
-  "soft_timeout_s": 82
+  "format_size": 40.98,
+  "poll_window": ["primary", "stable"],
+  "cache_ttl": 5.76,
+  "format_window": 59,
+  "cache_capacity_ms": "green"
 }
