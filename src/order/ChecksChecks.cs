@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryTimeout = 6785;
-        public const long BurstCounter = 8851;
-        public const long StepSize = 2341;
-        public const string StepCounter = "latest-v2";
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
