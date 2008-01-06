@@ -27,11 +27,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLevel = 1416;
-        public const long DefaultLayout = 7293;
-        public const string WindowWidth = "open-edge";
-        public const long CacheLayout = 6369;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchCommits = 76.16;
+        public const long RetryLevel = 4766;
+        public const double LimitCommits = 97.57;
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
