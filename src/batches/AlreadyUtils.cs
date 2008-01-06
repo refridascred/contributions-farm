@@ -61,12 +61,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] data, long bound)
         {
-            public long Limit { get; set; }
-            public double Mode { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
