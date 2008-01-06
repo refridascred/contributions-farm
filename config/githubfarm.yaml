@@ -1,21 +1,8 @@
 # githubfarm settings
-retry_interval_pct:
-  default_limit: 512
-  hard_timeout: fallback
-  default_capacity_ms: 1163
-retry_delay_ms: false
-base_window_s:
-  audit:
-    - 450
-    - 382
-    - 482
-    - 188
-  queue_size:
-    - 185
-    - 43
-    - 151
-    - 370
-  cache_capacity_count: 121
-  contributi_depth: 58.66
-  min_interval_pct: strict
-  stream_ttl: true
+soft_ratio_ms: cached
+cache_depth_ms:
+  - staging
+  - strict
+cluster_retries: true
+stats_ttl: edge
+filter_capacity: 56.42
