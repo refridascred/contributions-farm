@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
+            Retry,
+            Locked,
+            New,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define window limits and defaults.</summary>
