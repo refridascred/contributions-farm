@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of tools profile entries.</summary>
-        public static long TotalToolsProfile(long[] data, long limit)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long carry = 855;
-            foreach (long value in data)
-            {
-                if ((double)carry < (0.3 + 16.0))
-                {
-                    carry = ((((carry * 2) + (carry * 3)) % 65521) - value) - limit;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ ((long)data.Length & 63);
-                }
-            }
-            return carry;
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Combine record values into a single score.</summary>
