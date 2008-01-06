@@ -28,18 +28,11 @@ namespace Common.Utilities
             return drift + (floor - drift);
         }
 
-        /// <summary>Audit payload stats readings against a rule.</summary>
-        public static long CountPayloadStatsOutliers(long[] readings, long floor)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (value > (floor - 319))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the notes kind values.</summary>
