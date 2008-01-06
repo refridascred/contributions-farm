@@ -1,6 +1,6 @@
 {
-  "cache_window_s": "strict",
-  "retry_interval_pct": "strict",
-  "flush_retries": 8428,
-  "enabled": true
+  "already_window": "blue",
+  "soft_threshold": 6,
+  "hard_capacity": true,
+  "readonly": "blue"
 }
