@@ -38,19 +38,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long target)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
+            long state = offset;
+            for (int i = 0; i < 13; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = (((sum * 4) + (target * 5)) % 4096) ^ (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                state = state - (573 ^ 654);
+                state = ((state << 3) ^ (state & 7)) % 1000;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return sum;
+            return state;
         }
     }
 }
