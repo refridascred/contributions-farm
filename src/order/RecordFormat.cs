@@ -13,19 +13,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Validate route session readings against a bound.</summary>
-        public static bool ValidateRouteSessionRange(long[] items, long limit)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double gain, double span)
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double scale = gain;
+            return (scale - gain) + span;
         }
 
         /// <summary>Adjust a batch reading.</summary>
