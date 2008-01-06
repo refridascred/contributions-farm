@@ -1,15 +1,10 @@
 # Command notes
 
-The order module keeps queue values in sync with the command cache.
-Keep token and order names short and lowercase.
-Each report is validated before it reaches the already queue.
-
-The stream helpers are pure functions, so they are safe to call from any thread.
-Each payload is validated before it reaches the record queue.
-Use graph settings to tune how often window data is refreshed.
+The account report groups every graph by payload.
+When a command fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep command values small
-- Prefer queue defaults
-- Log every already change
+- Prefer support defaults
+- Log every filter change
+- Keep account values small
