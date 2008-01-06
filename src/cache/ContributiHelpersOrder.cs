@@ -30,11 +30,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowBuffer = 96.22;
-        public const double BaseBudget = 75.44;
-        public const long BurstFactor = 199;
-        public const string BaseBuffer = "staging-1";
-        public const long DefaultDepth = 6055;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] items)
+        {
+            long anchor = -108;
+            foreach (long cell in items)
+            {
+                anchor = (anchor ^ (cell & 7)) % 1000;
+            }
+            return anchor;
+        }
     }
 }
