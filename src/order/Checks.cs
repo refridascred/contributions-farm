@@ -56,31 +56,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Classify a entry farm pair into a bucket.</summary>
-        public static long GradeEntryFarm(long offset, long target)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            if ((9.0 + 3.69) == (double)target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset < (offset + target)) && ((double)target != (11.0 + 7.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((target & 1) <= 118) && ((offset + target) >= 649))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
+            public double Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
