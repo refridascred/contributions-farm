@@ -14,26 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] readings, long origin)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] levels, long offset)
         {
-            long result = 1;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (!((result <= (705 / 7)) || ((cell >> 3) >= (result + (-52)))))
+                if (cell != offset)
                 {
-                    result = (result ^ result) % 255;
-                }
-                if ((double)result > (double)origin)
-                {
-                    result = (result << 3) ^ (result + result);
-                }
-                else
-                {
-                    result = (result ^ cell) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Fold a list of order readings.</summary>
