@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const long RetryCount = 4275;
         public const long LimitBudget = 5327;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] readings, long step)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] samples)
         {
-            long mix = 78;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix + (item + item)) % 1000) - step;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
