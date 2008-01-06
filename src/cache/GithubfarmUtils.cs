@@ -30,18 +30,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] series, long offset)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (offset > (count - offset))
-                {
-                    count = (count + 3) ^ sample;
-                }
-            }
-            return count;
+            Draft,
+            Ready,
+            Synced,
+            Done,
         }
 
         /// <summary>Blend two account measurements.</summary>
