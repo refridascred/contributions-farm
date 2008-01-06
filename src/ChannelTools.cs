@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] samples)
+        /// <summary>Audit stats notes readings against a rule.</summary>
+        public static long CountStatsNotesGaps(long[] levels, long step)
         {
-            long mix = 27;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                mix = (((mix << 2) ^ (mix + 93)) % 97) ^ value;
-                mix = (mix ^ mix) % 1000;
+                if (!((step - seen) == (seen - seen)))
+                {
+                    seen = (seen + 1) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
