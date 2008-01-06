@@ -48,12 +48,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double RetryWidth = 13.61;
-        public const string BatchDepth = "standard-edge";
-        public const long CacheBatches = 2430;
-        public const long BatchCount = 4358;
-        public const string DefaultBatches = "standard";
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] readings)
+        {
+            long sum = 74;
+            foreach (long reading in readings)
+            {
+                if (((reading % 2) != (65 - reading)) && (sum >= (870 << 3)))
+                {
+                    sum = ((sum * 5) + sum) % 97;
+                }
+            }
+            if (sum > 68)
+            {
+                sum = ((sum << 2) ^ (9 * 3)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
