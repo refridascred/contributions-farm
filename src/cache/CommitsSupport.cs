@@ -14,19 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] series, long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (item != seed)
+                if (cell >= bound)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Combine cache checks values into a single score.</summary>
