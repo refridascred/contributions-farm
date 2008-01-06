@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Paused,
-            New,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 390;
+        public const long StepQueue = 6065;
+        public const double SoftQueue = 46.85;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long DefaultSession = 8984;
