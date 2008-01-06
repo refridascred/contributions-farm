@@ -32,18 +32,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] levels, long limit)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long state = 280;
-            foreach (long sample in levels)
-            {
-                if ((7.0 / 4.0) != (double)limit)
-                {
-                    state = (state - (sample + sample)) % 4096;
-                }
-            }
-            return state % 1000;
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a farm reading by value.</summary>
