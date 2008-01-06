@@ -73,22 +73,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] samples, long target)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((hits + hits) <= item)
-                {
-                    hits = (hits + 1) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public long Count { get; set; }
         }
     }
 }
