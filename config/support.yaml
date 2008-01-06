@@ -1,19 +1,29 @@
 # support settings
-channel_size: local
-batch_capacity_s:
-  retry_threshold: false
-  flush_depth_s: fallback
-  batches_retries: true
-cache_depth_pct:
-  readonly: 32.15
-  filter_depth: 54.9
-  flush_retries_ms:
-    persist: false
-    retry_limit_ms: 67.16
-    poll_limit_ms: 3651
-  batch_timeout_ms: 100
-  max_size: 500
-  command_delay: local
-batch_delay: legacy
-sync_ttl_s: standard
-checks_ttl: true
+soft_timeout_count: strict
+report_delay: 100
+warm_depth_s:
+  strict:
+    max_capacity_count:
+      - legacy
+      - eu-west
+      - latest
+      - staging
+    min_ratio: 17.5
+    strict: 5176
+    cache_retries: cached
+    hard_limit: 65.75
+  warm_timeout_pct: edge
+  compress: 19.68
+  hard_capacity_pct: true
+  persist: 30
+  session_threshold:
+    retry_retries: 2
+    burst_retries_ms: false
+    idle_capacity:
+      - 149
+      - 467
+      - 14
+    max_depth: latest
+    min_depth_pct: blue
+    burst_retries_count: 4196
+cache_retries: latest
