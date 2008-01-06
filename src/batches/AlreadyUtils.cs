@@ -25,19 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] readings, long seed)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Draft,
+            Stale,
+            Retry,
         }
 
         /// <summary>Project the next route batch value.</summary>
