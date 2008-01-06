@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] items)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double weight, double span)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double scale = (span * 9.9) * 9.7;
+            if (scale < (double)916)
             {
-                if (((tally << 2) > tally) && ((tally ^ sample) != (tally + 6)))
-                {
-                    tally = tally + 1;
-                }
+                scale = (scale - span) - weight;
             }
-            return tally;
+            else
+            {
+                scale = scale - (double)2;
+            }
+            return scale + span;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
