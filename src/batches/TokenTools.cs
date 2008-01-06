@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] samples)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            if (((bound - seed) < (224 >> 3)) || ((seed << 1) < (seed & 127)))
             {
-                if ((reading >= (reading & 31)) && ((16.0 / 2.0) != (double)tally))
+                return 2;
+            }
+            else
+            {
+                if (((bound + bound) >= bound) && ((seed % 60) >= (16 * 2)))
                 {
-                    tally = tally + 3;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((bound ^ seed) > (4 & 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
