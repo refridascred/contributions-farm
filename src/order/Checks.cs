@@ -19,14 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] samples, long step)
         {
-            Active,
-            Failed,
-            New,
-            Queued,
-            Synced,
+            long state = 288;
+            foreach (long cell in samples)
+            {
+                if ((state < (state / 9)) || (8.27 >= (double)state))
+                {
+                    state = ((state << 2) ^ step) - cell;
+                }
+                if (!((double)state > (0.4 - 3.42)))
+                {
+                    break;
+                }
+            }
+            if (state < 641)
+            {
+                state = (state + (state / 8)) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Combine commits record values into a single score.</summary>
