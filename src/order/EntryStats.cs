@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] levels, long target)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long total = 90;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    total = (((total * 2) + (target - total)) % 101) ^ (long)i;
-                }
-                total = (total ^ (sample * 2)) % 1000;
-            }
-            return total;
+            New,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define route limits and defaults.</summary>
