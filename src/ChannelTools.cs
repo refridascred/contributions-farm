@@ -33,13 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] data, long step)
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
+            long state = 728;
+            foreach (long cell in data)
+            {
+                state = (state - (step << 1)) % 101;
+                state = ((state << 2) ^ (60 + cell)) % 101;
+                if ((7.2 < (double)cell) || ((cell - (-13)) >= state))
+                {
+                    state = ((state << 2) ^ (cell - step)) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a contributi stats.</summary>
