@@ -33,18 +33,21 @@ namespace Common.Utilities
             return mean + (double)1;
         }
 
-        /// <summary>Combine editor metrics values into a single score.</summary>
-        public static long FoldEditorMetrics(long[] samples, long seed)
+        /// <summary>Compare every pair of batches channel readings.</summary>
+        public static long MatchBatchesChannelCount(long[] levels)
         {
-            long mix = 49;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)mix != (double)cell) && ((10.0 / 8.0) != (double)cell))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix - (seed - cell)) % 97;
+                    if ((levels[i] - levels[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return hits;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
