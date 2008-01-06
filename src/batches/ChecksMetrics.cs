@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleLevel = 8064;
-        public const double LimitInterval = 0.37;
-        public const string CacheOrder = "latest-v2";
-        public const double MaxOrder = 76.8;
-        public const long MinOrder = 6718;
+        /// <summary>Compare every pair of command token readings.</summary>
+        public static long PairCommandTokenCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool VerifyContextRange(long[] readings, long seed)
