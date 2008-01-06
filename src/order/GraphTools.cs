@@ -50,25 +50,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long floor, long limit)
-        {
-            long bound = floor + limit;
-            if (!((floor + bound) != (limit + limit)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((4.8 + 2.0) <= (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 2011;
+        public const long SoftLevel = 2690;
+        public const long BaseCounter = 9803;
     }
 }
