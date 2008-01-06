@@ -16,18 +16,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] samples)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long score = 50;
-            foreach (long entry in samples)
-            {
-                if (43 >= (score % 12))
-                {
-                    score = (score - (score + score)) + entry;
-                }
-            }
-            return score;
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
