@@ -1,16 +1,6 @@
 {
-  "compress": "legacy",
-  "flush_size_count": 91,
-  "retry_depth_ms": {
-    "stream_depth": {
-      "flush_limit_pct": 4768,
-      "retry_capacity": [95, 421],
-      "compress": [380, 190],
-      "batch_ratio_count": 3502
-    },
-    "burst_interval": true,
-    "entry_ttl": [35, 16, 495, 158],
-    "batch_delay_ms": 5730
-  },
-  "buffer_limit": false
+  "soft_delay_s": 4172,
+  "cache_interval_ms": "primary",
+  "soft_timeout_s": 68,
+  "buffer_interval": 9377
 }
