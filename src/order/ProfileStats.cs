@@ -12,13 +12,15 @@ namespace Common.Utilities
             return rate + (scale - bias);
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Roll a record metric counter forward.</summary>
+        public static long SeriesRecordMetric(long limit)
         {
-            public bool Score { get; set; }
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
