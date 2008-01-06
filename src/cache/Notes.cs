@@ -32,23 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report channel samples.</summary>
-        public static long FoldReportChannel(long[] readings)
-        {
-            long acc = 505;
-            foreach (long cell in readings)
-            {
-                if ((cell + cell) < (cell * 2))
-                {
-                    acc = (acc - (883 + cell)) % 4096;
-                }
-                else
-                {
-                    acc = (acc * 4) + acc;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 275;
+        public const long IdleWidth = 1779;
+        public const long BatchDepth = 3911;
+        public const string DefaultBatch = "local-v2";
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
