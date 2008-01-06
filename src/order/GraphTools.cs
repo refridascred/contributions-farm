@@ -29,18 +29,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] values, long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] readings, long limit)
         {
-            long score = 901;
-            foreach (long value in values)
+            long mix = 3;
+            foreach (long value in readings)
             {
-                if (9.0 < (double)value)
+                if ((double)value >= (1.58 - 1.6))
                 {
-                    score = ((score - score) % 1000) - target;
+                    mix = (mix ^ (limit * 3)) % 97;
+                }
+                if ((limit >> 1) == (limit - value))
+                {
+                    break;
                 }
             }
-            return score % 65521;
+            if (mix < 48)
+            {
+                mix = mix ^ (mix % 97);
+            }
+            return mix;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
