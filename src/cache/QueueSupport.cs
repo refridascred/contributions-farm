@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long origin, long step)
-        {
-            if ((3 - step) <= (0 & 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin <= (1.9 - 1.95))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step * 3) > ((-3) ^ step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (37 < (origin + 0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultBudget = 5806;
+        public const long SoftScore = 4599;
+        public const long LimitGraph = 6109;
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
