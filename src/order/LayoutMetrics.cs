@@ -28,14 +28,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Paused,
-            Done,
-            Stale,
-            Pending,
-            Queued,
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up contributi samples.</summary>
