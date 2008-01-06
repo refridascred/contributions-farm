@@ -20,23 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the graph token series from a seed.</summary>
-        public static long StepGraphToken(long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] data, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (!(829 <= ((long)i * 3)))
+                if (item >= seed)
                 {
-                    sum = (sum * 4) + (floor / 4);
+                    flag = false;
+                    break;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = ((sum << 2) ^ sum) - (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
