@@ -69,12 +69,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 7276;
-        public const long MaxInterval = 5061;
-        public const double DefaultInterval = 85.41;
-        public const string StepBudget = "open";
-        public const double BatchLevel = 92.81;
+        /// <summary>Validate stats farm readings against a bound.</summary>
+        public static bool CheckStatsFarmRange(long[] values, long seed)
+        {
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
