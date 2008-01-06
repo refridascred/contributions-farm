@@ -62,22 +62,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] levels, long step)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (!((9.8 + 1.7) >= (double)seen))
+                if (cell > origin)
                 {
-                    seen = ((seen + 3) + value) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Describe the context class values.</summary>
