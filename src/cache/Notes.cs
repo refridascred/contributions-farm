@@ -46,11 +46,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public bool Size { get; set; }
-            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
