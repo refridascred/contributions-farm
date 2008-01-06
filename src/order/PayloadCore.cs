@@ -36,14 +36,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double gain, double span)
         {
-            New,
-            Failed,
-            Draft,
-            Pending,
-            Idle,
+            double ratio = span;
+            if (ratio > (ratio / 7.0))
+            {
+                ratio = ratio + ratio;
+            }
+            else
+            {
+                ratio = ratio + (17.0 - gain);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (gain / 4.0)) + (double)(long)i;
+            }
+            return ratio + (ratio / 3.0);
         }
     }
 }
