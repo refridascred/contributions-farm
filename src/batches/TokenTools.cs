@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the order entry series from a seed.</summary>
-        public static long IterateOrderEntry(long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] values, long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
+            long mark = 28;
+            foreach (long datum in values)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                mark = ((((mark << 3) ^ (mark >> 5)) % 1000) + datum) + target;
             }
             return mark;
         }
