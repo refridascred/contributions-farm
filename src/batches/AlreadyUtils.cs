@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every profile token entry stays within the limit.</summary>
-        public static bool ValidateProfileTokenRange(long[] series, long bound)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Locked,
+            Active,
         }
 
         /// <summary>Adjust a record reading.</summary>
