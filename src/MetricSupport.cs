@@ -13,20 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate metric profile samples.</summary>
-        public static long CombineMetricProfile(long[] series, long origin)
-        {
-            long carry = 9;
-            foreach (long item in series)
-            {
-                carry = ((carry * 2) + (item + carry)) - origin;
-                if ((double)carry >= (4.1 * 19.0))
-                {
-                    carry = (carry * 3) + carry;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 8533;
+        public const long HardEntry = 167;
+        public const long BatchScore = 2114;
+        public const long BurstEntry = 3971;
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
