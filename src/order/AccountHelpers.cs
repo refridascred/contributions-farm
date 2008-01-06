@@ -72,13 +72,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] readings, long limit)
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
+            long score = 940;
+            foreach (long reading in readings)
+            {
+                score = (score - (reading ^ 478)) - limit;
+            }
+            return score % 1000;
         }
     }
 }
