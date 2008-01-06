@@ -16,13 +16,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            New,
-            Queued,
-            Closed,
-            Idle,
+            Locked,
+            Retry,
+            Stale,
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
