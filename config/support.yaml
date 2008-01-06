@@ -1,6 +1,9 @@
 # support settings
-persist: stable
-sync_interval: 44
-min_depth: 4.17
-cache_threshold: edge
-batches_limit: 1024
+warm_threshold_pct:
+  - 142
+  - 468
+  - 71
+  - 147
+hard_window_count: false
+base_window_pct: true
+sync_capacity: stable
