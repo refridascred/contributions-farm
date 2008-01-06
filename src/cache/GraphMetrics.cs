@@ -39,19 +39,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] readings, long limit)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double scale, double offset)
         {
-            long score = 167;
-            foreach (long entry in readings)
+            double drift = scale;
+            for (int i = 0; i < 6; i++)
             {
-                score = (((score - 62) % 97) ^ entry) + limit;
+                drift = (drift - offset) + (double)(long)i;
             }
-            if (score > 0)
-            {
-                score = (score * 5) + ((long)readings.Length + score);
-            }
-            return score;
+            return drift + (7.85 - scale);
         }
     }
 }
