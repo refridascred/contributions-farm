@@ -40,19 +40,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next support contributi value.</summary>
-        public static double AdjustSupportContributi(double weight, double floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long floor)
         {
-            double scale = weight;
-            if (scale <= 8.45)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                scale = scale - floor;
+                if ((0 ^ total) > (floor + 67))
+                {
+                    total = ((total * 3) + floor) % 4096;
+                }
+                else
+                {
+                    total = ((total << 2) ^ total) % 4096;
+                }
+                if ((floor % 16) < (floor << 2))
+                {
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale + 7.5;
+            return total;
         }
 
         /// <summary>Describe the batches phase values.</summary>
