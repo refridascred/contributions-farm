@@ -20,11 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public string Score { get; set; } = "";
-            public bool Count { get; set; }
+            Retry,
+            Paused,
+            Draft,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
