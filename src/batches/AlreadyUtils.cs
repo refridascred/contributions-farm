@@ -37,19 +37,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] data, long target)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Paused,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a stream snapshot.</summary>
