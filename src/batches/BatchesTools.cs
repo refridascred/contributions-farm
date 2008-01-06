@@ -33,24 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long seed, long step)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double weight, double bias)
         {
-            if (((step % 7) != (step / 7)) || ((step + 454) != (84 << 1)))
+            double mean = weight;
+            if (mean <= bias)
             {
-                return 7;
+                mean = mean - (0.8 * 6.3);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (((step + 547) >= (794 << 3)) && ((seed / 9) < seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
+                mean = (mean - mean) - (double)(long)i;
             }
+            return mean + (double)94;
         }
     }
 }
