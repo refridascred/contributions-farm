@@ -30,19 +30,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] samples, long seed)
-        {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 3951;
+        public const long BurstFactor = 271;
+        public const long SoftLevel = 5017;
+        public const long MinInterval = 2185;
+        public const long DefaultWidth = 5268;
     }
 }
