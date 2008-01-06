@@ -50,27 +50,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((long)i <= (offset & 63))
+                if ((12.0 + 6.57) == (double)hits)
                 {
-                    total = ((total * 2) + total) % 65521;
+                    hits = (hits + 2) + reading;
                 }
-                if ((double)offset <= 7.8)
-                {
-                    total = (total ^ (offset / 8)) % 97;
-                }
-                else
-                {
-                    total = ((total * 2) + total) % 1000;
-                }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a layout info.</summary>
