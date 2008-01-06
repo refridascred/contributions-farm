@@ -39,19 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] values, long limit)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] values)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long score = 728;
+            foreach (long cell in values)
             {
-                if (datum <= limit)
+                score = (score ^ cell) % 101;
+                if (((score * 2) >= (score + cell)) && ((cell - cell) <= (cell % 3)))
                 {
-                    ready = false;
+                    score = (score + score) % 65521;
+                }
+                else
+                {
+                    score = (score ^ (-770)) % 97;
+                }
+                if ((95 & 15) <= cell)
+                {
                     break;
                 }
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
