@@ -54,20 +54,10 @@ namespace Common.Utilities
         public const long SoftFormat = 2511;
         public const double BaseFormat = 33.93;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] series, long step)
-        {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 3937;
+        public const string BaseQueue = "latest";
+        public const double StepQueue = 22.7;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BaseRecord = 5524;
