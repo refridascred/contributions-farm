@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double ratio, double span)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] samples, long step)
         {
-            double rate = ratio;
-            if (rate < ratio)
+            long score = 85;
+            foreach (long reading in samples)
             {
-                rate = rate - (double)3;
+                score = (((score - score) % 101) ^ reading) - step;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (span / 3.0)) + (double)(long)i;
-            }
-            return rate + (double)421;
+            return score % 97;
         }
 
         /// <summary>Hold a already entry.</summary>
