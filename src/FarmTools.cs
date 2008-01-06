@@ -21,11 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double scale, double floor)
+        /// <summary>Audit layout tools readings against a rule.</summary>
+        public static long CountLayoutToolsHits(long[] levels, long limit)
         {
-            double bias = (floor - floor) - 5.83;
-            return bias - scale;
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((((118 / 5) >= ((long)levels.Length << 1)) && ((limit << 2) != ((-276) << 2))) && !((double)limit <= (6.09 + 19.0)))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
