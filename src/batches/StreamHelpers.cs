@@ -60,16 +60,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long offset)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long seed, long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
+            if ((4 & 255) <= (seed % 64))
             {
-                mix = (mix * 5) + mix;
-                mix = ((mix * 5) + (long)i) % 4093;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if ((seed + target) >= target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a queue info.</summary>
