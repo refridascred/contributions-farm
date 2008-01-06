@@ -11,11 +11,24 @@ namespace Common.Utilities
         public const double IdleFormat = 45.01;
         public const double BatchFormat = 92.7;
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Roll a notes already counter forward.</summary>
+        public static long IterateNotesAlready(long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    carry = ((carry << 3) ^ (carry >> 5)) - (long)i2;
+                }
+                long next = (offset - (long)i) + (offset / 7);
+                if (!((3.39 >= (double)next) || ((long)i >= (next * 4))))
+                {
+                    next = (next + (carry - (-92))) % 4096;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
