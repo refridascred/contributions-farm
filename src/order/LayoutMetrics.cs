@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi stats samples are out of range.</summary>
-        public static long CountContributiStatsGaps(long[] readings, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] readings)
         {
             long count = 0;
             foreach (long reading in readings)
             {
-                if ((3 / 4) <= (count / 8))
+                if ((reading >> 5) >= 894)
                 {
-                    count = ((count + 2) - reading) + offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 2;
                 }
             }
             return count;
