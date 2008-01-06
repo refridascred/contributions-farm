@@ -1,12 +1,6 @@
 # support settings
-burst_size_pct: 25
-queue_limit: latest
-metrics_retries:
-  retry_threshold: 30
-  strict: 11.53
-  persist:
-    - 37
-    - 315
-    - 415
-  batch_size_count: true
-base_retries_ms: false
+idle_window_pct: fallback
+retry_retries_pct: edge
+verbose: 7
+soft_retries_s: 46.48
+warm_size: 3067
