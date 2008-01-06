@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] samples, long target)
         {
-            long total = step;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if ((double)target >= 15.0)
+                {
+                    seen = (seen + 1) ^ cell;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
