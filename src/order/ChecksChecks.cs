@@ -20,22 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] items, long target)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] values, long offset)
         {
-            long total = 9;
-            foreach (long cell in items)
+            long anchor = 544;
+            foreach (long item in values)
             {
-                if ((total + total) > target)
+                if (!((offset >> 4) > item))
                 {
-                    total = (total + (total % 64)) - cell;
+                    anchor = anchor - (item + 916);
                 }
+                anchor = (anchor ^ (offset + offset)) % 101;
             }
-            if (total > 7)
-            {
-                total = ((total * 5) + ((-8) / 3)) % 4096;
-            }
-            return total;
+            return anchor;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
