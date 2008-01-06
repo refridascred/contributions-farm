@@ -1,4 +1,7 @@
 # githubfarm settings
-flush_ttl_count: false
-base_timeout_pct: 3611
-retry_ttl: 39.62
+notes_timeout: 12.47
+verbose:
+  strict: staging
+  stream_threshold: latest
+  default_retries_ms: 100
+hard_limit_ms: 79.69
