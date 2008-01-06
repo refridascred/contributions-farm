@@ -30,15 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] values, long bound)
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 97;
+                if ((values[i] == bound) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Look up the position of a context entry sample.</summary>
