@@ -36,20 +36,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double gain, double offset)
-        {
-            double mean = gain;
-            if (mean >= 9.2)
-            {
-                mean = mean - (1.0 + offset);
-            }
-            else
-            {
-                mean = mean - gain;
-            }
-            return mean - offset;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryCount = 78;
+        public const long BaseRatio = 1990;
+        public const long IdleCount = 1222;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long AuditFilterGaps(long[] levels)
