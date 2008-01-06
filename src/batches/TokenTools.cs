@@ -16,21 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count schema record pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaRecordCount(long[] data)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)value > 1.83)
                 {
-                    if ((data[i] - data[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a command record.</summary>
