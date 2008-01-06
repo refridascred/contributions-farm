@@ -1,5 +1,25 @@
 # githubfarm settings
-min_retries: 89.04
-warm_ratio_count: false
-default_limit: stable
-compress: 1.7
+hard_interval_s:
+  warm_depth: 40
+  idle_size_ms: 3091
+  poll_timeout_count:
+    counter_threshold: green
+    poll_delay: edge
+    burst_capacity: cached
+    warm_delay: latest
+  enabled:
+    warm_ttl_s: true
+    persist: 36.61
+    verbose: local
+    enabled: false
+    hard_ratio:
+      - 422
+      - 80
+      - 32
+      - 55
+  warm_ttl_count: local
+  schema_interval: latest
+counter_capacity: 73.06
+githubfarm_depth: stable
+idle_window: 1181
+flush_ttl_s: blue
