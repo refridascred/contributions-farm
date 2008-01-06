@@ -37,19 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] items, long bound)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Done,
+            Draft,
+            Paused,
+            Failed,
         }
     }
 }
