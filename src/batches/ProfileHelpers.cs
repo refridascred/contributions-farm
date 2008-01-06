@@ -23,14 +23,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepTools = "legacy-edge";
+        public const long StepDepth = 8086;
+        public const string IdleWidth = "stable-edge";
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool VerifyWindowBounds(long[] levels, long seed)
