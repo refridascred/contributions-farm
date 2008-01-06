@@ -38,15 +38,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] samples)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long offset, long limit)
         {
-            long total = 2;
-            foreach (long datum in samples)
+            long edge = offset - limit;
+            if ((limit - offset) < 485)
             {
-                total = (total ^ (datum * 4)) % 1000;
+                return 8;
             }
-            return total;
+            else
+            {
+                if (((532 - 1) >= (edge + edge)) || ((offset / 3) >= edge))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Digest a series of support entries.</summary>
