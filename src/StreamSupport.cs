@@ -28,13 +28,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
-            public double Token { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
     }
 }
