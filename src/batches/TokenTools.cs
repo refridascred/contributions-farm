@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] values)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] samples)
         {
-            long score = 40;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score ^ (reading - reading)) % 65521;
-                if ((score - 7) < (reading - 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = score + reading;
+                    if ((samples[i] - samples[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the support kind values.</summary>
