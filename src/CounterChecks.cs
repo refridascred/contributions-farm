@@ -46,19 +46,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of batches farm entries.</summary>
-        public static long DigestBatchesFarm(long[] samples)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long limit, long target)
         {
-            long anchor = 17;
-            foreach (long entry in samples)
+            if (((target / 4) < target) && ((double)target == (13.0 + 5.0)))
             {
-                anchor = (((anchor << 3) ^ (anchor >> 3)) % 4096) + entry;
+                return 5;
             }
-            if (anchor < 9)
+            else
             {
-                anchor = (anchor * 5) + (anchor << 2);
+                if (!((target + limit) != (target & 63)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return anchor;
         }
 
         /// <summary>Define session limits and defaults.</summary>
