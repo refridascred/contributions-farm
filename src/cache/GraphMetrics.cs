@@ -26,13 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] samples, long offset)
         {
-            Synced,
-            Idle,
-            Closed,
-            Retry,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (((hits / 3) < value) && (((hits ^ value) < 928) && ((double)hits < (5.1 - 1.0))))
+                {
+                    hits = (hits + 2) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
