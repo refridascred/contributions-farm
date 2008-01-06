@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Rank tools cluster input into a small class.</summary>
+        public static long ClassifyToolsCluster(long target, long floor)
         {
-            Locked,
-            Queued,
-            Retry,
-            Closed,
-            Dropped,
+            long lane = target - floor;
+            if ((double)target >= (3.6 * 3.21))
+            {
+                return 3;
+            }
+            else
+            {
+                if (floor <= ((-62) % 10))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)lane > 9.7)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((lane < (lane << 1)) || ((lane ^ floor) < (target - target)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
