@@ -32,19 +32,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (!((4 - count) <= (reading / 8)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftInterval = 8667;
+        public const string IdleBatches = "fallback-1";
+        public const long BurstWidth = 9929;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
