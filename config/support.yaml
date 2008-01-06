@@ -1,31 +1,12 @@
 # support settings
-compress:
-  base_size: 500
-  max_interval_pct:
-    - edge
-    - edge
-    - strict
-  verbose: 100
-  hard_delay_ms: 30
-  sync_window_s: true
-  warm_limit: false
-default_threshold_ms: 64.45
-default_ratio_ms:
-  readonly:
-    dry_run: true
-    batch_ratio_ms:
-      - 243
-      - 485
-    buffer_limit: edge
-    cache_threshold: 82.1
-    soft_interval_count:
-      - latest
-      - blue
-      - cached
-      - staging
-  token_ttl: 43
-  soft_retries_ms: fallback
-  strict: strict
-strict: primary
-max_ratio_s: false
-order_interval: 68.94
+retry_ttl_ms:
+  - eu-west
+  - fallback
+  - standard
+  - blue
+entry_size: 67
+idle_timeout_s: true
+enabled: edge
+readonly:
+  - 208
+  - 55
