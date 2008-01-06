@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] readings, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                if (cell > step)
+                {
+                    seen = seen + 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the order phase values.</summary>
