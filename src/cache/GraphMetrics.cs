@@ -41,14 +41,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Stale,
-            Closed,
-            Active,
-            Retry,
-            Done,
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
