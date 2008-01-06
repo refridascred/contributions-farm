@@ -13,19 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of commits report entries.</summary>
-        public static long WeighCommitsReport(long[] samples)
+        /// <summary>Validate stream entry readings against a bound.</summary>
+        public static bool GuardStreamEntryRange(long[] values, long target)
         {
-            long anchor = 754;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long item in values)
             {
-                anchor = (anchor + (7 - anchor)) % 4096;
-                if (value < (14 << 2))
+                if (item >= target)
                 {
-                    anchor = ((anchor << 2) ^ value) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Hold a filter stats.</summary>
