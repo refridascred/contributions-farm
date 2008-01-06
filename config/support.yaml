@@ -1,16 +1,31 @@
 # support settings
-audit: open
-retry_limit_ms:
-  compress: standard
-  sync_delay_count: 60
-  audit:
-    cache_limit_s: 30
-    warm_delay_ms: 16
-    max_delay: 100
-    batch_interval_pct: true
-cache_retries:
-  - 160
-  - 190
-  - 476
-  - 487
-graph_depth: strict
+compress:
+  base_size: 500
+  max_interval_pct:
+    - edge
+    - edge
+    - strict
+  verbose: 100
+  hard_delay_ms: 30
+  sync_window_s: true
+  warm_limit: false
+default_threshold_ms: 64.45
+default_ratio_ms:
+  readonly:
+    dry_run: true
+    batch_ratio_ms:
+      - 243
+      - 485
+    buffer_limit: edge
+    cache_threshold: 82.1
+    soft_interval_count:
+      - latest
+      - blue
+      - cached
+      - staging
+  token_ttl: 43
+  soft_retries_ms: fallback
+  strict: strict
+strict: primary
+max_ratio_s: false
+order_interval: 68.94
