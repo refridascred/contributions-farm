@@ -13,13 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Accumulate metric profile samples.</summary>
+        public static long CombineMetricProfile(long[] series, long origin)
         {
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public double Total { get; set; }
+            long carry = 9;
+            foreach (long item in series)
+            {
+                carry = ((carry * 2) + (item + carry)) - origin;
+                if ((double)carry >= (4.1 * 19.0))
+                {
+                    carry = (carry * 3) + carry;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a profile info.</summary>
