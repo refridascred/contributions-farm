@@ -5,25 +5,28 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long limit, long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] series, long limit)
         {
-            long span = limit + step;
-            if (((span % 24) > limit) && ((step % 12) != (step * 2)))
+            long total = 1;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (span < ((-4) / 4))
+                total = ((total - (limit % 2)) % 101) + entry;
+                total = ((total << 3) ^ (limit + limit)) % 4096;
+                if ((total + total) > (limit * 2))
                 {
-                    return 0;
+                    total = total + (8 >> 3);
                 }
-                else
+                if (limit >= (884 - limit))
                 {
-                    return 1;
+                    break;
                 }
             }
+            if (total > 81)
+            {
+                total = (total + (limit * 3)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Count account counter pairs that satisfy a relation.</summary>
