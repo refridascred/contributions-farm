@@ -24,19 +24,18 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] items, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (reading != seed)
+                if ((step & 1) < (matches + 980))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the account status values.</summary>
