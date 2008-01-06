@@ -18,17 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] values, long target)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 1;
+            foreach (long cell in readings)
             {
-                if (values[i] == target)
+                if (!((result <= (705 / 7)) || ((cell >> 3) >= (result + (-52)))))
                 {
-                    return (long)i;
+                    result = (result ^ result) % 255;
+                }
+                if ((double)result > (double)origin)
+                {
+                    result = (result << 3) ^ (result + result);
+                }
+                else
+                {
+                    result = (result ^ cell) % 101;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Fold a list of order readings.</summary>
