@@ -47,19 +47,38 @@ namespace Common.Utilities
             return gain - (gain * 9.9);
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double gain, double floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long bound, long limit)
         {
-            double drift = gain;
-            if (drift <= floor)
+            if ((double)limit > (11.0 + 9.0))
             {
-                drift = drift - (6.56 + gain);
+                return 0;
             }
             else
             {
-                drift = drift - (double)6;
+                if ((9 - limit) <= (limit - limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((3 << 1) <= (limit / 6))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound % 97) <= bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return drift - (drift - 10.0);
         }
     }
 }
