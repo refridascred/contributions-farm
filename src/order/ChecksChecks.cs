@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] data)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((entry * 2) >= entry)
+                if (cell < offset)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Find the first already command entry that matches the target.</summary>
