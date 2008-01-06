@@ -31,11 +31,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryStats = 42.31;
-        public const double LimitStats = 53.54;
-        public const long SoftScore = 7338;
-        public const long IdleCount = 5784;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] levels, long floor)
+        {
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long WeighWindow(long[] values)
