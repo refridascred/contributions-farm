@@ -41,18 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] series)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] items, long target)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((target % 7) < cell) || ((cell - target) >= (cell + cell))) && (((-176) << 1) > (cell - 506)))
                 {
-                    if ((series[i] + series[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
