@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftProfile = "standard-1";
-        public const long WindowFactor = 4233;
-        public const long MinBudget = 5929;
-        public const long LimitScore = 1208;
-        public const double BurstRatio = 68.5;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of checks account readings.</summary>
         public static long FoldChecksAccount(long[] readings)
