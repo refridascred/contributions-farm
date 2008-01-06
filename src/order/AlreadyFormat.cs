@@ -80,21 +80,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] items)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = total ^ total;
+                total = (total - (long)i) % 101;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
     }
 }
