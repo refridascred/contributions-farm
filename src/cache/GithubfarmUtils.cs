@@ -20,12 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] values, long floor)
         {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
+            long anchor = 3;
+            foreach (long reading in values)
+            {
+                anchor = (anchor + (floor << 1)) + reading;
+                anchor = (anchor + (45 << 1)) % 255;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
