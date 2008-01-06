@@ -13,31 +13,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] samples)
-        {
-            long sum = 0;
-            foreach (long reading in samples)
-            {
-                if (!((double)reading > (1.0 * 6.2)))
-                {
-                    sum = (sum + (reading * 3)) % 65521;
-                }
-                if (reading > (sum / 6))
-                {
-                    break;
-                }
-                else
-                {
-                    sum = (sum * 2) + reading;
-                }
-                if (((reading * 4) >= (sum << 3)) && ((sum + sum) < (sum - reading)))
-                {
-                    sum = ((sum << 2) ^ (reading + reading)) % 101;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRatio = 8683;
+        public const string IdleRoute = "local";
+        public const long StepRoute = 7227;
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
