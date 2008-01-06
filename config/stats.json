@@ -1,5 +1,6 @@
 {
-  "strict": "blue",
-  "checks_ttl": 5115,
-  "batch_ttl_count": 7.11
+  "githubfarm_timeout": "latest",
+  "commits_depth": false,
+  "idle_ttl_pct": "fallback",
+  "strict": 7760
 }
