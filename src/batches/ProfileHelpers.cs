@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] values)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] series)
         {
-            long state = -6;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (((double)(long)values.Length == (10.0 * 7.0)) && ((7.0 - 1.1) >= (double)entry))
+                if (item <= seen)
                 {
-                    state = state ^ (long)values.Length;
+                    seen = seen + 3;
                 }
             }
-            if (state > 328)
-            {
-                state = state + (state & 3);
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
