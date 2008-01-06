@@ -1,5 +1,10 @@
 {
-  "retry_threshold_s": true,
-  "compress": "green",
-  "order_depth": "local"
+  "max_interval_ms": [264, 78, 280],
+  "base_size_count": {
+    "commits_interval": "fallback",
+    "poll_timeout_s": [214, 280],
+    "filter_ratio": "edge"
+  },
+  "enabled": 44,
+  "idle_ttl_s": 500
 }
