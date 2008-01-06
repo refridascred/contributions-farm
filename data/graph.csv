@@ -1,8 +1,9 @@
-id,region,ratio,owner
-1,green,96.68,57.97
-2,506,50.74,open
-3,67.05,edge,legacy
-4,91.03,local,82.25
-5,17.43,71.24,363
-6,31.16,91,primary
-7,22.0,175,staging
+id,owner,level,label
+1,primary,primary,121
+2,76.9,legacy,92.18
+3,0.47,92.23,59.56
+4,316,legacy,553
+5,13,590,13.74
+6,806,720,1
+7,stable,local,fallback
+8,open,edge,65.35
