@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank tools cluster input into a small class.</summary>
-        public static long ClassifyToolsCluster(long target, long floor)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long lane = target - floor;
-            if ((double)target >= (3.6 * 3.21))
-            {
-                return 3;
-            }
-            else
-            {
-                if (floor <= ((-62) % 10))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)lane > 9.7)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((lane < (lane << 1)) || ((lane ^ floor) < (target - target)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define window limits and defaults.</summary>
