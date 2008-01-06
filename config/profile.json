@@ -1,7 +1,5 @@
 {
-  "route_interval": 60.38,
-  "channel_ttl": 100,
-  "readonly": false,
-  "sync_size_count": [279, 496],
-  "burst_size_ms": 166
+  "persist": "cached",
+  "checks_limit": "latest",
+  "default_ttl_count": "primary"
 }
