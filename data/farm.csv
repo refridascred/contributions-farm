@@ -1,9 +1,6 @@
-id,score,count
-1,63.08,32.37
-2,strict,890
-3,edge,staging
-4,698,49.34
-5,fallback,120
-6,176,local
-7,85.38,10.27
-8,green,130
+id,state,label
+1,716,679
+2,37.04,cached
+3,strict,latest
+4,81.64,9.68
+5,blue,66
