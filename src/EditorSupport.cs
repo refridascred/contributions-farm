@@ -69,13 +69,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Validate stream batch readings against a bound.</summary>
+        public static bool CheckStreamBatchRange(long[] values, long limit)
         {
-            Paused,
-            Queued,
-            Stale,
-            Failed,
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
