@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two record editor measurements.</summary>
-        public static double SmoothRecordEditor(double bias, double offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long limit, long offset)
         {
-            double gain = (offset + 9.79) + bias;
-            return gain - 6.2;
+            long delta = limit - offset;
+            if (56 > (delta - limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((2.55 + 9.27) <= (double)delta)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((14.0 / 2.0) != (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stream record.</summary>
