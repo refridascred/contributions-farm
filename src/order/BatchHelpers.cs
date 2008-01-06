@@ -23,38 +23,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long limit, long step)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            if (step <= limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((step + step) > (limit + step)) && ((double)step > 8.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((step << 1) >= limit) || ((step % 7) > (52 % 64)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit + limit) != (step >> 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Closed,
+            Active,
+            Synced,
         }
 
         /// <summary>Look up the position of a counter channel sample.</summary>
