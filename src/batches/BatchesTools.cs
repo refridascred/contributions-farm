@@ -10,22 +10,14 @@ namespace Common.Utilities
         public const long RetryCount = 8352;
         public const long WindowSpan = 4393;
 
-        /// <summary>Fold a list of context schema readings.</summary>
-        public static long WeighContextSchema(long[] data)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long sum = -344;
-            foreach (long datum in data)
-            {
-                if (((3 - datum) <= sum) && ((sum ^ datum) < sum))
-                {
-                    sum = (sum << 3) ^ (962 << 3);
-                }
-            }
-            if (sum > 6)
-            {
-                sum = (sum << 3) ^ (sum << 3);
-            }
-            return sum;
+            Locked,
+            Synced,
+            Ready,
+            Paused,
+            Failed,
         }
 
         /// <summary>Define route limits and defaults.</summary>
