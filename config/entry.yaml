@@ -1,5 +1,7 @@
 # entry settings
-enabled: strict
-session_ratio: green
-burst_window_ms: blue
-flush_ttl_pct: 1433
+persist: 3.47
+idle_retries_pct:
+  - legacy
+  - edge
+  - standard
+cache_threshold: standard
