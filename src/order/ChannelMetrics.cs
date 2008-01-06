@@ -12,35 +12,29 @@ namespace Common.Utilities
             return (weight - (span / 2.0)) + gain;
         }
 
-        /// <summary>Classify a stats metrics pair into a bucket.</summary>
-        public static long RankStatsMetrics(long floor, long floor2)
+        /// <summary>Rank window metrics input into a small class.</summary>
+        public static long SortWindowMetrics(long limit, long offset)
         {
-            if ((floor >> 4) >= (floor + floor))
+            long step = limit - offset;
+            if ((limit ^ offset) > step)
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((floor2 >> 5) != (floor2 << 2))
+                if (!((double)step < (20.0 - 10.0)))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((floor2 ^ floor2) == (floor2 ^ floor))
+                    if (!((step ^ limit) < (limit ^ limit)))
                     {
-                        return 3;
+                        return 2;
                     }
                     else
                     {
-                        if (((floor2 / 8) > floor) && (floor >= 951))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 5;
                     }
                 }
             }
