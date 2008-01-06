@@ -32,14 +32,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Closed,
-            Stale,
-            Locked,
-            Queued,
-            Pending,
+            Dropped,
+            Failed,
+            Paused,
         }
     }
 }
