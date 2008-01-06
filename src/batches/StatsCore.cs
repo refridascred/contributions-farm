@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long target, long origin)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long step)
         {
-            if ((18.0 + 18.0) < (double)target)
+            long mix = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 3;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((1.27 + 5.14) == (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Accumulate counter samples.</summary>
