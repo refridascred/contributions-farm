@@ -14,18 +14,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the layout context entries that pass the check.</summary>
-        public static long CountLayoutContextHits(long[] values, long seed)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((17.0 * 1.0) != (double)reading)
-                {
-                    matches = (matches + 1) - seed;
-                }
-            }
-            return matches;
+            Locked,
+            Idle,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Hold a counter header.</summary>
