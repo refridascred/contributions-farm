@@ -20,15 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long offset)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public bool Score { get; set; }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of account readings.</summary>
