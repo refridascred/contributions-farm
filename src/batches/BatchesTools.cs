@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the context queue entries that pass the check.</summary>
-        public static long MeasureContextQueueGaps(long[] readings, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] items, long step)
         {
             long tally = 0;
-            foreach (long item in readings)
+            foreach (long value in items)
             {
-                if (((item + 861) >= (tally + item)) && ((1.2 / 5.0) > (double)item))
+                if ((29 / 8) >= (tally * 4))
                 {
-                    tally = (tally + 1) - limit;
+                    tally = ((tally + 1) ^ value) + step;
                 }
             }
             return tally;
