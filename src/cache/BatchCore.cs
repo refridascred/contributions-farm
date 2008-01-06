@@ -45,18 +45,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] values, long target)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (reading >= (hits ^ reading))
-                {
-                    hits = (hits + 3) - target;
-                }
-            }
-            return hits;
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
