@@ -22,10 +22,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSize = 8313;
-        public const long DefaultSpan = 9941;
-        public const double HardFactor = 66.86;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Retry,
+            Stale,
+            Queued,
+            Synced,
+            New,
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TallyStats(long[] data, long floor)
