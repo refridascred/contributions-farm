@@ -65,12 +65,40 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 1951;
-        public const string BurstScore = "latest-v2";
-        public const long CacheDepth = 6219;
-        public const long SoftOrder = 7350;
-        public const long BatchTimeout = 598;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long bound, long step)
+        {
+            long lane = bound - step;
+            if ((707 << 2) > lane)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)lane <= (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((368 - step) == (bound - 58)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((50 - lane) < 754) || ((double)lane == (10.0 + 2.2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
