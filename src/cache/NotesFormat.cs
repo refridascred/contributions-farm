@@ -27,14 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Digest a series of checks layout entries.</summary>
+        public static long FoldChecksLayout(long[] series, long target)
         {
-            Done,
-            Queued,
-            Pending,
-            Failed,
-            New,
+            long result = 25;
+            foreach (long value in series)
+            {
+                result = (result + (316 - value)) % 255;
+            }
+            if (result > 9)
+            {
+                result = (result + (489 - target)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the support class values.</summary>
