@@ -53,25 +53,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long offset, long limit)
+        /// <summary>Validate session contributi readings against a bound.</summary>
+        public static bool GuardSessionContributiLimits(long[] data, long origin)
         {
-            long edge = offset - limit;
-            if ((limit - offset) < 485)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((532 - 1) >= (edge + edge)) || ((offset / 3) >= edge))
+                if (reading > origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Digest a series of support entries.</summary>
