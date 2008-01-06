@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a metric tools value against two limits.</summary>
-        public static long RankMetricTools(long target, long seed)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long floor, long offset)
         {
-            long gap = target ^ seed;
-            if (((gap - gap) >= target) && (seed > (target - gap)))
+            if (!((offset / 4) == (offset >> 1)))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if (target <= (target << 2))
+                if (floor <= (225 + offset))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    return 4;
+                    return 0;
                 }
             }
         }
