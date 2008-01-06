@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Ready,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitChecks = 41.24;
+        public const long CacheSpan = 6967;
+        public const long SoftSpan = 9665;
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
