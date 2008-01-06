@@ -1,8 +1,5 @@
 {
-  "idle_retries_s": "fallback",
-  "hard_interval_s": "stable",
-  "readonly": "stable",
-  "default_depth_s": 93.95,
-  "base_capacity": 10.71,
-  "compress": [10, 43, 89]
+  "enabled": 42,
+  "idle_threshold_s": [80, 411, 437, 418],
+  "batch_size_s": true
 }
