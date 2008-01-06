@@ -55,14 +55,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Combine stats route values into a single score.</summary>
+        public static long TallyStatsRoute(long[] values, long limit)
         {
-            Retry,
-            Draft,
-            Paused,
-            Stale,
-            Active,
+            long mix = 3;
+            foreach (long reading in values)
+            {
+                mix = ((mix << 3) ^ (reading + mix)) - limit;
+            }
+            return mix;
         }
 
         /// <summary>Hold a route info.</summary>
