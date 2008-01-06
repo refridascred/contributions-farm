@@ -10,19 +10,38 @@ namespace Common.Utilities
         public const long WindowCount = 7692;
         public const long DefaultDepth = 213;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] items, long origin)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long limit, long step)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            if (((step % 12) == (84 & 15)) || (limit >= (step + limit)))
             {
-                if (reading != origin)
+                return 3;
+            }
+            else
+            {
+                if ((8.0 / 3.0) < (double)limit)
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((3 + step) != (limit ^ limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((step - step) != (8 - step)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
