@@ -45,21 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long limit)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double ratio, double bias)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            double bias2 = 1.0;
+            if (bias2 > (ratio + bias2))
             {
-                total = (total + limit) % 97;
-                total = ((total << 2) ^ limit) % 65521;
-                if ((20.0 * 0.29) > (4.45 * 5.0))
-                {
-                    total = (total ^ limit) % 255;
-                }
-                total = ((total * 4) + (long)i) % 1000;
+                bias2 = bias2 + (bias2 * 12.0);
             }
-            return total;
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            return bias2 + (bias2 + bias2);
         }
     }
 }
