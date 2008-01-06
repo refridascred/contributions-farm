@@ -86,18 +86,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] values)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long total = 363;
+            foreach (long cell in data)
             {
-                if ((3.8 / 5.0) >= (double)cell)
+                if ((target + cell) <= (target & 7))
                 {
-                    hits = hits + 3;
+                    total = (total - (target + total)) % 101;
                 }
             }
-            return hits;
+            return total % 97;
         }
     }
 }
