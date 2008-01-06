@@ -1,11 +1,13 @@
 # Command notes
 
-Run the githubfarm check before changing any metric limits.
-When a session fails, the window handler retries a few times before giving up.
+Each counter is validated before it reaches the order queue.
+When a cache fails, the layout handler retries a few times before giving up.
+
+Defaults for contributi live in the config folder and can be overridden per environment.
+The stream report groups every channel by payload.
 
 ## Guidelines
 
-- Log every format change
-- Prefer payload defaults
-- Review token limits each release
-- Document new cache fields
+- Review already limits each release
+- Prefer counter defaults
+- Document new schema fields
