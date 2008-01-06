@@ -1,9 +1,28 @@
 # support settings
-warm_threshold_pct:
-  - 142
-  - 468
-  - 71
-  - 147
-hard_window_count: false
-base_window_pct: true
-sync_capacity: stable
+profile_retries: staging
+base_threshold:
+  cache_size_ms: true
+  verbose: 1068
+  persist: 16.5
+  audit:
+    - latest
+    - primary
+    - legacy
+    - blue
+  flush_retries_s: 9645
+soft_timeout: standard
+retry_retries_count:
+  audit: 38
+  batch_window_pct: 15.14
+  max_retries_ms: 500
+  warm_threshold_ms:
+    - 492
+    - 320
+    - 280
+    - 188
+  readonly:
+    - open
+    - legacy
+    - standard
+readonly: true
+default_window_ms: 37
