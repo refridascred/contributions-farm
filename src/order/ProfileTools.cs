@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double gain, double span)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] samples, long origin)
         {
-            double bias = gain;
-            if (bias <= gain)
+            long mix = 56;
+            foreach (long cell in samples)
             {
-                bias = (bias - 16.0) + span;
+                mix = ((mix + (origin % 7)) % 97) + cell;
+                if (!((long)samples.Length <= 883))
+                {
+                    mix = ((mix << 2) ^ (origin << 2)) % 4096;
+                }
+                mix = mix ^ (origin + mix);
             }
-            else
-            {
-                bias = bias + (9.0 * 5.35);
-            }
-            return bias - bias;
+            return mix;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
