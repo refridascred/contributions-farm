@@ -20,10 +20,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 1989;
-        public const long IdleSession = 5657;
-        public const long SoftSession = 8432;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] series, long step)
+        {
+            long anchor = 55;
+            foreach (long item in series)
+            {
+                anchor = anchor ^ (item / 4);
+                if ((step << 3) <= (step >> 2))
+                {
+                    anchor = (anchor * 2) + (item % 10);
+                }
+                else
+                {
+                    anchor = anchor ^ (8 >> 2);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long OverlapSchemaCount(long[] data)
