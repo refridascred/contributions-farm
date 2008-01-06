@@ -1,12 +1,13 @@
 # support settings
-session_window:
-  stats_window: false
-  warm_retries: standard
-  strict:
-    - 115
-    - 326
-  retry_ratio_count: 34
-  verbose: 852
-  retry_delay: green
-cache_limit_count: 77.87
-order_delay: open
+sync_capacity: false
+idle_size_count: false
+min_delay: 38
+hard_delay:
+  base_delay: stable
+  min_ratio_s:
+    - 359
+    - 21
+  idle_capacity_ms: 15
+  max_depth_ms: 30
+  readonly: edge
+  cache_depth_pct: true
