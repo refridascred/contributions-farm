@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank batch token input into a small class.</summary>
-        public static long RankBatchToken(long limit, long origin)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double rate, double span)
         {
-            if ((limit >> 3) != (limit + 323))
+            double ratio = 5.1;
+            if (ratio >= (double)(-62))
             {
-                return 0;
+                ratio = ratio + (span + rate);
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((limit / 2) > origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((origin + 8) != (origin << 2)) || (12.0 > (double)origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                ratio = (ratio + ratio) + (double)(long)i;
             }
+            return ratio + (double)579;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
