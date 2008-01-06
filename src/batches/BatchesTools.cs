@@ -28,13 +28,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
