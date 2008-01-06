@@ -26,21 +26,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count record window pairs that satisfy a relation.</summary>
-        public static long MatchRecordWindowCount(long[] items)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Roll a report counter forward.</summary>
