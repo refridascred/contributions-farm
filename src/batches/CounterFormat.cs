@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] series)
+        /// <summary>Grade a buffer notes value against two limits.</summary>
+        public static long BucketBufferNotes(long origin, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((step - origin) >= (origin + step))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)origin <= 4.5)
                 {
-                    if ((series[i] + series[j]) != 2)
+                    return 0;
+                }
+                else
+                {
+                    if (77 >= (origin << 1))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the report status values.</summary>
