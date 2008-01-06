@@ -30,9 +30,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseRatio = 1784;
-        public const string BaseWindow = "local-edge";
-        public const long SoftWindow = 3589;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftBatch = 50.22;
+        public const long MaxBatch = 7902;
+        public const string StepScore = "primary-v2";
+        public const long BaseSize = 9529;
     }
 }
