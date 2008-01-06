@@ -23,11 +23,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryRatio = 7.83;
-        public const string CacheDepth = "stable-v2";
-        public const string HardScore = "staging-edge";
-        public const long HardContext = 8705;
-        public const double WindowContext = 94.53;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] readings)
+        {
+            long anchor = -601;
+            foreach (long sample in readings)
+            {
+                anchor = ((anchor << 3) ^ (sample >> 2)) % 4096;
+                anchor = ((anchor << 3) ^ (anchor + anchor)) % 97;
+            }
+            if (anchor < 341)
+            {
+                anchor = (anchor + (anchor + 6)) % 1000;
+            }
+            return anchor;
+        }
     }
 }
