@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] levels, long origin)
+        /// <summary>Blend two support already measurements.</summary>
+        public static double SmoothSupportAlready(double bias, double span)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            double load = (double)(230 << 1);
+            if (load > load)
             {
-                if ((double)seen != (20.0 - 2.6))
-                {
-                    seen = ((seen + 3) ^ datum) + origin;
-                }
+                load = load + (span + bias);
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (span - span)) - (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Hold a cluster summary.</summary>
