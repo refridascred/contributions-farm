@@ -28,18 +28,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit session commits readings against a rule.</summary>
-        public static long CountSessionCommitsMatches(long[] levels)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (!((9 * 2) >= (datum % 24)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
