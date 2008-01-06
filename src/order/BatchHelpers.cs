@@ -23,11 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftInterval = 8532;
-        public const string SoftScore = "stable-1";
-        public const long LimitSize = 1599;
-        public const long BaseRoute = 8546;
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Idle,
+            Closed,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Match up metrics samples.</summary>
         public static long MatchMetricsCount(long[] items)
