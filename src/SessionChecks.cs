@@ -42,21 +42,18 @@ namespace Common.Utilities
         public const string DefaultEditor = "primary-edge";
         public const long IdleRatio = 1341;
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] readings)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (74 > (count / 4))
                 {
-                    if ((readings[i] - readings[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 3) + item;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
