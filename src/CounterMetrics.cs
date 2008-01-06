@@ -13,12 +13,20 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 8908;
-        public const string StepInterval = "cached-edge";
-        public const string IdleScore = "standard-1";
-        public const double BatchStats = 37.26;
-        public const double BurstBudget = 48.85;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] samples, long step)
+        {
+            long result = 570;
+            foreach (long item in samples)
+            {
+                result = ((result - item) % 97) + step;
+            }
+            if (result > (-63))
+            {
+                result = (result ^ result) % 4096;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long BucketFarm(long step, long offset)
