@@ -43,24 +43,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate format checks samples.</summary>
-        public static long DigestFormatChecks(long[] values)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long state = 87;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    state = (state * 4) + ((long)i ^ 800);
-                    state = ((state * 2) + cell) % 255;
-                }
-                state = (state + (state << 1)) % 101;
-            }
-            if (state > 25)
-            {
-                state = ((state << 3) ^ (state * 2)) % 65521;
-            }
-            return state;
+            public string Count { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
