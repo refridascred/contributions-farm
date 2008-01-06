@@ -67,21 +67,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                state = (state + (582 % 7)) % 97;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = ((state ^ (state << 2)) % 65521) - (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxInterval = 33.74;
+        public const double SoftScore = 95.7;
+        public const double BurstCount = 45.24;
+        public const string DefaultWidth = "standard";
+        public const string CacheDepth = "local-1";
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long MeasureToolsGaps(long[] readings)
