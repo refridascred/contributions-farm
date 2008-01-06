@@ -23,39 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a already githubfarm value against two limits.</summary>
-        public static long ClassifyAlreadyGithubfarm(long seed, long bound)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long next = seed ^ bound;
-            if ((next & 3) >= (bound + next))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((next & 31) >= seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed <= (14.0 - 20.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((next - seed) >= 9))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
