@@ -1,6 +1,21 @@
 # githubfarm settings
-base_window_count: blue
-min_limit_count: 78.84
-payload_delay: 500
-route_depth: 18.32
-batch_limit: false
+retry_interval_pct:
+  default_limit: 512
+  hard_timeout: fallback
+  default_capacity_ms: 1163
+retry_delay_ms: false
+base_window_s:
+  audit:
+    - 450
+    - 382
+    - 482
+    - 188
+  queue_size:
+    - 185
+    - 43
+    - 151
+    - 370
+  cache_capacity_count: 121
+  contributi_depth: 58.66
+  min_interval_pct: strict
+  stream_ttl: true
