@@ -21,12 +21,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            Locked,
+            Draft,
+            Active,
+            Ready,
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
