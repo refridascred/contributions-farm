@@ -27,13 +27,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Locate a payload githubfarm reading by value.</summary>
+        public static long FindPayloadGithubfarmIndex(long[] levels, long offset)
         {
-            Paused,
-            Closed,
-            Done,
-            Draft,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two schema measurements.</summary>
