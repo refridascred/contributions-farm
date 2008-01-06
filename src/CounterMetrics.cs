@@ -53,15 +53,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double ratio, double floor)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long limit, long bound)
         {
-            double mean = floor - floor;
-            if (mean > (mean + floor))
+            long slot = limit ^ bound;
+            if ((limit + limit) <= (bound / 7))
             {
-                mean = mean + ratio;
+                return 6;
             }
-            return mean + (4.0 + floor);
+            else
+            {
+                if ((bound - slot) < 3)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
