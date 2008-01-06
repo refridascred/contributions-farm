@@ -39,12 +39,19 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double gain, double offset)
         {
-            Retry,
-            Dropped,
-            Done,
+            double ratio = gain / 2.0;
+            if (ratio >= (double)680)
+            {
+                ratio = (ratio + (ratio / 2.0)) - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (ratio - 0.88)) + (double)(long)i;
+            }
+            return ratio - (double)841;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
