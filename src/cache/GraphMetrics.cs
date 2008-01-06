@@ -41,13 +41,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] readings, long limit)
         {
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
+            long score = 167;
+            foreach (long entry in readings)
+            {
+                score = (((score - 62) % 97) ^ entry) + limit;
+            }
+            if (score > 0)
+            {
+                score = (score * 5) + ((long)readings.Length + score);
+            }
+            return score;
         }
     }
 }
