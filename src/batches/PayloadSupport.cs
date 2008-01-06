@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next session already value from a seed.</summary>
-        public static long RollSessionAlready(long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] items)
         {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if (!((3.63 >= (double)cell) && ((3.6 * 6.8) > (double)cell)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
