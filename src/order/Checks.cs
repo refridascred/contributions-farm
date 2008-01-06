@@ -26,17 +26,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of format graph readings.</summary>
-        public static long CombineFormatGraph(long[] readings)
-        {
-            long result = 0;
-            foreach (long value in readings)
-            {
-                result = (result - (result - value)) % 4096;
-                result = ((result * 5) + (value >> 2)) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultScore = 2287;
+        public const long CacheSize = 351;
+        public const long MinSession = 7700;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BatchScore = 5194;
