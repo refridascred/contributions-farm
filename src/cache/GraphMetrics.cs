@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            Paused,
+            Stale,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a checks entry.</summary>
