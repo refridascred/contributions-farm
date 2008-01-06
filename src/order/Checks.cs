@@ -26,22 +26,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine commits record values into a single score.</summary>
-        public static long ScoreCommitsRecord(long[] series)
+        /// <summary>Fold a list of format graph readings.</summary>
+        public static long CombineFormatGraph(long[] readings)
         {
-            long mark = 631;
-            foreach (long item in series)
+            long result = 0;
+            foreach (long value in readings)
             {
-                if ((10 << 3) > item)
-                {
-                    mark = (mark + (mark + item)) % 4096;
-                }
-                if ((item << 3) == (item - 54))
-                {
-                    break;
-                }
+                result = (result - (result - value)) % 4096;
+                result = ((result * 5) + (value >> 2)) % 255;
             }
-            return mark % 97;
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
