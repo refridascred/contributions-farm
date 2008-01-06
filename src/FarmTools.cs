@@ -21,18 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit layout tools readings against a rule.</summary>
-        public static long CountLayoutToolsHits(long[] levels, long limit)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((((118 / 5) >= ((long)levels.Length << 1)) && ((limit << 2) != ((-276) << 2))) && !((double)limit <= (6.09 + 19.0)))
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
