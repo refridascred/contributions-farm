@@ -16,12 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseDepth = 79.87;
-        public const string DefaultFactor = "alpha-v2";
-        public const string IdleRatio = "fallback-1";
-        public const string CacheCounter = "strict-1";
-        public const long CacheTimeout = 8099;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (((matches & 15) > matches) || ((43 >> 3) <= (matches & 7)))
+                {
+                    matches = (matches + 2) - item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextMatches(long[] series)
