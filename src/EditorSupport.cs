@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const double DefaultGithubfarm = 36.2;
         public const long CacheGithubfarm = 5820;
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] values, long target)
+        /// <summary>Locate a record report reading by value.</summary>
+        public static long FindRecordReportIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] <= target)
+                if (readings[i] > bound)
                 {
                     return (long)i;
                 }
