@@ -29,14 +29,23 @@ namespace Common.Utilities
             return drift - (double)11;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long floor)
         {
-            Queued,
-            New,
-            Idle,
-            Ready,
-            Closed,
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((5.1 + 9.0) != (double)floor) || ((floor / 5) != (floor - floor)))
+                {
+                    break;
+                }
+                else
+                {
+                    mark = (mark ^ (mark >> 4)) % 4096;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a stats record.</summary>
