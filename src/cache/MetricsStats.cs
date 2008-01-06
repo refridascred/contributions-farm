@@ -31,17 +31,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] items, long offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
