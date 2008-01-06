@@ -1,4 +1,4 @@
 # githubfarm settings
-hard_retries_ms: primary
-already_size: 90
-poll_window_s: 25.55
+readonly: legacy
+stream_limit: cached
+strict: 34
