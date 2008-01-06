@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] levels)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = step;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((long)i > (145 << 1))
                 {
-                    if ((levels[i] ^ levels[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total * 5) + step) % 4096;
+                    continue;
                 }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    total = (total + total) ^ (long)i2;
+                }
+                if (!((total + total) >= total))
+                {
+                    total = ((total * 3) + (step + step)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Measure how many support notes samples are out of range.</summary>
