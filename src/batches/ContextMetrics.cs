@@ -12,18 +12,18 @@ namespace Common.Utilities
             return (load - (scale / 3.0)) + span;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] levels, long offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long result = 89;
+            foreach (long entry in readings)
             {
-                if ((seen + seen) != (seen >> 4))
+                if (entry <= 757)
                 {
-                    seen = ((seen + 3) - entry) - offset;
+                    result = (result + (result + offset)) % 1000;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the farm class values.</summary>
