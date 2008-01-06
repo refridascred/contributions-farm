@@ -30,23 +30,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] samples, long origin)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((origin - count) == (cell / 6))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseLevel = 4002;
+        public const double WindowLevel = 69.77;
+        public const string LimitSize = "staging-v2";
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
