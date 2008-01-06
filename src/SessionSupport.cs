@@ -18,15 +18,18 @@ namespace Common.Utilities
         public const long HardReport = 5858;
         public const long BaseReport = 745;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] data, long limit)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (cell <= (limit + cell))
+                {
+                    seen = seen + 2;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
