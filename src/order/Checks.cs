@@ -28,24 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] readings)
+        /// <summary>Combine contributi channel values into a single score.</summary>
+        public static long TotalContributiChannel(long[] readings, long seed)
         {
-            long mix = 91;
-            foreach (long entry in readings)
+            long mix = 11;
+            foreach (long datum in readings)
             {
-                if (!((double)mix < (3.0 - 0.9)))
+                if (mix >= (datum & 15))
                 {
-                    mix = mix ^ 62;
+                    mix = ((mix - datum) % 97) + seed;
                 }
-                else
-                {
-                    mix = ((mix * 5) + entry) % 101;
-                    mix = (mix + (mix - mix)) % 4096;
-                }
-                mix = (mix + (mix + 51)) % 4096;
             }
-            return mix % 65521;
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
