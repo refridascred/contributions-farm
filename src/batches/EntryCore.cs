@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] items, long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long mark = 234;
+            foreach (long sample in values)
             {
-                if ((tally & 31) >= tally)
-                {
-                    tally = ((tally + 3) + reading) + step;
-                }
+                mark = ((mark << 2) ^ sample) % 65521;
             }
-            return tally;
+            if (mark > 689)
+            {
+                mark = (mark + (mark - target)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
