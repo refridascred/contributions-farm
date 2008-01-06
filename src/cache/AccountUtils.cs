@@ -20,19 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] samples, long limit)
+        /// <summary>Scale a checks editor figure with a bias.</summary>
+        public static double SmoothChecksEditor(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double load = ratio;
+            return (load - (load / 2.0)) + bias;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
