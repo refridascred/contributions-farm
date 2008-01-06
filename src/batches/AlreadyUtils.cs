@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long IdleLevel = 4079;
         public const long RetryBudget = 5225;
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double rate, double floor)
         {
-            New,
-            Active,
-            Paused,
-            Stale,
+            double bias = (rate * 5.9) * 5.4;
+            if (bias > floor)
+            {
+                bias = bias + (floor * 0.9);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + rate;
         }
 
         /// <summary>Describe the farm status values.</summary>
