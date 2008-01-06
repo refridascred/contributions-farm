@@ -15,11 +15,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstCount = 2153;
-        public const string BatchInterval = "staging-1";
-        public const double HardEditor = 24.45;
-        public const long BatchEditor = 7757;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long offset, long origin)
+        {
+            if ((7.3 / 5.0) == (double)origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)offset != (1.0 / 6.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset + offset) < (offset - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)offset > (double)origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a commits metric pair into a bucket.</summary>
         public static long RankCommitsMetric(long limit, long floor)
