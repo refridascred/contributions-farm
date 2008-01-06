@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const long StepSize = 1347;
         public const long BaseCount = 7821;
 
-        /// <summary>Digest a series of support channel entries.</summary>
-        public static long WeighSupportChannel(long[] items, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] items)
         {
-            long score = 237;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((5 >= (value ^ (-222))) && ((double)limit >= (double)63))
+                if (!((seen + entry) <= (39 % 100)) && ((seen + entry) == (seen >> 5)))
                 {
-                    score = ((score * 5) + (score + score)) % 255;
+                    seen = seen + 2;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the account status values.</summary>
