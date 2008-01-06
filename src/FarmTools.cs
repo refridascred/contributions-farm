@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] values, long origin)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long floor)
         {
-            long score = -500;
-            foreach (long sample in values)
+            long total = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((8.1 + 11.0) > (double)sample)
+                if ((total + floor) > floor)
                 {
-                    score = ((score << 3) ^ (long)values.Length) + origin;
+                    total = (total - 739) % 101;
+                    total = (total - total) % 1000;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            if (score > 3)
-            {
-                score = score + score;
-            }
-            return score;
+            return total;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
