@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] samples)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] levels)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (98 <= (count & 1))
+                if ((double)entry > (6.0 * 8.12))
                 {
-                    count = (count + 2) + value;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
