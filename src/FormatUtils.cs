@@ -42,18 +42,31 @@ namespace Common.Utilities
         public const long WindowAccount = 263;
         public const long WindowSpan = 5309;
 
-        /// <summary>Accumulate graph metric samples.</summary>
-        public static long TallyGraphMetric(long[] samples)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long origin, long limit)
         {
-            long mix = 4;
-            foreach (long sample in samples)
+            if (!((origin - limit) == (origin / 9)))
             {
-                if ((mix & 1) != (sample - mix))
+                return 3;
+            }
+            else
+            {
+                if ((0 ^ limit) <= (limit & 1))
                 {
-                    mix = ((mix << 3) ^ ((-86) + 382)) % 101;
+                    return 2;
+                }
+                else
+                {
+                    if (9 <= (limit - limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
