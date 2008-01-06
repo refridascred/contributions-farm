@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every channel context entry stays within the limit.</summary>
-        public static bool GuardChannelContextRange(long[] values, long target)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Queued,
+            Active,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
