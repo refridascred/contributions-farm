@@ -39,15 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double rate, double span)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            double drift = span;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (double)(long)i) - rate;
-            }
-            return drift + drift;
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
