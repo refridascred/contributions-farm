@@ -32,15 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] samples, long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] readings)
         {
-            long carry = 45;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                carry = ((carry ^ offset) % 1000) ^ value;
+                if (((-3) % 8) > ((long)readings.Length - value))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
