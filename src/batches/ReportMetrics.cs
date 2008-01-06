@@ -26,22 +26,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] samples, long seed)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((matches + matches) > (matches << 2))
-                {
-                    matches = ((matches + 3) ^ datum) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
