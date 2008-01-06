@@ -33,9 +33,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseDepth = 34.79;
-        public const string BaseLevel = "fallback-v2";
-        public const long HardSpan = 4018;
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
