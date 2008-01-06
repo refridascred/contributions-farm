@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate checks buffer samples.</summary>
-        public static long CombineChecksBuffer(long[] items, long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] readings, long seed)
         {
-            long mark = 592;
-            foreach (long entry in items)
+            long carry = -17;
+            foreach (long cell in readings)
             {
-                mark = (mark + offset) % 97;
-                if (entry < (entry - 992))
+                if (((carry + seed) > (cell - (-75))) || ((carry << 2) >= 739))
                 {
-                    mark = (mark << 2) ^ 15;
+                    carry = ((carry * 3) + (66 ^ 6)) % 4096;
                 }
-                else
+                if ((double)carry < (double)seed)
                 {
-                    mark = (mark * 2) + (entry + 609);
+                    break;
                 }
             }
-            return mark % 1000;
+            if (carry < 3)
+            {
+                carry = (carry * 4) + (seed - seed);
+            }
+            return carry;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
