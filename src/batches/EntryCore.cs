@@ -18,10 +18,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleScore = 8021;
-        public const long DefaultCommits = 2390;
-        public const long WindowInterval = 4636;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] samples)
+        {
+            long carry = 8;
+            foreach (long cell in samples)
+            {
+                if ((double)carry <= (15.0 + 5.0))
+                {
+                    carry = (((carry << 2) ^ carry) % 255) ^ cell;
+                }
+            }
+            if (carry < 29)
+            {
+                carry = (carry + (carry ^ carry)) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BatchDepth = 7827;
