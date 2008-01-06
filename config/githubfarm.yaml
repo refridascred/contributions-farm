@@ -1,14 +1,20 @@
 # githubfarm settings
-commits_capacity: 96
-soft_depth_count: latest
-poll_threshold_count:
-  hard_interval_s: 7171
-  hard_interval_pct: 65
-  burst_depth_count: 88.9
-  max_threshold_count:
-    dry_run: eu-west
-    compress: 500
-    base_size_pct: true
-    cache_capacity_count: 67.25
-    entry_timeout: 65.13
-  max_timeout_ms: 6195
+batch_timeout: 500
+cache_timeout: 5642
+warm_ttl: 12.53
+hard_threshold: 45
+metrics_interval:
+  context_threshold: fallback
+  hard_threshold: cached
+  base_ratio:
+    flush_depth_ms:
+      - open
+      - fallback
+      - green
+      - primary
+    readonly: latest
+    cluster_interval: edge
+  poll_limit_ms:
+    - fallback
+    - fallback
+    - cached
