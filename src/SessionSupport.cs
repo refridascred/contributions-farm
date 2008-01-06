@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 4559;
-        public const long DefaultCommand = 8035;
-        public const long RetryCommand = 2172;
-        public const long CacheCommand = 8621;
-        public const long SoftCommand = 8307;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWidth = 9274;
+        public const long WindowBudget = 1778;
+        public const long MinWindow = 4954;
+        public const long StepLevel = 3057;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long FoldAccount(long[] readings, long offset)
