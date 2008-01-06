@@ -29,17 +29,19 @@ namespace Common.Utilities
         public const long WindowEditor = 1297;
         public const string RetryCount = "open-edge";
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] items, long bound)
+        /// <summary>Accumulate githubfarm cluster samples.</summary>
+        public static long WeighGithubfarmCluster(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = -887;
+            foreach (long cell in items)
             {
-                if ((items[i] <= bound) && ((items[i] % 3) != 0))
+                if ((7 - (-13)) > cell)
                 {
-                    return (long)i;
+                    mix = mix - (mix / 2);
                 }
+                mix = (mix - (seed / 9)) % 1000;
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Describe the command state values.</summary>
