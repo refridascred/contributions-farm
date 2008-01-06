@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const long CacheSpan = 6967;
         public const long SoftSpan = 9665;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstSchema = "latest-v2";
-        public const long MinSchema = 4254;
-        public const long SoftTimeout = 7419;
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
