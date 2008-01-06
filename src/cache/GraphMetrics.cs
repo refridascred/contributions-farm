@@ -23,18 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] samples, long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (((hits / 3) < value) && (((hits ^ value) < 928) && ((double)hits < (5.1 - 1.0))))
+                if ((count * 3) == (reading - reading))
                 {
-                    hits = (hits + 2) + offset;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a batches header.</summary>
