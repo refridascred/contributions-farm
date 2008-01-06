@@ -1,5 +1,18 @@
 {
-  "queue_retries": "local",
-  "poll_interval": 100,
-  "burst_ratio": 2759
+  "metric_delay": true,
+  "editor_threshold": {
+    "audit": 22,
+    "flush_interval": "fallback",
+    "burst_interval_pct": 68.11,
+    "burst_retries": 64.18
+  },
+  "default_interval_pct": {
+    "hard_interval_ms": 44.45,
+    "flush_limit": 4408,
+    "soft_depth": false,
+    "stats_size": [488, 107, 38, 13],
+    "sync_ttl_count": "stable"
+  },
+  "counter_timeout": 60,
+  "cache_window": "green"
 }
