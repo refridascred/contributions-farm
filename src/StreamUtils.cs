@@ -76,21 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell > bound)
                 {
-                    if ((samples[i] - samples[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
