@@ -19,18 +19,18 @@ namespace Common.Utilities
             return ((mean + (double)(-3)) + ratio) + floor;
         }
 
-        /// <summary>Measure how many buffer metrics samples are out of range.</summary>
-        public static long CountBufferMetricsOutliers(long[] data)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (!(((8.8 - 5.39) > (double)seen) && ((item % 8) < item)))
+                if ((double)value >= (double)count)
                 {
-                    seen = seen + 1;
+                    count = (count + 2) - step;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
