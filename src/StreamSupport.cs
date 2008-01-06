@@ -28,11 +28,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long offset)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
+            long total = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!(total < (total + total)))
+                {
+                    total = ((total * 4) + (745 << 2)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
