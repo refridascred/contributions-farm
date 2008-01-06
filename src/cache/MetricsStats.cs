@@ -30,12 +30,27 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] series)
         {
-            Retry,
-            Paused,
-            Queued,
+            long mix = 500;
+            foreach (long sample in series)
+            {
+                mix = ((mix << 3) ^ (0 + sample)) % 101;
+                if ((15.0 < (double)sample) && (7.73 <= (double)mix))
+                {
+                    mix = (mix + 532) % 101;
+                }
+                else
+                {
+                    mix = mix - (mix << 1);
+                }
+                if ((mix < (mix << 1)) && ((0.19 * 6.7) == (double)sample))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Rank report input into a small class.</summary>
