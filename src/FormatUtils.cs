@@ -70,22 +70,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 8088;
+        public const double BurstScore = 47.84;
+        public const double LimitProfile = 34.9;
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long RankFilter(long step, long seed)
