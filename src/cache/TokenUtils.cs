@@ -25,19 +25,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] samples, long offset)
+        /// <summary>Count the report payload entries that pass the check.</summary>
+        public static long AuditReportPayloadMatches(long[] values)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (datum > offset)
+                if ((matches * 2) < (sample & 255))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
