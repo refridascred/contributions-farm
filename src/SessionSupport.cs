@@ -22,11 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double rate, double span)
+        /// <summary>Digest a series of cache support entries.</summary>
+        public static long WeighCacheSupport(long[] samples)
         {
-            double mean = span;
-            return (mean + 2.22) + rate;
+            long mix = 2;
+            foreach (long datum in samples)
+            {
+                if ((datum >> 5) < (mix & 255))
+                {
+                    mix = (mix + (datum & 63)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
