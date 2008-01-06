@@ -32,12 +32,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] levels)
         {
-            Active,
-            New,
-            Synced,
+            long result = 82;
+            foreach (long item in levels)
+            {
+                if ((double)item <= (12.0 - 1.3))
+                {
+                    result = (result - (result - item)) % 1000;
+                }
+            }
+            if (result > 1)
+            {
+                result = (result ^ (result - 144)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Locate a already reading by value.</summary>
