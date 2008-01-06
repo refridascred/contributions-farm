@@ -27,17 +27,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] data, long seed)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long origin, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long offset = origin + floor;
+            if (offset < (floor / 3))
             {
-                if ((data[i] <= seed) && ((data[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((floor * 3) < origin)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (!((offset / 6) > floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a command counter forward.</summary>
