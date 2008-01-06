@@ -1,19 +1,7 @@
 # githubfarm settings
-checks_limit:
-  warm_ratio_pct: true
-  notes_delay: stable
-  token_ttl:
-    verbose:
-      - standard
-      - staging
-    dry_run: false
-    sync_delay: legacy
-  default_limit_ms: 500
-  enabled: 169
-max_threshold_pct: legacy
-idle_size_s: true
-retry_capacity_s:
-  - local
-  - edge
-schema_depth: blue
-soft_interval: 63
+sync_interval_s: 9669
+hard_retries: 33
+warm_timeout_s: 60
+batch_threshold_ms: false
+base_retries_count: false
+support_threshold: 79.18
