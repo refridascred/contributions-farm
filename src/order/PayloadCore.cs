@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] readings)
-        {
-            long anchor = 243;
-            foreach (long reading in readings)
-            {
-                anchor = anchor ^ (anchor - reading);
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 8638;
+        public const double SoftWindow = 46.41;
+        public const string IdleWindow = "latest-1";
+        public const long BatchWindow = 2273;
+        public const string MaxWindow = "cached-edge";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string CacheEditor = "open-v2";
