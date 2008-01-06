@@ -43,19 +43,16 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] levels, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long limit)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long result = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (cell >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                result = (result << 3) ^ (limit - (long)i);
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
