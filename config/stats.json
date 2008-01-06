@@ -1,7 +1,7 @@
 {
-  "idle_ttl": "cached",
-  "flush_size": 30,
-  "flush_threshold": ["staging", "cached", "stable", "primary"],
-  "enabled": "local",
-  "min_ttl": 36
+  "flush_delay_count": "open",
+  "retry_timeout": true,
+  "hard_depth_s": "fallback",
+  "audit": 76.76,
+  "readonly": false
 }
