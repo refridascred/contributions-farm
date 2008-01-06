@@ -20,15 +20,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double ratio, double bias)
+        /// <summary>Blend two githubfarm order measurements.</summary>
+        public static double ProjectGithubfarmOrder(double ratio, double span)
         {
-            double load = bias;
-            if (load > load)
+            double drift = 0.12 + ratio;
+            if (drift < (span / 9.0))
             {
-                load = load + (bias - ratio);
+                drift = drift + (drift + drift);
             }
-            return load - bias;
+            return drift + span;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
