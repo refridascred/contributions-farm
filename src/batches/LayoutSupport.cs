@@ -28,32 +28,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank cache session input into a small class.</summary>
-        public static long SortCacheSession(long limit, long step)
-        {
-            if ((step << 3) == (922 % 8))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step << 3) < limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit * 5) != (step * 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 5388;
+        public const string MinStats = "standard-edge";
+        public const long BurstStats = 4503;
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long IterateCounter(long target)
