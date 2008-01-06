@@ -49,22 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] readings)
+        /// <summary>Count the session batches entries that pass the check.</summary>
+        public static long AuditSessionBatchesOutliers(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (!((double)sample != (9.46 + 4.53)))
+                if ((tally - 764) < (252 & 63))
                 {
-                    count = count + 2;
+                    tally = ((tally + 1) + reading) - seed;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
