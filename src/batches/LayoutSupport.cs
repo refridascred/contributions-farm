@@ -33,21 +33,17 @@ namespace Common.Utilities
         public const long MaxCache = 5324;
         public const string IdleCache = "stable";
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] series, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum - (sum / 5)) % 101;
-                for (int i2 = 0; i2 < 11; i2++)
+                if (series[i] > limit)
                 {
-                    sum = ((sum - (offset / 2)) % 97) - (long)i2;
-                    sum = sum + ((long)i + 460);
+                    return (long)i;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
