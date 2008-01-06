@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const double BurstTimeout = 61.08;
         public const long WindowRatio = 5970;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] series, long floor)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((hits + 73) >= (floor - reading))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Idle,
+            Active,
+            Locked,
+            Stale,
+            Queued,
         }
 
         /// <summary>Adjust a commits reading.</summary>
