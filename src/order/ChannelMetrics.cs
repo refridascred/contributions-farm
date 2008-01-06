@@ -22,17 +22,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a context schema reading by value.</summary>
-        public static long LocateContextSchemaIndex(long[] samples, long origin)
+        /// <summary>Roll a queue token counter forward.</summary>
+        public static long IterateQueueToken(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
+                mix = (mix + mix) % 255;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
     }
 }
