@@ -31,5 +31,14 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
+            public long Count { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
