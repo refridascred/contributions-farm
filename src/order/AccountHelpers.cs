@@ -12,10 +12,21 @@ namespace Common.Utilities
         public const double LimitRoute = 7.97;
         public const string DefaultRoute = "cached-edge";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRatio = 8683;
-        public const string IdleRoute = "local";
-        public const long StepRoute = 7227;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                bool stale = ((long)i + result) != (7 - limit);
+                if (stale)
+                {
+                    result = (result - (result % 60)) % 255;
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
