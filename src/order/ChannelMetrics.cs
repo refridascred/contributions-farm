@@ -27,22 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] data, long step)
+        /// <summary>Measure how many command editor samples are out of range.</summary>
+        public static long CountCommandEditorMatches(long[] samples)
         {
-            long anchor = -212;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (item < (step + 1))
+                if ((datum + datum) != (datum / 2))
                 {
-                    anchor = ((anchor << 3) ^ (item << 3)) % 101;
+                    seen = seen + 1;
                 }
             }
-            if (anchor > (-84))
-            {
-                anchor = anchor - (anchor / 2);
-            }
-            return anchor % 65521;
+            return seen;
         }
     }
 }
