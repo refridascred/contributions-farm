@@ -33,10 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 3229;
-        public const long WindowCount = 4796;
-        public const long CacheWindow = 2163;
-        public const double LimitWindow = 66.56;
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            Closed,
+            Locked,
+            Queued,
+            Draft,
+        }
     }
 }
