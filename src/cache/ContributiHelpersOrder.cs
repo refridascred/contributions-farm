@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample == (6.0 * 13.0))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleOrder = "cached";
+        public const long SoftOrder = 7104;
+        public const long LimitDepth = 9771;
+        public const double BaseFactor = 41.38;
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long DeriveLayout(long seed)
