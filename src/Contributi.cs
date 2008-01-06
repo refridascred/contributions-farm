@@ -19,23 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long floor, long bound)
         {
-            long acc = 3;
-            foreach (long entry in series)
+            if ((bound & 127) == (bound + bound))
             {
-                acc = (acc + (acc - 729)) % 97;
-                if ((entry % 3) > 70)
+                return 0;
+            }
+            else
+            {
+                if ((bound >= (907 % 64)) || ((floor - bound) <= bound))
                 {
-                    acc = ((acc * 2) + (acc & 127)) % 4096;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (acc < 218)
-            {
-                acc = acc + (acc >> 4);
-            }
-            return acc;
         }
 
         /// <summary>Combine batches booking values into a single score.</summary>
