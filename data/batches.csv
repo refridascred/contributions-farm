@@ -1,8 +1,9 @@
-id,ratio,rank,level,state
-1,602,100,79.57,64.39
-2,blue,368,36,957
-3,staging,eu-west,legacy,92.39
-4,82.02,564,8.87,open
-5,legacy,green,eu-west,435
-6,919,214,991,14.76
-7,91.23,open,stable,cached
+id,weight,level,token,region
+1,6.89,966,5.7,70.46
+2,13.92,open,65.8,blue
+3,24.58,open,904,790
+4,232,656,610,primary
+5,stable,green,560,470
+6,82.32,554,20.47,open
+7,blue,standard,866,57.47
+8,8.04,205,stable,eu-west
