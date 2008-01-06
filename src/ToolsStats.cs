@@ -70,11 +70,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
