@@ -18,20 +18,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] readings, long target)
-        {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleScore = 8021;
+        public const long DefaultCommits = 2390;
+        public const long WindowInterval = 4636;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BatchDepth = 7827;
