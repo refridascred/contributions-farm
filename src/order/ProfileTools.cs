@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] readings)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long acc = -2;
+            foreach (long reading in items)
             {
-                if ((84 & 1) > (value / 8))
-                {
-                    hits = hits + 1;
-                }
+                acc = (((acc << 3) ^ (acc ^ bound)) % 97) - reading;
             }
-            return hits;
+            if (acc > 52)
+            {
+                acc = (acc << 3) ^ bound;
+            }
+            return acc;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
