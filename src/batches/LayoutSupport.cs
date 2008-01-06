@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] items, long limit)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a cluster summary.</summary>
