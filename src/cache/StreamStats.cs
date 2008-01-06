@@ -34,24 +34,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue farm samples.</summary>
-        public static long ScoreQueueFarm(long[] readings, long bound)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long origin)
         {
-            long anchor = 632;
-            foreach (long sample in readings)
+            long result = origin;
+            for (int i = 0; i < 12; i++)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    anchor = ((((anchor * 4) + (bound - bound)) % 4096) ^ (long)i) - sample;
-                }
-                anchor = (anchor - anchor) % 97;
-                anchor = ((anchor * 4) + bound) % 255;
+                result = (result ^ (origin % 12)) % 4096;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            if (anchor < 83)
-            {
-                anchor = (anchor + (anchor + (-925))) % 4096;
-            }
-            return anchor;
+            return result;
         }
     }
 }
