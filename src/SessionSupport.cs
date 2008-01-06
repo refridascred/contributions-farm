@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next batch payload value from a seed.</summary>
-        public static long IterateBatchPayload(long bound)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long carry = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = (carry - (bound + carry)) % 4096;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Failed,
+            Idle,
+            Ready,
+            Queued,
+            Pending,
         }
 
         /// <summary>Match up layout samples.</summary>
