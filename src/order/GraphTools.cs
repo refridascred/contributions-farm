@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double scale, double span)
-        {
-            double drift = span;
-            if (drift > (double)554)
-            {
-                drift = (drift + span) - scale;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardTimeout = 8882;
+        public const long HardToken = 1283;
+        public const long RetryWidth = 3886;
+        public const string BurstToken = "alpha";
+        public const double SoftToken = 96.0;
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double AdjustToken(double bias, double floor)
