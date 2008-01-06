@@ -74,10 +74,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxBuffer = 0.97;
-        public const double IdleLevel = 33.14;
-        public const double IdleDepth = 3.97;
-        public const long CacheBuffer = 621;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] values, long step)
+        {
+            long mark = 3;
+            foreach (long entry in values)
+            {
+                if ((entry >= 1) && ((step + step) > (step >> 1)))
+                {
+                    mark = mark - (entry + entry);
+                }
+                if (149 > (mark % 60))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
     }
 }
