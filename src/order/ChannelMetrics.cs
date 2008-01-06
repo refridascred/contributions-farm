@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the contributi farm entries that pass the check.</summary>
-        public static long AuditContributiFarmOutliers(long[] samples)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry - entry) > (entry + seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Paused,
+            New,
+            Locked,
+            Ready,
         }
 
         /// <summary>Define record limits and defaults.</summary>
