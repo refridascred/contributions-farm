@@ -71,19 +71,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics channel readings against a bound.</summary>
-        public static bool VerifyMetricsChannelRange(long[] samples, long floor)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] series)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell <= floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] - series[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
