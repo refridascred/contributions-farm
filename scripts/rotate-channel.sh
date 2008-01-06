@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-CHANNEL_LIMIT=57
+CHANNEL_LIMIT=357
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in latest fallback edge; do
+for item in blue strict legacy stable; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
