@@ -49,10 +49,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultDepth = 7895;
-        public const long StepGithubfarm = 5800;
-        public const long DefaultGithubfarm = 9587;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (!((double)sample != (9.46 + 4.53)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long DigestQueue(long[] items, long offset)
