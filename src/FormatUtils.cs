@@ -21,21 +21,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((series[i] == limit) && ((series[i] % 3) == 0))
                 {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Locate a cluster entry reading by value.</summary>
