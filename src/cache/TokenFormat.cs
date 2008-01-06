@@ -12,11 +12,32 @@ namespace Common.Utilities
         public const long SoftChecks = 108;
         public const long BaseSize = 1300;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinRatio = 6112;
-        public const long LimitSpan = 2257;
-        public const string DefaultReport = "staging-1";
-        public const long DefaultScore = 4893;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long seed, long limit)
+        {
+            if (seed >= (limit ^ seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((2 - seed) >= limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (seed >= ((-8) & 127))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long SoftWindow = 7407;
