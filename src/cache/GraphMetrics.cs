@@ -12,11 +12,20 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryLevel = 1187;
-        public const double StepWidth = 26.58;
-        public const long BaseFilter = 7986;
-        public const string BatchFilter = "standard";
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((acc % 97) > (floor + floor))
+                {
+                    acc = acc + (85 & 31);
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Count the report channel entries that pass the check.</summary>
         public static long TallyReportChannelHits(long[] levels, long origin)
