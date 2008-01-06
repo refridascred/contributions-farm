@@ -22,24 +22,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine order report values into a single score.</summary>
-        public static long CombineOrderReport(long[] levels, long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] levels, long offset)
         {
-            long mix = 74;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (!((mix & 15) < mix))
+                if ((double)tally > (double)7)
                 {
-                    mix = (((mix << 2) ^ (seed << 3)) % 65521) + reading;
-                }
-                mix = ((mix * 4) + (seed << 2)) % 1000;
-                mix = ((mix << 2) ^ (mix & 127)) % 4096;
-                if (76 < seed)
-                {
-                    break;
+                    tally = ((tally + 1) + entry) - offset;
                 }
             }
-            return mix;
+            return tally;
         }
     }
 }
