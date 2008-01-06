@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first cache record entry that matches the target.</summary>
-        public static long SeekCacheRecordIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < floor) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftSpan = 4819;
+        public const double StepDepth = 53.44;
+        public const double BaseStats = 8.28;
+        public const long WindowLevel = 552;
+        public const long RetryTimeout = 8045;
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long SeekMetricsIndex(long[] samples, long offset)
