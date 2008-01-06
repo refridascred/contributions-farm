@@ -34,22 +34,11 @@ namespace Common.Utilities
         public const long MinRecord = 7882;
         public const long BatchRecord = 7290;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] data)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((double)matches <= (4.0 * 6.53))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
