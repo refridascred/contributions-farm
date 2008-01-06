@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] items)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long origin)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (30 >= (datum >> 1))
-                {
-                    matches = matches + 3;
-                }
+                sum = (sum + (long)i) % 1000;
+                sum = sum + (890 ^ origin);
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Project the next tools value.</summary>
