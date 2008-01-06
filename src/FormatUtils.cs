@@ -66,13 +66,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            public double Count { get; set; }
-            public string Owner { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
