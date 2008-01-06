@@ -1,9 +1,5 @@
 # githubfarm settings
-context_depth:
-  farm_threshold: 100
-  verbose: 58.91
-  route_capacity: 96.69
-  sync_timeout_ms: blue
-base_threshold_s: 76.91
-warm_depth_ms: 30
-already_capacity: true
+notes_limit: eu-west
+profile_retries: 60
+warm_depth_pct: 27.32
+min_threshold_s: false
