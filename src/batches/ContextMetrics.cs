@@ -34,39 +34,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long limit, long floor)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] data)
         {
-            long lane = limit - floor;
-            if (!((floor - limit) > limit))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((lane < limit) && (limit > (limit >> 2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((lane & 31) == (limit * 4))
+                    if ((data[i] + data[j]) != 7)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((limit + lane) < (floor + 995)) && ((limit - limit) <= lane))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
