@@ -31,39 +31,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long offset, long bound)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long prev = offset ^ bound;
-            if ((bound << 2) <= bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((61 % 3) > (bound + 983)) && ((16 & 1) < (offset ^ prev)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound ^ offset) > prev)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)bound != (9.43 - 3.0)) || ((offset / 9) == (prev & 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
