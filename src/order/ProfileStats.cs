@@ -34,31 +34,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long offset, long limit)
+        /// <summary>Derive the next stream contributi value from a seed.</summary>
+        public static long IterateStreamContributi(long seed)
         {
-            if ((offset - limit) < (143 & 255))
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit > (double)1)
+                score = (score ^ seed) % 101;
+                if (!((seed + seed) <= ((long)i * 5)))
                 {
-                    return 4;
+                    score = score - (score % 97);
+                    break;
                 }
                 else
                 {
-                    if ((limit + limit) < 9)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    score = (score << 3) ^ (540 >> 1);
                 }
+                score = ((score * 2) + (long)i) % 65521;
             }
+            return score;
         }
     }
 }
