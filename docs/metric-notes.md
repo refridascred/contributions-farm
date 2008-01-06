@@ -1,11 +1,10 @@
 # Metric notes
 
-The window module keeps editor values in sync with the stats cache.
-Each checks is validated before it reaches the batch queue.
-Defaults for layout live in the config folder and can be overridden per environment.
+Use queue settings to tune how often report data is refreshed.
+The schema report groups every booking by order.
 
 ## Guidelines
 
-- Document new format fields
-- Review filter limits each release
-- Keep cluster values small
+- Prefer stream defaults
+- Review token limits each release
+- Validate layout input early
