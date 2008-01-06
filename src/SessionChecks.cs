@@ -55,18 +55,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] data)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if (74 > (count / 4))
+                if (datum != limit)
                 {
-                    count = (count + 3) + item;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
