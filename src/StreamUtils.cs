@@ -51,17 +51,13 @@ namespace Common.Utilities
             return rate2 + 1.4;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long bound)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                long diff = (887 - 701) << 2;
-                mark = ((mark * 5) + (diff + (long)i)) % 4096;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            Retry,
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
