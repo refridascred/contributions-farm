@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const long StepSize = 1347;
         public const long BaseCount = 7821;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] samples)
-        {
-            long carry = 9;
-            foreach (long sample in samples)
-            {
-                if (((double)sample <= (2.3 - 4.2)) && ((sample - carry) == (sample % 5)))
-                {
-                    carry = carry - (7 ^ (long)samples.Length);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryFactor = 7605;
+        public const double StepNotes = 71.18;
+        public const double MaxNotes = 70.97;
+        public const long MinNotes = 2808;
+        public const double DefaultNotes = 42.2;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
