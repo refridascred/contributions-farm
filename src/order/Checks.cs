@@ -16,15 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double gain, double floor)
+        /// <summary>Audit format token readings against a rule.</summary>
+        public static long MeasureFormatTokenMatches(long[] samples, long seed)
         {
-            double weight = gain;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                weight = ((weight + weight) + (double)(long)i) - floor;
+                if ((double)entry >= (13.0 * 3.9))
+                {
+                    count = (count + 3) + seed;
+                }
             }
-            return weight + (double)16;
+            return count;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
