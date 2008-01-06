@@ -44,18 +44,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] readings, long origin)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long seed)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((datum * 4) <= datum) && (((3.9 - 19.0) > (double)tally) || ((double)tally != (10.0 - 6.2))))
-                {
-                    tally = (tally + 2) + origin;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
     }
 }
