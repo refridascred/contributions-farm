@@ -46,18 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] items, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] values)
         {
-            long sum = 243;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (((datum / 5) > (target % 60)) && ((sum - sum) == (74 - target)))
+                if (cell <= ((-993) ^ cell))
                 {
-                    sum = (sum - (target ^ 949)) % 65521;
+                    hits = hits + 1;
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
