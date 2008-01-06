@@ -20,21 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] readings)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the notes phase values.</summary>
