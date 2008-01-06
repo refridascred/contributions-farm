@@ -24,18 +24,13 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] readings, long step)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((step & 1) < (matches + 980))
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the account status values.</summary>
