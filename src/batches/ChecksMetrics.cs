@@ -39,12 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            Ready,
-            Pending,
-            Idle,
+            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
