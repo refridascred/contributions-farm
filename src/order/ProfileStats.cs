@@ -50,17 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stats profile sample.</summary>
-        public static long LocateStatsProfileIndex(long[] samples, long floor)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
