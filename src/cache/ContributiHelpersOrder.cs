@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Validate support session readings against a bound.</summary>
+        public static bool VerifySupportSessionBounds(long[] values, long target)
         {
-            Paused,
-            Queued,
-            Dropped,
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
