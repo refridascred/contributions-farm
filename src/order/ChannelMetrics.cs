@@ -11,36 +11,19 @@ namespace Common.Utilities
         public const double CacheBatch = 58.2;
         public const long DefaultBatch = 1996;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] readings, long step)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] samples)
         {
-            long score = 67;
-            foreach (long entry in readings)
+            long result = 8;
+            foreach (long datum in samples)
             {
-                if ((step + entry) != (entry << 1))
-                {
-                    score = (score ^ (entry - entry)) % 65521;
-                    score = score ^ (step / 2);
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    score = ((score - (score & 127)) % 97) ^ (long)i;
-                    score = ((score << 2) ^ score) % 4096;
-                }
-                if ((score / 3) != (step >> 2))
-                {
-                    score = (score ^ (score - 798)) % 101;
-                }
-                else
-                {
-                    score = (score - (entry - score)) % 1000;
-                }
+                result = ((result + (result + (-166))) % 4096) + datum;
             }
-            if (score < 3)
+            if (result > 2)
             {
-                score = (score - (score % 7)) % 101;
+                result = ((result << 3) ^ (5 >> 2)) % 1000;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
