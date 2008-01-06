@@ -44,15 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] items, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (item != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Hold a account summary.</summary>
