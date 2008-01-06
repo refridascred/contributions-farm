@@ -19,13 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public bool Score { get; set; }
-            public string Mode { get; set; } = "";
+            public double Label { get; set; }
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
             public long Limit { get; set; }
-            public double Size { get; set; }
         }
 
         /// <summary>Hold a batch stats.</summary>
