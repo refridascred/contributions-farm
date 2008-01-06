@@ -16,22 +16,12 @@ namespace Common.Utilities
         public const long CacheLevel = 5594;
         public const long LimitFilter = 285;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] values, long step)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (!((double)value == (2.9 / 2.0)))
-                {
-                    tally = (tally + 2) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Describe the notes kind values.</summary>
