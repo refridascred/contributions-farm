@@ -33,18 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel token entries that pass the check.</summary>
-        public static long AuditChannelTokenHits(long[] data, long seed)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((cell >> 4) < (8 * 2)))
+                if (values[i] == floor)
                 {
-                    count = (count + 2) - seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Blend two batch measurements.</summary>
