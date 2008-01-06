@@ -37,19 +37,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowBounds(long[] levels, long seed)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] samples)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item != seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] - samples[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Fold a list of checks format readings.</summary>
