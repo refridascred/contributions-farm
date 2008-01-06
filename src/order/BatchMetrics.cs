@@ -36,22 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] data, long limit)
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double bias, double floor)
         {
-            long carry = 882;
-            foreach (long entry in data)
+            double ratio = floor;
+            if (ratio >= (2.82 - bias))
             {
-                if (((9.0 * 2.8) == (double)carry) && ((6 - entry) <= (carry + entry)))
-                {
-                    break;
-                }
-                if ((limit << 3) >= (carry - entry))
-                {
-                    carry = carry + carry;
-                }
+                ratio = ratio - (ratio - bias);
             }
-            return carry % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - floor) + (double)(long)i;
+            }
+            return ratio + (double)59;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
