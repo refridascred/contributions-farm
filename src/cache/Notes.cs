@@ -37,12 +37,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Owner { get; set; } = "";
+            Draft,
+            Closed,
+            Active,
+            New,
+            Ready,
         }
 
         /// <summary>Iterate the contributi profile series from a seed.</summary>
