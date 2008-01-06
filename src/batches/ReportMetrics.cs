@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitLevel = 6874;
-        public const double BurstChannel = 11.13;
-        public const long StepRatio = 832;
-        public const long LimitChannel = 7538;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Pending,
+            Retry,
+            Locked,
+            Done,
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadBounds(long[] data, long seed)
