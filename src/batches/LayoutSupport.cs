@@ -21,15 +21,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] samples)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long result = 191;
-            foreach (long datum in samples)
-            {
-                result = result - (datum + datum);
-            }
-            return result;
+            public bool Limit { get; set; }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a counter counter forward.</summary>
