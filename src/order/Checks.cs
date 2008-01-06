@@ -19,26 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] samples, long step)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long state = 288;
-            foreach (long cell in samples)
-            {
-                if ((state < (state / 9)) || (8.27 >= (double)state))
-                {
-                    state = ((state << 2) ^ step) - cell;
-                }
-                if (!((double)state > (0.4 - 3.42)))
-                {
-                    break;
-                }
-            }
-            if (state < 641)
-            {
-                state = (state + (state / 8)) % 65521;
-            }
-            return state % 1000;
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine commits record values into a single score.</summary>
