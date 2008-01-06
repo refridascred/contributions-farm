@@ -60,21 +60,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count command checks pairs that satisfy a relation.</summary>
-        public static long CompareCommandChecksCount(long[] samples)
+        /// <summary>Combine command order values into a single score.</summary>
+        public static long CombineCommandOrder(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 843;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (((result * 2) + (result << 3)) % 1000) ^ value;
+                result = (result ^ (91 / 6)) % 255;
             }
-            return tally;
+            return result % 65521;
         }
     }
 }
