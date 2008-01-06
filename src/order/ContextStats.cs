@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long limit, long bound)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] samples)
         {
-            long prev = limit ^ bound;
-            if ((prev <= (limit - prev)) && ((bound * 4) <= limit))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((102 / 4) <= (prev & 127))
+                if (!((count - count) == (14 * 2)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((prev + prev) > prev) && (bound > (8 / 8)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = (count + 3) ^ sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
