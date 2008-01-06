@@ -26,12 +26,27 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitCache = "staging-1";
-        public const long DefaultLevel = 2860;
-        public const long IdleBudget = 9507;
-        public const long MaxCache = 5324;
-        public const string IdleCache = "stable";
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                long next = (seed & 15) - ((long)i + seed);
+                if ((double)seed < (double)(long)i)
+                {
+                    score = score - next;
+                    score = score + (long)i;
+                    break;
+                }
+                else
+                {
+                    score = score - (score / 6);
+                }
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LookupStreamIndex(long[] series, long limit)
