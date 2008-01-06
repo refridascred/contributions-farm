@@ -65,13 +65,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Validate cache graph readings against a bound.</summary>
+        public static bool GuardCacheGraphRange(long[] readings, long seed)
         {
-            Stale,
-            Paused,
-            Active,
-            Failed,
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
