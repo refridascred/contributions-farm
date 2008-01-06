@@ -94,10 +94,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 4850;
-        public const double MaxBudget = 30.98;
-        public const string IdleCount = "local-edge";
-        public const long BurstLevel = 7279;
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
+        {
+            Stale,
+            Paused,
+            Active,
+            Failed,
+        }
     }
 }
