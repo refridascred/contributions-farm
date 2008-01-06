@@ -57,21 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] readings)
+        /// <summary>Look up the position of a counter channel sample.</summary>
+        public static long SeekCounterChannelIndex(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (levels[i] > bound)
                 {
-                    if ((readings[i] - readings[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
