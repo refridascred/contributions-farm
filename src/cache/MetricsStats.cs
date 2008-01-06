@@ -60,19 +60,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] levels, long bound)
+        /// <summary>Roll a stats already counter forward.</summary>
+        public static long SeriesStatsAlready(long step)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long anchor = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (sample < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((anchor << 2) ^ (step % 100)) % 97;
+                anchor = (anchor << 2) ^ anchor;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return ready;
+            return anchor;
         }
     }
 }
