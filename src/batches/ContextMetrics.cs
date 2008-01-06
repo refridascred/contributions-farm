@@ -41,22 +41,19 @@ namespace Common.Utilities
         public const long BaseRatio = 1990;
         public const long IdleCount = 1222;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] levels)
+        /// <summary>Derive the next counter token value from a seed.</summary>
+        public static long IterateCounterToken(long step)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long total = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)cell >= (double)matches)
+                if (!((1.7 - 11.0) == (double)step))
                 {
-                    matches = matches + 3;
+                    total = (total << 2) ^ (step & 31);
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
     }
 }
