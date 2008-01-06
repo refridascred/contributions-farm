@@ -14,17 +14,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] values, long origin)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Active,
+            Idle,
+            Retry,
+            Locked,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
