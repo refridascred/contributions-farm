@@ -1,10 +1,12 @@
 # Command notes
 
-The account report groups every graph by payload.
-When a command fails, the support handler retries a few times before giving up.
+Defaults for cluster live in the config folder and can be overridden per environment.
+The cache module keeps cache values in sync with the contributi cache.
+Defaults for notes live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer support defaults
-- Log every filter change
-- Keep account values small
+- Keep graph values small
+- Review channel limits each release
+- Prefer context defaults
+- Document new editor fields
