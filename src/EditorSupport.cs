@@ -27,18 +27,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the channel editor entries that pass the check.</summary>
-        public static long CountChannelEditorMatches(long[] items)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((901 + 5) != (count % 100))
-                {
-                    count = (count + 2) - entry;
-                }
-            }
-            return count;
+            Active,
+            Pending,
+            Paused,
+            Queued,
+            Stale,
         }
 
         /// <summary>Describe the stream mode values.</summary>
