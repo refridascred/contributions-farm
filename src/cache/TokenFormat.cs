@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] values)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long target, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long step = target ^ bound;
+            if ((double)target > (9.0 + 2.0))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((bound + 57) > (target + step)))
                 {
-                    if ((values[i] + values[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many metrics graph samples are out of range.</summary>
