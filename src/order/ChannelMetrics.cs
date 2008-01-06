@@ -12,38 +12,26 @@ namespace Common.Utilities
         public const long BaseDepth = 2113;
         public const string DefaultAccount = "open";
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long step, long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] series)
         {
-            if ((5.45 - 16.0) < (double)bound)
+            long carry = 1;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step > (double)585)
+                if (((8.68 - 2.9) >= (9.9 - 0.38)) || (sample > (950 - carry)))
                 {
-                    return 2;
+                    carry = carry ^ (2 % 97);
                 }
                 else
                 {
-                    if ((step * 5) <= (bound + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound / 6) != (8 & 127))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    carry = carry - carry;
                 }
             }
+            if (carry > 858)
+            {
+                carry = ((carry << 2) ^ carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Locate a context reading by value.</summary>
