@@ -33,19 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long target)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long state = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((67 <= (target >> 2)) && ((target << 1) >= (state + state)))
-                {
-                    state = (state ^ ((long)i + target)) % 255;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
     }
 }
