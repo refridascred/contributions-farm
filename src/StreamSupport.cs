@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double bias, double bias2)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] readings, long origin)
         {
-            double load = (bias2 / 7.0) / 4.0;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                load = (load + (bias2 * 1.37)) + (double)(long)i;
+                if ((datum + datum) != (tally + 4))
+                {
+                    tally = (tally + 2) + origin;
+                }
             }
-            return load + (load - bias);
+            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
