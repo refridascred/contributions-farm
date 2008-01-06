@@ -19,21 +19,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] series)
+        /// <summary>Look up the position of a cluster notes sample.</summary>
+        public static long LocateClusterNotesIndex(long[] series, long step)
         {
-            long seen = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((series[i] > step) && ((series[i] % 5) != 0))
                 {
-                    if ((series[i] ^ series[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Adjust a profile reading.</summary>
