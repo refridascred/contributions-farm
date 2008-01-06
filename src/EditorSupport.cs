@@ -33,14 +33,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Find the first order contributi entry that matches the target.</summary>
+        public static long LookupOrderContributiIndex(long[] values, long target)
         {
-            Pending,
-            Draft,
-            Synced,
-            New,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
