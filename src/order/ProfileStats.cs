@@ -23,15 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] levels, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] readings)
         {
             long count = 0;
-            foreach (long item in levels)
+            foreach (long cell in readings)
             {
-                if (!(count > limit) || (18 > (56 + item)))
+                if ((count % 7) >= (count & 255))
                 {
-                    count = count + 1;
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
