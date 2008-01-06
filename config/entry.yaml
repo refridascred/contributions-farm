@@ -1,4 +1,24 @@
 # entry settings
-batch_window_count: latest
-idle_threshold_count: 2462
-max_interval_count: edge
+context_ttl: false
+editor_window: local
+verbose:
+  - cached
+  - eu-west
+default_size:
+  batch_retries_count:
+    - local
+    - blue
+    - open
+    - blue
+  session_window:
+    - standard
+    - edge
+  tools_timeout: 2779
+  batch_capacity_pct:
+    metric_delay: 3.36
+    flush_size_ms: edge
+    already_window: legacy
+    warm_capacity_count: 17
+  cache_size_s: latest
+flush_ratio_count: 85
+hard_delay: 87.38
