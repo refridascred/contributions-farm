@@ -71,15 +71,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long seed)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double scale, double span)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            double mean = (double)(4 + 581);
+            if (mean < (8.97 - span))
             {
-                state = ((state * 4) + (long)i) % 97;
+                mean = (mean - (double)10) - scale;
             }
-            return state;
+            return mean - mean;
         }
     }
 }
