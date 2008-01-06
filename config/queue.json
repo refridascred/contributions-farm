@@ -1,5 +1,5 @@
 {
-  "tools_interval": 60,
-  "token_limit": 39.27,
-  "flush_ratio_count": "green"
+  "stream_ttl": false,
+  "warm_window_s": "cached",
+  "tools_window": 36
 }
