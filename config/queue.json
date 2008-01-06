@@ -1,7 +1,19 @@
 {
-  "sync_interval_s": "cached",
-  "retry_window_count": 33.67,
-  "flush_threshold_ms": "staging",
-  "session_ttl": 794,
-  "stats_window": 2772
+  "max_ratio_ms": true,
+  "hard_capacity_pct": {
+    "cluster_timeout": {
+      "audit": 28.9,
+      "burst_interval_count": ["strict", "eu-west", "eu-west", "cached"],
+      "notes_ttl": 2379,
+      "readonly": 9389,
+      "sync_delay_count": [319, 338],
+      "burst_capacity_pct": false
+    },
+    "burst_timeout_ms": 7,
+    "sync_limit_count": [59, 434, 73],
+    "githubfarm_size": false,
+    "hard_threshold_ms": 7,
+    "base_capacity_pct": 30
+  },
+  "commits_limit": [470, 229, 483]
 }
