@@ -1,10 +1,11 @@
 {
-  "batch_size_s": {
-    "strict": "fallback",
-    "base_capacity_ms": 9.09,
-    "stats_retries": 4186,
-    "stream_threshold": false
+  "graph_retries": "primary",
+  "channel_size": {
+    "cache_limit_count": 9962,
+    "idle_interval_ms": 595,
+    "hard_ttl": "open",
+    "filter_capacity": "latest",
+    "soft_threshold_ms": 9009
   },
-  "cache_ratio_s": 60,
-  "schema_depth": 34.79
+  "cache_capacity": 27
 }
