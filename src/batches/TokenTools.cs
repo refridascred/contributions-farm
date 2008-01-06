@@ -26,18 +26,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] data, long offset)
+        /// <summary>Roll a support cache counter forward.</summary>
+        public static long RollSupportCache(long step)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long acc = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (((sample * 5) >= ((-214) + offset)) || ((573 % 10) != (sample - hits)))
-                {
-                    hits = hits + 1;
-                }
+                acc = acc - (acc + step);
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
     }
 }
