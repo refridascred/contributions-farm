@@ -1,9 +1,6 @@
 {
-  "warm_retries_s": [298, 46],
-  "retry_limit": {
-    "compress": 60,
-    "dry_run": true,
-    "editor_retries": 85.87
-  },
-  "idle_interval_s": "primary"
+  "batch_timeout": 15.86,
+  "account_window": "fallback",
+  "retry_timeout_count": "legacy",
+  "sync_retries_s": true
 }
