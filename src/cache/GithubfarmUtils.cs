@@ -39,18 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] levels, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long total = 4;
+            foreach (long item in values)
             {
-                if ((double)tally > (double)7)
+                if (!((18.0 + 5.64) > (double)(long)values.Length))
                 {
-                    tally = ((tally + 1) + entry) - offset;
+                    total = ((total << 2) ^ (item >> 3)) % 255;
+                }
+                else
+                {
+                    total = (total - item) % 1000;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
