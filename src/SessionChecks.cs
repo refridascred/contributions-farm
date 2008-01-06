@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] data)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] items, long step)
         {
-            long carry = 372;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)item == (1.5 / 7.0)))
+                if (items[i] >= step)
                 {
-                    carry = (carry ^ (item / 6)) % 255;
-                    continue;
-                }
-                if ((item + carry) > 63)
-                {
-                    carry = (carry * 2) + item;
+                    return (long)i;
                 }
             }
-            if (carry < 262)
-            {
-                carry = (carry << 2) ^ (carry & 127);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit schema order readings against a rule.</summary>
