@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long step)
         {
-            Draft,
-            Closed,
-            Failed,
+            long mark = step;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = mark + step;
+                mark = (mark * 3) + step;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define route limits and defaults.</summary>
