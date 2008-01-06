@@ -47,28 +47,12 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] levels)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long state = 3;
-            foreach (long item in levels)
-            {
-                if (!(item >= (item - item)))
-                {
-                    state = state + (item ^ item);
-                }
-                state = ((state << 2) ^ item) % 4096;
-                state = (state * 5) + (item / 3);
-                if ((584 << 2) <= (state & 31))
-                {
-                    break;
-                }
-            }
-            if (state > (-673))
-            {
-                state = state ^ state;
-            }
-            return state % 97;
+            Retry,
+            Dropped,
+            Done,
         }
 
         /// <summary>Accumulate token samples.</summary>
