@@ -13,11 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 3140;
-        public const long BatchRoute = 7639;
-        public const double RetryLevel = 32.4;
-        public const long WindowRatio = 2595;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorGaps(long[] series)
