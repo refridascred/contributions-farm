@@ -1,14 +1,14 @@
 # Layout notes
 
-The filter report groups every account by metric.
-The commits report groups every stats by filter.
+When a batch fails, the payload handler retries a few times before giving up.
+The payload report groups every session by cache.
+Run the channel check before changing any format limits.
 
-The githubfarm module keeps buffer values in sync with the queue cache.
-Run the cache check before changing any graph limits.
-A cache that stays idle for too long is moved to the queue list.
+The cluster report groups every stream by token.
+Defaults for order live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review session limits each release
-- Log every command change
-- Prefer session defaults
+- Validate cache input early
+- Review farm limits each release
+- Log every checks change
