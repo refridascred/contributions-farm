@@ -15,12 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] series, long seed)
         {
-            Done,
-            Paused,
-            Draft,
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine cache checks values into a single score.</summary>
