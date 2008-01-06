@@ -37,18 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] readings, long limit)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] items, long bound)
         {
-            long state = 66;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if ((state >> 2) >= state)
+                if (sample != bound)
                 {
-                    state = (((state << 2) ^ limit) % 4096) ^ sample;
+                    valid = false;
+                    break;
                 }
             }
-            return state % 1000;
+            return valid;
         }
     }
 }
