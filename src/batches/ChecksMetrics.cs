@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const double MaxOrder = 76.8;
         public const long MinOrder = 6718;
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] values)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seen - 74) == (5 - cell))
                 {
-                    if ((values[i] ^ values[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
