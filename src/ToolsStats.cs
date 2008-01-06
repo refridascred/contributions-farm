@@ -86,18 +86,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] data, long target)
-        {
-            long total = 363;
-            foreach (long cell in data)
-            {
-                if ((target + cell) <= (target & 7))
-                {
-                    total = (total - (target + total)) % 101;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultContext = "latest";
+        public const long SoftFactor = 475;
+        public const string LimitContext = "strict-v2";
+        public const long HardScore = 547;
+        public const long StepSize = 5727;
     }
 }
