@@ -23,21 +23,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] series)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 61;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                state = ((state << 2) ^ (525 - 0)) % 101;
+                if ((state / 6) < state)
                 {
-                    if ((series[i] + series[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state * 5) + (entry ^ 999);
                 }
             }
-            return seen;
+            if (state < 3)
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
