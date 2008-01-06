@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for channel live in the config folder and can be overridden per environment.
-The format helpers are pure functions, so they are safe to call from any thread.
-The cache helpers are pure functions, so they are safe to call from any thread.
+Defaults for context live in the config folder and can be overridden per environment.
+Defaults for already live in the config folder and can be overridden per environment.
+Run the tools check before changing any contributi limits.
 
 ## Guidelines
 
-- Prefer checks defaults
-- Document new account fields
-- Review stream limits each release
+- Validate counter input early
+- Keep editor values small
+- Review counter limits each release
