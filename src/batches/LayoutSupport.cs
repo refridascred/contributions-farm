@@ -53,11 +53,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double scale, double span)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            double mean = (scale / 9.0) / 9.0;
-            return (mean + 10.0) + span;
+            public string Ratio { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
