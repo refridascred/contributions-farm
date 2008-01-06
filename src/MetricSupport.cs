@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long bound)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] values, long step)
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (!((step * 3) > step) && (((step / 9) <= ((-1) % 8)) && ((step * 3) >= step)))
                 {
-                    state = ((state ^ state) % 101) ^ (long)i2;
+                    matches = (matches + 3) + cell;
                 }
-                long prev = (255 * 5) << 2;
-                state = ((state * 2) + (prev + 31)) % 4096;
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the buffer level values.</summary>
