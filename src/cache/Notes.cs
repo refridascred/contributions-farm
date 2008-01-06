@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] samples, long limit)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 2) == 0))
+                if (levels[i] == origin)
                 {
                     return (long)i;
                 }
