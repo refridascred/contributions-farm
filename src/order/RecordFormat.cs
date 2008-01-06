@@ -71,15 +71,26 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double scale, double span)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] values, long origin)
         {
-            double mean = (double)(4 + 581);
-            if (mean < (8.97 - span))
+            long state = -2;
+            foreach (long datum in values)
             {
-                mean = (mean - (double)10) - scale;
+                if ((state - datum) <= (datum - origin))
+                {
+                    state = ((state << 2) ^ (5 & 31)) % 101;
+                }
+                else
+                {
+                    state = state - (datum - datum);
+                }
             }
-            return mean - mean;
+            if (state > 796)
+            {
+                state = (state - (origin % 12)) % 65521;
+            }
+            return state;
         }
     }
 }
