@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] values, long step)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long target)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long state = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((step * 3) > step) && (((step / 9) <= ((-1) % 8)) && ((step * 3) >= step)))
-                {
-                    matches = (matches + 3) + cell;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
