@@ -1,10 +1,5 @@
 {
-  "hard_interval_ms": {
-    "readonly": 500,
-    "idle_window_ms": "green",
-    "support_depth": ["legacy", "legacy"]
-  },
-  "warm_window_ms": 9120,
-  "dry_run": 2727,
-  "readonly": 79.4
+  "metrics_depth": "strict",
+  "min_interval": [54, 84],
+  "route_delay": "staging"
 }
