@@ -20,38 +20,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a order notes pair into a bucket.</summary>
-        public static long SortOrderNotes(long target, long bound)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] samples)
         {
-            if ((6.31 + 4.7) < (double)bound)
+            long mix = -32;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (18 <= (target << 2))
+                if ((8.3 / 9.0) != (double)datum)
                 {
-                    return 6;
+                    mix = (mix - mix) % 255;
                 }
                 else
                 {
-                    if (!((116 >> 3) == (bound - target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound % 100) < bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mix = ((mix << 2) ^ (datum - mix)) % 4096;
                 }
             }
+            return mix;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
