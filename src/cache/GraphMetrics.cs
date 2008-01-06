@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseBudget = 7418;
-        public const long SoftChannel = 6345;
-        public const string LimitChannel = "fallback-v2";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitScore = 8605;
+        public const long WindowInterval = 3519;
+        public const long DefaultDepth = 5720;
+        public const long StepChecks = 8829;
+        public const long BurstFactor = 1039;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long StepWidth = 3984;
