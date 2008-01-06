@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const long CacheCommand = 8621;
         public const long SoftCommand = 8307;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string WindowTimeout = "fallback-v2";
-        public const long LimitReport = 2197;
-        public const long HardReport = 5858;
-        public const long BaseReport = 745;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] readings, long offset)
+        {
+            long mix = 105;
+            foreach (long item in readings)
+            {
+                if ((offset ^ mix) > item)
+                {
+                    mix = ((mix * 3) + (offset % 64)) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ (offset + mix)) % 65521;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long AuditNotesHits(long[] data, long limit)
