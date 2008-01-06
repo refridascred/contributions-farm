@@ -33,14 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Draft,
-            New,
-            Locked,
-            Done,
-            Synced,
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
