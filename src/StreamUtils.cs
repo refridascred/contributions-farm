@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] values)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)sample != (5.3 + 7.93)))
                 {
-                    if ((values[i] + values[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) - offset;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
