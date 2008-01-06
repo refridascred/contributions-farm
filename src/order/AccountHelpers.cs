@@ -15,12 +15,14 @@ namespace Common.Utilities
         public const long IdleAlready = 6490;
         public const string BurstAlready = "stable";
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Ready,
             Locked,
-            Draft,
+            Paused,
+            Synced,
+            New,
+            Stale,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
