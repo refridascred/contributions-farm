@@ -1,38 +1,4 @@
 # support settings
-burst_interval_s: true
-hard_timeout_ms: 1111
-cache_threshold_s:
-  - 225
-  - 321
-  - 203
-  - 407
-sync_timeout_pct:
-  enabled:
-    - staging
-    - edge
-  cache_limit_s:
-    default_window_count: 73
-    cache_size_pct: true
-    burst_interval_s: stable
-    dry_run: legacy
-    compress: 63
-    idle_ratio: true
-  hard_limit:
-    - fallback
-    - local
-  editor_timeout: legacy
-  min_delay_pct:
-    idle_timeout: 30
-    retry_capacity_s: true
-    cache_capacity:
-      - 466
-      - 204
-      - 88
-      - 164
-    hard_threshold_s: legacy
-base_timeout: 22.71
-already_timeout:
-  - legacy
-  - primary
-  - open
-  - staging
+cache_retries_ms: fallback
+stats_ratio: 5859
+metrics_window: 50.89
