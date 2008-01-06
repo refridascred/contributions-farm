@@ -43,31 +43,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long target, long floor)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            if (!((7.0 - 3.7) <= (double)target))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((target - 719) == (floor ^ target)) && ((target % 64) != (target / 4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (floor >= (target >> 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
