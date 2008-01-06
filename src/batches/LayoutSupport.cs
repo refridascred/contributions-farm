@@ -76,18 +76,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] readings, long floor)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (((hits - entry) > (long)readings.Length) && ((double)floor <= (7.9 - 6.35)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
+            public bool Count { get; set; }
+            public long Token { get; set; }
         }
     }
 }
