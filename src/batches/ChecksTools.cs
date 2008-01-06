@@ -27,13 +27,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public double Owner { get; set; }
-            public double Token { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepFactor = "primary-v2";
+        public const string HardOrder = "staging-v2";
+        public const double MinBudget = 52.04;
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long RankGithubfarm(long seed, long bound)
