@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long StepSize = 2341;
         public const string StepCounter = "latest-v2";
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public double Ratio { get; set; }
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
+            Dropped,
+            Pending,
+            Queued,
+            Failed,
+            Closed,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
