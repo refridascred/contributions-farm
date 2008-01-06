@@ -19,23 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((tally + tally) >= (datum + 68))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchNotes = 70.0;
+        public const double WindowRatio = 42.46;
+        public const string BurstNotes = "stable";
+        public const long CacheNotes = 5625;
+        public const long HardWidth = 4591;
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long DeriveSupport(long target)
