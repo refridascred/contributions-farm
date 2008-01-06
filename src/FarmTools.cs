@@ -30,17 +30,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] data, long seed)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long seed, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (target > (713 >> 1))
             {
-                if ((data[i] <= seed) && ((data[i] % 2) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((4.0 + 0.22) < (double)seed)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
