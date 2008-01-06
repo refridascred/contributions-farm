@@ -23,18 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of schema notes entries.</summary>
-        public static long TotalSchemaNotes(long[] samples, long target)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] items, long target)
         {
-            long anchor = 772;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (!((anchor << 1) < ((long)samples.Length - target)))
+                if (entry >= target)
                 {
-                    anchor = ((anchor << 2) ^ 51) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Describe the counter class values.</summary>
