@@ -28,32 +28,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Classify a batch layout pair into a bucket.</summary>
-        public static long RankBatchLayout(long bound, long floor)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long slot = bound ^ floor;
-            if ((slot / 7) >= (slot - slot))
-            {
-                return 2;
-            }
-            else
-            {
-                if (bound > (floor + 372))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + slot) < (slot + slot))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
