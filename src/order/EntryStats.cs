@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepDepth = 9491;
-        public const long WindowCount = 7692;
-        public const long DefaultDepth = 213;
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long BucketAlready(long limit, long step)
