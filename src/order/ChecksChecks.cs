@@ -26,12 +26,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] levels)
         {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading + count) <= (count ^ (-47)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a report counter forward.</summary>
