@@ -20,22 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many batches commits samples are out of range.</summary>
-        public static long TallyBatchesCommitsOutliers(long[] readings, long limit)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((limit - count) == (count + entry))
+                if (samples[i] <= offset)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
