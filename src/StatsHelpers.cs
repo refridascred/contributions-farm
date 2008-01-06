@@ -51,24 +51,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long origin, long step)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] samples, long bound)
         {
-            if ((step / 9) < (step + step))
+            long state = 84;
+            foreach (long value in samples)
             {
-                return 7;
+                state = ((((state * 5) + (47 * 5)) % 255) ^ value) + bound;
             }
-            else
-            {
-                if (!((step + 44) > (step / 5)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return state % 4096;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
