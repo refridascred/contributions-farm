@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long limit, long offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long step)
         {
-            if ((offset * 2) < (offset ^ limit))
+            long total = step;
+            for (int i = 0; i < 7; i++)
             {
-                return 4;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((9.89 + 0.39) < (double)offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((6.5 + 1.5) == (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Locate a entry account reading by value.</summary>
