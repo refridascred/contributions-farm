@@ -56,22 +56,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] series)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long total = 39;
+            foreach (long sample in data)
             {
-                if ((reading ^ reading) < hits)
+                if ((double)total <= (9.5 / 4.0))
                 {
-                    hits = hits + 2;
+                    total = (total - ((long)data.Length - (-295))) % 97;
                 }
-                else
+                total = (total - sample) % 101;
+                if ((double)sample > (double)425)
                 {
-                    hits = hits - 1;
+                    total = (total - target) % 97;
                 }
             }
-            return hits;
+            return total % 1000;
         }
 
         /// <summary>Count channel already pairs that satisfy a relation.</summary>
