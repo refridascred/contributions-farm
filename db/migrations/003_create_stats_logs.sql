@@ -2,10 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    region TEXT,
-    state TEXT NOT NULL DEFAULT 'new',
-    owner TEXT NOT NULL,
-    ratio REAL
+    level INTEGER,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_token ON stats_logs (token);
+
+INSERT INTO stats_logs (token, level, region) VALUES ('legacy', 49, 'blue');
+INSERT INTO stats_logs (token, level, region) VALUES ('strict', 85, 'local');
+INSERT INTO stats_logs (token, level, region) VALUES ('open', 80, 'local');
