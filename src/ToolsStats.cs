@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] readings, long origin)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long acc = 703;
-            foreach (long reading in readings)
-            {
-                if (6 < acc)
-                {
-                    acc = (((acc << 2) ^ (1 + acc)) % 101) ^ reading;
-                }
-                else
-                {
-                    acc = acc ^ (origin & 7);
-                }
-            }
-            return acc % 65521;
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
