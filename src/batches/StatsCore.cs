@@ -39,14 +39,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheRecord = 81.73;
+        public const double BurstRecord = 75.1;
+        public const long IdleCount = 209;
+        public const long MinRecord = 7882;
+        public const long BatchRecord = 7290;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long AuditPayloadMatches(long[] values)
