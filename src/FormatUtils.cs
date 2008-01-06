@@ -21,17 +21,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] series, long limit)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double ratio, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = 5.0 / 8.0;
+            if (gain < (ratio + 11.0))
             {
-                if ((series[i] == limit) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain + (6.43 * 8.7)) - span;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (5.0 / 8.0)) - (double)(long)i;
+            }
+            return gain + (ratio / 9.0);
         }
 
         /// <summary>Locate a cluster entry reading by value.</summary>
