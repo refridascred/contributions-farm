@@ -26,14 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double scale, double bias)
         {
-            Retry,
-            Stale,
-            Queued,
-            Synced,
-            New,
+            double drift = (bias - bias) - (5.3 + bias);
+            if (drift > (bias + bias))
+            {
+                drift = (drift - (drift / 4.0)) - scale;
+            }
+            return drift - bias;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
