@@ -13,25 +13,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((long)i < (floor * 2))
-                {
-                    anchor = (anchor ^ (floor + (long)i)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor + floor) % 1000;
-                }
-                anchor = (anchor ^ (floor ^ 21)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 8908;
+        public const string StepInterval = "cached-edge";
+        public const string IdleScore = "standard-1";
+        public const double BatchStats = 37.26;
+        public const double BurstBudget = 48.85;
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LookupMetricsIndex(long[] data, long target)
