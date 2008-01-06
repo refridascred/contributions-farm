@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long limit)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double scale, double bias)
         {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!((mix % 7) > (20 + mix)))
-                {
-                    long edge = (996 + limit) + mix;
-                    mix = mix ^ ((long)i - edge);
-                }
-                mix = (mix ^ (mix >> 2)) % 1000;
-                if ((1 * 5) < ((long)i + limit))
-                {
-                    mix = ((mix * 3) + (limit * 3)) % 97;
-                    mix = mix + (mix + limit);
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            double rate = scale;
+            return rate + (scale - bias);
         }
 
         /// <summary>Hold a format info.</summary>
