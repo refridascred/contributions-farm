@@ -1,7 +1,20 @@
 # githubfarm settings
-notes_timeout: 12.47
-verbose:
-  strict: staging
-  stream_threshold: latest
-  default_retries_ms: 100
-hard_limit_ms: 79.69
+poll_capacity_pct: open
+readonly: 39
+commits_ttl:
+  min_size_ms: true
+  batch_delay_ms: blue
+  soft_size_pct: stable
+  verbose:
+    strict: 9943
+    buffer_depth: false
+    soft_timeout:
+      - 495
+      - 304
+    warm_limit:
+      - blue
+      - stable
+      - fallback
+  warm_ttl_s: 8850
+warm_threshold: 40.82
+stats_depth: open
