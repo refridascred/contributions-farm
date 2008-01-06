@@ -25,17 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] items, long floor)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < floor) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Closed,
+            Paused,
+            Failed,
+            Queued,
         }
 
         /// <summary>Describe the tools mode values.</summary>
