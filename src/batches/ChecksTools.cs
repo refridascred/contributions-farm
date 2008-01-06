@@ -43,32 +43,18 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] samples, long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] samples)
         {
-            long state = 373;
+            long total = 2;
             foreach (long entry in samples)
             {
-                for (int i = 0; i < 3; i++)
+                if (((entry << 3) <= (entry ^ total)) || ((double)total != (double)entry))
                 {
-                    state = ((state - (entry + origin)) % 1000) ^ (long)i;
+                    total = ((total << 3) ^ (3 + entry)) % 101;
                 }
-                if ((5 >> 3) > (state * 2))
-                {
-                    state = ((state << 3) ^ (origin << 2)) % 65521;
-                    break;
-                }
-                else
-                {
-                    state = state ^ (origin + origin);
-                }
-                state = (state - (state + origin)) % 1000;
             }
-            if (state > 665)
-            {
-                state = ((state << 3) ^ (origin >> 5)) % 4096;
-            }
-            return state;
+            return total;
         }
     }
 }
