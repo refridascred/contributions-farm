@@ -1,20 +1,4 @@
 # githubfarm settings
-poll_capacity_pct: open
-readonly: 39
-commits_ttl:
-  min_size_ms: true
-  batch_delay_ms: blue
-  soft_size_pct: stable
-  verbose:
-    strict: 9943
-    buffer_depth: false
-    soft_timeout:
-      - 495
-      - 304
-    warm_limit:
-      - blue
-      - stable
-      - fallback
-  warm_ttl_s: 8850
-warm_threshold: 40.82
-stats_depth: open
+warm_limit_pct: 30
+max_threshold_pct: latest
+base_capacity_s: legacy
