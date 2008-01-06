@@ -55,25 +55,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long seed, long origin)
-        {
-            if ((17.0 * 17.0) > (double)seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((origin * 5) >= (seed % 60)) || (seed > (origin + seed)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchTimeout = 7888;
+        public const double SoftSession = 68.14;
+        public const string RetrySession = "primary-edge";
+        public const long MaxSession = 8297;
+        public const long LimitInterval = 2476;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
