@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] samples)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if ((double)hits >= (double)(-981))
+                if (datum >= floor)
                 {
-                    hits = (hits + 1) + entry;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Adjust a token reading.</summary>
