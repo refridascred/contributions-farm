@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] values, long offset)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long limit, long target)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long diff = limit ^ target;
+            if (!((diff & 127) <= diff))
             {
-                if (!((offset % 10) >= (offset % 2)) && (entry >= (offset - 196)))
+                return 4;
+            }
+            else
+            {
+                if ((limit ^ diff) >= (target + target))
                 {
-                    matches = matches + 2;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit * 5) < diff)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((double)limit < (6.47 + 4.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a already githubfarm value against two limits.</summary>
