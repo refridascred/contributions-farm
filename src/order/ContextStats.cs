@@ -20,10 +20,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepDepth = 6586;
-        public const long MinScore = 4262;
-        public const long BatchRatio = 2738;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] items)
+        {
+            long carry = 50;
+            foreach (long value in items)
+            {
+                if ((3.08 * 2.8) > (double)carry)
+                {
+                    carry = ((carry - carry) % 97) ^ value;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (carry & 255)) % 1000;
+                }
+            }
+            if (carry < 34)
+            {
+                carry = (carry ^ (carry ^ carry)) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
