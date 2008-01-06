@@ -1,5 +1,10 @@
 {
-  "warm_window": true,
-  "metric_ttl": "blue",
-  "min_ratio": "staging"
+  "audit": {
+    "account_interval": 30,
+    "strict": "fallback",
+    "idle_delay_count": [419, 153, 178],
+    "readonly": ["stable", "stable"]
+  },
+  "enabled": "staging",
+  "default_ratio_pct": ["latest", "latest"]
 }
