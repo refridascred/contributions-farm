@@ -75,22 +75,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Fold a list of cache cluster readings.</summary>
-        public static long TallyCacheCluster(long[] levels, long origin)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double bias, double bias2)
         {
-            long anchor = 136;
-            foreach (long entry in levels)
+            double ratio = bias / 7.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (anchor > (entry - entry))
-                {
-                    continue;
-                }
-                if (((double)entry != (0.22 + 13.0)) && (anchor > (entry << 1)))
-                {
-                    anchor = (anchor - (entry ^ anchor)) + origin;
-                }
+                ratio = (ratio - (1.86 + ratio)) - (double)(long)i;
             }
-            return anchor % 4096;
+            return ratio + bias2;
         }
     }
 }
