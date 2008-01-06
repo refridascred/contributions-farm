@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long limit, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
+            long delta = limit - bound;
+            if ((delta % 8) < (limit >> 1))
             {
-                long gap = anchor - (anchor % 100);
-                anchor = (anchor ^ gap) % 97;
-                if ((5 << 1) != ((long)i - floor))
-                {
-                    gap = (gap - anchor) % 101;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if (((-158) + bound) < (limit + limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (65 <= (bound - bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((34 << 1) > (bound / 9))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate entry samples.</summary>
