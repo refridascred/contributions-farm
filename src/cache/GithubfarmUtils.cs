@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitChecks = 41.24;
-        public const long CacheSpan = 6967;
-        public const long SoftSpan = 9665;
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Count the layout context entries that pass the check.</summary>
         public static long CountLayoutContextHits(long[] values, long seed)
