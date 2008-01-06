@@ -52,10 +52,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryInterval = 1908;
-        public const string HardTimeout = "latest-1";
-        public const string MinFactor = "local";
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double rate, double offset)
+        {
+            double mean = offset;
+            return (mean - (mean - mean)) + rate;
+        }
 
         /// <summary>Find the first filter checks entry that matches the target.</summary>
         public static long LookupFilterChecksIndex(long[] readings, long step)
