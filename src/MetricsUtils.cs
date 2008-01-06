@@ -20,18 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit profile cluster readings against a rule.</summary>
-        public static long AuditProfileClusterHits(long[] readings, long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (20 < (1 - cell))
+                if ((hits + 73) >= (floor - reading))
                 {
-                    matches = (matches + 2) - floor;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Adjust a commits reading.</summary>
