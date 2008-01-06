@@ -1,15 +1,6 @@
 {
-  "batch_threshold_s": [236, 269, 90],
-  "min_capacity_ms": {
-    "compress": "edge",
-    "window_threshold": 8,
-    "counter_threshold": false,
-    "retry_interval_ms": "eu-west",
-    "format_threshold": {
-      "route_size": true,
-      "base_timeout_ms": [84, 156, 390],
-      "soft_delay": "green"
-    }
-  },
-  "base_size_count": "green"
+  "sync_delay_pct": 9056,
+  "max_interval_pct": [65, 417],
+  "metric_interval": [243, 65, 285, 343],
+  "filter_timeout": ["edge", "open", "blue", "strict"]
 }
