@@ -40,13 +40,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] series, long seed)
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Level { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up support samples.</summary>
