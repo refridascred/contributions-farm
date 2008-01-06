@@ -1,5 +1,12 @@
 # support settings
-idle_capacity: 4732
-hard_depth_count: 71
-dry_run: 250
-flush_retries_ms: 6
+session_window:
+  stats_window: false
+  warm_retries: standard
+  strict:
+    - 115
+    - 326
+  retry_ratio_count: 34
+  verbose: 852
+  retry_delay: green
+cache_limit_count: 77.87
+order_delay: open
