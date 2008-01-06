@@ -1,8 +1,13 @@
 {
-  "persist": true,
-  "queue_depth": ["green", "blue", "primary"],
-  "hard_window": 73,
-  "dry_run": 77,
-  "flush_ttl": "staging",
-  "cache_window": [104, 35, 230, 466]
+  "flush_size_pct": 5623,
+  "enabled": 7869,
+  "readonly": "eu-west",
+  "sync_interval": {
+    "readonly": [225, 270, 431],
+    "audit": 30.41,
+    "idle_ttl": true,
+    "batch_limit_s": false,
+    "format_ttl": 3537
+  },
+  "buffer_delay": "fallback"
 }
