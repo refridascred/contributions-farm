@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxStats = 63.28;
+        public const long BaseStats = 1519;
+        public const long SoftStats = 84;
+        public const long HardBudget = 4758;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryRange(long[] readings, long bound)
