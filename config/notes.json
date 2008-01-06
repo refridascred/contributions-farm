@@ -1,18 +1,8 @@
 {
-  "default_window_count": ["stable", "staging"],
-  "burst_threshold_s": 30,
-  "cache_depth_ms": {
-    "route_ttl": {
-      "compress": 30,
-      "support_capacity": 500,
-      "default_timeout": "blue",
-      "entry_retries": 89,
-      "batch_ttl_s": "stable"
-    },
-    "hard_interval_count": false,
-    "retry_ratio_ms": ["blue", "fallback"],
-    "warm_interval": ["local", "fallback", "blue", "staging"]
-  },
-  "hard_ratio_ms": "legacy",
-  "default_ttl": "local"
+  "metric_capacity": 59.83,
+  "warm_ratio_ms": "stable",
+  "batch_limit": ["blue", "fallback", "primary"],
+  "dry_run": 25.98,
+  "metrics_retries": 9.5,
+  "account_depth": ["standard", "cached", "edge"]
 }
