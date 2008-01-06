@@ -34,16 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] series, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
+            long acc = -402;
+            foreach (long entry in series)
             {
-                result = (result ^ (origin % 12)) % 4096;
-                result = ((result * 3) + (long)i) % 4093;
+                acc = acc + (entry & 63);
+                if ((floor ^ floor) != (acc & 127))
+                {
+                    break;
+                }
             }
-            return result;
+            return acc;
         }
     }
 }
