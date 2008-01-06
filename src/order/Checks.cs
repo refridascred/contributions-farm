@@ -47,18 +47,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < bound) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWidth = 74.47;
+        public const double MinWindow = 18.55;
+        public const double BurstRatio = 3.57;
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long ClassifyMetrics(long limit, long bound)
