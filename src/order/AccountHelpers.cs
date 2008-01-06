@@ -72,15 +72,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] readings, long limit)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long floor)
         {
-            long score = 940;
-            foreach (long reading in readings)
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
             {
-                score = (score - (reading ^ 478)) - limit;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return score % 1000;
+            return carry;
         }
     }
 }
