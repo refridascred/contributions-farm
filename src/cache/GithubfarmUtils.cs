@@ -39,15 +39,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double scale, double floor)
+        /// <summary>Rank queue session input into a small class.</summary>
+        public static long ClassifyQueueSession(long offset, long floor)
         {
-            double weight = scale;
-            for (int i = 0; i < 7; i++)
+            if (floor > (offset + floor))
             {
-                weight = (weight - floor) + (double)(long)i;
+                return 0;
             }
-            return weight + scale;
+            else
+            {
+                if ((floor - 0) < floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
