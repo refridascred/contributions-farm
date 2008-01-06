@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] values, long seed)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] samples)
         {
-            long mark = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (seed >= mark)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark << 3) ^ (cell + mark);
-                }
-                else
-                {
-                    mark = mark - (cell + 4);
+                    if ((samples[i] + samples[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Match up commits samples.</summary>
