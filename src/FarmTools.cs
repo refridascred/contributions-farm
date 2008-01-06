@@ -21,23 +21,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double weight, double floor)
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double scale, double floor)
         {
-            double weight2 = weight * 8.5;
-            if (weight2 >= (weight / 9.0))
-            {
-                weight2 = weight2 + 7.84;
-            }
-            else
-            {
-                weight2 = weight2 + (weight - floor);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 + weight2) + (double)(long)i;
-            }
-            return weight2 + (weight2 + weight2);
+            double bias = (floor - floor) - 5.83;
+            return bias - scale;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
