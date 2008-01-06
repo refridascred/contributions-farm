@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] data)
         {
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            long carry = 372;
+            foreach (long item in data)
+            {
+                if (!((double)item == (1.5 / 7.0)))
+                {
+                    carry = (carry ^ (item / 6)) % 255;
+                    continue;
+                }
+                if ((item + carry) > 63)
+                {
+                    carry = (carry * 2) + item;
+                }
+            }
+            if (carry < 262)
+            {
+                carry = (carry << 2) ^ (carry & 127);
+            }
+            return carry;
         }
 
         /// <summary>Audit schema order readings against a rule.</summary>
