@@ -39,13 +39,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Stale,
-            Locked,
-            Done,
-            Active,
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
