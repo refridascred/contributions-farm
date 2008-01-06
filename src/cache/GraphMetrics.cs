@@ -16,21 +16,38 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] values)
+        /// <summary>Rank report window input into a small class.</summary>
+        public static long GradeReportWindow(long limit, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((limit << 2) < (limit - limit)) && (((-1) + limit) == (floor / 4)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)limit <= (double)0)
                 {
-                    if ((values[i] ^ values[j]) > 7)
+                    return 2;
+                }
+                else
+                {
+                    if (((limit * 4) >= floor) && ((floor % 60) >= 573))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)floor >= (double)limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
