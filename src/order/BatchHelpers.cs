@@ -22,15 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] readings, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] series)
         {
-            long anchor = 8;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long reading in series)
             {
-                anchor = ((((anchor << 3) ^ (36 - anchor)) % 1000) - entry) - origin;
+                if ((reading * 2) <= count)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a profile info.</summary>
