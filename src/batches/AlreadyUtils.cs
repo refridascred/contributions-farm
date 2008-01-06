@@ -42,13 +42,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Iterate the channel counter series from a seed.</summary>
+        public static long StepChannelCounter(long floor)
         {
-            Pending,
-            Paused,
-            Active,
-            Dropped,
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((29 >> 4) >= (anchor + 796))
+                {
+                    anchor = (anchor ^ (235 - anchor)) % 255;
+                    anchor = ((anchor << 2) ^ ((long)i + floor)) % 1000;
+                    break;
+                }
+                if (((long)i - 0) > floor)
+                {
+                    anchor = anchor + (anchor + (long)i);
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
