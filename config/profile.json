@@ -1,16 +1,7 @@
 {
-  "idle_size": {
-    "hard_threshold": [187, 405],
-    "tools_ttl": ["fallback", "local"],
-    "commits_threshold": {
-      "tools_threshold": "open",
-      "idle_limit_s": ["local", "primary", "edge"],
-      "max_limit_s": 1469
-    },
-    "session_interval": 95.55,
-    "max_interval": true,
-    "profile_interval": "fallback"
-  },
-  "default_window_ms": 25.17,
-  "verbose": false
+  "route_interval": 60.38,
+  "channel_ttl": 100,
+  "readonly": false,
+  "sync_size_count": [279, 496],
+  "burst_size_ms": 166
 }
