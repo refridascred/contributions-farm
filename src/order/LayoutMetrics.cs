@@ -28,19 +28,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] levels, long offset)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            double gain = floor;
+            if (gain <= (rate / 5.0))
             {
-                if (sample != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = gain - (gain / 4.0);
             }
-            return valid;
+            return gain + (double)7;
         }
 
         /// <summary>Rank channel token input into a small class.</summary>
