@@ -75,14 +75,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Fold a list of cache cluster readings.</summary>
+        public static long TallyCacheCluster(long[] levels, long origin)
         {
-            Dropped,
-            Locked,
-            New,
-            Closed,
-            Paused,
+            long anchor = 136;
+            foreach (long entry in levels)
+            {
+                if (anchor > (entry - entry))
+                {
+                    continue;
+                }
+                if (((double)entry != (0.22 + 13.0)) && (anchor > (entry << 1)))
+                {
+                    anchor = (anchor - (entry ^ anchor)) + origin;
+                }
+            }
+            return anchor % 4096;
         }
     }
 }
