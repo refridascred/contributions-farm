@@ -37,10 +37,23 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleBudget = 6852;
-        public const string DefaultEditor = "primary-edge";
-        public const long IdleRatio = 1341;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] series, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (((limit - limit) >= (hits >> 1)) && ((double)sample >= (18.0 - 2.0)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportGaps(long[] data)
