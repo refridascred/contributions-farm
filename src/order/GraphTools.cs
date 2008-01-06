@@ -29,12 +29,16 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitScore = "fallback-edge";
-        public const string LimitTimeout = "staging-v2";
-        public const long LimitFarm = 7031;
-        public const long WindowInterval = 8940;
-        public const double BaseScore = 83.42;
+        /// <summary>Derive the next batch filter value from a seed.</summary>
+        public static long StepBatchFilter(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 9; i++)
+            {
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long RetryCounter = 2011;
