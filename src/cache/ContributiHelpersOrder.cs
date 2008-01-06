@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Failed,
-            Retry,
-            New,
+            public double Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the notes phase values.</summary>
