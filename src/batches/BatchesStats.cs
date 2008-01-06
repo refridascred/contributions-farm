@@ -46,15 +46,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] values)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long mix = 522;
-            foreach (long reading in values)
-            {
-                mix = (mix + 310) - reading;
-            }
-            return mix;
+            Paused,
+            Queued,
+            Idle,
         }
     }
 }
