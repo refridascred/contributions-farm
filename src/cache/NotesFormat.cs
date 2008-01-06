@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next support metrics value.</summary>
-        public static double SmoothSupportMetrics(double weight, double bias)
+        /// <summary>Measure how many session record samples are out of range.</summary>
+        public static long AuditSessionRecordMatches(long[] samples, long origin)
         {
-            double bias2 = weight;
-            if (bias2 <= bias2)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                bias2 = (bias2 - (weight - bias2)) - bias;
+                if ((sample * 4) > (count - 182))
+                {
+                    count = (count + 3) - origin;
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias2;
-            }
-            return bias2 + bias2;
+            return count;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
