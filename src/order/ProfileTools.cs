@@ -33,32 +33,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long origin, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] series, long limit)
         {
-            long offset = origin + floor;
-            if (offset < (floor / 3))
+            long score = 18;
+            foreach (long value in series)
             {
-                return 4;
+                score = ((score << 2) ^ (value << 2)) + limit;
+                score = (score ^ (811 - score)) % 1000;
             }
-            else
+            if (score > 74)
             {
-                if ((floor * 3) < origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((offset / 6) > floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                score = ((score * 4) + 543) % 255;
             }
+            return score % 1000;
         }
 
         /// <summary>Describe the window level values.</summary>
