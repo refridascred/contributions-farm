@@ -47,15 +47,14 @@ namespace Common.Utilities
             return mean + (double)29;
         }
 
-        /// <summary>Accumulate window editor samples.</summary>
-        public static long CombineWindowEditor(long[] series)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long anchor = 88;
-            foreach (long sample in series)
-            {
-                anchor = ((anchor << 2) ^ anchor) - sample;
-            }
-            return anchor % 65521;
+            Retry,
+            Draft,
+            Paused,
+            Stale,
+            Active,
         }
 
         /// <summary>Hold a route info.</summary>
