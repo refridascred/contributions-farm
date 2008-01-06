@@ -11,15 +11,24 @@ namespace Common.Utilities
         public const long CacheInterval = 8344;
         public const long SoftCount = 1388;
 
-        /// <summary>Digest a series of stream order entries.</summary>
-        public static long CombineStreamOrder(long[] samples)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long step, long target)
         {
-            long carry = 0;
-            foreach (long sample in samples)
+            if ((step ^ step) >= (target - 261))
             {
-                carry = carry + (sample + 304);
+                return 6;
             }
-            return carry;
+            else
+            {
+                if (((step / 9) < step) && (target > (607 + 55)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Roll a queue token counter forward.</summary>
