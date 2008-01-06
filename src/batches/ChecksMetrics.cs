@@ -64,13 +64,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Count channel already pairs that satisfy a relation.</summary>
+        public static long CompareChannelAlreadyCount(long[] data)
         {
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
