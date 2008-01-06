@@ -1,29 +1,19 @@
 # githubfarm settings
-idle_retries: 7021
-retry_threshold_pct:
-  base_depth: 1097
-  hard_ratio_pct: open
-  min_limit_ms: 68.85
-  strict:
-    idle_limit_pct: 73.71
-    min_retries: 6002
-    strict: true
-    dry_run: true
-    poll_ttl: green
-    stats_window: 29.09
-  flush_interval_pct:
-    - eu-west
-    - latest
-    - latest
-    - open
-cache_delay_s: standard
-buffer_window:
-  - 336
-  - 325
-readonly:
-  - eu-west
-  - legacy
-stream_retries:
-  - 360
-  - 398
-  - 445
+checks_limit:
+  warm_ratio_pct: true
+  notes_delay: stable
+  token_ttl:
+    verbose:
+      - standard
+      - staging
+    dry_run: false
+    sync_delay: legacy
+  default_limit_ms: 500
+  enabled: 169
+max_threshold_pct: legacy
+idle_size_s: true
+retry_capacity_s:
+  - local
+  - edge
+schema_depth: blue
+soft_interval: 63
