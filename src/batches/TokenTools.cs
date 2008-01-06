@@ -16,19 +16,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] data, long bound)
+        /// <summary>Count schema record pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaRecordCount(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample != bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] - data[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Accumulate window samples.</summary>
