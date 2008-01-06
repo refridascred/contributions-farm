@@ -41,30 +41,23 @@ namespace Common.Utilities
         public const long DefaultSize = 4994;
         public const string DefaultChannel = "strict-edge";
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long target, long offset)
+        /// <summary>Grade a notes batch value against two limits.</summary>
+        public static long BucketNotesBatch(long bound, long origin)
         {
-            long edge = target - offset;
-            if ((double)2 < (double)target)
+            long diff = bound + origin;
+            if ((double)bound != (8.6 / 9.0))
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if (!((3 % 7) < (target + target)))
+                if (!((diff - origin) < (5 & 31)))
                 {
                     return 8;
                 }
                 else
                 {
-                    if (((edge + 518) <= edge) && (((-453) + target) >= (offset >> 4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 5;
                 }
             }
         }
