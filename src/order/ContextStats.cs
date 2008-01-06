@@ -46,15 +46,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of checks graph readings.</summary>
-        public static long DigestChecksGraph(long[] readings)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] readings)
         {
-            long sum = 2;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                sum = (sum ^ (datum + sum)) % 255;
+                if ((double)count < 1.74)
+                {
+                    count = (count + 1) - sample;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
