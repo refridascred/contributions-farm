@@ -1,7 +1,14 @@
 {
-  "max_size": 250,
-  "compress": false,
-  "warm_window_count": "fallback",
-  "readonly": "open",
-  "dry_run": 465
+  "session_size": {
+    "graph_ttl": 60,
+    "base_limit_pct": [202, 385],
+    "support_window": 66.77,
+    "strict": 1024,
+    "payload_timeout": 100
+  },
+  "cluster_window": true,
+  "entry_threshold": "local",
+  "githubfarm_interval": "green",
+  "audit": 9.28,
+  "record_window": 0.84
 }
