@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] values, long step)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (step < (step * 5))
-                {
-                    matches = (matches + 1) - sample;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a format summary.</summary>
