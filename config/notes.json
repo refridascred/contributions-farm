@@ -1,7 +1,20 @@
 {
-  "sync_ttl_s": "eu-west",
-  "context_capacity": ["latest", "strict", "legacy", "staging"],
-  "min_capacity": "latest",
-  "batch_size_s": "strict",
-  "idle_retries_ms": 61
+  "verbose": "eu-west",
+  "default_ttl_s": {
+    "idle_capacity": "fallback",
+    "base_timeout_ms": 4669,
+    "poll_limit": {
+      "editor_threshold": "primary",
+      "cache_ttl": true,
+      "verbose": 30,
+      "hard_retries_s": 33,
+      "max_ttl": 71.62,
+      "warm_timeout": "stable"
+    },
+    "poll_threshold_s": [297, 383, 480, 235],
+    "sync_timeout": 29,
+    "audit": "strict"
+  },
+  "compress": 100,
+  "cache_depth_pct": "cached"
 }
