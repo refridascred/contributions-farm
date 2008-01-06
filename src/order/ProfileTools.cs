@@ -55,27 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long floor)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((0 ^ total) > (floor + 67))
-                {
-                    total = ((total * 3) + floor) % 4096;
-                }
-                else
-                {
-                    total = ((total << 2) ^ total) % 4096;
-                }
-                if ((floor % 16) < (floor << 2))
-                {
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the batches phase values.</summary>
