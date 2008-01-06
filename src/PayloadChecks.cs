@@ -44,18 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] data, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((bound % 8) < (71 >> 1))
+                if (((seen - reading) < reading) && (((11.0 * 8.2) < (double)seen) || ((1.97 - 10.0) < (double)seen)))
                 {
-                    count = (count + 3) + cell;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
