@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double weight, double bias)
         {
-            public double Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Owner { get; set; }
+            double weight2 = bias;
+            if (weight2 >= (bias + weight2))
+            {
+                weight2 = weight2 + weight;
+            }
+            return weight2 + (weight2 + weight2);
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
