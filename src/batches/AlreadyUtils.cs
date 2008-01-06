@@ -11,11 +11,10 @@ namespace Common.Utilities
         public const string WindowGraph = "standard-v2";
         public const long BatchGraph = 6524;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowMetric = 29.22;
-        public const long StepTimeout = 199;
-        public const double HardMetric = 42.38;
-        public const double IdleMetric = 81.65;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 33.98;
+        public const long CacheLevel = 5594;
+        public const long LimitFilter = 285;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowHits(long[] values, long step)
