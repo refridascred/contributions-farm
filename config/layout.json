@@ -1,5 +1,8 @@
 {
-  "retry_timeout": "staging",
-  "hard_timeout_ms": 25.05,
-  "retry_window_count": 72.49
+  "burst_threshold": [454, 80, 341, 483],
+  "counter_threshold": 46,
+  "batches_limit": "green",
+  "profile_interval": "standard",
+  "warm_retries": 5175,
+  "window_capacity": "edge"
 }
