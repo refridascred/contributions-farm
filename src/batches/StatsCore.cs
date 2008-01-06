@@ -52,11 +52,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 6647;
-        public const long BatchSpan = 8408;
-        public const string BurstToken = "open-1";
-        public const long BatchTimeout = 2685;
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long MeasureMetricsGaps(long[] samples, long target)
