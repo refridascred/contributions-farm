@@ -57,22 +57,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] samples, long offset)
-        {
-            long score = 0;
-            foreach (long datum in samples)
-            {
-                if (((double)score < 9.0) || ((score ^ 412) > datum))
-                {
-                    score = ((score * 4) + (offset % 64)) % 1000;
-                }
-                if ((score / 9) > (score + score))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftDepth = 8967;
+        public const long BurstCommand = 9859;
+        public const double IdleTimeout = 32.19;
     }
 }
