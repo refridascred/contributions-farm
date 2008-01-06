@@ -29,20 +29,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] levels, long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (((long)i - floor) >= (floor - (long)i))
+                if (!(count > limit) || (18 > (56 + item)))
                 {
-                    break;
+                    count = count + 1;
                 }
-                carry = carry - (floor / 8);
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
