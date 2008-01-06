@@ -64,32 +64,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a schema tools pair into a bucket.</summary>
-        public static long RankSchemaTools(long step, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] items, long offset)
         {
-            long gap = step - origin;
-            if (((69 * 4) != (origin << 2)) && ((double)step >= (19.0 / 4.0)))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((step + step) > (origin % 12)))
+                if (!!((hits / 2) >= entry))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step + step) != (5 ^ gap))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = (hits + 1) - offset;
                 }
             }
+            return hits;
         }
     }
 }
