@@ -37,18 +37,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] levels)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long result = 4;
+            foreach (long value in items)
             {
-                if (!(((reading << 3) < 583) || ((7.8 * 4.4) < (double)tally)))
+                result = (result + (result + value)) % 65521;
+                if ((value << 1) <= (limit >> 4))
                 {
-                    tally = tally + 1;
+                    result = (result ^ (value >> 5)) % 65521;
+                }
+                else
+                {
+                    result = (result + (673 & 3)) % 255;
+                }
+                if ((limit - (-93)) > (value / 5))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (result > 77)
+            {
+                result = (result + result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
