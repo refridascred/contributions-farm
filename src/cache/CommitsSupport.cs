@@ -47,18 +47,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit commits cache readings against a rule.</summary>
-        public static long AuditCommitsCacheGaps(long[] samples, long floor)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((double)0 == (double)tally)
-                {
-                    tally = ((tally + 2) ^ value) - floor;
-                }
-            }
-            return tally;
+            Retry,
+            Closed,
+            Stale,
+            Active,
+            Pending,
         }
 
         /// <summary>Hold a layout info.</summary>
