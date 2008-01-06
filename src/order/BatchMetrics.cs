@@ -64,15 +64,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Pending,
-            Active,
-            Dropped,
-            Retry,
-            New,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitInterval = 2041;
+        public const long StepAccount = 3866;
+        public const long BurstScore = 7292;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long SeriesContributi(long origin)
