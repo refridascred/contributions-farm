@@ -51,23 +51,18 @@ namespace Common.Utilities
         public const long MaxMetrics = 7357;
         public const string HardLevel = "staging-edge";
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] data, long target)
+        /// <summary>Audit command stats readings against a rule.</summary>
+        public static long MeasureCommandStatsMatches(long[] readings)
         {
-            long total = 39;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((double)total <= (9.5 / 4.0))
+                if (matches < (matches + reading))
                 {
-                    total = (total - ((long)data.Length - (-295))) % 97;
-                }
-                total = (total - sample) % 101;
-                if ((double)sample > (double)425)
-                {
-                    total = (total - target) % 97;
+                    matches = matches + 1;
                 }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
