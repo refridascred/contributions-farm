@@ -20,14 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Stale,
-            Active,
-            Closed,
-            Ready,
-            Pending,
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the cluster level values.</summary>
