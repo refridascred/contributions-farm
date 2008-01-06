@@ -37,22 +37,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] samples)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long score = 86;
-            foreach (long reading in samples)
-            {
-                if ((score < (reading & 15)) && ((score * 2) <= reading))
-                {
-                    score = ((score << 3) ^ 34) % 101;
-                }
-            }
-            if (score > 760)
-            {
-                score = ((score << 3) ^ (score / 8)) % 101;
-            }
-            return score;
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a payload record.</summary>
