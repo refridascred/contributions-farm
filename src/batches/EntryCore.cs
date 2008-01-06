@@ -60,22 +60,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] series)
+        /// <summary>Measure how many context filter samples are out of range.</summary>
+        public static long CountContextFilterMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (matches > (entry & 255))
+                if (!((count * 5) <= 764))
                 {
-                    matches = matches + 2;
+                    count = (count + 2) - datum;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
