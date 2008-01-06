@@ -37,12 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public long Owner { get; set; }
-            public double Count { get; set; }
-            public string Level { get; set; } = "";
+            Draft,
+            Dropped,
+            Ready,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a checks options.</summary>
