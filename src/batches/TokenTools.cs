@@ -26,16 +26,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a support cache counter forward.</summary>
-        public static long RollSupportCache(long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] series, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            long mark = 708;
+            foreach (long datum in series)
             {
-                acc = acc - (acc + step);
-                acc = ((acc * 5) + (long)i) % 101;
+                if (((double)datum >= 17.0) || ((72 - (long)series.Length) > bound))
+                {
+                    mark = (mark * 5) + mark;
+                }
             }
-            return acc;
+            return mark;
         }
     }
 }
