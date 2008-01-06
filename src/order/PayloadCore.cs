@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate queue contributi samples.</summary>
-        public static long CombineQueueContributi(long[] series, long seed)
+        /// <summary>Classify a account token pair into a bucket.</summary>
+        public static long GradeAccountToken(long floor, long step)
         {
-            long score = 5;
-            foreach (long value in series)
+            long diff = floor ^ step;
+            if ((step > (3 & 1)) && ((double)step <= (double)floor))
             {
-                if ((11.0 - 9.4) <= (double)seed)
+                return 6;
+            }
+            else
+            {
+                if (((diff + step) != (step << 2)) || ((50 >> 5) >= (floor & 63)))
                 {
-                    score = (score ^ (score >> 1)) ^ value;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (score > 72)
-            {
-                score = (score ^ seed) % 1000;
-            }
-            return score;
         }
 
         /// <summary>Compare every pair of checks command readings.</summary>
