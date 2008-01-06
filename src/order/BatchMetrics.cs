@@ -51,17 +51,12 @@ namespace Common.Utilities
             return ratio + (double)59;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] items, long limit)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Done,
+            Dropped,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
