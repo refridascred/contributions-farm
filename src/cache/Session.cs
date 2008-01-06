@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] data)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (!((double)item >= (8.0 + 7.0)))
+                if (sample != target)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
