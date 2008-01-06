@@ -48,16 +48,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] values, long limit)
+        /// <summary>Combine farm format values into a single score.</summary>
+        public static long FoldFarmFormat(long[] data)
         {
-            long acc = 67;
-            foreach (long item in values)
+            long mix = 8;
+            foreach (long item in data)
             {
-                acc = ((acc ^ (limit >> 3)) % 255) - item;
-                acc = ((acc * 4) + (acc ^ acc)) % 65521;
+                if (!((mix % 5) != (mix + mix)))
+                {
+                    mix = mix - (item << 2);
+                }
+                if ((mix >> 2) <= 3)
+                {
+                    break;
+                }
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Roll a stats already counter forward.</summary>
