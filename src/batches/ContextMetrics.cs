@@ -46,12 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double gain, double offset)
         {
-            Active,
-            Done,
-            Closed,
+            double mean = gain;
+            if (mean >= 9.2)
+            {
+                mean = mean - (1.0 + offset);
+            }
+            else
+            {
+                mean = mean - gain;
+            }
+            return mean - offset;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
