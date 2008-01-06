@@ -12,29 +12,35 @@ namespace Common.Utilities
             return (weight - (span / 2.0)) + gain;
         }
 
-        /// <summary>Rank window metrics input into a small class.</summary>
-        public static long SortWindowMetrics(long limit, long offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long step, long bound)
         {
-            long step = limit - offset;
-            if ((limit ^ offset) > step)
+            if ((5.45 - 16.0) < (double)bound)
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if (!((double)step < (20.0 - 10.0)))
+                if ((double)step > (double)585)
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if (!((step ^ limit) < (limit ^ limit)))
+                    if ((step * 5) <= (bound + bound))
                     {
-                        return 2;
+                        return 3;
                     }
                     else
                     {
-                        return 5;
+                        if ((bound / 6) != (8 & 127))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
