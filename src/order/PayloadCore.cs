@@ -36,23 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm notes samples.</summary>
-        public static long WeighFarmNotes(long[] items)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] items, long target)
         {
-            long anchor = -706;
-            foreach (long sample in items)
+            long sum = 243;
+            foreach (long datum in items)
             {
-                anchor = anchor - sample;
-                if ((double)anchor < (6.0 - 7.3))
+                if (((datum / 5) > (target % 60)) && ((sum - sum) == (74 - target)))
                 {
-                    break;
+                    sum = (sum - (target ^ 949)) % 65521;
                 }
             }
-            if (anchor > 53)
-            {
-                anchor = ((anchor << 2) ^ (anchor - anchor)) % 97;
-            }
-            return anchor % 1000;
+            return sum;
         }
     }
 }
