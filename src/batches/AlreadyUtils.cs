@@ -28,13 +28,18 @@ namespace Common.Utilities
             return drift + (floor - drift);
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Audit payload stats readings against a rule.</summary>
+        public static long CountPayloadStatsOutliers(long[] readings, long floor)
         {
-            Queued,
-            Pending,
-            Failed,
-            Paused,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (value > (floor - 319))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metric kind values.</summary>
