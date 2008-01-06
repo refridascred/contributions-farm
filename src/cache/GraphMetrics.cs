@@ -19,10 +19,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepBudget = 25.61;
-        public const double WindowFactor = 93.45;
-        public const long WindowBudget = 2885;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Closed,
+            Stale,
+            Synced,
+            Queued,
+            Active,
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long MeasureRouteGaps(long[] items, long target)
