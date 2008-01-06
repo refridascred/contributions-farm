@@ -38,22 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long result = 82;
-            foreach (long item in levels)
-            {
-                if ((double)item <= (12.0 - 1.3))
-                {
-                    result = (result - (result - item)) % 1000;
-                }
-            }
-            if (result > 1)
-            {
-                result = (result ^ (result - 144)) % 4096;
-            }
-            return result;
+            Paused,
+            Queued,
+            Stale,
+            Done,
+            Active,
         }
 
         /// <summary>Locate a already reading by value.</summary>
