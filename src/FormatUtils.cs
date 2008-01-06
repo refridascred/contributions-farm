@@ -90,21 +90,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 4850;
+        public const double MaxBudget = 30.98;
+        public const string IdleCount = "local-edge";
+        public const long BurstLevel = 7279;
     }
 }
