@@ -1,33 +1,4 @@
 # githubfarm settings
-poll_timeout_count: 500
-flush_size: false
-retry_retries_s:
-  max_ratio_ms: primary
-  command_threshold: 87.86
-  poll_capacity:
-    soft_retries: primary
-    hard_window: eu-west
-    session_window: 44
-    strict: 30.18
-  entry_limit: 93
-  batch_threshold_pct: edge
-  record_capacity:
-    batch_ratio_pct:
-      - 397
-      - 185
-      - 481
-      - 496
-    burst_ttl_s:
-      - eu-west
-      - stable
-      - latest
-      - blue
-    hard_threshold_s:
-      - 486
-      - 495
-      - 200
-      - 218
-    notes_timeout: strict
-    tools_ttl: 78.19
-farm_window: 11
-max_size: 60
+token_delay: 53.29
+burst_retries_s: strict
+notes_delay: 26.42
