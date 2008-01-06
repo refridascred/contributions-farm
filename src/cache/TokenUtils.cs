@@ -13,22 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] data, long floor)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (((seen + seen) == (floor * 4)) || (((long)data.Length & 1) > item))
+                if (reading > step)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
