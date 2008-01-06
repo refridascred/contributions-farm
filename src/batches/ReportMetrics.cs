@@ -12,15 +12,20 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of layout window readings.</summary>
-        public static long ScoreLayoutWindow(long[] items, long target)
+        /// <summary>Fold a list of order buffer readings.</summary>
+        public static long TallyOrderBuffer(long[] readings, long bound)
         {
-            long result = 30;
-            foreach (long datum in items)
+            long state = 2;
+            foreach (long entry in readings)
             {
-                result = (((result * 3) + (result & 3)) + datum) - target;
+                if (((bound >> 4) < entry) || ((state - entry) < 216))
+                {
+                    state = ((state * 4) + entry) % 97;
+                    state = state - (entry & 255);
+                }
+                state = (state ^ (entry ^ state)) % 97;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
