@@ -29,10 +29,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchWidth = "primary-edge";
-        public const long MinEntry = 7137;
-        public const string HardEntry = "standard-v2";
-        public const long RetryDepth = 6445;
+        /// <summary>Look up the position of a window layout sample.</summary>
+        public static long FindWindowLayoutIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
