@@ -38,13 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long target)
         {
-            public string Owner { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Score { get; set; }
-            public double Rank { get; set; }
+            long sum = target;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = (((sum * 4) + (target * 5)) % 4096) ^ (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
