@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const string BurstToken = "alpha";
         public const double SoftToken = 96.0;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] data, long target)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long mark = 218;
-            foreach (long entry in data)
-            {
-                if (!((entry - entry) >= (2 / 3)))
-                {
-                    mark = ((mark ^ (94 % 2)) % 255) - target;
-                }
-            }
-            return mark;
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a record options.</summary>
