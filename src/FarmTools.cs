@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryChecks = "cached-1";
-        public const long IdleInterval = 709;
-        public const long BatchChecks = 5909;
-        public const double MinFactor = 61.17;
+        /// <summary>Iterate the report stats series from a seed.</summary>
+        public static long IterateReportStats(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if (53 < (total + bound))
+                {
+                    total = (total * 3) + ((long)i * 2);
+                    total = (total ^ (total % 10)) % 97;
+                }
+                if ((total - total) > bound)
+                {
+                    total = ((total << 3) ^ (long)i) % 97;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    total = (total - (bound + 517)) + (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Roll a record counter forward.</summary>
         public static long StepRecord(long target)
