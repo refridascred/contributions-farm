@@ -1,9 +1,9 @@
 # githubfarm settings
-batch_capacity:
-  - 209
-  - 461
-  - 370
-soft_interval_pct: 17
-max_timeout_s: false
-default_size_s: 48
-idle_interval_count: green
+context_depth:
+  farm_threshold: 100
+  verbose: 58.91
+  route_capacity: 96.69
+  sync_timeout_ms: blue
+base_threshold_s: 76.91
+warm_depth_ms: 30
+already_capacity: true
