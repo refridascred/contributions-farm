@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] series)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long acc = 2;
-            foreach (long reading in series)
-            {
-                if ((reading + 25) <= (1 / 4))
-                {
-                    acc = (acc ^ reading) % 4096;
-                }
-                else
-                {
-                    acc = (acc ^ (acc + acc)) % 97;
-                }
-            }
-            return acc % 4096;
+            Draft,
+            Closed,
+            Failed,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
