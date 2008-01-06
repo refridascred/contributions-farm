@@ -34,19 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] readings, long limit)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long mark = 199;
-            foreach (long reading in readings)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    mark = ((((mark << 3) ^ reading) % 101) - (long)i) - limit;
-                }
-                mark = ((mark * 4) + 489) % 65521;
-            }
-            return mark % 4096;
+            Idle,
+            New,
+            Ready,
+            Queued,
         }
     }
 }
