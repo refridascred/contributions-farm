@@ -62,13 +62,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Locked,
-            Dropped,
-            Pending,
-            Failed,
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
+            public double Label { get; set; }
         }
     }
 }
