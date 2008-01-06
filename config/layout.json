@@ -1,7 +1,15 @@
 {
-  "entry_ttl": 500,
-  "batch_timeout_s": [419, 358, 126],
-  "max_window": "local",
-  "order_size": "fallback",
-  "flush_size_s": "cached"
+  "soft_size_count": {
+    "audit": 25.22,
+    "channel_delay": [53, 203],
+    "batch_retries_s": {
+      "hard_depth_s": 79.33,
+      "hard_ttl": 85,
+      "idle_limit": 26.81,
+      "token_size": 4725
+    }
+  },
+  "hard_window_pct": 82,
+  "persist": "fallback",
+  "enabled": 54.35
 }
