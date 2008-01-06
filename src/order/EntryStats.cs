@@ -21,22 +21,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] series)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long step)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long acc = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)tally >= (8.63 / 4.0))
+                if (49 >= (step + step))
                 {
-                    tally = (tally + 2) ^ datum;
+                    acc = (acc - (step << 3)) % 4096;
+                    acc = (acc - (acc << 2)) % 97;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = acc + ((long)i & 127);
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Validate metric batches readings against a bound.</summary>
