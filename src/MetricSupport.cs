@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Validate cluster notes readings against a bound.</summary>
+        public static bool GuardClusterNotesLimits(long[] series, long target)
         {
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
