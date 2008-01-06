@@ -1,8 +1,8 @@
-id,rank,state
-1,422,388
-2,546,73.31
-3,294,primary
-4,95.75,485
-5,legacy,latest
-6,staging,74.91
-7,strict,88.18
+id,count,ratio,label
+1,98,796,27.06
+2,standard,795,18.76
+3,884,primary,175
+4,staging,401,479
+5,73.07,705,edge
+6,712,703,9.31
+7,46.82,888,16.84
