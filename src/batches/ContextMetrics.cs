@@ -53,12 +53,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double CacheRatio = 65.73;
-        public const long IdleCommits = 3569;
-        public const long BaseDepth = 1918;
-        public const long BurstSize = 4821;
-        public const long WindowScore = 8957;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            New,
+            Synced,
+            Queued,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long OverlapContextCount(long[] levels)
