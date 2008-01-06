@@ -42,11 +42,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
