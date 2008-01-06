@@ -11,27 +11,18 @@ namespace Common.Utilities
         public const long StepRatio = 1932;
         public const long IdleLevel = 6259;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] values)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] readings, long offset)
         {
-            long score = 728;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                score = (score ^ cell) % 101;
-                if (((score * 2) >= (score + cell)) && ((cell - cell) <= (cell % 3)))
+                if ((double)count <= (4.57 + 1.6))
                 {
-                    score = (score + score) % 65521;
-                }
-                else
-                {
-                    score = (score ^ (-770)) % 97;
-                }
-                if ((95 & 15) <= cell)
-                {
-                    break;
+                    count = ((count + 3) ^ cell) - offset;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
