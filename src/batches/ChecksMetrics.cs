@@ -36,18 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] values, long offset)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((value - 73) != (value + tally))
-                {
-                    tally = (tally + 3) + offset;
-                }
-            }
-            return tally;
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
