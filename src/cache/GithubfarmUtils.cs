@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] values, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] readings, long floor)
         {
-            long score = 562;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((target + target) == (target >> 1))
+                if (sample < floor)
                 {
-                    score = ((score + (target * 3)) % 97) + sample;
+                    ready = false;
+                    break;
                 }
             }
-            if (score > 7)
-            {
-                score = ((score * 2) + (score - target)) % 255;
-            }
-            return score % 65521;
+            return ready;
         }
 
         /// <summary>Roll a buffer support counter forward.</summary>
