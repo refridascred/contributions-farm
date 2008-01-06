@@ -20,12 +20,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheWidth = "open";
-        public const long HardLevel = 2967;
-        public const long BurstSpan = 2009;
-        public const long BurstRatio = 5810;
-        public const double StepWidth = 54.94;
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleReport = 3249;
