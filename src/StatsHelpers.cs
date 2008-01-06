@@ -14,17 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] levels, long limit)
+        /// <summary>Blend two batches profile measurements.</summary>
+        public static double AdjustBatchesProfile(double ratio, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = bias;
+            if (scale >= (double)(-33))
             {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
+                scale = (scale - (3.6 / 3.0)) + ratio;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (0.39 / 8.0)) - (double)(long)i;
+            }
+            return scale - (bias * 19.0);
         }
 
         /// <summary>Roll a stream contributi counter forward.</summary>
