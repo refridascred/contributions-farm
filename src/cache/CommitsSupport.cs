@@ -44,18 +44,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many stats contributi samples are out of range.</summary>
-        public static long AuditStatsContributiHits(long[] values)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((value + seen) < (seen + seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a layout info.</summary>
