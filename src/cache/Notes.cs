@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 275;
-        public const long IdleWidth = 1779;
-        public const long BatchDepth = 3911;
-        public const string DefaultBatch = "local-v2";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryTimeout = 4203;
+        public const long BatchRatio = 221;
+        public const double MaxLevel = 4.26;
+        public const string HardCommits = "fallback-edge";
+        public const long MinCommits = 7369;
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
