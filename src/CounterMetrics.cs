@@ -28,19 +28,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double bias, double offset)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] data, long target)
         {
-            double rate = bias + offset;
-            if (rate <= (rate + offset))
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate + (9.83 * 8.12);
+                if ((data[i] <= target) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - offset;
-            }
-            return rate - (bias * 20.0);
+            return -1;
         }
 
         /// <summary>Describe the report state values.</summary>
