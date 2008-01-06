@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            Closed,
-            Done,
-            Stale,
+            Draft,
+            Pending,
+            Paused,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
