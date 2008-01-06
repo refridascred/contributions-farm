@@ -24,9 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleFarm = "cached-edge";
-        public const long LimitCount = 1056;
-        public const long BaseFarm = 5652;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+        }
     }
 }
