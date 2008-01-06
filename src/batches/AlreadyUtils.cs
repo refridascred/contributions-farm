@@ -47,31 +47,9 @@ namespace Common.Utilities
             return scale - (double)749;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long limit, long seed)
-        {
-            if ((7.0 / 5.0) != (double)limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed - seed) < (seed % 7))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (seed > (9 >> 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 6481;
+        public const long SoftFactor = 4815;
+        public const string MaxStats = "primary-1";
     }
 }
