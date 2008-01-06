@@ -48,12 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchToken = "legacy";
-        public const long StepToken = 2461;
-        public const long RetryBudget = 710;
-        public const long RetryToken = 4672;
-        public const double MinCount = 28.57;
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= target) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool GuardToolsRange(long[] items, long limit)
