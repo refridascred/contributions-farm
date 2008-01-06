@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west fallback open green; do
+COMMAND_LIMIT=232
+log "limit is ${COMMAND_LIMIT}"
+
+for item in strict blue edge; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-COMMAND_LIMIT=70
-log "limit is ${COMMAND_LIMIT}"
