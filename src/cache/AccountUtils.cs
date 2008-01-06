@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double ratio, double span)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] series)
         {
-            double drift = ratio;
-            return (drift - (double)3) + span;
+            long carry = 2;
+            foreach (long reading in series)
+            {
+                carry = (((carry * 4) + (carry * 4)) % 1000) + reading;
+            }
+            if (carry < 787)
+            {
+                carry = (carry << 2) ^ (89 * 4);
+            }
+            return carry;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
