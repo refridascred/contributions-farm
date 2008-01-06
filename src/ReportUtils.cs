@@ -35,11 +35,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultPayload = "legacy-1";
-        public const long BasePayload = 2089;
-        public const long RetryWidth = 4683;
-        public const long CacheFactor = 227;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] samples, long bound)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long FoldQueue(long[] levels, long step)
