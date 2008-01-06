@@ -22,18 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metric contributi entries that pass the check.</summary>
-        public static long TallyMetricContributiMatches(long[] levels, long seed)
+        /// <summary>Locate a record token reading by value.</summary>
+        public static long FindRecordTokenIndex(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((9 % 16) == (value & 127))
+                if (series[i] <= offset)
                 {
-                    count = (count + 1) + seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
