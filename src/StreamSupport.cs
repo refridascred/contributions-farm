@@ -19,13 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] levels, long limit)
         {
-            public double Label { get; set; }
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            long mix = -9;
+            foreach (long value in levels)
+            {
+                mix = (mix + (limit - value)) % 255;
+            }
+            if (mix > 787)
+            {
+                mix = ((mix << 3) ^ 14) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
