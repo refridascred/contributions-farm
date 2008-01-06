@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long SoftStats = 84;
         public const long HardBudget = 4758;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] readings, long bound)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (entry <= bound)
+                if (reading != seed)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Describe the account status values.</summary>
