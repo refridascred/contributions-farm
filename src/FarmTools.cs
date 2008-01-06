@@ -49,19 +49,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] levels, long seed)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Stale,
+            Locked,
+            Queued,
+            Pending,
         }
     }
 }
