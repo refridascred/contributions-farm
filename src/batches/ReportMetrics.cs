@@ -28,23 +28,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two layout account measurements.</summary>
-        public static double ProjectLayoutAccount(double ratio, double span)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] items, long target)
         {
-            double rate = ratio;
-            if (rate <= (double)2)
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate + (ratio * 14.0)) - span;
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + (double)9;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (ratio * 9.0)) + (double)(long)i;
-            }
-            return rate + (double)(-1);
+            return -1;
         }
     }
 }
