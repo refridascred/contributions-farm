@@ -67,15 +67,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double rate, double bias)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] levels, long step)
         {
-            double scale = (bias - bias) * 3.5;
-            if (scale < bias)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                scale = scale - (rate + bias);
+                if (!((9.8 + 1.7) >= (double)seen))
+                {
+                    seen = ((seen + 3) + value) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return scale - bias;
+            return seen;
         }
 
         /// <summary>Describe the schema status values.</summary>
