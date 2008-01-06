@@ -1,5 +1,5 @@
 {
-  "default_interval_pct": "fallback",
-  "persist": ["primary", "local", "strict"],
-  "readonly": 48
+  "audit": "staging",
+  "warm_delay": 100,
+  "readonly": "local"
 }
