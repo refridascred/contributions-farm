@@ -20,11 +20,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchNotes = 70.0;
-        public const double WindowRatio = 42.46;
-        public const string BurstNotes = "stable";
-        public const long CacheNotes = 5625;
-        public const long HardWidth = 4591;
+        public const long IdleWidth = 5981;
+        public const double IdleLevel = 86.42;
+        public const long BaseSpan = 4989;
+        public const string SoftTimeout = "fallback";
+        public const string SoftNotes = "standard-1";
 
         /// <summary>Roll a batches report counter forward.</summary>
         public static long StepBatchesReport(long target)
