@@ -13,22 +13,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] readings)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long mix = 2;
+            foreach (long value in samples)
             {
-                if ((sample & 255) < tally)
+                for (int i = 0; i < 5; i++)
                 {
-                    tally = tally + 2;
+                    mix = (mix + (21 + mix)) + (long)i;
                 }
-                else
+                if (!(6.04 <= (double)mix))
                 {
-                    tally = tally - 1;
+                    mix = ((mix * 4) + (value / 5)) % 255;
+                }
+                if ((value % 97) > value)
+                {
+                    break;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a filter stats.</summary>
