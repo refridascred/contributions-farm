@@ -1,8 +1,9 @@
-id,state,label,level,count
-1,fallback,blue,536,173
-2,23.47,255,354,2
-3,open,10.81,92.34,35.02
-4,85.54,17,717,594
-5,open,407,2.62,166
-6,fallback,616,424,658
-7,930,57.72,41,189
+id,rank,region,score,token
+1,latest,216,68.53,156
+2,fallback,14.07,74.31,649
+3,971,48.12,394,79
+4,53.98,open,23.12,edge
+5,433,local,811,standard
+6,686,95.24,147,cached
+7,33.03,cached,cached,820
+8,537,861,22.28,806
