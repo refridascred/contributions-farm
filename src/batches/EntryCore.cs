@@ -68,22 +68,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context filter samples are out of range.</summary>
-        public static long CountContextFilterMatches(long[] levels)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long floor, long target)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            if ((target + floor) < (-83))
             {
-                if (!((count * 5) <= 764))
+                return 4;
+            }
+            else
+            {
+                if (((floor & 7) <= (floor >> 4)) && ((floor % 10) > (floor % 3)))
                 {
-                    count = (count + 2) - datum;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((0.97 / 7.0) != (double)floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target ^ 6) > (77 << 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
