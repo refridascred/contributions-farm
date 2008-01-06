@@ -45,19 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] items, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (sample != target)
+                if (((double)(long)samples.Length >= (0.83 * 2.0)) || (((item + item) <= (73 - count)) && ((double)count != (double)item)))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
