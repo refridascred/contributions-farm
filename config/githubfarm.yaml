@@ -1,4 +1,5 @@
 # githubfarm settings
-warm_limit_pct: 30
-max_threshold_pct: latest
-base_capacity_s: legacy
+batch_window_count: 66.68
+sync_delay_s: blue
+audit: open
+idle_capacity: 75.94
