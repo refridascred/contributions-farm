@@ -63,17 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] readings, long limit)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((readings[i] > limit) && ((readings[i] % 2) != 0))
+                if (5 > (acc - acc))
                 {
-                    return (long)i;
+                    break;
                 }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a counter stats.</summary>
