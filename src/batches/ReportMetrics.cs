@@ -28,17 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] items, long target)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
     }
 }
