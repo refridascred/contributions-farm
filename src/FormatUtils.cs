@@ -36,16 +36,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long target)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] samples)
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = sum + (0 + sum);
-                sum = ((sum * 2) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
