@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] data)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((entry * 2) >= entry)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the graph mode values.</summary>
