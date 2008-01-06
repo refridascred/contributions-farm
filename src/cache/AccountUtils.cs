@@ -20,11 +20,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a checks editor figure with a bias.</summary>
-        public static double SmoothChecksEditor(double ratio, double bias)
+        /// <summary>Count context stats pairs that satisfy a relation.</summary>
+        public static long PairContextStatsCount(long[] levels)
         {
-            double load = ratio;
-            return (load - (load / 2.0)) + bias;
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
