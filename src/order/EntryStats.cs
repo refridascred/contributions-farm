@@ -54,23 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] items, long floor)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((count + sample) > (count - 7))
-                {
-                    count = (count + 2) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinBudget = 6958;
+        public const long WindowToken = 8527;
+        public const long StepToken = 1685;
+        public const string RetryWidth = "staging-edge";
+        public const long RetryDepth = 6220;
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
