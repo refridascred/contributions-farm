@@ -61,10 +61,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitInterval = 2041;
-        public const long StepAccount = 3866;
-        public const long BurstScore = 7292;
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double rate, double bias)
+        {
+            double scale = (bias - bias) * 3.5;
+            if (scale < bias)
+            {
+                scale = scale - (rate + bias);
+            }
+            return scale - bias;
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long SeekCounterIndex(long[] values, long step)
