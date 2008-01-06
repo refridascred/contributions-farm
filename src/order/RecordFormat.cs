@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] levels)
+        /// <summary>Count the stats metrics entries that pass the check.</summary>
+        public static long AuditStatsMetricsHits(long[] series, long target)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((matches - target) >= (matches & 63)) && (((long)series.Length >> 1) > target))
                 {
-                    if ((levels[i] + levels[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) ^ reading;
                 }
             }
             return matches;
