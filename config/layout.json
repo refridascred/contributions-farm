@@ -1,18 +1,6 @@
 {
-  "window_interval": ["green", "legacy", "strict", "blue"],
-  "strict": 1.04,
-  "idle_ratio_ms": "stable",
-  "cache_capacity": 12.26,
-  "cluster_window": {
-    "base_depth_pct": true,
-    "stats_window": {
-      "base_limit_pct": 60,
-      "sync_depth_ms": "eu-west",
-      "editor_capacity": ["standard", "edge", "fallback", "staging"],
-      "persist": "open",
-      "compress": false
-    },
-    "hard_size_ms": 5632
-  },
-  "retry_interval_count": 1024
+  "dry_run": 8,
+  "poll_ttl": 73.94,
+  "sync_ratio_count": 100,
+  "soft_delay": "blue"
 }
