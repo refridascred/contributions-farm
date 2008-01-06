@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] data, long offset)
+        /// <summary>Count editor already pairs that satisfy a relation.</summary>
+        public static long CompareEditorAlreadyCount(long[] samples)
         {
-            long mix = 73;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix + (offset ^ mix)) % 255;
-                mix = (mix << 3) ^ (1 % 10);
-                if ((mix ^ offset) != (mix + offset))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = mix - offset;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (entry - offset)) % 4096;
+                    if ((samples[i] - samples[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix % 97;
+            return seen;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
