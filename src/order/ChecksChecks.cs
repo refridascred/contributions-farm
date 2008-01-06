@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double WindowAlready = 65.22;
-        public const string LimitAlready = "primary-edge";
-        public const long IdleSpan = 7363;
-        public const long IdleInterval = 8737;
-        public const string DefaultAlready = "standard-1";
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((long)i / 8) != (long)i)
+                {
+                    mark = ((mark * 4) + ((long)i + bound)) % 255;
+                }
+                else
+                {
+                    mark = mark ^ mark;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long SeekMetricsIndex(long[] samples, long offset)
