@@ -12,13 +12,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double bias, double offset)
         {
-            Active,
-            Paused,
-            Dropped,
-            New,
+            double rate = offset;
+            if (rate >= offset)
+            {
+                rate = (rate + rate) - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate + (rate - rate);
         }
 
         /// <summary>Hold a route info.</summary>
