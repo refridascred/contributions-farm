@@ -48,38 +48,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long offset, long bound)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] series)
         {
-            if (2 > (bound - offset))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((bound >> 4) <= offset) && ((4.1 / 7.0) > (double)bound))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound & 1) <= (6 + bound))
+                    if ((series[i] + series[j]) < 18)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset & 7) != (bound * 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
