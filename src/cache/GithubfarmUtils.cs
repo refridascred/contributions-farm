@@ -28,13 +28,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] samples, long target)
         {
-            Draft,
-            Ready,
-            Synced,
-            Done,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)target >= (18.0 - 1.0))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
