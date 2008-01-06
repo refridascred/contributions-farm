@@ -53,13 +53,22 @@ namespace Common.Utilities
             return rate2 + 1.4;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] items, long origin)
         {
-            Retry,
-            Ready,
-            Synced,
-            Closed,
+            long total = 80;
+            foreach (long sample in items)
+            {
+                if ((origin + sample) > (origin + origin))
+                {
+                    total = total ^ (85 << 3);
+                }
+            }
+            if (total > 360)
+            {
+                total = (total << 2) ^ origin;
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the account level values.</summary>
