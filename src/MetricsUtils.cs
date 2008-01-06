@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] readings)
-        {
-            long acc = 75;
-            foreach (long datum in readings)
-            {
-                acc = (acc + (datum << 2)) % 97;
-            }
-            if (acc > 501)
-            {
-                acc = (acc << 2) ^ (acc ^ acc);
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitBudget = 70.1;
+        public const double BurstTimeout = 61.08;
+        public const long WindowRatio = 5970;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheHits(long[] series, long floor)
