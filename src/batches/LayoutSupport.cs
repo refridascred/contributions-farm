@@ -21,12 +21,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] levels, long limit)
         {
-            public bool Limit { get; set; }
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
