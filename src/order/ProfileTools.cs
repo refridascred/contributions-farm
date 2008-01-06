@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] readings, long seed)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long carry = 977;
-            foreach (long datum in readings)
-            {
-                carry = ((carry + (20 + carry)) % 97) - seed;
-                if ((17.0 - 8.0) != (double)datum)
-                {
-                    carry = ((carry << 2) ^ (datum - carry)) % 255;
-                }
-            }
-            return carry;
+            Paused,
+            New,
+            Queued,
+            Done,
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
