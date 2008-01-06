@@ -21,21 +21,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] series, long step)
         {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (49 >= (step + step))
+                if ((((datum & 127) >= (444 + step)) || ((datum + datum) > step)) || !((9 - step) <= (step + step)))
                 {
-                    acc = (acc - (step << 3)) % 4096;
-                    acc = (acc - (acc << 2)) % 97;
+                    matches = matches + 2;
                 }
-                acc = acc + ((long)i & 127);
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Validate metric batches readings against a bound.</summary>
