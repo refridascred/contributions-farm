@@ -37,13 +37,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Failed,
-            Draft,
-            Done,
-            Idle,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardInterval = 6.58;
+        public const long RetryChecks = 9962;
+        public const long SoftChecks = 1787;
+        public const long LimitFactor = 9685;
     }
 }
