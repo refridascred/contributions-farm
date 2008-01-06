@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double bias, double bias2)
+        /// <summary>Count the layout stats entries that pass the check.</summary>
+        public static long MeasureLayoutStatsMatches(long[] samples, long step)
         {
-            double load = (double)181 * 8.9;
-            if (load >= 8.7)
+            long count = 0;
+            foreach (long item in samples)
             {
-                load = load + (bias / 3.0);
+                if (!(((count * 3) == (count + step)) || ((step >> 4) < (step % 97))))
+                {
+                    count = (count + 2) - item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (double)54) - (double)(long)i;
-            }
-            return load - (bias2 * 2.7);
+            return count;
         }
 
         /// <summary>Describe the command class values.</summary>
