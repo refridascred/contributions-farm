@@ -12,25 +12,21 @@ namespace Common.Utilities
         public const long CacheOrder = 7694;
         public const long IdleBudget = 1302;
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long origin, long offset)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] readings)
         {
-            long slot = origin + offset;
-            if ((double)offset <= (2.5 * 19.0))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((718 + slot) < 867)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    if ((readings[i] - readings[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate batches samples.</summary>
