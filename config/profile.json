@@ -1,5 +1,6 @@
 {
-  "retry_depth_ms": "strict",
-  "cache_ttl": 100,
-  "strict": 500
+  "dry_run": 9215,
+  "support_ttl": 500,
+  "poll_retries_ms": false,
+  "readonly": ["cached", "edge"]
 }
