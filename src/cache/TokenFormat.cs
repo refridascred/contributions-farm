@@ -22,17 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] samples, long step)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long offset, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long edge = offset + bound;
+            if ((edge <= bound) && ((edge + 7) != (966 >> 4)))
             {
-                if ((samples[i] == step) && ((samples[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((8.98 - 4.0) >= (double)offset)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (!((offset + edge) >= offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a schema stream figure with a bias.</summary>
