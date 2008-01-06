@@ -51,19 +51,23 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] values, long limit)
+        /// <summary>Blend two payload farm measurements.</summary>
+        public static double AdjustPayloadFarm(double bias, double bias2)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            double drift = 4.4;
+            if (drift < drift)
             {
-                if (reading < limit)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift + 15.0;
             }
-            return flag;
+            else
+            {
+                drift = drift + (bias2 * 18.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (bias * 9.0)) + (double)(long)i;
+            }
+            return drift - 9.71;
         }
     }
 }
