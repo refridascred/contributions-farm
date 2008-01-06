@@ -56,18 +56,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] series, long floor)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long limit)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long anchor = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (((reading * 4) != (matches + floor)) || ((matches >= (reading >> 5)) || ((floor + floor) <= (reading * 2))))
-                {
-                    matches = matches + 1;
-                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
