@@ -1,8 +1,7 @@
 {
-  "cache_window_ms": "local",
-  "enabled": [208, 450, 195, 83],
-  "batch_retries_count": "fallback",
-  "notes_capacity": 37,
-  "min_ttl_s": 92.06,
-  "default_size_s": false
+  "batches_threshold": "green",
+  "max_capacity_count": 34.07,
+  "warm_interval_count": true,
+  "base_depth": 99,
+  "burst_interval_count": 500
 }
