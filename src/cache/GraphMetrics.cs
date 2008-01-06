@@ -43,18 +43,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the metrics buffer entries that pass the check.</summary>
-        public static long MeasureMetricsBufferHits(long[] levels, long target)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long step)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long sum = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((double)item <= (7.2 + 6.26)))
+                long step2 = (sum % 16) >> 1;
+                if (!(step2 <= ((long)i + sum)))
                 {
-                    hits = (hits + 1) - target;
+                    sum = (sum * 3) + (42 + sum);
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
     }
 }
