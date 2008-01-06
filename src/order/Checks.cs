@@ -36,21 +36,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] readings)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 91;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)mix < (3.0 - 0.9)))
                 {
-                    if ((readings[i] + readings[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    mix = mix ^ 62;
                 }
+                else
+                {
+                    mix = ((mix * 5) + entry) % 101;
+                    mix = (mix + (mix - mix)) % 4096;
+                }
+                mix = (mix + (mix + 51)) % 4096;
             }
-            return count;
+            return mix % 65521;
         }
 
         /// <summary>Define window limits and defaults.</summary>
