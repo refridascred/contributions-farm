@@ -23,12 +23,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] samples, long bound)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] < bound)
+                if (items[i] >= origin)
                 {
                     return (long)i;
                 }
