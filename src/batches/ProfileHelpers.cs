@@ -51,12 +51,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long floor)
         {
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            long state = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                state = (state + (582 % 7)) % 97;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = ((state ^ (state << 2)) % 65521) - (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
