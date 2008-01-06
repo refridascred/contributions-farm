@@ -35,32 +35,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long floor, long seed)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long target)
         {
-            long bound = floor ^ seed;
-            if ((bound + bound) > (bound / 8))
+            long carry = target;
+            for (int i = 0; i < 23; i++)
             {
-                return 4;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((floor ^ 9) > (bound & 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((0.71 * 7.41) >= (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
