@@ -12,38 +12,18 @@ namespace Common.Utilities
         public const long LimitScore = 1208;
         public const double BurstRatio = 68.5;
 
-        /// <summary>Rank report window input into a small class.</summary>
-        public static long GradeReportWindow(long limit, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] values)
         {
-            if (((limit << 2) < (limit - limit)) && (((-1) + limit) == (floor / 4)))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit <= (double)0)
+                if (!(((long)values.Length * 4) >= (63 * 2)) && !(datum <= (datum % 12)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((limit * 4) >= floor) && ((floor % 60) >= 573))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)floor >= (double)limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
