@@ -1,14 +1,4 @@
 # entry settings
-hard_capacity_count:
-  min_timeout_count:
-    - cached
-    - standard
-  hard_interval_count: 100
-  persist: eu-west
-  stream_interval: standard
-  stream_delay:
-    - 126
-    - 53
-    - 302
-retry_interval: 17.67
-soft_capacity_ms: strict
+verbose: blue
+readonly: stable
+max_window_s: 8956
