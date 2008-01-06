@@ -62,12 +62,18 @@ namespace Common.Utilities
         public const long MaxSession = 8297;
         public const long LimitInterval = 2476;
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] levels)
         {
-            Failed,
-            Closed,
-            Draft,
+            long result = -73;
+            foreach (long entry in levels)
+            {
+                if (result > entry)
+                {
+                    result = (result - (entry - entry)) % 97;
+                }
+            }
+            return result;
         }
     }
 }
