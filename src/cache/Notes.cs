@@ -23,11 +23,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleBudget = 6131;
-        public const long BurstRoute = 8419;
-        public const long WindowRoute = 7827;
-        public const long IdleFactor = 1607;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] levels, long floor)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((((hits - 8) >= entry) || ((floor + entry) != (floor % 97))) || (65 > (floor >> 4)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
