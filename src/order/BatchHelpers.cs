@@ -14,22 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] series)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((reading * 2) <= count)
+                if ((item + item) <= hits)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a profile info.</summary>
