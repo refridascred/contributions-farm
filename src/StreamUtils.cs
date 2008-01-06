@@ -40,13 +40,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long floor, long origin)
         {
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
+            if (floor > (2 * 4))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((8.2 * 9.02) > (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (origin > floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many tools stats samples are out of range.</summary>
