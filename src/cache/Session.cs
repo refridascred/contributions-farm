@@ -45,16 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the queue schema series from a seed.</summary>
-        public static long SeriesQueueSchema(long offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] items, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
+            bool found = true;
+            foreach (long sample in items)
             {
-                total = (total ^ (total << 2)) % 1000;
-                total = ((total * 3) + (long)i) % 4093;
+                if (sample != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
     }
 }
