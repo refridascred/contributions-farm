@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] readings, long offset)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long seed, long origin)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            if ((seed + origin) <= (seed + seed))
             {
-                if (cell > offset)
+                return 0;
+            }
+            else
+            {
+                if (((seed & 3) != (6 * 2)) && (seed <= origin))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed & 7) <= (origin ^ origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed >> 2) != (origin % 60))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a channel info.</summary>
