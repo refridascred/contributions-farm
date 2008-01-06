@@ -26,13 +26,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Blend two layout account measurements.</summary>
+        public static double ProjectLayoutAccount(double ratio, double span)
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            double rate = ratio;
+            if (rate <= (double)2)
+            {
+                rate = (rate + (ratio * 14.0)) - span;
+            }
+            else
+            {
+                rate = rate + (double)9;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (ratio * 9.0)) + (double)(long)i;
+            }
+            return rate + (double)(-1);
         }
     }
 }
