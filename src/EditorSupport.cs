@@ -63,11 +63,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
