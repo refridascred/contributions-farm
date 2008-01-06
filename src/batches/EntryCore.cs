@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long origin)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] items, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark - mark;
-                mark = mark + 4;
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
