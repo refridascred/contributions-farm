@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long limit, long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] samples)
         {
-            long delta = limit - offset;
-            if (56 > (delta - limit))
+            long mix = 27;
+            foreach (long value in samples)
             {
-                return 4;
+                mix = (((mix << 2) ^ (mix + 93)) % 97) ^ value;
+                mix = (mix ^ mix) % 1000;
             }
-            else
-            {
-                if ((2.55 + 9.27) <= (double)delta)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((14.0 / 2.0) != (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
