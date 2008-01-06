@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const string BurstToken = "alpha";
         public const double SoftToken = 96.0;
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double bias, double floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] data, long target)
         {
-            double rate = bias;
-            if (rate <= (15.0 * 7.0))
+            long mark = 218;
+            foreach (long entry in data)
             {
-                rate = rate - (floor / 5.0);
+                if (!((entry - entry) >= (2 / 3)))
+                {
+                    mark = ((mark ^ (94 % 2)) % 255) - target;
+                }
             }
-            else
-            {
-                rate = rate - (bias + 7.12);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - floor) + (double)(long)i;
-            }
-            return rate - floor;
+            return mark;
         }
 
         /// <summary>Hold a record options.</summary>
