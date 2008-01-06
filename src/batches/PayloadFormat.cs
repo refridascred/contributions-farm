@@ -57,18 +57,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit layout counter readings against a rule.</summary>
-        public static long AuditLayoutCounterHits(long[] items)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((2.0 - 2.2) > (double)reading) && ((matches - 7) < matches))
+                if (samples[i] >= floor)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
