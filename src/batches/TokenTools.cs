@@ -13,28 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] samples, long floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] data, long floor)
         {
-            long mix = 6;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix << 2) ^ mix) % 4096;
-                mix = (mix - mix) % 65521;
-                if (9.67 > (double)entry)
+                if (data[i] > floor)
                 {
-                    mix = (mix + (entry << 1)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (0 + floor)) % 255;
+                    return (long)i;
                 }
             }
-            if (mix < 5)
-            {
-                mix = ((mix * 5) + (floor - (long)samples.Length)) % 1000;
-            }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
