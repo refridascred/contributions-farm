@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] series)
         {
-            public double Offset { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample == (6.0 * 13.0))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the notes phase values.</summary>
