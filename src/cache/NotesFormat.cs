@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitLevel = 5013;
-        public const long BaseContext = 8631;
-        public const long StepRatio = 1932;
-        public const long IdleLevel = 6259;
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = sum ^ (sum + sum);
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksOutliers(long[] readings, long offset)
