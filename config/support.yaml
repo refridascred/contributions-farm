@@ -1,16 +1,9 @@
 # support settings
-min_interval_count: false
-strict: 45
-schema_interval:
-  enabled: 30
-  commits_threshold: 250
-  default_window:
-    - primary
-    - stable
-    - eu-west
-    - standard
-  persist: true
-  batch_ttl_count:
-    readonly: false
-    graph_size: false
-    commits_threshold: fallback
+min_ttl_s: 95.28
+batch_threshold_ms:
+  - 110
+  - 174
+  - 474
+burst_size_ms:
+  - 188
+  - 38
