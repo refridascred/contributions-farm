@@ -35,13 +35,13 @@ namespace Common.Utilities
             return drift + (floor - drift);
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Active,
-            Draft,
-            Stale,
-            Retry,
+            Queued,
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
