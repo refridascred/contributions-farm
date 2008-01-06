@@ -19,11 +19,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchCount = 11.35;
-        public const string RetryEntry = "latest-edge";
-        public const double MinEntry = 62.18;
-        public const long CacheEntry = 8701;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepBudget = 25.61;
+        public const double WindowFactor = 93.45;
+        public const long WindowBudget = 2885;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long MeasureRouteGaps(long[] items, long target)
