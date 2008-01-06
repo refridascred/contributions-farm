@@ -14,14 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] readings)
         {
-            Failed,
-            Active,
-            Idle,
-            Retry,
-            Locked,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((84 & 1) > (value / 8))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
