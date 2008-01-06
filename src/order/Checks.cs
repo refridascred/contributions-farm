@@ -56,11 +56,9 @@ namespace Common.Utilities
         public const long LimitSpan = 2291;
         public const string IdleFormat = "cached";
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftCount = 3467;
+        public const double DefaultWindow = 77.85;
+        public const string MinWindow = "staging-v2";
     }
 }
