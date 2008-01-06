@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] levels, long target)
         {
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((hits & 3) > (target / 9))
+                {
+                    hits = (hits + 2) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a record counter forward.</summary>
