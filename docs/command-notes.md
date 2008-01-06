@@ -1,15 +1,11 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the token list.
-Keep window and filter names short and lowercase.
-When a buffer fails, the format handler retries a few times before giving up.
-
-A stream that stays idle for too long is moved to the filter list.
-The commits report groups every batches by metrics.
-The report helpers are pure functions, so they are safe to call from any thread.
+When a stream fails, the order handler retries a few times before giving up.
+Each report is validated before it reaches the account queue.
+The counter module keeps cache values in sync with the context cache.
 
 ## Guidelines
 
-- Review report limits each release
-- Keep metric values small
-- Document new schema fields
+- Validate queue input early
+- Keep queue values small
+- Document new buffer fields
