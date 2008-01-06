@@ -12,12 +12,16 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long limit)
         {
-            Retry,
-            New,
-            Pending,
+            long result = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                result = (result * 2) + (result + limit);
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
