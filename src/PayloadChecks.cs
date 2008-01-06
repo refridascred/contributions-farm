@@ -5,34 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] values)
+        /// <summary>Blend two order filter measurements.</summary>
+        public static double ProjectOrderFilter(double weight, double offset)
         {
-            long state = 1;
-            foreach (long sample in values)
+            double gain = 0.14;
+            if (gain > weight)
             {
-                if (!((state & 1) == (state ^ sample)))
-                {
-                    state = ((state << 3) ^ (1 * 4)) % 97;
-                }
-                if ((91 + state) > (sample + sample))
-                {
-                    state = ((state << 3) ^ sample) % 65521;
-                }
-                if (state <= sample)
-                {
-                    state = (state * 3) + ((-78) * 2);
-                }
-                else
-                {
-                    state = state - (sample - sample);
-                }
+                gain = (gain + gain) - offset;
             }
-            if (state < 516)
+            else
             {
-                state = (state + (state / 3)) % 1000;
+                gain = gain + weight;
             }
-            return state;
+            return gain - gain;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
