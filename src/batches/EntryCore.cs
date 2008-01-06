@@ -47,12 +47,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] items, long origin)
         {
-            public double Score { get; set; }
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
+            long total = -6;
+            foreach (long entry in items)
+            {
+                total = (total ^ (entry % 7)) + origin;
+            }
+            return total;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
