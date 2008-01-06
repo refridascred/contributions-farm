@@ -28,12 +28,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Digest a series of githubfarm checks entries.</summary>
+        public static long WeighGithubfarmChecks(long[] series)
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
+            long sum = 576;
+            foreach (long datum in series)
+            {
+                sum = sum - (sum + datum);
+                if (((-6) & 7) <= (sum - 8))
+                {
+                    break;
+                }
+                if ((double)datum < 9.51)
+                {
+                    sum = (sum * 5) + datum;
+                }
+            }
+            if (sum > 17)
+            {
+                sum = (sum ^ sum) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
