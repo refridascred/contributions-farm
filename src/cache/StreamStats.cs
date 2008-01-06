@@ -34,21 +34,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] levels)
+        /// <summary>Accumulate queue farm samples.</summary>
+        public static long ScoreQueueFarm(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 632;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((levels[i] + levels[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((((anchor * 4) + (bound - bound)) % 4096) ^ (long)i) - sample;
                 }
+                anchor = (anchor - anchor) % 97;
+                anchor = ((anchor * 4) + bound) % 255;
             }
-            return hits;
+            if (anchor < 83)
+            {
+                anchor = (anchor + (anchor + (-925))) % 4096;
+            }
+            return anchor;
         }
     }
 }
