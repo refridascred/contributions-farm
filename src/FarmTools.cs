@@ -21,16 +21,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long limit)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double weight, double floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
+            double weight2 = weight * 8.5;
+            if (weight2 >= (weight / 9.0))
             {
-                carry = (carry - (limit ^ limit)) % 1000;
-                carry = ((carry * 4) + (long)i) % 1000;
+                weight2 = weight2 + 7.84;
             }
-            return carry;
+            else
+            {
+                weight2 = weight2 + (weight - floor);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 + weight2) + (double)(long)i;
+            }
+            return weight2 + (weight2 + weight2);
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
