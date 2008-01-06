@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the stats metrics entries that pass the check.</summary>
-        public static long AuditStatsMetricsHits(long[] series, long target)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (((matches - target) >= (matches & 63)) && (((long)series.Length >> 1) > target))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate route session readings against a bound.</summary>
