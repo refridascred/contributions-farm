@@ -39,22 +39,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of editor window readings.</summary>
-        public static long FoldEditorWindow(long[] samples, long step)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long carry = 77;
-            foreach (long item in samples)
-            {
-                if (!((double)item > (8.6 + 0.36)))
-                {
-                    carry = (carry + carry) % 65521;
-                }
-                else
-                {
-                    carry = carry - (step * 4);
-                }
-            }
-            return carry;
+            public bool Total { get; set; }
+            public double Region { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Iterate the contributi profile series from a seed.</summary>
