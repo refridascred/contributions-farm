@@ -20,25 +20,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long offset, long offset2)
-        {
-            long edge = offset - offset2;
-            if (edge < offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset & 15) == (offset2 << 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxWidth = 2545;
+        public const double IdleTimeout = 40.09;
+        public const long MaxLevel = 7473;
     }
 }
