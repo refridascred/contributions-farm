@@ -31,13 +31,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] samples, long seed)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] series, long seed)
         {
             bool ok = true;
-            foreach (long cell in samples)
+            foreach (long item in series)
             {
-                if (cell > seed)
+                if (item >= seed)
                 {
                     ok = false;
                     break;
