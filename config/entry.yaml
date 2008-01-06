@@ -1,10 +1,12 @@
 # entry settings
-dry_run:
+hard_size: primary
+farm_ratio: staging
+verbose:
+  - local
+  - open
+format_threshold: 1179
+schema_capacity:
+  - eu-west
+  - blue
   - primary
-  - local
-enabled:
-  - fallback
-  - edge
-  - local
-  - legacy
-idle_ttl: true
+  - latest
