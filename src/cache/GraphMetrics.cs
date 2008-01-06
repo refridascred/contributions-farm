@@ -23,18 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] readings)
+        /// <summary>Count the channel metric entries that pass the check.</summary>
+        public static long CountChannelMetricHits(long[] data)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((count * 3) == (reading - reading))
+                if (matches <= 65)
                 {
-                    count = count + 3;
+                    matches = (matches + 1) - value;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a batches header.</summary>
