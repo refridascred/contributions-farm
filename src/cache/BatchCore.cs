@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public double Offset { get; set; }
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((22 <= (item & 31)) || ((item + 337) > 0))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a metrics filter sample.</summary>
