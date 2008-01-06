@@ -64,19 +64,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a account filter figure with a bias.</summary>
-        public static double AdjustAccountFilter(double rate, double offset)
+        /// <summary>Scale a buffer checks figure with a bias.</summary>
+        public static double ProjectBufferChecks(double ratio, double bias)
         {
-            double weight = rate;
-            if (weight < rate)
+            double load = 19.0;
+            if (load >= (bias - bias))
             {
-                weight = (weight - (3.7 + rate)) + offset;
+                load = (load - bias) - ratio;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - rate;
+            return load + bias;
         }
     }
 }
