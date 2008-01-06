@@ -41,19 +41,13 @@ namespace Common.Utilities
         public const long BaseRatio = 1990;
         public const long IdleCount = 1222;
 
-        /// <summary>Derive the next counter token value from a seed.</summary>
-        public static long IterateCounterToken(long step)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long total = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((1.7 - 11.0) == (double)step))
-                {
-                    total = (total << 2) ^ (step & 31);
-                }
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            Queued,
+            Done,
+            Failed,
+            Ready,
         }
     }
 }
