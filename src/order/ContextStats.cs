@@ -44,12 +44,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Idle,
-            Stale,
-            Active,
+            public double Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
