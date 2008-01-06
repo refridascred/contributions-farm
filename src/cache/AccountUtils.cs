@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the notes account entries that pass the check.</summary>
-        public static long AuditNotesAccountHits(long[] values)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((291 << 3) >= datum)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Failed,
+            Ready,
+            Done,
         }
 
         /// <summary>Hold a checks snapshot.</summary>
