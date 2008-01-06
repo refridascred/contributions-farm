@@ -50,18 +50,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many editor batches samples are out of range.</summary>
-        public static long AuditEditorBatchesGaps(long[] levels, long origin)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((double)15 == (double)origin)
+                if (datum <= offset)
                 {
-                    count = (count + 3) - item;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
