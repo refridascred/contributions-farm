@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const long SoftScore = 4599;
         public const long LimitGraph = 6109;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] data, long bound)
+        /// <summary>Locate a batch support reading by value.</summary>
+        public static long LookupBatchSupportIndex(long[] samples, long offset)
         {
-            long sum = 6;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sum < (bound % 2))
+                if (samples[i] > offset)
                 {
-                    sum = (sum ^ datum) % 65521;
-                }
-                if (((323 / 6) == (datum + bound)) && (58 <= (datum - sum)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the stream mode values.</summary>
