@@ -19,32 +19,36 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long limit, long seed)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] readings, long step)
         {
-            long lane = limit + seed;
-            if (seed > (seed + lane))
+            long score = 67;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((lane << 1) != (seed - seed))
+                if ((step + entry) != (entry << 1))
                 {
-                    return 3;
+                    score = (score ^ (entry - entry)) % 65521;
+                    score = score ^ (step / 2);
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    score = ((score - (score & 127)) % 97) ^ (long)i;
+                    score = ((score << 2) ^ score) % 4096;
+                }
+                if ((score / 3) != (step >> 2))
+                {
+                    score = (score ^ (score - 798)) % 101;
                 }
                 else
                 {
-                    if ((lane & 3) < (9 + lane))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    score = (score - (entry - score)) % 1000;
                 }
             }
+            if (score < 3)
+            {
+                score = (score - (score % 7)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
