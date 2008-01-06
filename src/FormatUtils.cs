@@ -45,14 +45,11 @@ namespace Common.Utilities
         public const long CacheBatch = 3889;
         public const double SoftRatio = 92.75;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
-        {
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryFactor = 4.67;
+        public const double IdleBudget = 12.94;
+        public const long IdleSize = 2440;
+        public const long DefaultContext = 4310;
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
