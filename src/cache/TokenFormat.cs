@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryScore = 8617;
-        public const string RetryFilter = "staging-v2";
-        public const long LimitFilter = 5584;
-        public const double DefaultFilter = 35.01;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardBatch = 39.37;
+        public const string IdleBatch = "staging";
+        public const long StepFactor = 6267;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
