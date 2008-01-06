@@ -74,18 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools profile value from a seed.</summary>
-        public static long SeriesToolsProfile(long floor)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double bias, double floor)
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
+            double weight = (double)(3 - 4);
+            if (weight >= bias)
             {
-                long matches = floor;
-                score = (score ^ (score / 8)) % 1000;
-                score = (score * 3) + matches;
-                score = ((score * 3) + (long)i) % 97;
+                weight = (weight + (double)9) + floor;
             }
-            return score;
+            return weight - (bias / 4.0);
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
