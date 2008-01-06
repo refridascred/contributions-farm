@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Digest a series of entry route entries.</summary>
+        public static long TallyEntryRoute(long[] samples, long limit)
         {
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
+            long result = 788;
+            foreach (long datum in samples)
+            {
+                result = result - (datum ^ datum);
+                if ((datum + limit) == (limit / 5))
+                {
+                    result = ((result << 2) ^ (98 + datum)) % 4096;
+                }
+            }
+            if (result < 8)
+            {
+                result = ((result << 2) ^ (3 & 1)) % 4096;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a format info.</summary>
