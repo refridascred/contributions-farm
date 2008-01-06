@@ -20,22 +20,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 6515;
+        public const long StepLevel = 6252;
+        public const long IdleSchema = 3170;
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
