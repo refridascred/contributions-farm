@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 856;
-        public const string StepSpan = "alpha-v2";
-        public const long DefaultDepth = 6519;
-        public const long CachePayload = 2900;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Dropped,
+            Idle,
+            Locked,
+            Active,
+            Failed,
+        }
 
         /// <summary>Roll a buffer record counter forward.</summary>
         public static long SeriesBufferRecord(long bound)
