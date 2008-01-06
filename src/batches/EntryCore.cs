@@ -20,19 +20,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] series, long origin)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] samples)
         {
-            long total = -916;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total ^ ((long)series.Length + total)) % 101) - sample;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (total < 659)
-            {
-                total = (total << 3) ^ (origin & 7);
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
