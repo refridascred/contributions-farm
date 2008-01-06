@@ -82,22 +82,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] levels, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((7.6 + 3.9) <= (double)(long)levels.Length)
+                if ((hits % 8) <= (hits << 1))
                 {
-                    count = ((count + 2) + sample) - limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
