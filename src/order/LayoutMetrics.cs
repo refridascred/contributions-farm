@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double scale, double offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            double mean = offset;
-            if (mean > (double)455)
-            {
-                mean = (mean + mean) + scale;
-            }
-            else
-            {
-                mean = mean + (double)8;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - offset) + (double)(long)i;
-            }
-            return mean - offset;
+            Closed,
+            Draft,
+            Failed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Measure how many contributi stats samples are out of range.</summary>
