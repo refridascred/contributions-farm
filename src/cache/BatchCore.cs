@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 6581;
-        public const double SoftDepth = 93.51;
-        public const long BurstNotes = 1187;
-        public const long MinNotes = 6927;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Idle,
+            Active,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double ScaleMetrics(double bias, double span)
