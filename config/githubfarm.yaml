@@ -1,4 +1,4 @@
 # githubfarm settings
-persist: false
-route_capacity: strict
-base_delay_ms: open
+flush_ttl_count: false
+base_timeout_pct: 3611
+retry_ttl: 39.62
