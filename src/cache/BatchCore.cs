@@ -26,12 +26,23 @@ namespace Common.Utilities
             return drift - (double)11;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] levels, long target)
         {
-            public bool Total { get; set; }
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
+            long anchor = 5;
+            foreach (long datum in levels)
+            {
+                if ((43 + anchor) < (datum >> 1))
+                {
+                    anchor = (anchor + datum) % 4096;
+                }
+                anchor = ((anchor * 4) + (68 % 60)) % 255;
+            }
+            if (anchor < 628)
+            {
+                anchor = (anchor - (target - target)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
