@@ -27,17 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a profile window reading by value.</summary>
-        public static long SeekProfileWindowIndex(long[] readings, long bound)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double bias, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = bias + offset;
+            if (rate <= (rate + offset))
             {
-                if ((readings[i] == bound) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate + (9.83 * 8.12);
             }
-            return -1;
+            else
+            {
+                rate = rate - offset;
+            }
+            return rate - (bias * 20.0);
         }
 
         /// <summary>Digest a series of payload notes entries.</summary>
