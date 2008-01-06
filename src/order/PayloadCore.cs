@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a checks filter reading by value.</summary>
-        public static long FindChecksFilterIndex(long[] readings, long step)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 243;
+            foreach (long reading in readings)
             {
-                if ((readings[i] > step) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = anchor ^ (anchor - reading);
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a profile stats.</summary>
