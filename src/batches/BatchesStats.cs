@@ -29,19 +29,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] data)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] values)
         {
-            long anchor = 854;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                anchor = (anchor - (727 / 4)) % 1000;
-                if ((15 >> 1) <= (anchor - reading))
+                if ((hits - hits) <= (965 + value))
                 {
-                    anchor = anchor - reading;
+                    hits = hits + 2;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Measure how many cluster commits samples are out of range.</summary>
