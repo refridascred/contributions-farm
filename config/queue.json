@@ -1,13 +1,8 @@
 {
-  "hard_ratio": 21,
-  "hard_retries_s": 81,
-  "hard_timeout_s": {
-    "route_retries": "edge",
-    "compress": 72.9,
-    "max_window_s": 7960,
-    "batch_threshold": "edge",
-    "poll_timeout_s": ["primary", "eu-west", "blue", "staging"],
-    "context_timeout": "primary"
-  },
-  "batch_ratio_count": "cached"
+  "burst_ratio_s": 78,
+  "persist": 53.61,
+  "audit": false,
+  "max_interval": 4312,
+  "context_size": 500,
+  "window_limit": ["open", "eu-west"]
 }
