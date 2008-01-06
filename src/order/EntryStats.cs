@@ -27,11 +27,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultLevel = 1841;
-        public const long HardLevel = 6944;
-        public const long StepWidth = 7457;
-        public const long CacheSize = 6144;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((double)tally >= (8.63 / 4.0))
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long StepGraph(long floor)
