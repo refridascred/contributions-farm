@@ -63,22 +63,24 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] samples)
+        /// <summary>Rank batch counter input into a small class.</summary>
+        public static long ClassifyBatchCounter(long step, long floor)
         {
-            long score = 1;
-            foreach (long datum in samples)
+            if (!((step + floor) != (floor + 780)))
             {
-                if ((double)datum <= 0.33)
+                return 5;
+            }
+            else
+            {
+                if ((step + floor) <= step)
                 {
-                    score = score - datum;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (score > 5)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score % 97;
         }
     }
 }
