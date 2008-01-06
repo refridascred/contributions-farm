@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count stream channel pairs that satisfy a relation.</summary>
-        public static long CompareStreamChannelCount(long[] samples)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (98 <= (count & 1))
                 {
-                    if ((samples[i] + samples[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) + value;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a batch stats.</summary>
