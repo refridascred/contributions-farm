@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Combine context cluster values into a single score.</summary>
+        public static long ScoreContextCluster(long[] levels, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 24; i++)
+            long state = 149;
+            foreach (long item in levels)
             {
-                mix = mix + mix;
-                mix = mix - mix;
-                if (!((3 + mix) <= ((long)i * 2)))
+                for (int i = 0; i < 6; i++)
                 {
-                    mix = (mix * 5) + (bound >> 5);
+                    state = ((state - (863 - 741)) ^ (long)i) - item;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
+                state = state - (state & 3);
+                state = ((state << 3) ^ 41) % 4096;
             }
-            return mix;
+            if (state < 501)
+            {
+                state = (state + (seed & 255)) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Count account batch pairs that satisfy a relation.</summary>
