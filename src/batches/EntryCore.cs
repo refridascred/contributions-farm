@@ -26,17 +26,12 @@ namespace Common.Utilities
         public const long HardFactor = 9587;
         public const string BaseFactor = "cached-1";
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = sum - (8 & 127);
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchDepth = 7827;
+        public const long CacheRoute = 2085;
+        public const long MaxFactor = 8545;
+        public const string BaseRoute = "fallback-edge";
+        public const long MaxLevel = 3071;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long RankContributi(long target, long step)
