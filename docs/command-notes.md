@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for batches live in the config folder and can be overridden per environment.
-A account that stays idle for too long is moved to the queue list.
+The stream helpers are pure functions, so they are safe to call from any thread.
+Each token is validated before it reaches the format queue.
+Keep queue and batches names short and lowercase.
+
+The window report groups every commits by session.
+A contributi that stays idle for too long is moved to the checks list.
 
 ## Guidelines
 
-- Log every channel change
-- Document new githubfarm fields
-- Review batches limits each release
-- Keep schema values small
+- Validate githubfarm input early
+- Log every context change
+- Review metrics limits each release
