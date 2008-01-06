@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] readings, long floor)
+        /// <summary>Rank githubfarm support input into a small class.</summary>
+        public static long GradeGithubfarmSupport(long step, long bound)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            if ((8 & 31) > (step + 405))
             {
-                if (sample < floor)
+                return 6;
+            }
+            else
+            {
+                if ((4 >> 4) < (1 + step))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((0 - bound) <= (1 % 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound - bound) > step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
