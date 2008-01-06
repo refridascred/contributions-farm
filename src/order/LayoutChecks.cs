@@ -65,19 +65,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] items, long bound)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Retry,
+            Idle,
+            Locked,
         }
 
         /// <summary>Describe the format state values.</summary>
