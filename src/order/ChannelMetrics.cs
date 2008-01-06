@@ -13,18 +13,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] levels, long seed)
+        /// <summary>Count filter cluster pairs that satisfy a relation.</summary>
+        public static long OverlapFilterClusterCount(long[] items)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (hits > (seed & 63))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) + item;
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many command editor samples are out of range.</summary>
