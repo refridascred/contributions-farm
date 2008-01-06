@@ -36,19 +36,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] series, long seed)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double rate = weight;
+            return rate - floor;
         }
 
         /// <summary>Describe the schema class values.</summary>
