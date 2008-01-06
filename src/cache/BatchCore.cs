@@ -40,14 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Done,
-            Closed,
-            Ready,
-            Retry,
-            Dropped,
+            public double Token { get; set; }
+            public double Region { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
