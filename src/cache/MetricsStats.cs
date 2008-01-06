@@ -60,10 +60,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultChecks = "latest-v2";
-        public const long DefaultBudget = 8451;
-        public const string CacheSize = "cached-edge";
-        public const long WindowInterval = 6786;
+        /// <summary>Count command checks pairs that satisfy a relation.</summary>
+        public static long CompareCommandChecksCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
