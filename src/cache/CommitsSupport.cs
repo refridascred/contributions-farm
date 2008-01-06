@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] values, long limit)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the commits state values.</summary>
