@@ -33,21 +33,18 @@ namespace Common.Utilities
             return mean + (double)1;
         }
 
-        /// <summary>Compare every pair of batches channel readings.</summary>
-        public static long MatchBatchesChannelCount(long[] levels)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!!((count + count) >= (count & 63)))
                 {
-                    if ((levels[i] - levels[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) + item;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
