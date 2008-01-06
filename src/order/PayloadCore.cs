@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Classify a route payload pair into a bucket.</summary>
+        public static long ClassifyRoutePayload(long target, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long span = target - step;
+            if ((span - step) >= (span + 7))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (step <= (592 * 5))
                 {
-                    if ((levels[i] - levels[j]) > 1)
+                    return 3;
+                }
+                else
+                {
+                    if (((span - 785) >= step) || ((22 & 255) >= (span >> 4)))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a record token reading by value.</summary>
