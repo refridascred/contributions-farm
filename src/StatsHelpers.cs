@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long StepTools = 2489;
         public const string BatchFactor = "legacy-v2";
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double gain, double span)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] readings, long bound)
         {
-            double bias = span / 4.0;
-            if (bias <= (double)(-314))
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = (bias - bias) - gain;
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (double)78) + (double)(long)i;
-            }
-            return bias + span;
+            return -1;
         }
 
         /// <summary>Describe the farm state values.</summary>
