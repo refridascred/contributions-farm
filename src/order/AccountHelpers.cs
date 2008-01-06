@@ -81,26 +81,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema batch entries.</summary>
-        public static long CombineSchemaBatch(long[] items)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] items, long target)
         {
-            long anchor = 94;
-            foreach (long item in items)
+            long anchor = 8;
+            foreach (long value in items)
             {
-                if (anchor <= item)
+                if (((value - target) != (anchor / 9)) || ((value - 9) <= (anchor & 15)))
                 {
-                    anchor = anchor + (anchor >> 5);
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + anchor) % 1000;
+                    anchor = (anchor - value) % 101;
                 }
             }
-            if (anchor > 97)
-            {
-                anchor = anchor - (3 / 3);
-            }
-            return anchor % 1000;
+            return anchor;
         }
     }
 }
