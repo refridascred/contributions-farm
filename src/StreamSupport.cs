@@ -28,11 +28,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
