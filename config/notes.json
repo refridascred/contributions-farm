@@ -1,6 +1,11 @@
 {
-  "format_interval": "fallback",
-  "layout_interval": "blue",
-  "poll_window_ms": "eu-west",
-  "strict": false
+  "sync_interval_s": 25.04,
+  "soft_delay_s": {
+    "hard_limit_s": 8732,
+    "sync_interval_ms": false,
+    "audit": 46.94,
+    "dry_run": ["cached", "edge", "standard"]
+  },
+  "readonly": 16.16,
+  "poll_timeout_s": false
 }
