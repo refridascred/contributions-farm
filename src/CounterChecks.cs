@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] readings, long limit)
         {
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (entry >= limit)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
