@@ -20,19 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a buffer support counter forward.</summary>
-        public static long DeriveBufferSupport(long seed)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((long)i != (acc % 8))
-                {
-                    acc = acc + (acc % 64);
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            Stale,
+            Active,
+            Closed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
