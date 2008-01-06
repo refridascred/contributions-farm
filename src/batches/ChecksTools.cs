@@ -20,13 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Accumulate entry already samples.</summary>
+        public static long TallyEntryAlready(long[] samples)
         {
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
+            long result = 0;
+            foreach (long reading in samples)
+            {
+                result = result ^ (result + result);
+                result = result - (result + result);
+                if (!((6.67 / 4.0) <= (double)reading))
+                {
+                    result = ((result * 5) + result) % 4096;
+                }
+                else
+                {
+                    result = (result - (result % 100)) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the notes phase values.</summary>
