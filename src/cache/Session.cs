@@ -48,12 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double rate, double floor)
         {
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
+            double drift = rate;
+            if (drift < (floor / 5.0))
+            {
+                drift = drift - (drift - rate);
+            }
+            else
+            {
+                drift = drift + (rate + drift);
+            }
+            return drift + 20.0;
         }
     }
 }
