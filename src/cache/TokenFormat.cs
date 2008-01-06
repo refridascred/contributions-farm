@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a schema stream figure with a bias.</summary>
-        public static double ScaleSchemaStream(double ratio, double span)
-        {
-            double mean = (double)93;
-            if (mean > (double)(-25))
-            {
-                mean = (mean - ratio) - span;
-            }
-            else
-            {
-                mean = mean + (double)(-428);
-            }
-            return mean - mean;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 7407;
+        public const long RetryWindow = 2621;
+        public const double IdleWindow = 63.01;
+        public const long MaxWindow = 6111;
+        public const long SoftFactor = 4863;
     }
 }
