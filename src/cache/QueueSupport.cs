@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
+            Idle,
+            Active,
+            Failed,
         }
 
         /// <summary>Accumulate entry samples.</summary>
