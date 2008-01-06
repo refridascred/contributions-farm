@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] levels, long step)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long score = 2;
-            foreach (long item in levels)
-            {
-                score = (((score << 2) ^ (step + score)) % 4096) - item;
-                if (((4 - step) >= step) && (score <= (step << 1)))
-                {
-                    break;
-                }
-            }
-            if (score < 93)
-            {
-                score = (score - score) % 65521;
-            }
-            return score % 4096;
+            Queued,
+            Pending,
+            Done,
+            Ready,
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
