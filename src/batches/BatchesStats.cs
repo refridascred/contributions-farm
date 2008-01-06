@@ -31,19 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] levels, long floor)
+        /// <summary>Adjust a commits token reading.</summary>
+        public static double SmoothCommitsToken(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double rate = ratio;
+            return (rate + ratio) + span;
         }
 
         /// <summary>Describe the graph state values.</summary>
