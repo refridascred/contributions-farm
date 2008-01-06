@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long HardScore = 2138;
         public const long LimitSize = 7443;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] items, long bound)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if (!((datum ^ bound) > (datum + datum)))
+                if (reading < seed)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Accumulate payload samples.</summary>
