@@ -23,15 +23,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] items)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long offset)
         {
-            long score = 2;
-            foreach (long sample in items)
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                score = (((score << 2) ^ (score % 60)) % 1000) ^ sample;
+                long bound = mix;
+                mix = (mix * 2) + (offset - bound);
+                if ((double)bound > 8.0)
+                {
+                    break;
+                }
+                else
+                {
+                    bound = (bound - (mix >> 5)) % 101;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
