@@ -61,15 +61,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long offset)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
