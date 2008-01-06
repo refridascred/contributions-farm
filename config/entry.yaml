@@ -1,32 +1,29 @@
 # entry settings
-poll_limit_count: 45
-filter_timeout:
-  persist:
-    poll_timeout_count: false
-    payload_interval:
-      - eu-west
-      - edge
-      - stable
-    hard_capacity: 96.74
-    base_threshold_ms: 4322
-    min_size: true
-    buffer_size: stable
-  warm_size_s: 93
-  batch_interval_s: 81.97
-  audit:
-    burst_limit: local
-    format_delay: primary
-    max_threshold: legacy
-    cache_ratio_pct: false
-    default_retries: blue
-    idle_capacity_pct:
-      - 183
-      - 253
-      - 140
-      - 318
-  batch_limit:
-    poll_limit_ms: strict
-    cache_interval_s: 30
-    verbose: 3834
-  default_limit: false
-base_window_pct: false
+order_ttl:
+  stream_timeout: standard
+  compress:
+    commits_timeout: false
+    base_ttl: 21
+    contributi_threshold: false
+    cache_size_s: false
+    commits_window: 500
+    compress: stable
+  metrics_window: staging
+  checks_interval: 18.21
+flush_retries: 225
+channel_size: local
+idle_size_pct: fallback
+batches_threshold: staging
+sync_ratio_s:
+  max_window: 93.08
+  queue_delay:
+    graph_capacity: edge
+    soft_depth_ms: fallback
+    burst_depth_pct: strict
+    verbose: true
+  default_interval:
+    - 259
+    - 110
+  base_limit_ms: 500
+  dry_run: false
+  idle_interval: 7351
