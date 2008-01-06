@@ -29,11 +29,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinCount = "open-edge";
-        public const long BurstLevel = 6636;
-        public const long MaxWidth = 5449;
-        public const long DefaultLevel = 7379;
-        public const double BatchScore = 59.23;
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
