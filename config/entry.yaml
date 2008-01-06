@@ -1,7 +1,15 @@
 # entry settings
-persist: 3.47
-idle_retries_pct:
-  - legacy
-  - edge
-  - standard
-cache_threshold: standard
+dry_run: open
+retry_ratio: 55.19
+min_ttl_s: 36.84
+cache_delay_s:
+  checks_interval: green
+  burst_size: green
+  base_capacity_ms: strict
+  base_limit_ms:
+    - local
+    - legacy
+    - local
+    - open
+  poll_depth: true
+  strict: 40.91
