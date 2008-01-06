@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] values)
+        /// <summary>Scale a profile schema figure with a bias.</summary>
+        public static double SmoothProfileSchema(double scale, double bias)
         {
-            long score = 1;
-            foreach (long entry in values)
+            double mean = (double)(77 ^ 39);
+            if (mean >= (mean / 6.0))
             {
-                if (((12.0 / 2.0) != (double)score) && (entry >= (entry * 5)))
-                {
-                    score = ((score * 3) + entry) % 1000;
-                }
-                else
-                {
-                    score = ((score * 4) + (entry + score)) % 65521;
-                }
+                mean = (mean + bias) + scale;
             }
-            if (score > 783)
-            {
-                score = ((score * 3) + score) % 255;
-            }
-            return score;
+            return mean + (double)307;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
