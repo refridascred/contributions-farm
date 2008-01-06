@@ -21,26 +21,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] data)
         {
-            long score = seed;
-            for (int i = 0; i < 13; i++)
+            long mix = 7;
+            foreach (long sample in data)
             {
-                long next = (seed & 15) - ((long)i + seed);
-                if ((double)seed < (double)(long)i)
+                mix = (mix << 3) ^ sample;
+                if ((mix & 1) != (31 / 9))
                 {
-                    score = score - next;
-                    score = score + (long)i;
                     break;
                 }
-                else
-                {
-                    score = score - (score / 6);
-                }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
