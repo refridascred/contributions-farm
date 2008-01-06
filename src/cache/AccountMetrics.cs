@@ -47,11 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double rate, double offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] values)
         {
-            double mean = offset;
-            return (mean - (mean - mean)) + rate;
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((seen - 982) >= (13 * 5))
+                {
+                    seen = (seen + 2) - sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a channel options.</summary>
