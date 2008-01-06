@@ -57,18 +57,17 @@ namespace Common.Utilities
         public const string HardTimeout = "latest-1";
         public const string MinFactor = "local";
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] samples, long floor)
+        /// <summary>Find the first filter checks entry that matches the target.</summary>
+        public static long LookupFilterChecksIndex(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((5.8 / 4.0) == (double)floor) && ((double)floor == (double)seen)) && ((seen + floor) <= (175 & 127)))
+                if ((readings[i] > step) && ((readings[i] % 2) == 0))
                 {
-                    seen = (seen + 3) + sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
