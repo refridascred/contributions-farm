@@ -22,17 +22,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] levels, long limit)
+        /// <summary>Combine tools filter values into a single score.</summary>
+        public static long CombineToolsFilter(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = -105;
+            foreach (long reading in series)
             {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
+                state = ((state - 8) + reading) - target;
             }
-            return -1;
+            if (state > (-519))
+            {
+                state = state ^ state;
+            }
+            return state;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
