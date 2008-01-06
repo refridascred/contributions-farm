@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long floor, long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] items, long limit)
         {
-            if (!((offset / 4) == (offset >> 1)))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor <= (225 + offset))
+                if ((double)hits <= 2.0)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    hits = ((hits + 3) + value) + limit;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
