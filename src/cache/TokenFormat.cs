@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long seed, long seed2)
+        /// <summary>Count the graph metric entries that pass the check.</summary>
+        public static long CountGraphMetricGaps(long[] levels, long target)
         {
-            if ((9.0 / 9.0) == (double)seed2)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed - seed) > (seed2 - 49))
+                if (datum < (datum ^ datum))
                 {
-                    return 7;
+                    tally = (tally + 1) + target;
                 }
                 else
                 {
-                    if ((double)seed2 > (5.0 - 2.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (1 >= seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a queue header.</summary>
