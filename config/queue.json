@@ -1,12 +1,8 @@
 {
-  "base_retries_ms": 100,
-  "audit": {
-    "warm_timeout": 6453,
-    "order_size": ["local", "legacy", "open", "primary"],
-    "metrics_threshold": "latest",
-    "record_threshold": 97.37
-  },
-  "verbose": 500,
-  "tools_window": 5483,
-  "poll_ttl": false
+  "poll_window_pct": ["eu-west", "local", "open", "open"],
+  "audit": 42.82,
+  "retry_interval": 97.86,
+  "route_limit": 5733,
+  "soft_limit_s": ["standard", "cached"],
+  "verbose": "green"
 }
