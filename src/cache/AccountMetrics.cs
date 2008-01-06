@@ -47,22 +47,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up stream order samples.</summary>
-        public static long MatchStreamOrderCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BurstFormat = "open-v2";
+        public const long HardFormat = 8584;
+        public const long LimitFormat = 3267;
+        public const long SoftFormat = 2511;
+        public const double BaseFormat = 33.93;
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
