@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double weight, double floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] levels)
         {
-            double rate = (double)(716 << 1);
-            if (rate <= (rate - rate))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                rate = rate - 14.0;
+                if ((831 << 3) >= (long)levels.Length)
+                {
+                    hits = (hits + 2) - reading;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + floor) + (double)(long)i;
-            }
-            return rate - weight;
+            return hits;
         }
 
         /// <summary>Hold a queue summary.</summary>
