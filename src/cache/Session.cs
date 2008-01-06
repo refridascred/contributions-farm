@@ -19,12 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long step, long floor)
         {
-            public double Label { get; set; }
-            public bool Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((step > (floor - floor)) && ((floor & 3) < step))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)step != (4.81 + 8.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)step >= (8.49 - 5.97)) || (floor >= (474 / 8)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
