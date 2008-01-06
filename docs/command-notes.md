@@ -1,11 +1,11 @@
 # Command notes
 
-Run the session check before changing any cache limits.
-Run the checks check before changing any batch limits.
+A editor that stays idle for too long is moved to the payload list.
+A session that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Prefer record defaults
-- Review order limits each release
-- Keep already values small
-- Document new metric fields
+- Keep batch values small
+- Log every buffer change
+- Prefer counter defaults
+- Review contributi limits each release
