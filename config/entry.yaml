@@ -1,14 +1,5 @@
 # entry settings
-base_threshold_s: local
-cache_ttl:
-  counter_delay: cached
-  persist: legacy
-  readonly: false
-queue_delay:
-  - blue
-  - stable
-  - stable
-  - blue
-report_limit: standard
-counter_limit: 250
-format_retries: true
+idle_ratio_pct: 54
+stream_ratio: true
+warm_interval_s: 500
+queue_depth: fallback
