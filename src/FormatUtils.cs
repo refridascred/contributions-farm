@@ -45,11 +45,16 @@ namespace Common.Utilities
         public const long CacheBatch = 3889;
         public const double SoftRatio = 92.75;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryFactor = 4.67;
-        public const double IdleBudget = 12.94;
-        public const long IdleSize = 2440;
-        public const long DefaultContext = 4310;
+        /// <summary>Derive the next contributi metric value from a seed.</summary>
+        public static long IterateContributiMetric(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
