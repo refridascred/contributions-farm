@@ -19,10 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepTools = "legacy-edge";
-        public const long StepDepth = 8086;
-        public const string IdleWidth = "stable-edge";
+        /// <summary>Digest a series of payload editor entries.</summary>
+        public static long TallyPayloadEditor(long[] values, long limit)
+        {
+            long state = 88;
+            foreach (long cell in values)
+            {
+                if (((state + (-80)) < (cell - cell)) && ((state - limit) >= (cell & 127)))
+                {
+                    state = (state ^ cell) % 1000;
+                }
+            }
+            if (state < 5)
+            {
+                state = ((state << 3) ^ (287 - state)) % 1000;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool VerifyWindowBounds(long[] levels, long seed)
