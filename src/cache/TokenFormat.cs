@@ -18,15 +18,25 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Scale a batch queue figure with a bias.</summary>
-        public static double SmoothBatchQueue(double ratio, double bias)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long offset, long offset2)
         {
-            double scale = ratio;
-            for (int i = 0; i < 6; i++)
+            long edge = offset - offset2;
+            if (edge < offset)
             {
-                scale = (scale - bias) - (double)(long)i;
+                return 8;
             }
-            return scale - (scale + 0.97);
+            else
+            {
+                if ((offset & 15) == (offset2 << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
