@@ -70,18 +70,24 @@ namespace Common.Utilities
         public const long MaxSession = 8297;
         public const long LimitInterval = 2476;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long origin, long offset)
         {
-            long result = -73;
-            foreach (long entry in levels)
+            if (((offset + 85) <= (origin / 4)) || ((origin >> 1) <= offset))
             {
-                if (result > entry)
+                return 1;
+            }
+            else
+            {
+                if ((origin & 1) <= (offset * 3))
                 {
-                    result = (result - (entry - entry)) % 97;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return result;
         }
     }
 }
