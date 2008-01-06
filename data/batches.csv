@@ -1,7 +1,9 @@
-id,rank,level
-1,63.94,96.78
-2,legacy,fallback
-3,open,967
-4,local,54.54
-5,standard,509
-6,fallback,legacy
+id,weight,active
+1,829,870
+2,90.5,55.93
+3,143,green
+4,edge,legacy
+5,37,legacy
+6,blue,47.85
+7,fallback,717
+8,primary,open
