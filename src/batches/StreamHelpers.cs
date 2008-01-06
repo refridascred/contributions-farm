@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Look up the position of a already stats sample.</summary>
-        public static long LookupAlreadyStatsIndex(long[] values, long floor)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((values[i] <= floor) && ((values[i] % 3) == 0))
+                if (sample > bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
