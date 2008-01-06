@@ -35,32 +35,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long target, long target2)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long cur = target + target2;
-            if ((-62) < cur)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((cur << 2) >= target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((99 - cur) > (target + target2)) && ((target2 - cur) > cur))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Synced,
+            Retry,
+            Ready,
         }
     }
 }
