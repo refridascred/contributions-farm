@@ -55,10 +55,12 @@ namespace Common.Utilities
             return (mean - (mean - mean)) + rate;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetryInterval = 4.03;
-        public const long BurstWidth = 499;
-        public const long HardContributi = 8802;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BatchTimeout = 4651;
