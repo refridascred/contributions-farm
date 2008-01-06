@@ -70,11 +70,22 @@ namespace Common.Utilities
         public const string BurstToken = "open-1";
         public const long BatchTimeout = 2685;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] samples, long target)
         {
-            public bool Label { get; set; }
-            public bool Stamp { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((hits + hits) <= item)
+                {
+                    hits = (hits + 1) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
