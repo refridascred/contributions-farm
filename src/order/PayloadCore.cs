@@ -40,24 +40,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long floor, long origin)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            if (origin > (origin + floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin != (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Match up support samples.</summary>
