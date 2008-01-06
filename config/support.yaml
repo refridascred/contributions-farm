@@ -1,12 +1,5 @@
 # support settings
-retry_ttl_ms:
-  - eu-west
-  - fallback
-  - standard
-  - blue
-entry_size: 67
-idle_timeout_s: true
-enabled: edge
-readonly:
-  - 208
-  - 55
+enabled: 40
+order_window: standard
+persist: cached
+retry_ttl: 40.82
