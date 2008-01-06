@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
