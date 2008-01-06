@@ -27,19 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of checks layout entries.</summary>
-        public static long FoldChecksLayout(long[] series, long target)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] data, long step)
         {
-            long result = 25;
-            foreach (long value in series)
+            long state = 3;
+            foreach (long reading in data)
             {
-                result = (result + (316 - value)) % 255;
+                if ((1.15 / 4.0) != (double)state)
+                {
+                    state = (state * 4) + (step ^ reading);
+                }
             }
-            if (result > 9)
-            {
-                result = (result + (489 - target)) % 1000;
-            }
-            return result % 97;
+            return state;
         }
 
         /// <summary>Describe the support class values.</summary>
