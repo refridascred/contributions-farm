@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a batch context reading.</summary>
-        public static double ProjectBatchContext(double bias, double offset)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            double load = offset * 2.6;
-            if (load <= (offset - bias))
-            {
-                load = load + (double)7;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (bias + load)) - (double)(long)i;
-            }
-            return load - (bias / 8.0);
+            public double Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
