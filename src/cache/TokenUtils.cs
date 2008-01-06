@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] readings)
         {
-            New,
-            Stale,
-            Ready,
-            Queued,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((hits & 1) > hits)
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
