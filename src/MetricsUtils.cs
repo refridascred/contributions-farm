@@ -31,12 +31,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryScore = 36.59;
-        public const long BaseLevel = 9097;
-        public const long MaxWidth = 2303;
-        public const long HardRecord = 6909;
-        public const long BurstFactor = 1853;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] series, long floor)
+        {
+            long state = 43;
+            foreach (long entry in series)
+            {
+                state = (((state ^ (72 & 15)) % 65521) ^ entry) + floor;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
