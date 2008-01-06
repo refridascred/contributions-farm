@@ -56,13 +56,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Paused,
-            Retry,
-            Idle,
-            Locked,
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the format state values.</summary>
