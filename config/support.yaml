@@ -1,4 +1,19 @@
 # support settings
-cache_retries_ms: fallback
-stats_ratio: 5859
-metrics_window: 50.89
+channel_size: local
+batch_capacity_s:
+  retry_threshold: false
+  flush_depth_s: fallback
+  batches_retries: true
+cache_depth_pct:
+  readonly: 32.15
+  filter_depth: 54.9
+  flush_retries_ms:
+    persist: false
+    retry_limit_ms: 67.16
+    poll_limit_ms: 3651
+  batch_timeout_ms: 100
+  max_size: 500
+  command_delay: local
+batch_delay: legacy
+sync_ttl_s: standard
+checks_ttl: true
