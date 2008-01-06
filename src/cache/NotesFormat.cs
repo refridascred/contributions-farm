@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long sum = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = sum ^ (sum + sum);
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            Draft,
+            Queued,
+            Idle,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
