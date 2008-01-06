@@ -13,18 +13,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] series)
         {
-            long carry = 65;
-            foreach (long datum in readings)
+            long result = 76;
+            foreach (long datum in series)
             {
-                if (((22 - datum) < carry) && ((double)carry == (double)9))
+                result = result + (result - 480);
+                if (((9.4 + 16.0) <= (double)datum) || ((double)(long)series.Length > 7.35))
                 {
-                    carry = (carry - datum) % 101;
+                    break;
                 }
             }
-            return carry;
+            if (result < 15)
+            {
+                result = (result << 3) ^ 0;
+            }
+            return result;
         }
 
         /// <summary>Describe the filter level values.</summary>
