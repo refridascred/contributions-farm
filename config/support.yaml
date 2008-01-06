@@ -1,9 +1,17 @@
 # support settings
-idle_timeout_s: 1321
-context_limit: strict
-dry_run:
-  - primary
-  - stable
-  - strict
-  - green
-sync_ttl: 36
+soft_timeout_count: 97.14
+metric_timeout: 8154
+window_limit: 37
+default_size_pct:
+  - 471
+  - 31
+  - 313
+flush_ratio_ms:
+  warm_limit_pct:
+    - 346
+    - 211
+  enabled:
+    - latest
+    - staging
+  warm_timeout_ms: false
+  channel_limit: 91.05
