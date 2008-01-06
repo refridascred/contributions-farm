@@ -55,13 +55,19 @@ namespace Common.Utilities
         public const long RetryToken = 4672;
         public const double MinCount = 28.57;
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] items, long limit)
         {
-            Closed,
-            Locked,
-            Active,
-            Pending,
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
