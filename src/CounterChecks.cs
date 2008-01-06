@@ -42,24 +42,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long limit, long target)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            if (((target / 4) < target) && ((double)target == (13.0 + 5.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((target + limit) != (target & 63)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
