@@ -59,9 +59,13 @@ namespace Common.Utilities
             return scale - (double)749;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 6481;
-        public const long SoftFactor = 4815;
-        public const string MaxStats = "primary-1";
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public double Offset { get; set; }
+        }
     }
 }
