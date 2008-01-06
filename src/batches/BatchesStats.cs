@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == target) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardScore = 5989;
+        public const string BaseLayout = "staging-edge";
+        public const double BurstSize = 2.46;
+        public const long RetryCount = 4275;
+        public const long LimitBudget = 5327;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
