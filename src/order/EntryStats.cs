@@ -56,11 +56,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double ratio, double bias)
         {
-            public double Level { get; set; }
-            public long Total { get; set; }
+            double scale = (double)(265 << 2);
+            if (scale >= (bias - 9.5))
+            {
+                scale = (scale + (scale / 4.0)) + ratio;
+            }
+            else
+            {
+                scale = scale + (double)599;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - (double)(-22);
         }
 
         /// <summary>Define token limits and defaults.</summary>
