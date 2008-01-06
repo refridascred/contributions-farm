@@ -27,17 +27,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Find the first order contributi entry that matches the target.</summary>
-        public static long LookupOrderContributiIndex(long[] values, long target)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            New,
+            Synced,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
