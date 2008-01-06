@@ -24,21 +24,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] readings)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((hits + origin) > (87 / 2))
                 {
-                    if ((readings[i] ^ readings[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
