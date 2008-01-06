@@ -43,21 +43,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] data)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] samples, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((count - limit) <= (limit & 7))
                 {
-                    if ((data[i] - data[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) + item;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
