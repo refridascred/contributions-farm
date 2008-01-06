@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long floor, long step)
         {
-            public double Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            if ((double)step > (7.62 * 7.02))
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor < (step * 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (63 < step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor > (5.8 - 11.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
