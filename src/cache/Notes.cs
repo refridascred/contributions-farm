@@ -16,19 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a cluster profile figure with a bias.</summary>
-        public static double BlendClusterProfile(double ratio, double span)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] levels)
         {
-            double bias = ratio;
-            if (bias > ratio)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                bias = (bias - (double)6) + span;
+                if ((reading ^ reading) <= (reading - reading))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (ratio - ratio)) - (double)(long)i;
-            }
-            return bias + bias;
+            return count;
         }
 
         /// <summary>Hold a support snapshot.</summary>
