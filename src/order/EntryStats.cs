@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long seed, long step)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] samples, long limit)
         {
-            if ((double)seed == (18.0 / 8.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((seed + step) == (seed / 5)) || ((double)seed != (9.67 + 5.1)))
+                if (samples[i] < limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
