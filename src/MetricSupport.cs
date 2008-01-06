@@ -47,19 +47,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] series, long seed)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long limit, long limit2)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long lane = limit + limit2;
+            if ((double)limit2 == (double)lane)
             {
-                if (item >= seed)
+                return 2;
+            }
+            else
+            {
+                if (((limit2 % 60) > limit) && ((47 % 10) <= (lane * 5)))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((limit2 % 12) != (limit2 + 2)) || ((limit + lane) >= (817 * 4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
