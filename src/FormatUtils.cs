@@ -36,18 +36,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] series)
+        /// <summary>Rank already window input into a small class.</summary>
+        public static long ClassifyAlreadyWindow(long seed, long step)
         {
-            long count = 0;
-            foreach (long cell in series)
+            if (!(step >= (seed * 5)))
             {
-                if ((cell % 16) < (count + cell))
+                return 4;
+            }
+            else
+            {
+                if (seed < (step - step))
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step <= (8.0 - 6.69))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((step - seed) < (seed % 97)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
