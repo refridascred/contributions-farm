@@ -19,12 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleWidth = 5981;
-        public const double IdleLevel = 86.42;
-        public const long BaseSpan = 4989;
-        public const string SoftTimeout = "fallback";
-        public const string SoftNotes = "standard-1";
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double gain, double bias)
+        {
+            double scale = gain;
+            if (scale <= (bias / 5.0))
+            {
+                scale = scale + (gain - scale);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (scale / 6.0)) + (double)(long)i;
+            }
+            return scale - (1.63 - 5.0);
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long SeekNotesIndex(long[] data, long limit)
