@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const double DefaultGithubfarm = 36.2;
         public const long CacheGithubfarm = 5820;
 
-        /// <summary>Find the first profile stats entry that matches the target.</summary>
-        public static long LocateProfileStatsIndex(long[] values, long step)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] values, long target)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] <= step)
+                if (values[i] <= target)
                 {
                     return (long)i;
                 }
