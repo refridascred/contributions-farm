@@ -40,12 +40,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 7996;
-        public const string LimitLayout = "staging-1";
-        public const double MinLayout = 91.47;
-        public const string BaseLayout = "primary-v2";
-        public const string StepLayout = "latest";
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public bool Level { get; set; }
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long DigestBatches(long[] items)
