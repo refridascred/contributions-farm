@@ -1,14 +1,11 @@
 # Command notes
 
-Each channel is validated before it reaches the command queue.
-Use profile settings to tune how often contributi data is refreshed.
-Run the payload check before changing any token limits.
-
-Defaults for metrics live in the config folder and can be overridden per environment.
-The layout helpers are pure functions, so they are safe to call from any thread.
+The payload module keeps batches values in sync with the entry cache.
+The report report groups every profile by commits.
 
 ## Guidelines
 
-- Review commits limits each release
-- Log every graph change
-- Document new support fields
+- Document new command fields
+- Prefer report defaults
+- Validate filter input early
+- Keep session values small
