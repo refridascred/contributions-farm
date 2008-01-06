@@ -10,39 +10,18 @@ namespace Common.Utilities
         public const long HardScore = 2138;
         public const long LimitSize = 7443;
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long limit, long floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] items, long bound)
         {
-            long lane = limit - floor;
-            if (floor > (limit ^ floor))
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit < (lane & 255))
+                if (!((datum ^ bound) > (datum + datum)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (floor > (limit + lane))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((lane & 255) > (floor / 7))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate payload samples.</summary>
