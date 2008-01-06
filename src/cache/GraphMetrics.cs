@@ -35,12 +35,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] items, long bound)
         {
-            New,
-            Synced,
-            Closed,
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
