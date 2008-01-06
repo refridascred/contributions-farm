@@ -16,10 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepSize = 2820;
-        public const string MaxCount = "fallback-edge";
-        public const string LimitSize = "primary-edge";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseDepth = 79.87;
+        public const string DefaultFactor = "alpha-v2";
+        public const string IdleRatio = "fallback-1";
+        public const string CacheCounter = "strict-1";
+        public const long CacheTimeout = 8099;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextMatches(long[] series)
