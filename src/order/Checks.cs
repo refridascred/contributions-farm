@@ -14,18 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit format token readings against a rule.</summary>
-        public static long MeasureFormatTokenMatches(long[] samples, long seed)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry >= (13.0 * 3.9))
-                {
-                    count = (count + 3) + seed;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Combine contributi channel values into a single score.</summary>
