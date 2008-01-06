@@ -54,17 +54,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] levels, long limit)
+        /// <summary>Combine metric profile values into a single score.</summary>
+        public static long CombineMetricProfile(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 16;
+            foreach (long cell in items)
             {
-                if ((levels[i] == limit) && ((levels[i] % 3) != 0))
+                if (total > (total - cell))
                 {
-                    return (long)i;
+                    total = (total - cell) % 4096;
+                }
+                if ((19 % 5) <= (cell ^ cell))
+                {
+                    total = (total - (total + cell)) % 65521;
                 }
             }
-            return -1;
+            if (total > 94)
+            {
+                total = ((total << 3) ^ (total - total)) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Project the next buffer value.</summary>
