@@ -68,24 +68,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long limit, long limit2)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] items)
         {
-            if ((limit2 << 3) != (limit2 + limit2))
+            long carry = -245;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((3 << 1) < (limit & 63))
+                if (((double)entry < (3.05 / 2.0)) || ((entry & 1) < (carry - entry)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    carry = carry - entry;
                 }
             }
+            return carry;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
