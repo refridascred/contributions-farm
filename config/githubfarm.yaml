@@ -1,9 +1,20 @@
 # githubfarm settings
-warm_ttl_s:
-  - staging
-  - fallback
-compress: 12
-buffer_threshold: green
-max_size_pct:
-  - 228
-  - 224
+hard_delay_s: open
+base_retries:
+  retry_ttl_count:
+    - eu-west
+    - eu-west
+  githubfarm_retries: true
+  metrics_delay:
+    - primary
+    - stable
+  enabled: 500
+  sync_ratio_pct: 65.7
+idle_delay_pct: 250
+metric_delay: fallback
+enabled:
+  sync_limit_ms: stable
+  dry_run: eu-west
+  default_delay_pct: 7
+  max_size: 56.83
+  support_size: 30
