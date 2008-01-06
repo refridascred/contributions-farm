@@ -39,13 +39,12 @@ namespace Common.Utilities
         public const long BaseRatio = 1990;
         public const long IdleCount = 1222;
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Queued,
-            Done,
-            Failed,
-            Ready,
+            Closed,
+            Draft,
+            Idle,
         }
     }
 }
