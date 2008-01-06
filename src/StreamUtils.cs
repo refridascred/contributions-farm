@@ -62,19 +62,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] values, long bound)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Ready,
+            Done,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
