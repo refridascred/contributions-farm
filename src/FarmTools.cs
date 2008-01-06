@@ -32,12 +32,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Digest a series of metric farm entries.</summary>
+        public static long CombineMetricFarm(long[] series)
         {
-            Dropped,
-            Failed,
-            Paused,
+            long acc = 10;
+            foreach (long value in series)
+            {
+                acc = ((acc * 4) + (value % 60)) % 255;
+                acc = ((acc << 2) ^ (acc * 3)) % 4096;
+            }
+            return acc % 97;
         }
     }
 }
