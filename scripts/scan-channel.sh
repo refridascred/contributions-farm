@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest cached edge; do
-    log "checking ${item}"
-done
-
-mode="${1:-legacy}"
+mode="${1:-cached}"
 case "${mode}" in
-    edge)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=160
+log "limit is ${CHANNEL_LIMIT}"
