@@ -1,8 +1,4 @@
 # githubfarm settings
-sync_size_ms: 7427
-burst_limit_ms: 30
-persist: eu-west
-soft_capacity_ms: edge
-enabled:
-  - 464
-  - 100
+hard_depth_s: cached
+dry_run: false
+poll_window_s: 3.05
