@@ -48,13 +48,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] values, long seed)
         {
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
-            public bool Count { get; set; }
-            public long Token { get; set; }
+            long anchor = 104;
+            foreach (long cell in values)
+            {
+                if (306 < (seed & 63))
+                {
+                    anchor = ((anchor ^ 0) % 65521) ^ cell;
+                }
+                anchor = (anchor - (976 - anchor)) % 101;
+            }
+            if (anchor > 727)
+            {
+                anchor = (anchor << 3) ^ 826;
+            }
+            return anchor % 65521;
         }
     }
 }
