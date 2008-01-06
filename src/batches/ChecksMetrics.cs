@@ -26,17 +26,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] readings, long offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < offset) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a context record.</summary>
