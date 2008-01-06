@@ -31,26 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache checks readings.</summary>
-        public static long WeighCacheChecks(long[] values)
-        {
-            long state = -54;
-            foreach (long entry in values)
-            {
-                if (((entry * 5) > (entry + 890)) && ((entry * 2) <= (state & 255)))
-                {
-                    state = (state ^ (69 + entry)) % 1000;
-                    state = state + (-48);
-                    continue;
-                }
-                else
-                {
-                    state = (state - (entry + state)) % 65521;
-                }
-                state = ((state << 3) ^ (state ^ state)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 3306;
+        public const long IdleBatches = 2670;
+        public const long SoftBatches = 5177;
+        public const long SoftRatio = 9394;
+        public const long MaxSize = 3097;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
