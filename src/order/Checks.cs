@@ -19,10 +19,19 @@ namespace Common.Utilities
             return ((mean + (double)(-3)) + ratio) + floor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultScore = 2287;
-        public const long CacheSize = 351;
-        public const long MinSession = 7700;
+        /// <summary>Measure how many buffer metrics samples are out of range.</summary>
+        public static long CountBufferMetricsOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (!(((8.8 - 5.39) > (double)seen) && ((item % 8) < item)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BatchScore = 5194;
