@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long limit)
         {
-            Locked,
-            Draft,
-            Stale,
-            Failed,
-            Synced,
+            long result = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
