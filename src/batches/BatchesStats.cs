@@ -44,11 +44,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleSupport = "open";
-        public const double BurstSupport = 13.11;
-        public const long SoftFactor = 2030;
-        public const long IdleTimeout = 9316;
-        public const double StepSupport = 45.11;
+        /// <summary>Measure how many cluster commits samples are out of range.</summary>
+        public static long TallyClusterCommitsHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((matches % 64) >= (matches - value))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
