@@ -1,7 +1,6 @@
 # support settings
-persist: local
-idle_delay_pct:
-  - 208
-  - 93
-verbose: 250
-command_depth: latest
+sync_threshold:
+  - primary
+  - blue
+editor_threshold: 500
+audit: 77
