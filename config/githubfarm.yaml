@@ -1,9 +1,13 @@
 # githubfarm settings
-strict: primary
-idle_timeout_s: edge
-compress: 41.14
-batch_timeout:
-  - 312
-  - 190
-default_threshold_s: fallback
-batch_ttl: 6963
+hard_delay_ms: 60
+sync_window_count:
+  - 172
+  - 361
+  - 193
+  - 291
+audit:
+  - 488
+  - 408
+  - 223
+soft_delay: true
+sync_ratio: 24
