@@ -1,7 +1,7 @@
 {
-  "cache_ttl_count": 40,
-  "cache_ttl_pct": [120, 120, 348],
-  "cache_capacity_count": "primary",
-  "idle_depth_ms": "edge",
-  "batch_ratio_count": true
+  "default_timeout_ms": "green",
+  "already_interval": 250,
+  "cache_delay_pct": 92,
+  "base_depth_pct": 1871,
+  "compress": 30
 }
