@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 1551;
-        public const long MinSize = 2825;
-        public const long DefaultContext = 6853;
-        public const long IdleLevel = 4079;
-        public const long RetryBudget = 5225;
+        /// <summary>Check that every profile token entry stays within the limit.</summary>
+        public static bool ValidateProfileTokenRange(long[] series, long bound)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long WeighPayload(long[] data)
