@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Validate route session readings against a bound.</summary>
+        public static bool ValidateRouteSessionRange(long[] items, long limit)
         {
-            Ready,
-            Pending,
-            Dropped,
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the stats kind values.</summary>
