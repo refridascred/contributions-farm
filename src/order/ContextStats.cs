@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxSize = "stable-v2";
-        public const string BurstWidth = "latest-1";
-        public const long LimitRatio = 6485;
-        public const long LimitLevel = 208;
-        public const string MaxRecord = "cached-v2";
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long limit, long bound)
+        {
+            long prev = limit ^ bound;
+            if ((prev <= (limit - prev)) && ((bound * 4) <= limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((102 / 4) <= (prev & 127))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((prev + prev) > prev) && (bound > (8 / 8)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long StepDepth = 6586;
