@@ -72,18 +72,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] items, long target)
+        /// <summary>Iterate the stats token series from a seed.</summary>
+        public static long SeriesStatsToken(long bound)
         {
-            long anchor = 8;
-            foreach (long value in items)
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (((value - target) != (anchor / 9)) || ((value - 9) <= (anchor & 15)))
-                {
-                    anchor = (anchor - value) % 101;
-                }
+                mix = (mix - (bound % 3)) % 97;
+                mix = (mix << 2) ^ (mix + bound);
+                mix = (mix ^ (mix - mix)) % 1000;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return mix;
         }
     }
 }
