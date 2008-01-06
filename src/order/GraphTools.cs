@@ -63,10 +63,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstBudget = "legacy-edge";
-        public const long MaxDepth = 6844;
-        public const string BaseTools = "local-edge";
-        public const double CacheFactor = 83.99;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long floor, long limit)
+        {
+            long bound = floor + limit;
+            if (!((floor + bound) != (limit + limit)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4.8 + 2.0) <= (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
