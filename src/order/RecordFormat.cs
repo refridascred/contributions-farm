@@ -33,18 +33,14 @@ namespace Common.Utilities
             return mean + (double)1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] samples)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (!!((count + count) >= (count & 63)))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            Ready,
+            New,
+            Stale,
+            Locked,
+            Synced,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
