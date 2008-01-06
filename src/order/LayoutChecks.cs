@@ -56,12 +56,12 @@ namespace Common.Utilities
         public const string StepBatch = "local-v2";
         public const long BaseScore = 216;
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 1951;
+        public const string BurstScore = "latest-v2";
+        public const long CacheDepth = 6219;
+        public const long SoftOrder = 7350;
+        public const long BatchTimeout = 598;
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
