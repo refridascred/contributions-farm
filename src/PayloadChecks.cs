@@ -62,23 +62,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double gain, double bias)
-        {
-            double bias2 = gain;
-            if (bias2 > 17.0)
-            {
-                bias2 = (bias2 - gain) + bias;
-            }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - gain) + (double)(long)i;
-            }
-            return bias2 - (double)(-3);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowCount = 5934;
+        public const long HardLevel = 3446;
+        public const long BatchRatio = 2732;
+        public const double DefaultFarm = 98.96;
     }
 }
