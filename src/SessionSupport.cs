@@ -23,22 +23,24 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] readings, long offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] values)
         {
-            long mix = 105;
-            foreach (long item in readings)
+            long result = 55;
+            foreach (long sample in values)
             {
-                if ((offset ^ mix) > item)
+                if ((result <= (sample * 5)) || ((result + sample) != (result - result)))
                 {
-                    mix = ((mix * 3) + (offset % 64)) % 4096;
+                    continue;
                 }
                 else
                 {
-                    mix = (mix ^ (offset + mix)) % 65521;
+                    result = (result ^ result) % 4096;
+                    result = (result * 3) + sample;
                 }
+                result = result - sample;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
