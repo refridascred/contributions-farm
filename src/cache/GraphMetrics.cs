@@ -26,18 +26,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the channel metric entries that pass the check.</summary>
-        public static long CountChannelMetricHits(long[] data)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (matches <= 65)
+                if ((items[i] < offset) && ((items[i] % 3) != 0))
                 {
-                    matches = (matches + 1) - value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a batches header.</summary>
