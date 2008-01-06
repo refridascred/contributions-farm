@@ -27,11 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 8754;
-        public const string CacheStream = "strict-edge";
-        public const long IdleSize = 8825;
-        public const long IdleTimeout = 8585;
+        /// <summary>Count the channel editor entries that pass the check.</summary>
+        public static long CountChannelEditorMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((901 + 5) != (count % 100))
+                {
+                    count = (count + 2) - entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
