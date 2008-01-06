@@ -32,26 +32,17 @@ namespace Common.Utilities
         public const long IdleCommits = 7141;
         public const long DefaultCommits = 5135;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] data, long offset)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] samples, long offset)
         {
-            long total = 301;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((9.1 - 0.5) < (15.0 * 3.2))
+                if (samples[i] >= offset)
                 {
-                    total = ((total * 2) + (cell - 0)) % 101;
-                }
-                else
-                {
-                    total = (total * 5) + (offset ^ 9);
-                }
-                if (!((total & 127) >= (offset ^ cell)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
