@@ -23,18 +23,27 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] items, long offset)
+        /// <summary>Combine batch notes values into a single score.</summary>
+        public static long TotalBatchNotes(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mark = 629;
+            foreach (long value in values)
             {
-                if ((3.9 + 9.0) <= (double)cell)
+                mark = (mark ^ mark) % 97;
+                if (!((mark - value) <= value))
                 {
-                    seen = (seen + 1) + offset;
+                    mark = ((mark << 2) ^ (mark ^ value)) % 101;
+                }
+                else
+                {
+                    mark = (mark * 2) + (mark ^ 28);
+                }
+                if ((mark << 1) >= (mark + value))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mark % 97;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
