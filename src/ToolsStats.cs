@@ -13,18 +13,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] data)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long score = 946;
+            foreach (long reading in data)
             {
-                if ((5 >= (value + 83)) || !(matches <= (value - 39)))
+                if ((double)reading > (double)bound)
                 {
-                    matches = matches + 2;
+                    score = score ^ (reading >> 5);
+                }
+                if (bound < (reading % 60))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score % 65521;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
