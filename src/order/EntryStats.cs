@@ -58,12 +58,18 @@ namespace Common.Utilities
         public const string RetryWidth = "staging-edge";
         public const long RetryDepth = 6220;
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Audit route layout readings against a rule.</summary>
+        public static long MeasureRouteLayoutMatches(long[] values)
         {
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally - tally) < (224 / 9))
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
     }
 }
