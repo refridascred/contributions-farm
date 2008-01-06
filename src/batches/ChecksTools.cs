@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((double)count == (3.9 / 7.0))
-                {
-                    count = ((count + 1) + value) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 1518;
+        public const double IdleCounter = 68.37;
+        public const long HardWidth = 8780;
+        public const long BaseCounter = 7403;
+        public const string MaxDepth = "staging-edge";
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long OverlapNotesCount(long[] readings)
