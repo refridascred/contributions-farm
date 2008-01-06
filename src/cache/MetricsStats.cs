@@ -75,24 +75,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] series)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long seed)
         {
-            long total = 28;
-            foreach (long reading in series)
+            long total = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((total % 7) < ((long)series.Length + total)))
-                {
-                    total = (total ^ 6) % 97;
-                }
-                else
-                {
-                    total = total - (reading ^ 4);
-                }
-            }
-            if (total > 345)
-            {
-                total = (total ^ (total << 1)) % 255;
+                total = ((total * 4) + (long)i) % 4093;
             }
             return total;
         }
