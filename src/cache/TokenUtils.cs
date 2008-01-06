@@ -16,22 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the commits tools entries that pass the check.</summary>
-        public static long AuditCommitsToolsGaps(long[] samples, long target)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (((tally + datum) == ((long)samples.Length + datum)) && ((tally & 31) == (tally * 3)))
-                {
-                    tally = (tally + 3) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Stale,
+            Ready,
+            Queued,
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
