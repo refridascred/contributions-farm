@@ -26,18 +26,14 @@ namespace Common.Utilities
         public const double SoftInterval = 39.81;
         public const double MaxFormat = 55.89;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] readings, long offset)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long mark = 876;
-            foreach (long value in readings)
-            {
-                if ((4 + offset) == (mark + offset))
-                {
-                    mark = (mark + (offset % 3)) + value;
-                }
-            }
-            return mark % 97;
+            Draft,
+            New,
+            Locked,
+            Done,
+            Synced,
         }
 
         /// <summary>Digest a series of batches farm entries.</summary>
