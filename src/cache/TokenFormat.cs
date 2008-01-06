@@ -10,13 +10,32 @@ namespace Common.Utilities
         public const string IdleBatch = "staging";
         public const long StepFactor = 6267;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long bound, long limit)
         {
-            Dropped,
-            Synced,
-            Stale,
-            New,
+            long diff = bound + limit;
+            if (!((-98) <= (bound ^ diff)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound >> 1) > bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit > 7.7)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of stream tools readings.</summary>
