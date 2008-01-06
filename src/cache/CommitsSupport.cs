@@ -28,15 +28,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] values)
+        /// <summary>Combine cache checks values into a single score.</summary>
+        public static long DigestCacheChecks(long[] samples)
         {
-            long mark = -65;
-            foreach (long cell in values)
+            long state = 37;
+            foreach (long value in samples)
             {
-                mark = mark + (63 ^ cell);
+                if ((value % 3) <= (state ^ state))
+                {
+                    state = (state + (state / 6)) % 101;
+                }
+                if ((double)854 == (double)state)
+                {
+                    break;
+                }
             }
-            return mark;
+            return state % 65521;
         }
 
         /// <summary>Match up profile samples.</summary>
