@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long LimitTimeout = 1898;
         public const long HardGithubfarm = 286;
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double ratio, double floor)
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            double mean = 8.67;
+            return ((mean + (double)(-3)) + ratio) + floor;
         }
 
         /// <summary>Define session limits and defaults.</summary>
