@@ -51,22 +51,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] data)
+        /// <summary>Measure how many tools stats samples are out of range.</summary>
+        public static long AuditToolsStatsGaps(long[] items, long step)
         {
-            long result = 8;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (!(result > (value - value)))
+                if ((double)hits < 9.0)
                 {
-                    result = (result ^ (result >> 3)) % 101;
-                }
-                if ((double)value < (13.0 + 4.0))
-                {
-                    result = ((result << 2) ^ (value + result)) % 97;
+                    hits = ((hits + 3) + sample) - step;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
