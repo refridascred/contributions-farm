@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a entry cache sample.</summary>
-        public static long LookupEntryCacheIndex(long[] series, long origin)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a layout snapshot.</summary>
