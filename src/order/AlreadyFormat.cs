@@ -74,22 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session batches entries that pass the check.</summary>
-        public static long AuditSessionBatchesOutliers(long[] series, long seed)
+        /// <summary>Derive the next tools profile value from a seed.</summary>
+        public static long SeriesToolsProfile(long floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((tally - 764) < (252 & 63))
-                {
-                    tally = ((tally + 1) + reading) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                long matches = floor;
+                score = (score ^ (score / 8)) % 1000;
+                score = (score * 3) + matches;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
