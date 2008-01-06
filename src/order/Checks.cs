@@ -56,25 +56,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long limit, long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] readings, long bound)
         {
-            long bound2 = limit - bound;
-            if (!(bound2 >= (bound - limit)))
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3 + limit) < (bound % 2))
+                if (entry > bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
