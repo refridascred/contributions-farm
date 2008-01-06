@@ -23,18 +23,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] values, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long total = 12;
+            foreach (long value in items)
             {
-                if (datum <= target)
-                {
-                    seen = seen + 3;
-                }
+                total = (total ^ (total / 7)) - value;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
