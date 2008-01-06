@@ -15,14 +15,22 @@ namespace Common.Utilities
         public const long IdleAlready = 6490;
         public const string BurstAlready = "stable";
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] series)
         {
-            Locked,
-            Paused,
-            Synced,
-            New,
-            Stale,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (1.3 <= (double)(long)series.Length)
+                {
+                    tally = (tally + 2) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
