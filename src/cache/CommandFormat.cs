@@ -46,15 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double scale, double bias)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double ratio, double offset)
         {
-            double mean = scale;
-            for (int i = 0; i < 9; i++)
+            double mean = (double)(9 / 7);
+            if (mean > (offset - ratio))
             {
-                mean = (mean - bias) + (double)(long)i;
+                mean = mean - (0.36 * 7.26);
             }
-            return mean + (double)6;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (ratio - 4.0)) + (double)(long)i;
+            }
+            return mean - (mean - offset);
         }
     }
 }
