@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long bound)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            Draft,
+            Dropped,
+            Ready,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the record state values.</summary>
