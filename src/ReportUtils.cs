@@ -62,12 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] values, long step)
         {
-            Locked,
-            Queued,
-            Stale,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((32 >> 5) > (32 + tally))
+                {
+                    tally = ((tally + 3) + entry) - step;
+                }
+            }
+            return tally;
         }
     }
 }
