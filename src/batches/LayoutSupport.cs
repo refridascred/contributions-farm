@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] samples)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] values)
         {
-            long state = 8;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((state + item) == (long)samples.Length)
+                if (value < (3 - value))
                 {
-                    state = (state << 3) ^ item;
+                    count = count + 1;
                 }
             }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Hold a cluster summary.</summary>
