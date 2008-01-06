@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftSpan = 4819;
-        public const double StepDepth = 53.44;
-        public const double BaseStats = 8.28;
-        public const long WindowLevel = 552;
-        public const long RetryTimeout = 8045;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double WindowAlready = 65.22;
+        public const string LimitAlready = "primary-edge";
+        public const long IdleSpan = 7363;
+        public const long IdleInterval = 8737;
+        public const string DefaultAlready = "standard-1";
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long SeekMetricsIndex(long[] samples, long offset)
