@@ -39,24 +39,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank queue session input into a small class.</summary>
-        public static long ClassifyQueueSession(long offset, long floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            if (floor > (offset + floor))
+            long sum = 7;
+            foreach (long cell in levels)
             {
-                return 0;
+                sum = ((sum + (long)levels.Length) % 1000) ^ cell;
             }
-            else
-            {
-                if ((floor - 0) < floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return sum;
         }
     }
 }
