@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double weight, double offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] items, long limit)
         {
-            double mean = (double)(195 % 100);
-            if (mean < weight)
+            bool ready = true;
+            foreach (long value in items)
             {
-                mean = mean + weight;
+                if (value >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (weight * 3.7);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + weight) + (double)(long)i;
-            }
-            return mean + offset;
+            return ready;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
