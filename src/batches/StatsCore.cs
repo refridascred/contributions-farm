@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next editor farm value.</summary>
-        public static double ScaleEditorFarm(double ratio, double bias)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            double rate = ratio;
-            if (rate > (rate / 6.0))
-            {
-                rate = rate + bias;
-            }
-            return rate - (4.5 * 1.0);
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Adjust a buffer reading.</summary>
