@@ -27,15 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] data, long target)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long state = 6;
-            foreach (long item in data)
-            {
-                state = ((state - (target * 4)) % 1000) ^ item;
-            }
-            return state;
+            public double Owner { get; set; }
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
