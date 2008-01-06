@@ -1,9 +1,7 @@
-id,state,label
-1,open,59.86
-2,14.94,29.97
-3,756,latest
-4,93,942
-5,318,primary
-6,262,58.23
-7,350,70.4
-8,52.28,96.0
+id,label,ratio,active
+1,44.31,standard,391
+2,legacy,892,312
+3,457,14.6,29.53
+4,legacy,92.98,652
+5,stable,standard,85.43
+6,65.09,51.81,52.17
