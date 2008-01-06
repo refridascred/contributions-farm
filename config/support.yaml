@@ -1,9 +1,16 @@
 # support settings
-dry_run: 6912
-flush_ratio: true
-min_ttl_count:
-  - green
-  - open
-  - cached
-  - eu-west
-checks_size: 30
+audit: open
+retry_limit_ms:
+  compress: standard
+  sync_delay_count: 60
+  audit:
+    cache_limit_s: 30
+    warm_delay_ms: 16
+    max_delay: 100
+    batch_interval_pct: true
+cache_retries:
+  - 160
+  - 190
+  - 476
+  - 487
+graph_depth: strict
