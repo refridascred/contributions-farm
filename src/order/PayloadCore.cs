@@ -16,11 +16,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            Pending,
+            Draft,
+            Locked,
+            Failed,
+            Ready,
         }
 
         /// <summary>Look up the position of a route sample.</summary>
