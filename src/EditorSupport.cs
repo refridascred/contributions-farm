@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a token route sample.</summary>
-        public static long SeekTokenRouteIndex(long[] levels, long floor)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            New,
+            Stale,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
