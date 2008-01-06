@@ -70,13 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public double Size { get; set; }
-            public double Owner { get; set; }
+            public bool Stamp { get; set; }
             public long Total { get; set; }
-            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
