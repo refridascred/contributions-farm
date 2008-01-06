@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] items)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long origin)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long score = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((3.63 >= (double)cell) && ((3.6 * 6.8) > (double)cell)))
+                score = (score ^ 862) % 101;
+                if (!(score > (origin % 24)))
                 {
-                    matches = matches + 2;
+                    score = ((score * 4) + (score & 63)) % 65521;
                 }
+                score = (score + (score >> 4)) % 97;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
