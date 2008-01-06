@@ -12,24 +12,13 @@ namespace Common.Utilities
         public const long MinCount = 9741;
         public const double BurstBudget = 89.11;
 
-        /// <summary>Classify a cache metrics pair into a bucket.</summary>
-        public static long ClassifyCacheMetrics(long floor, long bound)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            if ((54 * 3) > floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((36 % 5) >= bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Total { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a metric reading by value.</summary>
