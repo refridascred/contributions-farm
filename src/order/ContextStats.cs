@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every commits graph entry stays within the limit.</summary>
-        public static bool GuardCommitsGraphRange(long[] data, long floor)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample <= floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] + values[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
