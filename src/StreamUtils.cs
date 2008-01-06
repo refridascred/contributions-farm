@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] data, long offset)
+        /// <summary>Digest a series of tools profile entries.</summary>
+        public static long TotalToolsProfile(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long carry = 855;
+            foreach (long value in data)
             {
-                if (!((double)sample != (5.3 + 7.93)))
+                if ((double)carry < (0.3 + 16.0))
                 {
-                    count = (count + 2) - offset;
+                    carry = ((((carry * 2) + (carry * 3)) % 65521) - value) - limit;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ ((long)data.Length & 63);
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
