@@ -22,12 +22,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Draft,
-            Paused,
-            Idle,
+            public double Score { get; set; }
+            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the format kind values.</summary>
