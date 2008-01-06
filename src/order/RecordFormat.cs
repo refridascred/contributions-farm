@@ -80,18 +80,19 @@ namespace Common.Utilities
             return ratio - (double)841;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] levels)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (((value & 127) == (hits << 3)) || ((hits - 4) <= hits))
+                if (item != seed)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
