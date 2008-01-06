@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseFormat = "cached-edge";
-        public const long StepFactor = 7938;
-        public const double IdleFormat = 45.01;
-        public const double BatchFormat = 92.7;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] series, long offset)
+        {
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Roll a notes already counter forward.</summary>
         public static long IterateNotesAlready(long offset)
