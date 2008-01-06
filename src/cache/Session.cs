@@ -51,17 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long step)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long state = step;
-            for (int i = 0; i < 19; i++)
-            {
-                state = (state + (long)i) % 255;
-                state = ((state * 4) + (state + state)) % 97;
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Paused,
+            Closed,
+            Retry,
         }
     }
 }
