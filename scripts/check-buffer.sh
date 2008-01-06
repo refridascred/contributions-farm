@@ -12,9 +12,9 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-edge}"
+mode="${1:-standard}"
 case "${mode}" in
-    edge)
+    eu-west)
         log "fast path"
         ;;
     *)
