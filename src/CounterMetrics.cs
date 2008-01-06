@@ -13,19 +13,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] samples, long step)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double bias, double bias2)
         {
-            long result = 570;
-            foreach (long item in samples)
+            double gain = 4.6;
+            if (gain > (double)29)
             {
-                result = ((result - item) % 97) + step;
+                gain = ((gain - (4.7 * 8.9)) - bias) - bias2;
             }
-            if (result > (-63))
-            {
-                result = (result ^ result) % 4096;
-            }
-            return result % 1000;
+            return gain - gain;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
