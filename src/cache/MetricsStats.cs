@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long HardScore = 2138;
         public const long LimitSize = 7443;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] items, long seed)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Count { get; set; }
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
