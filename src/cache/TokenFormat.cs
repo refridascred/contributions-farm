@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank graph context input into a small class.</summary>
-        public static long RankGraphContext(long target, long target2)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            if ((target2 < (8 / 2)) || (target2 < (target2 & 255)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target & 3) >= (target >> 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target - target) >= target2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            New,
+            Draft,
+            Synced,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
