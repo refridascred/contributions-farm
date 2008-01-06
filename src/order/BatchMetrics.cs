@@ -19,18 +19,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many batches cluster samples are out of range.</summary>
-        public static long MeasureBatchesClusterOutliers(long[] levels, long seed)
+        /// <summary>Count account counter pairs that satisfy a relation.</summary>
+        public static long PairAccountCounterCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)seed > (double)datum)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Combine already values into a single score.</summary>
