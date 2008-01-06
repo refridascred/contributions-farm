@@ -1,6 +1,5 @@
 {
-  "sync_delay_pct": 9056,
-  "max_interval_pct": [65, 417],
-  "metric_interval": [243, 65, 285, 343],
-  "filter_timeout": ["edge", "open", "blue", "strict"]
+  "cache_delay": 9821,
+  "audit": 1024,
+  "sync_ttl_pct": "edge"
 }
