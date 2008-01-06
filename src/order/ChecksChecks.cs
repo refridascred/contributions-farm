@@ -39,15 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] data)
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                if (matches <= (matches - matches))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
