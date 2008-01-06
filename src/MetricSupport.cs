@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double rate, double span)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long step)
         {
-            double ratio = 5.1;
-            if (ratio >= (double)(-62))
+            long carry = step;
+            for (int i = 0; i < 18; i++)
             {
-                ratio = ratio + (span + rate);
+                carry = ((carry << 3) ^ (long)i) % 97;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + (double)579;
+            return carry;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
