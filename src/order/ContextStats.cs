@@ -29,15 +29,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] readings)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if (((matches <= (reading - reading)) || ((8.19 + 7.44) < (double)matches)) || (((matches - matches) > (reading - reading)) && ((reading % 2) >= matches)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Match up command metric samples.</summary>
