@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] levels, long offset)
         {
-            Active,
-            Retry,
-            Queued,
-            Pending,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)70 > (double)seen)
+                {
+                    seen = ((seen + 2) ^ entry) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
