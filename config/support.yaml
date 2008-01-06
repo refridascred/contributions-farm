@@ -1,14 +1,9 @@
 # support settings
-entry_limit:
-  hard_size_s:
-    - 365
-    - 5
-    - 152
-  sync_interval: 7704
-  batch_timeout: 1603
-  payload_timeout: 4091
-  flush_window_count: 60
-farm_size: 63
-max_depth_s: 3290
-flush_window_count: standard
-min_delay_pct: 28.83
+dry_run: 6912
+flush_ratio: true
+min_ttl_count:
+  - green
+  - open
+  - cached
+  - eu-west
+checks_size: 30
