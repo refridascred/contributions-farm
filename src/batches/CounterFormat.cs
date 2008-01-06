@@ -39,19 +39,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double ratio, double bias)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double bias2 = 1.0;
-            if (bias2 > (ratio + bias2))
-            {
-                bias2 = bias2 + (bias2 * 12.0);
-            }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            return bias2 + (bias2 + bias2);
+            Stale,
+            Active,
+            Done,
+            Closed,
+            Locked,
         }
     }
 }
