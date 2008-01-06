@@ -29,16 +29,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long step)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = (anchor ^ (long)i) % 97;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Stale,
+            Draft,
+            Done,
+            Queued,
+            Locked,
         }
     }
 }
