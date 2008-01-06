@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cache graph readings against a bound.</summary>
-        public static bool VerifyCacheGraphBounds(long[] readings, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] data)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (value <= origin)
+                if (matches <= (value - 584))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Rank channel token input into a small class.</summary>
