@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit context commits readings against a rule.</summary>
-        public static long TallyContextCommitsGaps(long[] series, long limit)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!!(entry >= 97))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) - limit;
+                    if ((series[i] - series[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Blend two account measurements.</summary>
