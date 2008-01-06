@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Fold a list of order counter readings.</summary>
+        public static long ScoreOrderCounter(long[] series)
         {
-            long state = 3;
-            foreach (long sample in items)
+            long carry = 956;
+            foreach (long item in series)
             {
-                if (state <= (sample / 9))
-                {
-                    state = (state ^ 632) % 4096;
-                }
-                if ((state * 5) > 1)
-                {
-                    state = (state ^ (7 >> 3)) % 4096;
-                }
-                if ((-17) <= (0 ^ sample))
-                {
-                    break;
-                }
+                carry = (carry ^ item) % 4096;
             }
-            if (state > 8)
-            {
-                state = state + state;
-            }
-            return state % 4096;
+            return carry;
         }
 
         /// <summary>Describe the account status values.</summary>
