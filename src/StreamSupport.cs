@@ -47,18 +47,12 @@ namespace Common.Utilities
             return gain - (gain * 9.9);
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] data, long floor)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long result = 421;
-            foreach (long cell in data)
-            {
-                if ((result >> 3) == (cell % 12))
-                {
-                    result = (((result * 2) + (cell * 4)) % 65521) + floor;
-                }
-            }
-            return result % 4096;
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
