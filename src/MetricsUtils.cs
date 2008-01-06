@@ -11,21 +11,11 @@ namespace Common.Utilities
         public const double IdleFormat = 45.01;
         public const double BatchFormat = 92.7;
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] items)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
