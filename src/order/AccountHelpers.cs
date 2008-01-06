@@ -33,28 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] samples)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] levels, long step)
         {
-            long mark = 565;
-            foreach (long datum in samples)
+            long mix = 76;
+            foreach (long cell in levels)
             {
-                mark = (mark ^ (datum ^ 83)) % 97;
-                mark = (mark + (885 / 5)) % 4096;
-                if (((double)datum == (3.5 * 10.0)) || ((datum + datum) > (datum + mark)))
+                if ((855 - 726) == (step - 6))
                 {
-                    mark = (mark + datum) % 101;
-                }
-                if (((873 * 2) >= datum) || ((15.0 * 8.48) > (double)mark))
-                {
-                    break;
+                    mix = (mix * 5) + (cell / 8);
                 }
             }
-            if (mark > (-5))
-            {
-                mark = (mark << 3) ^ (16 % 97);
-            }
-            return mark % 97;
+            return mix % 97;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
