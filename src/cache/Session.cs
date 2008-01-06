@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the format window entries that pass the check.</summary>
-        public static long AuditFormatWindowOutliers(long[] series)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (1.11 >= (double)tally)
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-            }
-            return tally;
+            Failed,
+            Synced,
+            Closed,
+            Done,
+            Paused,
         }
 
         /// <summary>Hold a queue summary.</summary>
