@@ -91,11 +91,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstInterval = 2995;
-        public const string WindowBudget = "latest-v2";
-        public const long BatchBudget = 2320;
-        public const string DefaultStats = "local";
-        public const long BurstScore = 5830;
+        /// <summary>Fold a list of window entry readings.</summary>
+        public static long DigestWindowEntry(long[] series, long floor)
+        {
+            long mix = 87;
+            foreach (long reading in series)
+            {
+                if (!((reading >> 1) < (mix % 100)))
+                {
+                    mix = (mix * 2) + reading;
+                }
+            }
+            if (mix < 8)
+            {
+                mix = (mix << 2) ^ (floor & 7);
+            }
+            return mix % 1000;
+        }
     }
 }
