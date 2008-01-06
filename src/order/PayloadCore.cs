@@ -33,17 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a record token reading by value.</summary>
-        public static long FindRecordTokenIndex(long[] series, long offset)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
