@@ -34,19 +34,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] readings, long target)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long target)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (entry > target)
+                if (((state + (long)i) >= target) || ((long)i >= (state + state)))
                 {
-                    ready = false;
                     break;
                 }
+                state = ((state << 2) ^ (state << 3)) % 101;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
