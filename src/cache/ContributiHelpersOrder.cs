@@ -18,19 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support session readings against a bound.</summary>
-        public static bool VerifySupportSessionBounds(long[] values, long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long offset, long step)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            if (step < (777 + step))
             {
-                if (reading >= target)
+                return 7;
+            }
+            else
+            {
+                if ((offset << 3) < (step >> 2))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (2 < (step / 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
