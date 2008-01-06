@@ -43,18 +43,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] series)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long origin, long step)
         {
-            long seen = 0;
-            foreach (long value in series)
+            if ((step / 9) < (step + step))
             {
-                if (((seen & 127) < seen) || ((3.0 / 3.0) <= (double)value))
+                return 7;
+            }
+            else
+            {
+                if (!((step + 44) > (step / 5)))
                 {
-                    seen = seen + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the route class values.</summary>
