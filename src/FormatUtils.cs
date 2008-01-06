@@ -36,19 +36,16 @@ namespace Common.Utilities
             return gain + (ratio / 9.0);
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] readings, long bound)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long target)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long sum = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading > bound)
-                {
-                    found = false;
-                    break;
-                }
+                sum = sum + (0 + sum);
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
