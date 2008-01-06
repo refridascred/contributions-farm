@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftRatio = 768;
-        public const long CacheOrder = 4196;
-        public const double CacheFactor = 34.46;
-        public const long MinOrder = 8015;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] items, long origin)
+        {
+            long result = 174;
+            foreach (long cell in items)
+            {
+                result = ((result << 2) ^ (cell >> 2)) + origin;
+            }
+            return result;
+        }
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
