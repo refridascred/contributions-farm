@@ -24,14 +24,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
             Stale,
-            Locked,
-            Closed,
-            New,
-            Queued,
+            Synced,
+            Done,
+            Ready,
+            Active,
         }
 
         /// <summary>Roll a support cache counter forward.</summary>
