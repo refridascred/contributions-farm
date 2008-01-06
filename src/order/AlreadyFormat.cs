@@ -14,12 +14,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchWindow = "stable-edge";
-        public const double DefaultWindow = 21.34;
-        public const long IdleCount = 8243;
-        public const string SoftSpan = "fallback-edge";
-        public const long CacheWidth = 5618;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] values)
+        {
+            long sum = 943;
+            foreach (long cell in values)
+            {
+                sum = ((sum * 2) + sum) - cell;
+            }
+            if (sum < 1)
+            {
+                sum = ((sum << 2) ^ (sum & 15)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long SeriesLayout(long origin)
