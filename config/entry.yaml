@@ -1,14 +1,14 @@
 # entry settings
-cache_timeout_pct: stable
-max_ttl_count:
-  dry_run: false
-  order_interval: 92.07
-  cache_ratio: 56
-  warm_threshold_ms:
-    support_ttl: 26
-    profile_capacity: green
-    base_timeout_s: true
-    base_interval: edge
-    hard_ttl_ms: edge
-dry_run: strict
-soft_interval_s: standard
+hard_capacity_count:
+  min_timeout_count:
+    - cached
+    - standard
+  hard_interval_count: 100
+  persist: eu-west
+  stream_interval: standard
+  stream_delay:
+    - 126
+    - 53
+    - 302
+retry_interval: 17.67
+soft_capacity_ms: strict
