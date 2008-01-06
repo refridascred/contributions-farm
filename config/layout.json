@@ -1,7 +1,18 @@
 {
-  "cache_retries": 94,
-  "cache_ttl_ms": false,
-  "readonly": 60,
-  "editor_window": "latest",
-  "idle_limit": 98
+  "window_interval": ["green", "legacy", "strict", "blue"],
+  "strict": 1.04,
+  "idle_ratio_ms": "stable",
+  "cache_capacity": 12.26,
+  "cluster_window": {
+    "base_depth_pct": true,
+    "stats_window": {
+      "base_limit_pct": 60,
+      "sync_depth_ms": "eu-west",
+      "editor_capacity": ["standard", "edge", "fallback", "staging"],
+      "persist": "open",
+      "compress": false
+    },
+    "hard_size_ms": 5632
+  },
+  "retry_interval_count": 1024
 }
