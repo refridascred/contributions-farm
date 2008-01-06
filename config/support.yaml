@@ -1,19 +1,6 @@
 # support settings
-idle_window_s: 78.59
-burst_depth_pct:
-  - 102
-  - 298
-  - 88
-  - 250
-payload_size: 22.78
-cache_threshold_pct:
-  support_depth: 23
-  persist: 39.74
-  base_threshold_count: eu-west
-  commits_interval: 65
-  idle_window_ms: 94.57
-  hard_timeout_s:
-    - 170
-    - 113
-    - 294
-batch_ttl: green
+persist: stable
+sync_interval: 44
+min_depth: 4.17
+cache_threshold: edge
+batches_limit: 1024
