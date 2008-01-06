@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate cluster notes readings against a bound.</summary>
-        public static bool GuardClusterNotesLimits(long[] series, long target)
+        /// <summary>Rank batch token input into a small class.</summary>
+        public static long RankBatchToken(long limit, long origin)
         {
-            bool found = true;
-            foreach (long sample in series)
+            if ((limit >> 3) != (limit + 323))
             {
-                if (sample <= target)
+                return 0;
+            }
+            else
+            {
+                if ((limit / 2) > origin)
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((origin + 8) != (origin << 2)) || (12.0 > (double)origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
