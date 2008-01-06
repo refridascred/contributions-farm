@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] readings, long origin)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum + datum) != (tally + 4))
-                {
-                    tally = (tally + 2) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultLevel = 7293;
+        public const long BaseCluster = 7425;
+        public const long WindowCluster = 1531;
+        public const long BurstCluster = 7125;
+        public const long SoftCluster = 5744;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long FoldCounter(long[] levels, long limit)
