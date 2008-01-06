@@ -59,14 +59,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double bias, double offset)
         {
-            Draft,
-            Locked,
-            Queued,
-            New,
-            Pending,
+            double gain = offset;
+            if (gain <= (double)239)
+            {
+                gain = gain + (bias - gain);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (gain / 2.0)) + (double)(long)i;
+            }
+            return gain + (gain / 7.0);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
