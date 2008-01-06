@@ -20,18 +20,13 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] readings, long limit)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((4.3 - 2.8) < (double)datum)
-                {
-                    tally = (tally + 2) + limit;
-                }
-            }
-            return tally;
+            New,
+            Queued,
+            Closed,
+            Idle,
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
