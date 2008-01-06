@@ -1,6 +1,19 @@
 {
-  "dry_run": false,
-  "counter_ttl": "strict",
-  "metric_interval": [398, 495, 60, 320],
-  "min_interval_count": false
+  "entry_limit": true,
+  "min_size": {
+    "notes_timeout": 60,
+    "audit": ["cached", "standard"],
+    "stream_size": [227, 123, 342],
+    "base_retries_count": false,
+    "poll_limit_pct": {
+      "sync_timeout": [243, 219, 35],
+      "session_interval": "strict",
+      "tools_timeout": "strict",
+      "retry_limit_ms": ["local", "cached", "primary", "staging"],
+      "soft_limit_ms": 61
+    }
+  },
+  "min_timeout_pct": 79,
+  "hard_delay_pct": 54.14,
+  "max_limit": 7107
 }
