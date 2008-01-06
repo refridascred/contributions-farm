@@ -1,7 +1,7 @@
 {
-  "sync_limit_count": 34,
-  "cache_ratio": 500,
-  "hard_ttl_ms": 35.24,
-  "counter_limit": ["strict", "staging", "legacy"],
-  "audit": "edge"
+  "buffer_timeout": false,
+  "default_limit_ms": "primary",
+  "support_retries": [366, 240, 332],
+  "verbose": 85,
+  "flush_limit": 1024
 }
