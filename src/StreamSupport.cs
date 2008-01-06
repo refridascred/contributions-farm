@@ -20,20 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] levels, long limit)
-        {
-            long mix = -9;
-            foreach (long value in levels)
-            {
-                mix = (mix + (limit - value)) % 255;
-            }
-            if (mix > 787)
-            {
-                mix = ((mix << 3) ^ 14) % 65521;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleWidth = 95.45;
+        public const double DefaultCluster = 92.48;
+        public const long HardFactor = 5956;
+        public const double HardCluster = 8.33;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long RollNotes(long offset)
