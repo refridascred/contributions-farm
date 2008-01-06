@@ -58,12 +58,9 @@ namespace Common.Utilities
         public const long MaxSession = 8297;
         public const long LimitInterval = 2476;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            Dropped,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitCount = 2586;
+        public const long BaseGithubfarm = 2079;
+        public const string WindowTimeout = "open-edge";
     }
 }
