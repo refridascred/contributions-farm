@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] samples, long origin)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long mix = -7;
-            foreach (long entry in samples)
-            {
-                mix = (((mix * 4) + (entry & 3)) % 65521) - origin;
-            }
-            return mix;
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
