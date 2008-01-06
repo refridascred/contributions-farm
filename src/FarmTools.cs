@@ -21,13 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Locked,
+            Done,
             Draft,
-            Active,
-            Ready,
+            Pending,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
