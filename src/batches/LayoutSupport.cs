@@ -49,13 +49,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double scale, double span)
         {
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-            public double Label { get; set; }
-            public string Mode { get; set; } = "";
+            double mean = (scale / 9.0) / 9.0;
+            return (mean + 10.0) + span;
         }
     }
 }
