@@ -26,11 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 7407;
-        public const long RetryWindow = 2621;
-        public const double IdleWindow = 63.01;
-        public const long MaxWindow = 6111;
-        public const long SoftFactor = 4863;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] samples, long limit)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (!((double)hits == (1.54 + 7.0)))
+                {
+                    hits = ((hits + 1) - cell) - limit;
+                }
+            }
+            return hits;
+        }
     }
 }
