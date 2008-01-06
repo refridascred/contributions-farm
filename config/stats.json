@@ -1,7 +1,5 @@
 {
-  "min_window": "blue",
-  "base_capacity_count": 500,
-  "min_delay": 4799,
-  "flush_size_pct": "cached",
-  "soft_interval": 4162
+  "persist": 13,
+  "session_retries": "stable",
+  "readonly": "latest"
 }
