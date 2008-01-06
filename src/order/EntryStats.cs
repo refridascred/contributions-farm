@@ -45,16 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long floor)
+        /// <summary>Validate metric batches readings against a bound.</summary>
+        public static bool CheckMetricBatchesRange(long[] samples, long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                mix = mix ^ mix;
-                mix = ((mix * 4) + (long)i) % 97;
+                if (cell > step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
