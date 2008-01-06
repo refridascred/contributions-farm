@@ -36,12 +36,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 9222;
-        public const long LimitWindow = 1481;
-        public const long BaseWindow = 4869;
-        public const string CacheWidth = "alpha-1";
-        public const long WindowWidth = 2605;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleBudget = 6852;
+        public const string DefaultEditor = "primary-edge";
+        public const long IdleRatio = 1341;
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long MatchMetricCount(long[] readings)
