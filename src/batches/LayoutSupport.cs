@@ -44,23 +44,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] values, long seed)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long anchor = 104;
-            foreach (long cell in values)
-            {
-                if (306 < (seed & 63))
-                {
-                    anchor = ((anchor ^ 0) % 65521) ^ cell;
-                }
-                anchor = (anchor - (976 - anchor)) % 101;
-            }
-            if (anchor > 727)
-            {
-                anchor = (anchor << 3) ^ 826;
-            }
-            return anchor % 65521;
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
