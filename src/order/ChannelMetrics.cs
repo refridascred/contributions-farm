@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] samples)
-        {
-            long result = 8;
-            foreach (long datum in samples)
-            {
-                result = ((result + (result + (-166))) % 4096) + datum;
-            }
-            if (result > 2)
-            {
-                result = ((result << 3) ^ (5 >> 2)) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double IdleRatio = 55.15;
+        public const long IdleRecord = 3302;
+        public const long DefaultRecord = 1800;
+        public const string LimitScore = "alpha-1";
+        public const string BurstRecord = "strict-v2";
 
         /// <summary>Locate a context schema reading by value.</summary>
         public static long LocateContextSchemaIndex(long[] samples, long origin)
