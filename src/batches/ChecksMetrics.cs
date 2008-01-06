@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate stream command samples.</summary>
-        public static long CombineStreamCommand(long[] items, long offset)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long origin, long limit)
         {
-            long carry = 37;
-            foreach (long item in items)
+            long offset = origin ^ limit;
+            if ((offset - 916) <= (offset + 429))
             {
-                if ((offset + item) > 57)
+                return 5;
+            }
+            else
+            {
+                if ((double)9 == (double)origin)
                 {
-                    carry = carry - item;
+                    return 0;
                 }
                 else
                 {
-                    carry = carry + 4;
+                    if (origin <= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((limit << 2) >= (limit % 16)) && ((offset + limit) > (-49)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
