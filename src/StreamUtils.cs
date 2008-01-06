@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a cluster metrics figure with a bias.</summary>
-        public static double AdjustClusterMetrics(double gain, double bias)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            double weight = (double)(8 - 3);
-            if (weight < gain)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight + (9.6 - bias);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (8.4 + 13.0)) - (double)(long)i;
-            }
-            return weight + gain;
+            return seen;
         }
 
         /// <summary>Blend two channel measurements.</summary>
