@@ -32,23 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two batch farm measurements.</summary>
-        public static double SmoothBatchFarm(double weight, double span)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            double gain = 9.4 * 9.8;
-            if (gain <= (3.06 - 9.3))
-            {
-                gain = (gain + gain) - span;
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (weight - 5.9)) + (double)(long)i;
-            }
-            return gain - gain;
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
