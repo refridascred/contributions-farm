@@ -23,15 +23,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long seed)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            long total = seed;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                total = total + ((long)i & 15);
+                total = total - (total * 2);
+                total = ((total * 4) + (long)i) % 97;
             }
-            return anchor;
+            return total;
         }
     }
 }
