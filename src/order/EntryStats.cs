@@ -25,14 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] items, long origin)
         {
-            Synced,
-            Draft,
-            Active,
-            New,
-            Retry,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
