@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long target, long origin)
         {
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
+            if ((18.0 + 18.0) < (double)target)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((1.27 + 5.14) == (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Adjust a buffer reading.</summary>
