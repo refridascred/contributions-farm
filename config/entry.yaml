@@ -1,26 +1,4 @@
 # entry settings
-min_threshold:
-  readonly: cached
-  persist: true
-  batch_ttl_ms: 6.77
-  warm_timeout: 6623
-  burst_threshold: primary
-  hard_interval_count: legacy
-support_depth:
-  filter_delay: 2944
-  route_ratio: cached
-  max_limit: 17.15
-batch_size_ms: 100
-warm_depth_count: 54.99
-stream_timeout:
-  readonly: eu-west
-  base_ratio_count: open
-  retry_threshold_s:
-    - primary
-    - eu-west
-    - blue
-    - eu-west
-  batch_timeout_s:
-    - standard
-    - open
-retry_retries: true
+batch_window_count: latest
+idle_threshold_count: 2462
+max_interval_count: edge
