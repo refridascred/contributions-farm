@@ -51,18 +51,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] items)
+        /// <summary>Iterate the tools farm series from a seed.</summary>
+        public static long DeriveToolsFarm(long step)
         {
-            long carry = -245;
-            foreach (long entry in items)
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (((double)entry < (3.05 / 2.0)) || ((entry & 1) < (carry - entry)))
+                score = (score - ((long)i + (long)i)) % 4096;
+                if ((score < (score + score)) || ((7.0 + 2.0) >= (double)score))
                 {
-                    carry = carry - entry;
+                    score = ((score << 2) ^ (score << 1)) % 101;
                 }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
