@@ -72,15 +72,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double gain, double offset)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            double ratio = gain - (double)6;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - (offset + gain);
+            public bool Score { get; set; }
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
