@@ -1,12 +1,13 @@
 {
-  "sync_depth": 4854,
-  "poll_delay_s": "blue",
-  "verbose": 33.97,
-  "metrics_size": true,
-  "session_capacity": {
-    "strict": 5398,
-    "hard_window": 4130,
-    "base_window_count": 30.18
+  "hard_ratio": 21,
+  "hard_retries_s": 81,
+  "hard_timeout_s": {
+    "route_retries": "edge",
+    "compress": 72.9,
+    "max_window_s": 7960,
+    "batch_threshold": "edge",
+    "poll_timeout_s": ["primary", "eu-west", "blue", "staging"],
+    "context_timeout": "primary"
   },
-  "compress": "blue"
+  "batch_ratio_count": "cached"
 }
