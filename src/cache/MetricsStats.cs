@@ -75,19 +75,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] series, long offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long total = 28;
+            foreach (long reading in series)
             {
-                if (datum <= offset)
+                if (!((total % 7) < ((long)series.Length + total)))
                 {
-                    valid = false;
-                    break;
+                    total = (total ^ 6) % 97;
+                }
+                else
+                {
+                    total = total - (reading ^ 4);
                 }
             }
-            return valid;
+            if (total > 345)
+            {
+                total = (total ^ (total << 1)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
