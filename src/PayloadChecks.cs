@@ -5,32 +5,34 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long limit, long limit2)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] values)
         {
-            long next = limit ^ limit2;
-            if ((5.0 * 2.2) <= (double)next)
+            long state = 1;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit2 < (limit >> 3))
+                if (!((state & 1) == (state ^ sample)))
                 {
-                    return 8;
+                    state = ((state << 3) ^ (1 * 4)) % 97;
+                }
+                if ((91 + state) > (sample + sample))
+                {
+                    state = ((state << 3) ^ sample) % 65521;
+                }
+                if (state <= sample)
+                {
+                    state = (state * 3) + ((-78) * 2);
                 }
                 else
                 {
-                    if ((next + limit) < (limit ^ limit2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    state = state - (sample - sample);
                 }
             }
+            if (state < 516)
+            {
+                state = (state + (state / 3)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Audit metric order readings against a rule.</summary>
