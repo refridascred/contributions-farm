@@ -5,19 +5,29 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] data, long step)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long floor)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading >= step)
+                if ((mark + (long)i) <= (mark << 2))
                 {
-                    ready = false;
                     break;
                 }
+                else
+                {
+                    mark = mark - floor;
+                    mark = mark ^ (mark + floor);
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mark = ((mark - (909 << 3)) % 65521) - (long)i2;
+                    mark = (mark + 418) % 97;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Count account batch pairs that satisfy a relation.</summary>
