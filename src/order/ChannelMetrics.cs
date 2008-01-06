@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultLevel = 6258;
-        public const string MaxTimeout = "legacy-edge";
-        public const double CacheBatch = 58.2;
-        public const long DefaultBatch = 1996;
+        /// <summary>Count the contributi farm entries that pass the check.</summary>
+        public static long AuditContributiFarmOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry - entry) > (entry + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long ScoreFormat(long[] samples)
