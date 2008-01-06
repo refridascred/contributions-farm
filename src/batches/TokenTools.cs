@@ -13,17 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] data, long floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 43;
+            foreach (long entry in levels)
             {
-                if (data[i] > floor)
+                if (((double)result >= (double)origin) || (origin >= (result + 9)))
                 {
-                    return (long)i;
+                    result = (result + (entry ^ origin)) % 1000;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
