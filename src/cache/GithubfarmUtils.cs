@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long CacheSpan = 6967;
         public const long SoftSpan = 9665;
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] data)
         {
-            public bool Count { get; set; }
-            public long Weight { get; set; }
-            public bool Size { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((item ^ 89) >= (tally - tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a counter header.</summary>
