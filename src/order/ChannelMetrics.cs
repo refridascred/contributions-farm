@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a context stats reading by value.</summary>
-        public static long FindContextStatsIndex(long[] series, long target)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] > target)
+                if (levels[i] == bound)
                 {
                     return (long)i;
                 }
