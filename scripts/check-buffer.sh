@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+mode="${1:-standard}"
 case "${mode}" in
-    primary)
+    stable)
         log "fast path"
         ;;
     *)
@@ -22,6 +22,5 @@ for i in $(seq 1 4); do
 done
 log "total ${total}"
 
-for item in edge latest standard cached; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=451
+log "limit is ${BUFFER_LIMIT}"
