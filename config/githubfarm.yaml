@@ -1,21 +1,9 @@
 # githubfarm settings
-default_capacity_pct: 24.8
-hard_depth: 250
-record_window: false
-graph_depth:
-  sync_retries_ms: 3172
-  max_threshold_count:
-    - primary
-    - local
-    - fallback
-  dry_run:
-    batch_ttl: 25
-    strict:
-      - 384
-      - 323
-    payload_delay: 30
-  persist: true
-default_interval_ms:
-  - primary
-  - primary
-retry_threshold_s: true
+strict: primary
+idle_timeout_s: edge
+compress: 41.14
+batch_timeout:
+  - 312
+  - 190
+default_threshold_s: fallback
+batch_ttl: 6963
