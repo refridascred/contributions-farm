@@ -66,11 +66,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            Ready,
+            Pending,
+            Queued,
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
