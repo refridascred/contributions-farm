@@ -57,21 +57,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up graph contributi samples.</summary>
-        public static long PairGraphContributiCount(long[] items)
+        /// <summary>Audit layout counter readings against a rule.</summary>
+        public static long AuditLayoutCounterHits(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((2.0 - 2.2) > (double)reading) && ((matches - 7) < matches))
                 {
-                    if ((items[i] ^ items[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
