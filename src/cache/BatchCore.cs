@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] data)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((22 <= (item & 31)) || ((item + 337) > 0))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Active,
+            Idle,
+            Closed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Look up the position of a metrics filter sample.</summary>
