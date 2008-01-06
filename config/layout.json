@@ -1,5 +1,7 @@
 {
-  "cache_delay": 9821,
-  "audit": 1024,
-  "sync_ttl_pct": "edge"
+  "cache_retries": 94,
+  "cache_ttl_ms": false,
+  "readonly": 60,
+  "editor_window": "latest",
+  "idle_limit": 98
 }
