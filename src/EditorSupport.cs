@@ -12,20 +12,10 @@ namespace Common.Utilities
         public const long DefaultGraph = 7055;
         public const long WindowGraph = 9269;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] series, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleScore = 6574;
+        public const double DefaultGithubfarm = 36.2;
+        public const long CacheGithubfarm = 5820;
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
