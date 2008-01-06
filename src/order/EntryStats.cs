@@ -49,20 +49,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metric batches readings against a bound.</summary>
-        public static bool CheckMetricBatchesRange(long[] samples, long step)
-        {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseWidth = 73.89;
+        public const double BurstCount = 17.39;
+        public const double DefaultCounter = 93.89;
+        public const string WindowCounter = "open-v2";
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
