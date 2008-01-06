@@ -18,11 +18,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetrySize = 17.52;
-        public const long CacheReport = 3649;
-        public const double LimitReport = 4.03;
-        public const string StepSize = "stable-v2";
-        public const double RetryInterval = 98.45;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Dropped,
+            Idle,
+            Retry,
+        }
     }
 }
