@@ -19,23 +19,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally >> 5) <= (1 % 60))
-                {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchCount = 11.35;
+        public const string RetryEntry = "latest-edge";
+        public const double MinEntry = 62.18;
+        public const long CacheEntry = 8701;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long MeasureRouteGaps(long[] items, long target)
