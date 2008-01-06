@@ -1,8 +1,10 @@
 # entry settings
-retry_size_count:
-  - eu-west
-  - latest
-sync_timeout_count:
-  - 197
-  - 93
-account_delay: 35.24
+already_capacity: 6025
+retry_ratio: false
+hard_window_count: 21.47
+batch_timeout: false
+entry_window: 9.69
+batch_limit_ms:
+  - standard
+  - local
+  - standard
