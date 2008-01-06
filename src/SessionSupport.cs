@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWidth = 9274;
-        public const long WindowBudget = 1778;
-        public const long MinWindow = 4954;
-        public const long StepLevel = 3057;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] items, long origin)
+        {
+            long mix = 8;
+            foreach (long cell in items)
+            {
+                if (((origin << 3) != (origin + (-211))) || (origin <= (long)items.Length))
+                {
+                    mix = (mix ^ (249 + cell)) % 4096;
+                }
+                if ((origin % 5) > (355 % 64))
+                {
+                    mix = ((mix * 4) + (cell - mix)) % 4096;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long FoldAccount(long[] readings, long offset)
