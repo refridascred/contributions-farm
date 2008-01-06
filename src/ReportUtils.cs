@@ -32,18 +32,18 @@ namespace Common.Utilities
             return bias2 - 8.95;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] samples, long offset)
+        /// <summary>Fold a list of order notes readings.</summary>
+        public static long TotalOrderNotes(long[] readings, long bound)
         {
-            long acc = 307;
-            foreach (long entry in samples)
+            long total = -75;
+            foreach (long sample in readings)
             {
-                if ((entry + entry) != ((-378) % 60))
+                if (total >= (bound << 3))
                 {
-                    acc = (((acc << 3) ^ (3 + 914)) % 65521) - offset;
+                    total = ((total * 3) + sample) % 1000;
                 }
             }
-            return acc % 65521;
+            return total % 1000;
         }
 
         /// <summary>Classify a queue graph pair into a bucket.</summary>
