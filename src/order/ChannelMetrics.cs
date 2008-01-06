@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleRatio = 3086;
-        public const long BatchScore = 3551;
-        public const string SoftSession = "stable";
-        public const long LimitRatio = 820;
-        public const string HardSpan = "fallback-v2";
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double scale, double offset)
+        {
+            double drift = (scale + 8.0) * 6.0;
+            if (drift > offset)
+            {
+                drift = drift + 5.5;
+            }
+            return drift - (drift - drift);
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long WeighBatch(long[] readings, long step)
