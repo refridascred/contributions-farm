@@ -20,28 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] readings)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long offset)
         {
-            long anchor = 18;
-            foreach (long item in readings)
+            long state = offset;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    anchor = (((anchor * 3) + (item << 1)) % 101) ^ (long)i;
-                    anchor = (anchor - anchor) % 255;
-                }
-                anchor = ((anchor << 2) ^ (anchor << 1)) % 4096;
-                if ((double)item <= (4.92 + 11.0))
-                {
-                    anchor = (anchor << 2) ^ item;
-                }
-                else
-                {
-                    anchor = anchor + (anchor / 2);
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Fold a list of account readings.</summary>
