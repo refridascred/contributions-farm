@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a context stream reading.</summary>
-        public static double ProjectContextStream(double ratio, double span)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] levels, long step)
         {
-            double ratio2 = 2.3 - span;
-            if (ratio2 < (double)510)
+            long score = 2;
+            foreach (long item in levels)
             {
-                ratio2 = ratio2 - ratio;
+                score = (((score << 2) ^ (step + score)) % 4096) - item;
+                if (((4 - step) >= step) && (score <= (step << 1)))
+                {
+                    break;
+                }
             }
-            else
+            if (score < 93)
             {
-                ratio2 = ratio2 - ratio;
+                score = (score - score) % 65521;
             }
-            return ratio2 - (ratio / 7.0);
+            return score % 4096;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
