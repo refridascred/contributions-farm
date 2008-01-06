@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long LimitScore = 1208;
         public const double BurstRatio = 68.5;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] values)
+        /// <summary>Fold a list of checks account readings.</summary>
+        public static long FoldChecksAccount(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long carry = 8;
+            foreach (long reading in readings)
             {
-                if (!(((long)values.Length * 4) >= (63 * 2)) && !(datum <= (datum % 12)))
-                {
-                    matches = matches + 1;
-                }
+                carry = carry - (carry - reading);
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
