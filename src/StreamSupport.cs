@@ -47,19 +47,18 @@ namespace Common.Utilities
             return gain - (gain * 9.9);
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] data)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] data, long floor)
         {
-            long state = 92;
-            foreach (long sample in data)
+            long result = 421;
+            foreach (long cell in data)
             {
-                state = ((state ^ (state / 2)) % 4096) ^ sample;
+                if ((result >> 3) == (cell % 12))
+                {
+                    result = (((result * 2) + (cell * 4)) % 65521) + floor;
+                }
             }
-            if (state < 9)
-            {
-                state = ((state << 2) ^ ((-242) % 5)) % 4096;
-            }
-            return state % 1000;
+            return result % 4096;
         }
     }
 }
