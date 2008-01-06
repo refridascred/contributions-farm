@@ -16,17 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] values, long floor)
+        /// <summary>Count the commits tools entries that pass the check.</summary>
+        public static long AuditCommitsToolsGaps(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (values[i] == floor)
+                if (((tally + datum) == ((long)samples.Length + datum)) && ((tally & 31) == (tally * 3)))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
