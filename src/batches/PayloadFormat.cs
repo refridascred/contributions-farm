@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first checks queue entry that matches the target.</summary>
-        public static long LookupChecksQueueIndex(long[] readings, long bound)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 2) != 0))
+                if (value != floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
