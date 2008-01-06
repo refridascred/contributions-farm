@@ -19,12 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitSize = 1660;
-        public const long SoftGraph = 8118;
-        public const double SoftRatio = 96.46;
-        public const string StepSpan = "fallback";
-        public const double RetryTimeout = 43.08;
+        /// <summary>Classify a editor cluster pair into a bucket.</summary>
+        public static long BucketEditorCluster(long floor, long origin)
+        {
+            if (((origin - floor) <= (587 & 15)) && (floor <= (origin + 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((origin - origin) >= floor) || ((origin + floor) > (floor & 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (origin >= (floor ^ floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long RollAlready(long origin)
