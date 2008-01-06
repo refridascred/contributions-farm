@@ -1,15 +1,14 @@
 # Command notes
 
-Keep context and buffer names short and lowercase.
-When a command fails, the schema handler retries a few times before giving up.
-When a entry fails, the schema handler retries a few times before giving up.
+The stream module keeps layout values in sync with the already cache.
+Each contributi is validated before it reaches the support queue.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
-Keep editor and window names short and lowercase.
-Each cluster is validated before it reaches the entry queue.
+A cluster that stays idle for too long is moved to the report list.
+Run the stats check before changing any channel limits.
 
 ## Guidelines
 
-- Document new batches fields
-- Review tools limits each release
-- Log every schema change
-- Keep route values small
+- Review window limits each release
+- Validate context input early
+- Prefer editor defaults
