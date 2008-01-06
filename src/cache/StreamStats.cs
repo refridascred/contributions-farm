@@ -21,18 +21,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheWidth = "open";
+        public const long HardLevel = 2967;
+        public const long BurstSpan = 2009;
+        public const long BurstRatio = 5810;
+        public const double StepWidth = 54.94;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long ScoreStats(long[] series, long floor)
