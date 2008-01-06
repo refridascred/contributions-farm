@@ -71,15 +71,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] readings)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] series)
         {
-            long mark = 449;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                mark = ((mark << 3) ^ datum) % 255;
+                if ((tally - sample) <= (sample + sample))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mark % 97;
+            return tally;
         }
     }
 }
