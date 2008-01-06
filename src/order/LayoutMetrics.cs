@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] data)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long anchor = 9;
+            foreach (long item in values)
             {
-                if ((cell * 3) < (tally - tally))
+                if (!(anchor >= (item & 7)))
                 {
-                    tally = tally + 2;
+                    anchor = (anchor - (item + item)) % 255;
+                    anchor = (anchor * 3) + (item ^ item);
+                }
+                if (((double)anchor != (double)item) || ((item & 31) < item))
+                {
+                    anchor = anchor ^ (56 / 9);
                 }
             }
-            return tally;
+            if (anchor < 6)
+            {
+                anchor = (anchor + 76) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
