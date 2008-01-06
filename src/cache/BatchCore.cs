@@ -29,20 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] readings)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] readings, long origin)
         {
-            long result = 50;
-            foreach (long value in readings)
+            long mix = 902;
+            foreach (long entry in readings)
             {
-                result = ((result * 2) + (result + result)) % 1000;
-                result = (result + value) % 1000;
+                if (((7.6 + 16.0) == (double)origin) && ((double)origin != (double)entry))
+                {
+                    mix = (mix * 2) + (entry + entry);
+                }
             }
-            if (result < 183)
-            {
-                result = (result - result) % 4096;
-            }
-            return result;
+            return mix % 4096;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
