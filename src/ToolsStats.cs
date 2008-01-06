@@ -86,19 +86,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double rate, double span)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] values)
         {
-            double drift = (span / 8.0) * 15.0;
-            if (drift > (double)1)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                drift = (drift - (double)3) - rate;
+                if ((3.8 / 5.0) >= (double)cell)
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                drift = drift + 9.9;
-            }
-            return drift - span;
+            return hits;
         }
     }
 }
