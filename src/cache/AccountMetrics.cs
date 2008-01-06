@@ -70,18 +70,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((matches - item) <= (item + item))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 5524;
+        public const long IdleDepth = 8395;
+        public const long SoftRatio = 3023;
+        public const long BatchDepth = 4949;
+        public const long LimitRecord = 7355;
     }
 }
