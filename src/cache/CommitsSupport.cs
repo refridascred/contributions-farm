@@ -59,22 +59,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many githubfarm batch samples are out of range.</summary>
-        public static long CountGithubfarmBatchGaps(long[] series)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long score = 5;
+            foreach (long item in series)
             {
-                if ((((85 / 2) <= sample) && ((3.0 - 1.0) <= (double)sample)) || ((double)hits < (7.3 + 9.27)))
+                if ((9.6 * 11.0) == (double)item)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    score = score - target;
                 }
             }
-            return hits;
+            if (score < 5)
+            {
+                score = score + (score + 518);
+            }
+            return score % 4096;
         }
     }
 }
