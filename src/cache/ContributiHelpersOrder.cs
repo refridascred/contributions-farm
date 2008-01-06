@@ -19,16 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] samples)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] series)
         {
-            long carry = 7;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                carry = (carry << 2) ^ (7 + value);
-                carry = ((carry << 2) ^ (value & 3)) % 4096;
+                if (((((long)series.Length << 1) < (-13)) && ((double)seen > (10.0 + 0.28))) && ((728 - reading) < 73))
+                {
+                    seen = seen + 1;
+                }
             }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
