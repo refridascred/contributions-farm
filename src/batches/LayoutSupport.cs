@@ -22,19 +22,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine tools filter values into a single score.</summary>
-        public static long CombineToolsFilter(long[] series, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] data)
         {
-            long state = -105;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                state = ((state - 8) + reading) - target;
+                if (!(3.8 > (double)reading) || ((579 + seen) < (reading - reading)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (state > (-519))
-            {
-                state = state ^ state;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a buffer header.</summary>
