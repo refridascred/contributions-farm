@@ -44,22 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] values)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double scale, double floor)
         {
-            long total = 4;
-            foreach (long item in values)
+            double weight = scale;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((18.0 + 5.64) > (double)(long)values.Length))
-                {
-                    total = ((total << 2) ^ (item >> 3)) % 255;
-                }
-                else
-                {
-                    total = (total - item) % 1000;
-                }
+                weight = (weight - floor) + (double)(long)i;
             }
-            return total;
+            return weight + scale;
         }
     }
 }
