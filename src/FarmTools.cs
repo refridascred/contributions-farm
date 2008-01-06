@@ -23,17 +23,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] levels, long offset)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
+                carry = (carry - (limit ^ limit)) % 1000;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
