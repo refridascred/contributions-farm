@@ -48,18 +48,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] readings, long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long anchor = 30;
+            foreach (long sample in samples)
             {
-                if (!((seed + count) > (count >> 1)))
+                if ((sample >> 2) <= (791 & 255))
                 {
-                    count = (count + 1) + entry;
+                    anchor = anchor ^ (anchor * 4);
+                }
+                else
+                {
+                    anchor = anchor ^ (bound * 5);
                 }
             }
-            return count;
+            return anchor % 1000;
         }
     }
 }
