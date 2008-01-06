@@ -52,18 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = (sum ^ ((long)i + (long)i)) % 255;
-                sum = ((sum << 3) ^ (243 + sum)) % 1000;
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 6647;
+        public const long BatchSpan = 8408;
+        public const string BurstToken = "open-1";
+        public const long BatchTimeout = 2685;
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
