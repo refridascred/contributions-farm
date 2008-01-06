@@ -22,20 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long limit)
+        /// <summary>Measure how many support notes samples are out of range.</summary>
+        public static long TallySupportNotesHits(long[] items, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((7 / 2) <= (limit & 31))
+                if ((tally & 7) < (464 & 1))
                 {
-                    total = ((total << 3) ^ total) % 65521;
-                    break;
+                    tally = ((tally + 2) + value) + seed;
                 }
-                total = ((total * 2) + (long)i) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Match up command metric samples.</summary>
