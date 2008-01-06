@@ -1,9 +1,14 @@
 # support settings
-min_ttl_s: 95.28
-batch_threshold_ms:
-  - 110
-  - 174
-  - 474
-burst_size_ms:
-  - 188
-  - 38
+min_threshold_count: cached
+min_retries: staging
+cache_interval:
+  - cached
+  - blue
+  - edge
+cache_retries_count: 43.29
+context_ratio: 100
+verbose:
+  - 266
+  - 347
+  - 190
+  - 43
