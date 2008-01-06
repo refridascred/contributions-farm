@@ -20,12 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            Active,
+            Dropped,
             Closed,
-            Done,
+            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
