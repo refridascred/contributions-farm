@@ -13,24 +13,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long step, long target)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] series, long limit)
         {
-            if ((step ^ step) >= (target - 261))
+            bool ok = true;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((step / 9) < step) && (target > (607 + 55)))
+                if (sample > limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Combine command values into a single score.</summary>
