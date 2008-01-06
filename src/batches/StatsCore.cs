@@ -34,11 +34,19 @@ namespace Common.Utilities
         public const long MinRecord = 7882;
         public const long BatchRecord = 7290;
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] levels, long offset)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
