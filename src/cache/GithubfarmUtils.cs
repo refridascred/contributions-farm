@@ -23,19 +23,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double weight, double bias)
+        /// <summary>Roll a buffer support counter forward.</summary>
+        public static long DeriveBufferSupport(long seed)
         {
-            double mean = weight / 3.0;
-            if (mean >= (bias / 3.0))
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                mean = mean - (mean * 8.08);
+                if ((long)i != (acc % 8))
+                {
+                    acc = acc + (acc % 64);
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - weight) + (double)(long)i;
-            }
-            return mean + mean;
+            return acc;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
