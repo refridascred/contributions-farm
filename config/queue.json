@@ -1,7 +1,7 @@
 {
-  "min_depth_ms": "latest",
-  "soft_ttl_count": 1024,
-  "soft_threshold": "primary",
-  "already_retries": 41,
-  "retry_threshold_ms": 5693
+  "sync_interval_s": "cached",
+  "retry_window_count": 33.67,
+  "flush_threshold_ms": "staging",
+  "session_ttl": 794,
+  "stats_window": 2772
 }
