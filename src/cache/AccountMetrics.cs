@@ -47,19 +47,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] readings, long target)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long origin)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample <= target)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    stale = false;
-                    break;
+                    acc = (((acc * 5) + origin) % 255) - (long)i2;
                 }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
