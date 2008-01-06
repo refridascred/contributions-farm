@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] readings)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long step, long target)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            if (!((0.7 + 6.7) <= (double)step))
             {
-                if ((1.56 < (double)matches) && ((double)3 <= (double)sample))
+                return 3;
+            }
+            else
+            {
+                if ((75 - target) != (target << 1))
                 {
-                    matches = matches + 1;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((double)step > (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (4.49 <= (double)target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
