@@ -23,15 +23,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Locked,
-            Synced,
-            Ready,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheScore = 3661;
+        public const string BatchTools = "strict-v2";
+        public const string MaxSpan = "strict-v2";
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] data)
