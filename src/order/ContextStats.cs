@@ -22,26 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] items)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long limit)
         {
-            long carry = 50;
-            foreach (long value in items)
+            long total = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((3.08 * 2.8) > (double)carry)
+                if ((7 / 2) <= (limit & 31))
                 {
-                    carry = ((carry - carry) % 97) ^ value;
+                    total = ((total << 3) ^ total) % 65521;
+                    break;
                 }
-                else
-                {
-                    carry = ((carry * 2) + (carry & 255)) % 1000;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            if (carry < 34)
-            {
-                carry = (carry ^ (carry ^ carry)) % 4096;
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Hold a schema entry.</summary>
