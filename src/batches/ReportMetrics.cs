@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] samples)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double scale, double floor)
         {
-            long acc = 278;
-            foreach (long entry in samples)
+            double ratio = floor;
+            if (ratio > scale)
             {
-                if ((acc % 3) >= (acc + acc))
-                {
-                    acc = (acc ^ (acc + 269)) - entry;
-                }
+                ratio = ratio - (double)996;
             }
-            return acc;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (ratio - floor)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
