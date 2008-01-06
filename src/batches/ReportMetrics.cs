@@ -16,12 +16,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Count the context session entries that pass the check.</summary>
+        public static long CountContextSessionMatches(long[] samples, long target)
         {
-            Locked,
-            Retry,
-            Stale,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (!((3 - entry) >= 764))
+                {
+                    seen = (seen + 1) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
