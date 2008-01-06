@@ -23,12 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 3861;
-        public const long SoftRatio = 4153;
-        public const long SoftSpan = 7644;
-        public const long MinTimeout = 6316;
-        public const long RetryChecks = 5793;
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long TotalFormat(long[] data, long target)
