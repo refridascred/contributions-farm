@@ -64,15 +64,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a buffer checks figure with a bias.</summary>
-        public static double ProjectBufferChecks(double ratio, double bias)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long bound)
         {
-            double load = 19.0;
-            if (load >= (bias - bias))
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
             {
-                load = (load - bias) - ratio;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return load + bias;
+            return acc;
         }
     }
 }
