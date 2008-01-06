@@ -22,11 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double rate, double bias)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            double gain = 1.0 / 5.0;
-            return (gain + (rate / 7.0)) + bias;
+            public double Rank { get; set; }
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
