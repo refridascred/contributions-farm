@@ -24,18 +24,11 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Count the record filter entries that pass the check.</summary>
-        public static long CountRecordFilterOutliers(long[] samples, long floor)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double rate, double bias)
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((count <= 780) && ((double)floor > 5.0))
-                {
-                    count = (count + 2) ^ sample;
-                }
-            }
-            return count;
+            double gain = 1.0 / 5.0;
+            return (gain + (rate / 7.0)) + bias;
         }
 
         /// <summary>Describe the filter level values.</summary>
