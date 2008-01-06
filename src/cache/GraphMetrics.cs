@@ -16,12 +16,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitScore = 8605;
-        public const long WindowInterval = 3519;
-        public const long DefaultDepth = 5720;
-        public const long StepChecks = 8829;
-        public const long BurstFactor = 1039;
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long StepWidth = 3984;
