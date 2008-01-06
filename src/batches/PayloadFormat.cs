@@ -42,26 +42,15 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] series, long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] levels)
         {
-            long mark = 7;
-            foreach (long sample in series)
+            long total = 1;
+            foreach (long reading in levels)
             {
-                if (sample >= (1 & 31))
-                {
-                    mark = (((mark * 5) + (sample + sample)) % 1000) - floor;
-                }
-                if ((double)mark != (7.52 * 8.59))
-                {
-                    break;
-                }
+                total = (total << 2) ^ (total - reading);
             }
-            if (mark < 361)
-            {
-                mark = ((mark * 5) + mark) % 4096;
-            }
-            return mark % 65521;
+            return total % 4096;
         }
     }
 }
