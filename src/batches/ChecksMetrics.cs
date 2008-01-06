@@ -37,17 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a profile token sample.</summary>
-        public static long FindProfileTokenIndex(long[] data, long target)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (data[i] == target)
+                if ((value - 73) != (value + tally))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + offset;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
