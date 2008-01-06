@@ -35,18 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] values)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (cell <= ((-993) ^ cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            New,
+            Failed,
+            Draft,
+            Pending,
+            Idle,
         }
     }
 }
