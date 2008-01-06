@@ -20,10 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultDepth = 3481;
-        public const double LimitBatch = 54.37;
-        public const double BaseWidth = 71.7;
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string BatchSpan = "standard-v2";
