@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] items, long bound)
+        /// <summary>Look up the position of a filter window sample.</summary>
+        public static long LocateFilterWindowIndex(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((240 << 2) == (bound % 12))
+                if (levels[i] >= bound)
                 {
-                    count = (count + 1) + reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
