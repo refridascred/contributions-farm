@@ -22,31 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a editor cluster pair into a bucket.</summary>
-        public static long BucketEditorCluster(long floor, long origin)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] series)
         {
-            if (((origin - floor) <= (587 & 15)) && (floor <= (origin + 1)))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((origin - origin) >= floor) || ((origin + floor) > (floor & 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (origin >= (floor ^ floor))
+                    if ((series[i] - series[j]) > 17)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
