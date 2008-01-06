@@ -53,15 +53,31 @@ namespace Common.Utilities
         public const string BurstToken = "open-1";
         public const long BatchTimeout = 2685;
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double scale, double span)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long target, long floor)
         {
-            double mean = (double)(9 - 564);
-            if (mean <= (double)91)
+            if ((double)42 != (double)floor)
             {
-                mean = (mean - (double)35) - scale;
+                return 8;
             }
-            return mean + span;
+            else
+            {
+                if ((floor << 2) < (floor % 24))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target == (4.0 * 5.12))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
