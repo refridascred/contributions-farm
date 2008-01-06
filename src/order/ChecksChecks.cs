@@ -43,24 +43,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the stats profile series from a seed.</summary>
-        public static long RollStatsProfile(long step)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long target)
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((18.0 * 2.86) != (double)(long)i)
-                {
-                    state = (state - state) % 65521;
-                }
-                else
-                {
-                    state = (state ^ ((long)i + state)) % 97;
-                    state = (state * 2) + (step % 3);
-                }
-                state = ((state * 4) + (long)i) % 97;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return state;
+            return mark;
         }
     }
 }
