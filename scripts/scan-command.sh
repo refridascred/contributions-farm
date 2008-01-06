@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge cached eu-west stable; do
+for item in blue green local; do
     log "checking ${item}"
 done
 
-mode="${1:-strict}"
+mode="${1:-local}"
 case "${mode}" in
-    blue)
+    local)
         log "fast path"
         ;;
     *)
