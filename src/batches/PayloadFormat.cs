@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] data, long target)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((item >> 5) != (item - 757))
-                {
-                    seen = (seen + 2) + target;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Blend two format measurements.</summary>
