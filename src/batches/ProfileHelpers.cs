@@ -65,18 +65,21 @@ namespace Common.Utilities
         public const string DefaultWidth = "standard";
         public const string CacheDepth = "local-1";
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] readings)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits % 8) <= (hits << 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 2) ^ cell;
+                    if ((values[i] - values[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
