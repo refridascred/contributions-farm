@@ -12,31 +12,18 @@ namespace Common.Utilities
         public const long SoftChecks = 108;
         public const long BaseSize = 1300;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long seed, long limit)
+        /// <summary>Measure how many metrics graph samples are out of range.</summary>
+        public static long TallyMetricsGraphOutliers(long[] items)
         {
-            if (seed >= (limit ^ seed))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((2 - seed) >= limit)
+                if (643 < (tally - 88))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (seed >= ((-8) & 127))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = (tally + 3) + sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
