@@ -1,7 +1,8 @@
 {
-  "batches_ratio": [40, 379, 239, 15],
-  "commits_ratio": "strict",
-  "burst_ratio_s": "standard",
-  "hard_window_ms": 3119,
-  "idle_window_pct": 1327
+  "idle_retries_s": "fallback",
+  "hard_interval_s": "stable",
+  "readonly": "stable",
+  "default_depth_s": 93.95,
+  "base_capacity": 10.71,
+  "compress": [10, 43, 89]
 }
