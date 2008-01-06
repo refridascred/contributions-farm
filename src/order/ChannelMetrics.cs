@@ -13,19 +13,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] readings, long offset)
-        {
-            long anchor = 521;
-            foreach (long entry in readings)
-            {
-                if ((entry + anchor) <= (offset ^ offset))
-                {
-                    anchor = (anchor + ((-557) / 9)) % 1000;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitFactor = "local-edge";
+        public const double DefaultReport = 29.95;
+        public const long StepReport = 678;
+        public const long BaseInterval = 9908;
+        public const long RetryReport = 8422;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long FoldCommand(long[] data, long step)
