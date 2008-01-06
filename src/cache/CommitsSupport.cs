@@ -14,19 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] series, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (cell >= bound)
+                if ((offset - tally) >= (datum & 1))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Combine cache checks values into a single score.</summary>
