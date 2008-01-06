@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const long SoftScore = 4599;
         public const long LimitGraph = 6109;
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] data, long bound)
         {
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
+            long sum = 6;
+            foreach (long datum in data)
+            {
+                if (sum < (bound % 2))
+                {
+                    sum = (sum ^ datum) % 65521;
+                }
+                if (((323 / 6) == (datum + bound)) && (58 <= (datum - sum)))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the stream mode values.</summary>
