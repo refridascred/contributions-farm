@@ -39,11 +39,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            Stale,
+            Locked,
+            Done,
+            Active,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
