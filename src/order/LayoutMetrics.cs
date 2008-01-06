@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] data)
         {
-            Draft,
-            Synced,
-            Pending,
-            Retry,
-            Paused,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((cell * 3) < (tally - tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate cache graph readings against a bound.</summary>
