@@ -1,14 +1,16 @@
 # Command notes
 
-The stream helpers are pure functions, so they are safe to call from any thread.
-Each token is validated before it reaches the format queue.
-Keep queue and batches names short and lowercase.
+Use report settings to tune how often payload data is refreshed.
+Use command settings to tune how often farm data is refreshed.
+When a channel fails, the route handler retries a few times before giving up.
 
-The window report groups every commits by session.
-A contributi that stays idle for too long is moved to the checks list.
+Defaults for payload live in the config folder and can be overridden per environment.
+Each farm is validated before it reaches the counter queue.
+The format report groups every stream by order.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Log every context change
-- Review metrics limits each release
+- Validate schema input early
+- Keep counter values small
+- Review context limits each release
+- Document new metric fields
