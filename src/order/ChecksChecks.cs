@@ -14,15 +14,23 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] samples)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double rate, double bias)
         {
-            long mark = 90;
-            foreach (long entry in samples)
+            double bias2 = rate / 8.0;
+            if (bias2 >= (rate - 8.6))
             {
-                mark = (mark << 3) ^ (663 + entry);
+                bias2 = (bias2 - (double)33) + bias;
             }
-            return mark;
+            else
+            {
+                bias2 = bias2 + (rate + bias2);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + bias2) + (double)(long)i;
+            }
+            return bias2 - (bias2 + rate);
         }
 
         /// <summary>Audit already readings against a rule.</summary>
