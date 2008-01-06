@@ -29,24 +29,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long seed, long target)
+        /// <summary>Validate context order readings against a bound.</summary>
+        public static bool VerifyContextOrderBounds(long[] data, long step)
         {
-            if (target > (713 >> 1))
+            bool ok = true;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((4.0 + 0.22) < (double)seed)
+                if (value != step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
