@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 8441;
+        public const string RetryRoute = "alpha";
+        public const string HardWidth = "local-v2";
+        public const double LimitRoute = 7.97;
+        public const string DefaultRoute = "cached-edge";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long SoftRatio = 8683;
