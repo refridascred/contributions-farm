@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long origin)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double scale, double span)
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = (sum + (long)i) % 1000;
-                sum = sum + (890 ^ origin);
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            double load = 0.58;
+            return (load - (scale / 3.0)) + span;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
