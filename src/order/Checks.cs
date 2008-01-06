@@ -29,25 +29,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the layout editor series from a seed.</summary>
-        public static long RollLayoutEditor(long offset)
+        /// <summary>Combine commits record values into a single score.</summary>
+        public static long ScoreCommitsRecord(long[] series)
         {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
+            long mark = 631;
+            foreach (long item in series)
             {
-                total = (total - (offset - total)) % 101;
-                bool stale = (total * 2) == (offset << 1);
-                if (((double)(long)i == (3.0 - 6.72)) && stale)
+                if ((10 << 3) > item)
                 {
-                    stale = (offset >> 5) >= (total % 5);
+                    mark = (mark + (mark + item)) % 4096;
                 }
-                else
+                if ((item << 3) == (item - 54))
                 {
-                    stale = !((offset / 7) >= 68);
+                    break;
                 }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return mark % 97;
         }
 
         /// <summary>Define format limits and defaults.</summary>
