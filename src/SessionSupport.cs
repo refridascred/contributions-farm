@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long limit, long target)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long diff = limit ^ target;
-            if (!((diff & 127) <= diff))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit ^ diff) >= (target + target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit * 5) < diff)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((double)limit < (6.47 + 4.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Grade a already githubfarm value against two limits.</summary>
