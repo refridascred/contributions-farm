@@ -13,19 +13,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] series, long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long anchor = 521;
+            foreach (long entry in readings)
             {
-                if (sample > limit)
+                if ((entry + anchor) <= (offset ^ offset))
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor + ((-557) / 9)) % 1000;
                 }
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Combine command values into a single score.</summary>
