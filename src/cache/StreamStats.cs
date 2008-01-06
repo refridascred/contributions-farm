@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long floor, long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            if ((double)step > (7.62 * 7.02))
+            long anchor = 3;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor < (step * 4))
+                if ((entry & 15) != (anchor - anchor))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (63 < step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor > (5.8 - 11.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    anchor = (anchor + (anchor + anchor)) % 65521;
                 }
             }
+            if (anchor < 26)
+            {
+                anchor = anchor ^ (61 + 29);
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
