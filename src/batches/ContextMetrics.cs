@@ -57,19 +57,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] values)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long result = 590;
-            foreach (long entry in values)
-            {
-                if ((45 + result) >= entry)
-                {
-                    result = ((result << 2) ^ (entry << 1)) % 4096;
-                }
-                result = ((result * 4) + (entry / 2)) % 97;
-            }
-            return result;
+            public double Token { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
