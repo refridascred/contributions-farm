@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate stats buffer readings against a bound.</summary>
-        public static bool VerifyStatsBufferBounds(long[] samples, long origin)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepPayload = 51.17;
+        public const long BatchPayload = 226;
+        public const long LimitSize = 9175;
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
