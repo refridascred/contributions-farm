@@ -49,11 +49,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseWidth = 73.89;
-        public const double BurstCount = 17.39;
-        public const double DefaultCounter = 93.89;
-        public const string WindowCounter = "open-v2";
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((count + sample) > (count - 7))
+                {
+                    count = (count + 2) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
