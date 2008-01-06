@@ -35,19 +35,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double bias, double span)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] series)
         {
-            double rate = bias;
-            if (rate <= (double)751)
+            long seen = 0;
+            foreach (long value in series)
             {
-                rate = (rate + (double)82) - span;
+                if (((seen & 127) < seen) || ((3.0 / 3.0) <= (double)value))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate - (rate * 20.0);
+            return seen;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
