@@ -27,22 +27,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] items, long origin)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long origin)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((hits + origin) > (87 / 2))
-                {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = sum ^ (long)i;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Adjust a schema reading.</summary>
