@@ -16,14 +16,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Dropped,
-            Pending,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepSize = 2820;
+        public const string MaxCount = "fallback-edge";
+        public const string LimitSize = "primary-edge";
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextMatches(long[] series)
