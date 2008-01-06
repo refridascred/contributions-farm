@@ -20,24 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long offset, long step)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            if ((9.5 * 1.2) == (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((5.9 - 0.71) > (double)offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Queued,
+            Pending,
+            Locked,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Define window limits and defaults.</summary>
