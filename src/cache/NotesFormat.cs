@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the farm context series from a seed.</summary>
-        public static long DeriveFarmContext(long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] levels)
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
+            long acc = -84;
+            foreach (long value in levels)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((value ^ acc) < ((-25) + value))
+                {
+                    acc = ((acc << 2) ^ (acc - acc)) % 101;
+                }
+                else
+                {
+                    acc = acc + (value + 716);
+                }
+            }
+            if (acc < (-37))
+            {
+                acc = (acc ^ acc) % 65521;
             }
             return acc;
         }
