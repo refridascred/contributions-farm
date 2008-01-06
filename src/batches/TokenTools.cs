@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] values, long target)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long mark = 28;
-            foreach (long datum in values)
-            {
-                mark = ((((mark << 3) ^ (mark >> 5)) % 1000) + datum) + target;
-            }
-            return mark;
+            Dropped,
+            Failed,
+            Pending,
         }
 
         /// <summary>Accumulate batches samples.</summary>
