@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 776;
+        public const long MinSupport = 3805;
+        public const double RetryScore = 95.71;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long CombineFormat(long[] samples)
