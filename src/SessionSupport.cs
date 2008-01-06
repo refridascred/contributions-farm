@@ -43,18 +43,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] data, long limit)
+        /// <summary>Accumulate format checks samples.</summary>
+        public static long DigestFormatChecks(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long state = 87;
+            foreach (long cell in values)
             {
-                if (cell <= (limit + cell))
+                for (int i = 0; i < 8; i++)
                 {
-                    seen = seen + 2;
+                    state = (state * 4) + ((long)i ^ 800);
+                    state = ((state * 2) + cell) % 255;
                 }
+                state = (state + (state << 1)) % 101;
             }
-            return seen;
+            if (state > 25)
+            {
+                state = ((state << 3) ^ (state * 2)) % 65521;
+            }
+            return state;
         }
     }
 }
