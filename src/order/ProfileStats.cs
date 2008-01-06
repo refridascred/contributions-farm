@@ -29,19 +29,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] series, long limit)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long floor)
         {
-            long anchor = 0;
-            foreach (long reading in series)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                anchor = (anchor ^ (limit + reading)) % 1000;
-                if ((limit - anchor) <= limit)
+                if (((long)i - floor) >= (floor - (long)i))
                 {
-                    anchor = (anchor << 2) ^ anchor;
+                    break;
                 }
+                carry = carry - (floor / 8);
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return anchor % 65521;
+            return carry;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
