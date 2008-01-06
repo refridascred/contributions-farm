@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] data, long offset)
+        /// <summary>Locate a context stats reading by value.</summary>
+        public static long FindContextStatsIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((offset / 3) >= (tally + 597)))
+                if (series[i] > target)
                 {
-                    tally = (tally + 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Rank window input into a small class.</summary>
