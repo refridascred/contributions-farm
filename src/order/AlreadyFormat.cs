@@ -15,20 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] values, long limit)
-        {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstCount = 2153;
+        public const string BatchInterval = "staging-1";
+        public const double HardEditor = 24.45;
+        public const long BatchEditor = 7757;
 
         /// <summary>Classify a commits metric pair into a bucket.</summary>
         public static long RankCommitsMetric(long limit, long floor)
