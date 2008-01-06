@@ -79,19 +79,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema format readings against a bound.</summary>
-        public static bool CheckSchemaFormatLimits(long[] series, long bound)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a commits session counter forward.</summary>
