@@ -1,17 +1,12 @@
 # support settings
-soft_timeout_count: 97.14
-metric_timeout: 8154
-window_limit: 37
-default_size_pct:
-  - 471
-  - 31
-  - 313
-flush_ratio_ms:
-  warm_limit_pct:
-    - 346
-    - 211
-  enabled:
-    - latest
-    - staging
-  warm_timeout_ms: false
-  channel_limit: 91.05
+burst_size_pct: 25
+queue_limit: latest
+metrics_retries:
+  retry_threshold: 30
+  strict: 11.53
+  persist:
+    - 37
+    - 315
+    - 415
+  batch_size_count: true
+base_retries_ms: false
