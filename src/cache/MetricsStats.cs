@@ -70,24 +70,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] items, long bound)
-        {
-            long mark = 33;
-            foreach (long sample in items)
-            {
-                mark = (mark + (-185)) % 65521;
-                if (992 > (bound + bound))
-                {
-                    mark = ((mark * 3) + 95) % 255;
-                }
-                mark = (mark << 2) ^ sample;
-            }
-            if (mark > 4)
-            {
-                mark = (mark + (mark - mark)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 6038;
+        public const string BurstSchema = "open-edge";
+        public const double BatchWidth = 56.62;
+        public const long BaseSchema = 5065;
     }
 }
