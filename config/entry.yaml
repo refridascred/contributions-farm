@@ -1,17 +1,7 @@
 # entry settings
-retry_threshold:
-  flush_capacity_ms: primary
-  cache_interval: 44
-  soft_depth_pct: eu-west
-  enabled: 9171
-  cache_ttl_pct: primary
-  min_delay_count: 30
-audit: standard
-window_ratio: 49.71
-min_timeout_s: open
-batch_delay:
-  - stable
-  - standard
-  - primary
-  - fallback
-sync_retries: 949
+format_limit: false
+farm_retries: true
+warm_depth_s: latest
+burst_ratio: 93
+retry_depth_s: true
+idle_ratio: false
