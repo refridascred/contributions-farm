@@ -70,31 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long origin, long limit)
+        /// <summary>Project the next batches token value.</summary>
+        public static double AdjustBatchesToken(double weight, double span)
         {
-            if (!((origin - limit) == (origin / 9)))
+            double ratio = (double)(7 / 2);
+            if (ratio >= (ratio / 2.0))
             {
-                return 3;
+                ratio = (ratio + ratio) - weight;
             }
             else
             {
-                if ((0 ^ limit) <= (limit & 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (9 <= (limit - limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                ratio = ratio - span;
             }
+            return ratio - ratio;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
