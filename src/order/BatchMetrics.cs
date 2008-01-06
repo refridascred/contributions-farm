@@ -82,13 +82,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
+            Ready,
+            Retry,
+            Queued,
             Locked,
-            Idle,
-            Dropped,
-            Paused,
         }
     }
 }
