@@ -19,11 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepFarm = 17.17;
-        public const string BatchFarm = "latest-v2";
-        public const long StepCount = 5996;
-        public const long IdleSize = 1515;
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool CheckFilterLimits(long[] values, long floor)
