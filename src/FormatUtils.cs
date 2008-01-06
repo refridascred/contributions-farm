@@ -75,15 +75,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double gain, double span)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            double mean = span;
-            if (mean > (double)(-37))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean - (double)65) + gain;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean + mean;
+            return count;
         }
     }
 }
