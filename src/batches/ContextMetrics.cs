@@ -54,12 +54,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] levels)
         {
-            public double Token { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell >= (double)matches)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
