@@ -13,12 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Idle,
-            Locked,
-            Paused,
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of stream tools readings.</summary>
