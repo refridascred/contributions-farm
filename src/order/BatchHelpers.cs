@@ -13,19 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (!(((seen + seen) == (datum / 9)) && ((double)datum >= (15.0 + 4.8))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftInterval = 8532;
+        public const string SoftScore = "stable-1";
+        public const long LimitSize = 1599;
+        public const long BaseRoute = 8546;
 
         /// <summary>Match up metrics samples.</summary>
         public static long MatchMetricsCount(long[] items)
