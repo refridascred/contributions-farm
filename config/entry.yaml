@@ -1,7 +1,10 @@
 # entry settings
-format_limit: false
-farm_retries: true
-warm_depth_s: latest
-burst_ratio: 93
-retry_depth_s: true
-idle_ratio: false
+dry_run:
+  - primary
+  - local
+enabled:
+  - fallback
+  - edge
+  - local
+  - legacy
+idle_ttl: true
