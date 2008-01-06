@@ -29,17 +29,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a payload githubfarm reading by value.</summary>
-        public static long FindPayloadGithubfarmIndex(long[] levels, long offset)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Draft,
+            Synced,
+            New,
+            Dropped,
         }
 
         /// <summary>Blend two schema measurements.</summary>
