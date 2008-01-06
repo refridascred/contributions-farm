@@ -32,19 +32,12 @@ namespace Common.Utilities
         public const string SoftFactor = "legacy-1";
         public const long BaseCommits = 2931;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] readings, long floor)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long anchor = 41;
-            foreach (long sample in readings)
-            {
-                anchor = ((anchor + anchor) % 255) - sample;
-            }
-            if (anchor > 3)
-            {
-                anchor = ((anchor * 5) + (floor ^ anchor)) % 65521;
-            }
-            return anchor;
+            New,
+            Synced,
+            Closed,
         }
 
         /// <summary>Count the metrics buffer entries that pass the check.</summary>
