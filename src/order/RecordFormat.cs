@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long bound)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((mix % 12) == (bound >> 4))
-                {
-                    mix = mix + ((long)i - (long)i);
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Ready,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Describe the stats kind values.</summary>
