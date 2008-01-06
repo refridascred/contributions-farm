@@ -12,19 +12,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long floor)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((acc % 97) > (floor + floor))
-                {
-                    acc = acc + (85 & 31);
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the report channel entries that pass the check.</summary>
