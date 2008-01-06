@@ -22,18 +22,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Combine contributi channel values into a single score.</summary>
-        public static long TotalContributiChannel(long[] readings, long seed)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long mix = 11;
-            foreach (long datum in readings)
-            {
-                if (mix >= (datum & 15))
-                {
-                    mix = ((mix - datum) % 97) + seed;
-                }
-            }
-            return mix;
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
