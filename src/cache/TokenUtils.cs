@@ -15,12 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] readings, long step)
+        /// <summary>Look up the position of a session notes sample.</summary>
+        public static long SeekSessionNotesIndex(long[] series, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] < step)
+                if ((series[i] >= bound) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
