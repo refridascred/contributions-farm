@@ -27,10 +27,10 @@ namespace Common.Utilities
         public const long StepDepth = 3925;
         public const long MinContext = 8770;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftInterval = 8667;
-        public const string IdleBatches = "fallback-1";
-        public const long BurstWidth = 9929;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxTimeout = 2210;
+        public const long SoftAlready = 8144;
+        public const long IdleWidth = 2435;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
