@@ -28,21 +28,15 @@ namespace Common.Utilities
         public const long HardReport = 5858;
         public const long BaseReport = 745;
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] items)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
     }
 }
