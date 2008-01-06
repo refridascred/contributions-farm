@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 9398;
-        public const string BurstAccount = "standard";
-        public const long RetryAccount = 1872;
+        /// <summary>Fold a list of entry account readings.</summary>
+        public static long TotalEntryAccount(long[] levels)
+        {
+            long state = 77;
+            foreach (long value in levels)
+            {
+                if ((9.0 / 4.0) <= (double)state)
+                {
+                    state = ((state * 3) + (state - value)) % 97;
+                    state = (state << 2) ^ (2 >> 1);
+                    break;
+                }
+                state = ((state << 2) ^ (state - 7)) % 255;
+            }
+            return state % 97;
+        }
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long MatchReportCount(long[] levels)
