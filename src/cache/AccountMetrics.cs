@@ -31,11 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public double Label { get; set; }
-            public long Limit { get; set; }
+            Draft,
+            Pending,
+            Stale,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
