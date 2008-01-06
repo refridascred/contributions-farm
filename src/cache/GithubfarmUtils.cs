@@ -14,13 +14,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double rate, double floor)
         {
-            Locked,
-            Idle,
-            Dropped,
-            Paused,
+            double bias = (double)(7 * 2);
+            if (bias > bias)
+            {
+                bias = bias - (bias - rate);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + (rate + bias)) + (double)(long)i;
+            }
+            return bias + floor;
         }
 
         /// <summary>Hold a counter header.</summary>
