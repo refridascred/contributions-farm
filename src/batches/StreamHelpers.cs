@@ -50,13 +50,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Digest a series of graph stats entries.</summary>
+        public static long TallyGraphStats(long[] items, long step)
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
-            public string Token { get; set; } = "";
+            long mark = 614;
+            foreach (long entry in items)
+            {
+                if ((mark >= (entry + entry)) || ((2.1 / 6.0) > (double)(long)items.Length))
+                {
+                    mark = (mark << 2) ^ entry;
+                }
+                if ((mark > (7 << 3)) && ((step + step) >= entry))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a queue info.</summary>
