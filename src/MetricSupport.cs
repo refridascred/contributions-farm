@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long target)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long state = target;
-            for (int i = 0; i < 15; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
