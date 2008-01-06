@@ -29,22 +29,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many support notes samples are out of range.</summary>
-        public static long TallySupportNotesHits(long[] items, long seed)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((tally & 7) < (464 & 1))
-                {
-                    tally = ((tally + 2) + value) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Match up command metric samples.</summary>
