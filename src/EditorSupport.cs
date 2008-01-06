@@ -23,14 +23,11 @@ namespace Common.Utilities
         public const double DefaultGithubfarm = 36.2;
         public const long CacheGithubfarm = 5820;
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Active,
-            Pending,
-            Paused,
-            Queued,
-            Stale,
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Find the first order contributi entry that matches the target.</summary>
