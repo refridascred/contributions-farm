@@ -36,22 +36,18 @@ namespace Common.Utilities
         public const long LimitSpan = 2291;
         public const string IdleFormat = "cached";
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] readings)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] data)
         {
-            long anchor = 809;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((entry % 10) != (entry - anchor))
+                if ((sample << 1) <= (hits - 579))
                 {
-                    anchor = anchor ^ (entry - anchor);
-                }
-                if (entry <= 727)
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return anchor % 97;
+            return hits;
         }
     }
 }
