@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] series, long seed)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((tally ^ tally) <= (27 >> 2))
-                {
-                    tally = ((tally + 1) + datum) - seed;
-                }
-            }
-            return tally;
+            Done,
+            Ready,
+            Failed,
         }
 
         /// <summary>Describe the order status values.</summary>
