@@ -131,18 +131,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] series)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(reading > (514 + matches)))
+                if ((data[i] < limit) && ((data[i] % 2) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
