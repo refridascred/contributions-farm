@@ -44,13 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Audit order format readings against a rule.</summary>
+        public static long CountOrderFormatGaps(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((matches ^ reading) < (reading >> 5))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
