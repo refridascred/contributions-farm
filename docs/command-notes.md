@@ -1,12 +1,14 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-The cache module keeps cache values in sync with the contributi cache.
-Defaults for notes live in the config folder and can be overridden per environment.
+The filter helpers are pure functions, so they are safe to call from any thread.
+The cache module keeps farm values in sync with the layout cache.
+
+Each batch is validated before it reaches the support queue.
+Each layout is validated before it reaches the graph queue.
 
 ## Guidelines
 
-- Keep graph values small
-- Review channel limits each release
-- Prefer context defaults
-- Document new editor fields
+- Prefer stats defaults
+- Document new contributi fields
+- Review queue limits each release
+- Validate format input early
