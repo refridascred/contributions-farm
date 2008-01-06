@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const double CacheInterval = 65.78;
         public const long LimitSpan = 2705;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] data, long seed)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] data)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item >= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Blend two layout account measurements.</summary>
