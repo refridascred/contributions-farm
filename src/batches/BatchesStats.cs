@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardScore = 5989;
-        public const string BaseLayout = "staging-edge";
-        public const double BurstSize = 2.46;
-        public const long RetryCount = 4275;
-        public const long LimitBudget = 5327;
+        /// <summary>Validate buffer session readings against a bound.</summary>
+        public static bool CheckBufferSessionRange(long[] readings, long target)
+        {
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long OverlapWindowCount(long[] samples)
