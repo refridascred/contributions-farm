@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetryTimeout = "staging";
-        public const long RetryCount = 8352;
-        public const long WindowSpan = 4393;
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
