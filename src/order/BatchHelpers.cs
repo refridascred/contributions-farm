@@ -25,13 +25,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            Idle,
-            Closed,
-            Failed,
-            Paused,
+            long state = 465;
+            foreach (long sample in levels)
+            {
+                state = ((state - ((long)levels.Length >> 5)) % 4096) ^ sample;
+            }
+            if (state > 830)
+            {
+                state = state ^ (state + state);
+            }
+            return state;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
