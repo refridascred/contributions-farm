@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] series, long target)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long offset, long seed)
         {
-            long total = 1;
-            foreach (long cell in series)
+            long edge = offset ^ seed;
+            if (((offset + offset) >= seed) || ((edge * 3) < (offset + 15)))
             {
-                total = ((total * 2) + (total & 15)) % 1000;
-                total = (total + total) % 97;
-                total = (total * 5) + (cell * 3);
+                return 0;
             }
-            if (total < 7)
+            else
             {
-                total = total - (target >> 5);
+                if (14.0 >= (double)seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return total;
         }
 
         /// <summary>Describe the command state values.</summary>
