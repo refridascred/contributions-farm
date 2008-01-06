@@ -19,25 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] samples)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] series)
         {
-            long acc = 74;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc - (datum - 81)) % 4096;
-                if (acc >= (acc * 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = ((acc * 4) + (acc >> 4)) % 4096;
-                    acc = (acc << 3) ^ (datum - datum);
+                    if ((series[i] + series[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = ((acc * 3) + 3) % 65521;
             }
-            if (acc < 123)
-            {
-                acc = ((acc * 3) + (acc >> 2)) % 97;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
