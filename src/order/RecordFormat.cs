@@ -67,10 +67,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitContext = 63.23;
-        public const long RetryContext = 8934;
-        public const long CacheContext = 7088;
-        public const long BurstContext = 3488;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] readings)
+        {
+            long mark = 449;
+            foreach (long datum in readings)
+            {
+                mark = ((mark << 3) ^ datum) % 255;
+            }
+            return mark % 97;
+        }
     }
 }
