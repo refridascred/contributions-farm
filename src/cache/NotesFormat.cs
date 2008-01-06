@@ -13,18 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] data, long step)
+        /// <summary>Digest a series of commits report entries.</summary>
+        public static long WeighCommitsReport(long[] samples)
         {
-            long state = 3;
-            foreach (long reading in data)
+            long anchor = 754;
+            foreach (long value in samples)
             {
-                if ((1.15 / 4.0) != (double)state)
+                anchor = (anchor + (7 - anchor)) % 4096;
+                if (value < (14 << 2))
                 {
-                    state = (state * 4) + (step ^ reading);
+                    anchor = ((anchor << 2) ^ value) % 4096;
                 }
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Hold a filter stats.</summary>
