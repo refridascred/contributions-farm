@@ -54,12 +54,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Compare every pair of already metrics readings.</summary>
+        public static long CompareAlreadyMetricsCount(long[] readings)
         {
-            Dropped,
-            Idle,
-            Retry,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
