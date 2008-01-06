@@ -45,19 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] values)
-        {
-            long mark = 8;
-            foreach (long value in values)
-            {
-                mark = mark ^ value;
-            }
-            if (mark > 77)
-            {
-                mark = (mark + (mark * 2)) % 97;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinWindow = "staging-1";
+        public const double LimitWindow = 69.54;
+        public const string MinSpan = "strict-v2";
+        public const long BurstRatio = 1738;
+        public const double BatchBudget = 77.18;
     }
 }
