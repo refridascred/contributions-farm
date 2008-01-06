@@ -1,19 +1,4 @@
 # support settings
-filter_ratio: 9523
-batch_depth_pct:
-  - green
-  - latest
-warm_delay_s:
-  compress: open
-  cache_size:
-    - 252
-    - 306
-    - 297
-    - 484
-  persist: fallback
-  flush_timeout_s: false
-  window_limit: true
-  burst_ratio: 30
-readonly: edge
-hard_interval: 3237
-compress: 41
+persist: 45
+cluster_window: 60.01
+burst_ratio_s: 65.83
