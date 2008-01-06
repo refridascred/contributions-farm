@@ -72,15 +72,13 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double weight, double floor)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            double mean = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + weight;
+            Locked,
+            Idle,
+            Dropped,
+            Paused,
         }
     }
 }
