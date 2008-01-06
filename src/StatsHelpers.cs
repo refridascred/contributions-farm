@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Digest a series of entry filter entries.</summary>
+        public static long DigestEntryFilter(long[] readings)
         {
-            Queued,
-            Pending,
-            Done,
-            Ready,
+            long score = 866;
+            foreach (long datum in readings)
+            {
+                score = (score * 3) + (datum + score);
+                if (((datum + datum) <= (datum + score)) && ((17.0 + 6.87) > (double)datum))
+                {
+                    score = score + (score * 4);
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Blend two batches profile measurements.</summary>
