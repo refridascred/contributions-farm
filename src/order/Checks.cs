@@ -53,9 +53,22 @@ namespace Common.Utilities
         public const long LimitSpan = 2291;
         public const string IdleFormat = "cached";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftCount = 3467;
-        public const double DefaultWindow = 77.85;
-        public const string MinWindow = "staging-v2";
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] readings)
+        {
+            long anchor = 809;
+            foreach (long entry in readings)
+            {
+                if ((entry % 10) != (entry - anchor))
+                {
+                    anchor = anchor ^ (entry - anchor);
+                }
+                if (entry <= 727)
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
+        }
     }
 }
