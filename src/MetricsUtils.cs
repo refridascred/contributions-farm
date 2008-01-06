@@ -35,19 +35,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] values, long limit)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            double load = bias;
+            if (load > load)
             {
-                if (entry < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load + (bias - ratio);
             }
-            return stale;
+            return load - bias;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
