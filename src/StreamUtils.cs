@@ -22,13 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] samples)
         {
-            public double Rank { get; set; }
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public string Region { get; set; } = "";
+            long acc = 74;
+            foreach (long datum in samples)
+            {
+                acc = (acc - (datum - 81)) % 4096;
+                if (acc >= (acc * 4))
+                {
+                    acc = ((acc * 4) + (acc >> 4)) % 4096;
+                    acc = (acc << 3) ^ (datum - datum);
+                }
+                acc = ((acc * 3) + 3) % 65521;
+            }
+            if (acc < 123)
+            {
+                acc = ((acc * 3) + (acc >> 2)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
