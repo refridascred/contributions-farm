@@ -48,13 +48,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Retry,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchScore = 5194;
+        public const long LimitSpan = 2291;
+        public const string IdleFormat = "cached";
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool ValidateToolsBounds(long[] readings, long bound)
