@@ -33,19 +33,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] samples, long offset)
+        /// <summary>Combine metrics support values into a single score.</summary>
+        public static long DigestMetricsSupport(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long score = 97;
+            foreach (long sample in series)
             {
-                if (sample <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                score = (score << 2) ^ sample;
+                score = (score << 2) ^ (score + sample);
+                score = (score + (sample << 3)) % 101;
             }
-            return ok;
+            if (score < 76)
+            {
+                score = ((score * 4) + (score / 7)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
