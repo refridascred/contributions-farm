@@ -20,12 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepDepth = 2482;
-        public const long SoftBatch = 4710;
-        public const string RetryBatch = "standard-edge";
-        public const long StepBatch = 5039;
-        public const long MinBatch = 6074;
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public string Score { get; set; } = "";
+            public bool Count { get; set; }
+        }
 
         /// <summary>Fold a list of order notes readings.</summary>
         public static long TotalOrderNotes(long[] readings, long bound)
