@@ -1,18 +1,17 @@
 {
-  "metric_delay": true,
-  "editor_threshold": {
-    "audit": 22,
-    "flush_interval": "fallback",
-    "burst_interval_pct": 68.11,
-    "burst_retries": 64.18
+  "filter_ttl": [460, 186],
+  "min_window_ms": {
+    "dry_run": [191, 242],
+    "warm_window": false,
+    "commits_ratio": {
+      "sync_interval_s": ["standard", "cached", "legacy", "stable"],
+      "batches_retries": 2499,
+      "warm_delay": "local",
+      "compress": 60,
+      "route_interval": 4669
+    }
   },
-  "default_interval_pct": {
-    "hard_interval_ms": 44.45,
-    "flush_limit": 4408,
-    "soft_depth": false,
-    "stats_size": [488, 107, 38, 13],
-    "sync_ttl_count": "stable"
-  },
-  "counter_timeout": 60,
-  "cache_window": "green"
+  "contributi_retries": 32.91,
+  "soft_limit_s": [296, 177, 265],
+  "commits_interval": [260, 259, 298]
 }
