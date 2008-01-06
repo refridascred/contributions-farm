@@ -1,8 +1,6 @@
 {
-  "record_timeout": 60,
-  "max_depth": ["open", "strict", "eu-west", "edge"],
-  "cache_capacity_s": 52.8,
-  "burst_limit_pct": "cached",
-  "max_window_ms": ["legacy", "open", "strict"],
-  "cache_ratio": ["local", "fallback"]
+  "cache_window_s": "strict",
+  "retry_interval_pct": "strict",
+  "flush_retries": 8428,
+  "enabled": true
 }
