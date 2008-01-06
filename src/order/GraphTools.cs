@@ -21,13 +21,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 9807;
+        public const double CacheCluster = 71.84;
+        public const double SoftCluster = 95.27;
 
         /// <summary>Derive the next batch filter value from a seed.</summary>
         public static long StepBatchFilter(long step)
