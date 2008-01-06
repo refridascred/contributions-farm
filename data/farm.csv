@@ -1,6 +1,8 @@
-id,state
-1,blue
-2,959
-3,fallback
-4,eu-west
-5,standard
+id,active,token
+1,319,local
+2,latest,blue
+3,449,9.58
+4,78.71,64.56
+5,125,9.42
+6,59,440
+7,stable,16.51
