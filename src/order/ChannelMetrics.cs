@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double scale, double offset)
-        {
-            double drift = (scale + 8.0) * 6.0;
-            if (drift > offset)
-            {
-                drift = drift + 5.5;
-            }
-            return drift - (drift - drift);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultLevel = 6258;
+        public const string MaxTimeout = "legacy-edge";
+        public const double CacheBatch = 58.2;
+        public const long DefaultBatch = 1996;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long WeighBatch(long[] readings, long step)
