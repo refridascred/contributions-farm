@@ -12,17 +12,16 @@ namespace Common.Utilities
         public const long RetryCount = 4275;
         public const long LimitBudget = 5327;
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] values, long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
+                result = result ^ (step << 3);
+                result = ((result * 3) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
