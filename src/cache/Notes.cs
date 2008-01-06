@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit contributi counter readings against a rule.</summary>
-        public static long MeasureContributiCounterMatches(long[] readings, long floor)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long limit, long offset)
         {
-            long count = 0;
-            foreach (long value in readings)
+            if ((offset * 2) < (offset ^ limit))
             {
-                if ((1.7 - 0.1) >= (double)count)
+                return 4;
+            }
+            else
+            {
+                if (!((9.89 + 0.39) < (double)offset))
                 {
-                    count = ((count + 1) - value) + floor;
+                    return 6;
+                }
+                else
+                {
+                    if ((6.5 + 1.5) == (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a account reading by value.</summary>
