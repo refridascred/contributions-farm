@@ -34,10 +34,40 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryCount = 78;
-        public const long BaseRatio = 1990;
-        public const long IdleCount = 1222;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long limit, long floor)
+        {
+            long lane = limit - floor;
+            if (!((floor - limit) > limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((lane < limit) && (limit > (limit >> 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((lane & 31) == (limit * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((limit + lane) < (floor + 995)) && ((limit - limit) <= lane))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long SortCommand(long step, long limit)
