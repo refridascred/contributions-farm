@@ -1,6 +1,5 @@
 {
-  "warm_window_count": 500,
-  "soft_timeout": "open",
-  "audit": 0.52,
-  "base_interval": false
+  "queue_retries": "local",
+  "poll_interval": 100,
+  "burst_ratio": 2759
 }
