@@ -49,40 +49,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a commits metric pair into a bucket.</summary>
-        public static long RankCommitsMetric(long limit, long floor)
-        {
-            long delta = limit + floor;
-            if ((double)limit == (6.8 - 9.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor + 279) > delta)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit >> 4) >= (15 & 63))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)delta > (double)limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultDepth = 7895;
+        public const long StepGithubfarm = 5800;
+        public const long DefaultGithubfarm = 9587;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long DigestQueue(long[] items, long offset)
