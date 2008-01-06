@@ -52,17 +52,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] data, long bound)
+        /// <summary>Validate context layout readings against a bound.</summary>
+        public static bool CheckContextLayoutBounds(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (data[i] >= bound)
+                if (value > seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
