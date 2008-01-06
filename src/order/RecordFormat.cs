@@ -13,11 +13,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double gain, double span)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            double scale = gain;
-            return (scale - gain) + span;
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Adjust a batch reading.</summary>
