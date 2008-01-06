@@ -49,15 +49,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] items, long origin)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long total = -6;
-            foreach (long entry in items)
-            {
-                total = (total ^ (entry % 7)) + origin;
-            }
-            return total;
+            public string Offset { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many context filter samples are out of range.</summary>
