@@ -33,22 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] values)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((7.37 / 7.0) >= (16.0 / 8.0))
-                {
-                    matches = (matches + 3) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            New,
+            Paused,
+            Stale,
         }
 
         /// <summary>Fold a list of editor window readings.</summary>
