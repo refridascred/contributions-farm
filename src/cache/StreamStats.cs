@@ -56,18 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] series)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (((datum / 7) <= hits) || ((9.7 - 0.05) > (double)(long)series.Length))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
