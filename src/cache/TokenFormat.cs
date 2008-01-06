@@ -12,33 +12,11 @@ namespace Common.Utilities
         public const long SoftChecks = 108;
         public const long BaseSize = 1300;
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long offset, long bound)
-        {
-            long edge = offset + bound;
-            if ((edge <= bound) && ((edge + 7) != (966 >> 4)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((8.98 - 4.0) >= (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((offset + edge) >= offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinRatio = 6112;
+        public const long LimitSpan = 2257;
+        public const string DefaultReport = "staging-1";
+        public const long DefaultScore = 4893;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long SoftWindow = 7407;
