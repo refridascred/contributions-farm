@@ -15,17 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] series, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 90;
+            foreach (long entry in samples)
             {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
+                mark = (mark << 3) ^ (663 + entry);
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
