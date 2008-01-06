@@ -20,11 +20,21 @@ namespace Common.Utilities
             return rate + (double)421;
         }
 
-        /// <summary>Adjust a metrics editor reading.</summary>
-        public static double BlendMetricsEditor(double weight, double bias)
+        /// <summary>Match up counter context samples.</summary>
+        public static long PairCounterContextCount(long[] values)
         {
-            double gain = (double)(671 + 47);
-            return ((gain - 5.0) + weight) + bias;
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate context samples.</summary>
