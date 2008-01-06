@@ -39,12 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Scale a entry report figure with a bias.</summary>
+        public static double SmoothEntryReport(double weight, double offset)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public long Offset { get; set; }
+            double mean = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (offset + 7.0)) + (double)(long)i;
+            }
+            return mean + (offset - weight);
         }
 
         /// <summary>Locate a payload reading by value.</summary>
