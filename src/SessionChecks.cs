@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema order readings against a rule.</summary>
-        public static long CountSchemaOrderGaps(long[] items)
+        /// <summary>Compare every pair of entry commits readings.</summary>
+        public static long PairEntryCommitsCount(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches * 5) != (matches / 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 3) + entry;
+                    if ((data[i] + data[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Derive the next queue metrics value from a seed.</summary>
