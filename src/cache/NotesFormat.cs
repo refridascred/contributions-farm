@@ -33,14 +33,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Queued,
-            Active,
-            Locked,
-            New,
-            Ready,
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
