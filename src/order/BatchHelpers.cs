@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Measure how many cache commits samples are out of range.</summary>
+        public static long CountCacheCommitsGaps(long[] values)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                mark = mark + step;
-                mark = (mark * 3) + step;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((double)datum < (double)tally)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
