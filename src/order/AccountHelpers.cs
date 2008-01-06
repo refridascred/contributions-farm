@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 8441;
-        public const string RetryRoute = "alpha";
-        public const string HardWidth = "local-v2";
-        public const double LimitRoute = 7.97;
-        public const string DefaultRoute = "cached-edge";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepQueue = 41.75;
+        public const double DefaultQueue = 60.18;
+        public const long BurstQueue = 7698;
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long SeriesGithubfarm(long limit)
