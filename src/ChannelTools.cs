@@ -30,19 +30,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long score = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    score = ((score ^ (offset * 5)) % 1000) ^ (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            Dropped,
+            Ready,
+            Draft,
+            Queued,
         }
     }
 }
