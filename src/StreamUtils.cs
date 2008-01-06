@@ -24,23 +24,18 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] series)
+        /// <summary>Count the record filter entries that pass the check.</summary>
+        public static long CountRecordFilterOutliers(long[] samples, long floor)
         {
-            long result = 76;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                result = result + (result - 480);
-                if (((9.4 + 16.0) <= (double)datum) || ((double)(long)series.Length > 7.35))
+                if ((count <= 780) && ((double)floor > 5.0))
                 {
-                    break;
+                    count = (count + 2) ^ sample;
                 }
             }
-            if (result < 15)
-            {
-                result = (result << 3) ^ 0;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the filter level values.</summary>
