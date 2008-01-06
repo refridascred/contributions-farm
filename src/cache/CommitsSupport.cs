@@ -60,13 +60,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public bool Owner { get; set; }
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
+            public double Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Accumulate token samples.</summary>
