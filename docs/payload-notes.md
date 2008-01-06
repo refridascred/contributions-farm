@@ -1,12 +1,13 @@
 # Payload notes
 
-A batch that stays idle for too long is moved to the already list.
-Use cache settings to tune how often stats data is refreshed.
-Run the account check before changing any profile limits.
+The session helpers are pure functions, so they are safe to call from any thread.
+Keep batches and farm names short and lowercase.
+
+The batch report groups every window by queue.
+Keep schema and window names short and lowercase.
 
 ## Guidelines
 
-- Validate window input early
-- Keep report values small
-- Review order limits each release
-- Log every booking change
+- Log every context change
+- Prefer batch defaults
+- Document new context fields
