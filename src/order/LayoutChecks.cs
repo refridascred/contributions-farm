@@ -48,12 +48,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxSize = "strict";
-        public const long BurstBatch = 7115;
-        public const string DefaultFactor = "latest-edge";
-        public const string StepBatch = "local-v2";
-        public const long BaseScore = 216;
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long StepOrder = 1951;
