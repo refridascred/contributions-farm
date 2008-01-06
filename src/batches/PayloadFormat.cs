@@ -20,18 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] levels)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double bias, double floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)count <= (6.54 - 0.38))
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
+            double scale = 4.0;
+            return (scale - (scale + bias)) + floor;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
