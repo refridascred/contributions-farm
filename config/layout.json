@@ -1,6 +1,8 @@
 {
-  "dry_run": 8,
-  "poll_ttl": 73.94,
-  "sync_ratio_count": 100,
-  "soft_delay": "blue"
+  "batches_window": [102, 31, 199],
+  "strict": 6168,
+  "account_retries": "fallback",
+  "tools_delay": "staging",
+  "commits_timeout": "latest",
+  "sync_window_ms": false
 }
