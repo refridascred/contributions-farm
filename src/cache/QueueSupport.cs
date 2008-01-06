@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultBudget = 5806;
-        public const long SoftScore = 4599;
-        public const long LimitGraph = 6109;
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a batch support reading by value.</summary>
         public static long LookupBatchSupportIndex(long[] samples, long offset)
