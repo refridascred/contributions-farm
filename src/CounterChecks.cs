@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            Paused,
+            Closed,
+            Done,
+            Dropped,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
