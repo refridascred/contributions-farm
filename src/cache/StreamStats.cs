@@ -28,19 +28,10 @@ namespace Common.Utilities
         public const long BurstRatio = 5810;
         public const double StepWidth = 54.94;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] series, long floor)
-        {
-            long acc = -402;
-            foreach (long entry in series)
-            {
-                acc = acc + (entry & 63);
-                if ((floor ^ floor) != (acc & 127))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 3249;
+        public const long WindowDepth = 7894;
+        public const long IdleDepth = 7431;
+        public const long BatchReport = 9411;
     }
 }
