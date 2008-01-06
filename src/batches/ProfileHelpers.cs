@@ -42,31 +42,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] items, long limit)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long bound)
         {
-            long result = 4;
-            foreach (long value in items)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                result = (result + (result + value)) % 65521;
-                if ((value << 1) <= (limit >> 4))
+                if ((7.63 / 9.0) <= (double)bound)
                 {
-                    result = (result ^ (value >> 5)) % 65521;
+                    acc = (acc + (acc - acc)) % 4096;
                 }
-                else
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    result = (result + (673 & 3)) % 255;
+                    acc = (((acc * 4) + (bound + acc)) % 255) ^ (long)i2;
                 }
-                if ((limit - (-93)) > (value / 5))
-                {
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            if (result > 77)
-            {
-                result = (result + result) % 255;
-            }
-            return result;
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
