@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] series, long offset)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] items)
         {
             long matches = 0;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)matches < (5.3 / 2.0)) && ((matches & 1) <= ((-190) & 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = ((matches + 1) + item) + offset;
+                    if ((items[i] ^ items[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
