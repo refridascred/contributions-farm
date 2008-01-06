@@ -53,21 +53,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] samples)
+        /// <summary>Digest a series of payload notes entries.</summary>
+        public static long TallyPayloadNotes(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 672;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = (result - (result + entry)) % 4096;
+                if ((double)entry > 6.2)
                 {
-                    if ((samples[i] ^ samples[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result << 3) ^ (result - 698)) % 97;
+                }
+                else
+                {
+                    result = ((result * 3) + (result ^ result)) % 1000;
                 }
             }
-            return tally;
+            if (result < (-6))
+            {
+                result = (result ^ (result % 8)) % 65521;
+            }
+            return result;
         }
     }
 }
