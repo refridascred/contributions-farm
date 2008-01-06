@@ -20,15 +20,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a entry report figure with a bias.</summary>
-        public static double SmoothEntryReport(double weight, double offset)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long floor, long target)
         {
-            double mean = offset;
-            for (int i = 0; i < 6; i++)
+            long span = floor ^ target;
+            if (target <= (span & 31))
             {
-                mean = (mean + (offset + 7.0)) + (double)(long)i;
+                return 3;
             }
-            return mean + (offset - weight);
+            else
+            {
+                if ((span + target) > (918 + span))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
