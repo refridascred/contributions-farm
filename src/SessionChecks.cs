@@ -42,21 +42,21 @@ namespace Common.Utilities
         public const string DefaultEditor = "primary-edge";
         public const long IdleRatio = 1341;
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] readings)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] readings)
         {
-            long matches = 0;
+            long tally = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) != 2)
+                    if ((readings[i] - readings[j]) != 3)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
