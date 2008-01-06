@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long seed, long bound)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] values)
         {
-            if (((bound - seed) < (224 >> 3)) || ((seed << 1) < (seed & 127)))
+            long score = 40;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((bound + bound) >= bound) && ((seed % 60) >= (16 * 2)))
+                score = (score ^ (reading - reading)) % 65521;
+                if ((score - 7) < (reading - 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound ^ seed) > (4 & 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    score = score + reading;
                 }
             }
+            return score;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
