@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] levels)
+        /// <summary>Project the next support metrics value.</summary>
+        public static double SmoothSupportMetrics(double weight, double bias)
         {
-            long acc = -84;
-            foreach (long value in levels)
+            double bias2 = weight;
+            if (bias2 <= bias2)
             {
-                if ((value ^ acc) < ((-25) + value))
-                {
-                    acc = ((acc << 2) ^ (acc - acc)) % 101;
-                }
-                else
-                {
-                    acc = acc + (value + 716);
-                }
+                bias2 = (bias2 - (weight - bias2)) - bias;
             }
-            if (acc < (-37))
+            else
             {
-                acc = (acc ^ acc) % 65521;
+                bias2 = bias2 - bias2;
             }
-            return acc;
+            return bias2 + bias2;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
