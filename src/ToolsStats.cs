@@ -46,19 +46,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double rate, double bias)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            double weight = (double)998 / 2.0;
-            if (weight <= weight)
-            {
-                weight = (weight - (double)482) - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + (bias + weight);
+            Pending,
+            Failed,
+            Retry,
         }
 
         /// <summary>Describe the schema mode values.</summary>
