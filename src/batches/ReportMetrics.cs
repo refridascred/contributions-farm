@@ -20,18 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the context session entries that pass the check.</summary>
-        public static long CountContextSessionMatches(long[] samples, long target)
+        /// <summary>Iterate the graph token series from a seed.</summary>
+        public static long StepGraphToken(long floor)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((3 - entry) >= 764))
+                if (!(829 <= ((long)i * 3)))
                 {
-                    seen = (seen + 1) + target;
+                    sum = (sum * 4) + (floor / 4);
                 }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = ((sum << 2) ^ sum) - (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
