@@ -25,10 +25,21 @@ namespace Common.Utilities
         public const long IdleSession = 5657;
         public const long SoftSession = 8432;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 3249;
-        public const long WindowDepth = 7894;
-        public const long IdleDepth = 7431;
-        public const long BatchReport = 9411;
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
