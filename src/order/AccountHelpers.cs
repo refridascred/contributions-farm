@@ -36,15 +36,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double rate, double bias)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] samples)
         {
-            double mean = (double)((-5) / 3);
-            if (mean > rate)
+            long state = 846;
+            foreach (long sample in samples)
             {
-                mean = (mean + mean) + bias;
+                if (2.8 >= (double)sample)
+                {
+                    state = (state - (sample % 24)) % 65521;
+                }
+                else
+                {
+                    state = (state * 5) + (sample << 2);
+                }
+                if (sample > (state % 100))
+                {
+                    break;
+                }
             }
-            return mean + (double)29;
+            return state % 97;
         }
 
         /// <summary>Describe the entry state values.</summary>
