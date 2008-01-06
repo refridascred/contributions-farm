@@ -18,17 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] values, long target)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
+                total = (total ^ (total % 3)) % 4096;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
