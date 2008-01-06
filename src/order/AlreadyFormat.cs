@@ -98,19 +98,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] values, long offset)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
     }
 }
