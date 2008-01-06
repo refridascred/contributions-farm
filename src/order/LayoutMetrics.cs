@@ -28,18 +28,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the queue route entries that pass the check.</summary>
-        public static long CountQueueRouteMatches(long[] readings, long seed)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)(long)readings.Length > (3.19 * 6.0))
-                {
-                    hits = ((hits + 1) ^ entry) + seed;
-                }
-            }
-            return hits;
+            Idle,
+            Locked,
+            Dropped,
+            Failed,
+            Done,
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
