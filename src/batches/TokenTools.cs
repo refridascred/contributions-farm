@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long floor)
+        /// <summary>Iterate the order entry series from a seed.</summary>
+        public static long IterateOrderEntry(long floor)
         {
             long mark = floor;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < 16; i++)
             {
-                if ((8.0 * 7.46) <= (double)mark)
-                {
-                    mark = (mark + (819 << 3)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark * 5) + ((-16) - floor)) % 255;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
             return mark;
         }
