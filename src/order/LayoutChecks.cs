@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] values, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long result = 695;
+            foreach (long cell in readings)
             {
-                if (item > floor)
+                if (!((4.0 * 6.3) != (double)step))
                 {
-                    ready = false;
-                    break;
+                    result = ((result * 5) + (323 * 5)) + cell;
                 }
             }
-            return ready;
+            return result % 97;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
