@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long seed, long seed2)
         {
-            New,
-            Draft,
-            Synced,
+            if ((9.0 / 9.0) == (double)seed2)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed - seed) > (seed2 - 49))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed2 > (5.0 - 2.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (1 >= seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a queue header.</summary>
