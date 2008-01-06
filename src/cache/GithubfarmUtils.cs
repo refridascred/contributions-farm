@@ -18,11 +18,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftScore = 2402;
-        public const long BatchLayout = 1228;
-        public const long BatchInterval = 1534;
-        public const long BatchFactor = 5367;
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long ClassifyRecord(long bound, long seed)
