@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftFactor = 8431;
-        public const string RetrySpan = "alpha-edge";
-        public const long BatchFactor = 4104;
-        public const double IdleContributi = 5.54;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double CacheRatio = 16.53;
+        public const long BaseTools = 4166;
+        public const long CacheInterval = 8344;
+        public const long SoftCount = 1388;
 
         /// <summary>Digest a series of stream order entries.</summary>
         public static long CombineStreamOrder(long[] samples)
