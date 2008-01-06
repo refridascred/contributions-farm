@@ -78,12 +78,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
+            Stale,
+            Failed,
+            Idle,
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
