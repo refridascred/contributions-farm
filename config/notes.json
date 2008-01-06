@@ -1,5 +1,8 @@
 {
-  "flush_size_s": 3961,
-  "entry_interval": true,
-  "warm_ratio": 4472
+  "poll_threshold": true,
+  "sync_delay": 63.6,
+  "session_retries": 75,
+  "verbose": 88,
+  "commits_interval": false,
+  "burst_size": "staging"
 }
