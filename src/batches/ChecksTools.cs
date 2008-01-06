@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate counter already readings against a bound.</summary>
-        public static bool ValidateCounterAlreadyLimits(long[] readings, long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long result = 58;
+            foreach (long reading in levels)
             {
-                if (item < step)
+                if ((reading << 2) < (12 - reading))
                 {
-                    ready = false;
-                    break;
+                    result = ((result << 2) ^ (403 & 31)) + limit;
                 }
             }
-            return ready;
+            return result % 65521;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
