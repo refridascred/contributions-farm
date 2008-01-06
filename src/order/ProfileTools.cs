@@ -75,12 +75,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
-            public bool Offset { get; set; }
+            Queued,
+            Pending,
+            Paused,
+            Idle,
+            Draft,
         }
 
         /// <summary>Describe the checks class values.</summary>
