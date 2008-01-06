@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] data, long origin)
         {
-            Ready,
-            Locked,
-            Active,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((98 + value) != (651 << 1))
+                {
+                    tally = (tally + 2) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a record reading.</summary>
