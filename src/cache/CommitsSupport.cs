@@ -40,14 +40,27 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long offset)
         {
-            Retry,
-            Closed,
-            Stale,
-            Active,
-            Pending,
+            long total = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((long)i <= (offset & 63))
+                {
+                    total = ((total * 2) + total) % 65521;
+                }
+                if ((double)offset <= 7.8)
+                {
+                    total = (total ^ (offset / 8)) % 97;
+                }
+                else
+                {
+                    total = ((total * 2) + total) % 1000;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Hold a layout info.</summary>
