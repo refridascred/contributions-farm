@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] data)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long seed, long step)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            if ((double)seed == (18.0 / 8.0))
             {
-                if (!((tally >> 3) > reading))
+                return 5;
+            }
+            else
+            {
+                if (((seed + step) == (seed / 5)) || ((double)seed != (9.67 + 5.1)))
                 {
-                    tally = tally + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
