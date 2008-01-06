@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 2740;
-        public const string LimitRatio = "legacy-edge";
-        public const string DefaultSize = "stable-1";
-        public const long WindowSupport = 6183;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] readings, long offset)
+        {
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long DefaultDepth = 3481;
