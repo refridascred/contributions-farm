@@ -36,11 +36,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 782;
-        public const long SoftAlready = 9664;
-        public const long BaseBudget = 2829;
-        public const long BaseAlready = 1418;
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Draft,
+            Done,
+            Failed,
+            New,
+        }
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
