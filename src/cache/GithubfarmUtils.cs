@@ -27,12 +27,38 @@ namespace Common.Utilities
         public const long BatchInterval = 1534;
         public const long BatchFactor = 5367;
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long bound, long seed)
         {
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Score { get; set; }
+            if ((seed - seed) > (bound & 15))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound >= 7.0)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(bound > (bound - seed)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound % 5) != (seed + bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
