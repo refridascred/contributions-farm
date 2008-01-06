@@ -43,19 +43,11 @@ namespace Common.Utilities
         public const long LimitSpan = 2291;
         public const string IdleFormat = "cached";
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] readings, long bound)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Mode { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
