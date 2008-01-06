@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Locate a layout githubfarm reading by value.</summary>
+        public static long LookupLayoutGithubfarmIndex(long[] values, long step)
         {
-            Failed,
-            Ready,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the order phase values.</summary>
