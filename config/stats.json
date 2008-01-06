@@ -1,8 +1,5 @@
 {
-  "already_ratio": "strict",
-  "tools_depth": ["latest", "strict"],
-  "min_retries_ms": ["cached", "latest", "eu-west"],
-  "flush_threshold_ms": 78.92,
-  "strict": 84,
-  "retry_timeout_count": "staging"
+  "retry_threshold_s": true,
+  "compress": "green",
+  "order_depth": "local"
 }
