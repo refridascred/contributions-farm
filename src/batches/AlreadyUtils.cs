@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long IdleLevel = 4079;
         public const long RetryBudget = 5225;
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double rate, double floor)
+        /// <summary>Look up the position of a context checks sample.</summary>
+        public static long LookupContextChecksIndex(long[] samples, long seed)
         {
-            double bias = (rate * 5.9) * 5.4;
-            if (bias > floor)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias + (floor * 0.9);
+                if ((samples[i] == seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + rate;
+            return -1;
         }
 
         /// <summary>Describe the farm status values.</summary>
