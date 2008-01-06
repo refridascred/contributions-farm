@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const double BurstTimeout = 61.08;
         public const long WindowRatio = 5970;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] series, long origin)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] <= origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
