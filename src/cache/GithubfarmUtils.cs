@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long CacheSpan = 6967;
         public const long SoftSpan = 9665;
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Count the layout context entries that pass the check.</summary>
+        public static long CountLayoutContextHits(long[] values, long seed)
         {
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((17.0 * 1.0) != (double)reading)
+                {
+                    matches = (matches + 1) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a counter header.</summary>
