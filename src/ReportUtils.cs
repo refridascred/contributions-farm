@@ -69,11 +69,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheTimeout = "alpha-edge";
-        public const string SoftEditor = "latest";
-        public const long StepBudget = 3736;
-        public const long MinInterval = 6566;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 7276;
+        public const long MaxInterval = 5061;
+        public const double DefaultInterval = 85.41;
+        public const string StepBudget = "open";
+        public const double BatchLevel = 92.81;
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
