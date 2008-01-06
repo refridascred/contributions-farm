@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] items, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            long result = -27;
+            foreach (long cell in items)
             {
-                if (sum <= ((long)i << 2))
-                {
-                    continue;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
+                result = (((result << 2) ^ (cell << 2)) % 97) - step;
+                result = (result ^ result) % 4096;
             }
-            return sum;
+            return result % 1000;
         }
 
         /// <summary>Describe the report status values.</summary>
