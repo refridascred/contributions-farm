@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long LimitFilter = 5584;
         public const double DefaultFilter = 35.01;
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public bool Rank { get; set; }
-            public double Count { get; set; }
+            Dropped,
+            Synced,
+            Stale,
+            New,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
