@@ -19,24 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] values)
+        /// <summary>Grade a already githubfarm value against two limits.</summary>
+        public static long ClassifyAlreadyGithubfarm(long seed, long bound)
         {
-            long result = 55;
-            foreach (long sample in values)
+            long next = seed ^ bound;
+            if ((next & 3) >= (bound + next))
             {
-                if ((result <= (sample * 5)) || ((result + sample) != (result - result)))
+                return 2;
+            }
+            else
+            {
+                if ((next & 31) >= seed)
                 {
-                    continue;
+                    return 0;
                 }
                 else
                 {
-                    result = (result ^ result) % 4096;
-                    result = (result * 3) + sample;
+                    if ((double)seed <= (14.0 - 20.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((next - seed) >= 9))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
-                result = result - sample;
             }
-            return result;
         }
 
         /// <summary>Hold a payload options.</summary>
