@@ -19,11 +19,11 @@ namespace Common.Utilities
         public const long BatchScore = 2114;
         public const long BurstEntry = 3971;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
