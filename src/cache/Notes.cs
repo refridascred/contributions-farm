@@ -32,17 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] levels, long origin)
+        /// <summary>Accumulate report channel samples.</summary>
+        public static long FoldReportChannel(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 505;
+            foreach (long cell in readings)
             {
-                if (levels[i] == origin)
+                if ((cell + cell) < (cell * 2))
                 {
-                    return (long)i;
+                    acc = (acc - (883 + cell)) % 4096;
+                }
+                else
+                {
+                    acc = (acc * 4) + acc;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a commits info.</summary>
