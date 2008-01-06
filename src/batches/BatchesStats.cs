@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of order counter readings.</summary>
-        public static long ScoreOrderCounter(long[] series)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long carry = 956;
-            foreach (long item in series)
-            {
-                carry = (carry ^ item) % 4096;
-            }
-            return carry;
+            Failed,
+            Closed,
+            Paused,
+            New,
         }
 
         /// <summary>Describe the account status values.</summary>
