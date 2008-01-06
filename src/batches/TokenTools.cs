@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] samples)
         {
-            long mix = 39;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (((entry << 3) >= (mix * 5)) || ((12.0 / 5.0) == (double)mix))
+                if ((reading >= (reading & 31)) && ((16.0 / 2.0) != (double)tally))
                 {
-                    mix = mix ^ (entry + mix);
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
