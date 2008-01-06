@@ -1,13 +1,14 @@
 # Command notes
 
-Each counter is validated before it reaches the order queue.
-When a cache fails, the layout handler retries a few times before giving up.
+When a cache fails, the window handler retries a few times before giving up.
+A window that stays idle for too long is moved to the queue list.
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-The stream report groups every channel by payload.
+The batch report groups every cluster by already.
+A route that stays idle for too long is moved to the command list.
+The counter module keeps metric values in sync with the command cache.
 
 ## Guidelines
 
-- Review already limits each release
-- Prefer counter defaults
-- Document new schema fields
+- Log every record change
+- Document new commits fields
+- Validate batches input early
