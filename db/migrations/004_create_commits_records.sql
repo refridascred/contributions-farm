@@ -1,11 +1,11 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    score REAL NOT NULL DEFAULT 0,
-    count INTEGER NOT NULL DEFAULT 0,
+    rank INTEGER,
+    created_at TIMESTAMP,
+    region TEXT,
+    token TEXT,
     owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
-
-INSERT INTO commits_records (score, count, owner) VALUES (11.09, 13, 'local');
+CREATE INDEX IF NOT EXISTS idx_commits_records_rank ON commits_records (rank);
