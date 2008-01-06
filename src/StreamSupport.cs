@@ -47,39 +47,19 @@ namespace Common.Utilities
             return gain - (gain * 9.9);
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long seed, long step)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double gain, double floor)
         {
-            long lane = seed ^ step;
-            if ((step << 1) != (seed / 4))
+            double drift = gain;
+            if (drift <= floor)
             {
-                return 3;
+                drift = drift - (6.56 + gain);
             }
             else
             {
-                if ((lane >> 2) >= (lane >> 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (1.7 < (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step + 323) <= (seed % 7))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                drift = drift - (double)6;
             }
+            return drift - (drift - 10.0);
         }
     }
 }
