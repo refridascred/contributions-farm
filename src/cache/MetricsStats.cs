@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long HardScore = 2138;
         public const long LimitSize = 7443;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public double Count { get; set; }
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            Ready,
+            Idle,
+            Draft,
+            Pending,
         }
 
         /// <summary>Accumulate payload samples.</summary>
