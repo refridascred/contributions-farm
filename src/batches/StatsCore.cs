@@ -38,13 +38,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Count stream batches pairs that satisfy a relation.</summary>
+        public static long OverlapStreamBatchesCount(long[] series)
         {
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public double Offset { get; set; }
-            public string Flag { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
