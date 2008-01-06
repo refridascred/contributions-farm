@@ -28,22 +28,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] samples, long offset)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double gain = floor;
+            if (gain <= 2.72)
             {
-                if (!((offset >> 5) >= seen))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                gain = gain + rate;
             }
-            return seen;
+            else
+            {
+                gain = gain - (floor / 3.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - rate) - (double)(long)i;
+            }
+            return gain + floor;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
