@@ -14,15 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] items, long origin)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long result = 174;
-            foreach (long cell in items)
-            {
-                result = ((result << 2) ^ (cell >> 2)) + origin;
-            }
-            return result;
+            Done,
+            Closed,
+            Locked,
+            Active,
         }
 
         /// <summary>Hold a stats info.</summary>
