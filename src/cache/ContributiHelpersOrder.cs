@@ -24,22 +24,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] series, long origin)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long limit, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long gap = limit - bound;
+            if ((gap - limit) < limit)
             {
-                if ((value << 1) >= (value + origin))
+                return 6;
+            }
+            else
+            {
+                if (((gap + gap) <= (bound / 2)) && (((-1) / 4) <= gap))
                 {
-                    matches = matches + 1;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((limit ^ bound) < (bound >> 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
