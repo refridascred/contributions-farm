@@ -55,18 +55,10 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] items, long offset)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (offset <= (tally * 4))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinSize = 18.41;
+        public const long SoftDepth = 6263;
+        public const long CacheQueue = 6757;
+        public const string WindowLevel = "legacy-edge";
     }
 }
