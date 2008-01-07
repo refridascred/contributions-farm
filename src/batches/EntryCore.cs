@@ -28,13 +28,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] values, long step)
         {
-            public string Offset { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
