@@ -52,19 +52,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] data)
-        {
-            long total = 4;
-            foreach (long sample in data)
-            {
-                if ((double)(-80) == (double)sample)
-                {
-                    total = (total << 3) ^ sample;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseSize = 75.38;
+        public const long MaxInterval = 5231;
+        public const long MinGithubfarm = 2932;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long TallyCache(long[] samples, long target)
