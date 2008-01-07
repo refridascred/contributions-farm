@@ -11,32 +11,22 @@ namespace Common.Utilities
         public const long SoftCommits = 370;
         public const string LimitCommits = "cached-1";
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long bound, long seed)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] samples, long offset)
         {
-            long gap = bound ^ seed;
-            if ((bound * 3) != (seed / 4))
+            long carry = 77;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (gap > seed)
+                if (1.2 > (double)offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound - 9) <= 96)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = (carry + (item * 4)) % 97;
                 }
             }
+            if (carry > 8)
+            {
+                carry = (carry + (960 % 10)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
