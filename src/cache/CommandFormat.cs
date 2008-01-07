@@ -12,25 +12,19 @@ namespace Common.Utilities
         public const long MinTimeout = 7007;
         public const long StepScore = 1346;
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long floor, long target)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double ratio, double offset)
         {
-            long span = floor ^ target;
-            if (target <= (span & 31))
+            double bias = (double)772 / 3.0;
+            if (bias <= bias)
             {
-                return 3;
+                bias = bias - (ratio + ratio);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((span + target) > (918 + span))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
+                bias = (bias + ratio) + (double)(long)i;
             }
+            return bias + offset;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
