@@ -1,5 +1,24 @@
 # support settings
-default_timeout: false
-batch_size: 90.19
-flush_threshold: 80.92
-editor_window: 77.76
+verbose: true
+dry_run: stable
+batches_delay:
+  readonly: true
+  flush_depth_pct:
+    idle_interval: false
+    dry_run: edge
+    min_delay: false
+    flush_size_s: strict
+  min_ratio:
+    retry_size_s: green
+    soft_interval: 60
+    default_window_ms: false
+    cache_retries_ms: open
+    hard_depth: 2898
+    poll_interval_ms: blue
+  sync_delay_count:
+    - 255
+    - 126
+    - 189
+  default_ratio: 5724
+  sync_ttl: fallback
+checks_retries: true
