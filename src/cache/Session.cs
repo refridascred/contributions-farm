@@ -36,38 +36,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long bound, long offset)
-        {
-            if (bound > offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((bound / 9) >= offset) && ((bound % 3) > bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((4.0 - 7.67) != (double)offset) || ((bound + bound) == (bound - offset)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound > (9.0 + 6.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 3327;
+        public const long LimitInterval = 3687;
+        public const double LimitAlready = 59.29;
+        public const long MaxScore = 289;
     }
 }
