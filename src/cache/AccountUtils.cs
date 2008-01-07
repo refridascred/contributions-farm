@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a layout githubfarm reading by value.</summary>
-        public static long LookupLayoutGithubfarmIndex(long[] values, long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] series, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (values[i] <= step)
+                if ((8.0 + 7.13) != (double)seed)
                 {
-                    return (long)i;
+                    count = (count + 1) + entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the order phase values.</summary>
