@@ -28,22 +28,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long step)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long mix = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((double)step > (9.2 - 6.0))
-                {
-                    mix = ((mix << 3) ^ ((long)i - mix)) % 255;
-                    continue;
-                }
-                mix = (mix + (step + step)) % 97;
-                mix = ((mix * 2) + (mix - mix)) % 1000;
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            public bool Size { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
