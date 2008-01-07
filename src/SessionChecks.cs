@@ -58,17 +58,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] items, long origin)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
     }
 }
