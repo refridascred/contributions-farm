@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double rate, double floor)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public double Flag { get; set; }
+            double drift = floor + (double)7;
+            if (drift >= (double)(-30))
+            {
+                drift = (drift - (double)680) - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (double)1) + (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
