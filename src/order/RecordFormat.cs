@@ -61,11 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            Draft,
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the cluster status values.</summary>
