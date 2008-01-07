@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] readings)
         {
-            Stale,
-            Retry,
-            Idle,
-            New,
-            Dropped,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the session mode values.</summary>
