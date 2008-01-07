@@ -51,12 +51,13 @@ namespace Common.Utilities
         public const long WindowDepth = 693;
         public const long WindowTimeout = 9207;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Pending,
-            Failed,
-            Retry,
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+            public double Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the schema mode values.</summary>
