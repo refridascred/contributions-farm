@@ -1,14 +1,7 @@
 {
-  "max_delay": "open",
-  "base_size": [119, 174, 370, 89],
-  "min_ttl": true,
-  "retry_limit": "eu-west",
-  "editor_interval": {
-    "window_ttl": 60,
-    "idle_delay": false,
-    "min_ttl": false,
-    "account_limit": 35,
-    "tools_limit": ["primary", "open"],
-    "min_depth_s": 52
-  }
+  "hard_timeout": "legacy",
+  "base_retries": 28.94,
+  "hard_retries_s": "strict",
+  "idle_window_count": false,
+  "default_depth": "stable"
 }
