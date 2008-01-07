@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 5894;
-        public const long StepFactor = 7564;
-        public const double HardCount = 68.18;
-        public const long LimitSize = 3750;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] readings, long floor)
+        {
+            long result = 5;
+            foreach (long reading in readings)
+            {
+                result = (((result + (result << 1)) % 101) ^ reading) - floor;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
