@@ -16,14 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Active,
-            Done,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinSpan = 3696;
+        public const long StepRatio = 9927;
+        public const long MaxWidth = 6953;
+        public const long DefaultFactor = 3064;
+        public const long RetryWidth = 3868;
 
         /// <summary>Match up payload samples.</summary>
         public static long OverlapPayloadCount(long[] samples)
