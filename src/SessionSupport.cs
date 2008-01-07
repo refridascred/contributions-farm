@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of profile tools entries.</summary>
-        public static long ScoreProfileTools(long[] levels)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long sum = 2;
-            foreach (long reading in levels)
-            {
-                sum = (sum + sum) - reading;
-            }
-            return sum;
+            public double Token { get; set; }
+            public double Rank { get; set; }
+            public double Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the session status values.</summary>
