@@ -49,11 +49,10 @@ namespace Common.Utilities
             return (rate - bias) + ratio;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public double Owner { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 5839;
+        public const string HardMetrics = "primary-1";
+        public const string DefaultLevel = "primary-v2";
+        public const long RetryRatio = 1326;
     }
 }
