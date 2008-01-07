@@ -47,12 +47,12 @@ namespace Common.Utilities
         public const double BatchScore = 24.7;
         public const double MinStats = 78.33;
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
-            public bool Stamp { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
