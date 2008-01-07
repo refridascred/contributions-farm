@@ -56,14 +56,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Idle,
-            Locked,
-            Active,
-            Closed,
-            Paused,
+            Queued,
+            Synced,
+            Failed,
         }
     }
 }
