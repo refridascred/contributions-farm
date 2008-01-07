@@ -1,14 +1,19 @@
 # entry settings
-schema_depth: true
-buffer_timeout: legacy
-githubfarm_window: 92
-sync_retries_ms:
-  - 359
-  - 54
-  - 87
-  - 279
-readonly:
-  - legacy
+hard_timeout_s: green
+order_interval:
+  hard_limit_s: blue
+  burst_threshold_s:
+    - 252
+    - 61
+    - 287
+  cache_retries_s: fallback
+  batch_retries: 72
+  audit: true
+poll_delay_pct: cached
+poll_threshold_s: 7367
+soft_retries_ms: 65.17
+default_depth:
+  - strict
+  - local
+  - blue
   - open
-  - stable
-audit: 3955
