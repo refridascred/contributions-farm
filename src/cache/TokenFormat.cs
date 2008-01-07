@@ -26,11 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
+            Active,
+            Stale,
+            Paused,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
