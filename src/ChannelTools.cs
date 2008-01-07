@@ -40,22 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] levels)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading + hits) >= reading)
+                if (values[i] <= floor)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
