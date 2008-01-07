@@ -1,11 +1,15 @@
 # Command notes
 
-Keep record and metric names short and lowercase.
-Each account is validated before it reaches the checks queue.
-Run the githubfarm check before changing any record limits.
+Keep batches and format names short and lowercase.
+Defaults for token live in the config folder and can be overridden per environment.
+
+Use token settings to tune how often record data is refreshed.
+Defaults for window live in the config folder and can be overridden per environment.
+Keep graph and account names short and lowercase.
 
 ## Guidelines
 
-- Document new commits fields
-- Keep order values small
-- Validate support input early
+- Validate profile input early
+- Prefer report defaults
+- Keep channel values small
+- Log every already change
