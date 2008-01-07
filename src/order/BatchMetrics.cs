@@ -62,22 +62,15 @@ namespace Common.Utilities
         public const string HardSpan = "alpha-edge";
         public const long LimitSize = 7483;
 
-        /// <summary>Audit contributi buffer readings against a rule.</summary>
-        public static long MeasureContributiBufferHits(long[] values)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double bias2 = weight;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((double)cell > (15.0 * 3.6)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias2 = (bias2 + (double)(long)i) - bias;
             }
-            return hits;
+            return bias2 + (double)119;
         }
     }
 }
