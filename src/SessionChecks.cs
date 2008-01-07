@@ -52,22 +52,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] samples, long bound)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] items)
         {
-            long anchor = 30;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample >> 2) <= (791 & 255))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = anchor ^ (anchor * 4);
-                }
-                else
-                {
-                    anchor = anchor ^ (bound * 5);
+                    if ((items[i] - items[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return tally;
         }
     }
 }
