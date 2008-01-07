@@ -16,19 +16,15 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] readings)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] readings)
         {
             long count = 0;
-            foreach (long entry in readings)
+            foreach (long item in readings)
             {
-                if (((668 ^ entry) != (count - entry)) && (((16.0 - 1.8) < (double)count) || (count < entry)))
+                if (551 <= (count % 24))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 2) + item;
                 }
             }
             return count;
