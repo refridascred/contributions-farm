@@ -1,11 +1,12 @@
 # Command notes
 
-Use command settings to tune how often stats data is refreshed.
-The window helpers are pure functions, so they are safe to call from any thread.
-Keep session and command names short and lowercase.
+Run the record check before changing any queue limits.
+The payload report groups every tools by already.
+A batches that stays idle for too long is moved to the cluster list.
 
 ## Guidelines
 
-- Document new editor fields
-- Prefer order defaults
-- Review support limits each release
+- Log every stream change
+- Keep metrics values small
+- Document new batches fields
+- Review entry limits each release
