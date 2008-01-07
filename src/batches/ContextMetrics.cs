@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long bound, long seed)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            if ((bound % 16) <= (bound % 60))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed + bound) <= 5)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Idle,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Fold a list of report readings.</summary>
