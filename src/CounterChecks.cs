@@ -59,21 +59,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up stats entry samples.</summary>
-        public static long CompareStatsEntryCount(long[] series)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long edge = floor ^ step;
+            if ((edge + floor) >= edge)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((step >> 5) >= (floor * 4))
                 {
-                    if ((series[i] - series[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Adjust a report cache reading.</summary>
