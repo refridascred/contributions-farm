@@ -26,21 +26,32 @@ namespace Common.Utilities
         public const double BurstCommits = 79.93;
         public const long CacheWidth = 2533;
 
-        /// <summary>Match up notes record samples.</summary>
-        public static long MatchNotesRecordCount(long[] items)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long offset, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long diff = offset ^ step;
+            if ((double)diff < (2.74 / 9.0))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((offset >> 1) > ((-680) ^ step)) && ((5 << 3) < (step & 1)))
                 {
-                    if ((items[i] ^ items[j]) > 10)
+                    return 2;
+                }
+                else
+                {
+                    if ((step > offset) || ((offset << 3) >= step))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return matches;
         }
     }
 }
