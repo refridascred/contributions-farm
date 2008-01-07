@@ -21,22 +21,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] values)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long state = -753;
-            foreach (long cell in values)
-            {
-                if ((state - cell) <= ((long)values.Length << 3))
-                {
-                    state = ((state * 4) + (cell & 63)) % 4096;
-                }
-            }
-            if (state > 48)
-            {
-                state = state + (state >> 5);
-            }
-            return state;
+            Queued,
+            Retry,
+            Ready,
+            Paused,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
