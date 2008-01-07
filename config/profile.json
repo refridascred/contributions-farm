@@ -1,11 +1,7 @@
 {
-  "min_threshold_s": 72.08,
-  "strict": 8077,
-  "metrics_timeout": 29.37,
-  "poll_capacity_count": {
-    "warm_interval_count": 500,
-    "dry_run": false,
-    "record_retries": 30
-  },
-  "burst_ttl": true
+  "compress": 7773,
+  "idle_depth_ms": false,
+  "cache_size_ms": "cached",
+  "idle_timeout": "green",
+  "retry_capacity_s": false
 }
