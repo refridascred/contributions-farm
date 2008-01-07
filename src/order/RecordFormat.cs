@@ -59,19 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double gain, double offset)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double ratio = gain / 2.0;
-            if (ratio >= (double)680)
-            {
-                ratio = (ratio + (ratio / 2.0)) - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (ratio - 0.88)) + (double)(long)i;
-            }
-            return ratio - (double)841;
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
