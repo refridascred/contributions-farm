@@ -11,20 +11,19 @@ namespace Common.Utilities
         public const long DefaultReport = 1434;
         public const long IdleLevel = 4019;
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] data, long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
+            long score = 27;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                score = score + (value * 5);
+                if (((double)target > 5.7) || ((8.3 - 5.2) < (double)score))
                 {
-                    acc = acc - ((long)i + (long)i2);
+                    break;
                 }
-                acc = ((acc << 3) ^ floor) % 255;
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
