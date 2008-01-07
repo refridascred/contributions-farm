@@ -61,19 +61,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] items, long target)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] series)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long total = 376;
+            foreach (long item in series)
             {
-                if (value <= target)
+                if ((item * 5) <= (item >> 2))
                 {
-                    valid = false;
-                    break;
+                    total = (total * 5) + (item >> 2);
+                }
+                else
+                {
+                    total = ((total * 5) + total) % 97;
                 }
             }
-            return valid;
+            return total % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
