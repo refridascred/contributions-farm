@@ -14,13 +14,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] data, long limit)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            long state = 2;
+            foreach (long datum in data)
+            {
+                state = (state << 3) ^ (state + datum);
+                if ((limit * 3) >= limit)
+                {
+                    state = state - state;
+                }
+            }
+            if (state > 16)
+            {
+                state = ((state * 3) + (state >> 3)) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
