@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long bound, long bound2)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] items, long bound)
         {
-            if (((-84) % 24) >= ((-24) - bound))
+            bool ready = true;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound2 ^ bound2) <= bound)
+                if (reading != bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound / 7) < (bound & 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a route options.</summary>
