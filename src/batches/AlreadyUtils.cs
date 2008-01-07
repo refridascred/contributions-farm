@@ -24,13 +24,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Count the route already entries that pass the check.</summary>
+        public static long CountRouteAlreadyHits(long[] values, long floor)
         {
-            Dropped,
-            Stale,
-            Idle,
-            New,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((double)hits > (double)reading) || ((double)floor > (7.8 + 6.0)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate context layout readings against a bound.</summary>
