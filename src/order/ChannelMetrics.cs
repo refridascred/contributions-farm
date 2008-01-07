@@ -39,14 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Stale,
-            Draft,
             Closed,
-            Idle,
-            Ready,
+            Dropped,
+            Done,
+            Paused,
         }
     }
 }
