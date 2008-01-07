@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstInterval = "open-edge";
-        public const long WindowInterval = 6058;
-        public const long IdleStats = 9014;
+        /// <summary>Project the next editor checks value.</summary>
+        public static double ProjectEditorChecks(double scale, double offset)
+        {
+            double drift = (double)249 + (double)7;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = ((drift - (drift / 3.0)) - (double)(long)i) - scale;
+            }
+            return drift + offset;
+        }
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
