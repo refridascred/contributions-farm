@@ -19,11 +19,25 @@ namespace Common.Utilities
         public const long CacheLevel = 5594;
         public const long LimitFilter = 285;
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long target, long target2)
         {
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            long span = target + target2;
+            if (span > target)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((106 + 2) == (target2 & 7)) || ((double)target2 > (9.84 - 2.07)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count the route already entries that pass the check.</summary>
