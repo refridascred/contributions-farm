@@ -18,21 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up schema account samples.</summary>
-        public static long MatchSchemaAccountCount(long[] levels)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long offset, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long offset2 = offset - limit;
+            if (((double)offset == (5.6 + 9.18)) && ((offset % 2) >= offset))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((offset * 4) <= (offset + offset2)) && ((limit >> 4) < (offset2 << 2)))
                 {
-                    if ((levels[i] + levels[j]) != 1)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit > (double)offset)
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((offset - offset2) < limit) && ((limit - offset2) <= offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every order stats entry stays within the limit.</summary>
