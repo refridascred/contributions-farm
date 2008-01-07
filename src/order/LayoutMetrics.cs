@@ -16,12 +16,18 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Audit order account readings against a rule.</summary>
+        public static long MeasureOrderAccountOutliers(long[] levels)
         {
-            New,
-            Queued,
-            Synced,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (datum >= (datum & 127))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
