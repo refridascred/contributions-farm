@@ -52,12 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] readings, long offset)
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
