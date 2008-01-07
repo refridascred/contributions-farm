@@ -20,19 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] readings, long bound)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long bound)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long carry = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (item > bound)
+                if ((-990) > ((long)i >> 4))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry << 3) ^ (bound & 31);
                 }
+                carry = ((carry << 2) ^ ((long)i - (long)i)) % 4096;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
