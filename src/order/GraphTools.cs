@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the commits entry entries that pass the check.</summary>
-        public static long AuditCommitsEntryHits(long[] readings, long origin)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((hits << 2) >= (item + hits))
-                {
-                    hits = (hits + 2) - origin;
-                }
-            }
-            return hits;
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
