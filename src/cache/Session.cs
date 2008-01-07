@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] levels)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((831 << 3) >= (long)levels.Length)
+                if (entry > seed)
                 {
-                    hits = (hits + 2) - reading;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
