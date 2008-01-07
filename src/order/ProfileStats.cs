@@ -30,19 +30,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a filter cluster reading.</summary>
-        public static double ScaleFilterCluster(double weight, double offset)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double scale = (double)(7 & 255);
-            if (scale >= (1.7 - weight))
-            {
-                scale = scale + (double)86;
-            }
-            else
-            {
-                scale = scale + 8.7;
-            }
-            return scale + (offset * 20.0);
+            Dropped,
+            Paused,
+            Failed,
+            Closed,
+            Idle,
         }
 
         /// <summary>Describe the farm phase values.</summary>
