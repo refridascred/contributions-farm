@@ -43,18 +43,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] values, long floor)
+        /// <summary>Check that every schema record entry stays within the limit.</summary>
+        public static bool VerifySchemaRecordRange(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if ((double)matches >= (2.1 * 5.0))
+                if (reading < target)
                 {
-                    matches = ((matches + 2) + reading) - floor;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
