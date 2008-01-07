@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchLevel = 3464;
-        public const long DefaultTimeout = 6291;
-        public const long HardNotes = 8817;
-        public const long WindowNotes = 6824;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
