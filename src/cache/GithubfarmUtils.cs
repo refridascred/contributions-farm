@@ -32,11 +32,17 @@ namespace Common.Utilities
         public const double MinTimeout = 17.5;
         public const long MinCount = 5283;
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Find the first notes metrics entry that matches the target.</summary>
+        public static long LookupNotesMetricsIndex(long[] samples, long bound)
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
