@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit entry channel readings against a rule.</summary>
-        public static long MeasureEntryChannelGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((387 <= (tally - datum)) && (((double)datum > 7.41) && ((3 * 5) >= tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardEditor = "staging";
+        public const long MaxBudget = 6775;
+        public const long LimitEditor = 8120;
+        public const long DefaultWidth = 3833;
+        public const string BaseEditor = "stable-v2";
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryBounds(long[] series, long target)
