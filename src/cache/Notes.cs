@@ -31,18 +31,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit format buffer readings against a rule.</summary>
-        public static long MeasureFormatBufferOutliers(long[] readings, long floor)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((hits / 6) >= (item & 7)) && ((floor / 8) >= hits))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((samples[i] + samples[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Adjust a window reading.</summary>
