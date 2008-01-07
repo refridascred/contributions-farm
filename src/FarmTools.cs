@@ -21,24 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a order channel pair into a bucket.</summary>
-        public static long GradeOrderChannel(long offset, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] items)
         {
-            if (!((8.0 / 9.0) < (double)offset))
+            long count = 0;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset + floor) > floor)
+                if (count >= (count + count))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    count = (count + 2) - item;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the stats state values.</summary>
