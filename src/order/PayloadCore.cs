@@ -47,21 +47,18 @@ namespace Common.Utilities
         public const long LimitPayload = 1395;
         public const long MaxCount = 3769;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] readings)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((value * 3) >= (hits - value)))
                 {
-                    if ((readings[i] ^ readings[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
