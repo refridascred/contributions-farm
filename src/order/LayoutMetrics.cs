@@ -16,15 +16,15 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Audit order account readings against a rule.</summary>
-        public static long MeasureOrderAccountOutliers(long[] levels)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] items)
         {
             long count = 0;
-            foreach (long datum in levels)
+            foreach (long value in items)
             {
-                if (datum >= (datum & 127))
+                if ((count + count) < count)
                 {
-                    count = count + 3;
+                    count = (count + 1) + value;
                 }
             }
             return count;
