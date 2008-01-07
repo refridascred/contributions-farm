@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long HardNotes = 8817;
         public const long WindowNotes = 6824;
 
-        /// <summary>Match up githubfarm payload samples.</summary>
-        public static long PairGithubfarmPayloadCount(long[] readings)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Retry,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a batch stats.</summary>
