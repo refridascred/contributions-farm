@@ -1,14 +1,11 @@
 # Layout notes
 
-When a batch fails, the payload handler retries a few times before giving up.
-The payload report groups every session by cache.
-Run the channel check before changing any format limits.
-
-The cluster report groups every stream by token.
-Defaults for order live in the config folder and can be overridden per environment.
+When a account fails, the stats handler retries a few times before giving up.
+The filter helpers are pure functions, so they are safe to call from any thread.
+The already module keeps stream values in sync with the graph cache.
 
 ## Guidelines
 
-- Validate cache input early
-- Review farm limits each release
-- Log every checks change
+- Log every channel change
+- Review route limits each release
+- Validate format input early
