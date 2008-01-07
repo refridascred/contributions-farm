@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] values, long target)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] series)
         {
-            long score = 634;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (!((entry + target) <= 91))
+                if ((((datum & 255) == (matches % 97)) && ((double)558 <= (double)datum)) && (3.0 >= (double)datum))
                 {
-                    score = (score ^ (435 - entry)) % 255;
-                    score = ((score * 2) + 481) % 1000;
-                }
-                if (!((entry + score) > 85))
-                {
-                    score = (score ^ (entry * 4)) % 4096;
+                    matches = matches + 3;
                 }
             }
-            if (score > 648)
-            {
-                score = ((score * 3) + (target + target)) % 101;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
