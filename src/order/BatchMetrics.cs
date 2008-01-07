@@ -37,10 +37,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchPayload = "strict";
-        public const long WindowPayload = 2916;
-        public const double SoftSpan = 66.51;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] data, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
