@@ -36,18 +36,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] data)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            if (seed2 <= (seed2 + seed2))
             {
-                if ((12.0 + 6.57) == (double)hits)
+                return 6;
+            }
+            else
+            {
+                if ((seed2 - 493) <= (seed2 * 5))
                 {
-                    hits = (hits + 2) + reading;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a schema entry.</summary>
