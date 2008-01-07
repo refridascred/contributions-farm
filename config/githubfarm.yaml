@@ -1,5 +1,7 @@
 # githubfarm settings
-route_retries: eu-west
-poll_ttl_count: 100
-burst_threshold_s: 500
-already_window: 35.21
+max_limit_s: false
+strict: primary
+dry_run:
+  - green
+  - blue
+idle_window: 57.13
