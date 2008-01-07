@@ -18,10 +18,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstRatio = 5756;
-        public const double MinTimeout = 17.5;
-        public const long MinCount = 5283;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 9195;
+        public const double MaxBudget = 22.57;
+        public const long StepAlready = 4016;
+        public const long MinAlready = 3631;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long CompareRecordCount(long[] readings)
