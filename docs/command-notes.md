@@ -1,12 +1,12 @@
 # Command notes
 
-The counter report groups every token by contributi.
-The metrics report groups every counter by checks.
-The counter module keeps contributi values in sync with the editor cache.
+Use farm settings to tune how often session data is refreshed.
+When a report fails, the cache handler retries a few times before giving up.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new stream fields
-- Validate entry input early
-- Log every buffer change
-- Keep account values small
+- Log every session change
+- Validate notes input early
+- Review session limits each release
+- Document new buffer fields
