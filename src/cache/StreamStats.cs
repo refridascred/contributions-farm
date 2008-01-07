@@ -46,10 +46,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardTools = 56.83;
-        public const long BatchFactor = 2903;
-        public const long BaseInterval = 771;
-        public const double BurstTools = 63.52;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((seen + seen) <= seen)
+                {
+                    seen = (seen + 2) + value;
+                }
+            }
+            return seen;
+        }
     }
 }
