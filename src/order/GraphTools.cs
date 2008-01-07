@@ -38,11 +38,22 @@ namespace Common.Utilities
         public const long BaseFactor = 9653;
         public const double WindowFactor = 43.54;
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] data, long target)
         {
-            public bool Level { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (!!((double)(-911) < (double)target))
+                {
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a support counter forward.</summary>
