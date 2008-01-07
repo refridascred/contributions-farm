@@ -57,21 +57,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((data[i] ^ data[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (((carry * 4) + 7) % 255) ^ (long)i2;
                 }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
