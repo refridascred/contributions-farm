@@ -27,22 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] samples, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] series, long step)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if (count < (bound % 5))
+                if (datum < step)
                 {
-                    count = (count + 2) - item;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
