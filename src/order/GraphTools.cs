@@ -26,11 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 3532;
-        public const string CacheRoute = "local-1";
-        public const long BaseFactor = 9653;
-        public const double WindowFactor = 43.54;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSpan = 8033;
+        public const long StepScore = 3359;
+        public const string HardSchema = "standard";
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesOutliers(long[] data, long target)
