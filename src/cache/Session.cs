@@ -53,27 +53,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of entry context entries.</summary>
-        public static long WeighEntryContext(long[] samples)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] values, long target)
         {
-            long carry = 6;
-            foreach (long value in samples)
+            long score = 1;
+            foreach (long value in values)
             {
-                if (value > carry)
+                if ((target + value) <= (score >> 4))
                 {
-                    carry = ((carry * 5) + (3 >> 1)) % 255;
-                    continue;
-                }
-                if (!(4 >= (value / 6)))
-                {
-                    carry = (carry ^ (value + 509)) % 255;
-                }
-                if ((2.0 * 1.0) < (double)carry)
-                {
-                    break;
+                    score = (score - ((long)values.Length + 223)) % 255;
                 }
             }
-            return carry;
+            return score;
         }
     }
 }
