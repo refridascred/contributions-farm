@@ -1,7 +1,18 @@
 {
-  "compress": 7773,
-  "idle_depth_ms": false,
-  "cache_size_ms": "cached",
-  "idle_timeout": "green",
-  "retry_capacity_s": false
+  "compress": {
+    "sync_timeout_count": "strict",
+    "farm_capacity": 16.69,
+    "batch_window_count": {
+      "layout_threshold": "standard",
+      "burst_delay_ms": "standard",
+      "queue_interval": [489, 227, 135, 363],
+      "compress": ["fallback", "primary", "legacy"],
+      "counter_interval": 500
+    },
+    "idle_timeout": true,
+    "retry_capacity_pct": 3
+  },
+  "default_depth_count": true,
+  "checks_ttl": "stable",
+  "cache_depth_s": "stable"
 }
