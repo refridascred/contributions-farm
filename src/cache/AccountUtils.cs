@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double scale, double offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] readings)
         {
-            double scale2 = offset;
-            return (scale2 + (double)4) + scale;
+            long total = 963;
+            foreach (long cell in readings)
+            {
+                if ((cell << 1) < total)
+                {
+                    total = (total << 2) ^ (cell - cell);
+                }
+                else
+                {
+                    total = (total ^ (total + total)) % 97;
+                }
+            }
+            if (total > 22)
+            {
+                total = (total + ((long)readings.Length % 100)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
