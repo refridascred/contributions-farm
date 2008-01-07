@@ -16,15 +16,22 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Roll a record metric counter forward.</summary>
-        public static long SeriesRecordMetric(long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] readings)
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if (((668 ^ entry) != (count - entry)) && (((16.0 - 1.8) < (double)count) || (count < entry)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the stats class values.</summary>
