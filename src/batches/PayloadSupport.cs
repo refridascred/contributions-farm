@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] levels, long step)
-        {
-            long total = 7;
-            foreach (long entry in levels)
-            {
-                total = ((total ^ (74 & 3)) ^ entry) - step;
-                if ((16.0 / 6.0) != (double)total)
-                {
-                    total = (total * 4) + total;
-                }
-                else
-                {
-                    total = total + total;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 7587;
+        public const double HardCommits = 15.66;
+        public const long SoftCommits = 370;
+        public const string LimitCommits = "cached-1";
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long SortBuffer(long bound, long seed)
