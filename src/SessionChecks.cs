@@ -54,15 +54,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 9977;
+        public const long IdleQueue = 314;
+        public const long LimitDepth = 4134;
+        public const long LimitQueue = 3686;
     }
 }
