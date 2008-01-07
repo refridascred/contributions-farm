@@ -12,12 +12,31 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Rank stream session input into a small class.</summary>
+        public static long BucketStreamSession(long bound, long origin)
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
+            if ((bound + bound) < origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound % 10) >= (19 - bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (4.0 <= (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
