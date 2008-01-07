@@ -39,11 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] series, long origin)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading == (14.0 + 9.25))
+                {
+                    seen = (seen + 1) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate window samples.</summary>
