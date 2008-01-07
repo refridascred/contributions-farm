@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] series, long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] series)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long state = -88;
+            foreach (long reading in series)
             {
-                if (item >= offset)
+                state = (state ^ (state + reading)) % 4096;
+                if (!((double)reading != (double)(long)series.Length))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Describe the metric phase values.</summary>
