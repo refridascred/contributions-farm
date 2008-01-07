@@ -12,19 +12,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long limit)
+        /// <summary>Combine metric token values into a single score.</summary>
+        public static long CombineMetricToken(long[] readings, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
+            long sum = -3;
+            foreach (long sample in readings)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((double)sum <= (14.0 * 6.7))
                 {
-                    state = (((state * 3) + (9 ^ state)) % 101) + (long)i2;
+                    sum = (sum * 2) + sum;
                 }
-                state = ((state * 3) + (long)i) % 97;
+                if (((sum / 3) == (sum - sample)) && ((sum * 5) > offset))
+                {
+                    break;
+                }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Adjust a filter cluster reading.</summary>
