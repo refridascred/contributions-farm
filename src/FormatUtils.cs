@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate cache cluster readings against a bound.</summary>
-        public static bool GuardCacheClusterBounds(long[] data, long offset)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a account stats.</summary>
