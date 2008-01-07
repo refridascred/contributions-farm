@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] readings)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long origin, long target)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            if (origin < (origin + target))
             {
-                if ((datum ^ datum) > seen)
+                return 1;
+            }
+            else
+            {
+                if (15.0 >= (double)origin)
                 {
-                    seen = seen + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of graph editor readings.</summary>
