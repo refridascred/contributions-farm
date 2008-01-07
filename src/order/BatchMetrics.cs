@@ -37,18 +37,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchPayload = "strict";
+        public const long WindowPayload = 2916;
+        public const double SoftSpan = 66.51;
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
