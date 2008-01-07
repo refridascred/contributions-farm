@@ -1,14 +1,21 @@
 # githubfarm settings
-schema_retries: stable
-filter_ratio: false
-min_threshold_pct: local
-strict:
-  - 384
-  - 386
-  - 381
-context_threshold:
-  - 44
-  - 265
-  - 59
-  - 457
-min_delay_pct: 1024
+cache_size_pct: 46
+default_size:
+  flush_capacity_count: 60
+  poll_depth_pct: true
+  hard_window_pct: 89
+  cache_ratio_ms:
+    - 296
+    - 50
+    - 213
+  notes_interval:
+    - 486
+    - 336
+    - 270
+    - 164
+compress: true
+idle_limit_pct:
+  - primary
+  - eu-west
+  - standard
+min_retries_ms: 27
