@@ -57,18 +57,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] levels, long origin)
         {
-            long mark = 971;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((cell - mark) >= (cell + cell))
+                if (((double)count <= (5.1 + 9.99)) || !((4 % 24) >= sample))
                 {
-                    mark = (mark + (mark >> 5)) % 65521;
+                    count = (count + 2) + origin;
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
