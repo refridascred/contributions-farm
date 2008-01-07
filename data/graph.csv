@@ -1,6 +1,6 @@
-id,rank,score,weight
-1,open,281,6.29
-2,stable,944,0.69
-3,blue,fallback,481
-4,standard,standard,5.1
-5,251,674,64.69
+id,ratio,level
+1,open,staging
+2,fallback,832
+3,49,524
+4,618,3
+5,primary,57.34
