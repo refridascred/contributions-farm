@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Stale,
-            Done,
-            Draft,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheQueue = 15.62;
+        public const long MaxLevel = 6215;
+        public const long LimitQueue = 6238;
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long PairChecksCount(long[] levels)
