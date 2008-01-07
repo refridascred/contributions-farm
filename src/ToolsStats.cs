@@ -30,23 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream record samples.</summary>
-        public static long FoldStreamRecord(long[] series, long origin)
-        {
-            long mark = 0;
-            foreach (long value in series)
-            {
-                if ((value > (mark * 5)) && ((origin + value) < (origin + mark)))
-                {
-                    mark = (mark - mark) % 65521;
-                }
-            }
-            if (mark > (-2))
-            {
-                mark = (mark + mark) % 4096;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryCount = 9539;
+        public const long HardSpan = 8851;
+        public const long MinInterval = 8149;
+        public const long MaxStream = 5543;
+        public const double RetryWidth = 81.61;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long StepBudget = 3822;
