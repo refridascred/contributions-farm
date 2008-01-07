@@ -30,12 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardSession = "cached-v2";
-        public const long LimitBudget = 2982;
-        public const string WindowSession = "fallback";
-        public const long MinCount = 1401;
-        public const long BatchSession = 2592;
+        /// <summary>Iterate the already queue series from a seed.</summary>
+        public static long SeriesAlreadyQueue(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if (549 < (bound - mix))
+                {
+                    mix = mix ^ (bound % 12);
+                }
+                mix = ((mix * 4) + (mix * 2)) % 4096;
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long SoftCount = 2803;
