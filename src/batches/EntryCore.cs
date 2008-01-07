@@ -58,14 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] values)
         {
-            Queued,
-            Done,
-            Pending,
-            Synced,
-            Idle,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((entry / 9) > (entry - entry))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
