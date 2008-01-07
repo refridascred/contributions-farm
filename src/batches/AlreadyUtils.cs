@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Ready,
-            Paused,
-            New,
+            Active,
             Idle,
+            Failed,
+            Stale,
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
