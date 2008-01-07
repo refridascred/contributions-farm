@@ -1,7 +1,5 @@
 {
-  "compress": true,
-  "audit": "local",
-  "sync_threshold": "stable",
-  "base_size_ms": ["latest", "local"],
-  "batch_capacity_s": true
+  "warm_depth_pct": 6012,
+  "default_size_ms": "fallback",
+  "audit": 48
 }
