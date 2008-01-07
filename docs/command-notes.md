@@ -1,11 +1,10 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-The context module keeps batch values in sync with the filter cache.
+Each session is validated before it reaches the graph queue.
+Use stats settings to tune how often report data is refreshed.
 
 ## Guidelines
 
-- Review batches limits each release
-- Document new filter fields
-- Prefer notes defaults
-- Keep token values small
+- Keep stream values small
+- Document new batch fields
+- Validate batches input early
