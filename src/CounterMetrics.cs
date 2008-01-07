@@ -42,11 +42,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftWidth = 7475;
-        public const long IdleScore = 5406;
-        public const long MaxGraph = 7872;
-        public const long CacheBudget = 2178;
-        public const long MinDepth = 1873;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseCount = "local-v2";
+        public const double BurstWidth = 42.62;
+        public const double LimitWidth = 73.01;
     }
 }
