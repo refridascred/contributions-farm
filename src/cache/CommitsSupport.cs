@@ -57,10 +57,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstAlready = "local-1";
-        public const long HardBudget = 4324;
-        public const long HardScore = 5769;
-        public const double SoftAlready = 86.72;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Ready,
+            Dropped,
+            Idle,
+            Locked,
+            New,
+        }
     }
 }
