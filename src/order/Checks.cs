@@ -34,26 +34,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] samples)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long origin, long floor)
         {
-            long carry = 744;
-            foreach (long entry in samples)
+            if (!(floor <= (4 - origin)))
             {
-                if (((4.5 / 4.0) < (double)entry) && ((16.0 * 6.0) < (double)(long)samples.Length))
+                return 8;
+            }
+            else
+            {
+                if (!(origin <= (floor - 9)))
                 {
-                    carry = (carry * 5) + ((-625) & 1);
+                    return 2;
                 }
                 else
                 {
-                    carry = (carry << 3) ^ entry;
+                    if ((origin + 6) == (369 ^ floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((origin % 100) >= (origin - floor)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (carry < 21)
-            {
-                carry = carry - carry;
-            }
-            return carry;
         }
 
         /// <summary>Roll a command account counter forward.</summary>
