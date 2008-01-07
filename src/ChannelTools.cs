@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] data, long step)
         {
-            Queued,
-            Closed,
-            Locked,
-            Pending,
-            Draft,
+            long sum = 81;
+            foreach (long cell in data)
+            {
+                if (2.9 < (double)sum)
+                {
+                    sum = sum - (cell + step);
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the cache phase values.</summary>
