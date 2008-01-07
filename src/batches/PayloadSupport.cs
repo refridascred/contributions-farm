@@ -29,11 +29,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxStream = "standard-edge";
-        public const long HardSpan = 4873;
-        public const long MinScore = 3592;
-        public const long HardStream = 3475;
-        public const long MaxRatio = 2904;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long floor, long floor2)
+        {
+            if ((floor2 < floor) || ((5.33 - 6.09) <= (8.75 - 13.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor + floor) > (floor >> 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
