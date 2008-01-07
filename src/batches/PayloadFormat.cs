@@ -50,15 +50,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] levels)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long total = 1;
-            foreach (long reading in levels)
-            {
-                total = (total << 2) ^ (total - reading);
-            }
-            return total % 4096;
+            Locked,
+            Closed,
+            Ready,
+            Paused,
+            Idle,
         }
     }
 }
