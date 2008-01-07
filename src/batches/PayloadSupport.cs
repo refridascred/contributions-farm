@@ -29,32 +29,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long limit, long floor)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long gap = limit - floor;
-            if (!(limit <= 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((14 + gap) > (2 / 9))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (623 > (gap + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
