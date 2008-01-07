@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double ratio, double floor)
-        {
-            double mean = ratio;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - floor) + (double)(long)i;
-            }
-            return mean - floor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowRatio = 94.09;
+        public const long DefaultSpan = 1850;
+        public const double CacheContributi = 84.51;
+        public const long BaseRatio = 111;
+        public const long MinContributi = 9773;
 
         /// <summary>Match up record samples.</summary>
         public static long CompareRecordCount(long[] readings)
