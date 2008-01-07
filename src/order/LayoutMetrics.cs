@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] readings)
+        /// <summary>Digest a series of graph session entries.</summary>
+        public static long CombineGraphSession(long[] series)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long mark = 99;
+            foreach (long datum in series)
             {
-                if ((count ^ 562) == (count & 63))
-                {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = (mark << 2) ^ (datum - mark);
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
