@@ -32,18 +32,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] series, long offset)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long result = 53;
-            foreach (long value in series)
-            {
-                if ((value & 15) < value)
-                {
-                    result = ((result ^ result) % 4096) - offset;
-                }
-            }
-            return result;
+            Ready,
+            New,
+            Queued,
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
