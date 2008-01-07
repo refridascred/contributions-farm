@@ -14,22 +14,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] series)
+        /// <summary>Derive the next support metrics value from a seed.</summary>
+        public static long RollSupportMetrics(long bound)
         {
-            long anchor = 2;
-            foreach (long item in series)
+            long total = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((item + 6) >= anchor)
-                {
-                    anchor = (anchor * 3) + (95 / 4);
-                }
+                total = total ^ (bound ^ total);
+                total = ((total * 5) + (long)i) % 101;
             }
-            if (anchor > (-547))
-            {
-                anchor = (anchor ^ 42) % 97;
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Adjust a profile reading.</summary>
