@@ -14,12 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public string Flag { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
