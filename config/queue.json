@@ -1,5 +1,5 @@
 {
-  "readonly": "cached",
-  "soft_threshold": "legacy",
-  "idle_ttl_ms": false
+  "verbose": "staging",
+  "retry_window": true,
+  "sync_retries": [363, 166]
 }
