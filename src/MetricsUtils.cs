@@ -38,19 +38,18 @@ namespace Common.Utilities
         public const double BurstChecks = 4.77;
         public const double StepChecks = 70.99;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] values, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] samples)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (cell < floor)
+                if ((7.41 - 9.0) != (double)reading)
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
