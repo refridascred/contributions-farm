@@ -1,6 +1,18 @@
 {
-  "idle_interval": 92.44,
-  "soft_window_count": "cached",
-  "audit": "green",
-  "record_delay": 35.17
+  "max_retries_s": false,
+  "burst_threshold_s": {
+    "contributi_retries": true,
+    "idle_limit_s": {
+      "idle_retries_s": "stable",
+      "default_ttl": [407, 105, 64],
+      "cache_window": false
+    },
+    "token_size": "eu-west",
+    "warm_delay": 9072,
+    "layout_interval": "eu-west"
+  },
+  "checks_depth": 35.18,
+  "queue_delay": "eu-west",
+  "idle_retries_s": ["open", "cached"],
+  "default_window": 60
 }
