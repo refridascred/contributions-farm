@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long WindowFactor = 6520;
         public const long DefaultBuffer = 2279;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] samples, long step)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] data)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value > (455 - seen))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) + step;
+                    if ((data[i] + data[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
