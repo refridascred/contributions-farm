@@ -14,12 +14,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] series)
         {
-            New,
-            Stale,
-            Idle,
+            long anchor = 2;
+            foreach (long item in series)
+            {
+                if ((item + 6) >= anchor)
+                {
+                    anchor = (anchor * 3) + (95 / 4);
+                }
+            }
+            if (anchor > (-547))
+            {
+                anchor = (anchor ^ 42) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a profile reading.</summary>
