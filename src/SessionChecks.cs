@@ -72,22 +72,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the farm batches entries that pass the check.</summary>
-        public static long MeasureFarmBatchesOutliers(long[] levels, long origin)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((2 & 255) == (origin + entry))
+                if (items[i] == origin)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
