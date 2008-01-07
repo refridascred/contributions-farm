@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a schema metrics reading.</summary>
-        public static double SmoothSchemaMetrics(double weight, double floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] items, long step)
         {
-            double scale = (double)(229 << 1);
-            if (scale > (2.0 * 6.7))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                scale = (scale + (weight * 14.0)) + floor;
+                if ((seen ^ reading) >= seen)
+                {
+                    seen = (seen + 3) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                scale = scale + (double)5;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + weight) + (double)(long)i;
-            }
-            return scale + (double)78;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
