@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next queue route value from a seed.</summary>
-        public static long SeriesQueueRoute(long target)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] items)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            long total = 664;
+            foreach (long value in items)
             {
-                if (((double)score == (2.36 / 4.0)) && (((long)i ^ score) < (8 % 16)))
-                {
-                    score = (score << 2) ^ score;
-                }
-                score = ((score * 2) + (long)i) % 1000;
+                total = ((total ^ (total & 1)) % 4096) - value;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Count the queue metrics entries that pass the check.</summary>
