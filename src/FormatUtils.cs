@@ -70,22 +70,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] items)
+        /// <summary>Fold a list of stats order readings.</summary>
+        public static long TallyStatsOrder(long[] samples)
         {
-            long carry = 75;
-            foreach (long datum in items)
+            long result = 0;
+            foreach (long sample in samples)
             {
-                if ((carry + datum) >= (datum % 8))
-                {
-                    carry = (carry + (carry * 3)) % 255;
-                }
+                result = (((result * 5) + (945 << 1)) % 65521) ^ sample;
             }
-            if (carry < 1)
-            {
-                carry = (carry + (carry & 3)) % 4096;
-            }
-            return carry;
+            return result % 97;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
