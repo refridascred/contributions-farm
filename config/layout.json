@@ -1,6 +1,6 @@
 {
-  "cache_threshold_pct": 1024,
-  "default_delay": 90,
-  "soft_window_ms": 87.3,
-  "hard_limit_ms": false
+  "githubfarm_limit": 19,
+  "max_ratio": 55,
+  "soft_size_pct": false,
+  "sync_ratio_pct": 41.19
 }
