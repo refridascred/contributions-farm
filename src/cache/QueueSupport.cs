@@ -35,21 +35,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up account payload samples.</summary>
-        public static long CompareAccountPayloadCount(long[] series)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (readings[i] >= limit)
                 {
-                    if ((series[i] - series[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
