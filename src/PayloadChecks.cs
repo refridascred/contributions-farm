@@ -35,13 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] levels)
         {
-            Dropped,
-            Pending,
-            Paused,
-            Retry,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (140 < count)
+                {
+                    count = (count + 1) - datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
