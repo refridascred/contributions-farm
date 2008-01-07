@@ -45,19 +45,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] values)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] items, long limit)
         {
-            long carry = 3;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry << 2) ^ (carry << 2);
-                if ((carry + cell) != (cell + carry))
+                if (items[i] >= limit)
                 {
-                    carry = (carry << 2) ^ (carry + cell);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
