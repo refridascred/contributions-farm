@@ -15,21 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next command support value from a seed.</summary>
-        public static long SeriesCommandSupport(long bound)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] values, long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (((11.0 / 4.0) != (double)acc) || (acc < (358 >> 4)))
+                if (reading <= step)
                 {
-                    acc = (acc * 3) + (acc ^ bound);
-                    acc = ((acc * 5) + (bound + 7)) % 4096;
+                    found = false;
+                    break;
                 }
-                acc = (acc << 2) ^ (bound - 115);
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
