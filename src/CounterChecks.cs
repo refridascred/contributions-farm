@@ -72,9 +72,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitCount = 2586;
-        public const long BaseGithubfarm = 2079;
-        public const string WindowTimeout = "open-edge";
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long offset, long target)
+        {
+            if ((target >> 1) < (offset % 16))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset + offset) < offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)offset == (6.01 / 9.0)) || ((0 ^ offset) == (target % 12)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target + target) == (target % 24))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
