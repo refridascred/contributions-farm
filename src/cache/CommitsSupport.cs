@@ -31,19 +31,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] items, long origin)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Failed,
+            Retry,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
