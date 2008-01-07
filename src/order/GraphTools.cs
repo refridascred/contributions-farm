@@ -38,9 +38,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 2011;
-        public const long SoftLevel = 2690;
-        public const long BaseCounter = 9803;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstContributi = 27.64;
+        public const double MinContributi = 62.72;
+        public const double IdleContributi = 71.47;
+        public const string StepBudget = "open-1";
     }
 }
