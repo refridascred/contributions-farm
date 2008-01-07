@@ -1,8 +1,24 @@
 # entry settings
-warm_retries:
-  - 74
-  - 236
-  - 47
-  - 238
-flush_limit_ms: 1547
-idle_capacity: edge
+max_ratio:
+  strict:
+    max_delay: 38
+    window_timeout:
+      - latest
+      - strict
+      - primary
+      - blue
+    poll_ttl_s: eu-west
+    cache_size: true
+  min_size_pct: 28
+  metrics_size:
+    soft_ttl_ms: false
+    burst_capacity_ms: 51.21
+    poll_capacity: green
+    support_window: 25.45
+    window_timeout: latest
+    max_delay: green
+max_retries_pct:
+  - edge
+  - latest
+flush_ratio_s: 15.18
+entry_retries: 1024
