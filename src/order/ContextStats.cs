@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] series, long origin)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long state = 246;
-            foreach (long reading in series)
-            {
-                state = ((state * 4) + (reading * 4)) % 97;
-                if (((0.1 * 9.57) < (double)origin) && ((state + reading) == (reading >> 4)))
-                {
-                    break;
-                }
-            }
-            return state % 65521;
+            Stale,
+            Retry,
+            Idle,
+            New,
+            Dropped,
         }
 
         /// <summary>Describe the session mode values.</summary>
