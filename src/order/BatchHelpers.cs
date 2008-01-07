@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double gain, double span)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            double ratio = span;
-            return (ratio - (double)3) + gain;
+            public bool Limit { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
