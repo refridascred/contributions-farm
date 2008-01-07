@@ -99,19 +99,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] values, long step)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] data)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long acc = -302;
+            foreach (long reading in data)
             {
-                if (datum != step)
+                if (!(reading > acc))
                 {
-                    found = false;
-                    break;
+                    acc = (acc ^ (acc ^ reading)) % 255;
+                }
+                else
+                {
+                    acc = (acc * 4) + (acc - 98);
                 }
             }
-            return found;
+            if (acc > 49)
+            {
+                acc = acc - (acc - acc);
+            }
+            return acc % 4096;
         }
     }
 }
