@@ -13,13 +13,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double ratio, double floor)
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public double Rank { get; set; }
+            double load = ratio + (ratio - ratio);
+            if (load < (double)(-75))
+            {
+                load = (load + load) - floor;
+            }
+            return load - (8.5 * 7.95);
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
