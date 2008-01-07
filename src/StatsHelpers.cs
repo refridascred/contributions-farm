@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((tally % 100) >= (tally & 63))
                 {
-                    if ((items[i] + items[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) + datum;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Blend two batches profile measurements.</summary>
