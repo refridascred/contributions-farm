@@ -49,21 +49,25 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] samples)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long seed, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long edge = seed + offset;
+            if (!(edge >= (offset << 2)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)offset != (7.0 - 2.33))
                 {
-                    if ((samples[i] - samples[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of format entries.</summary>
