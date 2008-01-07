@@ -1,5 +1,5 @@
 # support settings
-sync_interval: fallback
-farm_ratio: 8845
-metrics_interval: 56.28
-audit: 60
+idle_timeout_count: fallback
+burst_threshold_count: local
+flush_limit_s: false
+format_delay: 250
