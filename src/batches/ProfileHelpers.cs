@@ -50,12 +50,13 @@ namespace Common.Utilities
         public const long WindowBudget = 296;
         public const long DefaultContributi = 9671;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxInterval = 33.74;
-        public const double SoftScore = 95.7;
-        public const double BurstCount = 45.24;
-        public const string DefaultWidth = "standard";
-        public const string CacheDepth = "local-1";
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
+        {
+            public double Weight { get; set; }
+            public string Level { get; set; } = "";
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderGaps(long[] values)
