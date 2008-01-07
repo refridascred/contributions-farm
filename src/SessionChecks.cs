@@ -23,11 +23,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Count the buffer entry entries that pass the check.</summary>
+        public static long AuditBufferEntryMatches(long[] items, long origin)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (entry >= (54 & 15))
+                {
+                    count = (count + 3) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next queue metrics value from a seed.</summary>
