@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] levels)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long score = 51;
-            foreach (long item in levels)
-            {
-                if ((double)item > (12.0 / 6.0))
-                {
-                    score = (score + item) % 97;
-                }
-            }
-            if (score > 73)
-            {
-                score = ((score << 3) ^ (score + score)) % 65521;
-            }
-            return score;
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
