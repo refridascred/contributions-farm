@@ -24,39 +24,12 @@ namespace Common.Utilities
             return scale - (scale / 7.0);
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long offset, long limit)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long offset2 = offset - limit;
-            if (((double)offset == (5.6 + 9.18)) && ((offset % 2) >= offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((offset * 4) <= (offset + offset2)) && ((limit >> 4) < (offset2 << 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit > (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((offset - offset2) < limit) && ((limit - offset2) <= offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Active,
+            New,
         }
 
         /// <summary>Validate session format readings against a bound.</summary>
