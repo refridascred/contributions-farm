@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Done,
-            Active,
-            Queued,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowFactor = "standard";
+        public const string LimitCount = "primary-1";
+        public const double CacheBudget = 56.75;
 
         /// <summary>Measure how many account githubfarm samples are out of range.</summary>
         public static long TallyAccountGithubfarmHits(long[] levels, long seed)
