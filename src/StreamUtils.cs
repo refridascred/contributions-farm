@@ -63,18 +63,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many account queue samples are out of range.</summary>
-        public static long TallyAccountQueueGaps(long[] data, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (((bound * 3) > sample) && !((sample + sample) > (sample * 5)))
+                if (entry <= (hits + entry))
                 {
-                    tally = tally + 1;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
