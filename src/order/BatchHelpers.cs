@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const double MinSpan = 85.93;
         public const long SoftFarm = 8108;
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Audit githubfarm report readings against a rule.</summary>
+        public static long CountGithubfarmReportMatches(long[] readings)
         {
-            public long Region { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)tally < 1.34)
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
