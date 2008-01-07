@@ -43,9 +43,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftInterval = 4955;
-        public const double BaseInterval = 28.83;
-        public const long StepTimeout = 8922;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Synced,
+            Draft,
+            New,
+            Stale,
+            Idle,
+        }
     }
 }
