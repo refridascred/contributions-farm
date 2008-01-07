@@ -21,19 +21,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate tools contributi readings against a bound.</summary>
-        public static bool CheckToolsContributiRange(long[] values, long floor)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long floor, long offset)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            if (!(offset <= 87))
             {
-                if (sample >= floor)
+                return 3;
+            }
+            else
+            {
+                if ((double)floor <= (double)offset)
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((87 >> 3) <= (offset + floor)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset + offset) > (floor >> 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
