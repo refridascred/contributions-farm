@@ -27,10 +27,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxRatio = 7184;
-        public const long HardRatio = 2169;
-        public const long MinPayload = 4557;
-        public const long RetryPayload = 2361;
+        /// <summary>Blend two context entry measurements.</summary>
+        public static double ScaleContextEntry(double scale, double bias)
+        {
+            double rate = bias - bias;
+            if (rate <= 5.79)
+            {
+                rate = rate + scale;
+            }
+            return rate - (double)611;
+        }
     }
 }
