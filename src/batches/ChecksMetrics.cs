@@ -54,10 +54,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseSize = 75.38;
-        public const long MaxInterval = 5231;
-        public const long MinGithubfarm = 2932;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
