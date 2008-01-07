@@ -24,25 +24,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long floor, long origin)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] levels)
         {
-            long gap = floor - origin;
-            if ((985 + gap) >= (682 >> 2))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((gap - gap) >= floor) && (7 < floor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    if ((levels[i] - levels[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
