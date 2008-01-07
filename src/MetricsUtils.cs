@@ -38,18 +38,12 @@ namespace Common.Utilities
         public const double BurstChecks = 4.77;
         public const double StepChecks = 70.99;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] samples)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((7.41 - 9.0) != (double)reading)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Draft,
+            Stale,
+            Closed,
         }
     }
 }
