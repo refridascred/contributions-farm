@@ -75,15 +75,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double rate, double span)
+        /// <summary>Iterate the commits farm series from a seed.</summary>
+        public static long RollCommitsFarm(long floor)
         {
-            double gain = (span / 7.0) + (span + span);
-            if (gain < (double)18)
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                gain = (gain - (gain * 18.0)) + rate;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return gain + (double)79;
+            return acc;
         }
     }
 }
