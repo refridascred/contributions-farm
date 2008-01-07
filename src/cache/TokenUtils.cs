@@ -20,15 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Queued,
-            Dropped,
-            Retry,
-            Active,
-            Locked,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseTimeout = 8495;
+        public const long DefaultRoute = 2340;
+        public const long LimitRoute = 3440;
+        public const string HardRoute = "stable-v2";
+        public const double SoftRoute = 40.98;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowHits(long[] values)
