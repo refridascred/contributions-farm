@@ -27,11 +27,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 8907;
-        public const string IdleCommand = "alpha-1";
-        public const double RetryBudget = 10.6;
-        public const long LimitSize = 7908;
-        public const long BurstRatio = 6491;
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > seed) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
