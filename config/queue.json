@@ -1,7 +1,6 @@
 {
-  "dry_run": [415, 335, 173, 489],
-  "cache_capacity_count": "staging",
-  "default_interval_count": "blue",
-  "audit": 30,
-  "filter_delay": "green"
+  "retry_ratio_ms": false,
+  "tools_interval": ["standard", "strict", "standard"],
+  "strict": true,
+  "cache_timeout": false
 }
