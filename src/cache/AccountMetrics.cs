@@ -44,15 +44,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsMatches(long[] items)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] samples)
         {
             long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6 + value) >= 7)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((samples[i] + samples[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
