@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] readings, long seed)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Token { get; set; }
+            long carry = 489;
+            foreach (long reading in readings)
+            {
+                if (reading <= (reading ^ 897))
+                {
+                    carry = carry ^ (seed + reading);
+                }
+                else
+                {
+                    carry = (carry + (seed - carry)) % 101;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
