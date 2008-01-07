@@ -1,8 +1,15 @@
 # entry settings
-retry_depth_pct: primary
-dry_run: 11
-cache_window_ms: 87
-enabled:
-  - stable
-  - cached
+sync_timeout_count: 27
+retry_ratio: 60
+idle_ratio_count:
+  - legacy
   - local
+audit: 1737
+sync_size:
+  sync_threshold_s: 250
+  flush_timeout:
+    - 169
+    - 85
+    - 66
+    - 479
+  poll_limit: false
