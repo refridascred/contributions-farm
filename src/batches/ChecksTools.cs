@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 9294;
-        public const string DefaultFormat = "local";
-        public const long LimitFormat = 9875;
-        public const long BaseSpan = 701;
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double gain, double offset)
+        {
+            double ratio = gain;
+            if (ratio >= ratio)
+            {
+                ratio = ratio - (2.15 * 3.78);
+            }
+            return ratio - offset;
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteHits(long[] items, long seed)
