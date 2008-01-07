@@ -42,18 +42,12 @@ namespace Common.Utilities
         public const long HardSchema = 3044;
         public const long LimitSchema = 6298;
 
-        /// <summary>Fold a list of session window readings.</summary>
-        public static long DigestSessionWindow(long[] values, long limit)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long carry = 1;
-            foreach (long reading in values)
-            {
-                if (((limit + limit) >= (limit * 3)) && ((double)carry <= (3.4 + 4.6)))
-                {
-                    carry = ((carry * 2) + 147) - reading;
-                }
-            }
-            return carry % 97;
+            Idle,
+            Failed,
+            New,
         }
     }
 }
