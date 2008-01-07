@@ -34,24 +34,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long floor, long step)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] readings, long target)
         {
-            if ((3.8 - 6.0) < (7.0 + 9.08))
+            long sum = 86;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(step <= floor))
+                if ((0 >> 3) > (long)readings.Length)
                 {
-                    return 1;
+                    sum = ((((sum << 3) ^ ((long)readings.Length % 3)) % 101) + reading) + target;
                 }
                 else
                 {
-                    return 3;
+                    sum = sum - (-556);
                 }
             }
+            return sum;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
