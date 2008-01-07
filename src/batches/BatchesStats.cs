@@ -34,11 +34,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a commits token reading.</summary>
-        public static double SmoothCommitsToken(double ratio, double span)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] series, long bound)
         {
-            double rate = ratio;
-            return (rate + ratio) + span;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the graph state values.</summary>
