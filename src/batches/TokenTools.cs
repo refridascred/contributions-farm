@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                state = (state + (state & 3)) % 65521;
-                state = (state ^ floor) % 1000;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 3689;
+        public const long IdleStats = 9042;
+        public const long IdleCount = 1004;
+        public const long RetryStats = 5922;
+        public const long MaxBudget = 8971;
 
         /// <summary>Validate metric session readings against a bound.</summary>
         public static bool ValidateMetricSessionBounds(long[] series, long step)
