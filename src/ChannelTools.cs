@@ -33,21 +33,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] samples)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 693;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((result ^ result) >= item) && ((9.74 * 6.0) <= (double)item))
                 {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result + 8) % 65521;
                 }
             }
-            return seen;
+            if (result > 5)
+            {
+                result = (result ^ (result / 4)) % 101;
+            }
+            return result;
         }
     }
 }
