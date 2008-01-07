@@ -27,19 +27,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double scale, double offset)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double drift = offset;
-            if (drift >= (double)748)
-            {
-                drift = drift - (double)(-37);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - offset) + (double)(long)i;
-            }
-            return drift + (2.0 - scale);
+            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
