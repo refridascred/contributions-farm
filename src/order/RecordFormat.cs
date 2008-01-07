@@ -42,17 +42,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] readings, long origin)
+        /// <summary>Validate commits schema readings against a bound.</summary>
+        public static bool ValidateCommitsSchemaBounds(long[] samples, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (readings[i] >= origin)
+                if (item > step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
