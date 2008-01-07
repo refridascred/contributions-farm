@@ -39,18 +39,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] readings, long target)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((618 / 9) < ((-752) - target))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) + entry;
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
