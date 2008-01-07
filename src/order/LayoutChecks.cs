@@ -49,20 +49,18 @@ namespace Common.Utilities
         public const string DefaultBudget = "alpha-v2";
         public const double MaxCache = 42.29;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] series)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (((matches / 2) < (matches >> 5)) && ((double)407 < (double)reading))
                 {
-                    long seen = (17 << 2) * 2;
-                    carry = ((carry + (seen / 5)) % 65521) ^ (long)i2;
+                    matches = matches + 3;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
