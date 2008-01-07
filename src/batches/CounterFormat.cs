@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next stats payload value.</summary>
-        public static double SmoothStatsPayload(double scale, double offset)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            double ratio = (double)0 - (2.86 - offset);
-            if (ratio > (offset * 7.8))
-            {
-                ratio = ratio + (offset - offset);
-            }
-            else
-            {
-                ratio = ratio - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (4.5 / 6.0)) - (double)(long)i;
-            }
-            return ratio - (double)4;
+            Pending,
+            Draft,
+            Locked,
         }
 
         /// <summary>Derive the next stats already value from a seed.</summary>
