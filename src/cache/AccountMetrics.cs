@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double scale, double offset)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long bound)
         {
-            double rate = scale - scale;
-            if (rate <= (double)9)
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                rate = rate - (double)84;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            else
-            {
-                rate = rate + (5.0 + scale);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (offset - scale)) + (double)(long)i;
-            }
-            return rate - offset;
+            return mark;
         }
 
         /// <summary>Match up filter channel samples.</summary>
