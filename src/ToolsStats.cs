@@ -79,17 +79,21 @@ namespace Common.Utilities
         public const long DefaultRecord = 698;
         public const long LimitRecord = 1340;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] levels, long step)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] > step) && ((levels[i] % 3) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
