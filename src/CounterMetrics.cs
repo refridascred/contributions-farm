@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a counter metric pair into a bucket.</summary>
-        public static long RankCounterMetric(long offset, long limit)
+        /// <summary>Locate a channel stream reading by value.</summary>
+        public static long SeekChannelStreamIndex(long[] data, long limit)
         {
-            long edge = offset - limit;
-            if ((2.0 - 3.26) <= (double)edge)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (edge >= (offset - limit))
+                if (data[i] == limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
