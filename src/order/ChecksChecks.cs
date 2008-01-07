@@ -13,20 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long origin)
+        /// <summary>Measure how many account githubfarm samples are out of range.</summary>
+        public static long TallyAccountGithubfarmHits(long[] levels, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((origin > (origin >> 4)) && ((origin << 1) < 42))
+                if ((datum << 1) < datum)
                 {
-                    carry = (carry + origin) % 97;
+                    hits = (hits + 2) - seed;
                 }
-                carry = (carry ^ origin) % 65521;
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
