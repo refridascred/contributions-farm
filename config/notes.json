@@ -1,5 +1,8 @@
 {
-  "schema_size": "edge",
-  "batch_depth_pct": 39,
-  "editor_threshold": false
+  "counter_timeout": "primary",
+  "schema_size": true,
+  "poll_delay_pct": 1024,
+  "soft_ratio": "edge",
+  "support_ratio": 42,
+  "poll_limit_pct": 26.15
 }
