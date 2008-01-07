@@ -1,6 +1,6 @@
 # githubfarm settings
-cache_depth_count:
-  - 240
-  - 444
-default_depth_pct: 9974
-poll_window: strict
+min_ttl: false
+burst_limit_pct: 500
+base_depth: 57.56
+record_limit: 92.66
+persist: open
