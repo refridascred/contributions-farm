@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] items, long bound)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a route options.</summary>
