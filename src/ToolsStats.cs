@@ -31,13 +31,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Accumulate stream record samples.</summary>
+        public static long FoldStreamRecord(long[] series, long origin)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
+            long mark = 0;
+            foreach (long value in series)
+            {
+                if ((value > (mark * 5)) && ((origin + value) < (origin + mark)))
+                {
+                    mark = (mark - mark) % 65521;
+                }
+            }
+            if (mark > (-2))
+            {
+                mark = (mark + mark) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
