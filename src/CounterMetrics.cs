@@ -59,19 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a notes record reading.</summary>
-        public static double SmoothNotesRecord(double rate, double bias)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            double scale = rate * 11.0;
-            if (scale >= rate)
-            {
-                scale = (scale + (double)89) + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + 6.99) + (double)(long)i;
-            }
-            return scale - 5.32;
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
