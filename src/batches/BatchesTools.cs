@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] items)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a tools info.</summary>
