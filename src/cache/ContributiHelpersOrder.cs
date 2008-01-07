@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every batch context entry stays within the limit.</summary>
-        public static bool GuardBatchContextLimits(long[] samples, long offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Paused,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the entry class values.</summary>
