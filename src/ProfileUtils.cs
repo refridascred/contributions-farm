@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile utils helpers.</summary>
     public static class ProfileUtils
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] data, long floor)
+        /// <summary>Locate a support context reading by value.</summary>
+        public static long FindSupportContextIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] == floor)
+                if (readings[i] >= floor)
                 {
                     return (long)i;
                 }
