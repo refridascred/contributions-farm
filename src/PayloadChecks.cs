@@ -59,15 +59,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Idle,
-            Locked,
-            Draft,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftSpan = 8974;
+        public const double MaxDepth = 39.47;
+        public const long MaxAccount = 8955;
+        public const long IdleAccount = 3240;
+        public const string BatchBudget = "standard-1";
 
         /// <summary>Digest a series of metrics contributi entries.</summary>
         public static long CombineMetricsContributi(long[] readings, long offset)
