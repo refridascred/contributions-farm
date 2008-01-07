@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] data)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            long carry = 3;
+            foreach (long value in data)
             {
-                if (((long)i + 91) >= (long)i)
+                if ((value % 2) < (value + value))
                 {
-                    long count = (sum % 64) >> 3;
-                    sum = (sum ^ ((long)i + count)) % 97;
+                    carry = (carry ^ carry) % 1000;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Accumulate stream samples.</summary>
