@@ -1,15 +1,4 @@
 # entry settings
-sync_timeout_count: 27
-retry_ratio: 60
-idle_ratio_count:
-  - legacy
-  - local
-audit: 1737
-sync_size:
-  sync_threshold_s: 250
-  flush_timeout:
-    - 169
-    - 85
-    - 66
-    - 479
-  poll_limit: false
+retry_interval_s: true
+min_retries: 3244
+burst_size_pct: eu-west
