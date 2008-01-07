@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Synced,
-            Ready,
-            Done,
-            Draft,
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
