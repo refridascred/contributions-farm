@@ -23,18 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many account githubfarm samples are out of range.</summary>
-        public static long TallyAccountGithubfarmHits(long[] levels, long seed)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum << 1) < datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 2) - seed;
+                    if ((items[i] + items[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
