@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double bias, double span)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] items, long step)
         {
-            double scale = bias;
-            if (scale <= (bias + scale))
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale - (double)101;
+                if ((items[i] > step) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + bias;
-            }
-            return scale + span;
+            return -1;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
