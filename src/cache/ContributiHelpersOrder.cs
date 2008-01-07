@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long IdleRatio = 316;
         public const double HardStats = 69.8;
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] readings, long floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] series, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (readings[i] <= floor)
+                if (entry > target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the counter status values.</summary>
