@@ -40,14 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] levels)
         {
-            Done,
-            Stale,
-            Pending,
-            Failed,
-            Active,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two editor format measurements.</summary>
