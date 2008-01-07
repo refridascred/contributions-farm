@@ -5,20 +5,34 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Accumulate session route samples.</summary>
+        public static long TotalSessionRoute(long[] readings)
         {
-            long mark = -25;
-            foreach (long reading in data)
+            long mix = 50;
+            foreach (long value in readings)
             {
-                if (!((4 + 738) == (reading + reading)))
+                for (int i = 0; i < 5; i++)
                 {
-                    mark = (mark - (mark + reading)) % 65521;
+                    mix = (mix - ((long)i - value)) % 1000;
                 }
-                mark = (mark ^ mark) % 4096;
-                mark = (mark * 5) + (reading ^ reading);
+                if (((19.0 / 9.0) != (double)value) || ((mix % 97) >= (mix & 3)))
+                {
+                    mix = (mix * 2) + (mix - mix);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ mix) % 1000;
+                }
+                if ((value + mix) > value)
+                {
+                    break;
+                }
             }
-            return mark % 65521;
+            if (mix > (-61))
+            {
+                mix = ((mix * 2) + mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the queue phase values.</summary>
