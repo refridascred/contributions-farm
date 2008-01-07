@@ -1,22 +1,9 @@
 # support settings
-default_retries_s:
-  - strict
-  - open
-  - legacy
-batch_capacity:
-  checks_size: staging
-  cache_delay:
-    retry_size_ms: primary
-    poll_retries_s: true
-    idle_threshold_ms: 30
-    default_size_s: blue
-    max_retries: staging
-    flush_timeout_count: 37.03
-  queue_interval: cached
-  persist: 66.56
-format_delay:
-  - 104
-  - 426
-  - 346
-  - 146
-dry_run: strict
+poll_timeout_s:
+  - fallback
+  - latest
+stream_window: false
+soft_threshold_pct: 60
+flush_limit_pct:
+  - 235
+  - 388
