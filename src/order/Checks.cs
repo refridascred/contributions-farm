@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] samples, long offset)
         {
-            public long Label { get; set; }
-            public double Size { get; set; }
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine session values into a single score.</summary>
