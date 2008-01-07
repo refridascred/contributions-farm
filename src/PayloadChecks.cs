@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] values)
+        /// <summary>Look up the position of a cache entry sample.</summary>
+        public static long FindCacheEntryIndex(long[] readings, long bound)
         {
-            long mark = 422;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((736 + datum) >= mark)
+                if ((readings[i] < bound) && ((readings[i] % 2) != 0))
                 {
-                    mark = mark + 413;
+                    return (long)i;
                 }
             }
-            if (mark > 84)
-            {
-                mark = ((mark * 5) + (mark << 3)) % 255;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
