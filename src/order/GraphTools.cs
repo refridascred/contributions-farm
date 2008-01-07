@@ -32,18 +32,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit tools already readings against a rule.</summary>
-        public static long CountToolsAlreadyHits(long[] readings)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell - cell) >= cell)
+                if (items[i] < step)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine checks profile values into a single score.</summary>
