@@ -1,14 +1,11 @@
 # Command notes
 
-A session that stays idle for too long is moved to the already list.
-The graph module keeps record values in sync with the farm cache.
-
-A schema that stays idle for too long is moved to the entry list.
-Each support is validated before it reaches the report queue.
+The layout helpers are pure functions, so they are safe to call from any thread.
+The context module keeps batch values in sync with the filter cache.
 
 ## Guidelines
 
-- Review batch limits each release
-- Prefer editor defaults
-- Keep order values small
-- Validate buffer input early
+- Review batches limits each release
+- Document new filter fields
+- Prefer notes defaults
+- Keep token values small
