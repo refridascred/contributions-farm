@@ -45,11 +45,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitWidth = 366;
-        public const long RetryDepth = 1922;
-        public const double LimitSupport = 28.93;
-        public const string IdleSupport = "local-edge";
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Active,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Audit route layout readings against a rule.</summary>
         public static long MeasureRouteLayoutMatches(long[] values)
