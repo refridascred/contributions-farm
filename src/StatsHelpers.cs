@@ -42,18 +42,21 @@ namespace Common.Utilities
         public const string IdleFactor = "open";
         public const string LimitBatches = "latest";
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] items)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)hits >= (3.55 * 13.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 2) + entry;
+                    if ((samples[i] ^ samples[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
