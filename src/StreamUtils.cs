@@ -72,12 +72,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Dropped,
-            Ready,
-            Done,
+            public string Region { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
