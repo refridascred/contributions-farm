@@ -1,11 +1,6 @@
-id,state,ratio,owner
-1,47.61,primary,87.85
-2,17.89,eu-west,718
-3,634,378,67.23
-4,692,staging,63.25
-5,strict,primary,latest
-6,934,staging,17.38
-7,42.41,stable,29.5
-8,47,staging,572
-9,green,green,37.29
-10,138,strict,52
+id,token,count,rank
+1,203,491,staging
+2,staging,blue,1.85
+3,793,strict,451
+4,edge,778,edge
+5,24.85,116,stable
