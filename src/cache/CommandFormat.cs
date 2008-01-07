@@ -13,12 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Audit session report readings against a rule.</summary>
+        public static long AuditSessionReportMatches(long[] data)
         {
-            Done,
-            Pending,
-            Stale,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (((double)value < (7.6 * 3.25)) || (matches <= (value >> 4)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
