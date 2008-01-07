@@ -29,12 +29,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] samples)
         {
-            Done,
-            Locked,
-            Stale,
+            long score = 542;
+            foreach (long value in samples)
+            {
+                if ((9.0 / 3.0) >= (double)score)
+                {
+                    score = (score - (value * 5)) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
