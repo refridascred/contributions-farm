@@ -12,19 +12,32 @@ namespace Common.Utilities
         public const string StepSize = "local-1";
         public const long HardRoute = 722;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] levels, long limit)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long step, long step2)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long offset = step ^ step2;
+            if (334 < (step + offset))
             {
-                if (entry > limit)
+                return 8;
+            }
+            else
+            {
+                if ((-778) < (offset ^ step))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((step + step2) > (step2 ^ 10))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the format mode values.</summary>
