@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] readings)
-        {
-            long mark = 8;
-            foreach (long reading in readings)
-            {
-                if (mark > (reading % 3))
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ mark) % 97;
-                }
-                mark = ((mark * 2) + (mark + reading)) % 101;
-                mark = (mark * 5) + 0;
-                if ((3 * 5) < (mark << 3))
-                {
-                    break;
-                }
-            }
-            if (mark < 175)
-            {
-                mark = mark + 81;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxSize = "alpha-v2";
+        public const long HardGithubfarm = 1241;
+        public const double BaseWidth = 98.39;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long DigestLayout(long[] readings)
