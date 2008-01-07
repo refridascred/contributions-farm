@@ -1,6 +1,9 @@
 {
-  "tools_size": "blue",
-  "cache_limit": 1024,
-  "verbose": 13.59,
-  "min_timeout_ms": 58
+  "warm_interval": 3420,
+  "sync_depth_s": {
+    "hard_retries_count": 9426,
+    "idle_size_pct": "blue",
+    "audit": ["fallback", "blue"]
+  },
+  "buffer_size": 58.56
 }
