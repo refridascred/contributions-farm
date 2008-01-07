@@ -30,28 +30,36 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long seed, long floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long target, long limit)
         {
-            if ((seed - seed) >= (floor % 7))
+            long gap = target + limit;
+            if (!((gap >> 3) <= (target + target)))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if ((double)seed != (2.1 + 15.0))
+                if ((8.0 + 1.4) < (double)gap)
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if ((floor & 255) != (floor ^ 8))
+                    if ((limit & 1) <= (limit * 3))
                     {
-                        return 5;
+                        return 0;
                     }
                     else
                     {
-                        return 3;
+                        if ((double)gap == (1.0 + 5.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
