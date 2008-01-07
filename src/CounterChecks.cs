@@ -40,12 +40,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public double Owner { get; set; }
+            public double Label { get; set; }
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
