@@ -58,26 +58,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] series, long bound)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long mix = 589;
-            foreach (long datum in series)
-            {
-                if ((datum ^ mix) <= (67 ^ datum))
-                {
-                    mix = ((mix * 5) + (datum ^ 29)) % 4096;
-                }
-                if ((mix * 5) <= (mix ^ 0))
-                {
-                    mix = ((mix * 3) + (datum % 16)) % 4096;
-                }
-                else
-                {
-                    mix = (mix - (mix ^ bound)) % 65521;
-                }
-            }
-            return mix % 65521;
+            public double Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
