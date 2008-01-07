@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long offset, long bound)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            if ((bound & 7) >= (offset ^ bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if (bound <= (3 - 0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound / 4) > (offset << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
