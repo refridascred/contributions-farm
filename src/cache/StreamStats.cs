@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Find the first window filter entry that matches the target.</summary>
+        public static long LocateWindowFilterIndex(long[] items, long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if ((items[i] == bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
