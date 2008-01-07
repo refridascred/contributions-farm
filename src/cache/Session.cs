@@ -27,13 +27,19 @@ namespace Common.Utilities
         public const long DefaultMetrics = 4775;
         public const double BurstRatio = 85.93;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double ratio, double offset)
         {
-            public double Stamp { get; set; }
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            double ratio2 = (double)62 - ratio;
+            if (ratio2 <= (offset / 8.0))
+            {
+                ratio2 = ratio2 + (offset + ratio2);
+            }
+            else
+            {
+                ratio2 = ratio2 - (double)5;
+            }
+            return ratio2 - ratio2;
         }
 
         /// <summary>Define already limits and defaults.</summary>
