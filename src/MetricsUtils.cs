@@ -28,39 +28,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a farm metrics pair into a bucket.</summary>
-        public static long BucketFarmMetrics(long floor, long step)
-        {
-            if ((step - floor) != (894 / 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (75 > (140 ^ step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)step >= (double)floor) || (step > (floor + floor)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)floor != (double)step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 6556;
+        public const long HardBudget = 8676;
+        public const double StepSize = 97.1;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool VerifyChecksRange(long[] readings, long floor)
