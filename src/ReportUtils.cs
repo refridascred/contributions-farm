@@ -19,35 +19,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long offset, long floor)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long step, long seed)
         {
-            if (offset < (offset << 1))
+            long delta = step + seed;
+            if ((delta + seed) > seed)
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((double)offset <= (3.5 / 5.0))
+                if ((seed - seed) >= (delta << 3))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)offset > (3.3 * 11.0))
+                    if ((1.0 * 7.6) <= (double)delta)
                     {
-                        return 5;
+                        return 4;
                     }
                     else
                     {
-                        if (((floor & 1) <= (32 + floor)) && ((double)floor <= 10.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 2;
                     }
                 }
             }
