@@ -57,10 +57,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftMetric = "standard-edge";
-        public const string HardSpan = "alpha-edge";
-        public const long LimitSize = 7483;
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long CompareFormatCount(long[] items)
