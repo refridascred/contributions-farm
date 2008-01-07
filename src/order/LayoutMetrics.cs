@@ -25,21 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of graph editor readings.</summary>
-        public static long MatchGraphEditorCount(long[] items)
+        /// <summary>Roll a context farm counter forward.</summary>
+        public static long DeriveContextFarm(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = target;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((state - (long)i) <= ((long)i - target))
                 {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                else
+                {
+                    state = (state - (target >> 5)) % 101;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
