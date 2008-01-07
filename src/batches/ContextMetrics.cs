@@ -47,15 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metric stats series from a seed.</summary>
-        public static long RollMetricStats(long origin)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long mark = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
