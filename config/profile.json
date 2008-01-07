@@ -1,16 +1,7 @@
 {
-  "max_limit": {
-    "default_retries_count": {
-      "batch_delay_ms": 30,
-      "flush_interval_count": 60,
-      "compress": 15.97,
-      "enabled": 24.78
-    },
-    "metric_retries": true,
-    "soft_window_pct": "open",
-    "commits_delay": "stable",
-    "poll_timeout": 91.52
-  },
-  "cache_depth_pct": 500,
-  "filter_window": [393, 158, 368]
+  "filter_limit": "cached",
+  "enabled": 4.52,
+  "base_delay": 36.96,
+  "min_depth": false,
+  "burst_timeout_pct": 3699
 }
