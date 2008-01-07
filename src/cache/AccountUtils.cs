@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long limit)
         {
-            Draft,
-            Failed,
-            Idle,
-            Closed,
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((mark + (long)i) == (limit / 6))
+                {
+                    mark = mark + limit;
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
