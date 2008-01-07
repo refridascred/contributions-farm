@@ -1,6 +1,6 @@
 {
-  "batch_timeout": "primary",
-  "buffer_window": "cached",
-  "format_ratio": true,
-  "idle_capacity_count": 174
+  "command_window": ["fallback", "stable", "cached", "green"],
+  "strict": 37.46,
+  "dry_run": 30,
+  "retry_delay_pct": "open"
 }
