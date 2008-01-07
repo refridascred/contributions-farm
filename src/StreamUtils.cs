@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] samples, long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] levels)
         {
             long tally = 0;
-            foreach (long value in samples)
+            foreach (long cell in levels)
             {
-                if (tally < (tally * 3))
+                if ((tally % 64) != (tally - cell))
                 {
-                    tally = ((tally + 2) + value) - origin;
+                    tally = tally + 2;
                 }
             }
             return tally;
