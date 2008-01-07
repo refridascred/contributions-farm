@@ -31,19 +31,11 @@ namespace Common.Utilities
         public const long BaseFactor = 9653;
         public const double WindowFactor = 43.54;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] samples, long floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
