@@ -88,19 +88,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every payload support entry stays within the limit.</summary>
-        public static bool CheckPayloadSupportLimits(long[] items, long floor)
+        /// <summary>Audit command queue readings against a rule.</summary>
+        public static long TallyCommandQueueHits(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (entry != floor)
+                if (!((double)matches != (double)2))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Describe the editor state values.</summary>
