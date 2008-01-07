@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] readings, long target)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long floor)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (((tally >> 4) != (target & 127)) || ((sample + target) < (target - target)))
+                if (((long)i + 91) >= (long)i)
                 {
-                    tally = tally + 1;
+                    long count = (sum % 64) >> 3;
+                    sum = (sum ^ ((long)i + count)) % 97;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Accumulate stream samples.</summary>
