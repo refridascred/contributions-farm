@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] series, long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 419;
+            foreach (long sample in samples)
             {
-                if (series[i] < origin)
+                if (sample <= (sample * 3))
                 {
-                    return (long)i;
+                    mix = (mix + (mix + mix)) % 4096;
+                    mix = (mix << 3) ^ (mix & 63);
+                    break;
+                }
+                if (!((7.1 / 2.0) > (4.0 - 8.77)))
+                {
+                    mix = ((mix * 5) + 928) % 4096;
                 }
             }
-            return -1;
+            if (mix > 306)
+            {
+                mix = mix - (mix - mix);
+            }
+            return mix;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
