@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every metrics cluster entry stays within the limit.</summary>
-        public static bool GuardMetricsClusterRange(long[] series, long limit)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry < limit)
+                if (levels[i] == limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
