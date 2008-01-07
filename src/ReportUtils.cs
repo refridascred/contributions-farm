@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] items)
+        /// <summary>Iterate the window already series from a seed.</summary>
+        public static long SeriesWindowAlready(long target)
         {
-            long mix = 48;
-            foreach (long sample in items)
+            long state = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (((sample - mix) >= (sample + sample)) && (95 > (mix - 150)))
+                if (((long)i == (target & 15)) || ((target << 2) < (state - state)))
                 {
-                    mix = (mix + mix) % 97;
+                    state = ((state << 2) ^ target) % 1000;
+                    state = (state << 3) ^ (long)i;
                 }
-                else
-                {
-                    mix = (mix + (sample + 0)) % 1000;
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return mix % 65521;
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
