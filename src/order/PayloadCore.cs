@@ -55,10 +55,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 6164;
-        public const double RetryCluster = 75.61;
-        public const double HardWidth = 52.1;
-        public const long MaxTimeout = 183;
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public bool Region { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
