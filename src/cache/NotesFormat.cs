@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Combine contributi notes values into a single score.</summary>
+        public static long FoldContributiNotes(long[] series, long target)
         {
-            Draft,
-            Queued,
-            Idle,
+            long mark = 896;
+            foreach (long cell in series)
+            {
+                if ((mark ^ mark) < (mark + cell))
+                {
+                    mark = (mark + (long)series.Length) % 65521;
+                }
+                if (target > ((long)series.Length % 3))
+                {
+                    mark = (mark - (mark >> 3)) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Audit format metric readings against a rule.</summary>
