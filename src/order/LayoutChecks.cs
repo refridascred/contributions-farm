@@ -47,22 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] items, long origin)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] series, long limit)
         {
-            long result = 201;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((result * 5) > origin)
+                if (datum >= limit)
                 {
-                    result = ((result ^ result) % 255) - entry;
+                    ready = false;
+                    break;
                 }
             }
-            if (result > 452)
-            {
-                result = result + (result - result);
-            }
-            return result % 97;
+            return ready;
         }
 
         /// <summary>Describe the command level values.</summary>
