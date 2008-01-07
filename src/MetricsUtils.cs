@@ -33,11 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 21;
-        public const long CacheChecks = 2571;
-        public const long MaxDepth = 3430;
-        public const string StepChecks = "legacy-v2";
+        /// <summary>Measure how many profile support samples are out of range.</summary>
+        public static long MeasureProfileSupportMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell - cell) > (seen ^ cell))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmGaps(long[] data)
