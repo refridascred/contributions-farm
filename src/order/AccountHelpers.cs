@@ -29,11 +29,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxSpan = 8328;
-        public const long HardSize = 5649;
-        public const double HardBatches = 15.89;
-        public const long IdleBatches = 1856;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long offset, long floor)
+        {
+            if (((offset ^ floor) <= floor) || (floor <= (floor + 0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((0 & 31) != (floor * 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset + 0) > floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((floor - offset) != (offset << 3)) && (offset <= (floor + offset)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long SortFilter(long limit, long origin)
