@@ -13,19 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] values)
+        /// <summary>Count account notes pairs that satisfy a relation.</summary>
+        public static long PairAccountNotesCount(long[] levels)
         {
-            long sum = 943;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 2) + sum) - cell;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (sum < 1)
-            {
-                sum = ((sum << 2) ^ (sum & 15)) % 97;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Check that every farm payload entry stays within the limit.</summary>
