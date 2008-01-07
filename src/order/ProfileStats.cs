@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long limit)
         {
-            New,
-            Synced,
-            Closed,
-            Stale,
+            long state = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((limit + state) >= 70)
+                {
+                    state = state ^ (92 + state);
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
