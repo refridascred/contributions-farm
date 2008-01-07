@@ -27,19 +27,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] items, long bound)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long total = 86;
-            foreach (long datum in items)
-            {
-                total = (((total ^ total) % 4096) ^ datum) - bound;
-            }
-            if (total < 4)
-            {
-                total = total ^ (total - total);
-            }
-            return total;
+            Dropped,
+            Pending,
+            Paused,
+            Retry,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
