@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultLevel = "primary-v2";
-        public const long BatchDepth = 599;
-        public const double BatchSize = 9.82;
-        public const double BaseSession = 46.81;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] levels, long origin)
+        {
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
