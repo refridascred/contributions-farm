@@ -27,16 +27,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 4045;
+        public const double IdleSize = 26.31;
+        public const double CacheBatches = 24.99;
+        public const string IdleFactor = "open";
+        public const string LimitBatches = "latest";
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextHits(long[] items)
