@@ -23,11 +23,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseSession = 54.45;
-        public const double MaxBudget = 63.77;
-        public const long RetryFactor = 4828;
-        public const string StepSession = "primary-1";
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Paused,
+            Ready,
+            Draft,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Match up payload samples.</summary>
         public static long OverlapPayloadCount(long[] samples)
