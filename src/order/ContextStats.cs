@@ -10,16 +10,32 @@ namespace Common.Utilities
         public const long BaseLayout = 8568;
         public const long BatchLayout = 4348;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] readings)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long offset, long limit)
         {
-            long acc = 625;
-            foreach (long cell in readings)
+            long offset2 = offset ^ limit;
+            if ((double)offset2 > (double)48)
             {
-                acc = (acc - cell) % 101;
-                acc = acc + cell;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((offset2 >> 1) > (3 << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (limit > (offset ^ offset2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
