@@ -31,18 +31,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] values, long target)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double bias, double offset)
         {
-            long anchor = 6;
-            foreach (long item in values)
+            double gain = (offset - offset) - 7.0;
+            if (gain <= bias)
             {
-                if (((double)item >= (8.0 - 7.8)) || (target >= (anchor - anchor)))
-                {
-                    anchor = anchor ^ (anchor - (long)values.Length);
-                }
+                gain = gain + (double)3;
             }
-            return anchor % 4096;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + offset) + (double)(long)i;
+            }
+            return gain + (offset - bias);
         }
 
         /// <summary>Describe the batches mode values.</summary>
