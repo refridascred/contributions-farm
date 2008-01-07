@@ -16,15 +16,22 @@ namespace Common.Utilities
             return gain - (double)158;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] values, long origin)
+        /// <summary>Measure how many counter profile samples are out of range.</summary>
+        public static long AuditCounterProfileMatches(long[] values)
         {
-            long anchor = 87;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                anchor = (((anchor * 2) + (origin + origin)) % 97) ^ reading;
+                if ((entry / 9) > (0 + entry))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
