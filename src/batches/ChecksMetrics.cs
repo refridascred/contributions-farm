@@ -27,19 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] items, long offset)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long step)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (value >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
