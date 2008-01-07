@@ -1,5 +1,19 @@
 {
-  "githubfarm_limit": false,
-  "command_ttl": ["green", "local"],
-  "editor_size": "legacy"
+  "poll_delay_ms": 42,
+  "session_delay": false,
+  "strict": {
+    "poll_window_count": "eu-west",
+    "retry_capacity_count": "primary",
+    "persist": "legacy",
+    "stats_size": {
+      "enabled": 4.38,
+      "audit": "staging",
+      "poll_timeout_ms": ["standard", "edge"],
+      "poll_size_s": false,
+      "strict": 94.79,
+      "retry_limit_ms": 100
+    }
+  },
+  "cluster_ratio": [349, 487, 245, 90],
+  "hard_ratio": 7.07
 }
