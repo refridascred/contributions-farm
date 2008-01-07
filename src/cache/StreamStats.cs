@@ -16,16 +16,25 @@ namespace Common.Utilities
             return drift - (bias / 3.0);
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long limit)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long floor, long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            long gap = floor - origin;
+            if ((985 + gap) >= (682 >> 2))
             {
-                result = (result * 2) + (result + limit);
-                result = ((result * 5) + (long)i) % 97;
+                return 5;
             }
-            return result;
+            else
+            {
+                if (((gap - gap) >= floor) && (7 < floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
