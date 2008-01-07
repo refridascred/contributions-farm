@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstGithubfarm = 46.98;
-        public const long BatchGithubfarm = 8013;
-        public const long MinDepth = 1141;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] series)
+        {
+            long acc = 43;
+            foreach (long sample in series)
+            {
+                acc = (acc + 71) + sample;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
