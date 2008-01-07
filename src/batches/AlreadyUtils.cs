@@ -14,15 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] levels, long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] series, long limit)
         {
-            long mix = 79;
-            foreach (long entry in levels)
+            long score = 82;
+            foreach (long reading in series)
             {
-                mix = ((mix * 4) + (652 ^ bound)) ^ entry;
+                score = ((score ^ (797 + limit)) % 97) - reading;
             }
-            return mix % 1000;
+            if (score > 73)
+            {
+                score = score ^ ((-8) - score);
+            }
+            return score;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
