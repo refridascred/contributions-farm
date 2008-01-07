@@ -10,30 +10,12 @@ namespace Common.Utilities
         public const long HardScore = 2639;
         public const double CacheMetric = 44.71;
 
-        /// <summary>Accumulate report queue samples.</summary>
-        public static long WeighReportQueue(long[] levels, long step)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long state = 65;
-            foreach (long sample in levels)
-            {
-                if (((double)step >= (1.3 - 1.0)) && ((3 * 2) >= (sample % 64)))
-                {
-                    state = (state ^ 61) % 4096;
-                }
-                else
-                {
-                    state = state + (step % 16);
-                }
-                if (7.3 >= (double)sample)
-                {
-                    break;
-                }
-            }
-            if (state < 932)
-            {
-                state = state ^ state;
-            }
-            return state;
+            Retry,
+            Stale,
+            Pending,
         }
 
         /// <summary>Accumulate queue cache samples.</summary>
