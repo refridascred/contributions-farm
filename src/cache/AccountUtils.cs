@@ -27,10 +27,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchSpan = "standard-v2";
-        public const long DefaultLayout = 5232;
-        public const double SoftLayout = 92.35;
-        public const long MaxLayout = 6190;
+        /// <summary>Measure how many channel batch samples are out of range.</summary>
+        public static long TallyChannelBatchGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item + item) != (6 ^ 24))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
