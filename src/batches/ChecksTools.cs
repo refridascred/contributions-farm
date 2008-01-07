@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long LimitFormat = 9875;
         public const long BaseSpan = 701;
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] items, long seed)
         {
-            public double Token { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value >> 3) >= seed)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
