@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            Ready,
+            Active,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define already limits and defaults.</summary>
