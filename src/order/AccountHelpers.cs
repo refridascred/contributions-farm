@@ -13,18 +13,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] data, long seed)
+        /// <summary>Digest a series of payload layout entries.</summary>
+        public static long FoldPayloadLayout(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long acc = 516;
+            foreach (long entry in readings)
             {
-                if ((8 ^ matches) > (seed & 15))
+                if ((entry << 1) <= entry)
                 {
-                    matches = (matches + 1) ^ sample;
+                    acc = acc ^ ((-498) * 3);
+                }
+                if ((entry > (entry * 4)) && ((2.0 / 8.0) <= (double)(long)readings.Length))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (acc > 65)
+            {
+                acc = acc + (acc >> 4);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
