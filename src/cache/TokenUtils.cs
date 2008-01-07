@@ -14,18 +14,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] data)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long mix = 9;
+            foreach (long value in data)
             {
-                if (!((tally * 5) != (812 - entry)))
+                if (!((value - mix) >= (long)data.Length))
                 {
-                    tally = tally + 3;
+                    mix = (mix + 3) - floor;
                 }
+                mix = (mix ^ 6) % 101;
+                mix = mix + (value & 3);
             }
-            return tally;
+            return mix % 4096;
         }
 
         /// <summary>Hold a counter record.</summary>
