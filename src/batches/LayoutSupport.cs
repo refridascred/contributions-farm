@@ -52,17 +52,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] samples, long bound)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 5) != 0))
+                if ((17.0 - 2.73) <= (double)reading)
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
