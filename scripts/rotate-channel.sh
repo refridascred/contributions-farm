@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest blue edge; do
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in stable local edge strict; do
     log "checking ${item}"
 done
 
-mode="${1:-standard}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+CHANNEL_LIMIT=43
+log "limit is ${CHANNEL_LIMIT}"
