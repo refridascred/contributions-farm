@@ -26,19 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] items, long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long score = 182;
+            foreach (long item in readings)
             {
-                if (value != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                score = score + (item ^ score);
             }
-            return ok;
+            if (score < 951)
+            {
+                score = (score ^ (6 % 8)) % 101;
+            }
+            return score % 4096;
         }
     }
 }
