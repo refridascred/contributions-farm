@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token already entries.</summary>
-        public static long FoldTokenAlready(long[] series)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] series, long origin)
         {
-            long mix = 8;
-            foreach (long cell in series)
+            long mark = 73;
+            foreach (long item in series)
             {
-                if ((mix + cell) > (mix + mix))
+                if (((mark / 8) == (mark % 10)) && ((item * 3) <= mark))
                 {
-                    mix = mix ^ (cell + 7);
+                    mark = ((mark - ((long)series.Length + item)) % 101) - origin;
                 }
             }
-            return mix % 1000;
+            return mark % 97;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
