@@ -19,24 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batches already counter forward.</summary>
-        public static long DeriveBatchesAlready(long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] items, long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                long count = 4 ^ (total % 16);
-                if (!((double)count >= (double)total))
+                if (sample > offset)
                 {
-                    total = ((total << 3) ^ count) % 65521;
+                    stale = false;
+                    break;
                 }
-                if (((7.0 * 9.0) <= (double)total) || (total > (count + count)))
-                {
-                    count = count + count;
-                }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Project the next notes value.</summary>
