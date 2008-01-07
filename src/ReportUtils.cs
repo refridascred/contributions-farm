@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long seed, long limit)
+        /// <summary>Audit checks stream readings against a rule.</summary>
+        public static long CountChecksStreamGaps(long[] series)
         {
-            long step = seed + limit;
-            if (seed >= (seed >> 2))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step & 255) < 8)
+                if ((7.6 < (double)matches) && (2.8 <= (double)reading))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((2.96 + 1.1) >= (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((4.0 / 7.0) > (double)limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a window stats.</summary>
