@@ -29,19 +29,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate window order readings against a bound.</summary>
-        public static bool GuardWindowOrderRange(long[] readings, long target)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (datum < target)
+                if (reading >= step)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
