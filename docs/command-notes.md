@@ -1,12 +1,10 @@
 # Command notes
 
-A stream that stays idle for too long is moved to the stats list.
-Keep counter and record names short and lowercase.
-Each notes is validated before it reaches the already queue.
+Use contributi settings to tune how often command data is refreshed.
+Keep tools and cache names short and lowercase.
 
 ## Guidelines
 
-- Keep queue values small
-- Prefer order defaults
-- Review buffer limits each release
-- Document new notes fields
+- Keep route values small
+- Log every buffer change
+- Document new schema fields
