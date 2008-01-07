@@ -65,10 +65,11 @@ namespace Common.Utilities
         public const long MinRecord = 6811;
         public const long BurstRecord = 4236;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheSpan = 12.31;
-        public const long LimitOrder = 8033;
-        public const string StepBudget = "staging-edge";
-        public const long CacheDepth = 9873;
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public long Rank { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
