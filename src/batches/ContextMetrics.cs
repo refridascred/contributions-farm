@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] data, long origin)
         {
-            Idle,
-            Pending,
-            Dropped,
+            long carry = 918;
+            foreach (long sample in data)
+            {
+                if ((-388) > (carry >> 5))
+                {
+                    carry = (carry ^ sample) % 4096;
+                }
+                else
+                {
+                    carry = carry - (sample + origin);
+                }
+            }
+            if (carry > (-32))
+            {
+                carry = ((carry << 3) ^ ((long)data.Length - 105)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of report readings.</summary>
