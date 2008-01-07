@@ -25,11 +25,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdlePayload = "open-edge";
-        public const long BatchPayload = 3958;
-        public const long MaxFactor = 3206;
-        public const long RetryPayload = 6035;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitSpan = 1851;
+        public const long BurstFilter = 3712;
+        public const long SoftFilter = 8663;
+        public const long WindowFilter = 4302;
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
