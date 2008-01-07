@@ -25,15 +25,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double ratio, double span)
         {
-            long mix = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            double scale = span;
+            return scale - (ratio - ratio);
         }
 
         /// <summary>Look up the position of a session contributi sample.</summary>
