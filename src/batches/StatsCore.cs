@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowInterval = "alpha-edge";
-        public const string LimitDepth = "cached-edge";
-        public const long BatchSize = 5842;
-        public const long BurstScore = 3776;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
