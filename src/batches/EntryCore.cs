@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] data, long target)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 9076;
+        public const long WindowFactor = 6520;
+        public const long DefaultBuffer = 2279;
 
         /// <summary>Iterate the format layout series from a seed.</summary>
         public static long StepFormatLayout(long origin)
