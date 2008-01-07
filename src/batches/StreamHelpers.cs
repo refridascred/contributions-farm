@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long MinSize = 9462;
         public const long BurstFactor = 478;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] samples)
-        {
-            long sum = 2;
-            foreach (long datum in samples)
-            {
-                if (sum <= (sum % 5))
-                {
-                    sum = ((sum ^ 21) % 101) ^ datum;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseCommand = "alpha-edge";
+        public const long CacheCommand = 2880;
+        public const long WindowCommand = 1737;
+        public const long IdleCommand = 2406;
+        public const long BatchCommand = 9515;
 
         /// <summary>Validate tools report readings against a bound.</summary>
         public static bool ValidateToolsReportLimits(long[] series, long target)
