@@ -41,12 +41,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] data)
         {
-            public double Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Mode { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + datum) < datum)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
