@@ -28,31 +28,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long target, long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] readings, long offset)
         {
-            if (!((target * 4) > target))
+            long sum = 29;
+            foreach (long sample in readings)
             {
-                return 5;
+                sum = ((sum - (offset ^ sum)) % 97) - sample;
+                sum = (sum ^ offset) % 97;
+                sum = sum - (offset - offset);
             }
-            else
+            if (sum > (-424))
             {
-                if (target <= (offset / 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)offset == (5.95 - 7.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                sum = (sum * 2) + (sum * 3);
             }
+            return sum % 65521;
         }
     }
 }
