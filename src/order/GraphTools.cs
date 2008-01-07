@@ -22,14 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Queued,
-            Done,
+            Ready,
+            Closed,
+            Failed,
             New,
-            Paused,
-            Pending,
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
