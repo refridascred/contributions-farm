@@ -57,21 +57,14 @@ namespace Common.Utilities
         public const string BatchStream = "strict-1";
         public const double BurstRatio = 97.61;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long offset)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                long bound = mark;
-                if (offset > (bound % 12))
-                {
-                    mark = mark + (bound & 63);
-                    mark = (mark + ((-80) >> 1)) % 65521;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Dropped,
+            Locked,
+            Paused,
+            Draft,
+            Stale,
         }
     }
 }
