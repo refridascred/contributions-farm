@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleScore = 6574;
-        public const double DefaultGithubfarm = 36.2;
-        public const long CacheGithubfarm = 5820;
+        /// <summary>Project the next window stream value.</summary>
+        public static double SmoothWindowStream(double ratio, double offset)
+        {
+            double scale = (ratio + ratio) * 6.7;
+            if (scale >= (double)7)
+            {
+                scale = (scale - scale) - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - (0.1 - ratio);
+        }
 
         /// <summary>Locate a record report reading by value.</summary>
         public static long FindRecordReportIndex(long[] readings, long bound)
