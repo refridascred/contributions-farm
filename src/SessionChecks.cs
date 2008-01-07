@@ -58,12 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] data)
         {
-            Draft,
-            Paused,
-            Ready,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading == (2.0 - 9.0))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up farm samples.</summary>
