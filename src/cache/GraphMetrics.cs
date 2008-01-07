@@ -59,39 +59,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long target, long bound)
+        /// <summary>Locate a counter buffer reading by value.</summary>
+        public static long FindCounterBufferIndex(long[] samples, long origin)
         {
-            long delta = target ^ bound;
-            if ((double)delta >= (8.0 - 3.19))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((1.0 + 7.36) <= (double)bound))
+                if (samples[i] < origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)delta <= (3.94 * 7.0)) && ((573 + target) != (delta >> 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound - delta) >= delta)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
