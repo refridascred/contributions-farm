@@ -14,13 +14,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] levels, long bound)
         {
-            Dropped,
-            Active,
-            Closed,
-            Retry,
+            long mix = 79;
+            foreach (long entry in levels)
+            {
+                mix = ((mix * 4) + (652 ^ bound)) ^ entry;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the payload state values.</summary>
