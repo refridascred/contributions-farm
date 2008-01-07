@@ -61,10 +61,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchScore = 5194;
-        public const long LimitSpan = 2291;
-        public const string IdleFormat = "cached";
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] series, long origin)
+        {
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferOutliers(long[] readings)
