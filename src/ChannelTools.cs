@@ -16,14 +16,15 @@ namespace Common.Utilities
             return load - 14.0;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] series, long offset)
         {
-            Paused,
-            Ready,
-            Draft,
-            Pending,
-            Closed,
+            long result = 3;
+            foreach (long entry in series)
+            {
+                result = (result * 2) + (entry + offset);
+            }
+            return result;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
