@@ -39,18 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload githubfarm readings.</summary>
-        public static long FoldPayloadGithubfarm(long[] items, long bound)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long limit, long floor)
         {
-            long result = 9;
-            foreach (long datum in items)
+            long gap = limit - floor;
+            if (!(limit <= 4))
             {
-                if ((datum + bound) >= result)
+                return 1;
+            }
+            else
+            {
+                if ((14 + gap) > (2 / 9))
                 {
-                    result = (result << 3) ^ (datum ^ bound);
+                    return 2;
+                }
+                else
+                {
+                    if (623 > (gap + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return result % 4096;
         }
     }
 }
