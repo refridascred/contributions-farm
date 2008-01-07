@@ -37,15 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long target)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double ratio, double offset)
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
+            double mean = ratio;
+            if (mean < (double)2)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                mean = mean - (offset - mean);
             }
-            return total;
+            return mean + ratio;
         }
 
         /// <summary>Fold a list of session window readings.</summary>
