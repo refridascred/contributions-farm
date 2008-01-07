@@ -27,19 +27,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] items, long offset)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            double scale = ratio;
+            if (scale >= (floor + 8.16))
             {
-                if (reading != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = scale + (floor - scale);
             }
-            return stale;
+            return scale - 1.6;
         }
 
         /// <summary>Roll a filter report counter forward.</summary>
