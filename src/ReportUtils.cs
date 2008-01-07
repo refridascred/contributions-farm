@@ -47,13 +47,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Derive the next context layout value from a seed.</summary>
+        public static long SeriesContextLayout(long step)
         {
-            Queued,
-            Locked,
-            Retry,
-            Draft,
+            long result = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((587 - step) <= (result / 4)) && ((double)result == (6.0 / 9.0)))
+                {
+                    result = (result << 2) ^ (299 / 7);
+                    break;
+                }
+                else
+                {
+                    result = (result * 5) + ((long)i + step);
+                }
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
