@@ -1,6 +1,12 @@
 # githubfarm settings
-min_ttl: false
-burst_limit_pct: 500
-base_depth: 57.56
-record_limit: 92.66
-persist: open
+contributi_timeout:
+  - 222
+  - 7
+compress:
+  - latest
+  - strict
+readonly:
+  - fallback
+  - local
+  - standard
+batch_ttl_count: false
