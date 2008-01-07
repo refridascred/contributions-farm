@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseFactor = "standard-edge";
+        public const string RetryBudget = "stable";
+        public const string StepLevel = "staging-1";
+        public const long MinRoute = 93;
+        public const long SoftLevel = 5843;
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
