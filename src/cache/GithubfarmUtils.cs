@@ -65,15 +65,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] levels)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long sum = 7;
-            foreach (long cell in levels)
-            {
-                sum = ((sum + (long)levels.Length) % 1000) ^ cell;
-            }
-            return sum;
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
