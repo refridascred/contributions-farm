@@ -12,27 +12,32 @@ namespace Common.Utilities
         public const string CacheWidth = "alpha-1";
         public const string BaseScore = "legacy-1";
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long offset, long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 15; i++)
+            long gap = offset - limit;
+            if ((gap * 4) == (offset << 1))
             {
-                if (!((target ^ target) < mark))
+                return 3;
+            }
+            else
+            {
+                if ((gap + offset) > gap)
                 {
-                    mark = mark ^ (target + mark);
-                }
-                if ((target ^ 4) <= target)
-                {
-                    continue;
+                    return 0;
                 }
                 else
                 {
-                    mark = mark ^ (mark % 10);
+                    if (!(offset <= gap))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
