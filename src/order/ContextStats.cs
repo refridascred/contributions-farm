@@ -23,22 +23,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] series, long step)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long result = 53;
+            foreach (long value in series)
             {
-                if ((sample & 7) != (483 << 2))
+                if ((value & 15) < value)
                 {
-                    matches = (matches + 1) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    result = ((result ^ result) % 4096) - offset;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
