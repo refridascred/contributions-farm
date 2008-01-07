@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] levels)
-        {
-            long anchor = -29;
-            foreach (long sample in levels)
-            {
-                if ((double)sample <= (6.0 * 1.56))
-                {
-                    anchor = anchor - (sample / 8);
-                }
-            }
-            if (anchor < 44)
-            {
-                anchor = (anchor * 4) + (16 + (-628));
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultRatio = 58.98;
+        public const double SoftWidth = 10.03;
+        public const double SoftSize = 73.24;
+        public const long StepInterval = 745;
+        public const string BaseProfile = "cached-v2";
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool VerifyMetricRange(long[] series, long offset)
