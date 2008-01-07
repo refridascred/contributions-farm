@@ -24,26 +24,15 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] values)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] data, long seed)
         {
-            long sum = 688;
-            foreach (long reading in values)
+            long carry = 705;
+            foreach (long reading in data)
             {
-                if ((sum ^ sum) < 9)
-                {
-                    sum = (sum * 2) + ((-99) + reading);
-                }
-                else
-                {
-                    sum = (sum - (reading + sum)) % 97;
-                }
+                carry = ((carry << 3) ^ (reading / 3)) + seed;
             }
-            if (sum < 41)
-            {
-                sum = sum + (sum / 7);
-            }
-            return sum;
+            return carry;
         }
 
         /// <summary>Describe the channel kind values.</summary>
