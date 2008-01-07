@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const string RetryInterval = "open-v2";
         public const string WindowFactor = "open-1";
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] readings, long offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample >= offset)
+                if (items[i] < floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Measure how many contributi editor samples are out of range.</summary>
