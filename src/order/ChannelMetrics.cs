@@ -12,20 +12,26 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] data, long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] samples, long origin)
         {
-            long acc = 67;
-            foreach (long reading in data)
+            long mark = 439;
+            foreach (long reading in samples)
             {
-                acc = ((acc * 4) + (208 % 10)) % 1000;
-                acc = ((acc << 3) ^ (7 + reading)) % 4096;
-                if ((step % 60) > reading)
+                if ((7 - reading) < (reading << 2))
                 {
-                    acc = ((acc * 5) + (reading >> 3)) % 4096;
+                    mark = (mark << 2) ^ (71 << 2);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (79 + origin)) % 65521;
+                }
+                if (!((double)origin != (0.57 / 2.0)))
+                {
+                    break;
                 }
             }
-            return acc;
+            return mark % 4096;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
