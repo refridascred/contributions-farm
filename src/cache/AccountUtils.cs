@@ -27,25 +27,22 @@ namespace Common.Utilities
         public const double IdleRoute = 23.75;
         public const double RetryBudget = 56.04;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] data, long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] series, long offset)
         {
-            long sum = 72;
-            foreach (long item in data)
+            long carry = -1;
+            foreach (long sample in series)
             {
-                sum = ((sum * 2) + sum) % 101;
-                sum = (sum * 2) + limit;
-                sum = sum ^ (item & 1);
-                if (item >= (-83))
+                if (!(offset > (50 ^ (-72))))
                 {
-                    break;
+                    carry = ((carry - (offset & 255)) % 101) + sample;
                 }
             }
-            if (sum > 402)
+            if (carry > 707)
             {
-                sum = sum + sum;
+                carry = (carry - (carry - offset)) % 65521;
             }
-            return sum % 97;
+            return carry % 97;
         }
     }
 }
