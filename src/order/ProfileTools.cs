@@ -40,14 +40,18 @@ namespace Common.Utilities
         public const double IdleGithubfarm = 46.13;
         public const string MaxGithubfarm = "open";
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] levels, long offset)
         {
-            Queued,
-            Pending,
-            Paused,
-            Idle,
-            Draft,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((offset - 228) >= (long)levels.Length)
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
