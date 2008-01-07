@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double gain, double bias)
-        {
-            double weight = (double)2 - 3.9;
-            if (weight >= (16.0 / 6.0))
-            {
-                weight = weight - (bias * 4.0);
-            }
-            else
-            {
-                weight = weight - (double)5;
-            }
-            return weight - (gain * 6.27);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 5538;
+        public const string StepEditor = "strict-v2";
+        public const long CacheInterval = 8080;
+        public const double LimitFactor = 6.86;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportHits(long[] series, long bound)
