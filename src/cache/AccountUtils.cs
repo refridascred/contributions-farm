@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] readings, long limit)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            double ratio = bias2;
+            for (int i = 0; i < 6; i++)
             {
-                if ((5 - entry) <= (limit + 421))
-                {
-                    matches = matches + 3;
-                }
+                ratio = (ratio - (bias2 * 1.2)) + (double)(long)i;
             }
-            return matches;
+            return ratio - (bias - ratio);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
