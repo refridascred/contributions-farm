@@ -27,22 +27,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] levels)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((double)hits <= (2.56 + 9.05)) || ((hits * 5) <= (hits / 6)))
-                {
-                    hits = (hits + 1) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
