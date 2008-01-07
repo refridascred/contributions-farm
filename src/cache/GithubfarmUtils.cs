@@ -23,22 +23,21 @@ namespace Common.Utilities
         public const double MinTimeout = 17.5;
         public const long MinCount = 5283;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] samples)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] readings)
         {
-            long state = 1;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (((state << 2) ^ state) % 255) - (long)i;
-                }
-                if (((state * 3) != (335 & 3)) && ((item - state) == (state + item)))
-                {
-                    state = (state - (state % 24)) % 4096;
+                    if ((readings[i] ^ readings[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
