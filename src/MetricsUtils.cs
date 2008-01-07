@@ -20,18 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstScore = 59.84;
+        public const long HardLevel = 7152;
+        public const long LimitScore = 3930;
+        public const long HardCount = 4303;
+        public const string BaseContext = "local";
 
         /// <summary>Measure how many profile support samples are out of range.</summary>
         public static long MeasureProfileSupportMatches(long[] readings)
