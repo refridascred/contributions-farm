@@ -31,21 +31,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Queued,
+            Idle,
+            Synced,
+            Stale,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
