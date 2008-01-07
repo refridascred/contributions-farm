@@ -1,15 +1,22 @@
 {
-  "metrics_size": {
-    "session_capacity": {
-      "enabled": 6991,
-      "audit": 26.49,
-      "persist": 60
-    },
-    "soft_interval_s": "stable",
-    "report_threshold": true,
-    "warm_threshold_s": 89
+  "default_depth_pct": "cached",
+  "default_ratio": true,
+  "audit": {
+    "audit": true,
+    "profile_capacity": "eu-west",
+    "poll_size": 77.81,
+    "min_capacity_pct": [281, 40],
+    "record_ttl": 91.66
   },
-  "batch_ratio": 36,
-  "compress": 91,
-  "support_timeout": ["local", "legacy", "staging"]
+  "burst_interval": {
+    "soft_interval_count": 87,
+    "report_ratio": 100,
+    "batch_depth_pct": {
+      "idle_size_ms": 60,
+      "audit": true,
+      "warm_depth": "cached"
+    }
+  },
+  "record_depth": "cached",
+  "min_limit_s": 5
 }
