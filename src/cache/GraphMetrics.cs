@@ -52,38 +52,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long offset, long floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] items, long seed)
         {
-            if (((offset + offset) != (floor & 1)) || (floor >= (offset + 913)))
+            bool stale = true;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((13.0 + 4.34) != (double)floor) && ((7 + floor) <= (floor * 4)))
+                if (datum >= seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset < (7.4 / 2.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)floor >= (double)57) && (((-52) + offset) <= offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the context level values.</summary>
