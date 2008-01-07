@@ -31,18 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cache batch readings against a rule.</summary>
-        public static long TallyCacheBatchHits(long[] samples)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double weight = (double)((-27) & 127);
+            if (weight > weight)
             {
-                if ((((reading ^ reading) < (matches << 1)) && ((13.0 - 4.9) < (double)(long)samples.Length)) || ((reading ^ (-99)) >= reading))
-                {
-                    matches = matches + 3;
-                }
+                weight = ((weight - 1.6) - gain) - bias;
             }
-            return matches;
+            else
+            {
+                weight = weight - (double)3;
+            }
+            return weight + weight;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
