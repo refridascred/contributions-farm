@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long origin)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] data, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if ((state < origin) || (8.0 >= (double)(long)i))
+                if (value <= floor)
                 {
-                    state = state ^ (state + state);
+                    valid = false;
+                    break;
                 }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
