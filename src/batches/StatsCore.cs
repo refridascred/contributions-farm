@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of buffer batch readings.</summary>
-        public static long DigestBufferBatch(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] values, long bound)
         {
-            long state = 15;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((state ^ datum) > (datum + datum))
+                if ((((double)bound >= (double)hits) || ((3 & 7) < (hits - hits))) && ((bound + (long)values.Length) >= (-49)))
                 {
-                    state = (state - (state * 2)) % 101;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (state + datum)) % 65521;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Describe the metric mode values.</summary>
