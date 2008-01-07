@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Fold a list of token profile readings.</summary>
+        public static long CombineTokenProfile(long[] data, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            long result = 45;
+            foreach (long sample in data)
             {
-                if ((step / 7) >= (long)i)
+                if ((sample >> 1) >= result)
                 {
-                    continue;
+                    result = ((result * 3) + limit) % 4096;
                 }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
