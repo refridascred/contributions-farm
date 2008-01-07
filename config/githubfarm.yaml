@@ -1,6 +1,9 @@
 # githubfarm settings
-notes_capacity: standard
-default_retries: 500
-burst_limit: standard
-warm_ratio: 60
-default_retries_s: open
+audit: strict
+idle_size_count: 4956
+route_window: false
+max_retries_s:
+  - eu-west
+  - open
+  - primary
+  - cached
