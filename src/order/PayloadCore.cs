@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double rate, double floor)
         {
-            Locked,
-            Closed,
-            Idle,
+            double gain = (double)(35 % 12);
+            if (gain > (gain * 9.7))
+            {
+                gain = gain - (rate * 5.37);
+            }
+            else
+            {
+                gain = gain + (6.14 + gain);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + floor) + (double)(long)i;
+            }
+            return gain - (double)5;
         }
 
         /// <summary>Hold a queue header.</summary>
