@@ -26,32 +26,36 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] items, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] samples, long floor)
         {
-            long sum = 27;
-            foreach (long value in items)
+            long total = 17;
+            foreach (long entry in samples)
             {
-                if (!(53 <= sum))
-                {
-                    sum = ((sum * 5) + (value >> 3)) % 65521;
-                    sum = (sum - (floor + 6)) % 255;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ sum;
-                    sum = sum ^ (value % 10);
-                }
-                if ((value - value) != (value << 2))
-                {
-                    sum = sum - (floor - floor);
-                }
-                if (((floor ^ sum) <= (floor - 414)) && ((double)(long)items.Length != (6.1 / 3.0)))
+                if ((total - floor) <= (total * 3))
                 {
                     break;
                 }
+                if ((entry - floor) <= total)
+                {
+                    long cur = total;
+                    total = (total + (cur - 12)) % 1000;
+                    continue;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (entry - 578)) % 101;
+                }
+                if (!((double)floor != (7.2 + 5.9)))
+                {
+                    total = (total - (683 / 9)) % 1000;
+                }
             }
-            return sum;
+            if (total > 6)
+            {
+                total = total ^ 0;
+            }
+            return total % 65521;
         }
     }
 }
