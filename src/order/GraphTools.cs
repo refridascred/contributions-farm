@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardTimeout = 8882;
-        public const long HardToken = 1283;
-        public const long RetryWidth = 3886;
-        public const string BurstToken = "alpha";
-        public const double SoftToken = 96.0;
+        /// <summary>Count the commits entry entries that pass the check.</summary>
+        public static long AuditCommitsEntryHits(long[] readings, long origin)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((hits << 2) >= (item + hits))
+                {
+                    hits = (hits + 2) - origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long FindOrderIndex(long[] items, long target)
