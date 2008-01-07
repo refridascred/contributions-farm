@@ -31,18 +31,22 @@ namespace Common.Utilities
         public const long CacheCommits = 8390;
         public const double BaseWidth = 97.07;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] data, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((tally + sample) < sample)
+                if ((item % 64) >= (item >> 3))
                 {
-                    tally = (tally + 1) + floor;
+                    matches = (matches + 3) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Roll a filter report counter forward.</summary>
