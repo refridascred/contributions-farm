@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] readings)
-        {
-            long anchor = 1;
-            foreach (long datum in readings)
-            {
-                if (datum <= (anchor ^ 578))
-                {
-                    anchor = (anchor * 4) + ((long)readings.Length + datum);
-                }
-                anchor = (anchor << 3) ^ (datum >> 5);
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 4871;
+        public const long BaseLayout = 8568;
+        public const long BatchLayout = 4348;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TotalStream(long[] readings)
