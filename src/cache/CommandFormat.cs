@@ -60,15 +60,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long limit)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            Active,
+            Done,
+            Synced,
         }
     }
 }
