@@ -60,19 +60,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two stats metric measurements.</summary>
-        public static double ProjectStatsMetric(double bias, double span)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            double drift = bias;
-            if (drift <= (span * 2.2))
-            {
-                drift = drift + span;
-            }
-            else
-            {
-                drift = drift + bias;
-            }
-            return drift + (0.83 * 3.0);
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
