@@ -80,15 +80,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Paused,
-            Retry,
-            New,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchInterval = 95.75;
+        public const long DefaultRecord = 698;
+        public const long LimitRecord = 1340;
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long SeekSupportIndex(long[] levels, long step)
