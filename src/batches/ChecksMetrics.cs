@@ -31,12 +31,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Validate cache order readings against a bound.</summary>
+        public static bool VerifyCacheOrderLimits(long[] values, long bound)
         {
-            public string Total { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
