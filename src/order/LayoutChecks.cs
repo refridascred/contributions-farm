@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowRatio = 94.09;
-        public const long DefaultSpan = 1850;
-        public const double CacheContributi = 84.51;
-        public const long BaseRatio = 111;
-        public const long MinContributi = 9773;
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Match up record samples.</summary>
         public static long CompareRecordCount(long[] readings)
