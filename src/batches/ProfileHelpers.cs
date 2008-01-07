@@ -48,11 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowContributi = "strict-v2";
-        public const string WindowLevel = "primary-1";
-        public const long WindowBudget = 296;
-        public const long DefaultContributi = 9671;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 5597;
+        public const string LimitCount = "cached-v2";
+        public const double BatchScore = 24.7;
+        public const double MinStats = 78.33;
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
