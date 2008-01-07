@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseSize = 3264;
-        public const long MaxTimeout = 913;
-        public const double StepLevel = 51.39;
-        public const long BaseWidth = 8098;
+        /// <summary>Measure how many stats format samples are out of range.</summary>
+        public static long AuditStatsFormatMatches(long[] readings, long target)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (!((82 < (target / 3)) && ((target + target) <= (target % 2))))
+                {
+                    tally = (tally + 2) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long RollBatches(long origin)
