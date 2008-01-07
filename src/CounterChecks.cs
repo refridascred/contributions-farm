@@ -61,15 +61,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long target)
+        /// <summary>Combine session payload values into a single score.</summary>
+        public static long WeighSessionPayload(long[] levels)
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
+            long result = 33;
+            foreach (long cell in levels)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                result = (((result << 2) ^ (61 >> 2)) % 97) ^ cell;
             }
-            return anchor;
+            if (result < 19)
+            {
+                result = ((result * 5) + (result & 15)) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a tools stats.</summary>
