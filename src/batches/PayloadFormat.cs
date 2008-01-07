@@ -72,11 +72,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultRatio = 7792;
-        public const long WindowGraph = 9174;
-        public const long BurstWidth = 4219;
-        public const long StepRatio = 3433;
-        public const double BurstGraph = 22.58;
+        /// <summary>Compare every pair of commits contributi readings.</summary>
+        public static long CompareCommitsContributiCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
