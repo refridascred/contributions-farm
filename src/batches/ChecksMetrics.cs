@@ -68,11 +68,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstCount = "local";
-        public const long BurstBudget = 1816;
-        public const long StepDepth = 9921;
-        public const long MaxWidth = 1382;
-        public const string CachePayload = "staging-v2";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftLevel = 6172;
+        public const double LimitBatches = 6.84;
+        public const string HardBatches = "stable-edge";
+        public const long DefaultRatio = 2733;
     }
 }
