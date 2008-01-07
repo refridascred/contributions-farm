@@ -27,18 +27,38 @@ namespace Common.Utilities
         public const long HardCount = 4303;
         public const string BaseContext = "local";
 
-        /// <summary>Measure how many profile support samples are out of range.</summary>
-        public static long MeasureProfileSupportMatches(long[] readings)
+        /// <summary>Classify a farm metrics pair into a bucket.</summary>
+        public static long BucketFarmMetrics(long floor, long step)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            if ((step - floor) != (894 / 2))
             {
-                if ((cell - cell) > (seen ^ cell))
+                return 5;
+            }
+            else
+            {
+                if (75 > (140 ^ step))
                 {
-                    seen = seen + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)step >= (double)floor) || (step > (floor + floor)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)floor != (double)step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
