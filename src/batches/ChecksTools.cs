@@ -25,18 +25,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] series)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((3.8 + 2.47) > (double)seen)
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
