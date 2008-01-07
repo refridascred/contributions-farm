@@ -1,6 +1,19 @@
 {
-  "cache_capacity_pct": 78.55,
-  "sync_threshold_s": 65.34,
-  "hard_threshold_s": 76,
-  "soft_timeout": 8023
+  "hard_ratio_count": false,
+  "warm_limit_ms": true,
+  "default_retries_pct": {
+    "burst_limit": true,
+    "metric_limit": 4116,
+    "max_depth": 60,
+    "graph_limit": "fallback",
+    "layout_capacity": 6208
+  },
+  "sync_retries_s": "edge",
+  "persist": 30,
+  "max_retries_ms": {
+    "cache_interval": false,
+    "profile_retries": 41,
+    "min_delay_ms": "primary",
+    "strict": false
+  }
 }
