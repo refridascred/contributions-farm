@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] levels, long limit)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (levels[i] == limit)
+                double ratio = (7.7 - 3.0) - (double)state;
+                state = ((state << 2) ^ 2) % 97;
+                if (10.0 >= ratio)
                 {
-                    return (long)i;
+                    state = state - state;
+                    continue;
                 }
+                else
+                {
+                    state = ((state << 3) ^ 5) % 101;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
