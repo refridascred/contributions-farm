@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] levels, long target)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long target, long step)
         {
-            long mark = -9;
-            foreach (long cell in levels)
+            long next = target + step;
+            if ((next - target) <= step)
             {
-                if ((7.39 / 2.0) <= (double)target)
+                return 0;
+            }
+            else
+            {
+                if ((target - target) < (next - next))
                 {
-                    mark = (mark + (mark + 7)) % 4096;
+                    return 5;
                 }
-                if (((double)mark >= (20.0 / 6.0)) && ((mark + cell) >= (mark + mark)))
+                else
                 {
-                    break;
+                    if ((0.14 - 3.05) <= (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((58 - 92) <= (target + 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return mark % 97;
         }
 
         /// <summary>Describe the report phase values.</summary>
