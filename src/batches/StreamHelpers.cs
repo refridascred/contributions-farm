@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 4717;
-        public const long BatchToken = 522;
-        public const string RetryInterval = "open-v2";
-        public const string WindowFactor = "open-1";
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long FoldCluster(long[] samples)
