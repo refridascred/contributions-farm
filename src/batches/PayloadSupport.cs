@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 7587;
-        public const double HardCommits = 15.66;
-        public const long SoftCommits = 370;
-        public const string LimitCommits = "cached-1";
+        /// <summary>Digest a series of contributi token entries.</summary>
+        public static long CombineContributiToken(long[] data, long seed)
+        {
+            long mix = 92;
+            foreach (long sample in data)
+            {
+                if ((sample >> 1) >= (seed - sample))
+                {
+                    mix = (mix + seed) % 4096;
+                }
+                if ((seed ^ sample) <= (mix << 2))
+                {
+                    mix = (mix + (seed << 3)) % 4096;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (sample >> 2)) % 101;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TotalTools(long[] samples, long offset)
