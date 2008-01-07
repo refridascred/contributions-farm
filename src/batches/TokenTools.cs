@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MaxBudget = 82.72;
-        public const long WindowAlready = 7333;
-        public const string LimitAlready = "fallback";
-        public const long CacheAlready = 5195;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] values, long step)
+        {
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long CombineStream(long[] items, long target)
