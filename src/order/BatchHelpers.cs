@@ -25,22 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm report readings against a rule.</summary>
-        public static long CountGithubfarmReportMatches(long[] readings)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)tally < 1.34)
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
