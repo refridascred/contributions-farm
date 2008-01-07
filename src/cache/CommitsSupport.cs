@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const string SoftBatch = "latest-1";
         public const long MinLevel = 4991;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long bound)
+        /// <summary>Digest a series of channel support entries.</summary>
+        public static long DigestChannelSupport(long[] data, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            long state = -147;
+            foreach (long value in data)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if ((state & 7) >= (floor - value))
+                {
+                    state = ((state * 5) + (state * 2)) % 1000;
+                }
             }
-            return score;
+            return state % 65521;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
