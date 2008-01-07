@@ -14,11 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Validate route commits readings against a bound.</summary>
+        public static bool VerifyRouteCommitsRange(long[] samples, long target)
         {
-            public double Region { get; set; }
-            public long Size { get; set; }
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
