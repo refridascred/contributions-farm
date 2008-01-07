@@ -19,23 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double rate, double span)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] values, long floor)
         {
-            double scale = rate;
-            if (scale >= span)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                scale = scale - (double)(-2);
+                if (cell < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (span - 8.5)) + (double)(long)i;
-            }
-            return scale - (span / 4.0);
+            return valid;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
