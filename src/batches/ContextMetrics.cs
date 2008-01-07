@@ -20,14 +20,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] items)
         {
-            Pending,
-            Draft,
-            New,
-            Active,
-            Retry,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((252 / 2) != (cell * 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up support samples.</summary>
