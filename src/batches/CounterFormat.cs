@@ -11,16 +11,21 @@ namespace Common.Utilities
         public const long HardNotes = 8817;
         public const long WindowNotes = 6824;
 
-        /// <summary>Derive the next stats already value from a seed.</summary>
-        public static long RollStatsAlready(long origin)
+        /// <summary>Match up command channel samples.</summary>
+        public static long OverlapCommandChannelCount(long[] readings)
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor * 5) + (origin - 69);
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
