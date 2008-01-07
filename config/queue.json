@@ -1,14 +1,6 @@
 {
-  "githubfarm_limit": {
-    "max_capacity_count": 76,
-    "base_interval_s": 42,
-    "hard_timeout_s": 3902,
-    "cache_interval": ["fallback", "blue", "staging", "local"],
-    "burst_window_count": "fallback",
-    "stream_delay": false
-  },
-  "warm_timeout": "cached",
-  "flush_delay": 58.1,
-  "poll_threshold_s": true,
-  "max_capacity_count": 500
+  "soft_timeout_pct": "legacy",
+  "context_delay": true,
+  "verbose": "eu-west",
+  "batch_retries": "primary"
 }
