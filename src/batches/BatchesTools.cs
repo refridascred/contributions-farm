@@ -23,14 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public double Flag { get; set; }
-            public double Owner { get; set; }
-            public bool Region { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowRatio = 86.83;
+        public const long StepEditor = 1826;
+        public const string IdleLevel = "alpha";
 
         /// <summary>Define order limits and defaults.</summary>
         public const string CacheOrder = "fallback-1";
