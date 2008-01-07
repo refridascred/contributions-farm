@@ -1,5 +1,6 @@
 {
-  "poll_timeout": "eu-west",
-  "max_window_pct": 9627,
-  "githubfarm_size": "local"
+  "idle_ttl": 86,
+  "soft_ratio": "strict",
+  "dry_run": ["blue", "local"],
+  "batch_depth_pct": 91
 }
