@@ -59,11 +59,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Match up stats entry samples.</summary>
+        public static long CompareStatsEntryCount(long[] series)
         {
-            public long Rank { get; set; }
-            public double Count { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
