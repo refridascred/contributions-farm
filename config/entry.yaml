@@ -1,4 +1,7 @@
 # entry settings
-cache_depth: edge
-verbose: 88.11
-base_ratio_count: 63.63
+soft_threshold_count: local
+persist: true
+readonly: false
+base_capacity_count: 25.62
+retry_delay_pct: 93.24
+enabled: local
