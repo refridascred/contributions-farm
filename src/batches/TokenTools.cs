@@ -27,11 +27,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            public double Total { get; set; }
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
