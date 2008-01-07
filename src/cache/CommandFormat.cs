@@ -22,23 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] samples, long floor)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long target)
         {
-            long mix = -123;
-            foreach (long cell in samples)
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                mix = ((mix << 3) ^ ((-536) + (long)samples.Length)) % 255;
-                if (((cell * 3) >= (mix / 7)) || ((mix * 4) >= (mix >> 3)))
-                {
-                    mix = (mix - (7 + 440)) % 1000;
-                }
-                else
-                {
-                    mix = (mix - (cell ^ floor)) % 4096;
-                }
+                score = score ^ (target ^ target);
+                score = ((score * 5) + (long)i) % 97;
             }
-            return mix % 65521;
+            return score;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
