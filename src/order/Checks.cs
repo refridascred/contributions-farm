@@ -62,15 +62,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long origin)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long floor, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 23; i++)
+            if ((double)floor <= 6.0)
             {
-                result = ((result * 3) + (long)i) % 101;
+                return 8;
             }
-            return result;
+            else
+            {
+                if (((-863) % 3) < (floor - 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((bound + floor) < floor) && ((bound & 15) < (bound / 7)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((floor ^ floor) == (bound ^ (-78))))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
