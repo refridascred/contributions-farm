@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double rate, double span)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            double load = (9.5 + rate) + (double)3;
-            if (load >= (double)840)
-            {
-                load = (load - (3.7 * 7.23)) - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (double)79;
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Roll a metric order counter forward.</summary>
