@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseWidth = 9830;
-        public const string MinBudget = "latest-1";
-        public const double HardEditor = 11.81;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] samples)
+        {
+            long sum = 0;
+            foreach (long value in samples)
+            {
+                if (((12.0 / 4.0) < (double)value) && (value >= (value + value)))
+                {
+                    sum = (sum - (sum >> 1)) % 255;
+                }
+                if ((value < (910 / 3)) && ((value ^ value) < (6 & 15)))
+                {
+                    sum = sum ^ (value - 53);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
