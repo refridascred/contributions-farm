@@ -23,32 +23,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long limit, long limit2)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] series)
         {
-            long span = limit + limit2;
-            if ((span + span) == (limit2 << 2))
+            long mix = 203;
+            foreach (long datum in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit2 == (6.0 - 4.0))
+                if (((mix + datum) != (mix ^ datum)) && ((datum - 7) > (580 - mix)))
                 {
-                    return 5;
+                    mix = mix + (mix / 7);
                 }
-                else
+                if (((datum + datum) > 33) || ((9.8 - 3.1) > (double)datum))
                 {
-                    if ((80 - span) >= (limit - span))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            if (mix > 84)
+            {
+                mix = (mix << 2) ^ (mix * 5);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Count the buffer format entries that pass the check.</summary>
