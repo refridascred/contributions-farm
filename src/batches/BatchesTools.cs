@@ -33,31 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks buffer value against two limits.</summary>
-        public static long ClassifyChecksBuffer(long origin, long seed)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            if ((seed / 6) > 0)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin & 1) == (seed - 11))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + origin) >= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
