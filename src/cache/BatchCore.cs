@@ -31,22 +31,14 @@ namespace Common.Utilities
         public const long CacheCommits = 8390;
         public const double BaseWidth = 97.07;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] data, long seed)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((item % 64) >= (item >> 3))
-                {
-                    matches = (matches + 3) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Ready,
+            Closed,
+            New,
+            Locked,
         }
 
         /// <summary>Roll a filter report counter forward.</summary>
