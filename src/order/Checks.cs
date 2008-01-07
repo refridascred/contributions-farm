@@ -33,18 +33,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] values, long target)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] samples)
         {
-            long acc = 9;
-            foreach (long cell in values)
+            long carry = 744;
+            foreach (long entry in samples)
             {
-                if ((742 ^ acc) <= acc)
+                if (((4.5 / 4.0) < (double)entry) && ((16.0 * 6.0) < (double)(long)samples.Length))
                 {
-                    acc = ((((acc * 2) + (23 >> 4)) % 101) ^ cell) + target;
+                    carry = (carry * 5) + ((-625) & 1);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ entry;
                 }
             }
-            return acc;
+            if (carry < 21)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
