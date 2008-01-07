@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardDepth = 81.77;
-        public const string BatchDepth = "local-v2";
-        public const string WindowMetric = "latest-edge";
+        /// <summary>Adjust a schema metrics reading.</summary>
+        public static double SmoothSchemaMetrics(double weight, double floor)
+        {
+            double scale = (double)(229 << 1);
+            if (scale > (2.0 * 6.7))
+            {
+                scale = (scale + (weight * 14.0)) + floor;
+            }
+            else
+            {
+                scale = scale + (double)5;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + weight) + (double)(long)i;
+            }
+            return scale + (double)78;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long CacheSpan = 2986;
