@@ -37,13 +37,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public bool Level { get; set; }
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitCount = 8778;
+        public const double BaseInterval = 50.82;
+        public const double HardGithubfarm = 59.61;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string DefaultStream = "stable-1";
