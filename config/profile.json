@@ -1,6 +1,11 @@
 {
-  "command_window": ["fallback", "stable", "cached", "green"],
-  "strict": 37.46,
-  "dry_run": 30,
-  "retry_delay_pct": "open"
+  "format_ttl": 36.66,
+  "verbose": 97,
+  "burst_interval_pct": "fallback",
+  "compress": {
+    "base_ttl_count": 13,
+    "route_ttl": 6572,
+    "readonly": false,
+    "idle_threshold_ms": ["primary", "edge", "blue", "blue"]
+  }
 }
