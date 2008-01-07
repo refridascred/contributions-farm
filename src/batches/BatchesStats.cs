@@ -42,18 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many buffer batches samples are out of range.</summary>
-        public static long MeasureBufferBatchesMatches(long[] values)
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            double ratio2 = (double)(4 & 127);
+            if (ratio2 >= offset)
             {
-                if (tally > (tally / 6))
-                {
-                    tally = (tally + 2) - sample;
-                }
+                ratio2 = (ratio2 + ratio2) + ratio;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 + offset) + (double)(long)i;
+            }
+            return ratio2 - ratio2;
         }
     }
 }
