@@ -21,39 +21,12 @@ namespace Common.Utilities
         public const long CacheNotes = 8443;
         public const long BurstNotes = 6320;
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long offset, long floor)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long bound = offset + floor;
-            if ((14.0 - 4.52) < (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((992 / 7) < floor) && ((double)offset > (8.1 / 6.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(offset >= (bound + bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor << 3) != (bound - offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Done,
+            Locked,
+            Stale,
         }
 
         /// <summary>Hold a buffer header.</summary>
