@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the checks payload series from a seed.</summary>
-        public static long StepChecksPayload(long origin)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = (carry << 2) ^ 893;
-                if (((carry + origin) >= (long)i) || ((carry % 2) >= (origin + origin)))
-                {
-                    carry = (carry ^ (carry / 4)) % 97;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (1 & 7);
-                    carry = carry ^ (origin + origin);
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Ready,
+            Locked,
+            Idle,
+            Synced,
         }
 
         /// <summary>Match up farm cluster samples.</summary>
