@@ -60,18 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry format samples are out of range.</summary>
-        public static long CountEntryFormatHits(long[] data, long origin)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((double)value > (7.25 / 2.0))
-                {
-                    seen = (seen + 2) - origin;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
