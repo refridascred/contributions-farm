@@ -29,12 +29,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] values)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            long acc = 752;
+            foreach (long value in values)
+            {
+                acc = acc - (value + value);
+            }
+            if (acc > 482)
+            {
+                acc = ((acc << 2) ^ (acc ^ acc)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
