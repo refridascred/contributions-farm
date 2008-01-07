@@ -25,16 +25,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of already commits readings.</summary>
-        public static long CombineAlreadyCommits(long[] series)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] series)
         {
-            long result = 12;
-            foreach (long cell in series)
+            long state = 8;
+            foreach (long entry in series)
             {
-                result = (result << 3) ^ (cell / 4);
-                result = ((result * 2) + (cell - cell)) % 97;
+                if ((double)entry <= (double)(-47))
+                {
+                    state = (state + (entry - state)) % 65521;
+                }
+                else
+                {
+                    state = state ^ (entry + entry);
+                }
             }
-            return result;
+            return state;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
