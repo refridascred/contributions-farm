@@ -73,18 +73,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] values, long step)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((32 >> 5) > (32 + tally))
-                {
-                    tally = ((tally + 3) + entry) - step;
-                }
-            }
-            return tally;
+            Closed,
+            Pending,
+            Ready,
         }
     }
 }
