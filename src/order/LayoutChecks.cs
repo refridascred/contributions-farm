@@ -61,18 +61,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] data)
+        /// <summary>Measure how many entry format samples are out of range.</summary>
+        public static long CountEntryFormatHits(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (entry > (matches - matches))
+                if ((double)value > (7.25 / 2.0))
                 {
-                    matches = matches + 1;
+                    seen = (seen + 2) - origin;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Iterate the commits farm series from a seed.</summary>
