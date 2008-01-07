@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] series, long seed)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double scale, double offset)
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((8.0 + 7.13) != (double)seed)
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            double scale2 = offset;
+            return (scale2 + (double)4) + scale;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
