@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] values, long offset)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long anchor = 4;
-            foreach (long reading in values)
-            {
-                if ((reading >= (anchor >> 3)) && (((-1) - reading) < (reading + anchor)))
-                {
-                    anchor = (anchor ^ 62) - offset;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor >> 4);
-                }
-            }
-            return anchor;
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a already record.</summary>
