@@ -1,6 +1,6 @@
 {
-  "farm_timeout": "local",
-  "strict": 38.53,
-  "schema_delay": 85.07,
-  "sync_ratio": [213, 213]
+  "dry_run": "blue",
+  "entry_delay": "standard",
+  "cache_ttl": 500,
+  "batch_capacity": false
 }
