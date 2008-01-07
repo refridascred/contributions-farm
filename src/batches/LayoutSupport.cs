@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] samples, long seed)
-        {
-            long carry = 72;
-            foreach (long entry in samples)
-            {
-                carry = (carry ^ (entry - entry)) + seed;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepRatio = 3181;
+        public const long BaseWidth = 8894;
+        public const string SoftScore = "local-edge";
+        public const long HardChannel = 644;
+        public const long LimitInterval = 785;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long StepNotes = 7052;
