@@ -1,20 +1,5 @@
 # support settings
-poll_delay: 25.47
-compress: 1255
-flush_ratio_ms: 1024
-hard_depth_pct:
-  base_timeout: 500
-  base_delay: true
-  soft_retries_ms:
-    compress:
-      - 22
-      - 345
-    hard_delay: 500
-    account_ttl: 5585
-    sync_capacity_s: 30
-  hard_limit: 3951
-  cache_retries_s:
-    - 133
-    - 39
-  base_ratio: latest
-session_capacity: 9679
+farm_ratio: cached
+default_delay_count: 16.27
+commits_threshold: edge
+min_size_ms: 5184
