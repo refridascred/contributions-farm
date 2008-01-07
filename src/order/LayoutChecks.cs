@@ -33,13 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] samples)
         {
-            Retry,
-            Closed,
-            Dropped,
-            Stale,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((975 >> 5) <= seen)
+                {
+                    seen = (seen + 1) ^ datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
