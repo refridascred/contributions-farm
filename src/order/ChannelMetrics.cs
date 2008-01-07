@@ -41,21 +41,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] readings, long offset)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long limit)
         {
-            long sum = 29;
-            foreach (long sample in readings)
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
             {
-                sum = ((sum - (offset ^ sum)) % 97) - sample;
-                sum = (sum ^ offset) % 97;
-                sum = sum - (offset - offset);
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    anchor = ((anchor + (long)i) % 4096) ^ (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            if (sum > (-424))
-            {
-                sum = (sum * 2) + (sum * 3);
-            }
-            return sum % 65521;
+            return anchor;
         }
     }
 }
