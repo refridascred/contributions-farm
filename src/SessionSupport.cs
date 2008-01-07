@@ -53,19 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order stats entry stays within the limit.</summary>
-        public static bool VerifyOrderStatsRange(long[] data, long floor)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
