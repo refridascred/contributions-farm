@@ -32,17 +32,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] items, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (items[i] < step)
+                if ((double)value > (3.3 - 7.44))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - step;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Rank record contributi input into a small class.</summary>
