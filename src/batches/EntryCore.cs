@@ -65,23 +65,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of entry checks entries.</summary>
-        public static long ScoreEntryChecks(long[] levels, long target)
+        /// <summary>Grade a order editor value against two limits.</summary>
+        public static long GradeOrderEditor(long origin, long limit)
         {
-            long total = 750;
-            foreach (long datum in levels)
+            if (59 > (719 + limit))
             {
-                total = (total << 3) ^ (total + target);
-                if (target >= (target + total))
+                return 8;
+            }
+            else
+            {
+                if (((origin * 5) < (limit + limit)) || (limit < (limit ^ limit)))
                 {
-                    total = (total << 2) ^ (datum << 1);
+                    return 2;
                 }
                 else
                 {
-                    total = (total * 2) + (5 & 127);
+                    return 7;
                 }
             }
-            return total;
         }
     }
 }
