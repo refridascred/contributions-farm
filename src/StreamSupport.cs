@@ -12,14 +12,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] readings, long target)
         {
-            New,
-            Active,
-            Retry,
-            Pending,
-            Done,
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
