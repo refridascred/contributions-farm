@@ -1,6 +1,7 @@
 # githubfarm settings
-base_interval_count: 84.32
-burst_threshold_ms: 14.16
-sync_capacity: primary
-idle_retries_ms: true
-hard_delay_ms: green
+soft_depth_count: 73.95
+persist: 94.97
+payload_capacity: eu-west
+default_window_pct: fallback
+stats_retries: 64.89
+cache_ttl: true
