@@ -20,20 +20,30 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] readings)
         {
-            long carry = bound;
-            for (int i = 0; i < 24; i++)
+            long mark = 472;
+            foreach (long entry in readings)
             {
-                if ((-990) > ((long)i >> 4))
+                if (entry > (entry / 9))
                 {
-                    carry = (carry << 3) ^ (bound & 31);
+                    mark = (mark - (entry << 3)) % 101;
                 }
-                carry = ((carry << 2) ^ ((long)i - (long)i)) % 4096;
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((entry - entry) <= (mark % 12))
+                {
+                    mark = mark - (entry & 3);
+                }
+                else
+                {
+                    mark = (mark - mark) % 4096;
+                }
+                if (!((entry & 7) <= mark))
+                {
+                    break;
+                }
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Adjust a queue reading.</summary>
