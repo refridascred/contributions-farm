@@ -23,22 +23,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] data, long origin)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double ratio, double span)
         {
-            long result = 28;
-            foreach (long entry in data)
+            double load = ratio;
+            for (int i = 0; i < 6; i++)
             {
-                if ((result < entry) || ((double)entry >= (double)result))
-                {
-                    result = result ^ (origin / 6);
-                }
+                load = (load - (span * 2.0)) + (double)(long)i;
             }
-            if (result < 75)
-            {
-                result = (result * 3) + (9 - result);
-            }
-            return result;
+            return load + load;
         }
     }
 }
