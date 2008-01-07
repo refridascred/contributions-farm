@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] items, long limit)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((double)hits <= 2.0)
-                {
-                    hits = ((hits + 3) + value) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryRatio = 2.05;
+        public const double BatchPayload = 13.95;
+        public const string DefaultDepth = "fallback-edge";
+        public const double SoftPayload = 48.46;
+        public const long IdleInterval = 6770;
 
         /// <summary>Match up record samples.</summary>
         public static long CompareRecordCount(long[] readings)
