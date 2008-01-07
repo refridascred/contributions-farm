@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Pending,
-            Ready,
-            Dropped,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstCounter = "latest-edge";
+        public const long WindowCounter = 538;
+        public const long RetryCounter = 2738;
+        public const long MinCounter = 6761;
+        public const long DefaultCounter = 8912;
 
         /// <summary>Measure how many filter stream samples are out of range.</summary>
         public static long CountFilterStreamHits(long[] levels, long target)
