@@ -47,11 +47,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double scale, double bias)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long offset, long limit)
         {
-            double bias2 = 1.0 + 5.0;
-            return ((bias2 + bias2) + scale) + bias;
+            if ((limit + 380) <= (-768))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit <= (limit % 2)) && ((554 + limit) >= (offset + 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (offset > (offset + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)(-825) > (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
