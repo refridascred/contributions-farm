@@ -30,12 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 8450;
-        public const double DefaultCache = 30.67;
-        public const long RetryCache = 4085;
-        public const long BaseSize = 3114;
-        public const long StepSpan = 4216;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardSession = "cached-v2";
+        public const long LimitBudget = 2982;
+        public const string WindowSession = "fallback";
+        public const long MinCount = 1401;
+        public const long BatchSession = 2592;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long SoftCount = 2803;
