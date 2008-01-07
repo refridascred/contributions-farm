@@ -1,8 +1,7 @@
-id,region,ratio,owner
-1,cached,31.18,eu-west
-2,primary,blue,cached
-3,860,65.85,738
-4,962,596,193
-5,8,stable,89.84
-6,eu-west,69.0,58.07
-7,668,green,752
+id,rank,count
+1,996,open
+2,open,946
+3,640,272
+4,blue,eu-west
+5,staging,47.63
+6,627,857
