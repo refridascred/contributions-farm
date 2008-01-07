@@ -40,19 +40,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double ratio, double floor)
+        /// <summary>Measure how many buffer batches samples are out of range.</summary>
+        public static long MeasureBufferBatchesMatches(long[] values)
         {
-            double mean = ratio * 0.9;
-            if (mean < (mean + floor))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                mean = mean + 7.41;
+                if (tally > (tally / 6))
+                {
+                    tally = (tally + 2) - sample;
+                }
             }
-            else
-            {
-                mean = mean - (ratio - 2.5);
-            }
-            return mean - floor;
+            return tally;
         }
     }
 }
