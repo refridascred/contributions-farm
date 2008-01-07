@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long DefaultReport = 1434;
         public const long IdleLevel = 4019;
 
-        /// <summary>Accumulate counter queue samples.</summary>
-        public static long CombineCounterQueue(long[] series, long offset)
+        /// <summary>Find the first session support entry that matches the target.</summary>
+        public static long SeekSessionSupportIndex(long[] readings, long seed)
         {
-            long mix = 7;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((value - offset) < ((long)series.Length & 127)))
+                if ((readings[i] < seed) && ((readings[i] % 2) == 0))
                 {
-                    mix = mix + (mix + 17);
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
