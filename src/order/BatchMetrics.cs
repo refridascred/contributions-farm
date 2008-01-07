@@ -73,21 +73,22 @@ namespace Common.Utilities
         public const string IdleRatio = "staging";
         public const long StepInterval = 1133;
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] items)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry / 7) == (entry << 1))
                 {
-                    if ((items[i] ^ items[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
