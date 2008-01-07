@@ -59,11 +59,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] items)
         {
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up session samples.</summary>
