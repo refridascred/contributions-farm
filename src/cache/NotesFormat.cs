@@ -21,19 +21,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] samples, long step)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Closed,
+            Stale,
+            Done,
         }
     }
 }
