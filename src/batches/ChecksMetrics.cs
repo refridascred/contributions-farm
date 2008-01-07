@@ -68,10 +68,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftLevel = 6172;
-        public const double LimitBatches = 6.84;
-        public const string HardBatches = "stable-edge";
-        public const long DefaultRatio = 2733;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Active,
+            Stale,
+            Draft,
+            New,
+            Dropped,
+        }
     }
 }
