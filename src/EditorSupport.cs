@@ -81,12 +81,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] samples)
         {
-            Queued,
-            New,
-            Active,
+            long state = -8;
+            foreach (long reading in samples)
+            {
+                if ((double)state != (double)reading)
+                {
+                    state = (state - (6 % 8)) % 97;
+                }
+            }
+            if (state > 735)
+            {
+                state = ((state * 5) + (state / 7)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
