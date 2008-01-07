@@ -17,24 +17,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] samples)
-        {
-            long mix = 66;
-            foreach (long cell in samples)
-            {
-                mix = mix ^ (314 ^ 55);
-                if (cell >= mix)
-                {
-                    mix = (mix - 8) % 65521;
-                }
-                if ((cell / 4) <= (cell ^ cell))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleLevel = 5150;
+        public const string CacheEditor = "latest-1";
+        public const long HardLevel = 895;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long WeighCounter(long[] levels, long floor)
