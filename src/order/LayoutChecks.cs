@@ -43,20 +43,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] series, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 9224;
+        public const string WindowCount = "fallback-1";
+        public const string DefaultBudget = "alpha-v2";
+        public const double MaxCache = 42.29;
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
