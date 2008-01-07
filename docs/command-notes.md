@@ -1,12 +1,12 @@
 # Command notes
 
-Run the record check before changing any queue limits.
-The payload report groups every tools by already.
-A batches that stays idle for too long is moved to the cluster list.
+The metrics module keeps command values in sync with the profile cache.
+Each queue is validated before it reaches the window queue.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every stream change
-- Keep metrics values small
-- Document new batches fields
-- Review entry limits each release
+- Log every account change
+- Document new tools fields
+- Review token limits each release
+- Validate token input early
