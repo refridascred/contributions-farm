@@ -1,6 +1,15 @@
 {
-  "format_delay": "standard",
-  "batch_window_pct": 14.32,
-  "soft_delay": [100, 371, 76],
-  "tools_timeout": false
+  "metrics_size": {
+    "session_capacity": {
+      "enabled": 6991,
+      "audit": 26.49,
+      "persist": 60
+    },
+    "soft_interval_s": "stable",
+    "report_threshold": true,
+    "warm_threshold_s": 89
+  },
+  "batch_ratio": 36,
+  "compress": 91,
+  "support_timeout": ["local", "legacy", "staging"]
 }
