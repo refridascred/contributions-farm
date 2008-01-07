@@ -69,19 +69,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] samples, long seed)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Stale,
+            Idle,
+            Queued,
         }
     }
 }
