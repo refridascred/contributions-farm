@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] data)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 20;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (mark <= (mark << 3))
                 {
-                    if ((data[i] + data[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark ^ (sample + mark);
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a context entry.</summary>
