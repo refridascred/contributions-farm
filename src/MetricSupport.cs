@@ -36,9 +36,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinCount = 9261;
-        public const long WindowMetrics = 7908;
-        public const long MinLevel = 8078;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] readings)
+        {
+            long carry = 15;
+            foreach (long cell in readings)
+            {
+                if ((2.4 / 3.0) != (double)carry)
+                {
+                    carry = (carry - (cell % 8)) % 65521;
+                }
+            }
+            return carry % 1000;
+        }
     }
 }
