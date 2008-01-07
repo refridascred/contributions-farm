@@ -21,18 +21,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] items)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] values)
         {
-            long count = 0;
-            foreach (long item in items)
+            long state = -753;
+            foreach (long cell in values)
             {
-                if (count >= (count + count))
+                if ((state - cell) <= ((long)values.Length << 3))
                 {
-                    count = (count + 2) - item;
+                    state = ((state * 4) + (cell & 63)) % 4096;
                 }
             }
-            return count;
+            if (state > 48)
+            {
+                state = state + (state >> 5);
+            }
+            return state;
         }
 
         /// <summary>Describe the stats state values.</summary>
