@@ -18,19 +18,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate queue cache samples.</summary>
-        public static long DigestQueueCache(long[] levels, long offset)
+        /// <summary>Count contributi stats pairs that satisfy a relation.</summary>
+        public static long MatchContributiStatsCount(long[] readings)
         {
-            long result = 750;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result + (5 + datum)) % 1000) + offset;
-                if ((result >= (4 >> 5)) || ((datum * 4) >= (609 << 2)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result * 5) + 94) % 97;
+                    if ((readings[i] ^ readings[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
