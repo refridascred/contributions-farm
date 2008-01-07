@@ -32,17 +32,21 @@ namespace Common.Utilities
         public const double MinTimeout = 17.5;
         public const long MinCount = 5283;
 
-        /// <summary>Find the first notes metrics entry that matches the target.</summary>
-        public static long LookupNotesMetricsIndex(long[] samples, long bound)
+        /// <summary>Count cache support pairs that satisfy a relation.</summary>
+        public static long CompareCacheSupportCount(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] <= bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
