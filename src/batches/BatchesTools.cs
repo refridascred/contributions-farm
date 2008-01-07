@@ -28,10 +28,19 @@ namespace Common.Utilities
         public const long StepEditor = 1826;
         public const string IdleLevel = "alpha";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheOrder = "fallback-1";
-        public const double RetryOrder = 87.57;
-        public const double LimitOrder = 66.59;
-        public const long SoftFactor = 6920;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] items, long target)
+        {
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
