@@ -22,18 +22,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] items)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (!((seen + entry) <= (39 % 100)) && ((seen + entry) == (seen >> 5)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank account input into a small class.</summary>
