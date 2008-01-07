@@ -27,12 +27,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
-            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
