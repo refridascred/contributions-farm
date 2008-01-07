@@ -20,19 +20,18 @@ namespace Common.Utilities
             return weight - (gain * 6.27);
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] series, long limit)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (sample >= limit)
+                if (count < (bound / 3))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) + entry;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
