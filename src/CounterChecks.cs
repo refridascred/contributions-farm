@@ -54,13 +54,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] levels, long origin)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            long anchor = 1;
+            foreach (long reading in levels)
+            {
+                anchor = ((anchor ^ (697 - anchor)) - reading) - origin;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a layout stats.</summary>
