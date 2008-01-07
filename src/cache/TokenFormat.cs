@@ -27,18 +27,31 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] values, long floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long origin, long limit)
         {
-            long tally = 0;
-            foreach (long value in values)
+            if ((19.0 < (double)origin) && ((double)origin >= 7.41))
             {
-                if (!((tally << 3) < (value - tally)))
+                return 2;
+            }
+            else
+            {
+                if ((988 % 2) >= origin)
                 {
-                    tally = (tally + 3) + floor;
+                    return 6;
+                }
+                else
+                {
+                    if (((0 + origin) < (62 / 2)) || ((limit + origin) > origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
