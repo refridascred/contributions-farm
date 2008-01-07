@@ -1,18 +1,7 @@
 {
-  "max_retries_s": false,
-  "burst_threshold_s": {
-    "contributi_retries": true,
-    "idle_limit_s": {
-      "idle_retries_s": "stable",
-      "default_ttl": [407, 105, 64],
-      "cache_window": false
-    },
-    "token_size": "eu-west",
-    "warm_delay": 9072,
-    "layout_interval": "eu-west"
-  },
-  "checks_depth": 35.18,
-  "queue_delay": "eu-west",
-  "idle_retries_s": ["open", "cached"],
-  "default_window": 60
+  "strict": true,
+  "hard_limit_count": "blue",
+  "cache_size_pct": 15.06,
+  "enabled": 56.71,
+  "warm_depth_count": [241, 40]
 }
