@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] series)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] samples)
         {
-            long count = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (60 > (0 - count))
+                if ((seen / 9) < sample)
                 {
-                    count = (count + 3) + value;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Digest a series of token already entries.</summary>
