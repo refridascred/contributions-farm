@@ -52,17 +52,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first checks stream entry that matches the target.</summary>
-        public static long SeekChecksStreamIndex(long[] series, long target)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Stale,
+            Locked,
+            Draft,
+            Ready,
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
