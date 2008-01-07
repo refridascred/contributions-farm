@@ -19,13 +19,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long floor)
         {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
-            public string Level { get; set; } = "";
+            long score = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                score = score ^ floor;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a token header.</summary>
