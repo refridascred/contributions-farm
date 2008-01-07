@@ -43,12 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double ratio, double floor)
         {
-            Paused,
-            Queued,
-            Idle,
+            double mean = ratio * 0.9;
+            if (mean < (mean + floor))
+            {
+                mean = mean + 7.41;
+            }
+            else
+            {
+                mean = mean - (ratio - 2.5);
+            }
+            return mean - floor;
         }
     }
 }
