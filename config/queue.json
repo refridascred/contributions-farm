@@ -1,7 +1,5 @@
 {
-  "githubfarm_capacity": true,
-  "readonly": 30,
-  "idle_ratio_pct": "strict",
-  "persist": 30,
-  "soft_capacity_pct": "cached"
+  "max_interval_ms": true,
+  "cache_retries": "blue",
+  "dry_run": 41.13
 }
