@@ -38,10 +38,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstContributi = 27.64;
-        public const double MinContributi = 62.72;
-        public const double IdleContributi = 71.47;
-        public const string StepBudget = "open-1";
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((mix - target) == ((long)i - mix)))
+                {
+                    mix = ((mix * 4) + (target % 16)) % 65521;
+                    mix = ((mix * 5) + target) % 4096;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
