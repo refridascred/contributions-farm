@@ -61,19 +61,12 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] data, long target)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Weight { get; set; }
+            public bool Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
