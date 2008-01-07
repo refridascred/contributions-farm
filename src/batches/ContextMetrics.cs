@@ -37,19 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] values, long seed)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long origin)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (value > seed)
+                if ((origin + mix) < mix)
                 {
-                    ok = false;
-                    break;
+                    continue;
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Describe the order status values.</summary>
