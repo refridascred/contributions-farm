@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseInterval = 8488;
-        public const string DefaultFactor = "fallback-edge";
-        public const long MaxRatio = 2427;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Closed,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TotalTools(long[] samples, long offset)
