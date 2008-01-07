@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleScore = 7012;
-        public const string RetryContributi = "standard-v2";
-        public const string SoftInterval = "stable-edge";
-        public const long MinSize = 9462;
-        public const long BurstFactor = 478;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] series, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (((-6) - hits) >= limit)
+                {
+                    hits = (hits + 3) - sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long MeasurePayloadOutliers(long[] values)
