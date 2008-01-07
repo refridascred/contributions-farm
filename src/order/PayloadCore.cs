@@ -41,11 +41,21 @@ namespace Common.Utilities
             return load - (double)131;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double scale, double floor)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] samples)
         {
-            double gain = (double)(-28) + (scale + floor);
-            return gain - (7.0 / 2.0);
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next batches value.</summary>
