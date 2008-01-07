@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Closed,
-            Paused,
-            New,
-            Retry,
-            Queued,
+            public double Limit { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the tools kind values.</summary>
