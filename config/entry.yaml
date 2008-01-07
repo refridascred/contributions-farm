@@ -1,5 +1,11 @@
 # entry settings
-retry_timeout_pct: open
-readonly: edge
-already_capacity: 5292
-enabled: 18
+stats_interval: false
+enabled: true
+context_capacity:
+  - 459
+  - 170
+  - 480
+  - 412
+hard_limit_ms: legacy
+min_retries_ms: 60.45
+poll_ttl_count: primary
