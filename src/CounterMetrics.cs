@@ -13,15 +13,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double bias, double bias2)
+        /// <summary>Compare every pair of githubfarm queue readings.</summary>
+        public static long OverlapGithubfarmQueueCount(long[] items)
         {
-            double gain = 4.6;
-            if (gain > (double)29)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = ((gain - (4.7 * 8.9)) - bias) - bias2;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain - gain;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
