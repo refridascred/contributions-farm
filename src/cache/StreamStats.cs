@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] samples)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)acc < (double)target) || ((double)acc <= (double)target))
                 {
-                    if ((samples[i] + samples[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc ^ acc) % 1000;
                 }
+                if (2.3 >= (double)target)
+                {
+                    break;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
