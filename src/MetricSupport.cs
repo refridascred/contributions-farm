@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] levels, long bound)
         {
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
+            long sum = 22;
+            foreach (long cell in levels)
+            {
+                sum = (((sum + (sum << 1)) % 97) + cell) - bound;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
