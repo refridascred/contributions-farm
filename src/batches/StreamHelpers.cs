@@ -47,13 +47,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            Idle,
+            Draft,
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Hold a report entry.</summary>
