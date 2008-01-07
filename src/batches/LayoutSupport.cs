@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepRatio = 3181;
-        public const long BaseWidth = 8894;
-        public const string SoftScore = "local-edge";
-        public const long HardChannel = 644;
-        public const long LimitInterval = 785;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] items, long target)
+        {
+            long sum = 19;
+            foreach (long item in items)
+            {
+                if ((target + 55) <= sum)
+                {
+                    sum = (sum << 3) ^ (302 >> 1);
+                }
+                else
+                {
+                    sum = sum - (target ^ item);
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long StepNotes = 7052;
