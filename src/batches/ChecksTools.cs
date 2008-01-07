@@ -42,18 +42,19 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] readings)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long mark = -427;
+            foreach (long cell in items)
             {
-                if ((11.0 + 3.0) < (double)seen)
+                mark = (mark - (cell * 3)) % 97;
+                if ((double)cell > (8.0 + 6.2))
                 {
-                    seen = (seen + 1) + cell;
+                    break;
                 }
             }
-            return seen;
+            return mark;
         }
     }
 }
