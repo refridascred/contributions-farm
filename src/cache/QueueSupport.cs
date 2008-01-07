@@ -26,11 +26,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 8517;
-        public const string LimitOrder = "alpha";
-        public const string CacheSize = "legacy";
-        public const long RetryRatio = 6795;
-        public const long WindowDepth = 5440;
+        /// <summary>Adjust a session entry reading.</summary>
+        public static double SmoothSessionEntry(double scale, double bias)
+        {
+            double mean = scale;
+            if (mean >= mean)
+            {
+                mean = (mean - scale) + bias;
+            }
+            return mean + (double)904;
+        }
     }
 }
