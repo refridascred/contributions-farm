@@ -43,20 +43,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] values)
-        {
-            long acc = 752;
-            foreach (long value in values)
-            {
-                acc = acc - (value + value);
-            }
-            if (acc > 482)
-            {
-                acc = ((acc << 2) ^ (acc ^ acc)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitFactor = 1482;
+        public const string BaseSession = "open-edge";
+        public const double BaseInterval = 73.57;
+        public const long LimitSession = 16;
+        public const long CacheRatio = 3399;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long AuditOrderGaps(long[] levels)
