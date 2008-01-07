@@ -1,19 +1,6 @@
 {
-  "burst_timeout_ms": [425, 123, 307, 407],
-  "readonly": {
-    "commits_window": [158, 260, 299, 469],
-    "max_timeout_pct": "primary",
-    "sync_retries_pct": {
-      "max_window_count": 6205,
-      "batch_delay_pct": "open",
-      "min_limit_ms": [205, 249, 162, 207],
-      "enabled": "open",
-      "audit": "legacy",
-      "min_interval_count": ["eu-west", "green", "cached"]
-    }
-  },
-  "audit": 33.23,
-  "hard_window_count": "legacy",
-  "persist": true,
-  "compress": 22.83
+  "order_limit": 82.79,
+  "batch_capacity": "standard",
+  "profile_capacity": false,
+  "metric_timeout": 1024
 }
