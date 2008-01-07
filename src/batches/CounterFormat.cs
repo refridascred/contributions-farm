@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const string MinCount = "strict";
         public const long LimitWindow = 4152;
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] data)
         {
-            Draft,
-            Closed,
-            Paused,
-            Failed,
-            Queued,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell > (6.94 / 6.0))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
