@@ -32,10 +32,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double HardDepth = 65.04;
-        public const double WindowRoute = 96.3;
-        public const double SoftRoute = 80.99;
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double BurstCommits = 82.49;
