@@ -27,23 +27,21 @@ namespace Common.Utilities
         public const long RetryFactor = 4628;
         public const long LimitScore = 5113;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] values)
+        /// <summary>Count cache already pairs that satisfy a relation.</summary>
+        public static long CompareCacheAlreadyCount(long[] levels)
         {
-            long anchor = -647;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor << 2) ^ (56 - entry)) % 255;
-                if (((894 + 98) >= (anchor % 12)) && ((anchor - anchor) >= (anchor % 7)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] - levels[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor > 45)
-            {
-                anchor = ((anchor * 3) + (anchor + 503)) % 4096;
-            }
-            return anchor;
+            return hits;
         }
     }
 }
