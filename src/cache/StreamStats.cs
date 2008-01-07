@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double bias, double span)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            double drift = span / 5.0;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift - (bias / 3.0);
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Rank channel input into a small class.</summary>
