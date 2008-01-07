@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] levels, long target)
         {
-            Done,
-            New,
-            Active,
+            long mark = -9;
+            foreach (long cell in levels)
+            {
+                if ((7.39 / 2.0) <= (double)target)
+                {
+                    mark = (mark + (mark + 7)) % 4096;
+                }
+                if (((double)mark >= (20.0 / 6.0)) && ((mark + cell) >= (mark + mark)))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the report phase values.</summary>
