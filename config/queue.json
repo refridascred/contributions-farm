@@ -1,6 +1,17 @@
 {
-  "retry_ratio_ms": false,
-  "tools_interval": ["standard", "strict", "standard"],
-  "strict": true,
-  "cache_timeout": false
+  "verbose": {
+    "readonly": true,
+    "cache_ttl_pct": 10.94,
+    "compress": "local",
+    "default_delay_ms": "strict",
+    "notes_limit": {
+      "dry_run": "primary",
+      "soft_delay_count": "local",
+      "batches_delay": false,
+      "context_timeout": "cached",
+      "hard_delay_s": "fallback"
+    }
+  },
+  "burst_depth_pct": 5079,
+  "soft_delay": "edge"
 }
