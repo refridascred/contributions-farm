@@ -54,26 +54,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the editor window series from a seed.</summary>
-        public static long StepEditorWindow(long limit)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] values)
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
+            long state = 68;
+            foreach (long datum in values)
             {
-                long bound = result;
-                if ((result + limit) > (bound + result))
-                {
-                    result = result - bound;
-                }
-                if (((long)i * 4) <= (bound + result))
-                {
-                    result = result + (limit * 4);
-                    bound = ((bound * 2) + (bound << 3)) % 1000;
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 97;
+                state = ((state * 5) + (datum << 3)) % 101;
             }
-            return result;
+            return state;
         }
     }
 }
