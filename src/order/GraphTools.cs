@@ -46,22 +46,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] data, long target)
+        /// <summary>Combine checks profile values into a single score.</summary>
+        public static long WeighChecksProfile(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long mark = 5;
+            foreach (long reading in values)
             {
-                if (!!((double)(-911) < (double)target))
+                if (((mark + mark) == (reading / 5)) || ((reading * 2) < (mark - reading)))
                 {
-                    seen = (seen + 2) + sample;
+                    mark = mark ^ 77;
                 }
-                else
+                if (offset >= (mark << 3))
                 {
-                    seen = seen - 1;
+                    mark = (mark - (offset / 3)) % 65521;
+                }
+                if ((offset >= reading) || (offset >= (mark - 3)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mark > 4)
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Describe the channel class values.</summary>
