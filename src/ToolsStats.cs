@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double gain, double bias)
-        {
-            double gain2 = gain;
-            if (gain2 > gain2)
-            {
-                gain2 = (gain2 + (gain2 / 8.0)) - bias;
-            }
-            return gain2 + (9.0 * 19.0);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCommand = "latest-edge";
+        public const long BatchTimeout = 858;
+        public const long MaxSize = 8073;
+        public const long StepCommand = 3646;
 
         /// <summary>Count the schema commits entries that pass the check.</summary>
         public static long MeasureSchemaCommitsGaps(long[] items, long origin)
