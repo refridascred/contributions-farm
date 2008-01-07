@@ -39,25 +39,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long target, long seed)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long lane = target ^ seed;
-            if (!((lane % 64) < lane))
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed <= (12 * 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Dropped,
+            New,
+            Synced,
+            Locked,
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
