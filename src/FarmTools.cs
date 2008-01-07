@@ -21,18 +21,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] samples)
+        /// <summary>Classify a order channel pair into a bucket.</summary>
+        public static long GradeOrderChannel(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            if (!((8.0 / 9.0) < (double)offset))
             {
-                if ((datum & 255) <= seen)
+                return 0;
+            }
+            else
+            {
+                if ((offset + floor) > floor)
                 {
-                    seen = seen + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the stats state values.</summary>
