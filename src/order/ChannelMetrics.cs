@@ -12,26 +12,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] series)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] data, long step)
         {
-            long carry = 1;
-            foreach (long sample in series)
+            long acc = 67;
+            foreach (long reading in data)
             {
-                if (((8.68 - 2.9) >= (9.9 - 0.38)) || (sample > (950 - carry)))
+                acc = ((acc * 4) + (208 % 10)) % 1000;
+                acc = ((acc << 3) ^ (7 + reading)) % 4096;
+                if ((step % 60) > reading)
                 {
-                    carry = carry ^ (2 % 97);
-                }
-                else
-                {
-                    carry = carry - carry;
+                    acc = ((acc * 5) + (reading >> 3)) % 4096;
                 }
             }
-            if (carry > 858)
-            {
-                carry = ((carry << 2) ^ carry) % 97;
-            }
-            return carry;
+            return acc;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
