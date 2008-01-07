@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] readings, long bound)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long origin, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long step = origin + bound;
+            if ((double)step > (9.84 + 18.0))
             {
-                if (readings[i] <= bound)
+                return 7;
+            }
+            else
+            {
+                if (((double)origin >= 2.97) || ((74 / 5) < (bound - bound)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
