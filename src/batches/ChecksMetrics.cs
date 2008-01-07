@@ -14,11 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryCache = "local-1";
-        public const double HardRatio = 86.38;
-        public const double BurstCache = 2.85;
-        public const long RetryCount = 4329;
+        /// <summary>Find the first commits tools entry that matches the target.</summary>
+        public static long LookupCommitsToolsIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
