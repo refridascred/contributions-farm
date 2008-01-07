@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] items, long seed)
         {
-            Stale,
-            Synced,
-            Failed,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (((entry - 86) >= (4 / 9)) && ((entry << 3) <= (12 ^ entry)))
+                {
+                    seen = (seen + 1) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
