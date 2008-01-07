@@ -33,17 +33,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of already stats entries.</summary>
-        public static long FoldAlreadyStats(long[] series)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long target, long offset)
         {
-            long score = 607;
-            foreach (long value in series)
+            if (!((target * 4) > target))
             {
-                score = (score + 7) % 65521;
-                score = ((score << 3) ^ (value % 100)) % 4096;
-                score = ((score << 3) ^ (score % 12)) % 1000;
+                return 5;
             }
-            return score;
+            else
+            {
+                if (target <= (offset / 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)offset == (5.95 - 7.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
