@@ -66,13 +66,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] levels)
         {
-            Synced,
-            Retry,
-            Stale,
-            New,
+            long result = 355;
+            foreach (long entry in levels)
+            {
+                if (((result - result) > 89) || ((entry - result) == (result + entry)))
+                {
+                    result = ((result << 3) ^ (1 * 2)) % 255;
+                }
+                if ((result ^ result) <= entry)
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
     }
 }
