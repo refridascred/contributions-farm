@@ -1,8 +1,5 @@
 {
-  "audit": 64.08,
-  "entry_depth": 3660,
-  "readonly": false,
-  "sync_depth_ms": 76.28,
-  "max_depth_ms": 500,
-  "max_interval": 60
+  "dry_run": "standard",
+  "context_ratio": 4710,
+  "audit": 15.91
 }
