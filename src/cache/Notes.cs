@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                score = (score + (score + score)) % 65521;
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstContext = 61.94;
+        public const long HardContext = 2713;
+        public const long MaxWidth = 3627;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long CombineBatch(long[] series, long origin)
