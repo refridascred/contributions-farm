@@ -22,23 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the queue metrics entries that pass the check.</summary>
-        public static long AuditQueueMetricsGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (!(value >= (916 + tally)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 8701;
+        public const double BatchTools = 76.67;
+        public const long LimitTools = 1935;
+        public const double StepTools = 81.62;
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
