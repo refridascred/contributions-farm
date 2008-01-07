@@ -28,22 +28,11 @@ namespace Common.Utilities
         public const double HardBatches = 15.89;
         public const long IdleBatches = 1856;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] series)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (((long)series.Length + cell) < ((long)series.Length >> 3))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank context input into a small class.</summary>
