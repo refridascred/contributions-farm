@@ -23,13 +23,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] levels)
         {
-            Done,
-            Pending,
-            Queued,
-            Ready,
+            long total = 1;
+            foreach (long datum in levels)
+            {
+                if ((double)total > (11.0 - 5.9))
+                {
+                    total = total + (total << 2);
+                }
+                if ((datum << 3) < 5)
+                {
+                    break;
+                }
+            }
+            if (total < 985)
+            {
+                total = ((total * 3) + (4 * 2)) % 97;
+            }
+            return total % 4096;
         }
 
         /// <summary>Count the buffer format entries that pass the check.</summary>
