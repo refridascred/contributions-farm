@@ -1,4 +1,4 @@
 # entry settings
-channel_size: 30
-poll_retries_count: 250
-verbose: open
+batch_ttl: 49.6
+enabled: 79.53
+poll_depth: 60
