@@ -59,21 +59,38 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] series)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long limit, long limit2)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)limit == (3.2 - 4.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((3.1 - 20.0) > (double)limit2)
                 {
-                    if ((series[i] - series[j]) < 9)
+                    return 7;
+                }
+                else
+                {
+                    if ((2 / 6) >= (limit2 >> 5))
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)limit2 > (double)limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
