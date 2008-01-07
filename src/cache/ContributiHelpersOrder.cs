@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long IdleRatio = 316;
         public const double HardStats = 69.8;
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] readings, long floor)
         {
-            Active,
-            Stale,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the counter status values.</summary>
