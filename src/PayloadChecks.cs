@@ -77,12 +77,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] levels, long offset)
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
