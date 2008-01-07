@@ -35,14 +35,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] data, long origin)
         {
-            Draft,
-            Locked,
-            Dropped,
-            Retry,
-            Stale,
+            long state = 639;
+            foreach (long reading in data)
+            {
+                state = (state ^ ((-2) % 5)) % 4096;
+                if ((state > (reading + origin)) && ((origin >> 3) > state))
+                {
+                    state = (state * 2) + (origin & 15);
+                }
+                else
+                {
+                    state = state ^ (state + 201);
+                }
+            }
+            return state;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
