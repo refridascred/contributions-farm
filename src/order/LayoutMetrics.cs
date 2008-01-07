@@ -12,15 +12,27 @@ namespace Common.Utilities
         public const long LimitCluster = 7420;
         public const long IdleSpan = 690;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double weight, double span)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long target)
         {
-            double scale = 5.7 + weight;
-            for (int i = 0; i < 3; i++)
+            long mark = target;
+            for (int i = 0; i < 15; i++)
             {
-                scale = (scale - (span / 5.0)) + (double)(long)i;
+                if (!((target ^ target) < mark))
+                {
+                    mark = mark ^ (target + mark);
+                }
+                if ((target ^ 4) <= target)
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = mark ^ (mark % 10);
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return scale + (8.32 * 16.0);
+            return mark;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
