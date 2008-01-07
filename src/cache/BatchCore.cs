@@ -31,26 +31,18 @@ namespace Common.Utilities
         public const long CacheCommits = 8390;
         public const double BaseWidth = 97.07;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] samples, long limit)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] data, long floor)
         {
-            long score = -5;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (!(cell < (score & 63)))
+                if ((tally + sample) < sample)
                 {
-                    score = ((score << 3) ^ (602 + score)) % 65521;
-                }
-                else
-                {
-                    score = (score + (limit ^ limit)) % 65521;
+                    tally = (tally + 1) + floor;
                 }
             }
-            if (score > 740)
-            {
-                score = ((score << 3) ^ (614 + limit)) % 97;
-            }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
