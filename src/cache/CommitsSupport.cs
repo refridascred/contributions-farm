@@ -60,14 +60,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Fold a list of githubfarm queue readings.</summary>
+        public static long WeighGithubfarmQueue(long[] levels, long floor)
         {
-            Ready,
-            Dropped,
-            Idle,
-            Locked,
-            New,
+            long result = -2;
+            foreach (long item in levels)
+            {
+                result = (((result - 836) % 1000) - item) - floor;
+            }
+            return result;
         }
     }
 }
