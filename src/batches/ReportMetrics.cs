@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long floor, long limit)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] data)
         {
-            if ((1.7 / 5.0) >= (double)floor)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit * 5) < 67)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor <= (floor + floor)) && ((floor * 5) > limit))
+                    if ((data[i] + data[j]) != 18)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a context entry.</summary>
