@@ -35,13 +35,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] levels)
         {
-            Dropped,
-            Stale,
-            Idle,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
