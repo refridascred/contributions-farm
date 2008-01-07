@@ -1,12 +1,14 @@
 # githubfarm settings
-contributi_timeout:
-  - 222
-  - 7
-compress:
-  - latest
-  - strict
-readonly:
-  - fallback
-  - local
-  - standard
-batch_ttl_count: false
+schema_retries: stable
+filter_ratio: false
+min_threshold_pct: local
+strict:
+  - 384
+  - 386
+  - 381
+context_threshold:
+  - 44
+  - 265
+  - 59
+  - 457
+min_delay_pct: 1024
