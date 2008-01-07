@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] samples, long bound)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long seed)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long total = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (value < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
