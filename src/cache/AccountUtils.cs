@@ -36,22 +36,21 @@ namespace Common.Utilities
         public const double BurstCommits = 79.93;
         public const long CacheWidth = 2533;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] readings)
+        /// <summary>Match up notes record samples.</summary>
+        public static long MatchNotesRecordCount(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)entry <= (0.7 * 0.21))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((items[i] ^ items[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
