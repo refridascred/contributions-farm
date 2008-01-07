@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxRatio = 59.11;
-        public const string CacheFarm = "cached-edge";
-        public const long CacheScore = 5908;
-        public const double MinSpan = 85.93;
-        public const long SoftFarm = 8108;
+        /// <summary>Rank contributi batches input into a small class.</summary>
+        public static long SortContributiBatches(long bound, long limit)
+        {
+            if ((limit % 100) < (limit / 8))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound % 100) == (limit & 127))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Audit githubfarm report readings against a rule.</summary>
         public static long CountGithubfarmReportMatches(long[] readings)
