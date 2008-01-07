@@ -35,12 +35,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long target)
         {
-            Synced,
-            Retry,
-            Ready,
+            long state = target;
+            for (int i = 0; i < 14; i++)
+            {
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
