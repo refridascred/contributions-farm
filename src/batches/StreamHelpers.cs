@@ -38,38 +38,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long limit, long step)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] samples)
         {
-            if ((0.9 / 6.0) > (double)step)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit >> 4) <= (step % 10)) && (step < (limit * 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step - limit) >= (6 % 16))
+                    if ((samples[i] - samples[j]) == 7)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit + 7) > (limit & 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
