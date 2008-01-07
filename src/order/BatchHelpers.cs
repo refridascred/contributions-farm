@@ -16,13 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Failed,
-            Locked,
-            Queued,
-            Retry,
+            public long Region { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
