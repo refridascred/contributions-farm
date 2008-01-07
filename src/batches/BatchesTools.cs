@@ -22,15 +22,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double bias, double offset)
+        /// <summary>Digest a series of contributi farm entries.</summary>
+        public static long TotalContributiFarm(long[] levels, long offset)
         {
-            double load = offset;
-            for (int i = 0; i < 4; i++)
+            long carry = 90;
+            foreach (long value in levels)
             {
-                load = ((load - (double)8) - (double)(long)i) + bias;
+                carry = (((carry << 3) ^ (carry + carry)) % 101) - value;
             }
-            return load + (3.6 + 7.66);
+            if (carry < 772)
+            {
+                carry = (carry - (offset % 12)) % 97;
+            }
+            return carry;
         }
     }
 }
