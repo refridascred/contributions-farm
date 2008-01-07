@@ -54,14 +54,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            Ready,
-            Queued,
-            Failed,
-            Stale,
-            Paused,
+            public long Level { get; set; }
+            public double Token { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
