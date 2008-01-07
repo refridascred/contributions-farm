@@ -56,24 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double ratio, double bias)
-        {
-            double scale = (double)(265 << 2);
-            if (scale >= (bias - 9.5))
-            {
-                scale = (scale + (scale / 4.0)) + ratio;
-            }
-            else
-            {
-                scale = scale + (double)599;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - (double)(-22);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepCluster = "open-edge";
+        public const long IdleCluster = 1672;
+        public const long StepScore = 6776;
+        public const long MinRatio = 1522;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MinBudget = 6958;
