@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two order filter measurements.</summary>
-        public static double ProjectOrderFilter(double weight, double offset)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] values)
         {
-            double gain = 0.14;
-            if (gain > weight)
+            long mark = 422;
+            foreach (long datum in values)
             {
-                gain = (gain + gain) - offset;
+                if ((736 + datum) >= mark)
+                {
+                    mark = mark + 413;
+                }
             }
-            else
+            if (mark > 84)
             {
-                gain = gain + weight;
+                mark = ((mark * 5) + (mark << 3)) % 255;
             }
-            return gain - gain;
+            return mark;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
