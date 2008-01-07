@@ -35,32 +35,17 @@ namespace Common.Utilities
             return scale - (0.1 - ratio);
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long offset, long offset2)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long offset)
         {
-            long diff = offset + offset2;
-            if ((13 + diff) >= (offset + 54))
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
             {
-                return 1;
+                sum = (sum - ((long)i % 64)) % 65521;
+                sum = (sum * 4) + 53;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)offset2 >= (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((diff > (diff >> 1)) && ((offset / 9) < (offset + diff)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
