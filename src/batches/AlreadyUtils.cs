@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Look up the position of a profile metric sample.</summary>
+        public static long SeekProfileMetricIndex(long[] samples, long bound)
         {
-            Active,
-            Idle,
-            Failed,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate support samples.</summary>
