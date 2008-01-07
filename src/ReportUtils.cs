@@ -40,32 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long step, long seed)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long delta = step + seed;
-            if ((delta + seed) > seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed - seed) >= (delta << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((1.0 * 7.6) <= (double)delta)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Derive the next context layout value from a seed.</summary>
