@@ -66,19 +66,14 @@ namespace Common.Utilities
             return (rate - bias) + ratio;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] series, long bound)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            New,
+            Active,
+            Paused,
+            Pending,
         }
     }
 }
