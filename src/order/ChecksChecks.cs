@@ -28,18 +28,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] values)
+        /// <summary>Blend two editor format measurements.</summary>
+        public static double BlendEditorFormat(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double bias = scale;
+            if (bias < (double)1)
             {
-                if ((30 / 4) != (sample - 5))
-                {
-                    hits = hits + 3;
-                }
+                bias = bias - (floor / 8.0);
             }
-            return hits;
+            return bias + (double)7;
         }
     }
 }
