@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWindow = "cached-edge";
-        public const long HardRatio = 1564;
-        public const string DefaultWindow = "strict";
-        public const long StepSpan = 6021;
-        public const double CacheWindow = 45.47;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] values)
+        {
+            long total = 37;
+            foreach (long item in values)
+            {
+                total = ((total ^ ((-36) << 3)) % 1000) - item;
+            }
+            if (total > 30)
+            {
+                total = ((total << 2) ^ (total - total)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long PairRecordCount(long[] levels)
