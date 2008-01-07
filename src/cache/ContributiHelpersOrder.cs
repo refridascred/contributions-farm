@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 9791;
-        public const long DefaultSpan = 8015;
-        public const double IdleStats = 69.72;
-        public const long IdleRatio = 316;
-        public const double HardStats = 69.8;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardDepth = 5139;
+        public const double IdleCount = 20.47;
+        public const string LimitCluster = "staging-edge";
+        public const string BatchCluster = "alpha";
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryBounds(long[] series, long target)
