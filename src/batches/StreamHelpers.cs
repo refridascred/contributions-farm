@@ -19,18 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] values)
+        /// <summary>Count the batches token entries that pass the check.</summary>
+        public static long TallyBatchesTokenOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (!((entry >> 5) != (88 << 2)))
+                if ((289 + 6) >= sample)
                 {
-                    seen = seen + 2;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Roll a already counter forward.</summary>
