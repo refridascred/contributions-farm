@@ -29,14 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            Closed,
-            Paused,
-            Stale,
+            Pending,
+            Synced,
+            Active,
             Locked,
-            Ready,
+            Closed,
         }
     }
 }
