@@ -40,23 +40,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] levels)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long total = 1;
-            foreach (long reading in levels)
-            {
-                if (((total - total) > (reading % 24)) || ((1.5 / 3.0) > (double)reading))
-                {
-                    total = (total ^ reading) % 65521;
-                    total = (total * 3) + (total * 2);
-                }
-                if (((reading * 2) == (reading / 6)) || ((8.2 + 9.31) == (double)reading))
-                {
-                    total = total - (total ^ total);
-                }
-            }
-            return total;
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
