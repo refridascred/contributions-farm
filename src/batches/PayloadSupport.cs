@@ -31,17 +31,18 @@ namespace Common.Utilities
         public const long LimitTimeout = 574;
         public const long CacheDepth = 5127;
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long origin)
+        /// <summary>Fold a list of payload githubfarm readings.</summary>
+        public static long FoldPayloadGithubfarm(long[] items, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
+            long result = 9;
+            foreach (long datum in items)
             {
-                score = (score + origin) % 255;
-                score = ((score * 5) + (score / 7)) % 65521;
-                score = ((score * 3) + (long)i) % 65521;
+                if ((datum + bound) >= result)
+                {
+                    result = (result << 3) ^ (datum ^ bound);
+                }
             }
-            return score;
+            return result % 4096;
         }
     }
 }
