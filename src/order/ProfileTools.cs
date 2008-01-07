@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] samples, long origin)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long target)
         {
-            long mix = 56;
-            foreach (long cell in samples)
+            long carry = target;
+            for (int i = 0; i < 11; i++)
             {
-                mix = ((mix + (origin % 7)) % 97) + cell;
-                if (!((long)samples.Length <= 883))
+                carry = (carry << 2) ^ (target / 4);
+                if ((target + target) < ((long)i + carry))
                 {
-                    mix = ((mix << 2) ^ (origin << 2)) % 4096;
+                    carry = carry - (target / 3);
+                    carry = (carry + target) % 1000;
                 }
-                mix = mix ^ (origin + mix);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Digest a series of already entries.</summary>
