@@ -73,12 +73,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] values, long seed)
+        /// <summary>Find the first schema notes entry that matches the target.</summary>
+        public static long LookupSchemaNotesIndex(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] < seed)
+                if (items[i] > origin)
                 {
                     return (long)i;
                 }
