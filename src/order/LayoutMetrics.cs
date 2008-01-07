@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchCluster = 52.96;
-        public const double WindowCluster = 17.88;
-        public const long SoftCluster = 8225;
-        public const long LimitCluster = 7420;
-        public const long IdleSpan = 690;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheWidth = 9679;
+        public const long MaxBatches = 4610;
+        public const long RetryBatches = 1734;
+        public const long LimitBatches = 7190;
 
         /// <summary>Roll a report counter forward.</summary>
         public static long IterateReport(long target)
