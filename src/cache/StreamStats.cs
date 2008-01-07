@@ -49,19 +49,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] values, long bound)
-        {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 73.42;
+        public const string CacheFactor = "open-v2";
+        public const long LimitInterval = 1418;
+        public const long BurstScore = 7475;
     }
 }
