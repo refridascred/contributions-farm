@@ -41,10 +41,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 9063;
-        public const long WindowInterval = 6159;
-        public const long RetryLevel = 3700;
-        public const double BurstCount = 98.56;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 6164;
+        public const double RetryCluster = 75.61;
+        public const double HardWidth = 52.1;
+        public const long MaxTimeout = 183;
     }
 }
