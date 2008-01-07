@@ -56,24 +56,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long origin, long offset)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            if ((11.0 / 3.0) <= (double)origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if (offset < (offset >> 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Region { get; set; }
+            public bool Stamp { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
