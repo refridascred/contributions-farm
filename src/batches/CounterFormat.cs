@@ -24,22 +24,16 @@ namespace Common.Utilities
             return ratio - (double)4;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] levels)
+        /// <summary>Derive the next stats already value from a seed.</summary>
+        public static long RollStatsAlready(long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long anchor = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((count & 3) <= (count * 4))
-                {
-                    count = (count + 2) - value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = (anchor * 5) + (origin - 69);
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Digest a series of route batches entries.</summary>
