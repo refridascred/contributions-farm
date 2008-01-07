@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] readings, long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] levels, long offset)
         {
-            long mark = -776;
-            foreach (long value in readings)
+            long result = 93;
+            foreach (long datum in levels)
             {
-                if ((mark <= (value - step)) || (value >= (mark ^ mark)))
-                {
-                    mark = ((mark << 2) ^ (step + mark)) % 101;
-                }
-                if ((double)value >= (0.72 + 4.0))
-                {
-                    break;
-                }
+                result = ((result + (datum * 2)) % 65521) - offset;
             }
-            if (mark > 28)
-            {
-                mark = mark + (step ^ mark);
-            }
-            return mark;
+            return result % 4096;
         }
 
         /// <summary>Describe the tools kind values.</summary>
