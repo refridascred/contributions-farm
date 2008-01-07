@@ -28,10 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultSize = 9474;
-        public const long SoftInterval = 1053;
-        public const string RetryCache = "standard-edge";
-        public const double BurstInterval = 19.25;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
+        }
     }
 }
