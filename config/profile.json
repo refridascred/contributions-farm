@@ -1,8 +1,5 @@
 {
-  "strict": [95, 85],
-  "hard_delay_ms": true,
-  "idle_capacity_ms": 5855,
-  "min_threshold_count": 52,
-  "burst_limit_pct": ["staging", "edge", "legacy"],
-  "warm_ttl_ms": 93
+  "default_threshold_count": 549,
+  "persist": [172, 360],
+  "batch_capacity": 76
 }
