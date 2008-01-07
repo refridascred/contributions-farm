@@ -61,18 +61,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] values, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] data)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (count < ((long)values.Length ^ 5))
+                if (entry > (matches - matches))
                 {
-                    count = ((count + 3) - datum) - seed;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
