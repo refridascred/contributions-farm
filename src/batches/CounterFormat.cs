@@ -18,13 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] items)
         {
-            Done,
-            Retry,
-            Draft,
-            Paused,
+            long mark = -36;
+            foreach (long datum in items)
+            {
+                if ((double)datum > (double)0)
+                {
+                    mark = ((mark << 3) ^ (datum / 2)) % 65521;
+                }
+                else
+                {
+                    mark = (mark - (-79)) % 97;
+                }
+            }
+            if (mark < 626)
+            {
+                mark = (mark ^ (mark - mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
