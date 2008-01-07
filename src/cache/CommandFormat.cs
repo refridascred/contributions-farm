@@ -44,26 +44,23 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] readings)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long origin)
         {
-            long mix = 3;
-            foreach (long item in readings)
+            long result = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)mix != (9.0 + 2.0))
+                if ((53 + 599) != (origin - result))
                 {
-                    mix = (mix ^ (item + item)) % 4096;
+                    result = result ^ (result % 64);
                 }
                 else
                 {
-                    mix = (mix ^ (item + mix)) % 65521;
+                    result = ((result << 2) ^ (5 ^ result)) % 1000;
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
-            if (mix < (-503))
-            {
-                mix = mix + 66;
-            }
-            return mix % 65521;
+            return result;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
