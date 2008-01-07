@@ -28,14 +28,26 @@ namespace Common.Utilities
         public const long LimitTools = 1935;
         public const double StepTools = 81.62;
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] series)
         {
-            Active,
-            Retry,
-            Stale,
-            Synced,
-            Failed,
+            long acc = 78;
+            foreach (long sample in series)
+            {
+                if (!((4.14 + 1.9) >= (double)acc))
+                {
+                    acc = (acc * 5) + sample;
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    acc = ((acc - 957) % 255) + (long)i;
+                }
+                if ((sample + sample) < (sample * 2))
+                {
+                    acc = (acc - acc) % 4096;
+                }
+            }
+            return acc % 65521;
         }
     }
 }
