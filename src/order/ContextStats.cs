@@ -20,15 +20,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate already context samples.</summary>
-        public static long TallyAlreadyContext(long[] data, long seed)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long anchor = 216;
-            foreach (long value in data)
-            {
-                anchor = ((anchor ^ (seed % 24)) % 1000) - value;
-            }
-            return anchor % 1000;
+            Pending,
+            Closed,
+            Locked,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
