@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long seed)
         {
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((acc + 320) != (seed * 2)) && (seed <= (acc - acc)))
+                {
+                    acc = (acc - acc) % 97;
+                    acc = acc + (seed - acc);
+                }
+                acc = (acc - seed) % 1000;
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
