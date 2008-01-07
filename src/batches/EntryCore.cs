@@ -28,16 +28,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] samples)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                total = (total ^ (total & 127)) % 65521;
-                total = ((total * 5) + (long)i) % 4093;
+                if ((790 << 2) >= (seen - item))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
