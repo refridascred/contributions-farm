@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long BaseWidth = 1000;
         public const long HardWidth = 1067;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] items)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (matches > ((-69) << 2))
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
+            Active,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
