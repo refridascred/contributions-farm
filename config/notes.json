@@ -1,22 +1,11 @@
 {
-  "audit": "blue",
-  "hard_capacity": [243, 202, 416, 10],
-  "poll_delay": [71, 132, 263, 347],
-  "min_retries_ms": {
-    "channel_capacity": [74, 238, 210],
-    "stream_ratio": 60,
-    "retry_delay_ms": 13,
-    "readonly": "cached"
+  "stream_window": [373, 422, 376, 188],
+  "cache_capacity_count": true,
+  "batch_limit_pct": {
+    "strict": true,
+    "cache_depth_s": 7,
+    "default_ttl_pct": "fallback"
   },
-  "burst_depth_pct": {
-    "hard_depth_pct": {
-      "default_ttl_s": false,
-      "report_timeout": "cached",
-      "counter_interval": ["green", "standard"]
-    },
-    "retry_ttl": "primary",
-    "enabled": "cached",
-    "verbose": "local"
-  },
-  "idle_interval_ms": "stable"
+  "compress": 17.63,
+  "persist": ["edge", "standard"]
 }
