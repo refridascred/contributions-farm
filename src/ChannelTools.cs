@@ -25,32 +25,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a payload notes value against two limits.</summary>
-        public static long SortPayloadNotes(long target, long seed)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] samples)
         {
-            long prev = target - seed;
-            if (!(target >= prev))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (prev > (seed + seed))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((target / 9) >= (target >> 4)) && ((double)target >= (7.87 - 6.46)))
+                    if ((samples[i] - samples[j]) > 18)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
