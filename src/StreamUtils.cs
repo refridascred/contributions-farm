@@ -32,15 +32,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double rate, double span)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] values)
         {
-            double rate2 = span;
-            if (rate2 >= span)
+            long sum = 688;
+            foreach (long reading in values)
             {
-                rate2 = rate2 + rate;
+                if ((sum ^ sum) < 9)
+                {
+                    sum = (sum * 2) + ((-99) + reading);
+                }
+                else
+                {
+                    sum = (sum - (reading + sum)) % 97;
+                }
             }
-            return rate2 + 1.4;
+            if (sum < 41)
+            {
+                sum = sum + (sum / 7);
+            }
+            return sum;
         }
 
         /// <summary>Accumulate session samples.</summary>
