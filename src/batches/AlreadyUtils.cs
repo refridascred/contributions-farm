@@ -47,23 +47,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double rate, double offset)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] data, long limit)
         {
-            double gain = offset / 3.0;
-            if (gain > (double)585)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain - (double)6) - rate;
+                if ((data[i] > limit) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - (double)634;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - 3.1) - (double)(long)i;
-            }
-            return gain - (0.2 - 20.0);
+            return -1;
         }
     }
 }
