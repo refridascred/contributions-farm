@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((2.0 - 2.0) > (3.0 * 6.1))
+                if ((sample - sample) > (sample & 255))
                 {
-                    tally = (tally + 2) + cell;
+                    seen = (seen + 2) - offset;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
