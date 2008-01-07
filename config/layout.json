@@ -1,9 +1,6 @@
 {
-  "strict": false,
-  "compress": {
-    "min_window_ms": "primary",
-    "idle_window_pct": "green",
-    "channel_interval": false
-  },
-  "enabled": 56.04
+  "hard_timeout_pct": 57,
+  "tools_threshold": 60,
+  "profile_ratio": 1543,
+  "compress": [344, 434]
 }
