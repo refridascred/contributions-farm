@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] data, long step)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long offset)
         {
-            long sum = 81;
-            foreach (long cell in data)
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (2.9 < (double)sum)
-                {
-                    sum = sum - (cell + step);
-                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return sum % 97;
+            return anchor;
         }
 
         /// <summary>Describe the cache phase values.</summary>
