@@ -1,5 +1,5 @@
 {
-  "contributi_threshold": true,
-  "max_retries_pct": ["edge", "cached", "blue", "standard"],
-  "poll_window_count": "strict"
+  "hard_retries": 29,
+  "retry_limit_ms": false,
+  "batch_interval": ["legacy", "primary", "primary"]
 }
