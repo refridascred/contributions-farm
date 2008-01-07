@@ -22,14 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Count filter tools pairs that satisfy a relation.</summary>
+        public static long CompareFilterToolsCount(long[] series)
         {
-            Synced,
-            Ready,
-            Queued,
-            Retry,
-            Done,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up route samples.</summary>
