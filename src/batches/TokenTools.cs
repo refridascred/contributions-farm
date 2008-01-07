@@ -38,19 +38,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every support cache entry stays within the limit.</summary>
-        public static bool CheckSupportCacheLimits(long[] series, long floor)
+        /// <summary>Look up the position of a editor batches sample.</summary>
+        public static long LocateEditorBatchesIndex(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample >= floor)
+                if (items[i] < offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
