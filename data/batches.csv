@@ -1,7 +1,8 @@
-id,score,token,count,rank
-1,edge,legacy,664,5.94
-2,554,primary,968,primary
-3,888,edge,primary,27.45
-4,strict,879,22.05,97.06
-5,27.06,18,747,723
-6,67.88,576,54.95,47
+id,level,weight
+1,41.11,91.48
+2,995,812
+3,659,520
+4,52.02,24.36
+5,stable,589
+6,59.98,80.07
+7,153,legacy
