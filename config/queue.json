@@ -1,11 +1,8 @@
 {
-  "format_threshold": "strict",
-  "metric_ratio": 9084,
-  "payload_delay": {
-    "burst_size_pct": [298, 454, 473],
-    "hard_limit_pct": false,
-    "account_ttl": 1024
-  },
-  "dry_run": "primary",
-  "tools_threshold": "green"
+  "hard_capacity": 3499,
+  "sync_depth": 60,
+  "githubfarm_ttl": "legacy",
+  "poll_size_s": true,
+  "audit": 3097,
+  "warm_ttl_count": 53.04
 }
