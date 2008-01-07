@@ -27,17 +27,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] data, long floor)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = (double)(1 * 5);
+            if (weight > (weight / 6.0))
             {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
+                weight = weight + bias;
             }
-            return -1;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - (offset - 0.78);
         }
 
         /// <summary>Locate a token reading by value.</summary>
