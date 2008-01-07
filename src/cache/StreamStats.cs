@@ -52,15 +52,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) < 5)
+                    if ((levels[i] - levels[j]) != 10)
                     {
                         matches = matches + 1;
                     }
