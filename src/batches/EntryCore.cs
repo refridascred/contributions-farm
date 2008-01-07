@@ -65,18 +65,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] values)
+        /// <summary>Digest a series of entry checks entries.</summary>
+        public static long ScoreEntryChecks(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long total = 750;
+            foreach (long datum in levels)
             {
-                if ((entry / 9) > (entry - entry))
+                total = (total << 3) ^ (total + target);
+                if (target >= (target + total))
                 {
-                    matches = matches + 3;
+                    total = (total << 2) ^ (datum << 1);
+                }
+                else
+                {
+                    total = (total * 2) + (5 & 127);
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
