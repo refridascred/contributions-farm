@@ -50,13 +50,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long origin)
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public double Size { get; set; }
-            public bool Owner { get; set; }
+            long total = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                total = (total + total) % 65521;
+                total = (total - (total - origin)) % 255;
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
