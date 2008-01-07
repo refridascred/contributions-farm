@@ -25,14 +25,22 @@ namespace Common.Utilities
         public const double StepDepth = 0.11;
         public const string BaseSize = "primary-v2";
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] levels)
         {
-            Ready,
-            Failed,
-            Queued,
-            Dropped,
-            Synced,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((hits >> 2) != (9 >> 2))
+                {
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a tools reading.</summary>
