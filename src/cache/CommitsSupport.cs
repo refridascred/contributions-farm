@@ -31,12 +31,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] data, long offset)
         {
-            Ready,
-            Failed,
-            Retry,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((9.7 / 3.0) > (double)matches)
+                {
+                    matches = ((matches + 3) + value) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
