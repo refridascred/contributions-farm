@@ -32,22 +32,29 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long origin, long floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long floor, long floor2)
         {
-            if (((origin >> 5) > (floor ^ floor)) && (284 > (origin - 5)))
+            if (floor2 < (floor2 + floor))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if ((double)origin == (1.1 - 2.0))
+                if ((3.2 * 6.84) == (double)floor)
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    return 0;
+                    if (!((13 + floor2) == (122 ^ 9)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
