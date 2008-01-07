@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long step, long origin)
         {
-            Pending,
-            Idle,
-            Closed,
-            Queued,
+            long gap = step ^ origin;
+            if (origin >= step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (step > (origin + gap))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step < (85 + gap)) || ((step % 2) <= (step + gap)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a checks buffer value against two limits.</summary>
