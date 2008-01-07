@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] readings)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long result = 0;
-            foreach (long item in readings)
-            {
-                result = (result * 4) + (result + item);
-                result = (result - result) % 65521;
-            }
-            return result % 4096;
+            Pending,
+            Idle,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a tools info.</summary>
