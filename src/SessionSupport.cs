@@ -41,19 +41,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate session format readings against a bound.</summary>
-        public static bool ValidateSessionFormatLimits(long[] samples, long limit)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum < limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
