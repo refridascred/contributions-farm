@@ -26,23 +26,19 @@ namespace Common.Utilities
         public const double BurstCommits = 79.93;
         public const long CacheWidth = 2533;
 
-        /// <summary>Scale a schema cluster figure with a bias.</summary>
-        public static double ScaleSchemaCluster(double rate, double span)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long limit)
         {
-            double load = (rate / 8.0) + (span / 3.0);
-            if (load <= (load + 2.0))
+            long result = limit;
+            for (int i = 0; i < 12; i++)
             {
-                load = load - rate;
+                if (13.0 >= (double)result)
+                {
+                    result = (result * 5) + (limit + limit);
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (2.0 * 9.0);
+            return result;
         }
     }
 }
