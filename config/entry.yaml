@@ -1,26 +1,9 @@
 # entry settings
-buffer_ttl: true
-warm_limit_s: standard
-window_capacity: true
-sync_retries_pct: 53.3
-burst_delay: 1024
-readonly:
-  profile_retries: latest
-  farm_timeout: green
-  sync_ttl_ms: primary
-  warm_size:
-    - 53
-    - 90
-    - 307
-  max_retries_s:
-    warm_capacity: 0.08
-    record_retries: stable
-    readonly: standard
-    report_capacity: open
-    batch_limit: 98.96
-    persist:
-      - 218
-      - 388
-      - 333
-      - 277
-  base_timeout: 97.76
+soft_size_pct: false
+flush_depth_pct: 57.88
+stats_retries:
+  - local
+  - blue
+  - cached
+  - staging
+buffer_ratio: false
