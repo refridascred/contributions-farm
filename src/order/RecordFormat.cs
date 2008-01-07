@@ -54,16 +54,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double scale, double floor)
-        {
-            double weight = (double)49 - (scale - floor);
-            if (weight >= 2.91)
-            {
-                weight = weight + 16.0;
-            }
-            return weight + (double)65;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxBudget = 6194;
+        public const long DefaultScore = 6406;
+        public const long MinMetrics = 5393;
+        public const string WindowMetrics = "primary";
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
