@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] values, long bound)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] samples, long target)
         {
-            long state = 5;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!((datum * 3) < (55 % 8)))
+                if (samples[i] >= target)
                 {
-                    state = state ^ datum;
-                }
-                state = (state + (state >> 5)) % 4096;
-                if (((datum << 3) <= (bound & 255)) && ((-983) < state))
-                {
-                    state = (state + bound) % 101;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the checks status values.</summary>
