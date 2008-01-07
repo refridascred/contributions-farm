@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardDepth = 5139;
-        public const double IdleCount = 20.47;
-        public const string LimitCluster = "staging-edge";
-        public const string BatchCluster = "alpha";
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] items)
+        {
+            long result = 41;
+            foreach (long entry in items)
+            {
+                if (result > (9 ^ result))
+                {
+                    result = ((result ^ result) % 97) ^ entry;
+                }
+            }
+            if (result < 565)
+            {
+                result = ((result * 5) + (result - 29)) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryBounds(long[] series, long target)
