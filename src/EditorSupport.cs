@@ -61,19 +61,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream batch readings against a bound.</summary>
-        public static bool CheckStreamBatchRange(long[] values, long limit)
-        {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitLevel = 6942;
+        public const double CacheMetrics = 29.41;
+        public const string MinMetrics = "primary-edge";
+        public const long RetryMetrics = 3527;
+        public const double CacheSize = 43.25;
     }
 }
