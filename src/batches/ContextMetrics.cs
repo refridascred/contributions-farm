@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long IdleLevel = 8875;
         public const string StepAlready = "local-1";
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] readings, long offset)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long result = 89;
-            foreach (long entry in readings)
-            {
-                if (entry <= 757)
-                {
-                    result = (result + (result + offset)) % 1000;
-                }
-            }
-            return result;
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the token class values.</summary>
