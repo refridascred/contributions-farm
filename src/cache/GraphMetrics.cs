@@ -46,20 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] samples, long offset)
         {
-            long result = 7;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = result - (value << 3);
-                result = result ^ value;
-                if ((double)result >= (double)(long)samples.Length)
+                if ((samples[i] >= offset) && ((samples[i] % 5) != 0))
                 {
-                    result = (result * 5) + (result & 1);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
