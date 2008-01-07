@@ -63,11 +63,30 @@ namespace Common.Utilities
         public const string CacheBatch = "strict-1";
         public const long WindowBatch = 5556;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 9003;
-        public const long MinQueue = 5177;
-        public const long MaxScore = 8301;
-        public const long LimitBudget = 9863;
-        public const long MinSpan = 9332;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] samples, long target)
+        {
+            long score = 0;
+            foreach (long datum in samples)
+            {
+                if (!((score % 2) == ((-74) ^ target)))
+                {
+                    score = ((score * 3) + target) % 4096;
+                }
+                else
+                {
+                    score = score - 9;
+                }
+                if (((datum * 5) < target) || (datum > target))
+                {
+                    break;
+                }
+            }
+            if (score < 6)
+            {
+                score = (score ^ (target + target)) % 65521;
+            }
+            return score;
+        }
     }
 }
