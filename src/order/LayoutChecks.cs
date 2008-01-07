@@ -65,14 +65,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long bound)
         {
-            New,
-            Failed,
-            Idle,
-            Active,
-            Locked,
+            long total = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((total * 5) > total)
+                {
+                    total = total - total;
+                    continue;
+                }
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
