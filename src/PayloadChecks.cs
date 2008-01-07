@@ -72,12 +72,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftSpan = 8974;
-        public const double MaxDepth = 39.47;
-        public const long MaxAccount = 8955;
-        public const long IdleAccount = 3240;
-        public const string BatchBudget = "standard-1";
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Adjust a token already reading.</summary>
         public static double BlendTokenAlready(double scale, double floor)
