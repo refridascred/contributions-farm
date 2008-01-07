@@ -1,11 +1,5 @@
 {
-  "stream_window": [373, 422, 376, 188],
-  "cache_capacity_count": true,
-  "batch_limit_pct": {
-    "strict": true,
-    "cache_depth_s": 7,
-    "default_ttl_pct": "fallback"
-  },
-  "compress": 17.63,
-  "persist": ["edge", "standard"]
+  "githubfarm_interval": 13,
+  "profile_ttl": 59,
+  "compress": true
 }
