@@ -61,19 +61,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] series, long target)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
