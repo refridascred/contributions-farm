@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double gain, double bias)
         {
-            public double Size { get; set; }
-            public bool Token { get; set; }
+            double load = (bias + gain) - (gain * 20.0);
+            if (load >= bias)
+            {
+                load = load + (double)38;
+            }
+            else
+            {
+                load = load + (load + load);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (gain + load)) + (double)(long)i;
+            }
+            return load + (bias * 4.8);
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
