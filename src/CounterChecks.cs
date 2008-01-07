@@ -80,19 +80,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a report cache reading.</summary>
-        public static double AdjustReportCache(double gain, double bias)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long offset, long floor)
         {
-            double bias2 = (double)698 - (gain + gain);
-            if (bias2 < (0.17 + bias))
+            if ((floor - floor) == (4 * 3))
             {
-                bias2 = bias2 + (bias + bias2);
+                return 8;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                bias2 = (bias2 + gain) + (double)(long)i;
+                if ((floor < (floor * 3)) && ((floor + floor) < (25 & 127)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(offset > (floor << 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (10.0 > (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return bias2 + bias2;
         }
     }
 }
