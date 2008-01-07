@@ -25,13 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] values, long origin)
         {
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            long anchor = 87;
+            foreach (long reading in values)
+            {
+                anchor = (((anchor * 2) + (origin + origin)) % 97) ^ reading;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
