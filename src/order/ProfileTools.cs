@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const double HardCount = 68.18;
         public const long LimitSize = 3750;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] data, long offset)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long sum = 29;
-            foreach (long value in data)
-            {
-                sum = ((sum - value) % 4096) - offset;
-            }
-            return sum;
+            Queued,
+            Paused,
+            Retry,
         }
 
         /// <summary>Hold a support summary.</summary>
