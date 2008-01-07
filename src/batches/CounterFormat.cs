@@ -27,12 +27,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] series, long target)
         {
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((6.71 / 6.0) <= (double)tally)
+                {
+                    tally = ((tally + 2) ^ sample) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
