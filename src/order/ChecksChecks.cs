@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] readings, long step)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] readings, long target)
         {
-            long mark = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item + item) >= (step ^ mark))
+                if (readings[i] == target)
                 {
-                    mark = (mark - (25 >> 2)) % 65521;
+                    return (long)i;
                 }
             }
-            if (mark < 29)
-            {
-                mark = (mark - step) % 101;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the checks status values.</summary>
