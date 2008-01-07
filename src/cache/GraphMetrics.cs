@@ -27,22 +27,21 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of profile format readings.</summary>
-        public static long DigestProfileFormat(long[] samples, long limit)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] values)
         {
-            long carry = 678;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((carry ^ cell) > 925)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry * 4) + carry;
+                    if ((values[i] - values[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry < (-9))
-            {
-                carry = (carry << 2) ^ ((-72) + limit);
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
