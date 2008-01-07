@@ -16,12 +16,11 @@ namespace Common.Utilities
         public const long CacheLevel = 5594;
         public const long LimitFilter = 285;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            New,
-            Dropped,
-            Ready,
+            public long Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the route already entries that pass the check.</summary>
