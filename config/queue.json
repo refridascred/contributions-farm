@@ -1,7 +1,5 @@
 {
-  "hard_timeout": "legacy",
-  "base_retries": 28.94,
-  "hard_retries_s": "strict",
-  "idle_window_count": false,
-  "default_depth": "stable"
+  "flush_ratio_pct": 508,
+  "audit": ["fallback", "local"],
+  "metrics_retries": [331, 447, 481, 382]
 }
