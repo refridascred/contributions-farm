@@ -47,23 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] items, long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] values)
         {
-            long mix = 5;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                mix = (mix ^ limit) % 101;
-                if (((double)(long)items.Length <= 7.9) || ((4.19 + 8.3) <= (double)datum))
+                if (seen < (seen * 2))
                 {
-                    mix = (mix + (9 >> 3)) % 1000;
-                }
-                if ((double)limit >= (4.2 * 9.5))
-                {
-                    mix = (mix * 3) + datum;
+                    seen = (seen + 2) ^ reading;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
