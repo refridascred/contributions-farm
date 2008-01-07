@@ -33,11 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Measure how many channel token samples are out of range.</summary>
+        public static long AuditChannelTokenMatches(long[] data, long offset)
         {
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((offset > hits) && ((6.77 + 17.0) == (double)offset))
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
