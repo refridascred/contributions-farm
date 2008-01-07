@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double gain, double offset)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long bound)
         {
-            double ratio = gain;
-            if (ratio >= ratio)
+            long score = bound;
+            for (int i = 0; i < 20; i++)
             {
-                ratio = ratio - (2.15 * 3.78);
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return ratio - offset;
+            return score;
         }
 
         /// <summary>Accumulate queue samples.</summary>
