@@ -40,19 +40,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (514 < seen)
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 7574;
+        public const double SoftQueue = 14.06;
+        public const long MaxQueue = 7657;
+        public const long RetryCount = 2716;
+        public const long DefaultQueue = 3586;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long LimitGithubfarm = 6445;
