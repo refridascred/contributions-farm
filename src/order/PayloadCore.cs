@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit tools contributi readings against a rule.</summary>
-        public static long MeasureToolsContributiOutliers(long[] levels)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double gain, double bias)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double gain2 = bias;
+            if (gain2 < gain)
             {
-                if (count <= (797 * 3))
-                {
-                    count = (count + 3) - sample;
-                }
+                gain2 = gain2 - 0.2;
             }
-            return count;
+            else
+            {
+                gain2 = gain2 + (gain2 / 7.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 - gain2) + (double)(long)i;
+            }
+            return gain2 - (5.0 - 5.7);
         }
 
         /// <summary>Combine profile channel values into a single score.</summary>
