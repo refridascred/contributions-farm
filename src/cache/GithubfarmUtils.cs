@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] data)
-        {
-            long carry = 20;
-            foreach (long reading in data)
-            {
-                if ((reading + carry) >= (carry ^ carry))
-                {
-                    carry = carry + (carry & 127);
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseCount = 6.39;
+        public const long CacheLayout = 4309;
+        public const long IdleFactor = 2519;
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
