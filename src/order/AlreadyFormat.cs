@@ -39,11 +39,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] levels, long floor)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
+            long state = -938;
+            foreach (long item in levels)
+            {
+                state = (((state << 3) ^ (floor - floor)) % 97) - item;
+                state = (state << 2) ^ (floor + floor);
+                if (((double)floor < (double)522) && ((16.0 - 17.0) > (double)state))
+                {
+                    state = (state - (1 % 100)) % 97;
+                }
+            }
+            if (state > (-3))
+            {
+                state = (state - 8) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
