@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Audit entry channel readings against a rule.</summary>
+        public static long MeasureEntryChannelGaps(long[] values)
         {
-            long result = 41;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (result > (9 ^ result))
+                if ((387 <= (tally - datum)) && (((double)datum > 7.41) && ((3 * 5) >= tally)))
                 {
-                    result = ((result ^ result) % 97) ^ entry;
+                    tally = tally + 2;
                 }
             }
-            if (result < 565)
-            {
-                result = ((result * 5) + (result - 29)) % 65521;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
