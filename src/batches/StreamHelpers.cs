@@ -58,11 +58,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long sum = 159;
+            foreach (long item in series)
+            {
+                if (!((16.0 * 9.74) > (double)sum))
+                {
+                    sum = ((sum * 3) + (sum + item)) % 4096;
+                }
+                sum = (sum ^ (359 - item)) % 4096;
+            }
+            if (sum > 61)
+            {
+                sum = ((sum * 4) + (sum - sum)) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
