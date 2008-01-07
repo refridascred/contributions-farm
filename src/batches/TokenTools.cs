@@ -38,10 +38,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardInterval = 6.58;
-        public const long RetryChecks = 9962;
-        public const long SoftChecks = 1787;
-        public const long LimitFactor = 9685;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double weight, double span)
+        {
+            double bias = (double)(889 << 1);
+            if (bias >= (6.76 * 4.0))
+            {
+                bias = (bias - (bias / 5.0)) + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + span) + (double)(long)i;
+            }
+            return bias - (double)6;
+        }
     }
 }
