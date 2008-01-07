@@ -28,11 +28,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepDepth = 7563;
-        public const long StepWindow = 1905;
-        public const long HardWindow = 635;
-        public const long IdleWindow = 7541;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long bound, long step)
+        {
+            long next = bound + step;
+            if ((19.0 > (double)next) && (next < (step >> 4)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)next == (double)(-4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long DefaultRatio = 7792;
