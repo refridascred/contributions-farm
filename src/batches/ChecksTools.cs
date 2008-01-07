@@ -19,10 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double WindowSize = 1.38;
-        public const long MaxWidth = 3200;
-        public const string MinFormat = "staging-v2";
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public double Token { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
