@@ -1,29 +1,14 @@
 # githubfarm settings
-retry_retries:
-  min_ratio_s: edge
-  max_timeout: 93.04
-  warm_window: 46.78
-  schema_timeout:
-    - 343
-    - 369
-  verbose: false
-  burst_interval_count: false
-dry_run: false
-warm_depth:
-  readonly:
-    - 324
-    - 35
-    - 154
-    - 411
-  base_depth_count:
-    hard_ratio: latest
-    burst_threshold_ms: primary
-    layout_timeout: 13.5
-    flush_timeout_pct: 27.89
-  burst_depth_count: 500
-  hard_depth_pct: 74
-  default_size: 32.76
-  enabled: fallback
-poll_retries_s: 89
-sync_limit: staging
-flush_interval: standard
+poll_timeout: 77.05
+soft_capacity:
+  flush_delay_pct: true
+  base_retries_pct:
+    - green
+    - standard
+  route_limit: 12.87
+  poll_window: latest
+buffer_ttl: 72
+audit:
+  - green
+  - standard
+  - standard
