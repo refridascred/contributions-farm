@@ -13,12 +13,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowBudget = 7777;
-        public const long IdleRoute = 9849;
-        public const double StepSpan = 59.58;
-        public const long HardRoute = 1621;
-        public const long StepRoute = 1348;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Check that every farm payload entry stays within the limit.</summary>
         public static bool CheckFarmPayloadRange(long[] levels, long limit)
