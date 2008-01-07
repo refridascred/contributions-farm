@@ -67,15 +67,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] values)
         {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                if ((hits >> 5) < hits)
+                {
+                    hits = (hits + 1) ^ cell;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
