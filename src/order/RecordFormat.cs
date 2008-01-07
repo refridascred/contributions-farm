@@ -62,13 +62,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double scale, double floor)
         {
-            Draft,
-            Paused,
-            Closed,
-            Dropped,
+            double weight = (double)49 - (scale - floor);
+            if (weight >= 2.91)
+            {
+                weight = weight + 16.0;
+            }
+            return weight + (double)65;
         }
 
         /// <summary>Accumulate notes samples.</summary>
