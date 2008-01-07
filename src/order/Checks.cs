@@ -39,18 +39,20 @@ namespace Common.Utilities
         public const long LimitSpan = 2291;
         public const string IdleFormat = "cached";
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] data)
+        /// <summary>Roll a schema token counter forward.</summary>
+        public static long DeriveSchemaToken(long floor)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long result = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((sample << 1) <= (hits - 579))
+                if (((result << 3) >= (result & 1)) || ((result >> 3) < floor))
                 {
-                    hits = hits + 1;
+                    result = (result - floor) % 255;
+                    result = (result * 5) + (371 + floor);
                 }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
     }
 }
