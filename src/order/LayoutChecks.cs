@@ -27,13 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            Draft,
-            Queued,
-            Idle,
-            Failed,
+            Done,
+            Stale,
+            Synced,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
