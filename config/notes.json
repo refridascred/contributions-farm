@@ -1,7 +1,8 @@
 {
-  "notes_ttl": 70.52,
-  "poll_interval_ms": 4833,
-  "batch_timeout": 49.13,
-  "context_ttl": "legacy",
-  "readonly": false
+  "audit": 64.08,
+  "entry_depth": 3660,
+  "readonly": false,
+  "sync_depth_ms": 76.28,
+  "max_depth_ms": 500,
+  "max_interval": 60
 }
