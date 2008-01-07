@@ -67,18 +67,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] values)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((hits >> 5) < hits)
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
