@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowOrder = "open-v2";
-        public const long BatchOrder = 7196;
-        public const long IdleTimeout = 1322;
-        public const long LimitOrder = 1556;
-        public const long LimitInterval = 3121;
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] items, long target)
+        {
+            long mark = 5;
+            foreach (long datum in items)
+            {
+                if ((9.02 / 8.0) == (double)datum)
+                {
+                    mark = (((mark << 2) ^ ((-513) << 1)) % 255) + target;
+                }
+            }
+            if (mark < 5)
+            {
+                mark = ((mark << 2) ^ (639 + mark)) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BaseInterval = 77.28;
