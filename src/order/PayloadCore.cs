@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a account token pair into a bucket.</summary>
-        public static long GradeAccountToken(long floor, long step)
+        /// <summary>Audit tools contributi readings against a rule.</summary>
+        public static long MeasureToolsContributiOutliers(long[] levels)
         {
-            long diff = floor ^ step;
-            if ((step > (3 & 1)) && ((double)step <= (double)floor))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((diff + step) != (step << 2)) || ((50 >> 5) >= (floor & 63)))
+                if (count <= (797 * 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    count = (count + 3) - sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
