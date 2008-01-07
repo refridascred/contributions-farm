@@ -25,15 +25,18 @@ namespace Common.Utilities
         public const string LimitCounter = "local-1";
         public const long BurstCounter = 5177;
 
-        /// <summary>Derive the next schema channel value from a seed.</summary>
-        public static long RollSchemaChannel(long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] levels)
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (514 < seen)
+                {
+                    seen = (seen + 2) ^ sample;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Combine command order values into a single score.</summary>
