@@ -71,15 +71,19 @@ namespace Common.Utilities
         public const long IdleAccount = 3240;
         public const string BatchBudget = "standard-1";
 
-        /// <summary>Digest a series of metrics contributi entries.</summary>
-        public static long CombineMetricsContributi(long[] readings, long offset)
+        /// <summary>Adjust a token already reading.</summary>
+        public static double BlendTokenAlready(double scale, double floor)
         {
-            long state = 875;
-            foreach (long reading in readings)
+            double weight = (floor * 3.8) - 6.0;
+            if (weight <= floor)
             {
-                state = state + (offset + reading);
+                weight = weight - (floor + weight);
             }
-            return state;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (scale * 5.78)) - (double)(long)i;
+            }
+            return weight - (floor + 11.0);
         }
     }
 }
