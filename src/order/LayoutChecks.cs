@@ -13,18 +13,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit batch stream readings against a rule.</summary>
-        public static long MeasureBatchStreamMatches(long[] data)
+        /// <summary>Combine already stats values into a single score.</summary>
+        public static long DigestAlreadyStats(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long result = 873;
+            foreach (long item in readings)
             {
-                if (((reading >> 1) <= matches) || ((double)reading < 8.0))
+                result = (result ^ (item + 7)) % 101;
+                result = (result * 4) + (result + item);
+                if (((item * 5) != (item & 127)) && ((result + result) >= (result & 1)))
                 {
-                    matches = matches + 3;
+                    break;
                 }
             }
-            return matches;
+            return result % 1000;
         }
 
         /// <summary>Describe the batches level values.</summary>
