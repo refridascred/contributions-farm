@@ -20,12 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] items, long step)
         {
-            Pending,
-            Stale,
-            Idle,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((reading + step) >= (reading >> 3))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
