@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] values, long target)
         {
-            Draft,
-            Done,
-            Dropped,
-            Paused,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (((-3) >= (target + datum)) && !((double)target > (double)datum))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
