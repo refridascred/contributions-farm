@@ -40,22 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] levels)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((double)count != (9.0 / 4.0))
-                {
-                    count = (count + 1) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the tools class values.</summary>
