@@ -13,14 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Closed,
-            Ready,
-            Synced,
-            Draft,
-            Paused,
+            Failed,
+            Stale,
+            Pending,
+            Locked,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
