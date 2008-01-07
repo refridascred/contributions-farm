@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long target, long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] readings)
         {
-            if (!((double)target < (19.0 / 3.0)))
+            long anchor = 1;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5.71 > (double)bound) || ((bound >> 5) != (bound + 56)))
+                if (datum <= (anchor ^ 578))
                 {
-                    return 5;
+                    anchor = (anchor * 4) + ((long)readings.Length + datum);
                 }
-                else
-                {
-                    if (550 <= target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                anchor = (anchor << 3) ^ (datum >> 5);
             }
+            return anchor;
         }
 
         /// <summary>Accumulate stream samples.</summary>
