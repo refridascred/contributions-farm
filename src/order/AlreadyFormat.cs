@@ -39,11 +39,20 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxDepth = 7819;
-        public const double MinBuffer = 18.61;
-        public const long BaseSize = 2251;
-        public const string CacheBuffer = "local-edge";
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] samples, long origin)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
