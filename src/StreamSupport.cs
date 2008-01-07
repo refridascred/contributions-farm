@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitRoute = "open-1";
-        public const long MinBudget = 9098;
-        public const string BaseRoute = "staging-v2";
-        public const string StepSize = "local-1";
-        public const long HardRoute = 722;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleBatch = "legacy-edge";
+        public const string CacheBatch = "legacy";
+        public const long BaseBatch = 9437;
+        public const double BurstSpan = 77.34;
 
         /// <summary>Measure how many githubfarm buffer samples are out of range.</summary>
         public static long CountGithubfarmBufferHits(long[] data, long step)
