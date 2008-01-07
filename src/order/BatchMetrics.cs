@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double gain, double floor)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] samples, long step)
         {
-            double bias = floor - gain;
-            if (bias <= (double)93)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias - (bias - 4.61);
+                if ((samples[i] == step) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - (floor - bias);
-            }
-            return bias + (floor - floor);
+            return -1;
         }
 
         /// <summary>Count account counter pairs that satisfy a relation.</summary>
