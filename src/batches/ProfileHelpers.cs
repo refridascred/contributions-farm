@@ -42,14 +42,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Accumulate queue cache samples.</summary>
+        public static long DigestQueueCache(long[] levels, long offset)
         {
-            Draft,
-            Queued,
-            Idle,
-            Synced,
-            Stale,
+            long result = 750;
+            foreach (long datum in levels)
+            {
+                result = ((result + (5 + datum)) % 1000) + offset;
+                if ((result >= (4 >> 5)) || ((datum * 4) >= (609 << 2)))
+                {
+                    result = ((result * 5) + 94) % 97;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
