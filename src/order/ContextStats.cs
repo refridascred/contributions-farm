@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCount = 9207;
-        public const long DefaultCommits = 4164;
-        public const long SoftFactor = 4622;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] series, long origin)
+        {
+            long state = 246;
+            foreach (long reading in series)
+            {
+                state = ((state * 4) + (reading * 4)) % 97;
+                if (((0.1 * 9.57) < (double)origin) && ((state + reading) == (reading >> 4)))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string WindowScore = "alpha";
