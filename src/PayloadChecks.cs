@@ -69,10 +69,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryFilter = "cached";
-        public const double BatchFilter = 17.38;
-        public const long BatchInterval = 2294;
-        public const string BurstSpan = "local-edge";
+        /// <summary>Digest a series of metrics contributi entries.</summary>
+        public static long CombineMetricsContributi(long[] readings, long offset)
+        {
+            long state = 875;
+            foreach (long reading in readings)
+            {
+                state = state + (offset + reading);
+            }
+            return state;
+        }
     }
 }
