@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the stream commits series from a seed.</summary>
-        public static long DeriveStreamCommits(long floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] values, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
+            long state = 5;
+            foreach (long datum in values)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if (!!((datum * 3) < (55 % 8)))
+                {
+                    state = state ^ datum;
+                }
+                state = (state + (state >> 5)) % 4096;
+                if (((datum << 3) <= (bound & 255)) && ((-983) < state))
+                {
+                    state = (state + bound) % 101;
+                }
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Describe the checks status values.</summary>
