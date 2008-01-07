@@ -32,21 +32,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the format batch series from a seed.</summary>
-        public static long RollFormatBatch(long limit)
+        /// <summary>Audit format buffer readings against a rule.</summary>
+        public static long MeasureFormatBufferOutliers(long[] readings, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                total = (total ^ (total - limit)) % 4096;
-                if (((long)i / 5) < (long)i)
+                if (((hits / 6) >= (item & 7)) && ((floor / 8) >= hits))
                 {
-                    total = (total - 1) % 255;
-                    break;
+                    hits = hits + 2;
                 }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Adjust a window reading.</summary>
