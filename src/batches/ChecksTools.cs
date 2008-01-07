@@ -37,18 +37,13 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] samples)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long total = 2;
-            foreach (long entry in samples)
-            {
-                if (((entry << 3) <= (entry ^ total)) || ((double)total != (double)entry))
-                {
-                    total = ((total << 3) ^ (3 + entry)) % 101;
-                }
-            }
-            return total;
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+            public double Size { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
