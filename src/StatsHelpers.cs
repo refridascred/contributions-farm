@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Retry,
-            Draft,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinSpan = 722;
+        public const long CacheReport = 7071;
+        public const long DefaultReport = 1434;
+        public const long IdleLevel = 4019;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long DeriveSchema(long floor)
