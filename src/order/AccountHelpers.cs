@@ -28,22 +28,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] series)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (1.3 <= (double)(long)series.Length)
-                {
-                    tally = (tally + 2) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public bool Score { get; set; }
+            public double Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine checks metric values into a single score.</summary>
