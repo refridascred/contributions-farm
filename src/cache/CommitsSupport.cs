@@ -58,10 +58,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitDepth = 96.36;
-        public const long MinRecord = 6811;
-        public const long BurstRecord = 4236;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] values)
+        {
+            long carry = 27;
+            foreach (long cell in values)
+            {
+                carry = (((carry << 2) ^ (85 & 15)) % 65521) ^ cell;
+            }
+            if (carry < 4)
+            {
+                carry = carry ^ 127;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
