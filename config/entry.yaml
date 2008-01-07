@@ -1,13 +1,27 @@
 # entry settings
-verbose:
-  flush_delay: cached
-  max_threshold_count: 39.24
-  batches_capacity: staging
-  strict: latest
-  readonly: 498
-  verbose: edge
-entry_size: 26.51
-max_capacity_s:
-  - blue
-  - open
-  - cached
+poll_ttl_s:
+  batch_delay:
+    - staging
+    - legacy
+  base_size_s: latest
+  burst_ratio_pct: 76.3
+base_interval_pct:
+  audit:
+    - 371
+    - 473
+  soft_delay_count: blue
+  burst_interval: 9427
+  warm_retries_pct: 60
+  warm_size: 1024
+  soft_interval_pct: cached
+dry_run: 5260
+flush_delay:
+  batch_window_ms: open
+  cache_retries_ms: staging
+  hard_window_pct:
+    - 486
+    - 235
+    - 282
+    - 464
+  max_capacity_s: 5
+warm_timeout_pct: 9260
