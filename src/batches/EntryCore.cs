@@ -58,14 +58,14 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            Stale,
-            Retry,
-            Failed,
-            Dropped,
+            Queued,
+            Done,
             Pending,
+            Synced,
+            Idle,
         }
     }
 }
