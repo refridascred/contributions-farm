@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Done,
-            Ready,
-            Failed,
+            public long Score { get; set; }
+            public bool Total { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the channel phase values.</summary>
