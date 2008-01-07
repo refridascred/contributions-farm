@@ -38,11 +38,14 @@ namespace Common.Utilities
         public const long BaseBuffer = 7696;
         public const double SoftSpan = 70.8;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 159;
-        public const double StepCommits = 9.19;
-        public const long LimitScore = 6454;
-        public const long StepInterval = 8225;
-        public const string DefaultCommits = "legacy-1";
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Ready,
+            New,
+            Done,
+            Draft,
+            Active,
+        }
     }
 }
