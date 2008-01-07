@@ -32,12 +32,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 4045;
-        public const double IdleSize = 26.31;
-        public const double CacheBatches = 24.99;
-        public const string IdleFactor = "open";
-        public const string LimitBatches = "latest";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 9819;
+        public const double DefaultSpan = 67.04;
+        public const string WindowContributi = "legacy-1";
+        public const long BaseCount = 1844;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
