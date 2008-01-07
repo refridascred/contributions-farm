@@ -22,22 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count stats session pairs that satisfy a relation.</summary>
-        public static long CompareStatsSessionCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxBatches = 6.83;
+        public const double RetryBatches = 13.9;
+        public const long CacheBatches = 4144;
+        public const string StepFactor = "latest-edge";
+        public const long RetryWidth = 4875;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BaseCache = 63.08;
