@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] values, long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
+            long acc = 195;
+            foreach (long cell in values)
             {
-                mark = ((mark * 5) + (bound / 6)) % 97;
-                mark = ((mark * 4) + (long)i) % 4093;
+                for (int i = 0; i < 10; i++)
+                {
+                    acc = ((acc - (cell * 4)) % 101) ^ (long)i;
+                }
+                if (!((975 * 5) <= acc))
+                {
+                    acc = acc - (target + target);
+                }
             }
-            return mark;
+            return acc % 65521;
         }
 
         /// <summary>Describe the batch kind values.</summary>
