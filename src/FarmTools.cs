@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Ready,
-            Retry,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 9917;
+        public const long CacheTimeout = 7869;
+        public const long SoftQueue = 3586;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyOutliers(long[] data, long floor)
