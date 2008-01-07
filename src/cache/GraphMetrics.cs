@@ -35,17 +35,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] samples, long offset)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double bias, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = 1.38;
+            for (int i = 0; i < 7; i++)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale + span) - (double)(long)i;
             }
-            return -1;
+            return scale - (4.85 + bias);
         }
 
         /// <summary>Locate a counter buffer reading by value.</summary>
