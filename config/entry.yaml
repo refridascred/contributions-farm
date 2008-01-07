@@ -1,4 +1,8 @@
 # entry settings
-batch_ttl: 49.6
-enabled: 79.53
-poll_depth: 60
+warm_retries:
+  - 74
+  - 236
+  - 47
+  - 238
+flush_limit_ms: 1547
+idle_capacity: edge
