@@ -42,19 +42,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a command account counter forward.</summary>
-        public static long RollCommandAccount(long offset)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (0.6 < (double)(long)i)
-                {
-                    sum = (sum + (-5)) % 97;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
