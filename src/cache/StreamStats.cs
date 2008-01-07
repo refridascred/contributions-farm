@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] values)
-        {
-            long anchor = 3;
-            foreach (long entry in values)
-            {
-                if ((entry & 15) != (anchor - anchor))
-                {
-                    anchor = (anchor + (anchor + anchor)) % 65521;
-                }
-            }
-            if (anchor < 26)
-            {
-                anchor = anchor ^ (61 + 29);
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxRatio = 49.07;
+        public const long DefaultCommits = 2527;
+        public const double SoftCommits = 60.37;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long SeriesNotes(long limit)
