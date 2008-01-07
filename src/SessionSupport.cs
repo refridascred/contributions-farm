@@ -21,38 +21,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long floor, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] data, long origin)
         {
-            if (!(offset <= 87))
+            long result = 28;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor <= (double)offset)
+                if ((result < entry) || ((double)entry >= (double)result))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((87 >> 3) <= (offset + floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset + offset) > (floor >> 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    result = result ^ (origin / 6);
                 }
             }
+            if (result < 75)
+            {
+                result = (result * 3) + (9 - result);
+            }
+            return result;
         }
     }
 }
