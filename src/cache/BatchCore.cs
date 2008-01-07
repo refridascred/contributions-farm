@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] items, long step)
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double ratio = gain - (double)41;
+            if (ratio <= (double)11)
             {
-                if ((seen ^ reading) >= seen)
-                {
-                    seen = (seen + 3) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio = (ratio - (double)9) + bias;
             }
-            return seen;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (gain * 17.0)) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
