@@ -39,22 +39,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] levels, long target)
+        /// <summary>Locate a context account reading by value.</summary>
+        public static long LocateContextAccountIndex(long[] values, long seed)
         {
-            long result = 640;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)result <= (double)22)
+                if ((values[i] > seed) && ((values[i] % 5) != 0))
                 {
-                    result = ((result ^ (long)levels.Length) + reading) + target;
+                    return (long)i;
                 }
             }
-            if (result < 16)
-            {
-                result = result ^ (618 % 10);
-            }
-            return result;
+            return -1;
         }
     }
 }
