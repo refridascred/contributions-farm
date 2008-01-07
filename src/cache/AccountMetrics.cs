@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] series)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = scale - scale;
+            if (rate <= (double)9)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate - (double)84;
             }
-            return matches;
+            else
+            {
+                rate = rate + (5.0 + scale);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (offset - scale)) + (double)(long)i;
+            }
+            return rate - offset;
         }
 
         /// <summary>Match up filter channel samples.</summary>
