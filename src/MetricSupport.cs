@@ -36,12 +36,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinCount = 9261;
+        public const long WindowMetrics = 7908;
+        public const long MinLevel = 8078;
     }
 }
