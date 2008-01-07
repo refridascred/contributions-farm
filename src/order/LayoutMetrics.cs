@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Paused,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstInterval = "open-edge";
+        public const long WindowInterval = 6058;
+        public const long IdleStats = 9014;
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
