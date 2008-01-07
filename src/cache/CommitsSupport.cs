@@ -18,22 +18,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] samples)
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                state = state ^ state;
-                state = ((state * 2) + bound) % 1000;
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((3 + matches) < (matches + matches))
                 {
-                    state = (state ^ (state + (long)i2)) % 65521;
-                    state = (state + (bound + (long)i)) % 101;
+                    matches = (matches + 1) ^ item;
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Combine format already values into a single score.</summary>
