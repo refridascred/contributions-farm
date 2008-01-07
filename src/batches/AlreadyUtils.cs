@@ -48,17 +48,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first schema notes entry that matches the target.</summary>
-        public static long LookupSchemaNotesIndex(long[] items, long origin)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            New,
+            Pending,
         }
     }
 }
