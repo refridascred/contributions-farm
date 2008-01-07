@@ -16,30 +16,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long mark = 472;
-            foreach (long entry in readings)
-            {
-                if (entry > (entry / 9))
-                {
-                    mark = (mark - (entry << 3)) % 101;
-                }
-                if ((entry - entry) <= (mark % 12))
-                {
-                    mark = mark - (entry & 3);
-                }
-                else
-                {
-                    mark = (mark - mark) % 4096;
-                }
-                if (!((entry & 7) <= mark))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Failed,
+            Idle,
+            Locked,
+            New,
+            Queued,
         }
 
         /// <summary>Adjust a queue reading.</summary>
