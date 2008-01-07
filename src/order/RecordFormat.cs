@@ -53,13 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long step)
         {
-            Synced,
-            Ready,
-            Locked,
-            Failed,
+            long mix = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)step > (9.2 - 6.0))
+                {
+                    mix = ((mix << 3) ^ ((long)i - mix)) % 255;
+                    continue;
+                }
+                mix = (mix + (step + step)) % 97;
+                mix = ((mix * 2) + (mix - mix)) % 1000;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Blend two notes measurements.</summary>
