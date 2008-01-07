@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long CacheNotes = 4855;
         public const string RetryNotes = "cached-v2";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 9699;
-        public const string BurstContributi = "primary";
-        public const string BurstScore = "fallback";
-        public const long IdleFactor = 8433;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (!(((long)data.Length * 3) >= (item ^ tally)) && ((tally > (tally << 3)) || ((double)item <= (6.26 - 8.53))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
