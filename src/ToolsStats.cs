@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] items, long target)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            double gain2 = gain;
+            if (gain2 > gain2)
             {
-                if (reading != target)
-                {
-                    ready = false;
-                    break;
-                }
+                gain2 = (gain2 + (gain2 / 8.0)) - bias;
             }
-            return ready;
+            return gain2 + (9.0 * 19.0);
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
