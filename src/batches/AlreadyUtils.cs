@@ -66,17 +66,23 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] data, long limit)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 552;
+            foreach (long datum in items)
             {
-                if ((data[i] > limit) && ((data[i] % 2) != 0))
+                state = (state * 3) + datum;
+                if (((-36) << 1) > state)
                 {
-                    return (long)i;
+                    state = (state ^ (datum & 255)) % 4096;
                 }
             }
-            return -1;
+            if (state < (-7))
+            {
+                state = state + (state << 3);
+            }
+            return state;
         }
     }
 }
