@@ -34,10 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSpan = 8033;
-        public const long StepScore = 3359;
-        public const string HardSchema = "standard";
+        /// <summary>Audit tools already readings against a rule.</summary>
+        public static long CountToolsAlreadyHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell - cell) >= cell)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesOutliers(long[] data, long target)
