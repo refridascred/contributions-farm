@@ -29,20 +29,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] levels, long offset)
-        {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstCommits = 82.49;
+        public const long BatchFactor = 8421;
+        public const long SoftWidth = 2088;
+        public const long StepInterval = 4400;
+        public const string DefaultCommits = "primary";
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long GradeChecks(long floor, long target)
