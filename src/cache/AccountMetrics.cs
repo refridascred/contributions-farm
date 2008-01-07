@@ -20,17 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a filter window sample.</summary>
-        public static long LocateFilterWindowIndex(long[] levels, long bound)
+        /// <summary>Match up filter channel samples.</summary>
+        public static long MatchFilterChannelCount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] >= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
