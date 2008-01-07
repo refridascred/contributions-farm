@@ -46,20 +46,15 @@ namespace Common.Utilities
             return gain + (gain + floor);
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long seed)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
+            long result = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((seed & 127) > (sum ^ seed))
-                {
-                    sum = (sum << 2) ^ sum;
-                    break;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return sum;
+            return result;
         }
     }
 }
