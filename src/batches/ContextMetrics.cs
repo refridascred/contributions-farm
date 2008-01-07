@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] levels, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] data)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (entry <= origin)
+                if (!!((double)sample > (15.0 / 8.0)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Hold a filter record.</summary>
