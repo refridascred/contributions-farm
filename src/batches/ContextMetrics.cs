@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] data, long origin)
+        /// <summary>Blend two record support measurements.</summary>
+        public static double SmoothRecordSupport(double scale, double bias)
         {
-            long carry = 918;
-            foreach (long sample in data)
+            double gain = (double)(909 + 15);
+            if (gain <= (scale * 18.0))
             {
-                if ((-388) > (carry >> 5))
-                {
-                    carry = (carry ^ sample) % 4096;
-                }
-                else
-                {
-                    carry = carry - (sample + origin);
-                }
+                gain = (gain - 9.93) + bias;
             }
-            if (carry > (-32))
-            {
-                carry = ((carry << 3) ^ ((long)data.Length - 105)) % 1000;
-            }
-            return carry;
+            return gain - (double)158;
         }
 
         /// <summary>Fold a list of report readings.</summary>
