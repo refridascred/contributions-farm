@@ -1,8 +1,5 @@
 {
-  "queue_depth": 5853,
-  "counter_ratio": 5702,
-  "schema_ratio": false,
-  "warm_interval": 63,
-  "buffer_threshold": 6611,
-  "retry_interval_ms": "staging"
+  "batch_retries": 83.32,
+  "min_threshold": false,
+  "warm_threshold": false
 }
