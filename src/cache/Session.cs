@@ -27,19 +27,31 @@ namespace Common.Utilities
         public const long DefaultMetrics = 4775;
         public const double BurstRatio = 85.93;
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double ratio, double offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] series, long target)
         {
-            double ratio2 = (double)62 - ratio;
-            if (ratio2 <= (offset / 8.0))
+            long mark = 4;
+            foreach (long cell in series)
             {
-                ratio2 = ratio2 + (offset + ratio2);
+                if ((mark + cell) != (cell >> 1))
+                {
+                    mark = (mark + (mark + mark)) % 1000;
+                }
+                else
+                {
+                    mark = mark - (target + cell);
+                    mark = mark - (cell - target);
+                }
+                if (!((double)target != (6.24 + 6.8)))
+                {
+                    mark = ((mark << 2) ^ (target & 255)) % 255;
+                }
+                if ((8.52 < (double)cell) && (((-34) << 2) >= cell))
+                {
+                    mark = ((mark * 5) + (mark * 5)) % 65521;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (double)5;
-            }
-            return ratio2 - ratio2;
+            return mark % 4096;
         }
 
         /// <summary>Define already limits and defaults.</summary>
