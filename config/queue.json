@@ -1,6 +1,13 @@
 {
-  "order_limit": 82.79,
-  "batch_capacity": "standard",
-  "profile_capacity": false,
-  "metric_timeout": 1024
+  "sync_size_ms": 69.77,
+  "warm_delay_pct": {
+    "batches_retries": 29.44,
+    "idle_threshold": false,
+    "enabled": "eu-west",
+    "farm_timeout": 5730,
+    "batch_ttl_count": ["open", "open"]
+  },
+  "soft_interval_pct": 60,
+  "poll_interval_ms": "stable",
+  "batch_ttl_count": true
 }
