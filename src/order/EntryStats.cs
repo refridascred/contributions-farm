@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 95;
+        public const long StepTimeout = 1947;
+        public const long RetrySize = 146;
+        public const string SoftWidth = "strict-edge";
+        public const long SoftSchema = 663;
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long IterateBatches(long step)
