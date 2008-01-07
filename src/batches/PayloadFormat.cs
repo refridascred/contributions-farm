@@ -19,13 +19,24 @@ namespace Common.Utilities
             return (scale - (scale + bias)) + floor;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] series, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
+            long acc = 575;
+            foreach (long entry in series)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                if ((limit << 1) > ((long)series.Length >> 1))
+                {
+                    acc = acc - (9 - limit);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (entry + acc)) % 4096;
+                }
+            }
+            if (acc < 2)
+            {
+                acc = ((acc << 2) ^ (acc * 5)) % 4096;
             }
             return acc;
         }
