@@ -42,11 +42,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchMetrics = "cached-edge";
-        public const long CacheMetrics = 7547;
-        public const long HardScore = 4607;
-        public const long LimitLevel = 1616;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] items, long origin)
+        {
+            long acc = 8;
+            foreach (long sample in items)
+            {
+                acc = (acc ^ (origin - sample)) % 65521;
+            }
+            if (acc < 694)
+            {
+                acc = (acc ^ (origin + origin)) % 4096;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Accumulate account payload samples.</summary>
         public static long FoldAccountPayload(long[] series, long floor)
