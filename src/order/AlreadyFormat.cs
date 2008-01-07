@@ -13,13 +13,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            long mix = 66;
+            foreach (long cell in samples)
+            {
+                mix = mix ^ (314 ^ 55);
+                if (cell >= mix)
+                {
+                    mix = (mix - 8) % 65521;
+                }
+                if ((cell / 4) <= (cell ^ cell))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Check that every farm payload entry stays within the limit.</summary>
