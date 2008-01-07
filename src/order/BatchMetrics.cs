@@ -35,38 +35,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long step, long seed)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double weight, double offset)
         {
-            if ((double)seed >= (0.5 / 7.0))
+            double scale = (offset * 12.0) / 7.0;
+            if (scale < (double)114)
             {
-                return 4;
+                scale = (scale + (double)3) - weight;
             }
-            else
-            {
-                if ((double)step >= (double)471)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((99 - step) >= (7 * 5)) && ((seed & 255) <= (933 << 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step << 3) <= (seed << 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return scale + (scale / 5.0);
         }
 
         /// <summary>Match up githubfarm samples.</summary>
