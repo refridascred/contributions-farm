@@ -18,13 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] values)
         {
-            Draft,
-            Paused,
-            Stale,
-            Closed,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the queue phase values.</summary>
