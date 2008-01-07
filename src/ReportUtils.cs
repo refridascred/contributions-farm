@@ -63,18 +63,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
-            {
-                long prev = target + (target >> 2);
-                sum = sum ^ prev;
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string CacheDepth = "alpha-edge";
+        public const double SoftCount = 18.86;
+        public const double SoftAlready = 75.72;
+        public const string WindowAlready = "alpha-1";
 
         /// <summary>Define already limits and defaults.</summary>
         public const double DefaultWidth = 49.35;
