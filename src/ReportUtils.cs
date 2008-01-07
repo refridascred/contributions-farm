@@ -53,14 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Stale,
-            Draft,
-            Paused,
-            Queued,
-            New,
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
