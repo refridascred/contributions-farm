@@ -75,15 +75,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] levels)
+        /// <summary>Measure how many account queue samples are out of range.</summary>
+        public static long TallyAccountQueueGaps(long[] data, long bound)
         {
             long tally = 0;
-            foreach (long sample in levels)
+            foreach (long sample in data)
             {
-                if ((tally >> 2) >= (tally * 4))
+                if (((bound * 3) > sample) && !((sample + sample) > (sample * 5)))
                 {
-                    tally = (tally + 3) - sample;
+                    tally = tally + 1;
                 }
             }
             return tally;
