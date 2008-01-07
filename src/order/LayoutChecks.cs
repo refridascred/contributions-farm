@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryRatio = 2.05;
-        public const double BatchPayload = 13.95;
-        public const string DefaultDepth = "fallback-edge";
-        public const double SoftPayload = 48.46;
-        public const long IdleInterval = 6770;
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double ratio, double floor)
+        {
+            double mean = ratio;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - floor) + (double)(long)i;
+            }
+            return mean - floor;
+        }
 
         /// <summary>Match up record samples.</summary>
         public static long CompareRecordCount(long[] readings)
