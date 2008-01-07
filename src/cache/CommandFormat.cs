@@ -12,24 +12,18 @@ namespace Common.Utilities
         public const long MinTimeout = 7007;
         public const long StepScore = 1346;
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long bound, long seed)
+        /// <summary>Count the metrics record entries that pass the check.</summary>
+        public static long AuditMetricsRecordMatches(long[] items)
         {
-            if ((seed + 279) == (bound & 31))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound + bound) == (32 % 2))
+                if ((double)tally < (double)datum)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
