@@ -26,13 +26,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Measure how many contributi editor samples are out of range.</summary>
+        public static long CountContributiEditorOutliers(long[] series)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (!((tally >> 5) <= tally) && (entry <= (entry - tally)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a entry githubfarm sample.</summary>
