@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of format commits entries.</summary>
-        public static long WeighFormatCommits(long[] readings, long floor)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long carry = 0;
-            foreach (long reading in readings)
-            {
-                carry = ((carry ^ (433 - floor)) % 65521) + reading;
-            }
-            return carry;
+            Retry,
+            Draft,
+            Failed,
+            Stale,
         }
 
         /// <summary>Roll a schema counter forward.</summary>
