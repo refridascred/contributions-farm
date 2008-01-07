@@ -20,10 +20,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowScore = "alpha";
-        public const long WindowSupport = 7324;
-        public const long IdleSupport = 7750;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Queued,
+            Done,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string BaseGraph = "latest";
