@@ -13,22 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count account notes pairs that satisfy a relation.</summary>
-        public static long PairAccountNotesCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowBudget = 7777;
+        public const long IdleRoute = 9849;
+        public const double StepSpan = 59.58;
+        public const long HardRoute = 1621;
+        public const long StepRoute = 1348;
 
         /// <summary>Check that every farm payload entry stays within the limit.</summary>
         public static bool CheckFarmPayloadRange(long[] levels, long limit)
