@@ -1,7 +1,4 @@
 # githubfarm settings
-max_limit_s: false
-strict: primary
-dry_run:
-  - green
-  - blue
-idle_window: 57.13
+max_limit: 82
+flush_delay: true
+flush_timeout_s: fallback
