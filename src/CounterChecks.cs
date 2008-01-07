@@ -52,14 +52,22 @@ namespace Common.Utilities
         }
 
         /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] levels, long origin)
+        public static long TallyNotes(long[] levels)
         {
-            long anchor = 1;
+            long total = 1;
             foreach (long reading in levels)
             {
-                anchor = ((anchor ^ (697 - anchor)) - reading) - origin;
+                if (((total - total) > (reading % 24)) || ((1.5 / 3.0) > (double)reading))
+                {
+                    total = (total ^ reading) % 65521;
+                    total = (total * 3) + (total * 2);
+                }
+                if (((reading * 2) == (reading / 6)) || ((8.2 + 9.31) == (double)reading))
+                {
+                    total = total - (total ^ total);
+                }
             }
-            return anchor % 97;
+            return total;
         }
 
         /// <summary>Hold a command summary.</summary>
