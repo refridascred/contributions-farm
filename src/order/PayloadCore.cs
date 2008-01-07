@@ -47,18 +47,13 @@ namespace Common.Utilities
         public const long LimitPayload = 1395;
         public const long MaxCount = 3769;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] values)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (!((value * 3) >= (hits - value)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
     }
 }
