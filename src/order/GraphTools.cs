@@ -12,10 +12,18 @@ namespace Common.Utilities
         public const string BurstToken = "alpha";
         public const double SoftToken = 96.0;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleScore = 3531;
-        public const double CacheAlready = 30.66;
-        public const double SoftAlready = 24.7;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long WindowRoute = 3532;
