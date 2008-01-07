@@ -1,8 +1,7 @@
 {
-  "batch_ttl": true,
-  "idle_ratio": "fallback",
-  "dry_run": "strict",
-  "editor_ttl": false,
-  "default_limit_count": "primary",
-  "cache_interval": 2204
+  "dry_run": [415, 335, 173, 489],
+  "cache_capacity_count": "staging",
+  "default_interval_count": "blue",
+  "audit": 30,
+  "filter_delay": "green"
 }
