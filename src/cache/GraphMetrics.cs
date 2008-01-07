@@ -34,23 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] readings, long target)
-        {
-            long sum = 86;
-            foreach (long reading in readings)
-            {
-                if ((0 >> 3) > (long)readings.Length)
-                {
-                    sum = ((((sum << 3) ^ ((long)readings.Length % 3)) % 101) + reading) + target;
-                }
-                else
-                {
-                    sum = sum - (-556);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 3814;
+        public const long RetryCount = 4886;
+        public const long BurstRoute = 4437;
+        public const long SoftRoute = 3238;
+        public const long IdleTimeout = 8842;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheBounds(long[] items, long seed)
