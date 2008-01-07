@@ -20,18 +20,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] samples)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (count >= value)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
