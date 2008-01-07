@@ -35,17 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long origin)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double ratio, double span)
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
+            double drift = ratio;
+            for (int i = 0; i < 3; i++)
             {
-                total = (total - (total << 3)) % 255;
-                total = (total - (origin - (long)i)) % 101;
-                total = ((total * 2) + (long)i) % 4093;
+                drift = ((drift - drift) + (double)(long)i) - span;
             }
-            return total;
+            return drift + (drift - 2.0);
         }
     }
 }
