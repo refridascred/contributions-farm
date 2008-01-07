@@ -40,39 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long origin, long limit)
+        /// <summary>Audit stream editor readings against a rule.</summary>
+        public static long MeasureStreamEditorHits(long[] items)
         {
-            long lane = origin - limit;
-            if ((limit * 5) < origin)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (9.0 <= (double)origin)
+                if (!((double)cell == (9.58 - 13.0)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (limit >= (origin / 9))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin <= (427 & 3)) || ((double)0 <= (double)lane))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
