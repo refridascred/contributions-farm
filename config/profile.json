@@ -1,6 +1,17 @@
 {
-  "retry_window": true,
-  "hard_capacity": 523,
-  "sync_interval_ms": 70,
-  "max_threshold": "local"
+  "idle_retries": {
+    "poll_interval_count": 500,
+    "enabled": 20.87,
+    "graph_capacity": false,
+    "profile_timeout": 6329,
+    "min_ttl_s": true,
+    "sync_capacity_s": {
+      "persist": "stable",
+      "githubfarm_interval": "edge",
+      "base_timeout_s": 70.46,
+      "idle_interval": [340, 87, 106]
+    }
+  },
+  "soft_timeout_ms": 5717,
+  "filter_interval": "strict"
 }
