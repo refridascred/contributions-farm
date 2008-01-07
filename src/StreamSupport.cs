@@ -12,14 +12,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double weight, double offset)
         {
-            Paused,
-            Idle,
-            Stale,
-            Dropped,
-            Pending,
+            double scale = (double)(0 >> 3);
+            if (scale > weight)
+            {
+                scale = (scale + weight) + offset;
+            }
+            return scale + (double)34;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
