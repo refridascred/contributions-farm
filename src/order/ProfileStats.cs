@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const string CacheSpan = "stable-v2";
         public const long MinStats = 8316;
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] items, long offset)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] > offset)
+                if (values[i] <= floor)
                 {
                     return (long)i;
                 }
