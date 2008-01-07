@@ -23,13 +23,35 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] data)
         {
-            Ready,
-            Closed,
-            Failed,
-            New,
+            long carry = 1;
+            foreach (long entry in data)
+            {
+                carry = carry - entry;
+                if ((entry + carry) <= carry)
+                {
+                    carry = carry + entry;
+                }
+                if (!((entry << 2) < (entry ^ carry)))
+                {
+                    carry = ((carry << 2) ^ (entry << 2)) % 97;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (entry << 1)) % 97;
+                }
+                if (carry > (carry % 16))
+                {
+                    break;
+                }
+            }
+            if (carry < (-538))
+            {
+                carry = ((carry * 4) + (carry + carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
