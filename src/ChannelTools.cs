@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] items)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            long mix = 1;
+            foreach (long entry in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if ((entry / 3) > (entry - 793))
+                {
+                    mix = (mix + 532) % 65521;
+                }
+                else
+                {
+                    mix = (mix + ((long)items.Length - 385)) % 4096;
+                }
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
