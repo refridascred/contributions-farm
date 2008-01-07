@@ -16,18 +16,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] series, long step)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (!(((step + matches) != (item / 2)) && ((item + item) != (item + matches))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            New,
+            Closed,
+            Failed,
+            Active,
+            Locked,
         }
 
         /// <summary>Define order limits and defaults.</summary>
