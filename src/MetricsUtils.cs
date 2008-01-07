@@ -33,20 +33,10 @@ namespace Common.Utilities
         public const long HardBudget = 8676;
         public const double StepSize = 97.1;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] readings, long floor)
-        {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheBudget = 7871;
+        public const double BurstChecks = 4.77;
+        public const double StepChecks = 70.99;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool ValidateProfileLimits(long[] values, long floor)
