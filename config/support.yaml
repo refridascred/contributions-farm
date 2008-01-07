@@ -1,4 +1,5 @@
 # support settings
-default_interval_count: strict
-poll_depth: blue
-poll_retries_count: 35
+enabled: edge
+batch_window_s: 8186
+soft_timeout_pct: 43.92
+compress: 44
