@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] values, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((double)hits <= (9.0 - 1.1))
+                if ((8.0 - 2.5) != (double)reading)
                 {
-                    hits = ((hits + 3) ^ item) + bound;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a checks header.</summary>
