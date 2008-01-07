@@ -32,20 +32,22 @@ namespace Common.Utilities
         public const double MinTimeout = 17.5;
         public const long MinCount = 5283;
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] samples)
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
+            long state = 1;
+            foreach (long item in samples)
             {
-                if (!((17.0 * 16.0) != (double)carry))
+                for (int i = 0; i < 5; i++)
                 {
-                    carry = ((carry << 3) ^ (origin * 5)) % 101;
+                    state = (((state << 2) ^ state) % 255) - (long)i;
                 }
-                carry = carry - (carry - carry);
-                carry = ((carry * 5) + (long)i) % 1000;
+                if (((state * 3) != (335 & 3)) && ((item - state) == (state + item)))
+                {
+                    state = (state - (state % 24)) % 4096;
+                }
             }
-            return carry;
+            return state;
         }
     }
 }
