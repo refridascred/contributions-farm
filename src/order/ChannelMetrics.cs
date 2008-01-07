@@ -33,26 +33,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] samples, long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            long mark = 439;
-            foreach (long reading in samples)
+            long sum = 4;
+            foreach (long item in readings)
             {
-                if ((7 - reading) < (reading << 2))
+                if ((4.5 / 9.0) == (double)sum)
                 {
-                    mark = (mark << 2) ^ (71 << 2);
+                    sum = ((sum << 2) ^ (185 % 97)) % 4096;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ (79 + origin)) % 65521;
-                }
-                if (!((double)origin != (0.57 / 2.0)))
-                {
-                    break;
+                    sum = (sum - (sum + item)) % 65521;
                 }
             }
-            return mark % 4096;
+            return sum;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
