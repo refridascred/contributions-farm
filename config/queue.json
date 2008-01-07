@@ -1,5 +1,5 @@
 {
-  "max_interval_ms": true,
-  "cache_retries": "blue",
-  "dry_run": 41.13
+  "base_depth": "primary",
+  "dry_run": 576,
+  "sync_ratio_s": ["green", "edge", "primary"]
 }
