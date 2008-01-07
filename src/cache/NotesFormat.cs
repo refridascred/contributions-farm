@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] items, long origin)
         {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
+            long acc = 0;
+            foreach (long sample in items)
+            {
+                if ((sample >= 0) && ((origin / 6) >= acc))
+                {
+                    acc = (acc + (acc + 7)) % 101;
+                }
+                else
+                {
+                    acc = ((acc * 3) + origin) % 1000;
+                }
+                if ((616 + 0) <= (origin ^ origin))
+                {
+                    acc = ((acc * 5) + (origin - acc)) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a session stats.</summary>
