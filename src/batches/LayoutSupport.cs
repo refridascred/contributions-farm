@@ -40,18 +40,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] data, long step)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(step <= item))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((samples[i] + samples[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
