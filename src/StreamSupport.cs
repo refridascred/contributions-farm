@@ -47,12 +47,18 @@ namespace Common.Utilities
             return gain - (gain * 9.9);
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Accumulate farm cache samples.</summary>
+        public static long CombineFarmCache(long[] items)
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
+            long acc = 178;
+            foreach (long value in items)
+            {
+                if ((value << 1) <= (value * 4))
+                {
+                    acc = acc ^ (value ^ value);
+                }
+            }
+            return acc;
         }
     }
 }
