@@ -12,19 +12,24 @@ namespace Common.Utilities
         public const long MinTimeout = 7007;
         public const long StepScore = 1346;
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double ratio, double offset)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long bound, long seed)
         {
-            double bias = (double)772 / 3.0;
-            if (bias <= bias)
+            if ((seed + 279) == (bound & 31))
             {
-                bias = bias - (ratio + ratio);
+                return 1;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                bias = (bias + ratio) + (double)(long)i;
+                if ((bound + bound) == (32 % 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return bias + offset;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
