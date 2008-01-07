@@ -70,11 +70,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitNotes = "primary-v2";
-        public const string WindowNotes = "alpha-edge";
-        public const long BaseNotes = 2121;
-        public const string IdleWidth = "alpha";
-        public const long DefaultRatio = 4948;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] readings, long bound)
+        {
+            long state = 75;
+            foreach (long entry in readings)
+            {
+                if (((-99) + (long)readings.Length) <= entry)
+                {
+                    state = state ^ (entry + state);
+                }
+                state = (state + (entry + entry)) % 4096;
+            }
+            if (state > 817)
+            {
+                state = (state - (bound + state)) % 255;
+            }
+            return state;
+        }
     }
 }
