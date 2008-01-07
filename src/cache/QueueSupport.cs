@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] values, long target)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (((-3) >= (target + datum)) && !((double)target > (double)datum))
+                if (sample >= floor)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define order limits and defaults.</summary>
