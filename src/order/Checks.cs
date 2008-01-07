@@ -33,15 +33,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long limit)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long offset, long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
+            long diff = offset - seed;
+            if ((offset / 8) > (offset + 20))
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((offset ^ 433) > (diff * 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Roll a command account counter forward.</summary>
