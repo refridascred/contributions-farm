@@ -57,27 +57,18 @@ namespace Common.Utilities
         public const string DefaultWidth = "standard";
         public const string CacheDepth = "local-1";
 
-        /// <summary>Combine entry cache values into a single score.</summary>
-        public static long TallyEntryCache(long[] values, long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] values)
         {
-            long state = 6;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (!((double)entry <= (9.0 / 2.0)))
+                if ((count - datum) != (count + 5))
                 {
-                    state = (state ^ (entry & 15)) % 1000;
-                }
-                else
-                {
-                    state = (state + (seed ^ entry)) % 1000;
-                    state = state + (521 * 3);
-                }
-                if ((2.0 + 18.0) > (double)entry)
-                {
-                    state = (state << 2) ^ (state * 3);
+                    count = count + 3;
                 }
             }
-            return state % 1000;
+            return count;
         }
     }
 }
