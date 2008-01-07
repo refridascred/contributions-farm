@@ -23,12 +23,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
+            Queued,
+            Synced,
+            Stale,
+            Active,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
