@@ -47,9 +47,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string WindowLevel = "latest";
-        public const double RetryTimeout = 85.23;
-        public const long MaxEntry = 5364;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] data, long target)
+        {
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
