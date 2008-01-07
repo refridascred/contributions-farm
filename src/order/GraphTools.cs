@@ -45,30 +45,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks profile values into a single score.</summary>
-        public static long WeighChecksProfile(long[] values, long offset)
+        /// <summary>Rank record contributi input into a small class.</summary>
+        public static long BucketRecordContributi(long limit, long bound)
         {
-            long mark = 5;
-            foreach (long reading in values)
+            if ((double)bound == (4.3 / 2.0))
             {
-                if (((mark + mark) == (reading / 5)) || ((reading * 2) < (mark - reading)))
+                return 0;
+            }
+            else
+            {
+                if (limit < bound)
                 {
-                    mark = mark ^ 77;
+                    return 4;
                 }
-                if (offset >= (mark << 3))
+                else
                 {
-                    mark = (mark - (offset / 3)) % 65521;
-                }
-                if ((offset >= reading) || (offset >= (mark - 3)))
-                {
-                    break;
+                    return 3;
                 }
             }
-            if (mark > 4)
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
