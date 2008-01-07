@@ -82,22 +82,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] data, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] levels, long offset)
         {
-            long carry = 6;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((seed >> 4) > (cell ^ seed))
+                if (value < offset)
                 {
-                    carry = (carry * 3) + (seed + seed);
-                }
-                if ((seed & 7) <= (cell - seed))
-                {
-                    carry = carry - (carry ^ seed);
+                    found = false;
+                    break;
                 }
             }
-            return carry;
+            return found;
         }
     }
 }
