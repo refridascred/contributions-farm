@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const string SoftBatch = "latest-1";
         public const long MinLevel = 4991;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Pending,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 4704;
+        public const double StepFormat = 72.41;
+        public const long HardInterval = 3220;
+        public const long HardFormat = 9501;
+        public const string BurstWidth = "strict-v2";
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaGaps(long[] samples)
