@@ -20,11 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultBudget = 928;
-        public const long LimitFactor = 3647;
-        public const string IdleLevel = "stable-1";
-        public const long LimitDepth = 968;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] readings, long bound)
+        {
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long AuditBatchMatches(long[] values, long target)
