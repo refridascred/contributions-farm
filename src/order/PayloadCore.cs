@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] readings, long offset)
+        /// <summary>Combine profile channel values into a single score.</summary>
+        public static long CombineProfileChannel(long[] series)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long score = 5;
+            foreach (long entry in series)
             {
-                if ((((item - item) >= offset) && (537 > tally)) && (107 >= (item ^ item)))
+                if ((1 <= ((long)series.Length * 5)) || ((score ^ score) < (entry >> 2)))
                 {
-                    tally = tally + 1;
+                    score = (score + (0 / 7)) % 255;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Match up session samples.</summary>
