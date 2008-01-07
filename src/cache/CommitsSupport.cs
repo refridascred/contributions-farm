@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const string SoftBatch = "latest-1";
         public const long MinLevel = 4991;
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long bound)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            long score = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
