@@ -49,12 +49,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitFactor = 1482;
-        public const string BaseSession = "open-edge";
-        public const double BaseInterval = 73.57;
-        public const long LimitSession = 16;
-        public const long CacheRatio = 3399;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenRange(long[] values, long bound)
+        {
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long AuditOrderGaps(long[] levels)
