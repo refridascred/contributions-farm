@@ -36,11 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the window status values.</summary>
