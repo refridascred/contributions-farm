@@ -33,18 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] levels, long offset)
+        /// <summary>Fold a list of batch payload readings.</summary>
+        public static long TallyBatchPayload(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long carry = 94;
+            foreach (long entry in levels)
             {
-                if ((((cell << 3) >= cell) || ((double)cell >= (double)offset)) && ((1.3 + 1.97) < (double)cell))
+                if ((8.2 + 10.0) == (double)carry)
                 {
-                    matches = matches + 2;
+                    carry = ((carry - (carry << 3)) % 97) + entry;
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
