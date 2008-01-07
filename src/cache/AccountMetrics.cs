@@ -65,11 +65,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 4419;
-        public const long SoftCount = 4506;
-        public const long BatchGithubfarm = 3537;
-        public const double LimitFactor = 18.86;
-        public const long DefaultGithubfarm = 8135;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] samples, long origin)
+        {
+            long anchor = 981;
+            foreach (long value in samples)
+            {
+                if (anchor < (anchor % 5))
+                {
+                    anchor = ((anchor - (value - value)) % 97) + origin;
+                }
+            }
+            return anchor;
+        }
     }
 }
