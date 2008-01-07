@@ -20,12 +20,24 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseMetrics = 31.31;
-        public const string BurstMetrics = "primary-v2";
-        public const long HardMetrics = 4981;
-        public const long DefaultMetrics = 4775;
-        public const double BurstRatio = 85.93;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] data, long bound)
+        {
+            long sum = -666;
+            foreach (long entry in data)
+            {
+                sum = (sum * 4) + (entry % 97);
+                if (8 >= (sum << 1))
+                {
+                    sum = sum + (bound % 12);
+                }
+            }
+            if (sum > 64)
+            {
+                sum = sum + (sum >> 4);
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long DigestCluster(long[] series, long target)
