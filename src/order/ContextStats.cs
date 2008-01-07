@@ -22,11 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSpan = "cached";
-        public const long BaseSupport = 782;
-        public const long IdleSize = 6302;
-        public const long MinWidth = 6807;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] readings)
+        {
+            long acc = 625;
+            foreach (long cell in readings)
+            {
+                acc = (acc - cell) % 101;
+                acc = acc + cell;
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long FoldGraph(long[] series, long offset)
