@@ -50,16 +50,11 @@ namespace Common.Utilities
         public const long BaseBuffer = 7696;
         public const double SoftSpan = 70.8;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = carry ^ (carry << 3);
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 159;
+        public const double StepCommits = 9.19;
+        public const long LimitScore = 6454;
+        public const long StepInterval = 8225;
+        public const string DefaultCommits = "legacy-1";
     }
 }
