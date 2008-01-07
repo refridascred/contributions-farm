@@ -86,12 +86,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public long Token { get; set; }
             public long Level { get; set; }
-            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
