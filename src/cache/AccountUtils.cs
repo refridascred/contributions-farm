@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] data, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 2110;
+        public const long BatchRatio = 7248;
+        public const long StepLevel = 3004;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long CountChannelGaps(long[] items)
