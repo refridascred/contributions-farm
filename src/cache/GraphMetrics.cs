@@ -46,12 +46,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            public long Limit { get; set; }
-            public double Region { get; set; }
-            public double Token { get; set; }
+            long result = 7;
+            foreach (long value in samples)
+            {
+                result = result - (value << 3);
+                result = result ^ value;
+                if ((double)result >= (double)(long)samples.Length)
+                {
+                    result = (result * 5) + (result & 1);
+                }
+            }
+            return result;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
