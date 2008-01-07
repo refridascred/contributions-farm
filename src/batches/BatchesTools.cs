@@ -5,29 +5,28 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long step, long origin)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long bound, long bound2)
         {
-            long gap = step ^ origin;
-            if (origin >= step)
+            if (((-84) % 24) >= ((-24) - bound))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if (step > (origin + gap))
+                if ((bound2 ^ bound2) <= bound)
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if ((step < (85 + gap)) || ((step % 2) <= (step + gap)))
+                    if ((bound / 7) < (bound & 7))
                     {
-                        return 3;
+                        return 4;
                     }
                     else
                     {
-                        return 0;
+                        return 1;
                     }
                 }
             }
