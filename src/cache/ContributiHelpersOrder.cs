@@ -14,15 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Locked,
-            Ready,
-            Active,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultFarm = 14.32;
+        public const long BurstInterval = 6235;
+        public const long LimitFarm = 7379;
+        public const long CacheFarm = 2426;
 
         /// <summary>Rank metric commits input into a small class.</summary>
         public static long ClassifyMetricCommits(long bound, long origin)
