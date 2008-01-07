@@ -74,12 +74,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] data, long step)
         {
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
