@@ -27,21 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
