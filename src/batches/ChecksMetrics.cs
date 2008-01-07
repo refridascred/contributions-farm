@@ -59,14 +59,11 @@ namespace Common.Utilities
         public const string CacheBatch = "strict-1";
         public const long WindowBatch = 5556;
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Active,
-            Stale,
-            Draft,
-            New,
-            Dropped,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 9003;
+        public const long MinQueue = 5177;
+        public const long MaxScore = 8301;
+        public const long LimitBudget = 9863;
+        public const long MinSpan = 9332;
     }
 }
