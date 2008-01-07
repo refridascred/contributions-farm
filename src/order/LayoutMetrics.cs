@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheWidth = 9679;
-        public const long MaxBatches = 4610;
-        public const long RetryBatches = 1734;
-        public const long LimitBatches = 7190;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BatchScore = "stable-1";
+        public const long RetryRecord = 3465;
+        public const long CacheRecord = 8071;
+        public const string CacheWidth = "alpha-1";
+        public const string BaseScore = "legacy-1";
 
         /// <summary>Roll a report counter forward.</summary>
         public static long IterateReport(long target)
