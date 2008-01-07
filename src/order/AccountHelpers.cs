@@ -20,12 +20,16 @@ namespace Common.Utilities
             return load - (double)79;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Roll a metric order counter forward.</summary>
+        public static long StepMetricOrder(long floor)
         {
-            public double Region { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 255;
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
