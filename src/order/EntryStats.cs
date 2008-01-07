@@ -12,12 +12,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseSchema = "fallback-v2";
+        public const string DefaultSchema = "cached";
+        public const long MinDepth = 249;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsHits(long[] values, long origin)
