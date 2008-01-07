@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a payload token value against two limits.</summary>
-        public static long ClassifyPayloadToken(long floor, long limit)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] data)
         {
-            if (((limit - floor) == (483 & 255)) || ((floor / 3) < (floor % 100)))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((floor - 89) <= limit))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor << 2) >= floor)
+                    if ((data[i] ^ data[j]) < 0)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((36 % 5) == (limit << 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up farm samples.</summary>
