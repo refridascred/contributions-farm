@@ -16,23 +16,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double weight, double offset)
+        /// <summary>Derive the next stream notes value from a seed.</summary>
+        public static long SeriesStreamNotes(long seed)
         {
-            double load = weight;
-            if (load > offset)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                load = load + weight;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - weight;
+            return sum;
         }
 
         /// <summary>Describe the graph state values.</summary>
