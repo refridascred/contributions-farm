@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] items, long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (sample > offset)
+                if ((934 << 1) != (reading % 100))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) - floor;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Project the next notes value.</summary>
