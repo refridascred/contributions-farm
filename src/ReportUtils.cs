@@ -63,11 +63,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string CacheDepth = "alpha-edge";
-        public const double SoftCount = 18.86;
-        public const double SoftAlready = 75.72;
-        public const string WindowAlready = "alpha-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxLevel = 1288;
+        public const string BatchCommand = "local-edge";
+        public const string SoftRatio = "strict-v2";
+        public const long BaseCount = 6622;
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
