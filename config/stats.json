@@ -1,8 +1,6 @@
 {
-  "idle_limit": 89.98,
-  "compress": ["standard", "open"],
-  "max_size": true,
-  "commits_window": [288, 184],
-  "flush_threshold": "stable",
-  "readonly": 47.99
+  "min_interval_pct": 96.66,
+  "verbose": true,
+  "flush_limit_ms": 30,
+  "hard_ratio_s": 75.41
 }
