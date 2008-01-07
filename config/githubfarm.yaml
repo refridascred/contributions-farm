@@ -1,11 +1,7 @@
 # githubfarm settings
-burst_retries: strict
-retry_retries_pct: false
-channel_capacity:
+poll_limit_pct:
+  - standard
   - edge
-  - cached
-enabled:
-  - 320
-  - 267
-  - 80
-warm_ttl_pct: standard
+  - standard
+max_timeout_pct: false
+sync_delay_pct: 9024
