@@ -54,10 +54,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 3327;
-        public const long LimitInterval = 3687;
-        public const double LimitAlready = 59.29;
-        public const long MaxScore = 289;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public double Weight { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
