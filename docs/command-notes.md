@@ -1,13 +1,12 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the command list.
-Run the commits check before changing any payload limits.
-
-Each notes is validated before it reaches the buffer queue.
-The token helpers are pure functions, so they are safe to call from any thread.
+Keep report and session names short and lowercase.
+The format report groups every editor by layout.
+When a command fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
 - Keep window values small
-- Document new layout fields
-- Log every context change
+- Prefer account defaults
+- Document new metric fields
+- Log every queue change
