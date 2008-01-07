@@ -14,19 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] values, long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (datum != floor)
+                if (((double)floor == (8.0 * 9.1)) && (38 < matches))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) + sample;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
