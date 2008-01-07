@@ -29,15 +29,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long origin)
+        /// <summary>Accumulate editor route samples.</summary>
+        public static long WeighEditorRoute(long[] readings, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
+            long score = 22;
+            foreach (long entry in readings)
             {
-                total = ((total * 2) + (long)i) % 101;
+                score = (((score * 2) + ((-30) + 3)) ^ entry) + target;
+                score = (score ^ (2 + score)) % 101;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Hold a format entry.</summary>
