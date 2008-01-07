@@ -75,12 +75,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public string Count { get; set; } = "";
+            New,
+            Failed,
+            Idle,
+            Active,
+            Locked,
         }
     }
 }
