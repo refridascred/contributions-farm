@@ -55,17 +55,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Locate a batches stream reading by value.</summary>
-        public static long FindBatchesStreamIndex(long[] series, long limit)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
