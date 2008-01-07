@@ -27,19 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] series, long step)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (datum < step)
+                if (value >= offset)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
