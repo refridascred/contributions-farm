@@ -1,12 +1,14 @@
 {
-  "already_ttl": "open",
-  "poll_interval_count": "legacy",
-  "strict": false,
-  "enabled": {
-    "default_retries_pct": 100,
-    "enabled": 6762,
-    "min_timeout_count": "standard",
-    "compress": 81,
-    "githubfarm_threshold": ["staging", "eu-west"]
+  "max_delay": "open",
+  "base_size": [119, 174, 370, 89],
+  "min_ttl": true,
+  "retry_limit": "eu-west",
+  "editor_interval": {
+    "window_ttl": 60,
+    "idle_delay": false,
+    "min_ttl": false,
+    "account_limit": 35,
+    "tools_limit": ["primary", "open"],
+    "min_depth_s": 52
   }
 }
