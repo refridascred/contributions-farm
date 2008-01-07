@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Adjust a schema already reading.</summary>
+        public static double SmoothSchemaAlready(double gain, double bias)
         {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            double drift = (double)(7 % 8);
+            return drift - (bias - gain);
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
