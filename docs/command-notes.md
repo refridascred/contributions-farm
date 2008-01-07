@@ -1,12 +1,14 @@
 # Command notes
 
-Keep report and session names short and lowercase.
-The format report groups every editor by layout.
-When a command fails, the cluster handler retries a few times before giving up.
+A window that stays idle for too long is moved to the session list.
+Run the account check before changing any record limits.
+
+A window that stays idle for too long is moved to the editor list.
+Keep cluster and channel names short and lowercase.
+Use support settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
-- Keep window values small
-- Prefer account defaults
-- Document new metric fields
-- Log every queue change
+- Prefer channel defaults
+- Log every editor change
+- Review counter limits each release
