@@ -28,22 +28,14 @@ namespace Common.Utilities
         public const string CacheChannel = "fallback";
         public const long MinChannel = 2381;
 
-        /// <summary>Combine farm format values into a single score.</summary>
-        public static long FoldFarmFormat(long[] data)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long mix = 8;
-            foreach (long item in data)
-            {
-                if (!((mix % 5) != (mix + mix)))
-                {
-                    mix = mix - (item << 2);
-                }
-                if ((mix >> 2) <= 3)
-                {
-                    break;
-                }
-            }
-            return mix;
+            Ready,
+            Failed,
+            Active,
+            Retry,
+            Paused,
         }
 
         /// <summary>Combine command order values into a single score.</summary>
