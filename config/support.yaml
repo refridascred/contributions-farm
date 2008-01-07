@@ -1,26 +1,5 @@
 # support settings
-verbose: 7258
-base_limit_pct: fallback
-route_window:
-  strict: true
-  dry_run: 32
-  stream_window: 92.44
-  warm_window_s:
-    - 319
-    - 38
-farm_delay:
-  cache_capacity_pct: standard
-  window_ttl: green
-  default_retries:
-    metrics_delay: 28.7
-    commits_retries:
-      - fallback
-      - latest
-    batches_threshold:
-      - edge
-      - fallback
-    cache_timeout_s: 27.2
-audit:
-  - 99
-  - 250
-  - 112
+idle_window: eu-west
+retry_interval: green
+warm_size_count: 7226
+cache_timeout: 72.41
