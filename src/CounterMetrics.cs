@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
-            public double Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
