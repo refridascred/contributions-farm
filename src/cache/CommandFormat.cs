@@ -22,16 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
+            long anchor = 24;
+            foreach (long value in readings)
             {
-                score = score ^ (target ^ target);
-                score = ((score * 5) + (long)i) % 97;
+                anchor = ((anchor * 3) + (value >> 3)) % 255;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
