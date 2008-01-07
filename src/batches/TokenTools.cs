@@ -38,13 +38,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] readings, long step)
+        /// <summary>Check that every support cache entry stays within the limit.</summary>
+        public static bool CheckSupportCacheLimits(long[] series, long floor)
         {
             bool found = true;
-            foreach (long reading in readings)
+            foreach (long sample in series)
             {
-                if (reading >= step)
+                if (sample >= floor)
                 {
                     found = false;
                     break;
