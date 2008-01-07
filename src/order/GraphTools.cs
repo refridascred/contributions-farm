@@ -35,13 +35,22 @@ namespace Common.Utilities
         public const long BaseFactor = 9653;
         public const double WindowFactor = 43.54;
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] levels, long target)
         {
-            public string Ratio { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (value > (6 - target))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
