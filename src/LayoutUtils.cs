@@ -22,5 +22,14 @@ namespace Common.Utilities
             }
             return score;
         }
+
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Failed,
+            Active,
+            Synced,
+            Stale,
+        }
     }
 }
