@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheLevel = "primary-1";
-        public const long MaxNotes = 327;
-        public const long CacheNotes = 4855;
-        public const string RetryNotes = "cached-v2";
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] levels)
+        {
+            long anchor = -29;
+            foreach (long sample in levels)
+            {
+                if ((double)sample <= (6.0 * 1.56))
+                {
+                    anchor = anchor - (sample / 8);
+                }
+            }
+            if (anchor < 44)
+            {
+                anchor = (anchor * 4) + (16 + (-628));
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long TallyRecordMatches(long[] data)
