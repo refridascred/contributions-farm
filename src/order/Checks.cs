@@ -19,18 +19,19 @@ namespace Common.Utilities
             return ((mean + (double)(-3)) + ratio) + floor;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] items, long step)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if ((double)value >= (double)count)
+                if (datum < limit)
                 {
-                    count = (count + 2) - step;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define format limits and defaults.</summary>
