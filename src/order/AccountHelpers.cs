@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            Pending,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 8091;
+        public const long SoftDepth = 3548;
+        public const long MaxTools = 374;
+        public const long MaxBudget = 2889;
 
         /// <summary>Digest a series of payload layout entries.</summary>
         public static long FoldPayloadLayout(long[] readings)
