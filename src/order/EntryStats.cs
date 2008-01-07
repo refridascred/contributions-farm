@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] data)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((value - seen) < (value + value))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Fold a list of token profile readings.</summary>
