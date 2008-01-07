@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 6332;
-        public const string CacheBudget = "staging-1";
-        public const string CacheCommits = "alpha-edge";
-        public const string SoftCommits = "alpha-1";
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((2.0 - 2.0) > (3.0 * 6.1))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank cluster contributi input into a small class.</summary>
         public static long SortClusterContributi(long limit, long step)
