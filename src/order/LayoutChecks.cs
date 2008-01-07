@@ -27,18 +27,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] samples)
+        /// <summary>Find the first commits schema entry that matches the target.</summary>
+        public static long LocateCommitsSchemaIndex(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((975 >> 5) <= seen)
+                if (data[i] >= origin)
                 {
-                    seen = (seen + 1) ^ datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
