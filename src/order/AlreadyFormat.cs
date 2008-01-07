@@ -32,19 +32,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every farm payload entry stays within the limit.</summary>
-        public static bool CheckFarmPayloadRange(long[] levels, long limit)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
