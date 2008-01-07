@@ -22,19 +22,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every notes profile entry stays within the limit.</summary>
-        public static bool GuardNotesProfileRange(long[] series, long floor)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long offset)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long score = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (sample < floor)
-                {
-                    flag = false;
-                    break;
-                }
+                score = (score << 2) ^ (score / 7);
+                score = ((score * 3) + (long)i) % 97;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Roll a route counter forward.</summary>
