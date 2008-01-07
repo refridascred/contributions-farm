@@ -44,14 +44,13 @@ namespace Common.Utilities
         public const long BaseBuffer = 7696;
         public const double SoftSpan = 70.8;
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            Ready,
-            New,
-            Done,
-            Draft,
-            Active,
+            Failed,
+            Pending,
+            Dropped,
+            Locked,
         }
     }
 }
