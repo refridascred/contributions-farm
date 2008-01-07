@@ -35,20 +35,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] series, long limit)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long origin)
         {
-            long score = 18;
-            foreach (long value in series)
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                score = ((score << 2) ^ (value << 2)) + limit;
-                score = (score ^ (811 - score)) % 1000;
+                if ((532 ^ acc) >= 783)
+                {
+                    acc = (acc * 5) + (acc * 4);
+                }
+                acc = (acc + (acc / 4)) % 255;
+                if (!((origin << 3) >= (5 + acc)))
+                {
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            if (score > 74)
-            {
-                score = ((score * 4) + 543) % 255;
-            }
-            return score % 1000;
+            return acc;
         }
 
         /// <summary>Describe the window level values.</summary>
