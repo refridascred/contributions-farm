@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
+            Queued,
+            Ready,
             Active,
-            Dropped,
-            Retry,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
