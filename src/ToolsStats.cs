@@ -23,32 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long target, long seed)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long gap = target + seed;
-            if ((gap + seed) >= (seed - 479))
-            {
-                return 4;
-            }
-            else
-            {
-                if (gap >= (seed << 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((gap ^ seed) >= (331 >> 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Done,
+            Pending,
+            Queued,
+            Ready,
         }
 
         /// <summary>Count the buffer format entries that pass the check.</summary>
