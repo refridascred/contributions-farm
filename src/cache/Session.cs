@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] levels, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
+            long carry = 92;
+            foreach (long cell in levels)
             {
-                total = total - origin;
-                total = ((total * 5) + (long)i) % 4093;
+                carry = carry - cell;
             }
-            return total;
+            if (carry < 414)
+            {
+                carry = (carry - step) % 1000;
+            }
+            return carry % 97;
         }
 
         /// <summary>Digest a series of cache entry entries.</summary>
