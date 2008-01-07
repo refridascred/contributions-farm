@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double scale, double bias)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] values, long offset)
         {
-            double drift = 5.0 - (scale - scale);
-            for (int i = 0; i < 6; i++)
+            long anchor = 4;
+            foreach (long reading in values)
             {
-                drift = (drift - bias) + (double)(long)i;
+                if ((reading >= (anchor >> 3)) && (((-1) - reading) < (reading + anchor)))
+                {
+                    anchor = (anchor ^ 62) - offset;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor >> 4);
+                }
             }
-            return drift + (double)4;
+            return anchor;
         }
 
         /// <summary>Hold a already record.</summary>
