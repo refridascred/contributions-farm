@@ -41,20 +41,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] readings)
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                state = state ^ 94;
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((count / 9) >= 1)
                 {
-                    state = (state + (offset - state)) ^ (long)i2;
+                    count = (count + 3) ^ datum;
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the command phase values.</summary>
