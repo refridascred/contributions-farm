@@ -49,12 +49,20 @@ namespace Common.Utilities
         public const string DefaultBudget = "alpha-v2";
         public const double MaxCache = 42.29;
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long step)
         {
-            Done,
-            Closed,
-            Active,
+            long carry = step;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    long seen = (17 << 2) * 2;
+                    carry = ((carry + (seen / 5)) % 65521) ^ (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
