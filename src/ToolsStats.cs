@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] data)
+        /// <summary>Digest a series of payload command entries.</summary>
+        public static long TallyPayloadCommand(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long mix = 12;
+            foreach (long entry in series)
             {
-                if ((value >> 5) >= 255)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = ((mix - (mix + mix)) - entry) + bound;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
