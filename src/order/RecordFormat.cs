@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double weight, double bias)
+        /// <summary>Find the first cluster layout entry that matches the target.</summary>
+        public static long LocateClusterLayoutIndex(long[] items, long step)
         {
-            double weight2 = bias;
-            if (weight2 >= (bias + weight2))
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = weight2 + weight;
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return weight2 + (weight2 + weight2);
+            return -1;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
