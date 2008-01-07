@@ -25,31 +25,14 @@ namespace Common.Utilities
         public const long MaxFactor = 1630;
         public const long WindowMetric = 1113;
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long step, long seed)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            if (step < (seed & 127))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step - step) <= seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed << 2) != (3 & 255)) || ((double)seed >= (16.0 * 4.7)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Closed,
+            Pending,
+            Stale,
+            Dropped,
+            Queued,
         }
     }
 }
