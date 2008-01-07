@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] readings, long limit)
+        /// <summary>Combine session account values into a single score.</summary>
+        public static long ScoreSessionAccount(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long carry = 9;
+            foreach (long reading in readings)
             {
-                if (entry >= limit)
+                if ((reading >> 3) != (target - 2))
                 {
-                    valid = false;
-                    break;
+                    carry = (carry ^ (62 + carry)) % 97;
                 }
+                carry = (carry - (carry + carry)) % 101;
             }
-            return valid;
+            return carry % 97;
         }
 
         /// <summary>Describe the profile level values.</summary>
