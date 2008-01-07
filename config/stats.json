@@ -1,7 +1,8 @@
 {
-  "poll_delay": [82, 42, 453],
-  "session_depth": ["standard", "green", "open"],
-  "base_ratio": 96.38,
-  "persist": true,
-  "notes_timeout": 63.68
+  "queue_depth": 5853,
+  "counter_ratio": 5702,
+  "schema_ratio": false,
+  "warm_interval": 63,
+  "buffer_threshold": 6611,
+  "retry_interval_ms": "staging"
 }
