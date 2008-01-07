@@ -1,7 +1,5 @@
 {
-  "already_delay": "local",
-  "warm_interval": [271, 432],
-  "poll_retries": 1024,
-  "verbose": [430, 353, 434],
-  "profile_retries": false
+  "sync_interval_ms": false,
+  "window_depth": "open",
+  "compress": "local"
 }
