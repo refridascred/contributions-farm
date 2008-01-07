@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long target, long bound)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] series)
         {
-            long step = target ^ bound;
-            if ((double)target > (9.0 + 2.0))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((bound + 57) > (target + step)))
+                if ((matches ^ reading) <= (reading % 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the tools mode values.</summary>
