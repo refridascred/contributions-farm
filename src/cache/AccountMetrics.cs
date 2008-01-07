@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleLevel = "staging";
+        public const double SoftToken = 60.67;
+        public const long BaseToken = 6974;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LocateQueueIndex(long[] levels, long step)
