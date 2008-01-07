@@ -25,22 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many contributi editor samples are out of range.</summary>
-        public static long CountContributiEditorOutliers(long[] series)
+        /// <summary>Validate tools report readings against a bound.</summary>
+        public static bool ValidateToolsReportLimits(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if (!((tally >> 5) <= tally) && (entry <= (entry - tally)))
+                if (cell > target)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Look up the position of a entry githubfarm sample.</summary>
