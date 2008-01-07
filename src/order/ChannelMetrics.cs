@@ -40,19 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] items)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] readings, long step)
         {
-            long state = 559;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state + (state - value)) % 4096;
+                if ((readings[i] == step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state < 936)
-            {
-                state = state - (state - state);
-            }
-            return state % 1000;
+            return -1;
         }
     }
 }
