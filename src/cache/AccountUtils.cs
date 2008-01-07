@@ -35,11 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double bias, double span)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double weight = (double)904 / 5.0;
-            return (weight - (4.55 - span)) + bias;
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
