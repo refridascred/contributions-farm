@@ -1,7 +1,17 @@
 # support settings
-idle_timeout_s: false
-flush_window_count:
-  - open
-  - fallback
-  - fallback
-min_capacity_pct: 250
+support_delay: 10
+flush_retries:
+  base_interval: latest
+  base_delay_s: 31.2
+  min_limit_pct: 7996
+queue_limit:
+  idle_timeout_ms: 1646
+  warm_timeout_ms: primary
+  poll_size_count:
+    poll_depth: 60
+    audit: 90.39
+    sync_ratio:
+      - 347
+      - 270
+      - 184
+    flush_interval: eu-west
