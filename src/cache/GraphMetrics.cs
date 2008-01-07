@@ -48,19 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] samples, long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long offset)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long total = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (datum <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
