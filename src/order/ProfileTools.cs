@@ -21,17 +21,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] samples, long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 77;
+            foreach (long sample in readings)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mix = (((mix * 2) + (mix + sample)) % 97) + offset;
             }
-            return -1;
+            if (mix > (-29))
+            {
+                mix = (mix ^ (mix << 2)) % 65521;
+            }
+            return mix % 97;
         }
 
         /// <summary>Accumulate checks samples.</summary>
