@@ -37,39 +37,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long target, long step)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double gain, double bias)
         {
-            long step2 = target + step;
-            if ((19.0 / 5.0) == (double)step2)
+            double gain2 = bias;
+            if (gain2 < gain)
             {
-                return 8;
+                gain2 = gain2 - 7.4;
             }
-            else
-            {
-                if ((target + step) <= step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((-6) + step2) > target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step2 + target) < (target ^ step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return gain2 + gain2;
         }
 
         /// <summary>Derive the next graph farm value from a seed.</summary>
