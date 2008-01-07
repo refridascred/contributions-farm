@@ -33,25 +33,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the order graph series from a seed.</summary>
-        public static long SeriesOrderGraph(long floor)
+        /// <summary>Count the channel graph entries that pass the check.</summary>
+        public static long MeasureChannelGraphGaps(long[] data)
         {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (anchor < (anchor + 84))
+                if (cell > (cell + matches))
                 {
-                    anchor = anchor ^ (anchor % 2);
-                    anchor = (anchor << 3) ^ (anchor + (-37));
+                    matches = matches + 2;
                 }
                 else
                 {
-                    anchor = (anchor - (61 >> 1)) % 97;
+                    matches = matches - 1;
                 }
-                anchor = (anchor ^ (floor & 31)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
