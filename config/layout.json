@@ -1,7 +1,8 @@
 {
-  "default_timeout_ms": "green",
-  "already_interval": 250,
-  "cache_delay_pct": 92,
-  "base_depth_pct": 1871,
-  "compress": 30
+  "compress": 60,
+  "graph_capacity": false,
+  "retry_depth": "green",
+  "cluster_capacity": 76.5,
+  "poll_retries": [249, 47, 195],
+  "flush_window": ["strict", "local"]
 }
