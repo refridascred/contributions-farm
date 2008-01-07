@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Closed,
-            New,
-            Active,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheWidth = 3118;
+        public const long BaseReport = 1042;
+        public const long BurstReport = 807;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool CheckContributiLimits(long[] items, long seed)
