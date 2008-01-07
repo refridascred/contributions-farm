@@ -22,22 +22,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of format session entries.</summary>
-        public static long CombineFormatSession(long[] items)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long offset, long floor)
         {
-            long carry = 665;
-            foreach (long item in items)
+            if (offset < (offset << 1))
             {
-                if ((carry + (-1)) >= (carry << 3))
+                return 6;
+            }
+            else
+            {
+                if ((double)offset <= (3.5 / 5.0))
                 {
-                    carry = ((carry << 2) ^ item) % 255;
+                    return 8;
                 }
                 else
                 {
-                    carry = carry ^ (carry & 15);
+                    if ((double)offset > (3.3 * 11.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((floor & 1) <= (32 + floor)) && ((double)floor <= 10.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the stream class values.</summary>
