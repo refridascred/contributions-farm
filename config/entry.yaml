@@ -1,20 +1,5 @@
 # entry settings
-readonly: true
-tools_retries: latest
-base_window_ms:
-  - 201
-  - 134
-hard_capacity:
-  hard_delay_count: 66
-  batch_size_s:
-    - edge
-    - stable
-    - edge
-  compress:
-    idle_delay_ms: 4317
-    warm_ttl_ms:
-      - 129
-      - 234
-      - 130
-    cache_delay_s: legacy
-hard_limit: 82.24
+min_retries: true
+min_interval: true
+verbose: legacy
+batches_window: false
