@@ -13,11 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public bool Limit { get; set; }
             public double Flag { get; set; }
+            public double Owner { get; set; }
+            public bool Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Adjust a queue reading.</summary>
