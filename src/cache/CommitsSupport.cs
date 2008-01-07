@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] readings, long target)
+        /// <summary>Rank report layout input into a small class.</summary>
+        public static long RankReportLayout(long seed, long seed2)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long next = seed + seed2;
+            if ((double)seed2 == (8.74 * 4.86))
             {
-                if (entry > target)
+                return 4;
+            }
+            else
+            {
+                if ((seed2 << 3) > seed2)
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((seed << 2) < (-828)) && ((seed % 5) > (seed << 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (1 < ((-7) + next))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Match up support samples.</summary>
