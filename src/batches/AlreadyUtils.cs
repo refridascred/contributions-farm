@@ -59,18 +59,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the route already entries that pass the check.</summary>
-        public static long CountRouteAlreadyHits(long[] values, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (((double)hits > (double)reading) || ((double)floor > (7.8 + 6.0)))
+                if (value != limit)
                 {
-                    hits = hits + 3;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Find the first schema notes entry that matches the target.</summary>
