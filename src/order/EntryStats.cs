@@ -31,19 +31,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double bias, double offset)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            double gain = (offset - offset) - 7.0;
-            if (gain <= bias)
-            {
-                gain = gain + (double)3;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + offset) + (double)(long)i;
-            }
-            return gain + (offset - bias);
+            Dropped,
+            Synced,
+            Locked,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the batches mode values.</summary>
