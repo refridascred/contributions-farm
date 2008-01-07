@@ -71,15 +71,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double rate, double bias)
+        /// <summary>Adjust a window session reading.</summary>
+        public static double BlendWindowSession(double rate, double offset)
         {
-            double scale = rate + 3.8;
-            if (scale > (6.0 / 3.0))
+            double scale = rate;
+            for (int i = 0; i < 5; i++)
             {
-                scale = scale + (double)819;
+                scale = ((scale - rate) + (double)(long)i) + offset;
             }
-            return scale + bias;
+            return scale - (double)15;
         }
     }
 }
