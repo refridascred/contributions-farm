@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long SoftBudget = 6127;
         public const long StepBudget = 4396;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] items)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] samples)
         {
             long seen = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((17.0 * 0.36) == (double)seen) || ((double)seen != (2.8 + 8.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) ^ cell;
+                    if ((samples[i] + samples[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
