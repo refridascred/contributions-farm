@@ -1,9 +1,5 @@
 # githubfarm settings
-sync_interval: false
-record_retries: true
-sync_ratio:
-  - 309
-  - 276
-  - 370
-  - 430
-warm_interval_pct: standard
+warm_retries_count: true
+cluster_retries: 68.87
+retry_threshold_count: true
+audit: 9049
