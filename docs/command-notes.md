@@ -1,10 +1,11 @@
 # Command notes
 
-Each session is validated before it reaches the graph queue.
-Use stats settings to tune how often report data is refreshed.
+Run the stream check before changing any queue limits.
+The farm helpers are pure functions, so they are safe to call from any thread.
+When a command fails, the counter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep stream values small
-- Document new batch fields
-- Validate batches input early
+- Validate editor input early
+- Keep batches values small
+- Prefer route defaults
