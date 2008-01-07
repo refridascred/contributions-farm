@@ -32,11 +32,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 9819;
-        public const double DefaultSpan = 67.04;
-        public const string WindowContributi = "legacy-1";
-        public const long BaseCount = 1844;
+        /// <summary>Count commits profile pairs that satisfy a relation.</summary>
+        public static long MatchCommitsProfileCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
