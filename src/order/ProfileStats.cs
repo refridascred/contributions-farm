@@ -42,21 +42,12 @@ namespace Common.Utilities
             return scale + (offset * 20.0);
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    anchor = (anchor - (long)i2) % 65521;
-                    anchor = (anchor - (anchor + anchor)) % 1000;
-                }
-                anchor = (anchor ^ (origin - 823)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            Dropped,
+            Ready,
+            Failed,
         }
     }
 }
