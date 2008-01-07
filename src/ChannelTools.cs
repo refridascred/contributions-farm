@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] levels)
+        /// <summary>Digest a series of stats filter entries.</summary>
+        public static long DigestStatsFilter(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 86;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((value ^ total) <= (value + value)) || ((value >> 5) < 259))
                 {
-                    if ((levels[i] - levels[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total - total) % 255;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
