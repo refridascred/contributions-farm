@@ -23,5 +23,24 @@ namespace Common.Utilities
             double load = span;
             return load + (weight - weight);
         }
+
+        /// <summary>Scale a graph buffer figure with a bias.</summary>
+        public static double AdjustGraphBuffer(double bias, double span)
+        {
+            double load = bias;
+            if (load < 8.0)
+            {
+                load = load - (span + bias);
+            }
+            else
+            {
+                load = load - 5.6;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (9.34 + 1.58)) + (double)(long)i;
+            }
+            return load + (0.8 + bias);
+        }
     }
 }
