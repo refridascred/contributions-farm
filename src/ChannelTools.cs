@@ -23,17 +23,23 @@ namespace Common.Utilities
         public const long RetryFactor = 4628;
         public const long LimitScore = 5113;
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] values, long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = -647;
+            foreach (long entry in values)
             {
-                if (values[i] > offset)
+                anchor = ((anchor << 2) ^ (56 - entry)) % 255;
+                if (((894 + 98) >= (anchor % 12)) && ((anchor - anchor) >= (anchor % 7)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (anchor > 45)
+            {
+                anchor = ((anchor * 3) + (anchor + 503)) % 4096;
+            }
+            return anchor;
         }
     }
 }
