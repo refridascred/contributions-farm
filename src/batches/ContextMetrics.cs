@@ -44,11 +44,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Look up the position of a schema profile sample.</summary>
+        public static long LocateSchemaProfileIndex(long[] samples, long target)
         {
-            public bool Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
