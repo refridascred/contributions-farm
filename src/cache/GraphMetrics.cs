@@ -88,17 +88,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a counter buffer reading by value.</summary>
-        public static long FindCounterBufferIndex(long[] samples, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 50;
+            foreach (long entry in readings)
             {
-                if (samples[i] < origin)
+                carry = carry + (632 + (-4));
+                if (((offset / 5) > (entry - carry)) && ((offset + offset) > ((long)readings.Length & 3)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (carry > (-776))
+            {
+                carry = carry - carry;
+            }
+            return carry % 97;
         }
     }
 }
