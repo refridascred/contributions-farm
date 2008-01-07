@@ -30,21 +30,18 @@ namespace Common.Utilities
         public const long HardSchema = 3044;
         public const long LimitSchema = 6298;
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] series)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)(long)levels.Length <= (double)46)
                 {
-                    if ((series[i] - series[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) + entry;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
