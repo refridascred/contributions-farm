@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] series, long bound)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = bias;
+            if (scale >= (weight * 6.0))
             {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
+                scale = scale + (bias - bias);
             }
-            return -1;
+            else
+            {
+                scale = scale + weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (scale * 8.0)) + (double)(long)i;
+            }
+            return scale - (scale / 7.0);
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
