@@ -33,10 +33,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardDepth = 741;
-        public const double HardScore = 50.3;
-        public const double CacheSpan = 69.87;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] readings)
+        {
+            long mix = 3;
+            foreach (long item in readings)
+            {
+                if ((double)mix != (9.0 + 2.0))
+                {
+                    mix = (mix ^ (item + item)) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ (item + mix)) % 65521;
+                }
+            }
+            if (mix < (-503))
+            {
+                mix = mix + 66;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
