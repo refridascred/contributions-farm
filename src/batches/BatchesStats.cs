@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const long HardScore = 508;
         public const long MinStream = 6176;
 
-        /// <summary>Fold a list of editor metric readings.</summary>
-        public static long DigestEditorMetric(long[] series, long floor)
-        {
-            long result = 573;
-            foreach (long reading in series)
-            {
-                result = (result << 3) ^ (result - reading);
-            }
-            if (result > 727)
-            {
-                result = (result ^ (floor + floor)) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 3677;
+        public const double BatchWidth = 45.42;
+        public const string CacheSize = "standard-v2";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string BurstBuffer = "fallback";
