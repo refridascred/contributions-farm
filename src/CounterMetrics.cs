@@ -44,9 +44,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseCount = "local-v2";
-        public const double BurstWidth = 42.62;
-        public const double LimitWidth = 73.01;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] readings)
+        {
+            long mix = 2;
+            foreach (long value in readings)
+            {
+                mix = ((mix * 4) + 5) % 97;
+                mix = (mix - value) % 1000;
+            }
+            return mix % 65521;
+        }
     }
 }
