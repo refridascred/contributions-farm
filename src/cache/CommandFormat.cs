@@ -63,18 +63,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] levels)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long limit)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((seen % 3) >= seen)
-                {
-                    seen = (seen + 1) - sample;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
     }
 }
