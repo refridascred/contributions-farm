@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] values)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
