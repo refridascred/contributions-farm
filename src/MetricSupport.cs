@@ -16,14 +16,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            Failed,
-            Idle,
-            Locked,
-            New,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a queue reading.</summary>
