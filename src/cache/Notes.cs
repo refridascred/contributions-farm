@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] series, long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 334;
+            foreach (long entry in data)
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                sum = sum - (216 + entry);
             }
-            return -1;
+            if (sum > 376)
+            {
+                sum = (sum ^ (sum - sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Project the next graph value.</summary>
