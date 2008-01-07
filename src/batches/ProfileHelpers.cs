@@ -71,14 +71,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Locked,
-            Stale,
-            Queued,
-            Ready,
-            Active,
+            public double Label { get; set; }
+            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
