@@ -50,22 +50,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheBuffer = "fallback";
+        public const long BatchBuffer = 2977;
+        public const double StepTimeout = 55.55;
+        public const long BaseBuffer = 7696;
+        public const double SoftSpan = 70.8;
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long SeekContextIndex(long[] samples, long step)
