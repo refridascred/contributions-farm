@@ -59,21 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] data)
+        /// <summary>Validate session format readings against a bound.</summary>
+        public static bool ValidateSessionFormatLimits(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum < limit)
                 {
-                    if ((data[i] ^ data[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
