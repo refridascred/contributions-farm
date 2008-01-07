@@ -20,39 +20,28 @@ namespace Common.Utilities
         public const long LimitFarm = 7379;
         public const long CacheFarm = 2426;
 
-        /// <summary>Rank metric commits input into a small class.</summary>
-        public static long ClassifyMetricCommits(long bound, long origin)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] items)
         {
-            long edge = bound - origin;
-            if (((origin + 924) <= (edge / 7)) || ((bound + origin) >= origin))
+            long acc = 14;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)edge <= (15.0 / 7.0))
+                acc = (acc ^ (acc >> 3)) % 255;
+                acc = (acc + (acc - acc)) % 97;
+                if ((6.2 - 4.16) == (double)value)
                 {
-                    return 5;
+                    acc = (acc - value) % 97;
                 }
                 else
                 {
-                    if (!((bound / 2) > (bound << 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((-2) < (origin * 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    acc = (acc * 2) + (acc & 255);
+                }
+                if (value <= (acc + value))
+                {
+                    break;
                 }
             }
+            return acc;
         }
     }
 }
