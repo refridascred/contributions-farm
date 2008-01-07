@@ -1,12 +1,7 @@
 {
-  "flush_delay_count": {
-    "min_capacity_s": 43,
-    "idle_interval_s": 29.24,
-    "batch_timeout_ms": [27, 313, 256],
-    "retry_size_count": "eu-west"
-  },
-  "cache_retries": false,
-  "poll_depth_count": 24.41,
-  "metrics_capacity": "cached",
-  "dry_run": 49
+  "warm_capacity": "fallback",
+  "burst_interval_s": "fallback",
+  "audit": "standard",
+  "retry_interval_s": true,
+  "burst_timeout_s": false
 }
