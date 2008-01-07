@@ -86,12 +86,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultDepth = 7975;
-        public const long BaseBudget = 2580;
-        public const long BurstGithubfarm = 5432;
-        public const string IdleRatio = "staging";
-        public const long StepInterval = 1133;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long TallyCacheHits(long[] readings)
