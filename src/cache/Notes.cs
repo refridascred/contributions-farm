@@ -20,19 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double bias, double floor)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            double gain = (double)(264 + 487);
-            if (gain <= bias)
-            {
-                gain = gain + (9.0 / 8.0);
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain + floor;
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit format buffer readings against a rule.</summary>
