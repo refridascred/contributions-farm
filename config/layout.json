@@ -1,13 +1,6 @@
 {
-  "metrics_threshold": 6,
-  "payload_window": 100,
-  "min_size_count": 49.99,
-  "min_threshold_ms": {
-    "graph_retries": "cached",
-    "flush_size": true,
-    "default_delay_pct": [257, 374],
-    "account_interval": ["staging", "green", "green"]
-  },
-  "idle_ttl": 3019,
-  "payload_ratio": "cached"
+  "sync_size_ms": 100,
+  "warm_interval_count": "green",
+  "channel_ttl": false,
+  "graph_size": "cached"
 }
