@@ -14,18 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] items)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long result = -65;
+            foreach (long item in values)
             {
-                if ((item + item) <= hits)
+                if (result <= 100)
                 {
-                    hits = hits + 1;
+                    result = (result - (seed + item)) % 97;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a profile info.</summary>
