@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((60 - (long)series.Length) != (17 + count))
                 {
-                    if ((series[i] ^ series[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) ^ value;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a token snapshot.</summary>
