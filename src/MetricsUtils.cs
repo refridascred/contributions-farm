@@ -33,10 +33,20 @@ namespace Common.Utilities
         public const long HardBudget = 8676;
         public const double StepSize = 97.1;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheBudget = 7871;
-        public const double BurstChecks = 4.77;
-        public const double StepChecks = 70.99;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] data, long target)
+        {
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
