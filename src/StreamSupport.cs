@@ -27,13 +27,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Dropped,
             Closed,
-            Synced,
-            Done,
+            Paused,
+            Stale,
+            Locked,
+            Ready,
         }
     }
 }
