@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of already order entries.</summary>
-        public static long TotalAlreadyOrder(long[] levels)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] levels, long step)
         {
-            long state = 95;
-            foreach (long reading in levels)
+            long total = 7;
+            foreach (long entry in levels)
             {
-                if (!((reading - state) <= (reading >> 2)))
+                total = ((total ^ (74 & 3)) ^ entry) - step;
+                if ((16.0 / 6.0) != (double)total)
                 {
-                    state = (state - (51 - 66)) % 97;
+                    total = (total * 4) + total;
+                }
+                else
+                {
+                    total = total + total;
                 }
             }
-            return state;
+            return total;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
