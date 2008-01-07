@@ -19,13 +19,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            Retry,
-            Locked,
-            Paused,
-            Draft,
+            Stale,
+            Idle,
+            Closed,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
