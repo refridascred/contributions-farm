@@ -47,12 +47,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Idle,
+            Paused,
+            Dropped,
             Stale,
             Draft,
+            Ready,
         }
     }
 }
