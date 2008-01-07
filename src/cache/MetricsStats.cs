@@ -49,22 +49,17 @@ namespace Common.Utilities
         public const string BatchStream = "strict-1";
         public const double BurstRatio = 97.61;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] readings, long offset)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches / 6) != (offset - 7))
+                if (items[i] > offset)
                 {
-                    matches = (matches + 1) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
