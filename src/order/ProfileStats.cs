@@ -27,39 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long floor, long seed)
+        /// <summary>Adjust a filter cluster reading.</summary>
+        public static double ScaleFilterCluster(double weight, double offset)
         {
-            long lane = floor + seed;
-            if ((lane + seed) <= (seed << 1))
+            double scale = (double)(7 & 255);
+            if (scale >= (1.7 - weight))
             {
-                return 6;
+                scale = scale + (double)86;
             }
             else
             {
-                if (((11.0 * 4.0) <= (double)lane) || ((lane - lane) >= floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)lane >= (15.0 / 9.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((7.0 + 6.0) <= (double)floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                scale = scale + 8.7;
             }
+            return scale + (offset * 20.0);
         }
 
         /// <summary>Define record limits and defaults.</summary>
