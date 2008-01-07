@@ -14,21 +14,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up queue graph samples.</summary>
-        public static long CompareQueueGraphCount(long[] levels)
+        /// <summary>Iterate the queue commits series from a seed.</summary>
+        public static long IterateQueueCommits(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
