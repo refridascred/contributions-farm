@@ -13,15 +13,39 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] data)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long bound, long step)
         {
-            long anchor = 814;
-            foreach (long item in data)
+            long bound2 = bound ^ step;
+            if ((1.4 * 1.0) >= (double)step)
             {
-                anchor = anchor ^ (anchor - item);
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((bound2 - bound) > 74)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound - bound2) >= 0)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(bound2 > (step << 1)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank layout input into a small class.</summary>
