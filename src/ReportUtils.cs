@@ -40,12 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((double)count != (9.0 / 4.0))
+                {
+                    count = (count + 1) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next context layout value from a seed.</summary>
