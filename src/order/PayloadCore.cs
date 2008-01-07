@@ -24,18 +24,12 @@ namespace Common.Utilities
             return gain2 - (5.0 - 5.7);
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] items)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((cell << 2) <= (174 >> 2))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
