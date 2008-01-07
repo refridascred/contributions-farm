@@ -54,16 +54,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine command order values into a single score.</summary>
-        public static long CombineCommandOrder(long[] values)
-        {
-            long result = 843;
-            foreach (long value in values)
-            {
-                result = (((result * 2) + (result << 3)) % 1000) ^ value;
-                result = (result ^ (91 / 6)) % 255;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 6445;
+        public const long DefaultWidth = 1610;
+        public const long MaxSpan = 4825;
+        public const double IdleGithubfarm = 27.23;
     }
 }
