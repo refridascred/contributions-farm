@@ -42,21 +42,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] levels)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long floor, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((3.8 - 6.0) < (7.0 + 9.08))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!(step <= floor))
                 {
-                    if ((levels[i] ^ levels[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Adjust a tools reading.</summary>
