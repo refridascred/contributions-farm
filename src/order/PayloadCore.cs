@@ -55,17 +55,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] samples, long bound)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public double Size { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
