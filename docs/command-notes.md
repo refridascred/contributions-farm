@@ -1,15 +1,12 @@
 # Command notes
 
-The editor helpers are pure functions, so they are safe to call from any thread.
-Run the command check before changing any token limits.
-When a editor fails, the entry handler retries a few times before giving up.
-
-Run the cluster check before changing any farm limits.
-Each format is validated before it reaches the buffer queue.
-Keep schema and profile names short and lowercase.
+A stream that stays idle for too long is moved to the stats list.
+Keep counter and record names short and lowercase.
+Each notes is validated before it reaches the already queue.
 
 ## Guidelines
 
-- Keep record values small
-- Validate session input early
-- Prefer metric defaults
+- Keep queue values small
+- Prefer order defaults
+- Review buffer limits each release
+- Document new notes fields
