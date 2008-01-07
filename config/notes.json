@@ -1,22 +1,5 @@
 {
-  "max_delay_s": "strict",
-  "soft_threshold_ms": {
-    "cache_size_ms": 51.24,
-    "route_depth": 63.74,
-    "route_window": [232, 363],
-    "readonly": {
-      "batch_timeout_count": 9309,
-      "base_ttl": [79, 361, 1, 45],
-      "verbose": [79, 272, 346, 203],
-      "max_ratio": [499, 3, 124, 290]
-    },
-    "cache_capacity": 40
-  },
-  "min_ratio_pct": "legacy",
-  "entry_capacity": "blue",
-  "soft_retries_pct": {
-    "cache_capacity_ms": "legacy",
-    "idle_limit_count": "latest",
-    "burst_window_s": 3.66
-  }
+  "schema_size": "edge",
+  "batch_depth_pct": 39,
+  "editor_threshold": false
 }
