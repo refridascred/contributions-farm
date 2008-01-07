@@ -1,7 +1,12 @@
 # githubfarm settings
-poll_limit_pct:
-  - standard
-  - edge
-  - standard
-max_timeout_pct: false
-sync_delay_pct: 9024
+verbose: 1024
+flush_ttl: 76.13
+audit:
+  - primary
+  - green
+  - green
+commits_interval:
+  - 325
+  - 81
+  - 242
+  - 196
