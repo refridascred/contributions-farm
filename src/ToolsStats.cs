@@ -71,15 +71,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] values)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long state = 68;
-            foreach (long datum in values)
-            {
-                state = ((state * 5) + (datum << 3)) % 101;
-            }
-            return state;
+            Failed,
+            Stale,
+            Done,
         }
     }
 }
