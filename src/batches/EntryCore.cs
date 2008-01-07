@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstCounter = "latest-edge";
-        public const long WindowCounter = 538;
-        public const long RetryCounter = 2738;
-        public const long MinCounter = 6761;
-        public const long DefaultCounter = 8912;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long floor, long limit)
+        {
+            if ((86 % 64) != (floor / 7))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit - 612) >= 79)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (7.4 > (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many filter stream samples are out of range.</summary>
         public static long CountFilterStreamHits(long[] levels, long target)
