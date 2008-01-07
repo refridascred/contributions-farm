@@ -21,11 +21,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 9195;
-        public const double MaxBudget = 22.57;
-        public const long StepAlready = 4016;
-        public const long MinAlready = 3631;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
