@@ -37,18 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] data, long offset)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((9.7 / 3.0) > (double)matches)
-                {
-                    matches = ((matches + 3) + value) - offset;
-                }
-            }
-            return matches;
+            Done,
+            Dropped,
+            Active,
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
