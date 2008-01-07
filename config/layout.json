@@ -1,17 +1,6 @@
 {
-  "profile_threshold": {
-    "payload_depth": 250,
-    "persist": "open",
-    "flush_size": 100,
-    "retry_size_pct": 74,
-    "batch_size_s": true,
-    "sync_delay_count": {
-      "retry_delay_count": "strict",
-      "already_window": 1024,
-      "burst_depth_ms": 68.9
-    }
-  },
-  "poll_capacity_pct": [105, 273, 490],
-  "retry_timeout": false,
-  "verbose": "staging"
+  "cache_threshold_pct": 1024,
+  "default_delay": 90,
+  "soft_window_ms": 87.3,
+  "hard_limit_ms": false
 }
