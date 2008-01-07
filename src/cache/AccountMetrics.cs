@@ -51,18 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] values)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((seen - 982) >= (13 * 5))
-                {
-                    seen = (seen + 2) - sample;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the record githubfarm entries that pass the check.</summary>
