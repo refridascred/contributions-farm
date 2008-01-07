@@ -30,14 +30,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Check that every session editor entry stays within the limit.</summary>
+        public static bool ValidateSessionEditorRange(long[] levels, long seed)
         {
-            Idle,
-            Ready,
-            Pending,
-            Active,
-            Synced,
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
