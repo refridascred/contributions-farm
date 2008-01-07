@@ -19,22 +19,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] series, long target)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long limit)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long result = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((3.0 * 16.0) >= (double)seen) && !((4.3 + 2.31) >= (double)target))
-                {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Hold a channel header.</summary>
