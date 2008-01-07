@@ -1,14 +1,6 @@
 {
-  "sync_window_pct": "eu-west",
-  "compress": 29,
-  "max_timeout_s": [46, 161, 242, 472],
-  "batch_retries_pct": true,
-  "channel_depth": {
-    "persist": 12.63,
-    "order_window": "open",
-    "token_ttl": "stable",
-    "sync_window_count": 1.55,
-    "default_depth_ms": "open",
-    "filter_retries": "cached"
-  }
+  "idle_interval": 92.44,
+  "soft_window_count": "cached",
+  "audit": "green",
+  "record_delay": 35.17
 }
