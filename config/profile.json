@@ -1,20 +1,6 @@
 {
-  "buffer_ttl": 30,
-  "audit": 500,
-  "strict": ["cached", "green", "green"],
-  "sync_size_s": {
-    "checks_ratio": 5205,
-    "compress": 30,
-    "hard_size_ms": [223, 437, 303],
-    "default_ttl_pct": 40.24,
-    "flush_window_s": true
-  },
-  "flush_delay_count": "open",
-  "min_timeout": {
-    "readonly": "open",
-    "soft_ratio": 92,
-    "max_interval": 7606,
-    "cache_ttl": 60,
-    "window_window": 250
-  }
+  "tools_timeout": "primary",
+  "contributi_threshold": "eu-west",
+  "verbose": 500,
+  "support_limit": 30
 }
