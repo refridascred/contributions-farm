@@ -1,6 +1,6 @@
 {
-  "retry_limit": 74,
-  "verbose": true,
-  "tools_size": 7212,
-  "channel_interval": 86.05
+  "farm_timeout": "local",
+  "strict": 38.53,
+  "schema_delay": 85.07,
+  "sync_ratio": [213, 213]
 }
