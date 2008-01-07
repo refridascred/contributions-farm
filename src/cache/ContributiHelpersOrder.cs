@@ -23,18 +23,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] series)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (((((long)series.Length << 1) < (-13)) && ((double)seen > (10.0 + 0.28))) && ((728 - reading) < 73))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Locked,
+            Ready,
+            Active,
+            Closed,
+            Draft,
         }
 
         /// <summary>Match up payload samples.</summary>
