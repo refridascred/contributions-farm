@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Check that every metrics cluster entry stays within the limit.</summary>
+        public static bool GuardMetricsClusterRange(long[] series, long limit)
         {
-            Paused,
-            Stale,
-            Failed,
-            Queued,
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a checks entry.</summary>
