@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] data)
+        /// <summary>Iterate the checks payload series from a seed.</summary>
+        public static long StepChecksPayload(long origin)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((2.73 + 1.3) != (double)item)
+                carry = (carry << 2) ^ 893;
+                if (((carry + origin) >= (long)i) || ((carry % 2) >= (origin + origin)))
                 {
-                    matches = matches + 3;
+                    carry = (carry ^ (carry / 4)) % 97;
                 }
+                else
+                {
+                    carry = (carry << 2) ^ (1 & 7);
+                    carry = carry ^ (origin + origin);
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a stream entry.</summary>
