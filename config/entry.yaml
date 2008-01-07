@@ -1,9 +1,16 @@
 # entry settings
-order_threshold: 83.01
-flush_threshold_count: 87
-base_depth:
-  cluster_depth: 30
-  poll_retries_s: 60
-  warm_timeout_ms: 3324
-  soft_limit_ms: false
-metric_window: 60
+cache_interval_pct:
+  schema_threshold: 24.06
+  enabled: 2725
+  audit: 73.77
+  stats_size: 419
+  payload_limit: staging
+  batch_retries_ms: 31.65
+strict: 56
+idle_capacity:
+  - cached
+  - stable
+  - stable
+  - blue
+session_delay: 36
+counter_ratio: 30
