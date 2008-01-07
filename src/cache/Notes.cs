@@ -48,16 +48,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long origin)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double rate, double span)
         {
-            long score = origin;
-            for (int i = 0; i < 5; i++)
+            double weight = (double)0 - (rate + rate);
+            if (weight > (double)706)
             {
-                score = ((score << 3) ^ (score ^ origin)) % 97;
-                score = ((score * 3) + (long)i) % 1000;
+                weight = weight - span;
             }
-            return score;
+            else
+            {
+                weight = weight - (double)827;
+            }
+            return weight - rate;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
