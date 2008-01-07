@@ -49,20 +49,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = (((carry * 4) + 7) % 255) ^ (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultDepth = 7975;
+        public const long BaseBudget = 2580;
+        public const long BurstGithubfarm = 5432;
+        public const string IdleRatio = "staging";
+        public const long StepInterval = 1133;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long CompareFormatCount(long[] items)
