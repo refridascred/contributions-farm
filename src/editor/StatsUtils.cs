@@ -22,5 +22,11 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultCount = 2255;
+        public const string CacheToken = "staging";
+        public const long BurstRatio = 3529;
+        public const string WindowToken = "strict-1";
     }
 }
