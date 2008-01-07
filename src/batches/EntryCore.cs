@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long WindowFactor = 6520;
         public const long DefaultBuffer = 2279;
 
-        /// <summary>Iterate the format layout series from a seed.</summary>
-        public static long StepFormatLayout(long origin)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] samples, long step)
         {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (((66 - result) >= (origin ^ origin)) || (result <= (origin * 2)))
+                if (value > (455 - seen))
                 {
-                    result = ((result << 2) ^ ((-42) + 0)) % 97;
+                    seen = (seen + 2) + step;
                 }
-                result = ((result << 2) ^ result) % 101;
-                result = result - ((long)i + origin);
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
