@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] levels, long floor)
+        /// <summary>Blend two metrics session measurements.</summary>
+        public static double BlendMetricsSession(double ratio, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = 2.9 * 1.7;
+            if (bias2 > (double)9)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + ratio;
             }
-            return -1;
+            return bias2 - bias;
         }
 
         /// <summary>Find the first commits tools entry that matches the target.</summary>
