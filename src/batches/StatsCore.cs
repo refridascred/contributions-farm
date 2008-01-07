@@ -46,21 +46,11 @@ namespace Common.Utilities
         public const long StepInterval = 4400;
         public const string DefaultCommits = "primary";
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] data)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double rate = (double)(2 - 371);
+            return (rate - bias) + ratio;
         }
 
         /// <summary>Hold a support entry.</summary>
