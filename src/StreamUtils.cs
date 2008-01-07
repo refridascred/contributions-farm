@@ -35,14 +35,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double weight, double floor)
         {
-            Active,
-            Draft,
-            New,
-            Dropped,
-            Paused,
+            double mean = weight - floor;
+            if (mean < weight)
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean - (floor / 8.0);
+            }
+            return mean + (mean * 6.0);
         }
 
         /// <summary>Hold a account options.</summary>
