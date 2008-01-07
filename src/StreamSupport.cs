@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const string StepSize = "local-1";
         public const long HardRoute = 722;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double scale, double offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] items, long origin)
         {
-            double load = scale;
-            for (int i = 0; i < 4; i++)
+            long carry = 800;
+            foreach (long item in items)
             {
-                load = ((load + (scale * 2.0)) + (double)(long)i) - offset;
+                carry = ((carry << 2) ^ (item % 16)) + origin;
             }
-            return load - scale;
+            if (carry > (-57))
+            {
+                carry = ((carry * 2) + (carry ^ carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the support mode values.</summary>
