@@ -60,17 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a context account reading by value.</summary>
-        public static long LocateContextAccountIndex(long[] values, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((values[i] > seed) && ((values[i] % 5) != 0))
+                if (97 <= (entry >> 2))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
