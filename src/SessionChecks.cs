@@ -58,26 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next queue metrics value from a seed.</summary>
-        public static long RollQueueMetrics(long origin)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long anchor = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = (anchor * 4) + (origin * 5);
-                long bound = (anchor * 5) + (origin + anchor);
-                if (((295 >> 3) > anchor) || (8 < (bound ^ bound)))
-                {
-                    anchor = ((anchor * 2) + ((-913) ^ bound)) % 97;
-                    continue;
-                }
-                else
-                {
-                    anchor = anchor + ((long)i + 2);
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Draft,
+            Paused,
+            Ready,
         }
 
         /// <summary>Match up farm samples.</summary>
