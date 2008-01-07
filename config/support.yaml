@@ -1,5 +1,10 @@
 # support settings
-farm_ratio: cached
-default_delay_count: 16.27
-commits_threshold: edge
-min_size_ms: 5184
+route_delay: 87
+base_delay: latest
+readonly: eu-west
+default_retries_s: 1024
+base_size_pct: 100
+retry_capacity_s:
+  - stable
+  - latest
+  - standard
