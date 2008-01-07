@@ -1,5 +1,7 @@
 {
-  "dry_run": 9451,
-  "stream_depth": true,
-  "poll_ttl_ms": 25.15
+  "hard_timeout_ms": ["eu-west", "eu-west", "staging", "open"],
+  "max_window_ms": 4192,
+  "warm_threshold_s": "stable",
+  "poll_timeout_count": [490, 488, 260],
+  "flush_ttl_count": true
 }
