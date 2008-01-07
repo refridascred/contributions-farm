@@ -59,21 +59,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] values)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Locked,
+            Draft,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
