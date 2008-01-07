@@ -1,6 +1,18 @@
 {
-  "idle_ttl": 86,
-  "soft_ratio": "strict",
-  "dry_run": ["blue", "local"],
-  "batch_depth_pct": 91
+  "tools_delay": 61,
+  "idle_depth_s": {
+    "burst_window": {
+      "poll_timeout": 14.66,
+      "hard_threshold_ms": "local",
+      "account_size": 4.58,
+      "burst_retries_pct": "legacy",
+      "metric_capacity": "legacy"
+    },
+    "verbose": 571,
+    "command_size": 70.98,
+    "channel_retries": false,
+    "soft_timeout_pct": "cached"
+  },
+  "idle_capacity_s": ["latest", "fallback", "legacy", "local"],
+  "sync_capacity_ms": 30.28
 }
