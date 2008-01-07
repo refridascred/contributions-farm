@@ -14,11 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 8701;
-        public const double BatchTools = 76.67;
-        public const long LimitTools = 1935;
-        public const double StepTools = 81.62;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((0 * 4) <= (datum % 60))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long DefaultSize = 9474;
