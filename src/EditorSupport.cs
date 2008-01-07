@@ -43,18 +43,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] series, long limit)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (!((limit + 455) <= limit))
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            Idle,
+            Ready,
+            Pending,
+            Active,
+            Synced,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
