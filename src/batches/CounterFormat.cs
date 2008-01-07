@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardTimeout = "alpha-1";
-        public const long MaxBudget = 2037;
-        public const string MinCount = "strict";
-        public const long LimitWindow = 4152;
+        /// <summary>Combine schema context values into a single score.</summary>
+        public static long CombineSchemaContext(long[] samples)
+        {
+            long mark = 455;
+            foreach (long value in samples)
+            {
+                if (!((mark + mark) > mark))
+                {
+                    mark = (mark + value) % 1000;
+                }
+            }
+            if (mark < (-78))
+            {
+                mark = ((mark * 3) + mark) % 65521;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long PairMetricCount(long[] levels)
