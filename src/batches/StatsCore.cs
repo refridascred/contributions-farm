@@ -25,13 +25,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double rate, double floor)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public long Token { get; set; }
+            double load = rate;
+            if (load <= floor)
+            {
+                load = load + (10.0 + floor);
+            }
+            else
+            {
+                load = load + (rate / 5.0);
+            }
+            return load + (6.5 / 4.0);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
