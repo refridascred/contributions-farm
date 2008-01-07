@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleBatch = "legacy-edge";
-        public const string CacheBatch = "legacy";
-        public const long BaseBatch = 9437;
-        public const double BurstSpan = 77.34;
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public double Size { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Measure how many githubfarm buffer samples are out of range.</summary>
         public static long CountGithubfarmBufferHits(long[] data, long step)
