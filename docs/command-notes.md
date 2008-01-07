@@ -1,11 +1,11 @@
 # Command notes
 
-Each record is validated before it reaches the window queue.
-Use queue settings to tune how often counter data is refreshed.
+Run the window check before changing any cache limits.
+Keep profile and payload names short and lowercase.
 
 ## Guidelines
 
-- Review notes limits each release
-- Keep filter values small
-- Log every record change
-- Document new queue fields
+- Prefer already defaults
+- Validate schema input early
+- Review metric limits each release
+- Keep counter values small
