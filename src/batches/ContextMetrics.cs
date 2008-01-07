@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseAlready = "fallback-v2";
-        public const long IdleLevel = 8875;
-        public const string StepAlready = "local-1";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstProfile = 6.84;
+        public const string LimitProfile = "staging-edge";
+        public const long CacheProfile = 1236;
+        public const long IdleProfile = 5481;
+        public const long MinProfile = 7446;
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
