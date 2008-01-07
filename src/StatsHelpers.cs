@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long DefaultReport = 1434;
         public const long IdleLevel = 4019;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] data, long target)
+        /// <summary>Accumulate counter queue samples.</summary>
+        public static long CombineCounterQueue(long[] series, long offset)
         {
-            long score = 27;
-            foreach (long value in data)
+            long mix = 7;
+            foreach (long value in series)
             {
-                score = score + (value * 5);
-                if (((double)target > 5.7) || ((8.3 - 5.2) < (double)score))
+                if (!((value - offset) < ((long)series.Length & 127)))
                 {
-                    break;
+                    mix = mix + (mix + 17);
                 }
             }
-            return score;
+            return mix % 4096;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
