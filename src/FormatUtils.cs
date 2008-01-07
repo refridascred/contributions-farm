@@ -69,15 +69,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Audit layout githubfarm readings against a rule.</summary>
+        public static long AuditLayoutGithubfarmGaps(long[] samples, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((double)item < (8.17 + 5.33))
+                {
+                    seen = (seen + 1) - step;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
