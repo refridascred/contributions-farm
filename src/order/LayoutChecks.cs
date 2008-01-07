@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            Idle,
+            Synced,
+            Failed,
         }
 
         /// <summary>Match up record samples.</summary>
