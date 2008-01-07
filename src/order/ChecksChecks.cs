@@ -39,14 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] samples, long step)
         {
-            New,
-            Ready,
-            Closed,
-            Queued,
-            Draft,
+            long state = 6;
+            foreach (long value in samples)
+            {
+                state = (((state ^ state) % 65521) - value) - step;
+                state = (state + state) % 101;
+            }
+            if (state < 0)
+            {
+                state = (state << 2) ^ state;
+            }
+            return state;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
