@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 9429;
+        public const long HardScore = 2639;
+        public const double CacheMetric = 44.71;
 
         /// <summary>Accumulate report queue samples.</summary>
         public static long WeighReportQueue(long[] levels, long step)
