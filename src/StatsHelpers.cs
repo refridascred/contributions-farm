@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchBudget = 5208;
-        public const long MaxRatio = 3510;
-        public const double WindowSpan = 26.14;
+        /// <summary>Digest a series of format commits entries.</summary>
+        public static long WeighFormatCommits(long[] readings, long floor)
+        {
+            long carry = 0;
+            foreach (long reading in readings)
+            {
+                carry = ((carry ^ (433 - floor)) % 65521) + reading;
+            }
+            return carry;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long DeriveSchema(long floor)
