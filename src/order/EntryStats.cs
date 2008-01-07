@@ -31,14 +31,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
             Dropped,
-            Synced,
-            Locked,
             Paused,
-            Stale,
+            Locked,
+            Closed,
         }
 
         /// <summary>Describe the batches mode values.</summary>
