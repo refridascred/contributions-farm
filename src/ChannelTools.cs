@@ -33,22 +33,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] levels)
         {
-            long result = 693;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (((result ^ result) >= item) && ((9.74 * 6.0) <= (double)item))
+                if (((double)hits <= (2.56 + 9.05)) || ((hits * 5) <= (hits / 6)))
                 {
-                    result = (result + 8) % 65521;
+                    hits = (hits + 1) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (result > 5)
-            {
-                result = (result ^ (result / 4)) % 101;
-            }
-            return result;
+            return hits;
         }
     }
 }
