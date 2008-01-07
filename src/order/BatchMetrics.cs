@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] samples, long step)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double scale, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale2 = bias;
+            if (scale2 >= (double)9)
             {
-                if ((samples[i] == step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                scale2 = scale2 + (scale * 9.27);
             }
-            return -1;
+            else
+            {
+                scale2 = scale2 - (scale2 * 10.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 + bias) + (double)(long)i;
+            }
+            return scale2 + bias;
         }
 
         /// <summary>Count account counter pairs that satisfy a relation.</summary>
