@@ -57,12 +57,11 @@ namespace Common.Utilities
         public const double BatchScore = 24.7;
         public const double MinStats = 78.33;
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double weight, double floor)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public double Mode { get; set; }
+            double gain = weight;
+            return gain + (gain + floor);
         }
 
         /// <summary>Hold a stats header.</summary>
