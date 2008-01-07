@@ -1,14 +1,12 @@
 {
-  "checks_window": {
-    "min_timeout": false,
-    "burst_interval_ms": 47,
-    "buffer_timeout": "legacy",
-    "dry_run": [399, 184, 141, 102],
-    "soft_retries_s": 87
-  },
-  "flush_window_pct": 1024,
-  "poll_timeout_count": 68.17,
-  "hard_capacity_ms": 4718,
-  "tools_size": 60,
-  "cache_capacity": 30
+  "already_ttl": "open",
+  "poll_interval_count": "legacy",
+  "strict": false,
+  "enabled": {
+    "default_retries_pct": 100,
+    "enabled": 6762,
+    "min_timeout_count": "standard",
+    "compress": 81,
+    "githubfarm_threshold": ["staging", "eu-west"]
+  }
 }
