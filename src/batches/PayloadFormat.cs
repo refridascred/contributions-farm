@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double ratio, double span)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] samples)
         {
-            double ratio2 = (double)(129 / 3);
-            if (ratio2 >= span)
+            long mix = 1;
+            foreach (long entry in samples)
             {
-                ratio2 = ratio2 + (double)60;
+                mix = mix ^ (entry / 8);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 - (3.0 * 2.65)) + (double)(long)i;
-            }
-            return ratio2 + (ratio * 16.0);
+            return mix;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
