@@ -38,27 +38,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] readings)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] data, long origin)
         {
-            long acc = 4;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 4) + (acc + entry)) % 4096;
-                if ((acc + acc) <= entry)
+                if (data[i] >= origin)
                 {
-                    acc = (acc << 3) ^ ((long)readings.Length ^ acc);
-                }
-                else
-                {
-                    acc = (acc + (entry >> 2)) % 65521;
+                    return (long)i;
                 }
             }
-            if (acc < (-42))
-            {
-                acc = acc - acc;
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Measure how many entry format samples are out of range.</summary>
