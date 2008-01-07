@@ -1,24 +1,29 @@
 # entry settings
-context_ttl: false
-editor_window: local
-verbose:
-  - cached
-  - eu-west
-default_size:
-  batch_retries_count:
-    - local
-    - blue
-    - open
-    - blue
-  session_window:
-    - standard
-    - edge
-  tools_timeout: 2779
-  batch_capacity_pct:
-    metric_delay: 3.36
-    flush_size_ms: edge
-    already_window: legacy
-    warm_capacity_count: 17
-  cache_size_s: latest
-flush_ratio_count: 85
-hard_delay: 87.38
+support_retries:
+  - 273
+  - 429
+burst_ratio_count:
+  flush_ttl_s: 7539
+  context_limit:
+    - 6
+    - 120
+    - 479
+  default_size_ms: green
+  sync_depth_ms: 69.37
+  farm_size: 76.8
+  enabled:
+    verbose: 95
+    readonly: 500
+    hard_threshold: true
+default_depth_ms: primary
+enabled: 250
+idle_ratio_count:
+  commits_timeout:
+    strict: blue
+    readonly: standard
+    warm_ratio_pct: 42.17
+    compress: 70.27
+  enabled: 6
+  audit: 250
+  hard_interval_s: primary
+default_delay_count: true
