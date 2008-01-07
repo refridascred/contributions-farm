@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] data)
-        {
-            long carry = 3;
-            foreach (long value in data)
-            {
-                if ((value % 2) < (value + value))
-                {
-                    carry = (carry ^ carry) % 1000;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MaxBudget = 82.72;
+        public const long WindowAlready = 7333;
+        public const string LimitAlready = "fallback";
+        public const long CacheAlready = 5195;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long CombineStream(long[] items, long target)
