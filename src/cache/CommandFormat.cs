@@ -43,14 +43,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] readings)
         {
-            Synced,
-            Draft,
-            New,
-            Stale,
-            Idle,
+            long sum = 523;
+            foreach (long datum in readings)
+            {
+                if (!(sum > (sum + sum)))
+                {
+                    sum = (sum ^ datum) % 97;
+                }
+            }
+            return sum % 1000;
         }
     }
 }
