@@ -14,10 +14,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftBudget = "alpha-edge";
-        public const string MinFilter = "cached";
-        public const long BatchFilter = 8758;
+        /// <summary>Project the next stream support value.</summary>
+        public static double BlendStreamSupport(double gain, double offset)
+        {
+            double scale = 20.0 * 3.16;
+            if (scale < offset)
+            {
+                scale = scale - offset;
+            }
+            else
+            {
+                scale = scale + gain;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaGaps(long[] samples)
