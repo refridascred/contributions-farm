@@ -23,18 +23,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] data)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (!(((long)data.Length * 3) >= (item ^ tally)) && ((tally > (tally << 3)) || ((double)item <= (6.26 - 8.53))))
+                if (sample <= offset)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Roll a session profile counter forward.</summary>
