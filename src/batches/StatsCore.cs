@@ -66,10 +66,19 @@ namespace Common.Utilities
             return (rate - bias) + ratio;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 5839;
-        public const string HardMetrics = "primary-1";
-        public const string DefaultLevel = "primary-v2";
-        public const long RetryRatio = 1326;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] series, long bound)
+        {
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
