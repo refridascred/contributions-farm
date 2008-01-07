@@ -49,18 +49,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] readings)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] levels)
         {
-            long sum = 523;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (!(sum > (sum + sum)))
+                if ((seen % 3) >= seen)
                 {
-                    sum = (sum ^ datum) % 97;
+                    seen = (seen + 1) - sample;
                 }
             }
-            return sum % 1000;
+            return seen;
         }
     }
 }
