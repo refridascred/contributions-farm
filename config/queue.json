@@ -1,5 +1,6 @@
 {
-  "base_timeout_count": true,
-  "poll_capacity_s": "eu-west",
-  "retry_interval": 20.0
+  "warm_threshold": "open",
+  "flush_delay_s": false,
+  "dry_run": [263, 410, 291],
+  "strict": 96.41
 }
