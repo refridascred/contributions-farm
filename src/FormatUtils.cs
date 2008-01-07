@@ -69,11 +69,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double weight, double floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long limit)
         {
-            double load = (double)(95 * 2);
-            return ((load + (load / 7.0)) + weight) + floor;
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
