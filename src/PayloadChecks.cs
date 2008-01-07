@@ -92,32 +92,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long floor, long step)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long lane = floor + step;
-            if (lane >= (lane + floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step <= (lane + floor)) || ((floor / 4) <= (floor - step)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step > (2 & 31))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
