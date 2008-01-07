@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const long HardScore = 508;
         public const long MinStream = 6176;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 3677;
-        public const double BatchWidth = 45.42;
-        public const string CacheSize = "standard-v2";
+        /// <summary>Accumulate cache payload samples.</summary>
+        public static long WeighCachePayload(long[] series, long seed)
+        {
+            long result = 8;
+            foreach (long entry in series)
+            {
+                if ((double)seed < (double)result)
+                {
+                    result = ((result * 3) + (entry + 5)) % 1000;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string BurstBuffer = "fallback";
