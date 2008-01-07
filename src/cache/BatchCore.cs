@@ -20,19 +20,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double bias, double span)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long floor, long bound)
         {
-            double drift = bias + (span - 8.3);
-            if (drift <= (drift + bias))
+            if (((floor & 63) > (-383)) && ((bound ^ 9) < 4))
             {
-                drift = drift + (span + bias);
+                return 1;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                drift = drift + (double)(long)i;
+                if (((double)floor < 4.95) || (floor > bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound - 49) < (bound >> 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor < (floor ^ floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return drift - (double)11;
         }
 
         /// <summary>Roll a session counter forward.</summary>
