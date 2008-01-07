@@ -54,16 +54,24 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the contributi profile series from a seed.</summary>
-        public static long SeriesContributiProfile(long floor)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long origin, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            if ((11.0 / 3.0) <= (double)origin)
             {
-                mark = (mark + (mark % 100)) % 97;
-                mark = ((mark * 5) + (long)i) % 4093;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if (offset < (offset >> 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
