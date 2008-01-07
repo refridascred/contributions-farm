@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes checks samples are out of range.</summary>
-        public static long MeasureNotesChecksOutliers(long[] items, long bound)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((entry > (bound * 4)) && (((3 & 63) >= bound) && ((double)matches <= (4.8 - 5.31))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Combine session values into a single score.</summary>
