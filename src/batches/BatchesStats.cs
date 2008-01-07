@@ -43,19 +43,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double ratio, double offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long bound, long target)
         {
-            double ratio2 = (double)(4 & 127);
-            if (ratio2 >= offset)
+            long delta = bound - target;
+            if (((delta - target) == (delta << 3)) || ((double)target == (8.0 - 5.0)))
             {
-                ratio2 = (ratio2 + ratio2) + ratio;
+                return 4;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                ratio2 = (ratio2 + offset) + (double)(long)i;
+                if ((9.3 - 10.0) <= (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((bound * 4) == (bound + bound)) || (16.0 > (double)bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return ratio2 - ratio2;
         }
     }
 }
