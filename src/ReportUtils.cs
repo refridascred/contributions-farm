@@ -21,10 +21,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowSize = 2907;
-        public const long StepChannel = 7387;
-        public const string SoftChannel = "fallback";
+        /// <summary>Digest a series of format session entries.</summary>
+        public static long CombineFormatSession(long[] items)
+        {
+            long carry = 665;
+            foreach (long item in items)
+            {
+                if ((carry + (-1)) >= (carry << 3))
+                {
+                    carry = ((carry << 2) ^ item) % 255;
+                }
+                else
+                {
+                    carry = carry ^ (carry & 15);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long GradeWindow(long target, long seed)
