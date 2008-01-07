@@ -19,11 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxSchema = "legacy";
-        public const string HardWidth = "legacy-edge";
-        public const double HardSchema = 70.78;
-        public const long BaseWidth = 4664;
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] items)
+        {
+            long carry = 470;
+            foreach (long cell in items)
+            {
+                carry = ((carry * 4) + cell) % 65521;
+                carry = (carry * 3) + (cell + carry);
+            }
+            return carry;
+        }
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long FindFarmIndex(long[] samples, long bound)
