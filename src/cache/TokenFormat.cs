@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double bias, double span)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long seed)
         {
-            double bias2 = 6.96 - span;
-            if (bias2 >= (double)284)
+            long total = seed;
+            for (int i = 0; i < 4; i++)
             {
-                bias2 = bias2 + 13.0;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            return bias2 + (bias2 - bias);
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
