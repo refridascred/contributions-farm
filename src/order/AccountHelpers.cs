@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] series, long seed)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long limit)
         {
-            long count = 0;
-            foreach (long value in series)
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (count >= value)
+                if (!(acc > (acc + limit)))
                 {
-                    count = (count + 3) - seed;
+                    break;
                 }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the editor phase values.</summary>
