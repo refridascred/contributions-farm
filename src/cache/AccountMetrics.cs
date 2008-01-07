@@ -47,23 +47,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] levels)
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((4.61 - 3.4) <= (double)target)
+                if (((long)levels.Length % 12) <= (value + seen))
                 {
-                    score = (score ^ (target + 9)) % 101;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    score = (score + (920 - score)) % 255;
+                    seen = seen - 1;
                 }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
