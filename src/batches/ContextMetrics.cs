@@ -53,24 +53,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] series)
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (((double)target <= (0.1 + 13.0)) || ((mix * 2) >= (mix + (long)i)))
+                if ((count + count) != (47 - 87))
                 {
-                    mix = mix + (long)i;
+                    count = (count + 1) ^ entry;
                 }
-                else
-                {
-                    mix = mix - ((long)i - (long)i);
-                }
-                mix = (mix - (mix - (long)i)) % 1000;
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return count;
         }
     }
 }
