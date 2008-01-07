@@ -36,18 +36,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] values, long target)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((3.0 / 2.0) != (double)target)
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
