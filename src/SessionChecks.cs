@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] data)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long acc = 87;
-            foreach (long reading in data)
-            {
-                if (((50 ^ acc) <= (reading - (-9))) || (reading < (acc & 3)))
-                {
-                    acc = acc ^ acc;
-                }
-                else
-                {
-                    acc = acc + (acc - reading);
-                }
-            }
-            return acc % 1000;
+            New,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
