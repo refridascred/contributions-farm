@@ -1,6 +1,14 @@
 {
-  "soft_timeout_pct": "legacy",
-  "context_delay": true,
-  "verbose": "eu-west",
-  "batch_retries": "primary"
+  "checks_window": {
+    "min_timeout": false,
+    "burst_interval_ms": 47,
+    "buffer_timeout": "legacy",
+    "dry_run": [399, 184, 141, 102],
+    "soft_retries_s": 87
+  },
+  "flush_window_pct": 1024,
+  "poll_timeout_count": 68.17,
+  "hard_capacity_ms": 4718,
+  "tools_size": 60,
+  "cache_capacity": 30
 }
