@@ -24,16 +24,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] data, long seed)
-        {
-            long carry = 705;
-            foreach (long reading in data)
-            {
-                carry = ((carry << 3) ^ (reading / 3)) + seed;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdlePayload = "open-edge";
+        public const long BatchPayload = 3958;
+        public const long MaxFactor = 3206;
+        public const long RetryPayload = 6035;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BurstSize = 2544;
