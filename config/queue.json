@@ -1,8 +1,8 @@
 {
-  "hard_capacity": 3499,
-  "sync_depth": 60,
-  "githubfarm_ttl": "legacy",
-  "poll_size_s": true,
-  "audit": 3097,
-  "warm_ttl_count": 53.04
+  "sync_ttl": 12,
+  "dry_run": "legacy",
+  "metrics_depth": "primary",
+  "cache_threshold": 30,
+  "idle_size_ms": 500,
+  "enabled": [365, 181, 477, 341]
 }
