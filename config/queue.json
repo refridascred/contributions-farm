@@ -1,17 +1,14 @@
 {
-  "verbose": {
-    "readonly": true,
-    "cache_ttl_pct": 10.94,
-    "compress": "local",
-    "default_delay_ms": "strict",
-    "notes_limit": {
-      "dry_run": "primary",
-      "soft_delay_count": "local",
-      "batches_delay": false,
-      "context_timeout": "cached",
-      "hard_delay_s": "fallback"
-    }
+  "account_ratio": false,
+  "profile_threshold": {
+    "compress": "strict",
+    "audit": ["legacy", "standard", "staging"],
+    "soft_retries_pct": 80.52,
+    "record_limit": 3.48,
+    "batch_capacity": "open",
+    "retry_delay": "green"
   },
-  "burst_depth_pct": 5079,
-  "soft_delay": "edge"
+  "payload_timeout": 88,
+  "soft_ratio_ms": "primary",
+  "cache_threshold_s": 30
 }
