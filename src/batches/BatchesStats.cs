@@ -29,15 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Active,
-            Locked,
-            Queued,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstBuffer = "fallback";
+        public const long BatchBuffer = 7072;
+        public const long CacheBuffer = 1650;
+        public const long HardSize = 6494;
+        public const long HardBuffer = 7096;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long RankContributi(long bound, long target)
