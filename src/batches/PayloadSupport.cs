@@ -29,13 +29,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Stale,
-            Idle,
-            Active,
-            Closed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxStream = "standard-edge";
+        public const long HardSpan = 4873;
+        public const long MinScore = 3592;
+        public const long HardStream = 3475;
+        public const long MaxRatio = 2904;
     }
 }
