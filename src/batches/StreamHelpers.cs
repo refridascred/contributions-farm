@@ -71,22 +71,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] levels, long floor)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] levels, long bound)
         {
-            long total = 69;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((entry - total) >= (floor + total)))
+                if (levels[i] > bound)
                 {
-                    total = (total + (floor / 6)) % 1000;
-                }
-                if ((floor * 2) <= entry)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Blend two stats metric measurements.</summary>
