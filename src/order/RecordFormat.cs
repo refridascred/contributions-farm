@@ -13,17 +13,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] levels, long offset)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
