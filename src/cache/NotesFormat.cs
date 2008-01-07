@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long step, long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] series, long offset)
         {
-            if ((target / 2) == (target - target))
+            bool valid = true;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7.72 * 5.2) <= (double)target)
+                if (datum > offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Audit format metric readings against a rule.</summary>
