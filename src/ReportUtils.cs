@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up farm session samples.</summary>
-        public static long MatchFarmSessionCount(long[] series)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((matches << 3) == (matches + matches))
                 {
-                    if ((series[i] + series[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
