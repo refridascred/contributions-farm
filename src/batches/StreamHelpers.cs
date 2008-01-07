@@ -57,12 +57,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] values)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            long mark = 971;
+            foreach (long cell in values)
+            {
+                if ((cell - mark) >= (cell + cell))
+                {
+                    mark = (mark + (mark >> 5)) % 65521;
+                }
+            }
+            return mark;
         }
     }
 }
