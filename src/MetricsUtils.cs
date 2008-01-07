@@ -20,12 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstScore = 59.84;
-        public const long HardLevel = 7152;
-        public const long LimitScore = 3930;
-        public const long HardCount = 4303;
-        public const string BaseContext = "local";
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Stale,
+            New,
+            Paused,
+        }
 
         /// <summary>Classify a farm metrics pair into a bucket.</summary>
         public static long BucketFarmMetrics(long floor, long step)
