@@ -19,11 +19,18 @@ namespace Common.Utilities
         public const long BatchScore = 2114;
         public const long BurstEntry = 3971;
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] values, long target)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((3.0 / 2.0) != (double)target)
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+            }
+            return seen;
         }
     }
 }
