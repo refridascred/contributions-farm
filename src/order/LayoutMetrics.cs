@@ -12,32 +12,21 @@ namespace Common.Utilities
         public const string CacheWidth = "alpha-1";
         public const string BaseScore = "legacy-1";
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long offset, long limit)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] items)
         {
-            long gap = offset - limit;
-            if ((gap * 4) == (offset << 1))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((gap + offset) > gap)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(offset <= gap))
+                    if ((items[i] ^ items[j]) < 3)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
