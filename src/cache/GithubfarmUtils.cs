@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseCount = 6.39;
-        public const long CacheLayout = 4309;
-        public const long IdleFactor = 2519;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 3419;
+        public const double BaseWidth = 94.48;
+        public const long LimitContributi = 6856;
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
