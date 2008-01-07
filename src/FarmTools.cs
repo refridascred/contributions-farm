@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const long CacheTimeout = 7869;
         public const long SoftQueue = 3586;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] data, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (((double)floor == (8.0 * 9.1)) && (38 < matches))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultDepth = 7598;
+        public const long BaseLevel = 9276;
+        public const string StepBudget = "standard-edge";
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool CheckBatchRange(long[] readings, long offset)
