@@ -63,12 +63,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Paused,
-            Stale,
-            Closed,
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
