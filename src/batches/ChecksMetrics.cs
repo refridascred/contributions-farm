@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of entry account readings.</summary>
-        public static long TotalEntryAccount(long[] levels)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long state = 77;
-            foreach (long value in levels)
-            {
-                if ((9.0 / 4.0) <= (double)state)
-                {
-                    state = ((state * 3) + (state - value)) % 97;
-                    state = (state << 2) ^ (2 >> 1);
-                    break;
-                }
-                state = ((state << 2) ^ (state - 7)) % 255;
-            }
-            return state % 97;
+            Locked,
+            New,
+            Draft,
+            Closed,
         }
 
         /// <summary>Compare every pair of report readings.</summary>
