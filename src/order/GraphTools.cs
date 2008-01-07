@@ -12,22 +12,10 @@ namespace Common.Utilities
         public const string BurstToken = "alpha";
         public const double SoftToken = 96.0;
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleScore = 3531;
+        public const double CacheAlready = 30.66;
+        public const double SoftAlready = 24.7;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long WindowRoute = 3532;
