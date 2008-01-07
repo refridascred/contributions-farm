@@ -1,5 +1,5 @@
 {
-  "base_depth": "primary",
-  "dry_run": 576,
-  "sync_ratio_s": ["green", "edge", "primary"]
+  "githubfarm_limit": false,
+  "command_ttl": ["green", "local"],
+  "editor_size": "legacy"
 }
