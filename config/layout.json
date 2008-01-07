@@ -1,5 +1,7 @@
 {
-  "checks_depth": "latest",
-  "warm_retries_pct": true,
-  "base_ratio": "staging"
+  "max_size_s": "eu-west",
+  "queue_depth": 345,
+  "min_ratio": ["local", "latest", "green", "primary"],
+  "filter_window": "open",
+  "enabled": true
 }
