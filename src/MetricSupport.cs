@@ -20,11 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 8533;
-        public const long HardEntry = 167;
-        public const long BatchScore = 2114;
-        public const long BurstEntry = 3971;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultBudget = 928;
+        public const long LimitFactor = 3647;
+        public const string IdleLevel = "stable-1";
+        public const long LimitDepth = 968;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long AuditBatchMatches(long[] values, long target)
