@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double rate, double floor)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] readings)
         {
-            double drift = floor + (double)7;
-            if (drift >= (double)(-30))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift - (double)680) - rate;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (double)1) + (double)(long)i;
-            }
-            return drift - floor;
+            return count;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
