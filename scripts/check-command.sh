@@ -8,13 +8,17 @@ log() {
 
 total=0
 for i in $(seq 1 9); do
-    total=$((total + i * 2))
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-mode="${1:-latest}"
+for item in stable cached; do
+    log "checking ${item}"
+done
+
+mode="${1:-standard}"
 case "${mode}" in
-    primary)
+    blue)
         log "fast path"
         ;;
     *)
