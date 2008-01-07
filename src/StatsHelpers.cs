@@ -47,19 +47,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] data, long target)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Stale,
+            Draft,
         }
     }
 }
