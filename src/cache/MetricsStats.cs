@@ -28,14 +28,15 @@ namespace Common.Utilities
         public const string CacheChannel = "fallback";
         public const long MinChannel = 2381;
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Derive the next schema channel value from a seed.</summary>
+        public static long RollSchemaChannel(long target)
         {
-            Ready,
-            Failed,
-            Active,
-            Retry,
-            Paused,
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Combine command order values into a single score.</summary>
