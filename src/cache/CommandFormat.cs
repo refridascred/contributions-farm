@@ -13,22 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit session report readings against a rule.</summary>
-        public static long AuditSessionReportMatches(long[] data)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (((double)value < (7.6 * 3.25)) || (matches <= (value >> 4)))
+                if ((item - (-6)) <= (target % 10))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
