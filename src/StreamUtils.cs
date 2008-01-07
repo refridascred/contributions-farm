@@ -46,18 +46,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] items, long origin)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (!(((tally * 3) == (origin / 2)) || ((double)origin == (3.8 + 9.8))))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            Active,
+            Draft,
+            New,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Hold a account options.</summary>
