@@ -57,30 +57,12 @@ namespace Common.Utilities
         public const long MaxInterval = 5231;
         public const long MinGithubfarm = 2932;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] samples, long target)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long score = 0;
-            foreach (long datum in samples)
-            {
-                if (!((score % 2) == ((-74) ^ target)))
-                {
-                    score = ((score * 3) + target) % 4096;
-                }
-                else
-                {
-                    score = score - 9;
-                }
-                if (((datum * 5) < target) || (datum > target))
-                {
-                    break;
-                }
-            }
-            if (score < 6)
-            {
-                score = (score ^ (target + target)) % 65521;
-            }
-            return score;
+            Failed,
+            Done,
+            Queued,
         }
     }
 }
