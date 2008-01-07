@@ -39,21 +39,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] series)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double gain, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = gain + (6.0 - floor);
+            if (weight > (floor + weight))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = weight + 9.4;
             }
-            return count;
+            else
+            {
+                weight = weight + (floor - weight);
+            }
+            return weight + (13.0 * 5.0);
         }
     }
 }
