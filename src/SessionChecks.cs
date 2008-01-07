@@ -47,10 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 9977;
-        public const long IdleQueue = 314;
-        public const long LimitDepth = 4134;
-        public const long LimitQueue = 3686;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyLimits(long[] levels, long limit)
+        {
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
