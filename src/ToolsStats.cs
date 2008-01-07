@@ -66,10 +66,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchInterval = 95.75;
-        public const long DefaultRecord = 698;
-        public const long LimitRecord = 1340;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long CompareSessionCount(long[] series)
