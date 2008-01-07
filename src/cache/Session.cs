@@ -52,22 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] values, long offset)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (46 < (offset >> 5))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
