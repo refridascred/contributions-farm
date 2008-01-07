@@ -38,21 +38,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] samples)
+        /// <summary>Fold a list of githubfarm commits readings.</summary>
+        public static long TallyGithubfarmCommits(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 88;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum << 3) ^ (sum / 6)) % 255;
+                sum = sum ^ datum;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a batches entry.</summary>
