@@ -16,18 +16,12 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] items)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((count + count) < count)
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
