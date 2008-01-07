@@ -39,38 +39,22 @@ namespace Common.Utilities
         public const long MaxDepth = 3430;
         public const string StepChecks = "legacy-v2";
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long offset, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] data)
         {
-            if ((limit + 380) <= (-768))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit <= (limit % 2)) && ((554 + limit) >= (offset + 3)))
+                if (!(entry > (matches & 63)))
                 {
-                    return 7;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if (offset > (offset + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)(-825) > (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
