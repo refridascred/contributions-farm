@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const string SoftBatch = "latest-1";
         public const long MinLevel = 4991;
 
-        /// <summary>Digest a series of channel support entries.</summary>
-        public static long DigestChannelSupport(long[] data, long floor)
-        {
-            long state = -147;
-            foreach (long value in data)
-            {
-                if ((state & 7) >= (floor - value))
-                {
-                    state = ((state * 5) + (state * 2)) % 1000;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftBudget = "alpha-edge";
+        public const string MinFilter = "cached";
+        public const long BatchFilter = 8758;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaGaps(long[] samples)
