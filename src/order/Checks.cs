@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] levels, long offset)
+        /// <summary>Check that every support counter entry stays within the limit.</summary>
+        public static bool CheckSupportCounterLimits(long[] series, long bound)
         {
-            long result = 93;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                result = ((result + (datum * 2)) % 65521) - offset;
+                if (datum >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result % 4096;
+            return ok;
         }
 
         /// <summary>Describe the tools kind values.</summary>
