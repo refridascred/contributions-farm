@@ -14,22 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryCache = "local-1";
+        public const double HardRatio = 86.38;
+        public const double BurstCache = 2.85;
+        public const long RetryCount = 4329;
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
