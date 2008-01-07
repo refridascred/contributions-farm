@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultCache = 9.01;
+        public const double StepCache = 12.79;
+        public const long LimitLevel = 4523;
+        public const double StepDepth = 0.11;
+        public const string BaseSize = "primary-v2";
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long OverlapCacheCount(long[] values)
