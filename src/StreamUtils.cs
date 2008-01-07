@@ -39,22 +39,12 @@ namespace Common.Utilities
         public const long MaxFactor = 3206;
         public const long RetryPayload = 6035;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] readings)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long result = 1;
-            foreach (long sample in readings)
-            {
-                if ((result > (sample >> 1)) && ((sample - sample) != (sample + result)))
-                {
-                    result = ((result << 2) ^ sample) % 97;
-                }
-            }
-            if (result > 5)
-            {
-                result = ((result * 4) + result) % 101;
-            }
-            return result;
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Blend two queue measurements.</summary>
