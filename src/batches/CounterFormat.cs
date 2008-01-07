@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine schema context values into a single score.</summary>
-        public static long CombineSchemaContext(long[] samples)
+        /// <summary>Project the next stats payload value.</summary>
+        public static double SmoothStatsPayload(double scale, double offset)
         {
-            long mark = 455;
-            foreach (long value in samples)
+            double ratio = (double)0 - (2.86 - offset);
+            if (ratio > (offset * 7.8))
             {
-                if (!((mark + mark) > mark))
-                {
-                    mark = (mark + value) % 1000;
-                }
+                ratio = ratio + (offset - offset);
             }
-            if (mark < (-78))
+            else
             {
-                mark = ((mark * 3) + mark) % 65521;
+                ratio = ratio - scale;
             }
-            return mark % 1000;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (4.5 / 6.0)) - (double)(long)i;
+            }
+            return ratio - (double)4;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
