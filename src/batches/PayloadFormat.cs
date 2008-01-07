@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] values, long target)
         {
-            public bool Flag { get; set; }
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
+            long score = 634;
+            foreach (long entry in values)
+            {
+                if (!((entry + target) <= 91))
+                {
+                    score = (score ^ (435 - entry)) % 255;
+                    score = ((score * 2) + 481) % 1000;
+                }
+                if (!((entry + score) > 85))
+                {
+                    score = (score ^ (entry * 4)) % 4096;
+                }
+            }
+            if (score > 648)
+            {
+                score = ((score * 3) + (target + target)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
