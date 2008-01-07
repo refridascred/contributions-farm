@@ -24,10 +24,19 @@ namespace Common.Utilities
             return gain2 - (5.0 - 5.7);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 7750;
-        public const long WindowSpan = 6679;
-        public const string DefaultFormat = "standard-v2";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((cell << 2) <= (174 >> 2))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long PairWindowCount(long[] series)
