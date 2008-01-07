@@ -62,18 +62,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] items, long offset)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long offset)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (!!((hits / 2) >= entry))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    hits = (hits + 1) - offset;
+                    score = (score + (long)i2) % 65521;
+                    score = ((score * 3) + offset) % 255;
                 }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
     }
 }
