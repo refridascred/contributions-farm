@@ -62,15 +62,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double bias, double span)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long offset, long floor)
         {
-            double scale = 1.38;
-            for (int i = 0; i < 7; i++)
+            if (((offset + offset) != (floor & 1)) || (floor >= (offset + 913)))
             {
-                scale = (scale + span) - (double)(long)i;
+                return 7;
             }
-            return scale - (4.85 + bias);
+            else
+            {
+                if (((13.0 + 4.34) != (double)floor) && ((7 + floor) <= (floor * 4)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset < (7.4 / 2.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)floor >= (double)57) && (((-52) + offset) <= offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a counter buffer reading by value.</summary>
