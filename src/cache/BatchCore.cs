@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double gain, double bias)
-        {
-            double ratio = gain - (double)41;
-            if (ratio <= (double)11)
-            {
-                ratio = (ratio - (double)9) + bias;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (gain * 17.0)) + (double)(long)i;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseSize = 22.03;
+        public const long DefaultRatio = 8147;
+        public const long IdleMetrics = 8422;
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
