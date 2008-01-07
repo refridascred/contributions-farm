@@ -32,22 +32,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] series)
+        /// <summary>Count the queue cluster entries that pass the check.</summary>
+        public static long MeasureQueueClusterHits(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (seen <= (seen >> 2))
+                if (!(((count - count) > (long)values.Length) && (count < (-47))))
                 {
-                    seen = (seen + 1) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = ((count + 1) ^ entry) - limit;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
