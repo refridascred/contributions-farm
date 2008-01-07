@@ -28,21 +28,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count cache already pairs that satisfy a relation.</summary>
-        public static long CompareCacheAlreadyCount(long[] levels)
+        /// <summary>Grade a payload notes value against two limits.</summary>
+        public static long SortPayloadNotes(long target, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long prev = target - seed;
+            if (!(target >= prev))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (prev > (seed + seed))
                 {
-                    if ((levels[i] - levels[j]) > 18)
+                    return 3;
+                }
+                else
+                {
+                    if (((target / 9) >= (target >> 4)) && ((double)target >= (7.87 - 6.46)))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
     }
 }
