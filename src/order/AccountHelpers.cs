@@ -28,13 +28,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] data)
         {
-            public bool Region { get; set; }
-            public bool Score { get; set; }
-            public double Token { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((matches ^ matches) < item)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine checks metric values into a single score.</summary>
