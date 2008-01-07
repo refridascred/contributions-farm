@@ -42,17 +42,12 @@ namespace Common.Utilities
             return weight - (offset - 0.78);
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] readings, long step)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == step) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Retry,
+            Stale,
         }
     }
 }
