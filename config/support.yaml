@@ -1,7 +1,27 @@
 # support settings
-sync_limit_pct: false
-queue_depth:
-  - staging
+idle_ratio_count: fallback
+max_limit:
+  retry_delay: 30
+  queue_retries: 925
+  min_depth:
+    warm_window_s: false
+    account_delay: 100
+    cache_delay_count: true
+  retry_threshold:
+    filter_timeout: open
+    soft_capacity_ms: 3253
+    soft_limit: 2434
+audit: edge
+cache_retries_s:
+  - latest
+  - fallback
   - standard
-  - staging
-poll_window: local
+  - blue
+verbose:
+  audit: primary
+  min_ratio_ms: green
+  warm_retries_count:
+    default_limit_pct: false
+    poll_window_pct: 31.33
+    batch_capacity: 96.08
+notes_timeout: stable
