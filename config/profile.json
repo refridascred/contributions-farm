@@ -1,7 +1,6 @@
 {
-  "strict": true,
-  "batch_threshold_s": "green",
-  "retry_depth_pct": false,
-  "sync_retries": [428, 87, 318],
-  "enabled": "stable"
+  "tools_size": "blue",
+  "cache_limit": 1024,
+  "verbose": 13.59,
+  "min_timeout_ms": 58
 }
