@@ -1,5 +1,7 @@
 {
-  "poll_window_count": false,
-  "batches_limit": "local",
-  "window_ratio": "fallback"
+  "readonly": 24.61,
+  "command_interval": 100,
+  "max_window_pct": 505,
+  "min_interval": "cached",
+  "cache_retries_count": "fallback"
 }
