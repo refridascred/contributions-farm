@@ -1,15 +1,11 @@
 # entry settings
-already_delay: 76
-min_capacity_ms:
-  - standard
-  - edge
-audit:
-  verbose:
-    - 280
-    - 476
-    - 335
-    - 465
-  persist: standard
-  retry_ttl_s:
-    - 133
-    - 272
+metrics_capacity:
+  tools_retries: 1116
+  stats_ttl: 93.64
+  min_ratio_s: 30
+  sync_window_s: 7530
+readonly:
+  - 33
+  - 61
+  - 423
+buffer_threshold: true
