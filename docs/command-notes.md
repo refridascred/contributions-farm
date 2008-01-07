@@ -1,15 +1,11 @@
 # Command notes
 
-Keep batches and format names short and lowercase.
-Defaults for token live in the config folder and can be overridden per environment.
-
-Use token settings to tune how often record data is refreshed.
-Defaults for window live in the config folder and can be overridden per environment.
-Keep graph and account names short and lowercase.
+Use command settings to tune how often stats data is refreshed.
+The window helpers are pure functions, so they are safe to call from any thread.
+Keep session and command names short and lowercase.
 
 ## Guidelines
 
-- Validate profile input early
-- Prefer report defaults
-- Keep channel values small
-- Log every already change
+- Document new editor fields
+- Prefer order defaults
+- Review support limits each release
