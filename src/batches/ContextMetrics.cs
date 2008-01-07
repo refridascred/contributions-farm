@@ -47,31 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long step, long limit)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            if (limit <= (limit - 946))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step + step) == (limit ^ limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((limit - limit) < 9) || (step <= (limit & 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Draft,
+            Idle,
+            Pending,
         }
     }
 }
