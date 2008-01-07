@@ -57,14 +57,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long target)
         {
-            Synced,
-            Stale,
-            Dropped,
-            Retry,
-            Paused,
+            long score = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((4.61 - 3.4) <= (double)target)
+                {
+                    score = (score ^ (target + 9)) % 101;
+                }
+                else
+                {
+                    score = (score + (920 - score)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Locate a support stream reading by value.</summary>
