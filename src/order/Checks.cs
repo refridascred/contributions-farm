@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double ratio, double floor)
+        /// <summary>Measure how many notes checks samples are out of range.</summary>
+        public static long MeasureNotesChecksOutliers(long[] items, long bound)
         {
-            double mean = 8.67;
-            return ((mean + (double)(-3)) + ratio) + floor;
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((entry > (bound * 4)) && (((3 & 63) >= bound) && ((double)matches <= (4.8 - 5.31))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine session values into a single score.</summary>
