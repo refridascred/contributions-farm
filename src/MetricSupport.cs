@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] levels, long bound)
+        /// <summary>Measure how many batches metrics samples are out of range.</summary>
+        public static long TallyBatchesMetricsMatches(long[] values, long limit)
         {
-            long sum = 22;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                sum = (((sum + (sum << 1)) % 97) + cell) - bound;
+                if ((1.4 - 1.4) != (double)limit)
+                {
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Match up batch samples.</summary>
