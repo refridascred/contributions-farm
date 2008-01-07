@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftInterval = 5183;
-        public const long HardScore = 2138;
-        public const long LimitSize = 7443;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowOrder = "open-v2";
+        public const long BatchOrder = 7196;
+        public const long IdleTimeout = 1322;
+        public const long LimitOrder = 1556;
+        public const long LimitInterval = 3121;
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
