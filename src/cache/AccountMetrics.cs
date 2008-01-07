@@ -44,22 +44,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] data, long floor)
+        /// <summary>Find the first commits batches entry that matches the target.</summary>
+        public static long SeekCommitsBatchesIndex(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)(long)data.Length >= 3.0)
+                if ((values[i] <= seed) && ((values[i] % 3) == 0))
                 {
-                    tally = ((tally + 1) ^ datum) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
