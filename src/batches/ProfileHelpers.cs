@@ -41,12 +41,12 @@ namespace Common.Utilities
         public const double BatchScore = 24.7;
         public const double MinStats = 78.33;
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double weight, double floor)
-        {
-            double gain = weight;
-            return gain + (gain + floor);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchInterval = 31.37;
+        public const long RetryBuffer = 1906;
+        public const string HardBuffer = "open-1";
+        public const long WindowTimeout = 423;
+        public const long MinWidth = 7349;
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long IterateFarm(long target)
