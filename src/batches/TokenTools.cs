@@ -28,18 +28,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] series)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)matches <= (4.22 / 7.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 1) ^ cell;
+                    if ((levels[i] - levels[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
