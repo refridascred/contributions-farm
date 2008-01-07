@@ -26,14 +26,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Classify a graph payload pair into a bucket.</summary>
+        public static long ClassifyGraphPayload(long floor, long origin)
         {
-            New,
-            Draft,
-            Ready,
-            Dropped,
-            Stale,
+            long edge = floor + origin;
+            if ((origin ^ origin) >= (floor + origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((edge + 192) != (edge + origin)) && (1.49 >= (double)origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor < 767)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a profile cluster pair into a bucket.</summary>
