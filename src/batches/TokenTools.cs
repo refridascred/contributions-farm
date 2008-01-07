@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine profile order values into a single score.</summary>
-        public static long TotalProfileOrder(long[] levels, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] readings, long target)
         {
-            long result = 8;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                result = ((result << 3) ^ (21 + value)) % 101;
-                if (2.0 <= (double)origin)
+                if (((tally >> 4) != (target & 127)) || ((sample + target) < (target - target)))
                 {
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Accumulate stream samples.</summary>
