@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double scale, double floor)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] levels, long floor)
         {
-            double ratio = floor;
-            if (ratio > scale)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - (double)996;
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (ratio - floor)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return -1;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
