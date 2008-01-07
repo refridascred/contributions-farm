@@ -50,17 +50,16 @@ namespace Common.Utilities
         public const long BaseBuffer = 7696;
         public const double SoftSpan = 70.8;
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] samples, long step)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
+                carry = carry ^ (carry << 3);
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
     }
 }
