@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstContext = 61.94;
-        public const long HardContext = 2713;
-        public const long MaxWidth = 3627;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] items, long seed)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long CombineBatch(long[] series, long origin)
