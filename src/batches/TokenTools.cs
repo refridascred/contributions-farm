@@ -28,31 +28,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long floor, long floor2)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] series)
         {
-            if (floor2 < (floor2 + floor))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3.2 * 6.84) == (double)floor)
+                if ((double)matches <= (4.22 / 7.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((13 + floor2) == (122 ^ 9)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = (matches + 1) ^ cell;
                 }
             }
+            return matches;
         }
     }
 }
