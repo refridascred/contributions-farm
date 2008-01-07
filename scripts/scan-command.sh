@@ -6,12 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
+COMMAND_LIMIT=270
+log "limit is ${COMMAND_LIMIT}"
+
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in strict legacy; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
