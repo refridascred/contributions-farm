@@ -36,19 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] values, long floor)
+        /// <summary>Iterate the route contributi series from a seed.</summary>
+        public static long IterateRouteContributi(long seed)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (value != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
