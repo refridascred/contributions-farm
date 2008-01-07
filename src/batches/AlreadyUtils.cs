@@ -14,21 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] values)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Dropped,
+            Active,
+            Closed,
+            Retry,
         }
 
         /// <summary>Describe the notes status values.</summary>
