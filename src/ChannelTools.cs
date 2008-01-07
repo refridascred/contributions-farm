@@ -33,17 +33,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a githubfarm payload sample.</summary>
-        public static long LocateGithubfarmPayloadIndex(long[] values, long floor)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
