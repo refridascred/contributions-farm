@@ -56,15 +56,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm queue readings.</summary>
-        public static long WeighGithubfarmQueue(long[] levels, long floor)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] series, long target)
         {
-            long result = -2;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long entry in series)
             {
-                result = (((result - 836) % 1000) - item) - floor;
+                if (entry >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
     }
 }
