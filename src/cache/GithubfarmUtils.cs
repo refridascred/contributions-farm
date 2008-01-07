@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheQueue = 15.62;
-        public const long MaxLevel = 6215;
-        public const long LimitQueue = 6238;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long offset, long floor)
+        {
+            if (!(7.53 <= (double)offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor + floor) >= floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset < 3.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long PairChecksCount(long[] levels)
