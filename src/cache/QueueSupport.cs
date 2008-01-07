@@ -26,36 +26,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] samples, long floor)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] levels, long step)
         {
-            long total = 17;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((total - floor) <= (total * 3))
+                if ((levels[i] == step) && ((levels[i] % 2) == 0))
                 {
-                    break;
-                }
-                if ((entry - floor) <= total)
-                {
-                    long cur = total;
-                    total = (total + (cur - 12)) % 1000;
-                    continue;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (entry - 578)) % 101;
-                }
-                if (!((double)floor != (7.2 + 5.9)))
-                {
-                    total = (total - (683 / 9)) % 1000;
+                    return (long)i;
                 }
             }
-            if (total > 6)
-            {
-                total = total ^ 0;
-            }
-            return total % 65521;
+            return -1;
         }
     }
 }
