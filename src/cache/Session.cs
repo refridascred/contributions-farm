@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a graph batches counter forward.</summary>
-        public static long RollGraphBatches(long floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
+            long total = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((double)386 > (double)floor))
-                {
-                    state = (state ^ 9) % 4096;
-                    break;
-                }
-                else
-                {
-                    state = (state ^ floor) % 255;
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                total = total - origin;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Digest a series of cache entry entries.</summary>
