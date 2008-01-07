@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-cached}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in stable standard edge; do
+for item in cached standard fallback; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=373
-log "limit is ${RECORD_LIMIT}"
