@@ -62,15 +62,21 @@ namespace Common.Utilities
         public const string HardSpan = "alpha-edge";
         public const long LimitSize = 7483;
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double weight, double bias)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] items)
         {
-            double bias2 = weight;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = (bias2 + (double)(long)i) - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias2 + (double)119;
+            return matches;
         }
     }
 }
