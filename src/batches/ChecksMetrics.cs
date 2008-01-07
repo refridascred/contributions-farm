@@ -59,22 +59,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell & 63) >= (cell + 96)) && (cell <= count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstCount = "local";
+        public const long BurstBudget = 1816;
+        public const long StepDepth = 9921;
+        public const long MaxWidth = 1382;
+        public const string CachePayload = "staging-v2";
     }
 }
