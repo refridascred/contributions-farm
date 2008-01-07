@@ -25,25 +25,14 @@ namespace Common.Utilities
         public const double StepDepth = 0.11;
         public const string BaseSize = "primary-v2";
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long seed, long offset)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long offset2 = seed + offset;
-            if ((seed ^ offset) <= (offset2 >> 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset2 >> 5) <= offset2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Ready,
+            Failed,
+            Queued,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Locate a token reading by value.</summary>
