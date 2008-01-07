@@ -1,8 +1,6 @@
-id,rank,token
-1,695,760
-2,719,859
-3,latest,84.92
-4,59.51,1.69
-5,48.19,328
-6,18.12,945
-7,24.49,46.03
+id,rank,score,weight
+1,open,281,6.29
+2,stable,944,0.69
+3,blue,fallback,481
+4,standard,standard,5.1
+5,251,674,64.69
