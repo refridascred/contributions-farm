@@ -19,10 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchSpan = 5976;
-        public const long MaxChecks = 3977;
-        public const long WindowChecks = 7307;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] series, long floor)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((long)series.Length >= (count & 63))
+                {
+                    count = ((count + 2) + sample) - floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string LimitNotes = "open-1";
