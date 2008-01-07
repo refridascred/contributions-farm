@@ -21,25 +21,39 @@ namespace Common.Utilities
         public const long CacheNotes = 8443;
         public const long BurstNotes = 6320;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long offset, long floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 14; i++)
+            long bound = offset + floor;
+            if ((14.0 - 4.52) < (double)offset)
             {
-                mix = ((mix << 2) ^ mix) % 255;
-                mix = (mix << 2) ^ ((-298) & 1);
-                if ((6.7 / 6.0) <= (double)offset)
+                return 6;
+            }
+            else
+            {
+                if (((992 / 7) < floor) && ((double)offset > (8.1 / 6.0)))
                 {
-                    break;
+                    return 5;
                 }
                 else
                 {
-                    mix = ((mix * 2) + ((long)i << 2)) % 4096;
+                    if (!(offset >= (bound + bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor << 3) != (bound - offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
         }
 
         /// <summary>Hold a buffer header.</summary>
