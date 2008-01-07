@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] readings, long step)
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
+            long mark = -776;
+            foreach (long value in readings)
+            {
+                if ((mark <= (value - step)) || (value >= (mark ^ mark)))
+                {
+                    mark = ((mark << 2) ^ (step + mark)) % 101;
+                }
+                if ((double)value >= (0.72 + 4.0))
+                {
+                    break;
+                }
+            }
+            if (mark > 28)
+            {
+                mark = mark + (step ^ mark);
+            }
+            return mark;
         }
 
         /// <summary>Describe the tools kind values.</summary>
