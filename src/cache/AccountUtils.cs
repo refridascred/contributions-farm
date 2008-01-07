@@ -5,26 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] readings)
+        /// <summary>Iterate the entry token series from a seed.</summary>
+        public static long SeriesEntryToken(long origin)
         {
-            long total = 963;
-            foreach (long cell in readings)
+            long score = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((cell << 1) < total)
+                score = (score - (84 - score)) % 101;
+                if (((origin / 9) == (origin >> 2)) && (((long)i + score) == (score + (long)i)))
                 {
-                    total = (total << 2) ^ (cell - cell);
+                    score = (score - (score - score)) % 255;
                 }
-                else
-                {
-                    total = (total ^ (total + total)) % 97;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            if (total > 22)
-            {
-                total = (total + ((long)readings.Length % 100)) % 4096;
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
