@@ -37,31 +37,18 @@ namespace Common.Utilities
         public const long BaseWidth = 398;
         public const string SoftGraph = "local-1";
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long floor, long limit)
+        /// <summary>Audit metric entry readings against a rule.</summary>
+        public static long MeasureMetricEntryGaps(long[] values, long step)
         {
-            if ((floor + limit) >= (floor * 5))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit != (double)floor)
+                if ((matches & 255) != (step ^ 639))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor << 3) < floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = (matches + 1) + datum;
                 }
             }
+            return matches;
         }
     }
 }
