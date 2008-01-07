@@ -32,19 +32,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] readings, long limit)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Locate a channel reading by value.</summary>
