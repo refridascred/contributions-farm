@@ -40,19 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double weight, double floor)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            double gain = floor;
-            if (gain <= (gain - 9.42))
-            {
-                gain = (gain - (gain - gain)) - weight;
-            }
-            else
-            {
-                gain = gain + floor;
-            }
-            return gain - (9.0 / 9.0);
+            public bool Region { get; set; }
+            public double Owner { get; set; }
+            public long Total { get; set; }
         }
     }
 }
