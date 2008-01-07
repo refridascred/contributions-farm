@@ -23,39 +23,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long origin, long seed)
+        /// <summary>Derive the next window format value from a seed.</summary>
+        public static long SeriesWindowFormat(long origin)
         {
-            long delta = origin + seed;
-            if ((origin * 3) < delta)
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((709 + seed) == (delta / 6))
+                if (((long)i << 3) >= (origin + origin))
                 {
-                    return 1;
+                    carry = ((carry * 3) + (carry - carry)) % 255;
+                    carry = carry - 79;
                 }
-                else
-                {
-                    if (((delta + delta) >= (749 - delta)) && ((seed / 6) != (0 & 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((delta < origin) || ((delta * 2) < 237))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                carry = ((carry * 3) + (origin ^ carry)) % 97;
+                carry = ((carry * 4) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
