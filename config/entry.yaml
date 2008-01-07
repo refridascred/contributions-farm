@@ -1,5 +1,5 @@
 # entry settings
-persist: 82.07
-default_ttl_ms: local
-enabled: green
-retry_window: false
+retry_timeout_pct: open
+readonly: edge
+already_capacity: 5292
+enabled: 18
