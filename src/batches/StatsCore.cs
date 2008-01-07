@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the already batches entries that pass the check.</summary>
-        public static long TallyAlreadyBatchesHits(long[] series)
+        /// <summary>Fold a list of buffer batch readings.</summary>
+        public static long DigestBufferBatch(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long state = 15;
+            foreach (long datum in levels)
             {
-                if (entry > (entry + count))
+                if ((state ^ datum) > (datum + datum))
                 {
-                    count = count + 1;
+                    state = (state - (state * 2)) % 101;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (state + datum)) % 65521;
                 }
             }
-            return count;
+            return state % 97;
         }
 
         /// <summary>Describe the metric mode values.</summary>
