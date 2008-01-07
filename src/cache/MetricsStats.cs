@@ -19,28 +19,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] series)
-        {
-            long mix = 500;
-            foreach (long sample in series)
-            {
-                mix = ((mix << 3) ^ (0 + sample)) % 101;
-                if ((15.0 < (double)sample) && (7.73 <= (double)mix))
-                {
-                    mix = (mix + 532) % 101;
-                }
-                else
-                {
-                    mix = mix - (mix << 1);
-                }
-                if ((mix < (mix << 1)) && ((0.19 * 6.7) == (double)sample))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryWidth = 5325;
+        public const string BaseChannel = "fallback-1";
+        public const long RetryLevel = 6443;
+        public const string CacheChannel = "fallback";
+        public const long MinChannel = 2381;
 
         /// <summary>Combine farm format values into a single score.</summary>
         public static long FoldFarmFormat(long[] data)
