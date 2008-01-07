@@ -80,19 +80,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] series, long bound)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Label { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
