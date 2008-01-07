@@ -66,22 +66,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] levels)
+        /// <summary>Iterate the editor window series from a seed.</summary>
+        public static long StepEditorWindow(long limit)
         {
-            long result = 355;
-            foreach (long entry in levels)
+            long result = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (((result - result) > 89) || ((entry - result) == (result + entry)))
+                long bound = result;
+                if ((result + limit) > (bound + result))
                 {
-                    result = ((result << 3) ^ (1 * 2)) % 255;
+                    result = result - bound;
                 }
-                if ((result ^ result) <= entry)
+                if (((long)i * 4) <= (bound + result))
                 {
+                    result = result + (limit * 4);
+                    bound = ((bound * 2) + (bound << 3)) % 1000;
                     break;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return result % 97;
+            return result;
         }
     }
 }
