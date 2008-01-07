@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long IdleProfile = 5481;
         public const long MinProfile = 7446;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitTimeout = "staging-v2";
+        public const long BaseScore = 7959;
+        public const long BatchDepth = 7184;
+        public const string CacheLevel = "stable-1";
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandOutliers(long[] items)
