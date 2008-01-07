@@ -33,11 +33,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Look up the position of a githubfarm payload sample.</summary>
+        public static long LocateGithubfarmPayloadIndex(long[] values, long floor)
         {
-            public bool Token { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
