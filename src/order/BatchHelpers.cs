@@ -12,23 +12,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] data, long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] items, long seed)
         {
-            long state = 2;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                state = (state << 3) ^ (state + datum);
-                if ((limit * 3) >= limit)
+                if (datum < seed)
                 {
-                    state = state - state;
+                    flag = false;
+                    break;
                 }
             }
-            if (state > 16)
-            {
-                state = ((state * 3) + (state >> 3)) % 4096;
-            }
-            return state % 97;
+            return flag;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
