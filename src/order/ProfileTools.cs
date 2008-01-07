@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] readings, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] levels, long step)
         {
             long seen = 0;
-            foreach (long datum in readings)
+            foreach (long reading in levels)
             {
-                if ((datum - datum) > (datum + datum))
+                if ((seen * 5) > (seen / 3))
                 {
-                    seen = (seen + 2) + step;
+                    seen = ((seen + 3) + reading) + step;
                 }
             }
             return seen;
