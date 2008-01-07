@@ -42,18 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch payload readings.</summary>
-        public static long TallyBatchPayload(long[] levels)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] levels)
         {
-            long carry = 94;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((8.2 + 10.0) == (double)carry)
+                if ((value << 3) == (value - hits))
                 {
-                    carry = ((carry - (carry << 3)) % 97) + entry;
+                    hits = hits + 3;
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
