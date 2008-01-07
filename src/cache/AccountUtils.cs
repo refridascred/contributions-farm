@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long limit)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] data, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((mark + (long)i) == (limit / 6))
+                if (cell <= offset)
                 {
-                    mark = mark + limit;
-                    continue;
+                    ok = false;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
