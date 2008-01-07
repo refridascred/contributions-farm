@@ -23,22 +23,39 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the buffer entry entries that pass the check.</summary>
-        public static long AuditBufferEntryMatches(long[] items, long origin)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long origin, long seed)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long delta = origin + seed;
+            if ((origin * 3) < delta)
             {
-                if (entry >= (54 & 15))
+                return 3;
+            }
+            else
+            {
+                if ((709 + seed) == (delta / 6))
                 {
-                    count = (count + 3) + origin;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((delta + delta) >= (749 - delta)) && ((seed / 6) != (0 & 1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((delta < origin) || ((delta * 2) < 237))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next queue metrics value from a seed.</summary>
