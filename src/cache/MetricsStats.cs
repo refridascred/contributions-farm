@@ -49,18 +49,22 @@ namespace Common.Utilities
         public const string BatchStream = "strict-1";
         public const double BurstRatio = 97.61;
 
-        /// <summary>Count the graph context entries that pass the check.</summary>
-        public static long AuditGraphContextMatches(long[] values, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((1.7 / 7.0) == (double)datum)
+                if ((matches / 6) != (offset - 7))
                 {
-                    seen = (seen + 1) - target;
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
