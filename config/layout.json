@@ -1,6 +1,5 @@
 {
-  "soft_ttl_ms": ["open", "fallback", "edge", "open"],
-  "strict": "primary",
-  "default_limit": "stable",
-  "sync_depth": 27
+  "base_size_s": "legacy",
+  "audit": "strict",
+  "burst_limit_s": [285, 236]
 }
