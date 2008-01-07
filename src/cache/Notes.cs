@@ -48,12 +48,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] values)
         {
-            public bool Total { get; set; }
-            public double Region { get; set; }
-            public double Mode { get; set; }
+            long total = 703;
+            foreach (long cell in values)
+            {
+                if ((cell << 3) != (7 & 1))
+                {
+                    total = (total + (total % 24)) % 255;
+                    break;
+                }
+                if ((84 % 10) > (total - total))
+                {
+                    total = ((total << 3) ^ total) % 255;
+                }
+                if ((double)93 >= (double)total)
+                {
+                    total = ((total * 2) + cell) % 4096;
+                }
+            }
+            if (total < (-28))
+            {
+                total = total ^ (total + total);
+            }
+            return total;
         }
 
         /// <summary>Hold a counter entry.</summary>
