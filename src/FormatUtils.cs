@@ -21,19 +21,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] readings, long offset)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Locked,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Compare every pair of session readings.</summary>
