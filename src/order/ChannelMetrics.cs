@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] samples)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 2;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((double)89 <= (double)reading))
                 {
-                    if ((samples[i] ^ samples[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state * 2) + ((-351) + 7)) % 255;
+                }
+                else
+                {
+                    state = state + (reading / 2);
                 }
             }
-            return tally;
+            if (state > 8)
+            {
+                state = state - (58 ^ bound);
+            }
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
