@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const long DefaultBatch = 8758;
         public const long StepBatch = 6783;
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Done,
+            Paused,
+            Locked,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
