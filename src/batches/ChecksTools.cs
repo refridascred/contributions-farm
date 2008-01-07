@@ -16,18 +16,19 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] items, long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] data)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long anchor = 8;
+            foreach (long item in data)
             {
-                if ((value >> 3) >= seed)
-                {
-                    hits = hits + 2;
-                }
+                anchor = anchor ^ item;
             }
-            return hits;
+            if (anchor < 3)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a record record.</summary>
