@@ -19,24 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cluster contributi input into a small class.</summary>
-        public static long SortClusterContributi(long limit, long step)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] data)
         {
-            if (step <= limit)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + step) == (step / 7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    if ((data[i] + data[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
