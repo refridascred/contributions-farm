@@ -1,7 +1,9 @@
 # githubfarm settings
-hard_depth_pct: 82
-enabled: 39.9
-persist: 1020
-stats_retries:
-  - 138
-  - 476
+hard_capacity_ms: 2553
+verbose:
+  - 456
+  - 398
+cache_limit_ms: green
+default_depth_count: standard
+max_retries_count: 81
+compress: false
