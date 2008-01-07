@@ -13,13 +13,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Synced,
-            New,
-            Idle,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 1185;
+        public const long RetryContributi = 9783;
+        public const long DefaultTimeout = 3297;
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long GradeWindow(long offset, long origin)
