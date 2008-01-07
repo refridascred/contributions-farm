@@ -84,11 +84,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleInterval = 5291;
-        public const string HardMetrics = "strict";
-        public const string LimitFactor = "cached-v2";
-        public const long SoftBudget = 4622;
-        public const long MaxMetrics = 7414;
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
