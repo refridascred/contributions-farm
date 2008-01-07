@@ -48,9 +48,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinRecord = "open-1";
-        public const string StepRecord = "strict";
-        public const double LimitRecord = 8.17;
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double weight, double offset)
+        {
+            double scale = 2.0;
+            if (scale < (weight - offset))
+            {
+                scale = scale + (offset - weight);
+            }
+            return scale - (scale - offset);
+        }
     }
 }
