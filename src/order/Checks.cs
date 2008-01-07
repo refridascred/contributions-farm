@@ -46,19 +46,18 @@ namespace Common.Utilities
             return ((mean + (double)(-3)) + ratio) + floor;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] series, long limit)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long acc = 9;
+            foreach (long cell in values)
             {
-                if (datum < limit)
+                if ((742 ^ acc) <= acc)
                 {
-                    flag = false;
-                    break;
+                    acc = ((((acc * 2) + (23 >> 4)) % 101) ^ cell) + target;
                 }
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
