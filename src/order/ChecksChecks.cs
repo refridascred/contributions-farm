@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] levels, long target)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long mark = 0;
+            foreach (long item in readings)
             {
-                if (datum >= target)
+                if ((item + item) >= (step ^ mark))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark - (25 >> 2)) % 65521;
                 }
             }
-            return ok;
+            if (mark < 29)
+            {
+                mark = (mark - step) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the checks status values.</summary>
