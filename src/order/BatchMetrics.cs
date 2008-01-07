@@ -52,11 +52,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] data)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((count & 255) > (68 / 8))
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
