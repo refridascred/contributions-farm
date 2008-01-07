@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseTimeout = "latest-1";
-        public const long HardScore = 6348;
-        public const long BatchFarm = 8268;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] readings, long step)
+        {
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double StepCommits = 11.17;
