@@ -45,12 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Iterate the metric stats series from a seed.</summary>
+        public static long RollMetricStats(long origin)
         {
-            Draft,
-            Idle,
-            Pending,
+            long mark = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
