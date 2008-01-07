@@ -23,14 +23,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            Pending,
-            Locked,
-            Failed,
-            Paused,
-            Idle,
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
