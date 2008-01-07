@@ -1,16 +1,5 @@
 # entry settings
-cache_interval_pct:
-  schema_threshold: 24.06
-  enabled: 2725
-  audit: 73.77
-  stats_size: 419
-  payload_limit: staging
-  batch_retries_ms: 31.65
-strict: 56
-idle_capacity:
-  - cached
-  - stable
-  - stable
-  - blue
-session_delay: 36
-counter_ratio: 30
+persist: 82.07
+default_ttl_ms: local
+enabled: green
+retry_window: false
