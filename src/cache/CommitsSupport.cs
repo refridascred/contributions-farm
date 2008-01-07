@@ -66,19 +66,13 @@ namespace Common.Utilities
         public const long MinRecord = 6811;
         public const long BurstRecord = 4236;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] data, long step)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Synced,
+            Locked,
+            Dropped,
         }
     }
 }
