@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const string SoftBatch = "latest-1";
         public const long MinLevel = 4991;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public long Size { get; set; }
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
+            Pending,
+            Stale,
+            Idle,
         }
 
         /// <summary>Roll a stats counter forward.</summary>
