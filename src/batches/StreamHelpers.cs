@@ -26,19 +26,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate tools report readings against a bound.</summary>
-        public static bool ValidateToolsReportLimits(long[] series, long target)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long target)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long sum = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell > target)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum << 2) ^ ((long)i * 2)) % 1000;
+                sum = (sum + ((long)i * 5)) % 97;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Match up layout stream samples.</summary>
