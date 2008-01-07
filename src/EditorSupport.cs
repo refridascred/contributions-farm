@@ -10,14 +10,13 @@ namespace Common.Utilities
         public const long DefaultNotes = 7101;
         public const long StepFactor = 8725;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Queued,
-            Stale,
-            New,
-            Draft,
+            Dropped,
             Paused,
+            Active,
+            Locked,
         }
 
         /// <summary>Describe the layout kind values.</summary>
