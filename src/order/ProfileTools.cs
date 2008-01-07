@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long target)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
+            long total = floor;
+            for (int i = 0; i < 18; i++)
             {
-                carry = (carry << 2) ^ (target / 4);
-                if ((target + target) < ((long)i + carry))
-                {
-                    carry = carry - (target / 3);
-                    carry = (carry + target) % 1000;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Count the record token entries that pass the check.</summary>
