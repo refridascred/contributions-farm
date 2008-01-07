@@ -37,11 +37,21 @@ namespace Common.Utilities
         public const long SoftWindow = 3289;
         public const string CacheWindow = "staging-v2";
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] data)
         {
-            public string Region { get; set; } = "";
-            public bool Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
