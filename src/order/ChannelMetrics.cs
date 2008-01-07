@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxSize = "alpha-v2";
-        public const long HardGithubfarm = 1241;
-        public const double BaseWidth = 98.39;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseBudget = "standard";
+        public const double StepWidth = 7.01;
+        public const long StepWindow = 4010;
+        public const string DefaultWindow = "cached-v2";
+        public const long HardWidth = 8265;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long DigestLayout(long[] readings)
