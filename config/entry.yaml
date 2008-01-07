@@ -1,19 +1,29 @@
 # entry settings
-cluster_delay: primary
-window_delay:
-  - edge
-  - stable
-  - legacy
-readonly:
-  order_size: 84.19
-  poll_ratio_pct:
-    - 118
-    - 358
-    - 455
-  sync_timeout:
-    - primary
-    - staging
+compress:
+  entry_limit:
+    persist: open
+    batch_ttl: 100
+    already_limit: false
+    poll_retries_pct:
+      - 337
+      - 435
+      - 145
+      - 250
+    filter_size: 3788
+    burst_delay: cached
+  sync_size: fallback
+  persist: 9643
+soft_size:
+  - 62
+  - 360
+  - 480
+  - 419
+persist:
+  schema_threshold:
     - green
-    - strict
-  max_retries: edge
-  readonly: false
+    - local
+  session_delay: 4312
+  cache_limit_ms: 89.02
+  enabled: 23
+metric_capacity: false
+retry_limit: 12.33
