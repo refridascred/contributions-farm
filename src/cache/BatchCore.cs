@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] series, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] items)
         {
-            long result = 1;
-            foreach (long item in series)
+            long anchor = 240;
+            foreach (long reading in items)
             {
-                result = (((result << 3) ^ (result % 97)) + item) - floor;
+                if ((double)reading <= (6.4 * 6.5))
+                {
+                    anchor = (anchor + (anchor - reading)) % 97;
+                }
             }
-            if (result < 187)
-            {
-                result = ((result * 3) + (result / 5)) % 1000;
-            }
-            return result;
+            return anchor;
         }
 
         /// <summary>Hold a report header.</summary>
