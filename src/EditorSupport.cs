@@ -35,17 +35,32 @@ namespace Common.Utilities
             return scale - (0.1 - ratio);
         }
 
-        /// <summary>Locate a record report reading by value.</summary>
-        public static long FindRecordReportIndex(long[] readings, long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long offset, long offset2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long diff = offset + offset2;
+            if ((13 + diff) >= (offset + 54))
             {
-                if (readings[i] > bound)
+                return 1;
+            }
+            else
+            {
+                if ((double)offset2 >= (double)offset)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((diff > (diff >> 1)) && ((offset / 9) < (offset + diff)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
