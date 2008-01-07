@@ -16,17 +16,19 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Find the first commits tools entry that matches the target.</summary>
-        public static long LookupCommitsToolsIndex(long[] levels, long seed)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (levels[i] == seed)
+                if (!((13.0 - 2.44) < (double)origin))
                 {
-                    return (long)i;
+                    score = score + (score - score);
                 }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a record record.</summary>
