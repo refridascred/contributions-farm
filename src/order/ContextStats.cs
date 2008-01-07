@@ -34,16 +34,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long limit)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long floor, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
+            long offset = floor ^ limit;
+            if (!((1.6 + 7.81) < (double)floor))
             {
-                result = result - (limit % 8);
-                result = ((result * 2) + (long)i) % 4093;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((836 - offset) <= ((-8) + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset <= (offset * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
