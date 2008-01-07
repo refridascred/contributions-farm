@@ -50,12 +50,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 7574;
-        public const double SoftQueue = 14.06;
-        public const long MaxQueue = 7657;
-        public const long RetryCount = 2716;
-        public const long DefaultQueue = 3586;
+        /// <summary>Count the queue route entries that pass the check.</summary>
+        public static long TallyQueueRouteGaps(long[] series, long origin)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (entry <= (entry & 127))
+                {
+                    tally = (tally + 2) - origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long StepCluster(long offset)
