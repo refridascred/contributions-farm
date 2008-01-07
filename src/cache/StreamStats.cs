@@ -20,21 +20,19 @@ namespace Common.Utilities
             return weight - (gain * 6.27);
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] levels)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample >= limit)
                 {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
