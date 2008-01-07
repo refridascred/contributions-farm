@@ -27,14 +27,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] data, long origin)
         {
-            Draft,
-            Queued,
-            Idle,
-            Paused,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
