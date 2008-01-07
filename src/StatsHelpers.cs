@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two batches profile measurements.</summary>
-        public static double AdjustBatchesProfile(double ratio, double bias)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            double scale = bias;
-            if (scale >= (double)(-33))
-            {
-                scale = (scale - (3.6 / 3.0)) + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (0.39 / 8.0)) - (double)(long)i;
-            }
-            return scale - (bias * 19.0);
+            Retry,
+            Locked,
+            Paused,
+            Draft,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
