@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Count the already batches entries that pass the check.</summary>
+        public static long TallyAlreadyBatchesHits(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if (entry > (entry + count))
+                {
+                    count = count + 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the metric mode values.</summary>
