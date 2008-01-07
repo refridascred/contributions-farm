@@ -16,21 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of githubfarm queue readings.</summary>
-        public static long OverlapGithubfarmQueueCount(long[] items)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading < step)
                 {
-                    if ((items[i] + items[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Iterate the already queue series from a seed.</summary>
