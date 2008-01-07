@@ -41,17 +41,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a entry githubfarm sample.</summary>
-        public static long LookupEntryGithubfarmIndex(long[] values, long origin)
+        /// <summary>Match up layout stream samples.</summary>
+        public static long MatchLayoutStreamCount(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] < origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a notes options.</summary>
