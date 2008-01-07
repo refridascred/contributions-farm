@@ -48,15 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] samples, long bound)
+        /// <summary>Validate githubfarm cluster readings against a bound.</summary>
+        public static bool GuardGithubfarmClusterLimits(long[] samples, long bound)
         {
-            long state = 84;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                state = ((((state * 5) + (47 * 5)) % 255) ^ value) + bound;
+                if (reading != bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state % 4096;
+            return stale;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
