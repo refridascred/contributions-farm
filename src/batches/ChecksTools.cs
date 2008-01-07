@@ -42,11 +42,18 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 6682;
-        public const string WindowSize = "open";
-        public const double BurstLevel = 7.46;
-        public const string StepDepth = "standard-edge";
-        public const string WindowCount = "latest-1";
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((11.0 + 3.0) < (double)seen)
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
+        }
     }
 }
