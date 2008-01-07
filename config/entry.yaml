@@ -1,5 +1,4 @@
 # entry settings
-min_retries: true
-min_interval: true
-verbose: legacy
-batches_window: false
+channel_size: 30
+poll_retries_count: 250
+verbose: open
