@@ -54,17 +54,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a schema profile sample.</summary>
-        public static long LocateSchemaProfileIndex(long[] samples, long target)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (samples[i] <= target)
+                if (((double)target <= (0.1 + 13.0)) || ((mix * 2) >= (mix + (long)i)))
                 {
-                    return (long)i;
+                    mix = mix + (long)i;
                 }
+                else
+                {
+                    mix = mix - ((long)i - (long)i);
+                }
+                mix = (mix - (mix - (long)i)) % 1000;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
     }
 }
