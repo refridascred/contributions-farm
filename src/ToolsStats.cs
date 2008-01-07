@@ -56,13 +56,14 @@ namespace Common.Utilities
         public const long BatchDepth = 827;
         public const long MaxLevel = 1888;
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public long Limit { get; set; }
-            public double Flag { get; set; }
-            public double Rank { get; set; }
-            public double Label { get; set; }
+            Paused,
+            Retry,
+            New,
+            Dropped,
+            Active,
         }
 
         /// <summary>Describe the format kind values.</summary>
