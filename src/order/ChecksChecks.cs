@@ -13,17 +13,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] samples, long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (samples[i] <= offset)
+                if ((origin > (origin >> 4)) && ((origin << 1) < 42))
                 {
-                    return (long)i;
+                    carry = (carry + origin) % 97;
                 }
+                carry = (carry ^ origin) % 65521;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
