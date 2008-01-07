@@ -13,18 +13,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count account counter pairs that satisfy a relation.</summary>
-        public static long PairAccountCounterCount(long[] readings)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] readings)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (seen <= (seen + seen))
                 {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + entry;
                 }
             }
             return seen;
