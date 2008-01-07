@@ -39,15 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token stats counter forward.</summary>
-        public static long DeriveTokenStats(long limit)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] samples, long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Count the queue route entries that pass the check.</summary>
