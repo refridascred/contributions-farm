@@ -1,9 +1,8 @@
 # entry settings
-profile_timeout: 59
-idle_interval: true
-burst_delay_pct:
-  - 132
-  - 431
-warm_limit_pct: staging
-batch_window_count: blue
-flush_window_ms: strict
+retry_depth_pct: primary
+dry_run: 11
+cache_window_ms: 87
+enabled:
+  - stable
+  - cached
+  - local
