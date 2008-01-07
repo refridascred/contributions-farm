@@ -32,11 +32,20 @@ namespace Common.Utilities
         public const double MinTimeout = 17.5;
         public const long MinCount = 5283;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 7054;
-        public const long DefaultLayout = 3145;
-        public const double StepWidth = 28.29;
-        public const string MaxLayout = "latest";
-        public const double CacheCount = 9.79;
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((17.0 * 16.0) != (double)carry))
+                {
+                    carry = ((carry << 3) ^ (origin * 5)) % 101;
+                }
+                carry = carry - (carry - carry);
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
+        }
     }
 }
