@@ -1,15 +1,15 @@
 # Command notes
 
-The context report groups every layout by session.
-The window helpers are pure functions, so they are safe to call from any thread.
-Run the layout check before changing any profile limits.
+The editor helpers are pure functions, so they are safe to call from any thread.
+Run the command check before changing any token limits.
+When a editor fails, the entry handler retries a few times before giving up.
 
-A stream that stays idle for too long is moved to the entry list.
-The stats module keeps report values in sync with the stats cache.
-Each command is validated before it reaches the tools queue.
+Run the cluster check before changing any farm limits.
+Each format is validated before it reaches the buffer queue.
+Keep schema and profile names short and lowercase.
 
 ## Guidelines
 
-- Document new batches fields
-- Keep queue values small
-- Log every githubfarm change
+- Keep record values small
+- Validate session input early
+- Prefer metric defaults
