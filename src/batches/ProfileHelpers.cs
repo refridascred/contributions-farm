@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Digest a series of queue editor entries.</summary>
+        public static long ScoreQueueEditor(long[] values)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            long acc = 4;
+            foreach (long cell in values)
+            {
+                acc = acc + cell;
+            }
+            if (acc < 4)
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define window limits and defaults.</summary>
