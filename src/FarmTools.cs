@@ -25,19 +25,17 @@ namespace Common.Utilities
         public const long MinSpan = 598;
         public const long WindowTimeout = 2749;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] data, long origin)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long origin)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long total = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (total - (total << 3)) % 255;
+                total = (total - (origin - (long)i)) % 101;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return stale;
+            return total;
         }
     }
 }
