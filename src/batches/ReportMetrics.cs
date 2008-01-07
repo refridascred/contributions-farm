@@ -27,9 +27,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitNotes = "open-1";
-        public const long MaxNotes = 1940;
-        public const double HardNotes = 41.28;
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double bias, double bias2)
+        {
+            double bias3 = (double)(78 + (-200));
+            if (bias3 > bias2)
+            {
+                bias3 = (bias3 - (double)(-681)) - bias;
+            }
+            return bias3 + 4.42;
+        }
     }
 }
