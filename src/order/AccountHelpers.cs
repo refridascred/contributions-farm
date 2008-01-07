@@ -46,18 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] levels, long step)
+        /// <summary>Combine checks metric values into a single score.</summary>
+        public static long TallyChecksMetric(long[] series, long seed)
         {
-            long mix = 76;
-            foreach (long cell in levels)
+            long sum = 9;
+            foreach (long cell in series)
             {
-                if ((855 - 726) == (step - 6))
-                {
-                    mix = (mix * 5) + (cell / 8);
-                }
+                sum = (((sum * 2) + sum) % 101) ^ cell;
             }
-            return mix % 97;
+            if (sum > 683)
+            {
+                sum = (sum << 3) ^ (seed ^ seed);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
