@@ -45,17 +45,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] series, long limit)
+        /// <summary>Digest a series of already stats entries.</summary>
+        public static long FoldAlreadyStats(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 607;
+            foreach (long value in series)
             {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
+                score = (score + 7) % 65521;
+                score = ((score << 3) ^ (value % 100)) % 4096;
+                score = ((score << 3) ^ (score % 12)) % 1000;
             }
-            return -1;
+            return score;
         }
     }
 }
