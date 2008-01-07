@@ -76,22 +76,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] levels)
+        /// <summary>Adjust a report cache reading.</summary>
+        public static double AdjustReportCache(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            double bias2 = (double)698 - (gain + gain);
+            if (bias2 < (0.17 + bias))
             {
-                if (tally > (tally ^ entry))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias2 = bias2 + (bias + bias2);
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + gain) + (double)(long)i;
+            }
+            return bias2 + bias2;
         }
     }
 }
