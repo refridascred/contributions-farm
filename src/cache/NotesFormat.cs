@@ -14,15 +14,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Derive the next stream notes value from a seed.</summary>
-        public static long SeriesStreamNotes(long seed)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
