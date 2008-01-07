@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many entry window samples are out of range.</summary>
-        public static long TallyEntryWindowHits(long[] values)
+        /// <summary>Look up the position of a metric schema sample.</summary>
+        public static long LookupMetricSchemaIndex(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((341 - value) >= (86 % 8))
+                if ((series[i] == seed) && ((series[i] % 3) != 0))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
