@@ -20,15 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the queue commits series from a seed.</summary>
-        public static long IterateQueueCommits(long origin)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] data)
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
