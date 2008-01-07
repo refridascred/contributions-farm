@@ -40,20 +40,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the editor cache series from a seed.</summary>
-        public static long DeriveEditorCache(long origin)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = (state + ((long)i >> 5)) % 101;
-                    state = ((state * 4) + (origin - (long)i2)) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Derive the next format order value from a seed.</summary>
