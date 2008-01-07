@@ -27,15 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] samples)
         {
-            long mix = 86;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                mix = (mix ^ (275 + 706)) ^ cell;
+                if ((double)0 != (double)count)
+                {
+                    count = (count + 1) + entry;
+                }
             }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Project the next layout value.</summary>
