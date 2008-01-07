@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] readings)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long target, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!((double)target < (19.0 / 3.0)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((5.71 > (double)bound) || ((bound >> 5) != (bound + 56)))
                 {
-                    if ((readings[i] + readings[j]) > 6)
+                    return 5;
+                }
+                else
+                {
+                    if (550 <= target)
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate stream samples.</summary>
