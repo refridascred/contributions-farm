@@ -22,13 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Pending,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSpan = "cached";
+        public const long BaseSupport = 782;
+        public const long IdleSize = 6302;
+        public const long MinWidth = 6807;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long FoldGraph(long[] series, long offset)
