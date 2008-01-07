@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] samples)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double drift = 5.0 - (scale - scale);
+            for (int i = 0; i < 6; i++)
             {
-                if ((cell * 2) == (cell - tally))
-                {
-                    tally = tally + 2;
-                }
+                drift = (drift - bias) + (double)(long)i;
             }
-            return tally;
+            return drift + (double)4;
         }
 
         /// <summary>Hold a already record.</summary>
