@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Digest a series of already order entries.</summary>
+        public static long TotalAlreadyOrder(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long state = 95;
+            foreach (long reading in levels)
+            {
+                if (!((reading - state) <= (reading >> 2)))
+                {
+                    state = (state - (51 - 66)) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
