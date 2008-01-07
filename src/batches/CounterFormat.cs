@@ -25,13 +25,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] values, long origin)
         {
-            Closed,
-            Pending,
-            Failed,
-            New,
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
