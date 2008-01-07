@@ -46,21 +46,31 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] data)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long floor, long floor2)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((0.45 > (double)floor) && ((floor2 << 3) <= (9 + 651)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((double)floor >= (7.78 + 6.0)) && (((-667) + floor) == (floor2 ^ 58)))
                 {
-                    if ((data[i] ^ data[j]) > 2)
+                    return 1;
+                }
+                else
+                {
+                    if ((floor2 & 127) != (7 + floor))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next context queue value.</summary>
