@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 8114;
-        public const string RetryFormat = "latest";
-        public const long HardSpan = 7578;
-        public const long MinFormat = 5323;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] items, long bound)
+        {
+            long total = 788;
+            foreach (long item in items)
+            {
+                if ((item & 63) > bound)
+                {
+                    total = total ^ bound;
+                }
+            }
+            if (total < 132)
+            {
+                total = ((total << 2) ^ total) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long OverlapContributiCount(long[] items)
