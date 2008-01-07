@@ -29,11 +29,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
+            Stale,
+            Idle,
+            Active,
+            Closed,
         }
     }
 }
