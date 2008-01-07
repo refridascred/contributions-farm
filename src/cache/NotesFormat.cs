@@ -25,14 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] samples, long step)
         {
-            Closed,
-            Pending,
-            Stale,
-            Dropped,
-            Queued,
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
