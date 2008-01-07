@@ -66,18 +66,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] values)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count - datum) != (count + 5))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Stale,
+            Queued,
+            Ready,
+            Active,
         }
     }
 }
