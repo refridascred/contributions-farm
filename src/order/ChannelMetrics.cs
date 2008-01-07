@@ -27,12 +27,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxBatches = 6.83;
-        public const double RetryBatches = 13.9;
-        public const long CacheBatches = 4144;
-        public const string StepFactor = "latest-edge";
-        public const long RetryWidth = 4875;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BaseCache = 63.08;
