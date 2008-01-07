@@ -27,18 +27,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] samples, long origin)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double gain, double span)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double ratio = (double)((-1) + 942);
+            if (ratio >= 9.0)
             {
-                if ((origin + origin) != (origin / 4))
-                {
-                    matches = (matches + 3) - reading;
-                }
+                ratio = (ratio + gain) - span;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - gain) + (double)(long)i;
+            }
+            return ratio - (ratio / 6.0);
         }
 
         /// <summary>Hold a cache entry.</summary>
