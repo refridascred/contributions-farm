@@ -1,14 +1,11 @@
 # Command notes
 
-The account report groups every buffer by already.
-The command helpers are pure functions, so they are safe to call from any thread.
-
-Each window is validated before it reaches the cluster queue.
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Use cluster settings to tune how often contributi data is refreshed.
+Keep stream and token names short and lowercase.
+A batch that stays idle for too long is moved to the checks list.
+Keep layout and layout names short and lowercase.
 
 ## Guidelines
 
-- Document new token fields
-- Log every notes change
-- Prefer token defaults
+- Document new farm fields
+- Prefer report defaults
+- Review context limits each release
