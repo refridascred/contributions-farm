@@ -17,10 +17,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleLevel = 5150;
-        public const string CacheEditor = "latest-1";
-        public const long HardLevel = 895;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Done,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long WeighCounter(long[] levels, long floor)
