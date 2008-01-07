@@ -67,18 +67,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of counter payload entries.</summary>
-        public static long TotalCounterPayload(long[] series, long origin)
+        /// <summary>Locate a support stream reading by value.</summary>
+        public static long LocateSupportStreamIndex(long[] readings, long seed)
         {
-            long acc = 566;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((datum + datum) <= acc) && ((origin + 68) <= origin))
+                if (readings[i] == seed)
                 {
-                    acc = (acc ^ (acc + datum)) % 101;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
