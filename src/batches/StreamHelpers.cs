@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowFactor = 77.95;
-        public const string WindowSpan = "standard-v2";
-        public const long BaseLevel = 1286;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 4717;
+        public const long BatchToken = 522;
+        public const string RetryInterval = "open-v2";
+        public const string WindowFactor = "open-1";
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool ValidateQueueRange(long[] readings, long offset)
