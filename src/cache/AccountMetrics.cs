@@ -16,21 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up filter channel samples.</summary>
-        public static long MatchFilterChannelCount(long[] readings)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Synced,
+            Paused,
         }
 
         /// <summary>Iterate the stats buffer series from a seed.</summary>
