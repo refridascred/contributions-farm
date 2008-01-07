@@ -1,22 +1,5 @@
 {
-  "strict": {
-    "format_retries": {
-      "stats_threshold": false,
-      "base_threshold_s": "green",
-      "default_delay_count": "stable",
-      "default_size_s": 100
-    },
-    "strict": ["edge", "cached"],
-    "min_ratio_ms": false,
-    "burst_timeout": 3517
-  },
-  "metric_depth": false,
-  "buffer_window": {
-    "cache_interval": 60,
-    "persist": "strict",
-    "poll_size_s": false,
-    "batch_ratio": 5147,
-    "compress": "eu-west"
-  },
-  "hard_size_count": false
+  "base_timeout_count": true,
+  "poll_capacity_s": "eu-west",
+  "retry_interval": 20.0
 }
