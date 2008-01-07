@@ -1,5 +1,5 @@
 {
-  "graph_depth": [64, 421, 193],
-  "batch_size_ms": false,
-  "flush_size": "cached"
+  "base_ttl_count": 9653,
+  "min_capacity_s": 48.84,
+  "audit": false
 }
