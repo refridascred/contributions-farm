@@ -26,23 +26,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((790 << 2) >= (seen - item))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryDepth = 5460;
+        public const double SoftScore = 48.87;
+        public const string SoftReport = "local";
 
         /// <summary>Audit entry schema readings against a rule.</summary>
         public static long TallyEntrySchemaMatches(long[] series)
