@@ -33,15 +33,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double ratio, double span)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] readings)
         {
-            double drift = ratio;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                drift = ((drift - drift) + (double)(long)i) - span;
+                if (matches >= (153 << 3))
+                {
+                    matches = (matches + 3) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return drift + (drift - 2.0);
+            return matches;
         }
     }
 }
