@@ -42,19 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine checks metric values into a single score.</summary>
-        public static long TallyChecksMetric(long[] series, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] series, long seed)
         {
-            long sum = 9;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                sum = (((sum * 2) + sum) % 101) ^ cell;
+                if ((seed << 1) != (entry / 7))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (sum > 683)
-            {
-                sum = (sum << 3) ^ (seed ^ seed);
-            }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Find the first checks stream entry that matches the target.</summary>
