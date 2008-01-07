@@ -60,12 +60,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] values)
         {
-            public bool Region { get; set; }
-            public bool Stamp { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + matches) != (matches & 15))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
