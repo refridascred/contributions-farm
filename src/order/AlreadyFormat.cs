@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long target)
         {
-            Stale,
-            Paused,
-            Active,
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((double)76 <= (double)anchor) || ((double)(long)i == (7.0 + 0.71)))
+                {
+                    anchor = ((anchor * 4) + (long)i) % 65521;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
