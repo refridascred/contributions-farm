@@ -40,19 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] items)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] data, long seed)
         {
-            long mark = -427;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                mark = (mark - (cell * 3)) % 97;
-                if ((double)cell > (8.0 + 6.2))
+                if ((cell / 6) <= matches)
                 {
-                    break;
+                    matches = (matches + 1) + seed;
                 }
             }
-            return mark;
+            return matches;
         }
     }
 }
