@@ -1,11 +1,12 @@
 # Command notes
 
-When a cache fails, the farm handler retries a few times before giving up.
-A channel that stays idle for too long is moved to the route list.
+The counter report groups every token by contributi.
+The metrics report groups every counter by checks.
+The counter module keeps contributi values in sync with the editor cache.
 
 ## Guidelines
 
-- Document new notes fields
-- Validate order input early
-- Keep token values small
-- Prefer record defaults
+- Document new stream fields
+- Validate entry input early
+- Log every buffer change
+- Keep account values small
