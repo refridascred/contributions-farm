@@ -75,19 +75,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] levels, long offset)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double rate, double span)
         {
-            bool found = true;
-            foreach (long value in levels)
+            double gain = (span / 7.0) + (span + span);
+            if (gain < (double)18)
             {
-                if (value < offset)
-                {
-                    found = false;
-                    break;
-                }
+                gain = (gain - (gain * 18.0)) + rate;
             }
-            return found;
+            return gain + (double)79;
         }
     }
 }
