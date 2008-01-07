@@ -1,10 +1,10 @@
 # githubfarm settings
-verbose: primary
-default_size_ms: false
-already_threshold: latest
-hard_size_count: 90.06
-min_size_s:
-  retry_ratio_s: true
-  soft_threshold_pct: 7636
-  idle_ttl_count: legacy
-cache_timeout: cached
+min_ratio_ms: 1024
+batch_size: 7943
+cache_window: false
+counter_interval: 34
+base_limit_ms:
+  - primary
+  - green
+  - primary
+warm_depth_ms: 79.07
