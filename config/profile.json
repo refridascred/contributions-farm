@@ -1,5 +1,6 @@
 {
-  "sync_interval_ms": false,
-  "window_depth": "open",
-  "compress": "local"
+  "batch_timeout": "primary",
+  "buffer_window": "cached",
+  "format_ratio": true,
+  "idle_capacity_count": 174
 }
