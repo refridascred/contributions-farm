@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the entry token series from a seed.</summary>
-        public static long SeriesEntryToken(long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] values)
         {
-            long score = origin;
-            for (int i = 0; i < 8; i++)
+            long total = 493;
+            foreach (long entry in values)
             {
-                score = (score - (84 - score)) % 101;
-                if (((origin / 9) == (origin >> 2)) && (((long)i + score) == (score + (long)i)))
+                if ((4.05 / 3.0) < (double)total)
                 {
-                    score = (score - (score - score)) % 255;
+                    total = (total + (entry / 8)) % 97;
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
