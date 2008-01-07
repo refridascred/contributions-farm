@@ -22,22 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Count stats session pairs that satisfy a relation.</summary>
+        public static long CompareStatsSessionCount(long[] items)
         {
-            long sum = 4;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((4.5 / 9.0) == (double)sum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = ((sum << 2) ^ (185 % 97)) % 4096;
-                }
-                else
-                {
-                    sum = (sum - (sum + item)) % 65521;
+                    if ((items[i] ^ items[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
