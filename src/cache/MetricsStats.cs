@@ -52,19 +52,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue route entries that pass the check.</summary>
-        public static long TallyQueueRouteGaps(long[] series, long origin)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (entry <= (entry & 127))
-                {
-                    tally = (tally + 2) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardFactor = 837;
+        public const string BatchStream = "strict-1";
+        public const double BurstRatio = 97.61;
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long StepCluster(long offset)
