@@ -1,9 +1,5 @@
 {
-  "flush_ttl_pct": {
-    "flush_ratio": [411, 327, 21, 253],
-    "max_depth_pct": "open",
-    "idle_capacity_s": "eu-west"
-  },
-  "idle_timeout_s": false,
-  "idle_timeout_pct": "primary"
+  "cache_delay_ms": 5177,
+  "window_ratio": 60,
+  "warm_interval": true
 }
