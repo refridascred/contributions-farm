@@ -59,25 +59,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long floor, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] series, long origin)
         {
-            long edge = floor ^ step;
-            if ((edge + floor) >= edge)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step >> 5) >= (floor * 4))
+                if (((origin + 188) != (4 + datum)) && (((datum ^ matches) >= (737 / 7)) && (((long)series.Length << 1) < (matches % 7))))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
