@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Look up the position of a metrics layout sample.</summary>
+        public static long SeekMetricsLayoutIndex(long[] values, long bound)
         {
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine metric token values into a single score.</summary>
