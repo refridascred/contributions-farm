@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long offset)
+        /// <summary>Accumulate route token samples.</summary>
+        public static long DigestRouteToken(long[] data, long seed)
         {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
+            long result = -555;
+            foreach (long reading in data)
             {
-                double ratio = (7.7 - 3.0) - (double)state;
-                state = ((state << 2) ^ 2) % 97;
-                if (10.0 >= ratio)
+                if ((22 % 2) != (seed - result))
                 {
-                    state = state - state;
-                    continue;
+                    result = (((result * 2) + result) % 255) - reading;
                 }
-                else
-                {
-                    state = ((state << 3) ^ 5) % 101;
-                }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return result % 65521;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
