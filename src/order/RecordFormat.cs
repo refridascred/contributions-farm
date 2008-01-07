@@ -19,40 +19,12 @@ namespace Common.Utilities
         public const long WindowRoute = 1762;
         public const long WindowSize = 5317;
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long floor, long bound)
-        {
-            long gap = floor - bound;
-            if ((gap & 31) > (gap - floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((7.55 / 9.0) < (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (gap > (floor + gap))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound > (bound >> 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseAlready = "staging";
+        public const string StepAlready = "legacy-edge";
+        public const string RetryScore = "staging";
+        public const string StepInterval = "fallback-1";
+        public const long IdleBudget = 5861;
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
