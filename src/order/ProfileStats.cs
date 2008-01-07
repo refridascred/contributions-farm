@@ -62,11 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 1799;
-        public const long BaseStream = 6591;
-        public const long StepRatio = 7269;
-        public const long RetryStream = 783;
-        public const long BurstTimeout = 8566;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinSize = 6964;
+        public const string BaseRecord = "local-v2";
+        public const long MaxTimeout = 7044;
+        public const long BatchBudget = 9330;
     }
 }
