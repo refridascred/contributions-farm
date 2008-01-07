@@ -51,19 +51,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)target >= (18.0 - 1.0))
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstRatio = 5756;
+        public const double MinTimeout = 17.5;
+        public const long MinCount = 5283;
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
