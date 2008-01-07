@@ -30,25 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long bound, long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] data, long origin)
         {
-            long next = bound + step;
-            if ((19.0 > (double)next) && (next < (step >> 4)))
+            long score = -37;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)next == (double)(-4))
+                if ((score < (origin + origin)) || ((score - item) == (origin ^ score)))
                 {
-                    return 3;
+                    score = score - (26 * 4);
                 }
                 else
                 {
-                    return 5;
+                    score = ((score * 2) + (-9)) % 1000;
                 }
             }
+            return score;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
