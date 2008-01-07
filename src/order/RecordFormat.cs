@@ -65,17 +65,12 @@ namespace Common.Utilities
             return weight + (double)65;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] samples)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long total = 7;
-            foreach (long reading in samples)
-            {
-                total = total ^ (total - reading);
-                total = (total - (reading ^ total)) % 4096;
-                total = (total ^ (total - reading)) % 97;
-            }
-            return total;
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
