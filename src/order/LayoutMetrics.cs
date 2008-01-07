@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] values)
-        {
-            long anchor = 9;
-            foreach (long item in values)
-            {
-                if (!(anchor >= (item & 7)))
-                {
-                    anchor = (anchor - (item + item)) % 255;
-                    anchor = (anchor * 3) + (item ^ item);
-                }
-                if (((double)anchor != (double)item) || ((item & 31) < item))
-                {
-                    anchor = anchor ^ (56 / 9);
-                }
-            }
-            if (anchor < 6)
-            {
-                anchor = (anchor + 76) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchCluster = 52.96;
+        public const double WindowCluster = 17.88;
+        public const long SoftCluster = 8225;
+        public const long LimitCluster = 7420;
+        public const long IdleSpan = 690;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double SmoothFarm(double weight, double span)
