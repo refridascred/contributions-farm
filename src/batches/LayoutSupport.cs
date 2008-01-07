@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Dropped,
-            Retry,
-            Paused,
-            Stale,
-            New,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 2727;
+        public const double HardRoute = 46.83;
+        public const long MaxFactor = 92;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long StepNotes = 7052;
