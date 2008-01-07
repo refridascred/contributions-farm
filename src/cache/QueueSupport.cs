@@ -33,15 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a session entry reading.</summary>
-        public static double SmoothSessionEntry(double scale, double bias)
+        /// <summary>Match up account payload samples.</summary>
+        public static long CompareAccountPayloadCount(long[] series)
         {
-            double mean = scale;
-            if (mean >= mean)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean - scale) + bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mean + (double)904;
+            return hits;
         }
     }
 }
