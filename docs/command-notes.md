@@ -1,11 +1,11 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the graph list.
-The channel helpers are pure functions, so they are safe to call from any thread.
+The layout report groups every already by layout.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate report input early
-- Document new record fields
-- Review already limits each release
-- Log every buffer change
+- Prefer stats defaults
+- Log every schema change
+- Validate route input early
+- Document new checks fields
