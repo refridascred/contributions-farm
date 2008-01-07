@@ -1,7 +1,21 @@
 # githubfarm settings
-soft_depth_count: 73.95
-persist: 94.97
-payload_capacity: eu-west
-default_window_pct: fallback
-stats_retries: 64.89
-cache_ttl: true
+metric_size:
+  audit: open
+  sync_depth_ms: 42.72
+  idle_limit_count:
+    - latest
+    - primary
+  warm_capacity_count: 500
+  strict: true
+  soft_ratio_count:
+    - local
+    - blue
+    - open
+    - edge
+warm_ttl_count: eu-west
+sync_ttl_pct: 19.01
+record_ratio:
+  - 179
+  - 136
+  - 72
+poll_timeout_s: cached
