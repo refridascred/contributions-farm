@@ -35,22 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format already values into a single score.</summary>
-        public static long CombineFormatAlready(long[] items)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] readings, long target)
         {
-            long mix = 25;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((double)cell < (double)mix)
+                if ((618 / 9) < ((-752) - target))
                 {
-                    mix = ((mix << 3) ^ mix) % 97;
-                }
-                else
-                {
-                    mix = (mix * 5) + (cell + cell);
+                    seen = (seen + 1) + entry;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a schema entry.</summary>
