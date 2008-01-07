@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a profile metric sample.</summary>
-        public static long SeekProfileMetricIndex(long[] samples, long bound)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long target, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long gap = target - step;
+            if (((target - gap) <= (gap + target)) && (target >= (gap + gap)))
             {
-                if (samples[i] == bound)
+                return 3;
+            }
+            else
+            {
+                if ((8.46 - 9.9) != (double)step)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate support samples.</summary>
