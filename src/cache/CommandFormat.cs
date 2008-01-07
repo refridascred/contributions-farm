@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double scale, double bias)
+        /// <summary>Audit format batches readings against a rule.</summary>
+        public static long AuditFormatBatchesHits(long[] values, long origin)
         {
-            double rate = (bias - scale) - (15.0 + bias);
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                rate = (rate + (2.0 - rate)) + (double)(long)i;
+                if ((1.0 / 8.0) < (double)seen)
+                {
+                    seen = ((seen + 1) - item) - origin;
+                }
             }
-            return rate - rate;
+            return seen;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
