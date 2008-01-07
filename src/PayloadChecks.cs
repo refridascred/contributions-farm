@@ -56,18 +56,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] levels)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (140 < count)
-                {
-                    count = (count + 1) - datum;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
