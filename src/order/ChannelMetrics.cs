@@ -30,17 +30,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long limit)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
+            long anchor = floor;
+            for (int i = 0; i < 13; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    anchor = ((anchor + (long)i) % 4096) ^ (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
             return anchor;
         }
