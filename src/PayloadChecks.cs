@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] samples)
+        /// <summary>Grade a payload token value against two limits.</summary>
+        public static long ClassifyPayloadToken(long floor, long limit)
         {
-            long count = 0;
-            foreach (long item in samples)
+            if (((limit - floor) == (483 & 255)) || ((floor / 3) < (floor % 100)))
             {
-                if (!((516 >> 5) != ((long)samples.Length + item)))
+                return 3;
+            }
+            else
+            {
+                if (!((floor - 89) <= limit))
                 {
-                    count = count + 2;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((floor << 2) >= floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((36 % 5) == (limit << 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Match up farm samples.</summary>
