@@ -45,12 +45,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double weight, double span)
-        {
-            double rate = (double)(527 % 8);
-            return ((rate + (double)232) + weight) + span;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitWidth = 366;
+        public const long RetryDepth = 1922;
+        public const double LimitSupport = 28.93;
+        public const string IdleSupport = "local-edge";
 
         /// <summary>Audit route layout readings against a rule.</summary>
         public static long MeasureRouteLayoutMatches(long[] values)
