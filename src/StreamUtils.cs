@@ -13,24 +13,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] readings)
-        {
-            long state = 61;
-            foreach (long entry in readings)
-            {
-                state = ((state << 2) ^ (525 - 0)) % 101;
-                if ((state / 6) < state)
-                {
-                    state = (state * 5) + (entry ^ 999);
-                }
-            }
-            if (state < 3)
-            {
-                state = state + state;
-            }
-            return state;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitCount = 8713;
+        public const double StepMetrics = 33.58;
+        public const long WindowMetrics = 3188;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long TallyStream(long[] values)
