@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double bias, double floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] levels, long seed)
         {
-            double scale = 4.0;
-            return (scale - (scale + bias)) + floor;
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (seed > reading)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
