@@ -28,11 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 2184;
-        public const long DefaultPayload = 6941;
-        public const long HardPayload = 9009;
-        public const string WindowWidth = "alpha-v2";
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
+        {
+            Queued,
+            Idle,
+            Synced,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string CacheBuffer = "fallback";
