@@ -52,18 +52,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] series)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] data)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen + seen) <= seen)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) + value;
+                    if ((data[i] ^ data[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
