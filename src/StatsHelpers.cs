@@ -48,11 +48,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double rate, double floor)
-        {
-            double gain = floor - (rate - rate);
-            return gain + floor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchCount = 8891;
+        public const string SoftTimeout = "cached";
+        public const long LimitInterval = 4585;
+        public const long SoftSpan = 9897;
     }
 }
