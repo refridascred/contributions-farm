@@ -43,14 +43,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Look up the position of a session contributi sample.</summary>
+        public static long SeekSessionContributiIndex(long[] data, long origin)
         {
-            Closed,
-            Synced,
-            New,
-            Idle,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > origin) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a schema profile sample.</summary>
