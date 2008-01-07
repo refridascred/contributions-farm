@@ -39,9 +39,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitSize = 4979;
-        public const double CacheFarm = 21.41;
-        public const double RetryFarm = 40.35;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] series)
+        {
+            long carry = 21;
+            foreach (long datum in series)
+            {
+                if (51 < (137 + carry))
+                {
+                    long prev = datum;
+                    carry = (carry ^ (prev * 5)) % 101;
+                }
+                if ((0 > carry) || ((double)carry > (6.73 + 9.65)))
+                {
+                    carry = carry + (carry ^ datum);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (datum / 2);
+                }
+            }
+            if (carry < 88)
+            {
+                carry = (carry << 3) ^ (732 % 60);
+            }
+            return carry;
+        }
     }
 }
