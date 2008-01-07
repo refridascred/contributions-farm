@@ -26,19 +26,22 @@ namespace Common.Utilities
         public const double BurstCommits = 79.93;
         public const long CacheWidth = 2533;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] readings)
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (13.0 >= (double)result)
+                if ((double)entry <= (0.7 * 0.21))
                 {
-                    result = (result * 5) + (limit + limit);
+                    seen = seen + 3;
                 }
-                result = ((result * 3) + (long)i) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
