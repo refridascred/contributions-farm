@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowFactor = 77.95;
+        public const string WindowSpan = "standard-v2";
+        public const long BaseLevel = 1286;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool ValidateQueueRange(long[] readings, long offset)
