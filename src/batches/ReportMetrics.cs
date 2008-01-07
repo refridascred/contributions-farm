@@ -19,22 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchSpan = 5976;
+        public const long MaxChecks = 3977;
+        public const long WindowChecks = 7307;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string LimitNotes = "open-1";
