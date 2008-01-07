@@ -36,22 +36,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the channel graph entries that pass the check.</summary>
-        public static long MeasureChannelGraphGaps(long[] data)
+        /// <summary>Compare every pair of githubfarm token readings.</summary>
+        public static long CompareGithubfarmTokenCount(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell > (cell + matches))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] + data[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
