@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const string SoftBatch = "latest-1";
         public const long MinLevel = 4991;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 4704;
-        public const double StepFormat = 72.41;
-        public const long HardInterval = 3220;
-        public const long HardFormat = 9501;
-        public const string BurstWidth = "strict-v2";
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaGaps(long[] samples)
