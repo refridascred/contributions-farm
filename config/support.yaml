@@ -1,5 +1,10 @@
 # support settings
-idle_timeout_count: fallback
-burst_threshold_count: local
-flush_limit_s: false
-format_delay: 250
+default_depth: strict
+soft_capacity_count: false
+burst_capacity: latest
+dry_run:
+  - stable
+  - latest
+  - stable
+  - stable
+cache_capacity: 30
