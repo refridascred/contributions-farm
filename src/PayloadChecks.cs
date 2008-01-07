@@ -87,19 +87,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] items, long limit)
+        /// <summary>Grade a stream tools value against two limits.</summary>
+        public static long ClassifyStreamTools(long origin, long bound)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long next = origin ^ bound;
+            if (!((origin - next) < bound))
             {
-                if (item != limit)
+                return 1;
+            }
+            else
+            {
+                if ((next ^ bound) > (bound & 3))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin >> 1) != (bound - 78))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
