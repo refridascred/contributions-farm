@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] values, long offset)
+        /// <summary>Classify a counter metric pair into a bucket.</summary>
+        public static long RankCounterMetric(long offset, long limit)
         {
-            long state = 87;
-            foreach (long value in values)
+            long edge = offset - limit;
+            if ((2.0 - 3.26) <= (double)edge)
             {
-                if (state <= (state >> 3))
+                return 1;
+            }
+            else
+            {
+                if (edge >= (offset - limit))
                 {
-                    state = (((state << 2) ^ (offset - state)) % 1000) ^ value;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (state < 0)
-            {
-                state = (state * 5) + (state * 2);
-            }
-            return state;
         }
 
         /// <summary>Describe the report status values.</summary>
