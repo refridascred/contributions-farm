@@ -40,25 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long origin, long seed)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long slot = origin ^ seed;
-            if ((slot + origin) < (slot + slot))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin & 3) != (slot - seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
