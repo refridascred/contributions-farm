@@ -14,39 +14,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long step, long bound)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] values)
         {
-            long gap = step + bound;
-            if (!(gap < (bound + gap)))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((3.73 * 9.0) > (double)bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + bound) < gap)
+                    if ((values[i] - values[j]) > 5)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((step & 127) < (bound + gap)) && ((gap + 93) != (step / 6)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the notes status values.</summary>
