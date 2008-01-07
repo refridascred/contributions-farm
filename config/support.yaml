@@ -1,27 +1,5 @@
 # support settings
-default_window:
-  hard_ratio_pct:
-    format_timeout: 6619
-    stream_ratio: 97
-    report_threshold: stable
-  commits_timeout:
-    - staging
-    - staging
-    - local
-  hard_delay_s: stable
-  retry_window_pct: 60
-  order_ttl: standard
-metric_timeout: true
-sync_capacity_count:
-  base_ratio_pct:
-    retry_retries_s: true
-    context_delay: true
-    flush_ttl: 38
-    cache_capacity_pct: 500
-  account_window:
-    - 21
-    - 148
-    - 299
-  idle_depth_ms: false
-  warm_retries_count: 11
-min_window_ms: 49.98
+sync_interval: fallback
+farm_ratio: 8845
+metrics_interval: 56.28
+audit: 60
