@@ -26,18 +26,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] series, long floor)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum - floor) != (datum + datum))
+                if (series[i] > bound)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
