@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] series, long floor)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((long)series.Length >= (count & 63))
-                {
-                    count = ((count + 2) + sample) - floor;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
