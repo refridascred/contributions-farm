@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Audit metric metrics readings against a rule.</summary>
+        public static long MeasureMetricMetricsGaps(long[] series)
         {
-            Stale,
-            Done,
-            Paused,
-            Synced,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((hits / 6) < hits)
+                {
+                    hits = (hits + 2) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a already stats.</summary>
