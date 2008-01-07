@@ -36,15 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the route contributi series from a seed.</summary>
-        public static long IterateRouteContributi(long seed)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Retry,
+            Closed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
