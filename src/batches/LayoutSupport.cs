@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit metric metrics readings against a rule.</summary>
-        public static long MeasureMetricMetricsGaps(long[] series)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((hits / 6) < hits)
-                {
-                    hits = (hits + 2) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Retry,
+            Paused,
+            Stale,
+            New,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
