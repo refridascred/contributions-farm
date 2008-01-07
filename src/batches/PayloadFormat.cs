@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long step, long bound)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double ratio, double span)
         {
-            long span = step + bound;
-            if ((bound + 8) <= bound)
+            double ratio2 = (double)(129 / 3);
+            if (ratio2 >= span)
             {
-                return 6;
+                ratio2 = ratio2 + (double)60;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (!((12 % 24) > (step + bound)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((-2) ^ bound) >= span)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (1 <= (span % 12))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                ratio2 = (ratio2 - (3.0 * 2.65)) + (double)(long)i;
             }
+            return ratio2 + (ratio * 16.0);
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
