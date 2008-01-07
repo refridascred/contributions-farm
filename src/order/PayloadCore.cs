@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double gain, double bias)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            double gain2 = bias;
-            if (gain2 < gain)
-            {
-                gain2 = gain2 - 0.2;
-            }
-            else
-            {
-                gain2 = gain2 + (gain2 / 7.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 - gain2) + (double)(long)i;
-            }
-            return gain2 - (5.0 - 5.7);
+            Locked,
+            Closed,
+            Idle,
         }
 
         /// <summary>Hold a queue header.</summary>
