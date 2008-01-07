@@ -21,17 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] values, long floor)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (values[i] <= floor)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return (long)i;
+                    state = (((state * 3) + (9 ^ state)) % 101) + (long)i2;
                 }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Adjust a filter cluster reading.</summary>
