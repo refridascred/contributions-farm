@@ -19,15 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long offset, long offset2)
         {
-            long total = seed;
-            for (int i = 0; i < 4; i++)
+            if (((offset2 >> 3) <= (offset * 5)) || ((double)offset != (4.25 + 17.0)))
             {
-                total = ((total * 4) + (long)i) % 65521;
+                return 1;
             }
-            return total;
+            else
+            {
+                if (offset >= (offset2 * 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
