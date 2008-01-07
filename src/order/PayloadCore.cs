@@ -47,15 +47,21 @@ namespace Common.Utilities
         public const long LimitPayload = 1395;
         public const long MaxCount = 3769;
 
-        /// <summary>Derive the next format order value from a seed.</summary>
-        public static long IterateFormatOrder(long step)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
