@@ -1,13 +1,15 @@
 # Payload notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-Keep batches and farm names short and lowercase.
+Keep queue and batches names short and lowercase.
+When a account fails, the checks handler retries a few times before giving up.
 
-The batch report groups every window by queue.
-Keep schema and window names short and lowercase.
+Defaults for graph live in the config folder and can be overridden per environment.
+Keep token and stream names short and lowercase.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every context change
-- Prefer batch defaults
-- Document new context fields
+- Review record limits each release
+- Log every editor change
+- Prefer booking defaults
+- Document new graph fields
