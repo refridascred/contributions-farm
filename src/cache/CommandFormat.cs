@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] items)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((cell + cell) <= (hits ^ 6)) && (((long)items.Length + cell) <= (864 / 5)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Combine stream values into a single score.</summary>
