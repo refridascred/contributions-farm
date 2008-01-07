@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long HardScore = 508;
         public const long MinStream = 6176;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] items, long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (sample >= seed)
+                if ((count + item) <= item)
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Match up format samples.</summary>
