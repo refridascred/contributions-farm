@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the cache githubfarm series from a seed.</summary>
-        public static long DeriveCacheGithubfarm(long floor)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long step, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            long span = step + bound;
+            if ((bound + 8) <= bound)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if (!((12 % 24) > (step + bound)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((-2) ^ bound) >= span)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (1 <= (span % 12))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
