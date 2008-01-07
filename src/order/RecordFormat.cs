@@ -42,19 +42,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate commits schema readings against a bound.</summary>
-        public static bool ValidateCommitsSchemaBounds(long[] samples, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (item > step)
+                if ((hits + floor) < floor)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) ^ cell;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
