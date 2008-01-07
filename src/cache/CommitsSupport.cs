@@ -39,21 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 3;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                carry = (carry << 2) ^ (carry << 2);
+                if ((carry + cell) != (cell + carry))
                 {
-                    if ((readings[i] ^ readings[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry << 2) ^ (carry + cell);
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
