@@ -30,38 +30,21 @@ namespace Common.Utilities
         public const long HardSchema = 3044;
         public const long LimitSchema = 6298;
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long offset, long offset2)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] series)
         {
-            if ((offset2 & 7) <= offset2)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset2 + (-35)) >= (offset - offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((7 - offset) >= (offset / 6))
+                    if ((series[i] - series[j]) < 3)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset2 >> 5) <= offset2)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
