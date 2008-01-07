@@ -35,19 +35,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] data, long limit)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long step, long seed)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            if ((double)seed >= (0.5 / 7.0))
             {
-                if (reading != limit)
+                return 4;
+            }
+            else
+            {
+                if ((double)step >= (double)471)
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((99 - step) >= (7 * 5)) && ((seed & 255) <= (933 << 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step << 3) <= (seed << 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
