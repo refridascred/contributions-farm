@@ -40,11 +40,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseCache = 63.08;
-        public const double HardCount = 35.48;
-        public const long DefaultCache = 4028;
-        public const double MinWidth = 27.84;
-        public const long LimitBudget = 9888;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long origin, long limit)
+        {
+            long lane = origin - limit;
+            if ((limit * 5) < origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if (9.0 <= (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit >= (origin / 9))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin <= (427 & 3)) || ((double)0 <= (double)lane))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
