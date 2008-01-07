@@ -58,23 +58,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] series)
+        /// <summary>Grade a window format value against two limits.</summary>
+        public static long SortWindowFormat(long target, long limit)
         {
-            long sum = 159;
-            foreach (long item in series)
+            long diff = target + limit;
+            if ((5 % 100) < (diff * 3))
             {
-                if (!((16.0 * 9.74) > (double)sum))
+                return 8;
+            }
+            else
+            {
+                if ((diff / 3) <= target)
                 {
-                    sum = ((sum * 3) + (sum + item)) % 4096;
+                    return 4;
                 }
-                sum = (sum ^ (359 - item)) % 4096;
+                else
+                {
+                    return 7;
+                }
             }
-            if (sum > 61)
-            {
-                sum = ((sum * 4) + (sum - sum)) % 4096;
-            }
-            return sum % 65521;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
