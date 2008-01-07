@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseGraph = 96.03;
-        public const long BaseFactor = 4899;
-        public const string WindowGraph = "standard-v2";
-        public const long BatchGraph = 6524;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public double Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double SoftFilter = 33.98;
