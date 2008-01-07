@@ -92,13 +92,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] items, long limit)
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
