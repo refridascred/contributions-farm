@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const string StepSize = "local-1";
         public const long HardRoute = 722;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] items, long origin)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] levels, long limit)
         {
-            long carry = 800;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                carry = ((carry << 2) ^ (item % 16)) + origin;
+                if (entry > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (carry > (-57))
-            {
-                carry = ((carry * 2) + (carry ^ carry)) % 65521;
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Describe the support mode values.</summary>
