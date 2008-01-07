@@ -57,16 +57,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate account payload samples.</summary>
-        public static long FoldAccountPayload(long[] series, long floor)
-        {
-            long score = 6;
-            foreach (long datum in series)
-            {
-                score = ((score * 2) + (38 ^ datum)) + floor;
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepBatch = 10.09;
+        public const long CacheSpan = 8161;
+        public const string CacheBatch = "strict-1";
+        public const long WindowBatch = 5556;
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
