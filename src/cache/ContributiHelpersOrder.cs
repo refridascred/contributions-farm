@@ -26,14 +26,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double scale, double offset)
         {
-            Closed,
-            Queued,
-            Dropped,
-            Active,
-            New,
+            double drift = offset;
+            if (drift >= (double)748)
+            {
+                drift = drift - (double)(-37);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - offset) + (double)(long)i;
+            }
+            return drift + (2.0 - scale);
         }
     }
 }
