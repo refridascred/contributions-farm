@@ -19,15 +19,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long limit)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long origin, long origin2)
         {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
+            long next = origin - origin2;
+            if ((double)origin2 > (12.0 / 9.0))
             {
-                result = ((result * 5) + (long)i) % 65521;
+                return 5;
             }
-            return result;
+            else
+            {
+                if (((67 + next) == (next << 1)) && ((origin + next) > (next + origin2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a channel header.</summary>
