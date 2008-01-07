@@ -27,18 +27,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] samples, long seed)
+        /// <summary>Check that every farm payload entry stays within the limit.</summary>
+        public static bool CheckFarmPayloadRange(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if ((item + seed) < seed)
+                if (value > limit)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a format entry.</summary>
