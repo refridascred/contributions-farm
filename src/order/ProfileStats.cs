@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a metrics layout sample.</summary>
-        public static long SeekMetricsLayoutIndex(long[] values, long bound)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Combine metric token values into a single score.</summary>
