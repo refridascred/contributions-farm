@@ -84,22 +84,12 @@ namespace Common.Utilities
             return ratio + (double)6;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] readings)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry / 7) == (entry << 1))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Paused,
+            Retry,
         }
     }
 }
