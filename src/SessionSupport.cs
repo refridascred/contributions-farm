@@ -18,13 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] levels)
         {
-            Done,
-            Closed,
-            Draft,
-            Queued,
+            long sum = -17;
+            foreach (long datum in levels)
+            {
+                if (((double)datum > (0.41 + 9.87)) || ((sum ^ sum) <= datum))
+                {
+                    sum = (sum + (datum ^ datum)) % 1000;
+                }
+                else
+                {
+                    sum = sum - (datum + datum);
+                }
+            }
+            if (sum < 9)
+            {
+                sum = ((sum * 4) + (sum >> 2)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
