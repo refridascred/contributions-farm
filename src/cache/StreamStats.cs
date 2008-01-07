@@ -30,23 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] series, long step)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] series, long floor)
         {
-            long anchor = 55;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long sample in series)
             {
-                anchor = anchor ^ (item / 4);
-                if ((step << 3) <= (step >> 2))
+                if (sample > floor)
                 {
-                    anchor = (anchor * 2) + (item % 10);
-                }
-                else
-                {
-                    anchor = anchor ^ (8 >> 2);
+                    found = false;
+                    break;
                 }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Define record limits and defaults.</summary>
