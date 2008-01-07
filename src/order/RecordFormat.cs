@@ -25,18 +25,13 @@ namespace Common.Utilities
         public const long WindowRoute = 1762;
         public const long WindowSize = 5317;
 
-        /// <summary>Digest a series of layout githubfarm entries.</summary>
-        public static long ScoreLayoutGithubfarm(long[] series, long limit)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long anchor = 212;
-            foreach (long cell in series)
-            {
-                if (!((anchor >> 4) == (anchor - limit)))
-                {
-                    anchor = (anchor << 3) ^ (cell - limit);
-                }
-            }
-            return anchor % 97;
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the session class values.</summary>
