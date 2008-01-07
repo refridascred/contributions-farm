@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Check that every contributi account entry stays within the limit.</summary>
+        public static bool VerifyContributiAccountRange(long[] readings, long seed)
         {
-            public double Score { get; set; }
-            public double Owner { get; set; }
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
