@@ -12,22 +12,14 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm buffer samples are out of range.</summary>
-        public static long CountGithubfarmBufferHits(long[] data, long step)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading > (3.7 * 7.86))
-                {
-                    hits = (hits + 1) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            Idle,
+            Stale,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
