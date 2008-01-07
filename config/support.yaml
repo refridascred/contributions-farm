@@ -1,6 +1,7 @@
 # support settings
-metric_interval:
-  - latest
-  - legacy
-batch_timeout: 86.38
-batch_ratio: 60.96
+idle_timeout_s: false
+flush_window_count:
+  - open
+  - fallback
+  - fallback
+min_capacity_pct: 250
