@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const string MinCount = "strict";
         public const long LimitWindow = 4152;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] data)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)cell > (6.94 / 6.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((levels[i] + levels[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
