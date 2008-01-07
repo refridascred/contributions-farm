@@ -35,10 +35,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 9843;
-        public const long MinQueue = 5476;
-        public const long WindowQueue = 9206;
-        public const long IdleInterval = 4266;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long seed, long floor)
+        {
+            if ((seed - seed) >= (floor % 7))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)seed != (2.1 + 15.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor & 255) != (floor ^ 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
