@@ -25,22 +25,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] series)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] samples, long origin)
         {
-            long state = 8;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if ((double)entry <= (double)(-47))
+                if (cell <= origin)
                 {
-                    state = (state + (entry - state)) % 65521;
-                }
-                else
-                {
-                    state = state ^ (entry + entry);
+                    stale = false;
+                    break;
                 }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
