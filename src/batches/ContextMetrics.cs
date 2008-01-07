@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] series)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long bound, long seed)
         {
-            long acc = 43;
-            foreach (long sample in series)
+            if ((bound % 16) <= (bound % 60))
             {
-                acc = (acc + 71) + sample;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((seed + bound) <= 5)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a filter record.</summary>
