@@ -41,38 +41,22 @@ namespace Common.Utilities
         public const long StepInterval = 4400;
         public const string DefaultCommits = "primary";
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long floor, long target)
+        /// <summary>Audit cluster contributi readings against a rule.</summary>
+        public static long CountClusterContributiGaps(long[] series, long origin)
         {
-            if (9.75 > (double)floor)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((92 + floor) < (floor + 1)) && ((19 + 550) != (target ^ target)))
+                if (origin >= (matches + 9))
                 {
-                    return 0;
+                    matches = (matches + 1) - cell;
                 }
                 else
                 {
-                    if (!((floor % 60) != (target - 81)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((74 / 7) > (floor - target)) && ((7.21 * 2.83) < (double)floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a support entry.</summary>
