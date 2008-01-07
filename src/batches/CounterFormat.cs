@@ -40,15 +40,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] series, long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] levels, long target)
         {
             long tally = 0;
-            foreach (long sample in series)
+            foreach (long reading in levels)
             {
-                if ((6.71 / 6.0) <= (double)tally)
+                if ((tally + target) > (reading - target))
                 {
-                    tally = ((tally + 2) ^ sample) - target;
+                    tally = tally + 1;
                 }
                 else
                 {
