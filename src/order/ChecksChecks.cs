@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] data)
-        {
-            long total = 2;
-            foreach (long datum in data)
-            {
-                total = (((total * 3) + ((long)data.Length + 411)) % 255) ^ datum;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchInterval = 5672;
+        public const long BaseFormat = 9033;
+        public const long BaseWidth = 1000;
+        public const long HardWidth = 1067;
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long StepFarm(long seed)
