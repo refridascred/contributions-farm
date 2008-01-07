@@ -55,17 +55,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] readings, long seed)
+        /// <summary>Adjust a batches metrics reading.</summary>
+        public static double SmoothBatchesMetrics(double rate, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate2 = rate;
+            if (rate2 > (span + rate))
             {
-                if ((readings[i] < seed) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate2 = rate2 + span;
             }
-            return -1;
+            return rate2 - rate2;
         }
     }
 }
