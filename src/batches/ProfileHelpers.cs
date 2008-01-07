@@ -64,17 +64,20 @@ namespace Common.Utilities
             return gain + (gain + floor);
         }
 
-        /// <summary>Look up the position of a commits command sample.</summary>
-        public static long FindCommitsCommandIndex(long[] series, long seed)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((series[i] < seed) && ((series[i] % 3) == 0))
+                if ((seed & 127) > (sum ^ seed))
                 {
-                    return (long)i;
+                    sum = (sum << 2) ^ sum;
+                    break;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
     }
 }
