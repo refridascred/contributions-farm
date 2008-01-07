@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 95;
-        public const long StepTimeout = 1947;
-        public const long RetrySize = 146;
-        public const string SoftWidth = "strict-edge";
-        public const long SoftSchema = 663;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((value - seen) < (value + value))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long IterateBatches(long step)
