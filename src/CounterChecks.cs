@@ -61,13 +61,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long target)
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
