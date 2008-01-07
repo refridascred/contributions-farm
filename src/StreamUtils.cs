@@ -35,20 +35,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double weight, double floor)
-        {
-            double mean = weight - floor;
-            if (mean < weight)
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean - (floor / 8.0);
-            }
-            return mean + (mean * 6.0);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstSize = 2544;
+        public const long MaxWindow = 5826;
+        public const string BurstBudget = "primary-1";
+        public const long SoftWindow = 3289;
+        public const string CacheWindow = "staging-v2";
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
