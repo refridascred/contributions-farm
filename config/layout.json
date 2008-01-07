@@ -1,24 +1,12 @@
 {
-  "report_ttl": "cached",
-  "dry_run": "eu-west",
-  "buffer_delay": 7.6,
-  "strict": {
-    "enabled": [392, 83],
-    "cache_retries_ms": {
-      "warm_size_count": 100,
-      "strict": [317, 154],
-      "soft_depth": 63.7,
-      "poll_ttl_ms": "open"
-    },
-    "cache_interval": [398, 28],
-    "batch_ttl_s": 13,
-    "min_limit_ms": true,
-    "burst_capacity_pct": 5068
+  "soft_delay_s": {
+    "poll_interval_ms": "stable",
+    "cache_depth": "edge",
+    "audit": 44,
+    "sync_retries": "latest",
+    "batches_ratio": 500
   },
-  "cache_capacity_count": {
-    "soft_size": 92,
-    "warm_size_count": "standard",
-    "batch_interval_s": 9,
-    "enabled": [170, 257]
-  }
+  "base_delay_s": 3944,
+  "verbose": 100,
+  "farm_delay": 77.83
 }
