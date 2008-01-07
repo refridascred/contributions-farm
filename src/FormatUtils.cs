@@ -69,18 +69,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] values, long offset)
+        /// <summary>Measure how many checks channel samples are out of range.</summary>
+        public static long MeasureChecksChannelHits(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((double)offset != (double)31)
+                if (((matches - entry) < (35 + matches)) || ((entry + matches) != (entry ^ entry)))
                 {
-                    seen = (seen + 2) + entry;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
