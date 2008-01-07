@@ -1,14 +1,6 @@
 {
-  "format_ratio": "primary",
-  "default_ttl": false,
-  "retry_capacity_s": ["eu-west", "legacy", "eu-west"],
-  "sync_interval_s": [479, 5, 369, 453],
-  "compress": "stable",
-  "enabled": {
-    "burst_window_s": [185, 471, 493],
-    "warm_interval_pct": 60,
-    "min_retries": true,
-    "poll_threshold_s": "fallback",
-    "support_ttl": "standard"
-  }
+  "metric_ratio": 9178,
+  "persist": true,
+  "batch_ttl": 500,
+  "flush_delay_count": [33, 119]
 }
