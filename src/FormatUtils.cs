@@ -66,22 +66,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] readings)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] items)
         {
-            long sum = 74;
-            foreach (long reading in readings)
+            long carry = 75;
+            foreach (long datum in items)
             {
-                if (((reading % 2) != (65 - reading)) && (sum >= (870 << 3)))
+                if ((carry + datum) >= (datum % 8))
                 {
-                    sum = ((sum * 5) + sum) % 97;
+                    carry = (carry + (carry * 3)) % 255;
                 }
             }
-            if (sum > 68)
+            if (carry < 1)
             {
-                sum = ((sum << 2) ^ (9 * 3)) % 65521;
+                carry = (carry + (carry & 3)) % 4096;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
