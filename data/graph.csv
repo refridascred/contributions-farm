@@ -1,6 +1,10 @@
-id,region,owner,level
-1,strict,cached,open
-2,180,600,576
-3,eu-west,green,latest
-4,624,387,98
-5,311,936,779
+id,owner,weight
+1,33.26,75.5
+2,46.07,26.52
+3,316,95.09
+4,896,80.01
+5,728,cached
+6,339,stable
+7,343,59.79
+8,92.33,82
+9,local,999
