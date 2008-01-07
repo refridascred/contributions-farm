@@ -47,11 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double rate, double floor)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            double load = (rate / 8.0) * 2.0;
-            return load + (floor * 7.68);
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
