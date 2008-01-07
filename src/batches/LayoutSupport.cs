@@ -23,24 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double weight, double span)
-        {
-            double bias = weight;
-            if (bias > (double)4)
-            {
-                bias = bias + weight;
-            }
-            else
-            {
-                bias = bias + (double)82;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + span) + (double)(long)i;
-            }
-            return bias - (double)8;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 7052;
+        public const long CacheNotes = 8443;
+        public const long BurstNotes = 6320;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmGaps(long[] data)
