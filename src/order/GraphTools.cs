@@ -35,20 +35,19 @@ namespace Common.Utilities
         public const long BaseFactor = 9653;
         public const double WindowFactor = 43.54;
 
-        /// <summary>Iterate the support batch series from a seed.</summary>
-        public static long StepSupportBatch(long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] samples, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (entry >= floor)
                 {
-                    result = ((result + result) % 255) ^ (long)i2;
+                    ok = false;
+                    break;
                 }
-                result = ((result * 5) + (result / 3)) % 101;
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
