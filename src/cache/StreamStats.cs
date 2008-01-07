@@ -30,12 +30,38 @@ namespace Common.Utilities
         public const long HardSchema = 3044;
         public const long LimitSchema = 6298;
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long offset, long offset2)
         {
-            Idle,
-            Failed,
-            New,
+            if ((offset2 & 7) <= offset2)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset2 + (-35)) >= (offset - offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((7 - offset) >= (offset / 6))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset2 >> 5) <= offset2)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
