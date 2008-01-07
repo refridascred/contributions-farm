@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many batches metrics samples are out of range.</summary>
-        public static long TallyBatchesMetricsMatches(long[] values, long limit)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1.4 - 1.4) != (double)limit)
+                if (series[i] < origin)
                 {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
