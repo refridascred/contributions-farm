@@ -39,14 +39,19 @@ namespace Common.Utilities
             return scale - 14.0;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] items, long offset)
         {
-            Dropped,
-            Ready,
-            Closed,
-            New,
-            Locked,
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Roll a filter report counter forward.</summary>
