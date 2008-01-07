@@ -30,17 +30,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] series, long bound)
+        /// <summary>Fold a list of already commits readings.</summary>
+        public static long CombineAlreadyCommits(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 12;
+            foreach (long cell in series)
             {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
+                result = (result << 3) ^ (cell / 4);
+                result = ((result * 2) + (cell - cell)) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
