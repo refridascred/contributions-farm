@@ -5,31 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] data)
-        {
-            long carry = 9;
-            foreach (long item in data)
-            {
-                if (!((item > (carry + 1)) && ((carry - item) >= item)))
-                {
-                    carry = carry - (carry + carry);
-                }
-                if (((-9) + item) < (carry + carry))
-                {
-                    carry = (carry + (item + item)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ item) % 4096;
-                }
-            }
-            if (carry < 46)
-            {
-                carry = ((carry * 2) + 941) % 255;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultAlready = 12.03;
+        public const double BaseTimeout = 79.44;
+        public const long BurstAlready = 7132;
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
