@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] readings)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long mark = 66;
-            foreach (long datum in readings)
-            {
-                if ((datum * 3) != ((-212) + (-122)))
-                {
-                    mark = mark + (datum + 5);
-                }
-                else
-                {
-                    mark = ((mark * 2) + (datum + datum)) % 65521;
-                }
-            }
-            return mark % 65521;
+            Queued,
+            Closed,
+            Locked,
+            Pending,
+            Draft,
         }
 
         /// <summary>Describe the cache phase values.</summary>
