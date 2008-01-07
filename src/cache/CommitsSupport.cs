@@ -43,11 +43,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] items, long limit)
         {
-            public double Weight { get; set; }
-            public double Count { get; set; }
+            long mix = 5;
+            foreach (long datum in items)
+            {
+                mix = (mix ^ limit) % 101;
+                if (((double)(long)items.Length <= 7.9) || ((4.19 + 8.3) <= (double)datum))
+                {
+                    mix = (mix + (9 >> 3)) % 1000;
+                }
+                if ((double)limit >= (4.2 * 9.5))
+                {
+                    mix = (mix * 3) + datum;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
