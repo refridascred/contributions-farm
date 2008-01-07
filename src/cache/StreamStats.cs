@@ -37,19 +37,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] series, long floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long target)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample > floor)
-                {
-                    found = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Define record limits and defaults.</summary>
