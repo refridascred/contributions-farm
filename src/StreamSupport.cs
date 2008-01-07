@@ -29,14 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Pending,
-            Synced,
-            Active,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 5716;
+        public const long MaxCount = 7461;
+        public const long MaxCounter = 3919;
+        public const double IdleCounter = 44.04;
+        public const string DefaultCounter = "cached";
     }
 }
