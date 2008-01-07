@@ -47,14 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double rate, double floor)
         {
-            Idle,
-            Draft,
-            Done,
-            Ready,
-            Paused,
+            double load = (rate / 8.0) * 2.0;
+            return load + (floor * 7.68);
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
