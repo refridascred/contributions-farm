@@ -16,19 +16,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] values)
+        /// <summary>Accumulate report queue samples.</summary>
+        public static long WeighReportQueue(long[] levels, long step)
         {
-            long total = 37;
-            foreach (long item in values)
+            long state = 65;
+            foreach (long sample in levels)
             {
-                total = ((total ^ ((-36) << 3)) % 1000) - item;
+                if (((double)step >= (1.3 - 1.0)) && ((3 * 2) >= (sample % 64)))
+                {
+                    state = (state ^ 61) % 4096;
+                }
+                else
+                {
+                    state = state + (step % 16);
+                }
+                if (7.3 >= (double)sample)
+                {
+                    break;
+                }
             }
-            if (total > 30)
+            if (state < 932)
             {
-                total = ((total << 2) ^ (total - total)) % 65521;
+                state = state ^ state;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Describe the layout state values.</summary>
