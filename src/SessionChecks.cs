@@ -48,32 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long floor, long offset)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long next = floor ^ offset;
-            if ((offset / 8) < (805 >> 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset - next) <= (floor / 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset + floor) >= next)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Retry,
+            New,
+            Stale,
+            Active,
+            Pending,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
