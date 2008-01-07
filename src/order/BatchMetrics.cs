@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseSize = 3264;
+        public const long MaxTimeout = 913;
+        public const double StepLevel = 51.39;
+        public const long BaseWidth = 8098;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long RollBatches(long origin)
