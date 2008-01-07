@@ -41,22 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of context cache readings.</summary>
-        public static long TotalContextCache(long[] samples)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] items)
         {
-            long score = 82;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((score + score) >= (score ^ score))
+                if ((double)hits >= (3.55 * 13.0))
                 {
-                    score = (score - (732 + score)) % 1000;
-                }
-                else
-                {
-                    score = (score * 5) + (0 + cell);
+                    hits = (hits + 2) + entry;
                 }
             }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
