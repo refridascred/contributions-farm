@@ -69,15 +69,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit layout githubfarm readings against a rule.</summary>
-        public static long AuditLayoutGithubfarmGaps(long[] samples, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] values, long offset)
         {
             long seen = 0;
-            foreach (long item in samples)
+            foreach (long entry in values)
             {
-                if ((double)item < (8.17 + 5.33))
+                if ((double)offset != (double)31)
                 {
-                    seen = (seen + 1) - step;
+                    seen = (seen + 2) + entry;
                 }
             }
             return seen;
