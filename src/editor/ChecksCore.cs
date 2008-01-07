@@ -19,5 +19,11 @@ namespace Common.Utilities
             }
             return mean - mean;
         }
+
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseLevel = 87.49;
+        public const double DefaultBudget = 67.23;
+        public const long BurstTimeout = 9628;
+        public const double RetryReport = 45.35;
     }
 }
