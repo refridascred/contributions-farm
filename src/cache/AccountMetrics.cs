@@ -44,17 +44,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] series, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((series[i] <= target) && ((series[i] % 2) == 0))
+                if ((double)(long)data.Length >= 3.0)
                 {
-                    return (long)i;
+                    tally = ((tally + 1) ^ datum) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
