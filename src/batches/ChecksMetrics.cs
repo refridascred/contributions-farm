@@ -48,21 +48,15 @@ namespace Common.Utilities
         public const long HardScore = 4607;
         public const long LimitLevel = 1616;
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] levels)
+        /// <summary>Accumulate account payload samples.</summary>
+        public static long FoldAccountPayload(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 6;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score * 2) + (38 ^ datum)) + floor;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
