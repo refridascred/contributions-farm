@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] levels, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((total + floor) > floor)
+                if ((691 * 5) <= (datum * 4))
                 {
-                    total = (total - 739) % 101;
-                    total = (total - total) % 1000;
+                    tally = (tally + 3) - offset;
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the metric kind values.</summary>
