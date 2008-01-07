@@ -28,13 +28,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
             Idle,
-            Locked,
-            Dropped,
-            Failed,
+            New,
             Done,
         }
 
