@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] samples, long target)
         {
-            Failed,
-            Retry,
-            Closed,
-            Active,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (((5.0 < (double)value) || ((double)(long)samples.Length >= (double)86)) || (((double)target > 3.0) && (43 > (tally + target))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
