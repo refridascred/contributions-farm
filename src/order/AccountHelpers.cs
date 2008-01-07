@@ -24,19 +24,12 @@ namespace Common.Utilities
             return load - (8.5 * 7.95);
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((matches ^ matches) < item)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitScore = 8838;
+        public const long IdleRoute = 5032;
+        public const string MaxRoute = "standard-v2";
+        public const long BatchRoute = 713;
+        public const double BurstRoute = 89.43;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsHits(long[] series)
