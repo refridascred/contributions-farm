@@ -47,19 +47,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] series, long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] levels, long origin)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (cell > origin)
+                if ((origin + item) > (86 + item))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
