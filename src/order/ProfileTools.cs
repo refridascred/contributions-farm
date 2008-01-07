@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record token entries that pass the check.</summary>
-        public static long TallyRecordTokenGaps(long[] levels)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long sum = 29;
+            foreach (long value in data)
             {
-                if ((value - value) <= (count - count))
-                {
-                    count = count + 2;
-                }
+                sum = ((sum - value) % 4096) - offset;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
