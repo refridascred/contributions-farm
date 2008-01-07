@@ -11,21 +11,21 @@ namespace Common.Utilities
         public const long HardNotes = 8817;
         public const long WindowNotes = 6824;
 
-        /// <summary>Match up command channel samples.</summary>
-        public static long OverlapCommandChannelCount(long[] readings)
+        /// <summary>Match up githubfarm payload samples.</summary>
+        public static long PairGithubfarmPayloadCount(long[] readings)
         {
-            long count = 0;
+            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) == 2)
+                    if ((readings[i] + readings[j]) < 9)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a batch stats.</summary>
