@@ -48,14 +48,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] readings, long floor)
         {
-            Active,
-            Queued,
-            Failed,
-            Idle,
-            Ready,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((21 % 2) > floor)
+                {
+                    hits = (hits + 2) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the farm state values.</summary>
