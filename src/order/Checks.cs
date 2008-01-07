@@ -47,11 +47,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double rate, double span)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] series, long limit)
         {
-            double rate2 = (double)6 / 8.0;
-            return (rate2 - (rate + rate2)) + span;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
