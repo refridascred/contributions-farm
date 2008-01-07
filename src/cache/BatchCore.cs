@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] series, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            long result = 1;
+            foreach (long item in series)
             {
-                if ((double)state >= (3.77 + 5.88))
-                {
-                    state = (state * 4) + (offset - state);
-                }
-                else
-                {
-                    state = ((state << 2) ^ (offset * 5)) % 1000;
-                }
-                if (!((double)offset <= (double)(long)i))
-                {
-                    state = (state + (state % 100)) % 65521;
-                    break;
-                }
-                if (offset > (offset << 1))
-                {
-                    state = (state * 4) + state;
-                }
-                state = ((state * 3) + (long)i) % 101;
+                result = (((result << 3) ^ (result % 97)) + item) - floor;
             }
-            return state;
+            if (result < 187)
+            {
+                result = ((result * 3) + (result / 5)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a report header.</summary>
