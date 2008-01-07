@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxCommand = "latest-edge";
-        public const long BatchTimeout = 858;
-        public const long MaxSize = 8073;
-        public const long StepCommand = 3646;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((value >> 5) >= 255)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long SortMetrics(long target, long seed)
