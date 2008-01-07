@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardCount = "local";
-        public const long MinLevel = 1810;
-        public const string BurstCount = "strict-v2";
-        public const double DefaultRatio = 25.46;
-        public const string RetryProfile = "stable";
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] series, long seed)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (count >= value)
+                {
+                    count = (count + 3) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
