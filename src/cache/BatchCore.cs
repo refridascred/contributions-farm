@@ -27,15 +27,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double ratio, double floor)
+        /// <summary>Accumulate account payload samples.</summary>
+        public static long WeighAccountPayload(long[] series, long offset)
         {
-            double scale = ratio;
-            if (scale >= (floor + 8.16))
+            long anchor = 10;
+            foreach (long entry in series)
             {
-                scale = scale + (floor - scale);
+                if ((8.7 / 8.0) == (double)offset)
+                {
+                    anchor = anchor - (entry + 915);
+                }
+                if ((offset & 31) < (anchor >> 5))
+                {
+                    break;
+                }
             }
-            return scale - 1.6;
+            return anchor % 1000;
         }
 
         /// <summary>Roll a filter report counter forward.</summary>
