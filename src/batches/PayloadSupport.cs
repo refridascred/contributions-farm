@@ -29,13 +29,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long target, long seed)
         {
-            Draft,
-            Ready,
-            Failed,
-            Dropped,
+            if ((seed * 2) == (target % 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)seed > 6.3)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed - 22) == (target >> 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
