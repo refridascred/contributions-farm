@@ -12,15 +12,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double weight, double offset)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            double scale = (double)(0 >> 3);
-            if (scale > weight)
-            {
-                scale = (scale + weight) + offset;
-            }
-            return scale + (double)34;
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
