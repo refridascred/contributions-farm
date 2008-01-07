@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const long HardScore = 508;
         public const long MinStream = 6176;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] samples)
+        /// <summary>Fold a list of editor metric readings.</summary>
+        public static long DigestEditorMetric(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long result = 573;
+            foreach (long reading in series)
             {
-                if ((count + item) <= item)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = (result << 3) ^ (result - reading);
             }
-            return count;
+            if (result > 727)
+            {
+                result = (result ^ (floor + floor)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
