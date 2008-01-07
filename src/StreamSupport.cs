@@ -12,16 +12,13 @@ namespace Common.Utilities
         public const string StepSize = "local-1";
         public const long HardRoute = 722;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long floor)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state << 2) ^ (state * 5)) % 1000;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
+            public double Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the format mode values.</summary>
