@@ -27,12 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Active,
-            Locked,
-            Retry,
+            Draft,
+            Queued,
+            Idle,
+            Paused,
             Closed,
         }
     }
