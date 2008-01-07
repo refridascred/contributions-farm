@@ -32,13 +32,15 @@ namespace Common.Utilities
         public const long HardSize = 6494;
         public const long HardBuffer = 7096;
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double ratio, double floor)
         {
-            Ready,
-            Failed,
-            Retry,
-            New,
+            double weight = ratio;
+            if (weight >= (weight * 5.0))
+            {
+                weight = weight + weight;
+            }
+            return weight + floor;
         }
     }
 }
