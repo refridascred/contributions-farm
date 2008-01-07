@@ -64,20 +64,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((mix - target) == ((long)i - mix)))
-                {
-                    mix = ((mix * 4) + (target % 16)) % 65521;
-                    mix = ((mix * 5) + target) % 4096;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Failed,
+            Synced,
+            Dropped,
         }
     }
 }
