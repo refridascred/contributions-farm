@@ -63,22 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] readings, long floor)
+        /// <summary>Measure how many contributi batch samples are out of range.</summary>
+        public static long CountContributiBatchHits(long[] data)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((21 % 2) > floor)
+                if (reading > (matches + matches))
                 {
-                    hits = (hits + 2) - item;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
