@@ -62,12 +62,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long origin, long bound)
         {
-            Closed,
-            Pending,
-            Ready,
+            long lane = origin - bound;
+            if (((lane >> 4) <= 717) && ((37 - 0) > origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound + origin) <= (bound ^ origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
