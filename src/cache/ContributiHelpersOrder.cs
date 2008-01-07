@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardEditor = "staging";
-        public const long MaxBudget = 6775;
-        public const long LimitEditor = 8120;
-        public const long DefaultWidth = 3833;
-        public const string BaseEditor = "stable-v2";
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long floor, long floor2)
+        {
+            if ((floor2 - floor) > (floor * 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((7.4 / 5.0) >= (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryBounds(long[] series, long target)
