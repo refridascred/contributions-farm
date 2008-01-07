@@ -14,12 +14,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepCommits = 11.17;
-        public const double MaxWidth = 3.12;
-        public const string WindowCommits = "latest-edge";
-        public const double BurstCommits = 79.93;
-        public const long CacheWidth = 2533;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] values, long offset)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Project the next order value.</summary>
         public static double BlendOrder(double bias, double span)
