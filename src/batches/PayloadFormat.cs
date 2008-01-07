@@ -36,12 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepDepth = 7563;
+        public const long StepWindow = 1905;
+        public const long HardWindow = 635;
+        public const long IdleWindow = 7541;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long DefaultRatio = 7792;
