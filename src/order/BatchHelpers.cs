@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] levels)
         {
-            Dropped,
-            Pending,
-            Synced,
-            Paused,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((hits % 5) < cell)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
