@@ -27,11 +27,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] levels, long limit)
         {
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
