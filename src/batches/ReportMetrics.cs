@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] levels)
         {
-            Pending,
-            Failed,
-            Ready,
+            long sum = 37;
+            foreach (long value in levels)
+            {
+                if (value > sum)
+                {
+                    sum = (sum << 3) ^ 243;
+                }
+                if ((5.1 / 8.0) != (double)sum)
+                {
+                    break;
+                }
+            }
+            if (sum > 51)
+            {
+                sum = (sum + (sum & 63)) % 1000;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
