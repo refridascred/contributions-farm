@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every contributi payload entry stays within the limit.</summary>
-        public static bool VerifyContributiPayloadLimits(long[] series, long floor)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long step, long target)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            if ((target / 2) == (target - target))
             {
-                if (datum != floor)
+                return 0;
+            }
+            else
+            {
+                if ((7.72 * 5.2) <= (double)target)
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return flag;
         }
 
         /// <summary>Audit format metric readings against a rule.</summary>
