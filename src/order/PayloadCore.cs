@@ -41,17 +41,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                total = (total + total) % 65521;
-                total = (total - (total - origin)) % 255;
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 9063;
+        public const long WindowInterval = 6159;
+        public const long RetryLevel = 3700;
+        public const double BurstCount = 98.56;
     }
 }
