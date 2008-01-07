@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long offset, long floor)
-        {
-            if (!(7.53 <= (double)offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor + floor) >= floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset < 3.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseWidth = 9830;
+        public const string MinBudget = "latest-1";
+        public const double HardEditor = 11.81;
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long PairChecksCount(long[] levels)
