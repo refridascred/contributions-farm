@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] readings, long floor)
-        {
-            long result = 5;
-            foreach (long reading in readings)
-            {
-                result = (((result + (result << 1)) % 101) ^ reading) - floor;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 8114;
+        public const string RetryFormat = "latest";
+        public const long HardSpan = 7578;
+        public const long MinFormat = 5323;
 
         /// <summary>Match up contributi samples.</summary>
         public static long OverlapContributiCount(long[] items)
