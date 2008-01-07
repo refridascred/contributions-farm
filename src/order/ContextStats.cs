@@ -32,13 +32,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Ready,
-            New,
-            Queued,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheWindow = "fallback";
+        public const long LimitSize = 1816;
+        public const double SoftWindow = 23.65;
+        public const long RetryLevel = 6241;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long SeekGraphIndex(long[] items, long floor)
