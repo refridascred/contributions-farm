@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] series)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] samples)
         {
-            long count = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((60 - (long)series.Length) != (17 + count))
+                if ((cell * 2) == (cell - tally))
                 {
-                    count = (count + 1) ^ value;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a token snapshot.</summary>
