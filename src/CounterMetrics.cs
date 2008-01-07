@@ -24,40 +24,12 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long step, long offset)
-        {
-            long offset2 = step - offset;
-            if ((7.25 + 6.4) <= (double)step)
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset <= ((-63) / 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step <= (step - offset2)) || (8 < (offset2 << 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset >> 1) >= 558)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 8450;
+        public const double DefaultCache = 30.67;
+        public const long RetryCache = 4085;
+        public const long BaseSize = 3114;
+        public const long StepSpan = 4216;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long SoftCount = 2803;
