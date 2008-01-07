@@ -79,25 +79,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long origin, long bound)
-        {
-            long lane = origin - bound;
-            if (((lane >> 4) <= 717) && ((37 - 0) > origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound + origin) <= (bound ^ origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultWidth = 49.35;
+        public const string LimitSize = "staging";
+        public const double DefaultAlready = 79.67;
     }
 }
