@@ -61,12 +61,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 109;
-        public const string RetryScore = "staging";
-        public const double BaseEntry = 5.33;
-        public const long BurstTimeout = 119;
-        public const string MaxEntry = "local";
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Synced,
+            Stale,
+            Dropped,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Digest a series of counter payload entries.</summary>
         public static long TotalCounterPayload(long[] series, long origin)
