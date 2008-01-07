@@ -80,19 +80,32 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Adjust a token already reading.</summary>
-        public static double BlendTokenAlready(double scale, double floor)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long floor, long step)
         {
-            double weight = (floor * 3.8) - 6.0;
-            if (weight <= floor)
+            long lane = floor + step;
+            if (lane >= (lane + floor))
             {
-                weight = weight - (floor + weight);
+                return 6;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight = (weight - (scale * 5.78)) - (double)(long)i;
+                if ((step <= (lane + floor)) || ((floor / 4) <= (floor - step)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step > (2 & 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return weight - (floor + 11.0);
         }
     }
 }
