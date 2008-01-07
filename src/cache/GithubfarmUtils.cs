@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 3419;
-        public const double BaseWidth = 94.48;
-        public const long LimitContributi = 6856;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((sample + tally) < sample)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
