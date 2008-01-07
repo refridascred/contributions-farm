@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepQueue = 41.75;
-        public const double DefaultQueue = 60.18;
-        public const long BurstQueue = 7698;
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double rate, double span)
+        {
+            double load = (9.5 + rate) + (double)3;
+            if (load >= (double)840)
+            {
+                load = (load - (3.7 * 7.23)) - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - (double)79;
+        }
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
