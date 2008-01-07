@@ -49,11 +49,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchEntry = 36.65;
-        public const long MaxEntry = 9726;
-        public const long RetryEntry = 9955;
-        public const long HardCount = 9908;
-        public const long RetryWidth = 3207;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] values, long bound)
+        {
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
