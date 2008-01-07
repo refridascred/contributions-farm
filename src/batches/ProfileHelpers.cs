@@ -64,12 +64,17 @@ namespace Common.Utilities
             return gain + (gain + floor);
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Look up the position of a commits command sample.</summary>
+        public static long FindCommitsCommandIndex(long[] series, long seed)
         {
-            public double Label { get; set; }
-            public string Score { get; set; } = "";
-            public string Token { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < seed) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
