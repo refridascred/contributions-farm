@@ -37,11 +37,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepCluster = "open-edge";
-        public const long IdleCluster = 1672;
-        public const long StepScore = 6776;
-        public const long MinRatio = 1522;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] values, long target)
+        {
+            long anchor = 6;
+            foreach (long item in values)
+            {
+                if (((double)item >= (8.0 - 7.8)) || (target >= (anchor - anchor)))
+                {
+                    anchor = anchor ^ (anchor - (long)values.Length);
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long ScoreBuffer(long[] series, long seed)
