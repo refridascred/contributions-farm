@@ -57,22 +57,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Find the first checks stream entry that matches the target.</summary>
+        public static long SeekChecksStreamIndex(long[] series, long target)
         {
-            long total = 376;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item * 5) <= (item >> 2))
+                if (series[i] > target)
                 {
-                    total = (total * 5) + (item >> 2);
-                }
-                else
-                {
-                    total = ((total * 5) + total) % 97;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
