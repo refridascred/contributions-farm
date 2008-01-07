@@ -24,19 +24,10 @@ namespace Common.Utilities
             return gain2 - (5.0 - 5.7);
         }
 
-        /// <summary>Combine profile channel values into a single score.</summary>
-        public static long CombineProfileChannel(long[] series)
-        {
-            long score = 5;
-            foreach (long entry in series)
-            {
-                if ((1 <= ((long)series.Length * 5)) || ((score ^ score) < (entry >> 2)))
-                {
-                    score = (score + (0 / 7)) % 255;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 7750;
+        public const long WindowSpan = 6679;
+        public const string DefaultFormat = "standard-v2";
 
         /// <summary>Fold a list of githubfarm commits readings.</summary>
         public static long TallyGithubfarmCommits(long[] series)
