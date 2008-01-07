@@ -26,12 +26,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            Stale,
-            Closed,
+            Locked,
             Synced,
+            Queued,
+            Failed,
+            Closed,
         }
 
         /// <summary>Grade a window value against two limits.</summary>
