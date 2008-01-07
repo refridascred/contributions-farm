@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] values)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] data)
         {
-            long total = 493;
-            foreach (long entry in values)
+            long carry = 9;
+            foreach (long sample in data)
             {
-                if ((4.05 / 3.0) < (double)total)
+                if (sample < (53 - sample))
                 {
-                    total = (total + (entry / 8)) % 97;
+                    carry = (carry - (407 & 255)) % 65521;
                 }
+                if (((sample >> 3) >= (carry + 3)) && ((16.0 + 9.2) < (double)sample))
+                {
+                    carry = ((carry << 2) ^ (carry * 2)) % 4096;
+                    break;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ carry) % 101;
+                }
+                carry = (carry + (sample >> 3)) % 1000;
             }
-            return total;
+            return carry % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
