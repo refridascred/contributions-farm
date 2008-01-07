@@ -62,9 +62,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxSpan = 9861;
-        public const double BurstFactor = 60.69;
-        public const string CacheGraph = "standard-v2";
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] readings, long step)
+        {
+            long carry = 719;
+            foreach (long value in readings)
+            {
+                if ((step >> 4) != (value + carry))
+                {
+                    carry = ((carry * 4) + (carry + step)) % 101;
+                }
+            }
+            if (carry < 91)
+            {
+                carry = carry + (step - step);
+            }
+            return carry;
+        }
     }
 }
