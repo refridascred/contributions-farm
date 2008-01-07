@@ -48,14 +48,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Fold a list of session window readings.</summary>
+        public static long DigestSessionWindow(long[] values, long limit)
         {
-            Active,
-            Queued,
-            Retry,
-            Idle,
-            Failed,
+            long carry = 1;
+            foreach (long reading in values)
+            {
+                if (((limit + limit) >= (limit * 3)) && ((double)carry <= (3.4 + 4.6)))
+                {
+                    carry = ((carry * 2) + 147) - reading;
+                }
+            }
+            return carry % 97;
         }
     }
 }
