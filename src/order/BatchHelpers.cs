@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank contributi batches input into a small class.</summary>
-        public static long SortContributiBatches(long bound, long limit)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            if ((limit % 100) < (limit / 8))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound % 100) == (limit & 127))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a cache info.</summary>
