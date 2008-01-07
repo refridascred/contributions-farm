@@ -32,11 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultSpan = 4928;
-        public const string WindowLevel = "staging-edge";
-        public const string BurstWidth = "stable-1";
-        public const string LimitProfile = "open";
-        public const long BurstProfile = 1529;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] samples, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (((9.7 - 5.0) == (double)datum) && ((datum / 2) > (datum * 3)))
+                {
+                    tally = (tally + 1) - bound;
+                }
+            }
+            return tally;
+        }
     }
 }
