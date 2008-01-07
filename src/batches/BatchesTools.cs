@@ -23,16 +23,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] items)
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                state = (state - offset) % 101;
-                state = ((state * 4) + (long)i) % 1000;
+                if ((((double)hits != (double)(-86)) || (((-755) & 63) == (hits & 255))) && ((20.0 / 6.0) > (double)hits))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
