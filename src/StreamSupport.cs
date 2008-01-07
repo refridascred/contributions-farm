@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const string StepSize = "local-1";
         public const long HardRoute = 722;
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double ratio, double floor)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double scale, double offset)
         {
-            double gain = ratio;
-            if (gain >= (floor * 8.6))
+            double load = scale;
+            for (int i = 0; i < 4; i++)
             {
-                gain = gain + (floor * 12.0);
+                load = ((load + (scale * 2.0)) + (double)(long)i) - offset;
             }
-            else
-            {
-                gain = gain + floor;
-            }
-            return gain - (gain * 9.9);
+            return load - scale;
         }
 
         /// <summary>Describe the support mode values.</summary>
