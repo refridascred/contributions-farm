@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheBatch = "standard-v2";
-        public const long DefaultBatch = 8758;
-        public const long StepBatch = 6783;
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
+        {
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long RetryScore = 1784;
