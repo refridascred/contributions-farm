@@ -47,13 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
+            Queued,
+            Locked,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define command limits and defaults.</summary>
