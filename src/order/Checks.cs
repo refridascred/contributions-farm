@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseSize = "staging-1";
-        public const long IdleLevel = 4129;
-        public const string HardLevel = "latest";
-        public const long LimitTimeout = 1898;
-        public const long HardGithubfarm = 286;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long offset, long target)
+        {
+            if (!(3 < offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)73 > (double)offset) && ((double)offset != (2.76 / 9.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target <= offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset + target) >= target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double SmoothBuffer(double ratio, double floor)
