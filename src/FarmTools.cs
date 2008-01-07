@@ -28,18 +28,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] data)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((value % 7) > (count + value)) && (((18.0 * 0.9) > (double)count) || ((value + value) >= 75)))
+                if (series[i] > offset)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
