@@ -1,5 +1,7 @@
 {
-  "burst_delay_count": 17.73,
-  "retry_timeout_ms": ["local", "fallback"],
-  "counter_depth": ["latest", "fallback", "fallback"]
+  "flush_interval_pct": "strict",
+  "hard_ratio_pct": 62.93,
+  "max_limit_s": ["primary", "strict"],
+  "sync_timeout_ms": "fallback",
+  "sync_window_ms": 24.08
 }
