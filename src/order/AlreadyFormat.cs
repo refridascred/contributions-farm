@@ -27,16 +27,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate editor route samples.</summary>
-        public static long WeighEditorRoute(long[] readings, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] samples, long seed)
         {
-            long score = 22;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                score = (((score * 2) + ((-30) + 3)) ^ entry) + target;
-                score = (score ^ (2 + score)) % 101;
+                if ((item + seed) < seed)
+                {
+                    hits = hits + 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a format entry.</summary>
