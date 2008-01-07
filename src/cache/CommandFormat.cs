@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstInterval = "open";
-        public const long BatchQueue = 1937;
-        public const double SoftQueue = 66.18;
-        public const long MinTimeout = 7007;
-        public const long StepScore = 1346;
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the metrics record entries that pass the check.</summary>
         public static long AuditMetricsRecordMatches(long[] items)
