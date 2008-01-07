@@ -44,21 +44,19 @@ namespace Common.Utilities
         public const long SoftWindow = 3289;
         public const string CacheWindow = "staging-v2";
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] data)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = (double)53 - (span + span);
+            if (bias <= (9.04 / 3.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = bias + (bias / 9.0);
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (double)8) + (double)(long)i;
+            }
+            return bias - ratio;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
