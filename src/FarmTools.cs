@@ -39,14 +39,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] data)
         {
-            Stale,
-            Draft,
-            Done,
-            Queued,
-            Locked,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((value % 7) > (count + value)) && (((18.0 * 0.9) > (double)count) || ((value + value) >= 75)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
