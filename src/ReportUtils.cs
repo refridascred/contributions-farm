@@ -39,13 +39,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            Dropped,
+            Stale,
+            Draft,
+            Paused,
+            Queued,
             New,
-            Synced,
-            Locked,
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
