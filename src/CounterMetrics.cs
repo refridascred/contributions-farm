@@ -36,21 +36,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of githubfarm token readings.</summary>
-        public static long CompareGithubfarmTokenCount(long[] data)
+        /// <summary>Classify a profile cluster pair into a bucket.</summary>
+        public static long GradeProfileCluster(long target, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long next = target ^ offset;
+            if ((6.91 < (double)next) || ((57 * 5) >= target))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (91 >= (offset - offset))
                 {
-                    if ((data[i] + data[j]) != 6)
+                    return 3;
+                }
+                else
+                {
+                    if ((next * 5) >= (target * 3))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (target >= (65 % 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
