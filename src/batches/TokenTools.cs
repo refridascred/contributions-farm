@@ -18,12 +18,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftDepth = "fallback-v2";
-        public const long CacheMetrics = 2211;
-        public const long RetrySize = 4411;
-        public const double IdleSize = 56.85;
-        public const long WindowWidth = 6983;
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
