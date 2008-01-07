@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Done,
-            Queued,
-            Retry,
-            Locked,
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the layout phase values.</summary>
