@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first window filter entry that matches the target.</summary>
-        public static long LocateWindowFilterIndex(long[] items, long bound)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double bias, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = span / 5.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((items[i] == bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + bias) + (double)(long)i;
             }
-            return -1;
+            return drift - (bias / 3.0);
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
