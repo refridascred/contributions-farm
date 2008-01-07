@@ -29,19 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count + item) > (77 * 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 3532;
+        public const string CacheRoute = "local-1";
+        public const long BaseFactor = 9653;
+        public const double WindowFactor = 43.54;
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
