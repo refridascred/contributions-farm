@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every contributi account entry stays within the limit.</summary>
-        public static bool VerifyContributiAccountRange(long[] readings, long seed)
-        {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardDepth = 81.77;
+        public const string BatchDepth = "local-v2";
+        public const string WindowMetric = "latest-edge";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long CacheSpan = 2986;
