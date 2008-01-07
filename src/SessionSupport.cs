@@ -27,17 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] data, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 319;
+            foreach (long item in data)
             {
-                if (data[i] == origin)
+                if ((item ^ item) <= item)
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ item) % 4096;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
     }
 }
