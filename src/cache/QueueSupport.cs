@@ -29,17 +29,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a window layout sample.</summary>
-        public static long FindWindowLayoutIndex(long[] data, long limit)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long origin, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long cur = origin ^ offset;
+            if (cur >= (origin / 7))
             {
-                if ((data[i] < limit) && ((data[i] % 3) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((double)origin != (double)offset)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
