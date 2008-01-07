@@ -1,9 +1,5 @@
 {
-  "batch_window": [349, 328],
-  "base_retries": true,
-  "counter_interval": {
-    "batch_limit_pct": false,
-    "idle_window_pct": 53.01,
-    "session_timeout": 20.78
-  }
+  "graph_depth": [64, 421, 193],
+  "batch_size_ms": false,
+  "flush_size": "cached"
 }
