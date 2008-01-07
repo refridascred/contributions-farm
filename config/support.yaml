@@ -1,10 +1,4 @@
 # support settings
-route_delay: 87
-base_delay: latest
-readonly: eu-west
-default_retries_s: 1024
-base_size_pct: 100
-retry_capacity_s:
-  - stable
-  - latest
-  - standard
+compress: false
+flush_window: 7
+poll_threshold_pct: strict
