@@ -58,24 +58,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next context layout value from a seed.</summary>
-        public static long SeriesContextLayout(long step)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long result = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((587 - step) <= (result / 4)) && ((double)result == (6.0 / 9.0)))
-                {
-                    result = (result << 2) ^ (299 / 7);
-                    break;
-                }
-                else
-                {
-                    result = (result * 5) + ((long)i + step);
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Paused,
+            Draft,
+            Failed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Audit command queue readings against a rule.</summary>
