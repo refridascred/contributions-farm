@@ -1,9 +1,6 @@
-id,owner,state,region
-1,650,743,520
-2,69.6,strict,659
-3,162,44.17,392
-4,801,850,408
-5,local,29.22,primary
-6,30.91,open,83.73
-7,eu-west,163,958
-8,86.97,23.62,528
+id,region,owner,level
+1,strict,cached,open
+2,180,600,576
+3,eu-west,green,latest
+4,624,387,98
+5,311,936,779
