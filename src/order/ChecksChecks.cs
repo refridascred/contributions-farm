@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowFactor = "standard";
-        public const string LimitCount = "primary-1";
-        public const double CacheBudget = 56.75;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((tally >> 3) > item)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many account githubfarm samples are out of range.</summary>
         public static long TallyAccountGithubfarmHits(long[] levels, long seed)
