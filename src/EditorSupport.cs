@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdleLevel = 0.61;
-        public const long WindowPayload = 5816;
-        public const long IdleDepth = 4244;
-        public const double IdlePayload = 15.86;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstNotes = "strict-edge";
+        public const long DefaultNotes = 7101;
+        public const long StepFactor = 8725;
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
