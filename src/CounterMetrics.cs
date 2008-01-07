@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] levels, long step)
         {
-            Done,
-            Locked,
-            Dropped,
+            long state = 44;
+            foreach (long reading in levels)
+            {
+                state = ((state - step) % 101) ^ reading;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of githubfarm queue readings.</summary>
