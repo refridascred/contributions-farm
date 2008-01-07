@@ -11,20 +11,18 @@ namespace Common.Utilities
         public const long BaseWidth = 1000;
         public const long HardWidth = 1067;
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long seed)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] items)
         {
-            long anchor = seed;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (anchor < (seed % 24))
+                if (matches > ((-69) << 2))
                 {
-                    anchor = (anchor + (291 / 9)) % 101;
+                    matches = (matches + 3) + entry;
                 }
-                anchor = anchor + seed;
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
