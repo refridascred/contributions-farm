@@ -33,18 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] items, long seed)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((1.0 + 12.0) == (double)seed)
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            Closed,
+            Ready,
+            Paused,
+            Draft,
+            Queued,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
