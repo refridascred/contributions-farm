@@ -60,18 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry checks readings against a rule.</summary>
-        public static long MeasureEntryChecksGaps(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (533 >= (bound % 97))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 1799;
+        public const long BaseStream = 6591;
+        public const long StepRatio = 7269;
+        public const long RetryStream = 783;
+        public const long BurstTimeout = 8566;
     }
 }
