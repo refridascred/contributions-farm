@@ -73,11 +73,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Iterate the token format series from a seed.</summary>
+        public static long StepTokenFormat(long seed)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                long count = (seed & 1) - (324 - acc);
+                long seen = count;
+                if (((long)i % 3) != (seed + seed))
+                {
+                    count = count - seen;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
