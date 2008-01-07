@@ -50,22 +50,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] readings)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (hits < (hits << 1))
+                if (data[i] <= limit)
                 {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
