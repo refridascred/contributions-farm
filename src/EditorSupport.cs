@@ -61,11 +61,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitLevel = 6942;
-        public const double CacheMetrics = 29.41;
-        public const string MinMetrics = "primary-edge";
-        public const long RetryMetrics = 3527;
-        public const double CacheSize = 43.25;
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] data)
+        {
+            long acc = 293;
+            foreach (long datum in data)
+            {
+                acc = (acc + (datum + 3)) % 1000;
+            }
+            return acc % 97;
+        }
     }
 }
