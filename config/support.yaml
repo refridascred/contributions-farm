@@ -1,9 +1,4 @@
 # support settings
-poll_timeout_s:
-  - fallback
-  - latest
-stream_window: false
-soft_threshold_pct: 60
-flush_limit_pct:
-  - 235
-  - 388
+default_interval_count: strict
+poll_depth: blue
+poll_retries_count: 35
