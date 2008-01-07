@@ -1,18 +1,5 @@
 {
-  "hard_ratio": 43.84,
-  "min_window_ms": {
-    "batch_delay": {
-      "poll_ttl_pct": true,
-      "cluster_retries": 6134,
-      "sync_ratio": "fallback",
-      "burst_retries": 100
-    },
-    "max_limit_count": "primary",
-    "retry_depth_count": 38.38,
-    "warm_window_count": false
-  },
-  "base_threshold_s": false,
-  "min_size": false,
-  "compress": "fallback",
-  "soft_limit_pct": "legacy"
+  "poll_timeout": "eu-west",
+  "max_window_pct": 9627,
+  "githubfarm_size": "local"
 }
