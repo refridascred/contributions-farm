@@ -53,13 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Region { get; set; } = "";
+            Synced,
+            Ready,
+            Locked,
+            Failed,
         }
 
         /// <summary>Blend two notes measurements.</summary>
