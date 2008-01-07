@@ -1,15 +1,15 @@
 # Payload notes
 
-Keep queue and batches names short and lowercase.
-When a account fails, the checks handler retries a few times before giving up.
-
-Defaults for graph live in the config folder and can be overridden per environment.
-Keep token and stream names short and lowercase.
+Use format settings to tune how often order data is refreshed.
 The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Keep contributi and queue names short and lowercase.
+
+When a tools fails, the metrics handler retries a few times before giving up.
+The cluster report groups every session by tools.
 
 ## Guidelines
 
-- Review record limits each release
-- Log every editor change
-- Prefer booking defaults
-- Document new graph fields
+- Keep commits values small
+- Prefer checks defaults
+- Document new booking fields
+- Validate payload input early
