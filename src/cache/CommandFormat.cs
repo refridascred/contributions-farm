@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] values, long step)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] <= step) && ((values[i] % 5) == 0))
+                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
