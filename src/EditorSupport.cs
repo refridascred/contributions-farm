@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterLimits(long[] series, long step)
-        {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdleLevel = 0.61;
+        public const long WindowPayload = 5816;
+        public const long IdleDepth = 4244;
+        public const double IdlePayload = 15.86;
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
