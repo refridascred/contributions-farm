@@ -30,12 +30,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
     }
 }
