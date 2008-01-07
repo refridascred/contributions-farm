@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const long RetryContributi = 9943;
         public const long StepContributi = 3529;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] items, long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] data)
         {
-            long result = 0;
-            foreach (long entry in items)
+            long result = 45;
+            foreach (long cell in data)
             {
-                if ((-707) < (target * 3))
-                {
-                    result = ((result * 3) + entry) % 255;
-                }
-                else
-                {
-                    result = (result ^ target) % 4096;
-                }
+                result = result ^ (result + cell);
             }
-            return result % 65521;
+            return result;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
