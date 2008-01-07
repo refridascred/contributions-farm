@@ -40,24 +40,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long limit, long limit2)
+        /// <summary>Check that every order stats entry stays within the limit.</summary>
+        public static bool VerifyOrderStatsRange(long[] data, long floor)
         {
-            if (!((19 + limit) <= 4))
+            bool flag = true;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((7.0 * 1.0) == (double)limit2))
+                if (datum <= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
