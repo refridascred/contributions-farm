@@ -25,12 +25,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryCount = 9539;
-        public const long HardSpan = 8851;
-        public const long MinInterval = 8149;
-        public const long MaxStream = 5543;
-        public const double RetryWidth = 81.61;
+        /// <summary>Count the buffer format entries that pass the check.</summary>
+        public static long CountBufferFormatOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (((long)levels.Length ^ count) < (datum % 5))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long StepBudget = 3822;
