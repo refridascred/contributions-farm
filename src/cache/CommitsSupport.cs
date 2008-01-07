@@ -36,24 +36,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long seed, long seed2)
+        /// <summary>Combine format already values into a single score.</summary>
+        public static long CombineFormatAlready(long[] items)
         {
-            if (seed2 <= (seed2 + seed2))
+            long mix = 25;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed2 - 493) <= (seed2 * 5))
+                if ((double)cell < (double)mix)
                 {
-                    return 0;
+                    mix = ((mix << 3) ^ mix) % 97;
                 }
                 else
                 {
-                    return 7;
+                    mix = (mix * 5) + (cell + cell);
                 }
             }
+            return mix;
         }
 
         /// <summary>Hold a schema entry.</summary>
