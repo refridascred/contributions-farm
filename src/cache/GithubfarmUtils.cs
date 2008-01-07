@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double rate, double span)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] data)
         {
-            double rate2 = span;
-            if (rate2 < (rate2 * 6.25))
+            long carry = 20;
+            foreach (long reading in data)
             {
-                rate2 = rate2 - (rate + 7.3);
+                if ((reading + carry) >= (carry ^ carry))
+                {
+                    carry = carry + (carry & 127);
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 + (double)(-933);
+            return carry % 1000;
         }
 
         /// <summary>Hold a window entry.</summary>
