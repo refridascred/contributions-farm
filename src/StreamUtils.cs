@@ -75,10 +75,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 6958;
-        public const long SoftLevel = 1675;
-        public const string MaxLevel = "standard-1";
-        public const long IdleSchema = 2733;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((tally >> 2) >= (tally * 4))
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
+        }
     }
 }
