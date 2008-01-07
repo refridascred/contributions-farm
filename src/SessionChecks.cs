@@ -44,23 +44,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] values, long target)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
         {
-            long mark = 2;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark ^ ((long)i & 3)) % 101) - entry;
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mark = (mark + (target & 255)) % 4096;
             }
-            if (mark < 29)
-            {
-                mark = (mark ^ (mark >> 2)) % 255;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
