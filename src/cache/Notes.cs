@@ -37,20 +37,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] items)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] items, long bound)
         {
-            long carry = 9;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                bool flag = (double)reading < (double)carry;
-                if (flag)
+                if ((items[i] == bound) && ((items[i] % 2) == 0))
                 {
-                    flag = flag;
+                    return (long)i;
                 }
-                carry = (carry - (reading + reading)) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a format summary.</summary>
