@@ -1,15 +1,8 @@
 {
-  "compress": 42.11,
-  "warm_size": {
-    "batch_size_ms": "fallback",
-    "cache_capacity_s": 67,
-    "enabled": true,
-    "payload_window": [480, 15, 432, 155],
-    "poll_timeout_s": 21.4
-  },
-  "cache_window_s": {
-    "persist": "staging",
-    "order_capacity": 13,
-    "poll_capacity_pct": 31.88
-  }
+  "batch_size_s": 10,
+  "batch_threshold_s": ["fallback", "local"],
+  "default_depth": 60,
+  "base_limit_s": false,
+  "batches_timeout": ["open", "primary", "local"],
+  "poll_threshold_ms": 30
 }
