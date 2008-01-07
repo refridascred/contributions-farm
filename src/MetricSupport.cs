@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window counter readings.</summary>
-        public static long TallyWindowCounter(long[] values, long floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] series, long offset)
         {
-            long sum = 297;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum + (sum - item)) % 97;
-                if (((9 + item) != (floor ^ (-77))) && (sum > 6))
+                if (series[i] <= offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Hold a metrics summary.</summary>
