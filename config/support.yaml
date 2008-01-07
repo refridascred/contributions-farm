@@ -1,6 +1,9 @@
 # support settings
-cache_interval: standard
-flush_capacity_count: 500
-compress: 60
-sync_delay_ms: legacy
-poll_threshold_pct: true
+stream_ratio: 64.6
+layout_size:
+  - edge
+  - edge
+  - local
+window_interval: 14.17
+burst_interval_ms: 41.79
+min_retries: local
