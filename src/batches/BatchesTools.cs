@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] samples)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] samples)
         {
-            long sum = -337;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value > 1.0)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = sum + (value * 2);
-                }
-                else
-                {
-                    sum = (sum - (value % 10)) % 101;
+                    if ((samples[i] + samples[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Describe the route status values.</summary>
