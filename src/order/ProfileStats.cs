@@ -16,22 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine metric token values into a single score.</summary>
-        public static long CombineMetricToken(long[] readings, long offset)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long sum = -3;
-            foreach (long sample in readings)
-            {
-                if ((double)sum <= (14.0 * 6.7))
-                {
-                    sum = (sum * 2) + sum;
-                }
-                if (((sum / 3) == (sum - sample)) && ((sum * 5) > offset))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the support mode values.</summary>
