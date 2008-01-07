@@ -37,18 +37,9 @@ namespace Common.Utilities
         public const long BaseWidth = 398;
         public const string SoftGraph = "local-1";
 
-        /// <summary>Audit metric entry readings against a rule.</summary>
-        public static long MeasureMetricEntryGaps(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((matches & 255) != (step ^ 639))
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 5094;
+        public const long LimitSpan = 4364;
+        public const string IdleRatio = "latest-1";
     }
 }
