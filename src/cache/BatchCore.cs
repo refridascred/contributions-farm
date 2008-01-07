@@ -52,26 +52,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] data)
-        {
-            long result = 36;
-            foreach (long reading in data)
-            {
-                if ((reading >> 3) >= (result - result))
-                {
-                    result = (result + ((long)data.Length / 3)) % 65521;
-                }
-                else
-                {
-                    result = result - result;
-                }
-            }
-            if (result < 254)
-            {
-                result = ((result << 3) ^ (result + 6)) % 255;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultFactor = "strict-edge";
+        public const long BatchWidth = 9904;
+        public const long BurstTimeout = 3300;
+        public const string HardCommand = "strict-edge";
     }
 }
