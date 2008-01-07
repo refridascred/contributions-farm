@@ -18,26 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] levels)
+        /// <summary>Match up schema account samples.</summary>
+        public static long MatchSchemaAccountCount(long[] levels)
         {
-            long sum = -17;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)datum > (0.41 + 9.87)) || ((sum ^ sum) <= datum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum + (datum ^ datum)) % 1000;
-                }
-                else
-                {
-                    sum = sum - (datum + datum);
+                    if ((levels[i] + levels[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum < 9)
-            {
-                sum = ((sum * 4) + (sum >> 2)) % 101;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Check that every order stats entry stays within the limit.</summary>
