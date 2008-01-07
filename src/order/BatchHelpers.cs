@@ -19,24 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the schema profile series from a seed.</summary>
-        public static long RollSchemaProfile(long seed)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = (sum * 5) + 507;
-                if ((long)i <= (sum - sum))
-                {
-                    sum = (sum - seed) % 65521;
-                }
-                else
-                {
-                    sum = sum - (16 / 9);
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Active,
+            Done,
+            Draft,
+            Locked,
         }
 
         /// <summary>Project the next notes value.</summary>
