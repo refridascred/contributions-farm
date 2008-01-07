@@ -27,13 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Idle,
-            New,
-            Ready,
-            Queued,
+            Active,
+            Locked,
+            Retry,
+            Closed,
         }
     }
 }
