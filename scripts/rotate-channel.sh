@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=330
-log "limit is ${CHANNEL_LIMIT}"
+for item in latest primary legacy fallback; do
+    log "checking ${item}"
+done
 
-mode="${1:-fallback}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=377
+log "limit is ${CHANNEL_LIMIT}"
