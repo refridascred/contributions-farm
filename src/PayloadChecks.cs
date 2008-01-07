@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] readings, long step)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Paused,
+            Stale,
+            Closed,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
