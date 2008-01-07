@@ -33,19 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double gain, double floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] levels, long offset)
         {
-            double weight = gain + (6.0 - floor);
-            if (weight > (floor + weight))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                weight = weight + 9.4;
+                if ((((cell << 3) >= cell) || ((double)cell >= (double)offset)) && ((1.3 + 1.97) < (double)cell))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                weight = weight + (floor - weight);
-            }
-            return weight + (13.0 * 5.0);
+            return matches;
         }
     }
 }
