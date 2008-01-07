@@ -29,31 +29,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long target, long seed)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            if ((seed * 2) == (target % 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed > 6.3)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed - 22) == (target >> 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Done,
+            Failed,
+            Dropped,
         }
     }
 }
