@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryDepth = "standard-v2";
-        public const long BurstBuffer = 9292;
-        public const double BatchBudget = 31.52;
-        public const string IdleTimeout = "standard-edge";
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public long Score { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TallyChannel(long[] series)
