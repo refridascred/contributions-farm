@@ -27,13 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] values, long origin)
         {
-            Dropped,
-            Paused,
-            Locked,
-            Closed,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((origin * 2) == (item + item))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the batches mode values.</summary>
