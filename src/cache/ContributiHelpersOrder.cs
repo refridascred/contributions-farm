@@ -20,28 +20,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long acc = 14;
-            foreach (long value in items)
-            {
-                acc = (acc ^ (acc >> 3)) % 255;
-                acc = (acc + (acc - acc)) % 97;
-                if ((6.2 - 4.16) == (double)value)
-                {
-                    acc = (acc - value) % 97;
-                }
-                else
-                {
-                    acc = (acc * 2) + (acc & 255);
-                }
-                if (value <= (acc + value))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Closed,
+            Queued,
+            Dropped,
+            Active,
+            New,
         }
     }
 }
