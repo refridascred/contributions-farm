@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local eu-west staging; do
+mode="${1:-blue}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in primary staging; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
