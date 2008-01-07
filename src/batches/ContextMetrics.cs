@@ -61,18 +61,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] series)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count + count) != (47 - 87))
+                if ((readings[i] < seed) && ((readings[i] % 3) == 0))
                 {
-                    count = (count + 1) ^ entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
