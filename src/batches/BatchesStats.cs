@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheWidth = 3118;
-        public const long BaseReport = 1042;
-        public const long BurstReport = 807;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 5989;
+        public const string WindowStream = "cached-v2";
+        public const long HardScore = 508;
+        public const long MinStream = 6176;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool CheckContributiLimits(long[] items, long seed)
