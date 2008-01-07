@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long WindowFactor = 6520;
         public const long DefaultBuffer = 2279;
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] data)
+        /// <summary>Measure how many filter stream samples are out of range.</summary>
+        public static long CountFilterStreamHits(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((count + target) > (target * 2))
                 {
-                    if ((data[i] + data[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) + cell;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
