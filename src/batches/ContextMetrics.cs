@@ -19,18 +19,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] items)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mix = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((252 / 2) != (cell * 3))
-                {
-                    seen = seen + 3;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Look up the position of a session contributi sample.</summary>
