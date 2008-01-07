@@ -50,18 +50,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] levels, long origin)
+        /// <summary>Roll a command account counter forward.</summary>
+        public static long RollCommandAccount(long offset)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((origin + item) > (86 + item))
+                if (0.6 < (double)(long)i)
                 {
-                    tally = tally + 1;
+                    sum = (sum + (-5)) % 97;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
