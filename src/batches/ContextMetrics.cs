@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (!!((double)sample > (15.0 / 8.0)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstGithubfarm = 46.98;
+        public const long BatchGithubfarm = 8013;
+        public const long MinDepth = 1141;
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
