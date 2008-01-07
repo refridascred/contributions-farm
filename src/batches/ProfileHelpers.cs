@@ -50,21 +50,27 @@ namespace Common.Utilities
         public const string DefaultWidth = "standard";
         public const string CacheDepth = "local-1";
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] values)
+        /// <summary>Combine entry cache values into a single score.</summary>
+        public static long TallyEntryCache(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 6;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)entry <= (9.0 / 2.0)))
                 {
-                    if ((values[i] - values[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state ^ (entry & 15)) % 1000;
+                }
+                else
+                {
+                    state = (state + (seed ^ entry)) % 1000;
+                    state = state + (521 * 3);
+                }
+                if ((2.0 + 18.0) > (double)entry)
+                {
+                    state = (state << 2) ^ (state * 3);
                 }
             }
-            return tally;
+            return state % 1000;
         }
     }
 }
