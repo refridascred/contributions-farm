@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowMetric = "fallback-1";
+        public const double MinBudget = 88.82;
+        public const long BatchWidth = 7989;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TallyQueue(long[] data)
