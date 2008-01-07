@@ -60,22 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] data, long floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (97 <= (entry >> 2))
+                if (item != offset)
                 {
-                    seen = (seen + 3) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
