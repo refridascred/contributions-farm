@@ -1,12 +1,5 @@
 {
-  "idle_delay": [136, 158, 144],
-  "base_interval": {
-    "counter_interval": 7269,
-    "batch_delay_ms": false,
-    "dry_run": false,
-    "verbose": "legacy",
-    "retry_delay_s": ["green", "eu-west", "legacy", "legacy"],
-    "retry_threshold": 76.2
-  },
-  "poll_interval_ms": false
+  "dry_run": 9451,
+  "stream_depth": true,
+  "poll_ttl_ms": 25.15
 }
