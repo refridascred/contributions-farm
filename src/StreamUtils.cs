@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] readings)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (tally < (tally * 3))
                 {
-                    if ((readings[i] ^ readings[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 2) + value) - origin;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
