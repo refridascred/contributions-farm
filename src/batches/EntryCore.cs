@@ -51,20 +51,13 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Derive the next graph farm value from a seed.</summary>
-        public static long SeriesGraphFarm(long seed)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!(((double)9 != (double)seed) || ((14.0 / 7.0) == (double)(long)i)))
-                {
-                    score = (score - (seed >> 1)) % 65521;
-                }
-                score = (score + (score + score)) % 101;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Pending,
+            Active,
+            Closed,
+            Ready,
         }
     }
 }
