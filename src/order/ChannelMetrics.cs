@@ -39,13 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Closed,
-            Dropped,
-            Done,
-            Paused,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseCache = 63.08;
+        public const double HardCount = 35.48;
+        public const long DefaultCache = 4028;
+        public const double MinWidth = 27.84;
+        public const long LimitBudget = 9888;
     }
 }
