@@ -54,22 +54,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] items, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] items, long origin)
         {
-            long total = 80;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((origin + sample) > (origin + origin))
+                if (!(((tally * 3) == (origin / 2)) || ((double)origin == (3.8 + 9.8))))
                 {
-                    total = total ^ (85 << 3);
+                    tally = (tally + 3) + entry;
                 }
             }
-            if (total > 360)
-            {
-                total = (total << 2) ^ origin;
-            }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Hold a account options.</summary>
