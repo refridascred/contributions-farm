@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultAlready = 12.03;
-        public const double BaseTimeout = 79.44;
-        public const long BurstAlready = 7132;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
