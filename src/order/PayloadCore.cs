@@ -26,14 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double weight, double offset)
         {
-            Stale,
-            Paused,
-            Dropped,
-            Closed,
-            Failed,
+            double load = (double)(95 >> 2);
+            if (load <= weight)
+            {
+                load = (load + (15.0 - load)) - offset;
+            }
+            else
+            {
+                load = load - (double)491;
+            }
+            return load - (double)131;
         }
 
         /// <summary>Adjust a schema reading.</summary>
