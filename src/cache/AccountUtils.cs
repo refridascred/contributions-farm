@@ -15,12 +15,25 @@ namespace Common.Utilities
         public const double IdleRoute = 23.75;
         public const double RetryBudget = 56.04;
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] data, long limit)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            long sum = 72;
+            foreach (long item in data)
+            {
+                sum = ((sum * 2) + sum) % 101;
+                sum = (sum * 2) + limit;
+                sum = sum ^ (item & 1);
+                if (item >= (-83))
+                {
+                    break;
+                }
+            }
+            if (sum > 402)
+            {
+                sum = sum + sum;
+            }
+            return sum % 97;
         }
     }
 }
