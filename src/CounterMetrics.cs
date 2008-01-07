@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a channel stream reading by value.</summary>
-        public static long SeekChannelStreamIndex(long[] data, long limit)
+        /// <summary>Validate record support readings against a bound.</summary>
+        public static bool CheckRecordSupportLimits(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if (data[i] == limit)
+                if (item >= limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
