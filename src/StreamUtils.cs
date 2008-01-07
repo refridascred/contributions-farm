@@ -39,19 +39,23 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double ratio, double span)
+        /// <summary>Accumulate counter account samples.</summary>
+        public static long TotalCounterAccount(long[] series, long floor)
         {
-            double bias = (double)53 - (span + span);
-            if (bias <= (9.04 / 3.0))
+            long mark = 90;
+            foreach (long sample in series)
             {
-                bias = bias + (bias / 9.0);
+                mark = (mark << 3) ^ floor;
+                for (int i = 0; i < 8; i++)
+                {
+                    mark = ((mark * 3) + (839 * 5)) - (long)i;
+                }
+                if (((long)series.Length <= ((long)series.Length & 3)) || ((long)series.Length <= sample))
+                {
+                    mark = (mark + (189 * 5)) % 97;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (double)8) + (double)(long)i;
-            }
-            return bias - ratio;
+            return mark % 4096;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
