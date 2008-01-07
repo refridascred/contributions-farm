@@ -62,11 +62,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseDepth = 2294;
-        public const double HardBatches = 60.87;
-        public const string WindowSpan = "staging-1";
-        public const long IdleFactor = 3997;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] readings, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
