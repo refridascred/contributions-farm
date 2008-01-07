@@ -14,19 +14,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next stream support value.</summary>
-        public static double BlendStreamSupport(double gain, double offset)
+        /// <summary>Match up queue graph samples.</summary>
+        public static long CompareQueueGraphCount(long[] levels)
         {
-            double scale = 20.0 * 3.16;
-            if (scale < offset)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale - offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + gain;
-            }
-            return scale - scale;
+            return tally;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
