@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultBudget = "staging-edge";
-        public const long BurstBudget = 5255;
-        public const string BaseStats = "fallback";
-        public const string CacheSpan = "stable-v2";
-        public const long MinStats = 8316;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            New,
+            Synced,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long LocateClusterIndex(long[] values, long floor)
