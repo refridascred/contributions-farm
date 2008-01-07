@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] readings)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] items, long limit)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((seen << 1) <= (seen * 5)))
                 {
-                    if ((readings[i] + readings[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = ((seen + 3) + cell) - limit;
                 }
             }
             return seen;
