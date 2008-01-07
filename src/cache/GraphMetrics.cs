@@ -48,15 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long offset)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public long Limit { get; set; }
+            public double Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Rank cache input into a small class.</summary>
