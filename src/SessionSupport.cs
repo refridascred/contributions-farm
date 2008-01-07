@@ -27,15 +27,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double ratio, double span)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long limit, long limit2)
         {
-            double load = ratio;
-            for (int i = 0; i < 6; i++)
+            if (!((19 + limit) <= 4))
             {
-                load = (load - (span * 2.0)) + (double)(long)i;
+                return 4;
             }
-            return load + load;
+            else
+            {
+                if (!((7.0 * 1.0) == (double)limit2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
