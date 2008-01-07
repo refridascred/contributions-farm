@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long floor, long bound)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            if ((floor & 31) != (bound & 15))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(4.8 >= (double)bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the session status values.</summary>
