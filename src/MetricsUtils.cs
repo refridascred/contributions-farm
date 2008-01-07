@@ -48,13 +48,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] values, long floor)
         {
-            Paused,
-            Locked,
-            Pending,
-            Idle,
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
