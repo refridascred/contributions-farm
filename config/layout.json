@@ -1,22 +1,8 @@
 {
-  "sync_timeout": 0.46,
-  "compress": {
-    "default_size": "primary",
-    "retry_depth": "cached",
-    "strict": "cached",
-    "idle_capacity_s": {
-      "default_limit_pct": "staging",
-      "persist": "fallback",
-      "entry_ratio": "stable",
-      "warm_retries": "open",
-      "retry_delay": "latest",
-      "notes_retries": "staging"
-    },
-    "stats_window": 30,
-    "default_ratio_s": "cached"
-  },
-  "strict": "standard",
-  "payload_depth": [119, 1, 470],
-  "dry_run": 500,
-  "burst_threshold_ms": false
+  "burst_ttl_ms": "standard",
+  "warm_threshold_s": 84.33,
+  "order_depth": ["green", "stable", "legacy", "stable"],
+  "poll_timeout_count": 25,
+  "warm_timeout_count": true,
+  "base_capacity": "edge"
 }
