@@ -68,18 +68,13 @@ namespace Common.Utilities
         public const string WindowSpan = "staging-1";
         public const long IdleFactor = 3997;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] readings, long bound)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((bound * 2) > datum)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            Locked,
+            Pending,
+            Idle,
         }
     }
 }
