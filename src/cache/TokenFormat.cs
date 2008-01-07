@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] series)
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = state + (offset + offset);
-                for (int i2 = 0; i2 < 10; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state << 2) ^ ((long)i - state)) ^ (long)i2;
-                    state = state ^ (offset >> 1);
+                    if ((series[i] ^ series[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a token snapshot.</summary>
