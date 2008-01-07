@@ -16,19 +16,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] readings, long floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (sample >= floor)
+                if (!(((step + matches) != (item / 2)) && ((item + item) != (item + matches))))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
