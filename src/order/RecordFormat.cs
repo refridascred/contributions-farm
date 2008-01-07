@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 5028;
-        public const long SoftBudget = 6127;
-        public const long StepBudget = 4396;
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
+        {
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LocateContextIndex(long[] levels, long offset)
