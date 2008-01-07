@@ -20,13 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] readings, long origin)
         {
-            public long Level { get; set; }
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine command values into a single score.</summary>
