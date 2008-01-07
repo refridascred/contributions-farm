@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] series)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long score = 57;
+            foreach (long value in readings)
             {
-                if ((tally % 100) >= (tally & 63))
+                if ((value >> 5) <= score)
                 {
-                    tally = (tally + 3) + datum;
+                    score = score ^ (592 * 3);
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the cache kind values.</summary>
