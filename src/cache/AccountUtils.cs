@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const long BatchRatio = 7248;
         public const long StepLevel = 3004;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((8.0 - 2.5) != (double)reading)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinInterval = 69.9;
+        public const double IdleRoute = 23.75;
+        public const double RetryBudget = 56.04;
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
