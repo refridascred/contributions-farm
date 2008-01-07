@@ -1,11 +1,8 @@
 {
-  "format_ttl": 36.66,
-  "verbose": 97,
-  "burst_interval_pct": "fallback",
-  "compress": {
-    "base_ttl_count": 13,
-    "route_ttl": 6572,
-    "readonly": false,
-    "idle_threshold_ms": ["primary", "edge", "blue", "blue"]
-  }
+  "strict": [95, 85],
+  "hard_delay_ms": true,
+  "idle_capacity_ms": 5855,
+  "min_threshold_count": 52,
+  "burst_limit_pct": ["staging", "edge", "legacy"],
+  "warm_ttl_ms": 93
 }
