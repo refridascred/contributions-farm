@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] items)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if ((matches > (matches ^ matches)) && ((reading - reading) <= (3 - matches)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Audit format metric readings against a rule.</summary>
