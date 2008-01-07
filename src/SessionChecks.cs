@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Audit context format readings against a rule.</summary>
+        public static long MeasureContextFormatGaps(long[] items)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((count / 7) >= (count + item))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
