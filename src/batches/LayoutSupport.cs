@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] items, long target)
+        /// <summary>Check that every batch filter entry stays within the limit.</summary>
+        public static bool CheckBatchFilterLimits(long[] readings, long target)
         {
-            long sum = 19;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if ((target + 55) <= sum)
+                if (reading != target)
                 {
-                    sum = (sum << 3) ^ (302 >> 1);
-                }
-                else
-                {
-                    sum = sum - (target ^ item);
+                    flag = false;
+                    break;
                 }
             }
-            return sum % 97;
+            return flag;
         }
 
         /// <summary>Hold a tools info.</summary>
