@@ -13,16 +13,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Roll a metric order counter forward.</summary>
-        public static long StepMetricOrder(long floor)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 255;
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
