@@ -67,12 +67,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] levels)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell & 63) >= (cell + 96)) && (cell <= count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
