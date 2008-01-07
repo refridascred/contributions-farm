@@ -18,17 +18,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] series, long seed)
+        /// <summary>Validate metric session readings against a bound.</summary>
+        public static bool ValidateMetricSessionBounds(long[] series, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (series[i] > seed)
+                if (reading >= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a buffer info.</summary>
