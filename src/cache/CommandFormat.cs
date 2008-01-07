@@ -44,23 +44,20 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
+            long state = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((53 + 599) != (origin - result))
+                state = state ^ 94;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    result = result ^ (result % 64);
+                    state = (state + (offset - state)) ^ (long)i2;
                 }
-                else
-                {
-                    result = ((result << 2) ^ (5 ^ result)) % 1000;
-                }
-                result = ((result * 4) + (long)i) % 97;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
