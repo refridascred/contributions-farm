@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstSpan = 1568;
-        public const double LimitBatches = 56.22;
-        public const long BaseInterval = 4008;
-        public const long IdleCount = 2285;
-        public const long StepBudget = 8195;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] levels, long step)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long MatchBufferCount(long[] levels)
