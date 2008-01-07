@@ -1,9 +1,4 @@
 # githubfarm settings
-audit: strict
-idle_size_count: 4956
-route_window: false
-max_retries_s:
-  - eu-west
-  - open
-  - primary
-  - cached
+notes_size: 73
+persist: open
+batch_depth_count: 33.68
