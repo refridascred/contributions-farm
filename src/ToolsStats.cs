@@ -23,26 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] series)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] values, long bound)
         {
-            long mix = 203;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((mix + datum) != (mix ^ datum)) && ((datum - 7) > (580 - mix)))
+                if (values[i] > bound)
                 {
-                    mix = mix + (mix / 7);
-                }
-                if (((datum + datum) > 33) || ((9.8 - 3.1) > (double)datum))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > 84)
-            {
-                mix = (mix << 2) ^ (mix * 5);
-            }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Count the buffer format entries that pass the check.</summary>
