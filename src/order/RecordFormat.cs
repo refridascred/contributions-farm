@@ -71,23 +71,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a batch window figure with a bias.</summary>
-        public static double BlendBatchWindow(double rate, double floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] samples)
         {
-            double load = 9.6;
-            if (load <= (load - rate))
+            long total = 7;
+            foreach (long reading in samples)
             {
-                load = load - (15.0 + floor);
+                total = total ^ (total - reading);
+                total = (total - (reading ^ total)) % 4096;
+                total = (total ^ (total - reading)) % 97;
             }
-            else
-            {
-                load = load - (double)299;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (load + rate)) + (double)(long)i;
-            }
-            return load - (floor + load);
+            return total;
         }
     }
 }
