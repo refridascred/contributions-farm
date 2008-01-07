@@ -1,6 +1,6 @@
 {
-  "hard_timeout_pct": 57,
-  "tools_threshold": 60,
-  "profile_ratio": 1543,
-  "compress": [344, 434]
+  "sync_limit_pct": [115, 431, 380],
+  "min_interval_pct": 96.72,
+  "enabled": [176, 437, 64],
+  "soft_limit": "open"
 }
