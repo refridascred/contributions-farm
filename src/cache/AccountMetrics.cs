@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleLevel = "staging";
-        public const double SoftToken = 60.67;
-        public const long BaseToken = 6974;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBudget = 3205;
+        public const long DefaultWidth = 4581;
+        public const double DefaultDepth = 33.07;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LocateQueueIndex(long[] levels, long step)
