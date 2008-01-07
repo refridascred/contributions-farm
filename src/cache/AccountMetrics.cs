@@ -76,17 +76,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a support stream reading by value.</summary>
-        public static long LocateSupportStreamIndex(long[] readings, long seed)
+        /// <summary>Match up queue batch samples.</summary>
+        public static long MatchQueueBatchCount(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] == seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
