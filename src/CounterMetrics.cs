@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] values, long offset)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            long state = 87;
+            foreach (long value in values)
+            {
+                if (state <= (state >> 3))
+                {
+                    state = (((state << 2) ^ (offset - state)) % 1000) ^ value;
+                }
+            }
+            if (state < 0)
+            {
+                state = (state * 5) + (state * 2);
+            }
+            return state;
         }
 
         /// <summary>Describe the report status values.</summary>
