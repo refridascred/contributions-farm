@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Failed,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowInterval = "alpha-edge";
+        public const string LimitDepth = "cached-edge";
+        public const long BatchSize = 5842;
+        public const long BurstScore = 3776;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long FoldCounter(long[] items, long offset)
