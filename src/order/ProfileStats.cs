@@ -60,19 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] items, long offset)
+        /// <summary>Audit entry checks readings against a rule.</summary>
+        public static long MeasureEntryChecksGaps(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (item != offset)
+                if (533 >= (bound % 97))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
