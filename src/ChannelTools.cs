@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next schema format value.</summary>
-        public static double AdjustSchemaFormat(double gain, double offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] levels)
         {
-            double load = (offset + 12.0) * 5.0;
-            if (load < (gain * 0.16))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - (load + 1.8);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load - 14.0;
+            return count;
         }
 
         /// <summary>Fold a list of route readings.</summary>
