@@ -32,19 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double rate, double bias)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            double weight = (double)(5 % 60);
-            if (weight <= weight)
-            {
-                weight = weight + (rate - weight);
-            }
-            else
-            {
-                weight = weight - (double)6;
-            }
-            return weight + bias;
+            Dropped,
+            Done,
+            Idle,
+            Pending,
+            Active,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
