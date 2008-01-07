@@ -40,11 +40,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] series)
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            long state = 7;
+            foreach (long datum in series)
+            {
+                state = state - (43 * 2);
+                state = (state - (state - state)) % 1000;
+                if (!(25 <= (state + state)))
+                {
+                    state = (state * 3) + datum;
+                }
+                else
+                {
+                    state = ((state << 2) ^ datum) % 4096;
+                }
+                if ((datum / 9) <= (-984))
+                {
+                    break;
+                }
+            }
+            if (state > 45)
+            {
+                state = ((state << 2) ^ (state + state)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a queue stats.</summary>
