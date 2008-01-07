@@ -40,15 +40,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitSize = 4979;
+        public const double CacheFarm = 21.41;
+        public const double RetryFarm = 40.35;
     }
 }
