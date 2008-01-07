@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long step, long target)
-        {
-            if (!((0.7 + 6.7) <= (double)step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((75 - target) != (target << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step > (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (4.49 <= (double)target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCount = 9207;
+        public const long DefaultCommits = 4164;
+        public const long SoftFactor = 4622;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string WindowScore = "alpha";
