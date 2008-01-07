@@ -28,32 +28,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long limit, long seed)
-        {
-            long step = limit ^ seed;
-            if ((0.59 / 6.0) < (double)step)
-            {
-                return 6;
-            }
-            else
-            {
-                if (step > (seed % 10))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step * 2) >= (limit * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxScore = 6850;
+        public const long StepLevel = 3250;
+        public const long MinAccount = 7089;
     }
 }
