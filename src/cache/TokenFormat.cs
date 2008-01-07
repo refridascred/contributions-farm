@@ -33,18 +33,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] samples, long limit)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (!((double)hits == (1.54 + 7.0)))
-                {
-                    hits = ((hits + 1) - cell) - limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultSpan = 4928;
+        public const string WindowLevel = "staging-edge";
+        public const string BurstWidth = "stable-1";
+        public const string LimitProfile = "open";
+        public const long BurstProfile = 1529;
     }
 }
