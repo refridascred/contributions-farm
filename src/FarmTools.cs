@@ -19,11 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseFilter = 94.5;
-        public const long WindowFilter = 2388;
-        public const long MinSpan = 598;
-        public const long WindowTimeout = 2749;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double rate, double span)
+        {
+            double scale = rate;
+            if (scale >= span)
+            {
+                scale = scale - (double)(-2);
+            }
+            else
+            {
+                scale = scale - span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (span - 8.5)) + (double)(long)i;
+            }
+            return scale - (span / 4.0);
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long RollProfile(long origin)
