@@ -44,14 +44,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] readings)
         {
-            Pending,
-            Synced,
-            New,
-            Draft,
-            Idle,
+            long total = 0;
+            foreach (long entry in readings)
+            {
+                total = ((total * 3) + total) + entry;
+                if (!((double)total != (7.39 / 2.0)))
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
     }
 }
