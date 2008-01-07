@@ -64,15 +64,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] samples)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] samples)
         {
             long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)(long)samples.Length >= (0.83 * 2.0)) || (((item + item) <= (73 - count)) && ((double)count != (double)item)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 2;
+                    if ((samples[i] + samples[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
