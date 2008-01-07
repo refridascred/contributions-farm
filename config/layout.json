@@ -1,7 +1,6 @@
 {
-  "max_size_s": "eu-west",
-  "queue_depth": 345,
-  "min_ratio": ["local", "latest", "green", "primary"],
-  "filter_window": "open",
-  "enabled": true
+  "strict": 34.12,
+  "warm_ratio": "fallback",
+  "flush_window": 43,
+  "format_capacity": "green"
 }
