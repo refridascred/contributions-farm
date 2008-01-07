@@ -13,11 +13,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
+            Done,
+            Stale,
+            Pending,
+            Failed,
+            Active,
         }
 
         /// <summary>Blend two editor format measurements.</summary>
