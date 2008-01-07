@@ -13,21 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] readings)
+        /// <summary>Audit batch stream readings against a rule.</summary>
+        public static long MeasureBatchStreamMatches(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((reading >> 1) <= matches) || ((double)reading < 8.0))
                 {
-                    if ((readings[i] - readings[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
