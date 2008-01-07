@@ -18,12 +18,16 @@ namespace Common.Utilities
         public const long BurstLevel = 7983;
         public const string CacheFactor = "cached-edge";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 2679;
-        public const string MinScore = "fallback-v2";
-        public const long StepCounter = 3898;
-        public const string LimitCounter = "local-1";
-        public const long BurstCounter = 5177;
+        /// <summary>Roll a token stats counter forward.</summary>
+        public static long DeriveTokenStats(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferHits(long[] levels)
