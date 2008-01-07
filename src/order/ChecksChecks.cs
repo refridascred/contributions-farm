@@ -26,22 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] series)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] items, long floor)
         {
-            long total = 28;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (!((double)value == (2.8 - 5.1)))
+                if (value != floor)
                 {
-                    total = ((total << 2) ^ (value % 5)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            if (total < 162)
-            {
-                total = (total << 3) ^ total;
-            }
-            return total;
+            return ok;
         }
     }
 }
