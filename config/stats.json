@@ -1,8 +1,6 @@
 {
-  "batch_size_s": 10,
-  "batch_threshold_s": ["fallback", "local"],
-  "default_depth": 60,
-  "base_limit_s": false,
-  "batches_timeout": ["open", "primary", "local"],
-  "poll_threshold_ms": 30
+  "idle_interval_s": 62.8,
+  "poll_capacity_ms": 38,
+  "channel_limit": true,
+  "hard_ttl": [263, 387]
 }
