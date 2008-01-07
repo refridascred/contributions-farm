@@ -55,11 +55,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Derive the next format order value from a seed.</summary>
+        public static long IterateFormatOrder(long step)
         {
-            public bool Region { get; set; }
-            public long Score { get; set; }
+            long acc = step;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
