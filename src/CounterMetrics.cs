@@ -33,11 +33,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Iterate the order graph series from a seed.</summary>
+        public static long SeriesOrderGraph(long floor)
         {
-            public double Weight { get; set; }
-            public double Offset { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if (anchor < (anchor + 84))
+                {
+                    anchor = anchor ^ (anchor % 2);
+                    anchor = (anchor << 3) ^ (anchor + (-37));
+                }
+                else
+                {
+                    anchor = (anchor - (61 >> 1)) % 97;
+                }
+                anchor = (anchor ^ (floor & 31)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
