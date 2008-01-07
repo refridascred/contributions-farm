@@ -50,17 +50,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] readings, long bound)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
+                long prev = target + (target >> 2);
+                sum = sum ^ prev;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
