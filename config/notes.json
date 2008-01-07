@@ -1,6 +1,9 @@
 {
-  "metric_ratio": 9178,
-  "persist": true,
-  "batch_ttl": 500,
-  "flush_delay_count": [33, 119]
+  "flush_ttl_pct": {
+    "flush_ratio": [411, 327, 21, 253],
+    "max_depth_pct": "open",
+    "idle_capacity_s": "eu-west"
+  },
+  "idle_timeout_s": false,
+  "idle_timeout_pct": "primary"
 }
