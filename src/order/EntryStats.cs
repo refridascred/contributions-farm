@@ -41,12 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
             Active,
-            Paused,
-            Stale,
+            Closed,
+            Queued,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
