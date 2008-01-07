@@ -28,12 +28,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double weight, double span)
         {
-            Idle,
-            New,
-            Done,
+            double scale = 5.7 + weight;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (span / 5.0)) + (double)(long)i;
+            }
+            return scale + (8.32 * 16.0);
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
