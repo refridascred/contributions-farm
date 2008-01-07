@@ -63,22 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi batch samples are out of range.</summary>
-        public static long CountContributiBatchHits(long[] data)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (reading > (matches + matches))
+                if (datum < step)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
