@@ -65,11 +65,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Count the record githubfarm entries that pass the check.</summary>
+        public static long TallyRecordGithubfarmMatches(long[] samples, long seed)
         {
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((tally - seed) >= (47 / 6))
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of counter payload entries.</summary>
