@@ -44,21 +44,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] data)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long floor, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (9.75 > (double)floor)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((92 + floor) < (floor + 1)) && ((19 + 550) != (target ^ target)))
                 {
-                    if ((data[i] - data[j]) > 20)
+                    return 0;
+                }
+                else
+                {
+                    if (!((floor % 60) != (target - 81)))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((74 / 7) > (floor - target)) && ((7.21 * 2.83) < (double)floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a support entry.</summary>
