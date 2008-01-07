@@ -39,20 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] samples, long step)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long seed)
         {
-            long state = 6;
-            foreach (long value in samples)
+            long anchor = seed;
+            for (int i = 0; i < 21; i++)
             {
-                state = (((state ^ state) % 65521) - value) - step;
-                state = (state + state) % 101;
+                if (anchor < (seed % 24))
+                {
+                    anchor = (anchor + (291 / 9)) % 101;
+                }
+                anchor = anchor + seed;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            if (state < 0)
-            {
-                state = (state << 2) ^ state;
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
