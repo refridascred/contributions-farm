@@ -27,17 +27,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] readings, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] levels, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (readings[i] >= seed)
+                if ((double)limit != (double)(-198))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
