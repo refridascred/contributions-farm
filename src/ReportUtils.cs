@@ -82,14 +82,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Locked,
-            Failed,
-            Dropped,
-            Active,
-            New,
+            Closed,
+            Ready,
+            Retry,
         }
     }
 }
