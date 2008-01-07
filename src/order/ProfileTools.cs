@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] readings, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if ((datum - datum) > (datum + datum))
+                {
+                    seen = (seen + 2) + step;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Count the record token entries that pass the check.</summary>
