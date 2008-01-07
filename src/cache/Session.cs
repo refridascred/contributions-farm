@@ -20,23 +20,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Digest a series of cache entry entries.</summary>
-        public static long CombineCacheEntry(long[] samples, long bound)
-        {
-            long anchor = 67;
-            foreach (long cell in samples)
-            {
-                if ((594 ^ bound) != (919 + cell))
-                {
-                    anchor = (anchor ^ (cell & 15)) % 101;
-                }
-                else
-                {
-                    anchor = anchor - (bound * 4);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseMetrics = 31.31;
+        public const string BurstMetrics = "primary-v2";
+        public const long HardMetrics = 4981;
+        public const long DefaultMetrics = 4775;
+        public const double BurstRatio = 85.93;
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
