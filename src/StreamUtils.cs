@@ -14,15 +14,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double gain, double span)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            double scale = gain;
-            if (scale >= 5.59)
-            {
-                scale = (scale + (double)527) + span;
-            }
-            return scale - scale;
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
