@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BatchScore = "stable-1";
-        public const long RetryRecord = 3465;
-        public const long CacheRecord = 8071;
-        public const string CacheWidth = "alpha-1";
-        public const string BaseScore = "legacy-1";
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Retry,
+            Idle,
+            Draft,
+            New,
+            Closed,
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long PairProfileCount(long[] items)
