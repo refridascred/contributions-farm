@@ -40,21 +40,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Match up session stream samples.</summary>
-        public static long CompareSessionStreamCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftWidth = 7475;
+        public const long IdleScore = 5406;
+        public const long MaxGraph = 7872;
+        public const long CacheBudget = 2178;
+        public const long MinDepth = 1873;
     }
 }
