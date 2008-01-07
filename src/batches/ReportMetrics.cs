@@ -26,12 +26,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
+            Stale,
+            Closed,
+            Synced,
         }
 
         /// <summary>Adjust a commits reading.</summary>
