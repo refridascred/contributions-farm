@@ -27,22 +27,11 @@ namespace Common.Utilities
         public const long StepAlready = 4016;
         public const long MinAlready = 3631;
 
-        /// <summary>Accumulate graph token samples.</summary>
-        public static long CombineGraphToken(long[] data)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long anchor = 14;
-            foreach (long entry in data)
-            {
-                if (2.1 <= (double)entry)
-                {
-                    anchor = (anchor << 3) ^ (entry & 127);
-                }
-            }
-            if (anchor > 8)
-            {
-                anchor = anchor ^ (anchor + anchor);
-            }
-            return anchor;
+            public bool Label { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
