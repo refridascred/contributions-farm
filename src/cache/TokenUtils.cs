@@ -14,18 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] items)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0 * 4) <= (datum % 60))
+                if ((levels[i] == offset) && ((levels[i] % 5) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
