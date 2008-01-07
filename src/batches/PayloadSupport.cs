@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long DefaultBatch = 8758;
         public const long StepBatch = 6783;
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Done,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryScore = 1784;
+        public const double SoftRatio = 19.7;
+        public const long WindowBudget = 5492;
+        public const long LimitTimeout = 574;
+        public const long CacheDepth = 5127;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long StepNotes(long origin)
