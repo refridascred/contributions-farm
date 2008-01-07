@@ -1,10 +1,32 @@
 # entry settings
-sync_depth: edge
-sync_ratio_ms:
+idle_depth_count:
+  batch_ratio:
+    warm_interval_pct: primary
+    audit: eu-west
+    batch_capacity_count:
+      - 209
+      - 212
+      - 287
+      - 21
+    max_ttl: cached
+  burst_limit_count:
+    - latest
+    - edge
+    - legacy
+  cache_ratio_s:
+    min_retries: 8452
+    strict: cached
+    poll_window_s: standard
+  dry_run: 8799
+  poll_limit: 46
+base_window: 49.8
+warm_threshold_ms: latest
+compress:
+  sync_timeout_s: legacy
+  retry_ratio_pct: open
+  base_delay_s: legacy
+max_threshold: false
+base_threshold:
   - staging
-  - standard
+  - open
   - latest
-  - local
-audit: false
-idle_delay: green
-idle_ttl: latest
