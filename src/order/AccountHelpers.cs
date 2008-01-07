@@ -49,14 +49,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long offset, long bound)
         {
-            Idle,
-            Stale,
-            Locked,
-            Draft,
-            Ready,
+            long gap = offset ^ bound;
+            if (9.4 < (double)gap)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound << 1) <= (-807))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
