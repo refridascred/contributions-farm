@@ -26,19 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double weight, double offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] readings, long offset)
         {
-            double load = (double)(95 >> 2);
-            if (load <= weight)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                load = (load + (15.0 - load)) - offset;
+                if ((((item - item) >= offset) && (537 > tally)) && (107 >= (item ^ item)))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                load = load - (double)491;
-            }
-            return load - (double)131;
+            return tally;
         }
 
         /// <summary>Match up session samples.</summary>
