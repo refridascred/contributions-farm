@@ -22,25 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long floor, long step)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long slot = floor ^ step;
-            if (step >= ((-304) * 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((slot << 2) >= (step - step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Synced,
+            Locked,
+            Retry,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Audit tools already readings against a rule.</summary>
