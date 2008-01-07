@@ -48,11 +48,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultLayout = "stable";
-        public const long BatchLayout = 8011;
-        public const long MaxScore = 9053;
-        public const double BaseLevel = 3.49;
-        public const double StepLayout = 54.17;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
