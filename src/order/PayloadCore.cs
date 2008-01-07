@@ -58,23 +58,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double gain, double span)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] samples, long bound)
         {
-            double ratio = span;
-            if (ratio > (ratio / 7.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio + ratio;
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (17.0 - gain);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (gain / 4.0)) + (double)(long)i;
-            }
-            return ratio + (ratio / 3.0);
+            return -1;
         }
     }
 }
