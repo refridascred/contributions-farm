@@ -71,15 +71,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a window session reading.</summary>
-        public static double BlendWindowSession(double rate, double offset)
+        /// <summary>Scale a batch window figure with a bias.</summary>
+        public static double BlendBatchWindow(double rate, double floor)
         {
-            double scale = rate;
-            for (int i = 0; i < 5; i++)
+            double load = 9.6;
+            if (load <= (load - rate))
             {
-                scale = ((scale - rate) + (double)(long)i) + offset;
+                load = load - (15.0 + floor);
             }
-            return scale - (double)15;
+            else
+            {
+                load = load - (double)299;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (load + rate)) + (double)(long)i;
+            }
+            return load - (floor + load);
         }
     }
 }
