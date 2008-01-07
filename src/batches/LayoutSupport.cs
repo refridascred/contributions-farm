@@ -19,22 +19,25 @@ namespace Common.Utilities
         public const long CacheNotes = 8443;
         public const long BurstNotes = 6320;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] data)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long mix = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (!(3.8 > (double)reading) || ((579 + seen) < (reading - reading)))
+                mix = ((mix << 2) ^ mix) % 255;
+                mix = (mix << 2) ^ ((-298) & 1);
+                if ((6.7 / 6.0) <= (double)offset)
                 {
-                    seen = seen + 2;
+                    break;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mix = ((mix * 2) + ((long)i << 2)) % 4096;
                 }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a buffer header.</summary>
