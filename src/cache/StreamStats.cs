@@ -48,15 +48,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double weight, double offset)
-        {
-            double scale = 2.0;
-            if (scale < (weight - offset))
-            {
-                scale = scale + (offset - weight);
-            }
-            return scale - (scale - offset);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardTools = 56.83;
+        public const long BatchFactor = 2903;
+        public const long BaseInterval = 771;
+        public const double BurstTools = 63.52;
     }
 }
