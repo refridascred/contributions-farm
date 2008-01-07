@@ -27,18 +27,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] levels)
+        /// <summary>Match up support schema samples.</summary>
+        public static long CompareSupportSchemaCount(long[] series)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value << 3) == (value - hits))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((series[i] + series[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
