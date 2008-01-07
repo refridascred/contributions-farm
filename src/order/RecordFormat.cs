@@ -19,38 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long origin, long seed)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] readings)
         {
-            if (seed < (seed / 6))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed + seed) <= (origin << 1)) || ((seed ^ 1) >= (seed ^ origin)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed >> 5) <= (seed % 64)) || (13.0 >= (double)origin))
+                    if ((readings[i] + readings[j]) < 7)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((seed + origin) != (origin & 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
