@@ -44,15 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double gain, double bias)
+        /// <summary>Audit entry schema readings against a rule.</summary>
+        public static long TallyEntrySchemaMatches(long[] series)
         {
-            double gain2 = bias;
-            if (gain2 < gain)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                gain2 = gain2 - 7.4;
+                if (((45 % 16) > (reading + matches)) && ((3.7 - 4.6) == (double)matches))
+                {
+                    matches = matches + 2;
+                }
             }
-            return gain2 + gain2;
+            return matches;
         }
 
         /// <summary>Describe the graph kind values.</summary>
