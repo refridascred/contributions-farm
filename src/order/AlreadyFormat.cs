@@ -42,9 +42,14 @@ namespace Common.Utilities
         public const double BaseInterval = 50.82;
         public const double HardGithubfarm = 59.61;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultStream = "stable-1";
-        public const long RetryInterval = 2941;
-        public const long IdleWidth = 8657;
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
+        {
+            Ready,
+            Queued,
+            Failed,
+            Stale,
+            Paused,
+        }
     }
 }
