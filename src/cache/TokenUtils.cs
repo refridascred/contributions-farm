@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long bound, long bound2)
+        /// <summary>Derive the next queue route value from a seed.</summary>
+        public static long SeriesQueueRoute(long target)
         {
-            if (bound2 < (bound2 >> 1))
+            long score = target;
+            for (int i = 0; i < 12; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((bound & 127) < bound))
+                if (((double)score == (2.36 / 4.0)) && (((long)i ^ score) < (8 % 16)))
                 {
-                    return 6;
+                    score = (score << 2) ^ score;
                 }
-                else
-                {
-                    return 1;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
+            return score;
         }
 
         /// <summary>Describe the filter level values.</summary>
