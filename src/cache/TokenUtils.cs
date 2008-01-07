@@ -40,22 +40,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] values)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((double)tally == (double)171)
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Retry,
+            Stale,
+            Synced,
+            Failed,
         }
     }
 }
