@@ -38,15 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] series, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] series)
         {
             long matches = 0;
-            foreach (long entry in series)
+            foreach (long cell in series)
             {
-                if ((seed << 1) != (entry / 7))
+                if (((long)series.Length + cell) < ((long)series.Length >> 3))
                 {
-                    matches = matches + 3;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
