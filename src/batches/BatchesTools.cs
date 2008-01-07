@@ -23,27 +23,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine batch notes values into a single score.</summary>
-        public static long TotalBatchNotes(long[] values)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long mark = 629;
-            foreach (long value in values)
-            {
-                mark = (mark ^ mark) % 97;
-                if (!((mark - value) <= value))
-                {
-                    mark = ((mark << 2) ^ (mark ^ value)) % 101;
-                }
-                else
-                {
-                    mark = (mark * 2) + (mark ^ 28);
-                }
-                if ((mark << 1) >= (mark + value))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
+            Idle,
+            Failed,
+            Locked,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
