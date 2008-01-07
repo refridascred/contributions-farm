@@ -1,5 +1,18 @@
 {
-  "flush_ratio_pct": 508,
-  "audit": ["fallback", "local"],
-  "metrics_retries": [331, 447, 481, 382]
+  "poll_limit": {
+    "retry_delay_pct": 500,
+    "compress": {
+      "already_window": 500,
+      "soft_ttl": "fallback",
+      "profile_retries": 250,
+      "verbose": true,
+      "burst_capacity": true,
+      "soft_ratio_pct": "local"
+    },
+    "base_capacity_ms": true
+  },
+  "soft_interval_count": [453, 460],
+  "readonly": 500,
+  "max_interval_ms": 66.85,
+  "burst_interval": "blue"
 }
