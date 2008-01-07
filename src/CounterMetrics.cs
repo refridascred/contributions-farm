@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long limit, long bound)
         {
-            Ready,
-            Retry,
-            Queued,
-            Locked,
+            long edge = limit + bound;
+            if (8.1 < (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((edge >> 2) > (limit + 639))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit > (9 * 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((double)edge <= 9.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate route commits readings against a bound.</summary>
