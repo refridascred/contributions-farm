@@ -13,18 +13,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] samples, long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long mix = -123;
+            foreach (long cell in samples)
             {
-                if ((item - (-6)) <= (target % 10))
+                mix = ((mix << 3) ^ ((-536) + (long)samples.Length)) % 255;
+                if (((cell * 3) >= (mix / 7)) || ((mix * 4) >= (mix >> 3)))
                 {
-                    seen = seen + 1;
+                    mix = (mix - (7 + 440)) % 1000;
+                }
+                else
+                {
+                    mix = (mix - (cell ^ floor)) % 4096;
                 }
             }
-            return seen;
+            return mix % 65521;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
