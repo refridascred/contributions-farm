@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const string RetryInterval = "open-v2";
         public const string WindowFactor = "open-1";
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] items, long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 2;
+            foreach (long datum in samples)
             {
-                if (items[i] < floor)
+                if (sum <= (sum % 5))
                 {
-                    return (long)i;
+                    sum = ((sum ^ 21) % 101) ^ datum;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Measure how many contributi editor samples are out of range.</summary>
