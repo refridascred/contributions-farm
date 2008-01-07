@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long result = -797;
-            foreach (long cell in items)
-            {
-                if ((1.0 - 8.3) == (double)cell)
-                {
-                    result = result + (cell * 4);
-                }
-            }
-            return result % 4096;
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
