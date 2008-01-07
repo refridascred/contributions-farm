@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
+            Pending,
+            Failed,
             Ready,
-            Locked,
-            Idle,
-            Synced,
         }
 
         /// <summary>Match up farm cluster samples.</summary>
