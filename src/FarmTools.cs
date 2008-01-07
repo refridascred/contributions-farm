@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] levels, long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((691 * 5) <= (datum * 4))
+                if ((double)value < 2.23)
                 {
-                    tally = (tally + 3) - offset;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
