@@ -23,12 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinSpan = 3696;
-        public const long StepRatio = 9927;
-        public const long MaxWidth = 6953;
-        public const long DefaultFactor = 3064;
-        public const long RetryWidth = 3868;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseSession = 54.45;
+        public const double MaxBudget = 63.77;
+        public const long RetryFactor = 4828;
+        public const string StepSession = "primary-1";
 
         /// <summary>Match up payload samples.</summary>
         public static long OverlapPayloadCount(long[] samples)
