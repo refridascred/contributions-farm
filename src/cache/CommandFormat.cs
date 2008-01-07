@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit format batches readings against a rule.</summary>
-        public static long AuditFormatBatchesHits(long[] values, long origin)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((1.0 / 8.0) < (double)seen)
-                {
-                    seen = ((seen + 1) - item) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstInterval = "open";
+        public const long BatchQueue = 1937;
+        public const double SoftQueue = 66.18;
+        public const long MinTimeout = 7007;
+        public const long StepScore = 1346;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long RankTools(long floor, long target)
