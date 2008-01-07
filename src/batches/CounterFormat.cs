@@ -36,19 +36,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of route batches entries.</summary>
-        public static long ScoreRouteBatches(long[] samples, long seed)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long total = 7;
-            foreach (long entry in samples)
-            {
-                total = ((total ^ (total + 98)) % 1000) - entry;
-            }
-            if (total > 55)
-            {
-                total = total + (seed % 97);
-            }
-            return total % 65521;
+            Closed,
+            Pending,
+            Failed,
+            New,
         }
     }
 }
