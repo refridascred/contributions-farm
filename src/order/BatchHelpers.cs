@@ -22,24 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long limit, long origin)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            if (origin < (5 + 51))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)limit == (5.0 * 0.2)) && ((8 ^ origin) <= (832 % 5)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Failed,
+            Locked,
+            Queued,
+            Retry,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
