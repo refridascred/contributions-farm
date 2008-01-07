@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double bias, double span)
         {
-            Active,
-            Stale,
-            Paused,
+            double bias2 = 6.96 - span;
+            if (bias2 >= (double)284)
+            {
+                bias2 = bias2 + 13.0;
+            }
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            return bias2 + (bias2 - bias);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
