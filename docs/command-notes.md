@@ -1,10 +1,13 @@
 # Command notes
 
-Each report is validated before it reaches the metric queue.
-The schema helpers are pure functions, so they are safe to call from any thread.
+A graph that stays idle for too long is moved to the command list.
+Run the commits check before changing any payload limits.
+
+Each notes is validated before it reaches the buffer queue.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep stream values small
-- Prefer checks defaults
-- Validate checks input early
+- Keep window values small
+- Document new layout fields
+- Log every context change
