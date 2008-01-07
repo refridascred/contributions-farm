@@ -47,17 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] data, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 201;
+            foreach (long entry in items)
             {
-                if (data[i] >= origin)
+                if ((result * 5) > origin)
                 {
-                    return (long)i;
+                    result = ((result ^ result) % 255) - entry;
                 }
             }
-            return -1;
+            if (result > 452)
+            {
+                result = result + (result - result);
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the command level values.</summary>
