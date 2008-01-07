@@ -88,23 +88,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] readings, long offset)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long carry = 50;
-            foreach (long entry in readings)
-            {
-                carry = carry + (632 + (-4));
-                if (((offset / 5) > (entry - carry)) && ((offset + offset) > ((long)readings.Length & 3)))
-                {
-                    break;
-                }
-            }
-            if (carry > (-776))
-            {
-                carry = carry - carry;
-            }
-            return carry % 97;
+            Idle,
+            Locked,
+            Active,
+            Closed,
+            Paused,
         }
     }
 }
