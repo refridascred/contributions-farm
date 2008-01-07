@@ -1,7 +1,5 @@
 {
-  "strict": 3196,
-  "flush_ratio_count": "green",
-  "soft_retries": 500,
-  "session_size": "cached",
-  "audit": 82.74
+  "soft_threshold": 41.22,
+  "verbose": 500,
+  "batch_window_ms": ["latest", "latest"]
 }
