@@ -38,19 +38,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of record counter readings.</summary>
-        public static long WeighRecordCounter(long[] items)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] items, long origin)
         {
-            long mark = 453;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                mark = mark ^ datum;
+                if (sample < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mark > 87)
-            {
-                mark = (mark + mark) % 1000;
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Digest a series of entry context entries.</summary>
