@@ -19,14 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Active,
-            Done,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseTimeout = 9853;
+        public const long SoftSpan = 9784;
+        public const long StepProfile = 2115;
+        public const long LimitProfile = 5755;
+        public const double RetryScore = 76.98;
 
         /// <summary>Project the next notes value.</summary>
         public static double ScaleNotes(double gain, double floor)
