@@ -51,11 +51,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Project the next context queue value.</summary>
+        public static double ProjectContextQueue(double bias, double floor)
         {
-            public double Weight { get; set; }
-            public bool Stamp { get; set; }
+            double ratio = bias;
+            if (ratio < ratio)
+            {
+                ratio = (ratio + bias) - floor;
+            }
+            return ratio + (double)6;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
