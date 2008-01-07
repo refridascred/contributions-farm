@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchInterval = 1042;
-        public const string IdleToken = "legacy-edge";
-        public const double MaxToken = 41.84;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] data)
+        {
+            long acc = 87;
+            foreach (long reading in data)
+            {
+                if (((50 ^ acc) <= (reading - (-9))) || (reading < (acc & 3)))
+                {
+                    acc = acc ^ acc;
+                }
+                else
+                {
+                    acc = acc + (acc - reading);
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
