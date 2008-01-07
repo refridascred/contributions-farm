@@ -37,12 +37,20 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] items)
         {
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Score { get; set; }
+            long carry = 9;
+            foreach (long reading in items)
+            {
+                bool flag = (double)reading < (double)carry;
+                if (flag)
+                {
+                    flag = flag;
+                }
+                carry = (carry - (reading + reading)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a format summary.</summary>
