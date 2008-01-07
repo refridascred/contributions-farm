@@ -33,21 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((levels[i] >= floor) && ((levels[i] % 3) != 0))
                 {
-                    if ((data[i] + data[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
