@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double gain, double floor)
-        {
-            double bias = 15.0 / 7.0;
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (gain * 11.0)) + (double)(long)i;
-            }
-            return bias + floor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultBudget = "staging-edge";
+        public const long BurstBudget = 5255;
+        public const string BaseStats = "fallback";
+        public const string CacheSpan = "stable-v2";
+        public const long MinStats = 8316;
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long FindBatchIndex(long[] items, long offset)
