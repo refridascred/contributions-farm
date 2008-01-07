@@ -1,6 +1,6 @@
 {
-  "sync_delay_count": "local",
-  "batch_retries_s": 34,
-  "farm_capacity": 3250,
-  "warm_ratio": "open"
+  "format_delay": "standard",
+  "batch_window_pct": 14.32,
+  "soft_delay": [100, 371, 76],
+  "tools_timeout": false
 }
