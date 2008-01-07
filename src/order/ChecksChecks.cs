@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchInterval = 5672;
-        public const long BaseFormat = 9033;
-        public const long BaseWidth = 1000;
-        public const long HardWidth = 1067;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] levels, long target)
+        {
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
