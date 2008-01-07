@@ -39,21 +39,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) > 9)
+                    if ((data[i] + data[j]) > 6)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
