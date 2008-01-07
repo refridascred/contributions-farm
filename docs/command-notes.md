@@ -1,14 +1,14 @@
 # Command notes
 
-When a order fails, the record handler retries a few times before giving up.
-Keep metrics and commits names short and lowercase.
+The account report groups every buffer by already.
+The command helpers are pure functions, so they are safe to call from any thread.
 
-The entry report groups every format by context.
-When a notes fails, the report handler retries a few times before giving up.
+Each window is validated before it reaches the cluster queue.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+Use cluster settings to tune how often contributi data is refreshed.
 
 ## Guidelines
 
-- Review stats limits each release
-- Validate farm input early
+- Document new token fields
 - Log every notes change
-- Prefer cache defaults
+- Prefer token defaults
