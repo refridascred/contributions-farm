@@ -49,25 +49,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long target, long target2)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long span = target + target2;
-            if (span > target)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((106 + 2) == (target2 & 7)) || ((double)target2 > (9.84 - 2.07)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Pending,
+            Locked,
+            Failed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Count the route already entries that pass the check.</summary>
