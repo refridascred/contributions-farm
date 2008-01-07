@@ -36,22 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] series, long limit)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double scale = (double)(2 + (-75));
+            if (scale < bias)
             {
-                if ((seen + 3) <= (seen / 3))
-                {
-                    seen = ((seen + 2) - value) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                scale = scale - scale;
             }
-            return seen;
+            else
+            {
+                scale = scale + rate;
+            }
+            return scale - (0.27 * 2.3);
         }
 
         /// <summary>Describe the window status values.</summary>
