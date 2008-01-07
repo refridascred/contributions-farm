@@ -38,19 +38,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] items, long origin)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Stamp { get; set; }
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
