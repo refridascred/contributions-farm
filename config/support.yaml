@@ -1,4 +1,18 @@
 # support settings
-buffer_size: primary
-burst_depth: 64.13
-record_size: true
+verbose:
+  - latest
+  - stable
+retry_ttl: green
+warm_timeout_ms: staging
+graph_timeout:
+  - 35
+  - 273
+  - 151
+editor_ttl:
+  strict:
+    audit: blue
+    min_ttl_ms: cached
+    compress: stable
+    flush_delay_pct: false
+  retry_timeout: true
+  warm_retries_pct: 30
