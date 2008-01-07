@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long step, long step2)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] data)
         {
-            if ((step2 ^ step2) > 87)
+            long total = 2;
+            foreach (long datum in data)
             {
-                return 6;
+                total = (((total * 3) + ((long)data.Length + 411)) % 255) ^ datum;
             }
-            else
-            {
-                if ((step2 & 255) >= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (step2 > (step2 ^ step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((step2 << 3) != (374 >> 5)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
