@@ -19,18 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] samples, long floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long limit, long origin)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            if (origin < (5 + 51))
             {
-                if ((934 << 1) != (reading % 100))
+                return 8;
+            }
+            else
+            {
+                if (((double)limit == (5.0 * 0.2)) && ((8 ^ origin) <= (832 % 5)))
                 {
-                    matches = (matches + 3) - floor;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of batch payload readings.</summary>
