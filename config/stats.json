@@ -1,7 +1,7 @@
 {
-  "stream_threshold": false,
-  "min_ratio_ms": [49, 343],
-  "cache_window": 9254,
-  "soft_retries": 60,
-  "batch_delay_count": "green"
+  "compress": true,
+  "audit": "local",
+  "sync_threshold": "stable",
+  "base_size_ms": ["latest", "local"],
+  "batch_capacity_s": true
 }
