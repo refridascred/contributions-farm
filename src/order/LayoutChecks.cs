@@ -75,15 +75,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the commits farm series from a seed.</summary>
-        public static long RollCommitsFarm(long floor)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
