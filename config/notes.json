@@ -1,5 +1,8 @@
 {
-  "base_ttl_count": 9653,
-  "min_capacity_s": 48.84,
-  "audit": false
+  "stats_retries": 2120,
+  "persist": false,
+  "max_limit_ms": true,
+  "min_depth_s": 39,
+  "flush_size_pct": [244, 133, 293],
+  "report_delay": "legacy"
 }
