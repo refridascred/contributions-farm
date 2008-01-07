@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long offset, long target)
+        /// <summary>Measure how many entry window samples are out of range.</summary>
+        public static long TallyEntryWindowHits(long[] values)
         {
-            if (!(3 < offset))
+            long seen = 0;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)73 > (double)offset) && ((double)offset != (2.76 / 9.0)))
+                if ((341 - value) >= (86 % 8))
                 {
-                    return 0;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if (target <= offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset + target) >= target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
