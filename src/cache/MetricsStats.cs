@@ -61,10 +61,21 @@ namespace Common.Utilities
         public const long RetryCount = 2716;
         public const long DefaultQueue = 3586;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 6445;
-        public const long DefaultWidth = 1610;
-        public const long MaxSpan = 4825;
-        public const double IdleGithubfarm = 27.23;
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                long bound = mark;
+                if (offset > (bound % 12))
+                {
+                    mark = mark + (bound & 63);
+                    mark = (mark + ((-80) >> 1)) % 65521;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
+        }
     }
 }
