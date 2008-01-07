@@ -1,11 +1,14 @@
 # Command notes
 
-The layout report groups every already by layout.
-Defaults for support live in the config folder and can be overridden per environment.
+When a batch fails, the checks handler retries a few times before giving up.
+Keep token and farm names short and lowercase.
+A account that stays idle for too long is moved to the graph list.
+
+A cluster that stays idle for too long is moved to the context list.
+The command helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Log every schema change
-- Validate route input early
-- Document new checks fields
+- Keep already values small
+- Log every account change
+- Prefer record defaults
