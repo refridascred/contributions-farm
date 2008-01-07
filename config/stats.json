@@ -1,20 +1,7 @@
 {
-  "filter_threshold": 96.88,
-  "cache_delay_s": "cached",
-  "compress": 90,
-  "batch_ttl_ms": {
-    "soft_ratio_count": 30,
-    "sync_depth_pct": 250,
-    "compress": {
-      "dry_run": 500,
-      "session_limit": 79,
-      "hard_delay": "green",
-      "notes_timeout": 52,
-      "poll_timeout_count": false,
-      "strict": ["blue", "open", "stable", "local"]
-    },
-    "batches_timeout": ["open", "blue"],
-    "metric_ratio": 6047,
-    "cache_ratio": true
-  }
+  "stream_threshold": false,
+  "min_ratio_ms": [49, 343],
+  "cache_window": 9254,
+  "soft_retries": 60,
+  "batch_delay_count": "green"
 }
