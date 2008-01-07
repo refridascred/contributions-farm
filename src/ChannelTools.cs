@@ -20,32 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long seed, long origin)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long prev = seed ^ origin;
-            if ((91 + seed) == (prev >> 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if (origin <= (485 + 399))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((prev / 2) >= (2 % 24))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Active,
+            Done,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Count cache already pairs that satisfy a relation.</summary>
