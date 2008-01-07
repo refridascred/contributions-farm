@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] samples)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long origin)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((seen / 9) < sample)
-                {
-                    seen = seen + 3;
-                }
+                score = (score + (score + score)) % 65521;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
