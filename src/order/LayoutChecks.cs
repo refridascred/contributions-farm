@@ -70,39 +70,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long bound, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] values, long seed)
         {
-            long lane = bound - step;
-            if ((707 << 2) > lane)
+            long count = 0;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)lane <= (double)bound)
+                if (count < ((long)values.Length ^ 5))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((368 - step) == (bound - 58)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((50 - lane) < 754) || ((double)lane == (10.0 + 2.2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = ((count + 3) - datum) - seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
