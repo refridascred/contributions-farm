@@ -1,6 +1,7 @@
 {
-  "idle_interval_s": 62.8,
-  "poll_capacity_ms": 38,
-  "channel_limit": true,
-  "hard_ttl": [263, 387]
+  "poll_delay": [82, 42, 453],
+  "session_depth": ["standard", "green", "open"],
+  "base_ratio": 96.38,
+  "persist": true,
+  "notes_timeout": 63.68
 }
