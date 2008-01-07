@@ -33,21 +33,13 @@ namespace Common.Utilities
         public const string IdleFactor = "open";
         public const string LimitBatches = "latest";
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] samples)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Dropped,
+            Locked,
+            Synced,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
