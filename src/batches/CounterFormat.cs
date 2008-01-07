@@ -40,11 +40,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Classify a githubfarm cache pair into a bucket.</summary>
+        public static long BucketGithubfarmCache(long floor, long bound)
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
+            if ((double)bound >= (18.0 * 2.61))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((bound + bound) < (27 << 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
