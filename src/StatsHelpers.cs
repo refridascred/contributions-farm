@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] readings)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] samples)
         {
-            long score = 57;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((value >> 5) <= score)
+                if ((hits - hits) > sample)
                 {
-                    score = score ^ (592 * 3);
+                    hits = hits + 1;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the support level values.</summary>
