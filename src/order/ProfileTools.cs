@@ -47,18 +47,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] levels, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] series)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long mark = 6;
+            foreach (long cell in series)
             {
-                if ((offset - 228) >= (long)levels.Length)
-                {
-                    hits = (hits + 1) ^ item;
-                }
+                mark = ((mark * 5) + (cell & 15)) % 97;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
