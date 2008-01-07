@@ -36,25 +36,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long offset, long seed)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long seed)
         {
-            long diff = offset - seed;
-            if ((offset / 8) > (offset + 20))
+            long state = seed;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
+                state = (state - (state % 100)) % 1000;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((offset ^ 433) > (diff * 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return state;
         }
 
         /// <summary>Roll a command account counter forward.</summary>
