@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] values)
         {
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (value <= (tally * 4))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
