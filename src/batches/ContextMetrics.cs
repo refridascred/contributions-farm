@@ -34,11 +34,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double ratio, double span)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double weight, double span)
         {
-            double scale = span;
-            return scale - (ratio - ratio);
+            double weight2 = (double)(18 - 328);
+            if (weight2 > weight)
+            {
+                weight2 = (weight2 - (18.0 * 19.0)) - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 - (weight + 4.0)) + (double)(long)i;
+            }
+            return weight2 - (double)147;
         }
 
         /// <summary>Describe the order status values.</summary>
