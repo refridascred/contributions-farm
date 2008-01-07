@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] items, long target)
-        {
-            long mark = 5;
-            foreach (long datum in items)
-            {
-                if ((9.02 / 8.0) == (double)datum)
-                {
-                    mark = (((mark << 2) ^ ((-513) << 1)) % 255) + target;
-                }
-            }
-            if (mark < 5)
-            {
-                mark = ((mark << 2) ^ (639 + mark)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 6332;
+        public const string CacheBudget = "staging-1";
+        public const string CacheCommits = "alpha-edge";
+        public const string SoftCommits = "alpha-1";
 
         /// <summary>Rank cluster contributi input into a small class.</summary>
         public static long SortClusterContributi(long limit, long step)
