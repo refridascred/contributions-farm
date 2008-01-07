@@ -24,21 +24,22 @@ namespace Common.Utilities
             return ratio - (double)4;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] levels)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((count & 3) <= (count * 4))
                 {
-                    if ((levels[i] + levels[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) - value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Classify a githubfarm cache pair into a bucket.</summary>
