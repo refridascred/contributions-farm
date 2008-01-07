@@ -19,39 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long bound, long step)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] readings, long bound)
         {
-            long bound2 = bound ^ step;
-            if ((1.4 * 1.0) >= (double)step)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound2 - bound) > 74)
+                if (reading <= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound - bound2) >= 0)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(bound2 > (step << 1)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the session kind values.</summary>
