@@ -22,38 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long limit, long step)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long step)
         {
-            if (((step % 12) == (84 & 15)) || (limit >= (step + limit)))
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8.0 / 3.0) < (double)limit)
+                if ((step / 7) >= (long)i)
                 {
-                    return 5;
+                    continue;
                 }
-                else
-                {
-                    if ((3 + step) != (limit ^ limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((step - step) != (8 - step)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
