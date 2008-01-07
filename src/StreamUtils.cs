@@ -13,10 +13,16 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitCount = 8713;
-        public const double StepMetrics = 33.58;
-        public const long WindowMetrics = 3188;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double gain, double span)
+        {
+            double scale = gain;
+            if (scale >= 5.59)
+            {
+                scale = (scale + (double)527) + span;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long TallyStream(long[] values)
