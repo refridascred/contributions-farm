@@ -54,19 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] readings)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] data, long seed)
         {
-            long total = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                total = ((total * 3) + total) + entry;
-                if (!((double)total != (7.39 / 2.0)))
+                if ((3.05 * 5.82) < (double)seed)
                 {
-                    break;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return total % 97;
+            return matches;
         }
     }
 }
