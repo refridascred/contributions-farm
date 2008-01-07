@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] items, long seed)
+        /// <summary>Find the first batches stream entry that matches the target.</summary>
+        public static long SeekBatchesStreamIndex(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading <= seed)
+                if (series[i] < bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
