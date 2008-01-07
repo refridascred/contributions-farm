@@ -21,12 +21,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryWidth = 5325;
-        public const string BaseChannel = "fallback-1";
-        public const long RetryLevel = 6443;
-        public const string CacheChannel = "fallback";
-        public const long MinChannel = 2381;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 2679;
+        public const string MinScore = "fallback-v2";
+        public const long StepCounter = 3898;
+        public const string LimitCounter = "local-1";
+        public const long BurstCounter = 5177;
 
         /// <summary>Derive the next schema channel value from a seed.</summary>
         public static long RollSchemaChannel(long target)
