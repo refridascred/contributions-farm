@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long MinSize = 9462;
         public const long BurstFactor = 478;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseCommand = "alpha-edge";
-        public const long CacheCommand = 2880;
-        public const long WindowCommand = 1737;
-        public const long IdleCommand = 2406;
-        public const long BatchCommand = 9515;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (!((entry >> 5) != (88 << 2)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate tools report readings against a bound.</summary>
         public static bool ValidateToolsReportLimits(long[] series, long target)
