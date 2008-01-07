@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] levels)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double bias = floor - gain;
+            if (bias <= (double)93)
             {
-                if (1 <= (item - item))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias = bias - (bias - 4.61);
             }
-            return seen;
+            else
+            {
+                bias = bias - (floor - bias);
+            }
+            return bias + (floor - floor);
         }
 
         /// <summary>Count account counter pairs that satisfy a relation.</summary>
