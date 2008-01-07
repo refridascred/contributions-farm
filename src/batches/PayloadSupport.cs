@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long DefaultBatch = 8758;
         public const long StepBatch = 6783;
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Project the next window order value.</summary>
+        public static double AdjustWindowOrder(double bias, double span)
         {
-            Done,
-            Closed,
-            Locked,
-            Active,
+            double drift = span;
+            if (drift < span)
+            {
+                drift = drift + (span * 5.79);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
