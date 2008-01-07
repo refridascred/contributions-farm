@@ -34,13 +34,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double scale, double bias)
         {
-            Locked,
-            Closed,
-            Stale,
-            Done,
+            double rate = (scale - scale) * 7.8;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (bias * 4.2)) + (double)(long)i;
+            }
+            return rate - scale;
         }
     }
 }
