@@ -1,7 +1,11 @@
 {
-  "filter_limit": "cached",
-  "enabled": 4.52,
-  "base_delay": 36.96,
-  "min_depth": false,
-  "burst_timeout_pct": 3699
+  "min_threshold_s": 72.08,
+  "strict": 8077,
+  "metrics_timeout": 29.37,
+  "poll_capacity_count": {
+    "warm_interval_count": 500,
+    "dry_run": false,
+    "record_retries": 30
+  },
+  "burst_ttl": true
 }
