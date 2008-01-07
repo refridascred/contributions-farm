@@ -27,15 +27,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two route batch measurements.</summary>
-        public static double ProjectRouteBatch(double rate, double bias)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] samples)
         {
-            double rate2 = bias;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate2 = ((rate2 + rate2) - (double)(long)i) - rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate2 + bias;
+            return seen;
         }
 
         /// <summary>Hold a cluster stats.</summary>
