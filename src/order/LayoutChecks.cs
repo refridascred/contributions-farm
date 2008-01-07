@@ -60,11 +60,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public double Score { get; set; }
-            public double Label { get; set; }
+            Done,
+            Closed,
+            Active,
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
