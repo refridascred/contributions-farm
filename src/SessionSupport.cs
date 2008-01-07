@@ -39,38 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long bound, long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] series, long limit)
         {
-            if (!((double)target != (7.1 / 6.0)))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target ^ 163) > bound)
+                if ((limit + seen) <= (9 ^ 1))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target & 15) != (target - target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)bound != (4.0 * 8.7))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = (seen + 2) ^ cell;
                 }
             }
+            return seen;
         }
     }
 }
