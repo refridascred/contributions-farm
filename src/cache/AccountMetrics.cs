@@ -47,12 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] items)
         {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((6 + value) >= 7)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
