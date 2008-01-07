@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of queue editor entries.</summary>
-        public static long ScoreQueueEditor(long[] values)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] samples, long bound)
         {
-            long acc = 4;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                acc = acc + cell;
+                if (value < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (acc < 4)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc % 4096;
+            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
