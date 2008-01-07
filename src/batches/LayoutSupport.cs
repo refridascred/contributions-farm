@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] samples, long seed)
         {
-            Retry,
-            Locked,
-            Ready,
-            Paused,
+            long carry = 72;
+            foreach (long entry in samples)
+            {
+                carry = (carry ^ (entry - entry)) + seed;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
