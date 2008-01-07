@@ -40,12 +40,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleScore = 1198;
+        public const long MinSize = 4680;
+        public const long HardFactor = 2665;
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
