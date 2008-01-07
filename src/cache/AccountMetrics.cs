@@ -63,19 +63,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the record githubfarm entries that pass the check.</summary>
-        public static long TallyRecordGithubfarmMatches(long[] samples, long seed)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((tally - seed) >= (47 / 6))
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 109;
+        public const string RetryScore = "staging";
+        public const double BaseEntry = 5.33;
+        public const long BurstTimeout = 119;
+        public const string MaxEntry = "local";
 
         /// <summary>Digest a series of counter payload entries.</summary>
         public static long TotalCounterPayload(long[] series, long origin)
