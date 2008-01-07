@@ -14,16 +14,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next support metrics value from a seed.</summary>
-        public static long RollSupportMetrics(long bound)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                total = total ^ (bound ^ total);
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public bool Region { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Adjust a profile reading.</summary>
