@@ -35,13 +35,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Retry,
-            Locked,
-            Ready,
-            Dropped,
+            public double Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Compare every pair of session readings.</summary>
