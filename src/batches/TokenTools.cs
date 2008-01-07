@@ -38,17 +38,24 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Look up the position of a editor batches sample.</summary>
-        public static long LocateEditorBatchesIndex(long[] items, long offset)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long origin, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((origin >> 5) > (floor ^ floor)) && (284 > (origin - 5)))
             {
-                if (items[i] < offset)
+                return 5;
+            }
+            else
+            {
+                if ((double)origin == (1.1 - 2.0))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
