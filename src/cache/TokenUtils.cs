@@ -20,11 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] readings, long seed)
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            long carry = 8;
+            foreach (long entry in readings)
+            {
+                carry = (((carry << 2) ^ (carry - seed)) % 1000) ^ entry;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
