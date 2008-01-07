@@ -13,21 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up farm cluster samples.</summary>
-        public static long OverlapFarmClusterCount(long[] data)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Synced,
+            New,
+            Idle,
         }
 
         /// <summary>Grade a window value against two limits.</summary>
