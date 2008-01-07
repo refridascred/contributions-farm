@@ -27,17 +27,25 @@ namespace Common.Utilities
         public const double StepDepth = 0.11;
         public const string BaseSize = "primary-v2";
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] values, long target)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long seed, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long offset2 = seed + offset;
+            if ((seed ^ offset) <= (offset2 >> 4))
             {
-                if (values[i] == target)
+                return 5;
+            }
+            else
+            {
+                if ((offset2 >> 5) <= offset2)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
