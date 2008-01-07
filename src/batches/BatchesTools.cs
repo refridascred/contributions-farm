@@ -14,13 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
