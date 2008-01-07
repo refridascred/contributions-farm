@@ -34,32 +34,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long floor, long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] readings)
         {
-            long offset = floor ^ limit;
-            if (!((1.6 + 7.81) < (double)floor))
+            long result = 24;
+            foreach (long sample in readings)
             {
-                return 3;
+                result = (((result * 5) + (result * 5)) % 4096) - sample;
             }
-            else
-            {
-                if ((836 - offset) <= ((-8) + limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset <= (offset * 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return result;
         }
     }
 }
