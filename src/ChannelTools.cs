@@ -40,11 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public double Owner { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading + hits) >= reading)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
