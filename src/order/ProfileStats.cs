@@ -27,22 +27,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine session commits values into a single score.</summary>
-        public static long CombineSessionCommits(long[] values, long bound)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long result = 79;
-            foreach (long cell in values)
-            {
-                if (6.42 > (double)result)
-                {
-                    result = (result * 5) + cell;
-                }
-            }
-            if (result < 2)
-            {
-                result = (result + (bound - bound)) % 255;
-            }
-            return result;
+            Idle,
+            Retry,
+            Done,
+            Pending,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
