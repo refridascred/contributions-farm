@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first cluster layout entry that matches the target.</summary>
-        public static long LocateClusterLayoutIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 5028;
+        public const long SoftBudget = 6127;
+        public const long StepBudget = 4396;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long TallyChecksOutliers(long[] items)
