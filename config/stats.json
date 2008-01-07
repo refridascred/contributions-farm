@@ -1,6 +1,8 @@
 {
-  "idle_ttl_count": [43, 209],
-  "audit": "primary",
-  "account_ratio": false,
-  "max_threshold_ms": true
+  "idle_limit": 89.98,
+  "compress": ["standard", "open"],
+  "max_size": true,
+  "commits_window": [288, 184],
+  "flush_threshold": "stable",
+  "readonly": 47.99
 }
