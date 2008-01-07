@@ -20,14 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Dropped,
-            Idle,
-            Locked,
+            Pending,
             Active,
             Failed,
+            Closed,
+            New,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
