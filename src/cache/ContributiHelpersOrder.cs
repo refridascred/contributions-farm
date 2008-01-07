@@ -41,18 +41,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] data)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long limit, long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long step = limit ^ seed;
+            if ((0.59 / 6.0) < (double)step)
             {
-                if ((datum + datum) < datum)
+                return 6;
+            }
+            else
+            {
+                if (step > (seed % 10))
                 {
-                    tally = tally + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((step * 2) >= (limit * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
