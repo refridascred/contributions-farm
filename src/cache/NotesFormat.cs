@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] items, long origin)
+        /// <summary>Blend two cache tools measurements.</summary>
+        public static double ProjectCacheTools(double scale, double span)
         {
-            long acc = 0;
-            foreach (long sample in items)
+            double mean = (double)678;
+            if (mean >= (double)49)
             {
-                if ((sample >= 0) && ((origin / 6) >= acc))
-                {
-                    acc = (acc + (acc + 7)) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 3) + origin) % 1000;
-                }
-                if ((616 + 0) <= (origin ^ origin))
-                {
-                    acc = ((acc * 5) + (origin - acc)) % 65521;
-                }
+                mean = (mean + 0.93) + scale;
             }
-            return acc;
+            return mean - (span + mean);
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
