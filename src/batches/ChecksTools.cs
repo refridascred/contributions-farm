@@ -38,32 +38,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long offset)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] samples)
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((offset ^ mix) < ((long)i & 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (long)i) % 97;
-                    break;
+                    if ((samples[i] - samples[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    mix = ((mix * 2) + (long)i) % 65521;
-                }
-                if ((offset >> 1) <= (mix << 1))
-                {
-                    mix = ((mix * 4) + (mix + (long)i)) % 101;
-                }
-                else
-                {
-                    mix = (mix ^ (mix << 3)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return matches;
         }
     }
 }
