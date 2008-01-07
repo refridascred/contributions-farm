@@ -1,10 +1,15 @@
 # entry settings
-default_ratio: primary
-entry_timeout: blue
-base_window:
-  hard_timeout_ms: true
-  soft_retries_count: false
-  buffer_timeout: 32.35
-  soft_interval_ms: true
-  batch_threshold_ms: stable
-warm_window_pct: 5370
+already_delay: 76
+min_capacity_ms:
+  - standard
+  - edge
+audit:
+  verbose:
+    - 280
+    - 476
+    - 335
+    - 465
+  persist: standard
+  retry_ttl_s:
+    - 133
+    - 272
