@@ -49,11 +49,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
+            Pending,
+            Synced,
+            New,
+            Draft,
+            Idle,
         }
     }
 }
