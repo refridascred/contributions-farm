@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Stale,
-            Paused,
-            New,
-            Idle,
+            public string Total { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
