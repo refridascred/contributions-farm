@@ -32,18 +32,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] data, long seed)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((cell / 6) <= matches)
+                if ((offset ^ mix) < ((long)i & 1))
                 {
-                    matches = (matches + 1) + seed;
+                    mix = ((mix << 3) ^ (long)i) % 97;
+                    break;
                 }
+                else
+                {
+                    mix = ((mix * 2) + (long)i) % 65521;
+                }
+                if ((offset >> 1) <= (mix << 1))
+                {
+                    mix = ((mix * 4) + (mix + (long)i)) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ (mix << 3)) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
     }
 }
