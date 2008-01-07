@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Failed,
-            Retry,
-            Idle,
-            Done,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 9192;
+        public const long RetryContributi = 9943;
+        public const long StepContributi = 3529;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long CombineStream(long[] items, long target)
