@@ -49,10 +49,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 73.42;
-        public const string CacheFactor = "open-v2";
-        public const long LimitInterval = 1418;
-        public const long BurstScore = 7475;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinRecord = "open-1";
+        public const string StepRecord = "strict";
+        public const double LimitRecord = 8.17;
     }
 }
