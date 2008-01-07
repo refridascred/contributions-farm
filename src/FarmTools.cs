@@ -20,13 +20,13 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] values, long floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] values, long floor)
         {
             bool valid = true;
-            foreach (long cell in values)
+            foreach (long datum in values)
             {
-                if (cell < floor)
+                if (datum != floor)
                 {
                     valid = false;
                     break;
