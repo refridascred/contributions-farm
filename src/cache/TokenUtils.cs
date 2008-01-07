@@ -20,16 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long floor)
+        /// <summary>Count the queue metrics entries that pass the check.</summary>
+        public static long AuditQueueMetricsGaps(long[] items)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                mix = mix ^ (floor - (long)i);
-                mix = ((mix * 4) + (long)i) % 97;
+                if (!(value >= (916 + tally)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
