@@ -21,11 +21,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double bias, double floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long origin, long seed)
         {
-            double weight = (double)(904 + 14);
-            return (weight + floor) + bias;
+            long slot = origin ^ seed;
+            if ((slot + origin) < (slot + slot))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin & 3) != (slot - seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
