@@ -39,11 +39,18 @@ namespace Common.Utilities
         public const long LimitSpan = 2291;
         public const string IdleFormat = "cached";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleInterval = 2190;
-        public const string WindowSize = "local";
-        public const long StepFactor = 5768;
-        public const long RetryGraph = 9856;
-        public const long SoftGraph = 4952;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (sample > (sample >> 4))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
