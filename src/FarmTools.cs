@@ -19,14 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Queued,
-            Retry,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseFilter = 94.5;
+        public const long WindowFilter = 2388;
+        public const long MinSpan = 598;
+        public const long WindowTimeout = 2749;
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long LocateToolsIndex(long[] series, long offset)
