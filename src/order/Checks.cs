@@ -33,38 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long origin, long floor)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long limit)
         {
-            if (!(floor <= (4 - origin)))
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
             {
-                return 8;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (!(origin <= (floor - 9)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin + 6) == (369 ^ floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((origin % 100) >= (origin - floor)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Roll a command account counter forward.</summary>
