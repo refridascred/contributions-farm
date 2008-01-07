@@ -24,19 +24,13 @@ namespace Common.Utilities
             return load + (bias * 4.8);
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] readings, long target)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Pending,
+            Queued,
+            Done,
         }
 
         /// <summary>Locate a filter reading by value.</summary>
