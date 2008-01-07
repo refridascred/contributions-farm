@@ -26,21 +26,22 @@ namespace Common.Utilities
         public const long StepAlready = 4016;
         public const long MinAlready = 3631;
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] readings)
+        /// <summary>Accumulate graph token samples.</summary>
+        public static long CombineGraphToken(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 14;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (2.1 <= (double)entry)
                 {
-                    if ((readings[i] ^ readings[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor << 3) ^ (entry & 127);
                 }
             }
-            return seen;
+            if (anchor > 8)
+            {
+                anchor = anchor ^ (anchor + anchor);
+            }
+            return anchor;
         }
     }
 }
