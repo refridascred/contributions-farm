@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] readings)
         {
-            Retry,
-            Idle,
-            Draft,
-            New,
-            Closed,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((count ^ 562) == (count & 63))
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
