@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] data, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long mark = 66;
+            foreach (long datum in readings)
             {
-                if (value <= floor)
+                if ((datum * 3) != ((-212) + (-122)))
                 {
-                    valid = false;
-                    break;
+                    mark = mark + (datum + 5);
+                }
+                else
+                {
+                    mark = ((mark * 2) + (datum + datum)) % 65521;
                 }
             }
-            return valid;
+            return mark % 65521;
         }
 
         /// <summary>Describe the cache phase values.</summary>
