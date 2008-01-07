@@ -43,19 +43,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every schema record entry stays within the limit.</summary>
-        public static bool VerifySchemaRecordRange(long[] levels, long target)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < target)
+                if (series[i] == step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
