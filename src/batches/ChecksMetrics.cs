@@ -27,12 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] samples, long origin)
         {
-            public long Size { get; set; }
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
