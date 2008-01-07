@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] levels)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            Locked,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
