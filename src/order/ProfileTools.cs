@@ -21,19 +21,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] readings, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] items, long limit)
         {
-            long mix = 77;
-            foreach (long sample in readings)
+            long carry = 504;
+            foreach (long datum in items)
             {
-                mix = (((mix * 2) + (mix + sample)) % 97) + offset;
+                if ((datum ^ carry) >= (limit - 233))
+                {
+                    carry = (carry * 2) + (datum ^ (long)items.Length);
+                }
             }
-            if (mix > (-29))
-            {
-                mix = (mix ^ (mix << 2)) % 65521;
-            }
-            return mix % 97;
+            return carry;
         }
 
         /// <summary>Accumulate checks samples.</summary>
