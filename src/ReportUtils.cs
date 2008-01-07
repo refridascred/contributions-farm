@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] samples)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long seed, long limit)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long step = seed + limit;
+            if (seed >= (seed >> 2))
             {
-                if ((matches << 3) == (matches + matches))
+                return 2;
+            }
+            else
+            {
+                if ((step & 255) < 8)
                 {
-                    matches = (matches + 1) ^ item;
+                    return 1;
+                }
+                else
+                {
+                    if ((2.96 + 1.1) >= (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((4.0 / 7.0) > (double)limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
