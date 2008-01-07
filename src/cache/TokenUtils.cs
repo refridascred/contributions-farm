@@ -20,15 +20,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] readings, long seed)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long floor)
         {
-            long carry = 8;
-            foreach (long entry in readings)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                carry = (((carry << 2) ^ (carry - seed)) % 1000) ^ entry;
+                mix = mix ^ (floor - (long)i);
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
