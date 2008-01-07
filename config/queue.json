@@ -1,6 +1,8 @@
 {
-  "warm_threshold": "open",
-  "flush_delay_s": false,
-  "dry_run": [263, 410, 291],
-  "strict": 96.41
+  "batch_ttl": true,
+  "idle_ratio": "fallback",
+  "dry_run": "strict",
+  "editor_ttl": false,
+  "default_limit_count": "primary",
+  "cache_interval": 2204
 }
