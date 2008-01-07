@@ -20,39 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long floor, long bound)
-        {
-            if (((floor & 63) > (-383)) && ((bound ^ 9) < 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)floor < 4.95) || (floor > bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound - 49) < (bound >> 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor < (floor ^ floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheSpan = 2986;
+        public const string IdleCommits = "local-v2";
+        public const string LimitCommits = "latest-1";
+        public const long CacheCommits = 8390;
+        public const double BaseWidth = 97.07;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long DeriveSession(long floor)
