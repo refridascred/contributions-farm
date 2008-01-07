@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] series, long floor)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((double)floor <= (double)sample)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
