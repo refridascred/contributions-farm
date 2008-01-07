@@ -21,21 +21,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] readings)
+        /// <summary>Iterate the editor cache series from a seed.</summary>
+        public static long DeriveEditorCache(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    if ((readings[i] - readings[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state + ((long)i >> 5)) % 101;
+                    state = ((state * 4) + (origin - (long)i2)) % 65521;
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Derive the next format order value from a seed.</summary>
