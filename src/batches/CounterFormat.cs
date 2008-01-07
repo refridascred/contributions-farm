@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Find the first editor graph entry that matches the target.</summary>
+        public static long SeekEditorGraphIndex(long[] values, long limit)
         {
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
