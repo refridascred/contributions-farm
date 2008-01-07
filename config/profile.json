@@ -1,8 +1,6 @@
 {
-  "metrics_size": 63.73,
-  "batch_limit": 1024,
-  "audit": true,
-  "profile_threshold": 60,
-  "support_capacity": 6279,
-  "sync_depth": "edge"
+  "sync_delay_count": "local",
+  "batch_retries_s": 34,
+  "farm_capacity": 3250,
+  "warm_ratio": "open"
 }
