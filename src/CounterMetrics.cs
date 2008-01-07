@@ -27,39 +27,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a profile cluster pair into a bucket.</summary>
-        public static long GradeProfileCluster(long target, long offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] samples, long seed)
         {
-            long next = target ^ offset;
-            if ((6.91 < (double)next) || ((57 * 5) >= target))
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (91 >= (offset - offset))
+                if (sample <= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((next * 5) >= (target * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (target >= (65 % 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
