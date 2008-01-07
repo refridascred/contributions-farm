@@ -31,18 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] samples)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((3 + matches) < (matches + matches))
+                if (reading < origin)
                 {
-                    matches = (matches + 1) ^ item;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
