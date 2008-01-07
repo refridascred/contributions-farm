@@ -12,14 +12,14 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            Idle,
-            Synced,
-            Queued,
+            New,
+            Active,
+            Retry,
+            Pending,
             Done,
-            Dropped,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
