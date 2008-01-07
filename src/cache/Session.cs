@@ -35,17 +35,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] series, long step)
+        /// <summary>Fold a list of record counter readings.</summary>
+        public static long WeighRecordCounter(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 453;
+            foreach (long datum in items)
             {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
+                mark = mark ^ datum;
             }
-            return -1;
+            if (mark > 87)
+            {
+                mark = (mark + mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the order mode values.</summary>
