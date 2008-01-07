@@ -40,19 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] readings, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] samples, long offset)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (value >= target)
+                if (datum <= offset)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
