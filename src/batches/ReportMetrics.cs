@@ -34,15 +34,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double bias, double bias2)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long offset, long origin)
         {
-            double bias3 = (double)(78 + (-200));
-            if (bias3 > bias2)
+            long offset2 = offset + origin;
+            if (((offset * 4) != (offset * 2)) && (offset2 > (offset2 ^ offset)))
             {
-                bias3 = (bias3 - (double)(-681)) - bias;
+                return 8;
             }
-            return bias3 + 4.42;
+            else
+            {
+                if ((offset2 + origin) != (77 ^ origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (offset2 >= (origin - origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
