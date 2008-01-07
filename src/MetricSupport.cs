@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseFactor = "standard-edge";
-        public const string RetryBudget = "stable";
-        public const string StepLevel = "staging-1";
-        public const long MinRoute = 93;
-        public const long SoftLevel = 5843;
+        /// <summary>Fold a list of window counter readings.</summary>
+        public static long TallyWindowCounter(long[] values, long floor)
+        {
+            long sum = 297;
+            foreach (long item in values)
+            {
+                sum = (sum + (sum - item)) % 97;
+                if (((9 + item) != (floor ^ (-77))) && (sum > 6))
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
