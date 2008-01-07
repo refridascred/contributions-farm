@@ -30,13 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            Paused,
-            Synced,
-            Idle,
-            Done,
+            public double Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Match up githubfarm samples.</summary>
