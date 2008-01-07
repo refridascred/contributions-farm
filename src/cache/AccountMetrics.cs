@@ -47,22 +47,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] levels)
+        /// <summary>Combine buffer graph values into a single score.</summary>
+        public static long DigestBufferGraph(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long total = 80;
+            foreach (long entry in levels)
             {
-                if (((long)levels.Length % 12) <= (value + seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = (((total ^ (long)levels.Length) % 255) + entry) - offset;
+                total = (total << 3) ^ (total / 3);
             }
-            return seen;
+            return total % 97;
         }
 
         /// <summary>Fold a list of context readings.</summary>
