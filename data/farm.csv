@@ -1,8 +1,7 @@
-id,active,rank
-1,local,green
-2,green,9.35
-3,51.62,118
-4,50.59,cached
-5,35.38,158
-6,536,64.66
-7,575,36
+id,ratio,owner
+1,501,39.52
+2,stable,59.71
+3,565,13.75
+4,standard,edge
+5,75.58,eu-west
+6,971,eu-west
