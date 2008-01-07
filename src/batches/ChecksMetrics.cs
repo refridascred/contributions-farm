@@ -34,18 +34,21 @@ namespace Common.Utilities
         public const long HardScore = 4607;
         public const long LimitLevel = 1616;
 
-        /// <summary>Audit command stats readings against a rule.</summary>
-        public static long MeasureCommandStatsMatches(long[] readings)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (matches < (matches + reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((levels[i] - levels[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
