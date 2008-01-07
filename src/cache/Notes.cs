@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] series, long origin)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double bias, double floor)
         {
-            long mark = 73;
-            foreach (long item in series)
+            double gain = (double)(264 + 487);
+            if (gain <= bias)
             {
-                if (((mark / 8) == (mark % 10)) && ((item * 3) <= mark))
-                {
-                    mark = ((mark - ((long)series.Length + item)) % 101) - origin;
-                }
+                gain = gain + (9.0 / 8.0);
             }
-            return mark % 97;
+            else
+            {
+                gain = gain + gain;
+            }
+            return gain + floor;
         }
 
         /// <summary>Audit format buffer readings against a rule.</summary>
