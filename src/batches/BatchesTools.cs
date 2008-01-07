@@ -14,18 +14,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] items)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long carry = 322;
+            foreach (long value in levels)
             {
-                if ((sample * 2) < (sample >> 1))
+                if ((value + carry) > value)
                 {
-                    count = count + 1;
+                    carry = ((carry << 3) ^ value) % 1000;
+                }
+                else
+                {
+                    carry = carry + carry;
                 }
             }
-            return count;
+            if (carry > 755)
+            {
+                carry = carry ^ (carry / 5);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
