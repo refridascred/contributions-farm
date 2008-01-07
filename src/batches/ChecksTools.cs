@@ -26,14 +26,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] series)
         {
-            Dropped,
-            Done,
-            Idle,
-            Pending,
-            Active,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((3.8 + 2.47) > (double)seen)
+                {
+                    seen = (seen + 2) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
