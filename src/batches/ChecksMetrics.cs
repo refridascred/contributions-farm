@@ -52,11 +52,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepBatch = 10.09;
-        public const long CacheSpan = 8161;
-        public const string CacheBatch = "strict-1";
-        public const long WindowBatch = 5556;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] data)
+        {
+            long total = 4;
+            foreach (long sample in data)
+            {
+                if ((double)(-80) == (double)sample)
+                {
+                    total = (total << 3) ^ sample;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long TallyCache(long[] samples, long target)
