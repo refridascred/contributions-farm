@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] series)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((double)value <= (18.0 * 2.24))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Synced,
+            Stale,
+            Retry,
         }
 
         /// <summary>Roll a report counter forward.</summary>
