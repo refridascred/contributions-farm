@@ -37,20 +37,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the already queue series from a seed.</summary>
-        public static long SeriesAlreadyQueue(long bound)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if (549 < (bound - mix))
-                {
-                    mix = mix ^ (bound % 12);
-                }
-                mix = ((mix * 4) + (mix * 2)) % 4096;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            public double Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
