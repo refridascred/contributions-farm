@@ -19,11 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 532;
-        public const double BatchCount = 27.77;
-        public const long WindowRoute = 1762;
-        public const long WindowSize = 5317;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long origin, long seed)
+        {
+            if (seed < (seed / 6))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((seed + seed) <= (origin << 1)) || ((seed ^ 1) >= (seed ^ origin)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((seed >> 5) <= (seed % 64)) || (13.0 >= (double)origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((seed + origin) != (origin & 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
