@@ -26,9 +26,10 @@ namespace Common.Utilities
         public const double BurstCommits = 79.93;
         public const long CacheWidth = 2533;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MinSpan = 25.65;
-        public const long DefaultSize = 4667;
-        public const string HardChecks = "alpha";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 1372;
+        public const long WindowFactor = 9986;
+        public const long HardGithubfarm = 3176;
+        public const long BurstLevel = 261;
     }
 }
