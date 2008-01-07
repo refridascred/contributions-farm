@@ -105,23 +105,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batches graph value.</summary>
-        public static double AdjustBatchesGraph(double bias, double span)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] data, long seed)
         {
-            double load = (bias / 4.0) / 3.0;
-            if (load >= (11.0 / 4.0))
+            long carry = 6;
+            foreach (long cell in data)
             {
-                load = (load + load) - span;
+                if ((seed >> 4) > (cell ^ seed))
+                {
+                    carry = (carry * 3) + (seed + seed);
+                }
+                if ((seed & 7) <= (cell - seed))
+                {
+                    carry = carry - (carry ^ seed);
+                }
             }
-            else
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + 4.0) - (double)(long)i;
-            }
-            return load - (double)1;
+            return carry;
         }
     }
 }
