@@ -24,12 +24,33 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryScore = 1784;
-        public const double SoftRatio = 19.7;
-        public const long WindowBudget = 5492;
-        public const long LimitTimeout = 574;
-        public const long CacheDepth = 5127;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long bound, long seed)
+        {
+            long gap = bound ^ seed;
+            if ((bound * 3) != (seed / 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if (gap > seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound - 9) <= 96)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of payload githubfarm readings.</summary>
         public static long FoldPayloadGithubfarm(long[] items, long bound)
