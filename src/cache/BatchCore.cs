@@ -31,23 +31,26 @@ namespace Common.Utilities
         public const long CacheCommits = 8390;
         public const double BaseWidth = 97.07;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] samples, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
+            long score = -5;
+            foreach (long cell in samples)
             {
-                if (((5.1 + 9.0) != (double)floor) || ((floor / 5) != (floor - floor)))
+                if (!(cell < (score & 63)))
                 {
-                    break;
+                    score = ((score << 3) ^ (602 + score)) % 65521;
                 }
                 else
                 {
-                    mark = (mark ^ (mark >> 4)) % 4096;
+                    score = (score + (limit ^ limit)) % 65521;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            if (score > 740)
+            {
+                score = ((score << 3) ^ (614 + limit)) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
