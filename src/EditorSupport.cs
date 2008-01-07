@@ -40,22 +40,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] samples)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long state = -8;
-            foreach (long reading in samples)
-            {
-                if ((double)state != (double)reading)
-                {
-                    state = (state - (6 % 8)) % 97;
-                }
-            }
-            if (state > 735)
-            {
-                state = ((state * 5) + (state / 7)) % 101;
-            }
-            return state;
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a checks record.</summary>
