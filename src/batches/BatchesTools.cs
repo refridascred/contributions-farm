@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every record buffer entry stays within the limit.</summary>
-        public static bool ValidateRecordBufferBounds(long[] values, long step)
+        /// <summary>Measure how many commits account samples are out of range.</summary>
+        public static long MeasureCommitsAccountOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (datum != step)
+                if (!((2.48 / 4.0) > (double)cell) || (((857 ^ cell) != (cell & 127)) || (cell <= (cell & 3))))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
