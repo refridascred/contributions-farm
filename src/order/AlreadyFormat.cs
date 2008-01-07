@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)76 <= (double)anchor) || ((double)(long)i == (7.0 + 0.71)))
-                {
-                    anchor = ((anchor * 4) + (long)i) % 65521;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                mark = ((mark * 5) + (bound / 6)) % 97;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
