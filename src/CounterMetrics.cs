@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate record support readings against a bound.</summary>
-        public static bool CheckRecordSupportLimits(long[] values, long limit)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Retry,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
