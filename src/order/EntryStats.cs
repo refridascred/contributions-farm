@@ -54,18 +54,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit route layout readings against a rule.</summary>
-        public static long MeasureRouteLayoutMatches(long[] values)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally - tally) < (224 / 9))
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
