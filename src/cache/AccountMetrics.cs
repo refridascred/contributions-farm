@@ -67,21 +67,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up queue batch samples.</summary>
-        public static long MatchQueueBatchCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 4419;
+        public const long SoftCount = 4506;
+        public const long BatchGithubfarm = 3537;
+        public const double LimitFactor = 18.86;
+        public const long DefaultGithubfarm = 8135;
     }
 }
