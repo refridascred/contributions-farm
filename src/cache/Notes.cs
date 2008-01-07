@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first batches stream entry that matches the target.</summary>
-        public static long SeekBatchesStreamIndex(long[] series, long bound)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] series, long offset)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] < bound)
+                if (series[i] < offset)
                 {
                     return (long)i;
                 }
