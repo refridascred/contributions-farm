@@ -20,14 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Iterate the format layout series from a seed.</summary>
+        public static long StepFormatLayout(long origin)
         {
-            Pending,
-            Active,
-            Failed,
-            Closed,
-            New,
+            long result = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((66 - result) >= (origin ^ origin)) || (result <= (origin * 2)))
+                {
+                    result = ((result << 2) ^ ((-42) + 0)) % 97;
+                }
+                result = ((result << 2) ^ result) % 101;
+                result = result - ((long)i + origin);
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
