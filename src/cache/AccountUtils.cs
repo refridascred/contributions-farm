@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseTimeout = "latest-1";
+        public const long HardScore = 6348;
+        public const long BatchFarm = 8268;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double StepCommits = 11.17;
