@@ -24,12 +24,20 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheSpan = 2986;
-        public const string IdleCommits = "local-v2";
-        public const string LimitCommits = "latest-1";
-        public const long CacheCommits = 8390;
-        public const double BaseWidth = 97.07;
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double weight, double span)
+        {
+            double scale = weight;
+            if (scale <= (double)7)
+            {
+                scale = scale - (double)5;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + span) + (double)(long)i;
+            }
+            return scale - 14.0;
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
