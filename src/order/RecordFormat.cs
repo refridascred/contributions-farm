@@ -25,17 +25,18 @@ namespace Common.Utilities
         public const long WindowRoute = 1762;
         public const long WindowSize = 5317;
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] samples, long bound)
+        /// <summary>Digest a series of layout githubfarm entries.</summary>
+        public static long ScoreLayoutGithubfarm(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 212;
+            foreach (long cell in series)
             {
-                if ((samples[i] > bound) && ((samples[i] % 2) == 0))
+                if (!((anchor >> 4) == (anchor - limit)))
                 {
-                    return (long)i;
+                    anchor = (anchor << 3) ^ (cell - limit);
                 }
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Describe the session class values.</summary>
