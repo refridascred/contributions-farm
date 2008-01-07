@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in stable standard edge blue; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in fallback green strict local; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=110
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-latest}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
