@@ -65,13 +65,22 @@ namespace Common.Utilities
         public const string HardSpan = "alpha-edge";
         public const long LimitSize = 7483;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Audit contributi buffer readings against a rule.</summary>
+        public static long MeasureContributiBufferHits(long[] values)
         {
-            Ready,
-            Retry,
-            Queued,
-            Locked,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (!((double)cell > (15.0 * 3.6)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
