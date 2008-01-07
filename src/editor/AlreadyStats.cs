@@ -16,5 +16,12 @@ namespace Common.Utilities
             }
             return result;
         }
+
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double weight, double span)
+        {
+            double load = span;
+            return load + (weight - weight);
+        }
     }
 }
