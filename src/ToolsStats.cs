@@ -40,11 +40,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleRatio = 8824;
-        public const double RetryCache = 58.63;
-        public const long WindowDepth = 693;
-        public const long WindowTimeout = 9207;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBudget = 3822;
+        public const string DefaultBuffer = "standard-edge";
+        public const string SoftScore = "legacy-1";
+        public const long BatchDepth = 827;
+        public const long MaxLevel = 1888;
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
