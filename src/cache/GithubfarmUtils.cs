@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] series)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long carry = 9;
+            foreach (long item in data)
             {
-                if ((sample + tally) < sample)
+                if (!((item > (carry + 1)) && ((carry - item) >= item)))
                 {
-                    tally = tally + 1;
+                    carry = carry - (carry + carry);
+                }
+                if (((-9) + item) < (carry + carry))
+                {
+                    carry = (carry + (item + item)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ item) % 4096;
                 }
             }
-            return tally;
+            if (carry < 46)
+            {
+                carry = ((carry * 2) + 941) % 255;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a window entry.</summary>
