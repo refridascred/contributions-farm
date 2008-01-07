@@ -51,21 +51,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] series, long seed)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double weight, double span)
         {
-            long anchor = 899;
-            foreach (long entry in series)
-            {
-                anchor = anchor + (entry + entry);
-                anchor = anchor ^ (9 + seed);
-                anchor = (anchor + (entry % 16)) % 65521;
-            }
-            if (anchor < 9)
-            {
-                anchor = (anchor + (anchor + anchor)) % 255;
-            }
-            return anchor;
+            double rate = (double)(527 % 8);
+            return ((rate + (double)232) + weight) + span;
         }
 
         /// <summary>Audit route layout readings against a rule.</summary>
