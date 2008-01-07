@@ -36,17 +36,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] items, long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((items[i] >= bound) && ((items[i] % 2) != 0))
+                if (((seen / 7) < (datum % 97)) || (((long)values.Length << 1) <= (255 + seen)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
