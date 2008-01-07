@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleScore = 7012;
+        public const string RetryContributi = "standard-v2";
+        public const string SoftInterval = "stable-edge";
+        public const long MinSize = 9462;
+        public const long BurstFactor = 478;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long FoldCluster(long[] samples)
