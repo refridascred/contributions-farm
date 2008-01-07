@@ -57,14 +57,18 @@ namespace Common.Utilities
         public const string BatchStream = "strict-1";
         public const double BurstRatio = 97.61;
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Count the graph context entries that pass the check.</summary>
+        public static long AuditGraphContextMatches(long[] values, long target)
         {
-            Dropped,
-            Locked,
-            Paused,
-            Draft,
-            Stale,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((1.7 / 7.0) == (double)datum)
+                {
+                    seen = (seen + 1) - target;
+                }
+            }
+            return seen;
         }
     }
 }
