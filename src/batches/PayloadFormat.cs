@@ -36,19 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double rate, double bias)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            double scale = (double)(2 + (-75));
-            if (scale < bias)
-            {
-                scale = scale - scale;
-            }
-            else
-            {
-                scale = scale + rate;
-            }
-            return scale - (0.27 * 2.3);
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the window status values.</summary>
