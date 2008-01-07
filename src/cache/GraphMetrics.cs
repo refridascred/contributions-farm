@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultCache = 9.01;
-        public const double StepCache = 12.79;
-        public const long LimitLevel = 4523;
-        public const double StepDepth = 0.11;
-        public const string BaseSize = "primary-v2";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstSpan = 1568;
+        public const double LimitBatches = 56.22;
+        public const long BaseInterval = 4008;
+        public const long IdleCount = 2285;
+        public const long StepBudget = 8195;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsMatches(long[] levels)
