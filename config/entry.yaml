@@ -1,40 +1,14 @@
 # entry settings
-cache_window_pct: 7967
-retry_size: 6255
-verbose:
-  cache_ratio_s:
-    - 84
-    - 52
-  default_ratio_ms:
-    counter_depth: fallback
-    default_ttl_count:
-      - 174
-      - 349
-    filter_ttl: open
-    stats_size:
-      - cached
-      - primary
-      - cached
-      - local
-    burst_capacity_ms: 7488
-    burst_ratio_ms:
-      - latest
-      - strict
-      - green
-      - edge
-  retry_retries_s: 1024
-  audit:
-    profile_limit: fallback
-    strict: 93.45
-    min_retries: 30
-    soft_limit: 250
-    verbose: 4706
-    idle_ttl_count: fallback
-  warm_window: false
-  min_window_pct: 9.39
-idle_retries_s:
-  base_window: 80.65
-  warm_timeout_count: 53.85
-  retry_limit_pct: edge
-poll_retries: 1024
-idle_ttl_s: 36
+schema_depth: true
+buffer_timeout: legacy
+githubfarm_window: 92
+sync_retries_ms:
+  - 359
+  - 54
+  - 87
+  - 279
+readonly:
+  - legacy
+  - open
+  - stable
+audit: 3955
