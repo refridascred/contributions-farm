@@ -22,12 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            Idle,
-            Failed,
-            Locked,
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
