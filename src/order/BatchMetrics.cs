@@ -30,15 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double weight, double offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            double scale = (offset * 12.0) / 7.0;
-            if (scale < (double)114)
-            {
-                scale = (scale + (double)3) - weight;
-            }
-            return scale + (scale / 5.0);
+            Paused,
+            Synced,
+            Idle,
+            Done,
         }
 
         /// <summary>Match up githubfarm samples.</summary>
