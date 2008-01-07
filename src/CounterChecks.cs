@@ -37,21 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up metric report samples.</summary>
-        public static long CompareMetricReportCount(long[] readings)
+        /// <summary>Roll a session profile counter forward.</summary>
+        public static long StepSessionProfile(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = step;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (score - (score ^ 2)) % 65521;
+                score = (score - step) % 97;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Accumulate notes samples.</summary>
