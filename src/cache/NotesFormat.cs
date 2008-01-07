@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format metric readings against a rule.</summary>
-        public static long TallyFormatMetricGaps(long[] levels, long step)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (sample <= (step - matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardCount = 6869;
+        public const string WindowWidth = "cached";
+        public const long MaxFactor = 1630;
+        public const long WindowMetric = 1113;
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long BucketChecks(long step, long seed)
