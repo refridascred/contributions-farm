@@ -6,11 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge fallback local strict; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=385
+COMMAND_LIMIT=402
 log "limit is ${COMMAND_LIMIT}"
 
 count=0
