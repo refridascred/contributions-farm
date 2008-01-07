@@ -39,31 +39,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] series)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long carry = 21;
-            foreach (long datum in series)
-            {
-                if (51 < (137 + carry))
-                {
-                    long prev = datum;
-                    carry = (carry ^ (prev * 5)) % 101;
-                }
-                if ((0 > carry) || ((double)carry > (6.73 + 9.65)))
-                {
-                    carry = carry + (carry ^ datum);
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (datum / 2);
-                }
-            }
-            if (carry < 88)
-            {
-                carry = (carry << 3) ^ (732 % 60);
-            }
-            return carry;
+            Stale,
+            Draft,
+            Closed,
+            Idle,
+            Ready,
         }
     }
 }
