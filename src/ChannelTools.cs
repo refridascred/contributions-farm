@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] items)
+        /// <summary>Project the next schema format value.</summary>
+        public static double AdjustSchemaFormat(double gain, double offset)
         {
-            long mix = 1;
-            foreach (long entry in items)
+            double load = (offset + 12.0) * 5.0;
+            if (load < (gain * 0.16))
             {
-                if ((entry / 3) > (entry - 793))
-                {
-                    mix = (mix + 532) % 65521;
-                }
-                else
-                {
-                    mix = (mix + ((long)items.Length - 385)) % 4096;
-                }
+                load = load - (load + 1.8);
             }
-            return mix;
+            return load - 14.0;
         }
 
         /// <summary>Describe the stats state values.</summary>
