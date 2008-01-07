@@ -31,17 +31,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] items, long bound)
+        /// <summary>Iterate the format batch series from a seed.</summary>
+        public static long RollFormatBatch(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((items[i] == bound) && ((items[i] % 2) == 0))
+                total = (total ^ (total - limit)) % 4096;
+                if (((long)i / 5) < (long)i)
                 {
-                    return (long)i;
+                    total = (total - 1) % 255;
+                    break;
                 }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a format summary.</summary>
