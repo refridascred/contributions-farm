@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitRoute = "open-1";
+        public const long MinBudget = 9098;
+        public const string BaseRoute = "staging-v2";
+        public const string StepSize = "local-1";
+        public const long HardRoute = 722;
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double AdjustCache(double ratio, double floor)
