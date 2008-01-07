@@ -59,23 +59,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] readings, long bound)
-        {
-            long state = 75;
-            foreach (long entry in readings)
-            {
-                if (((-99) + (long)readings.Length) <= entry)
-                {
-                    state = state ^ (entry + state);
-                }
-                state = (state + (entry + entry)) % 4096;
-            }
-            if (state > 817)
-            {
-                state = (state - (bound + state)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 6760;
+        public const long WindowProfile = 3964;
+        public const long SoftBudget = 9066;
+        public const long StepProfile = 3836;
     }
 }
