@@ -80,11 +80,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] values, long floor)
         {
-            public bool Label { get; set; }
-            public bool Owner { get; set; }
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
