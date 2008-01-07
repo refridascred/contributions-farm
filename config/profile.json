@@ -1,8 +1,8 @@
 {
-  "verbose": [478, 369, 95, 243],
-  "retry_ratio_ms": false,
-  "hard_interval": false,
-  "enabled": ["eu-west", "fallback", "blue", "stable"],
-  "hard_threshold_count": "eu-west",
-  "cache_capacity_pct": "local"
+  "metrics_size": 63.73,
+  "batch_limit": 1024,
+  "audit": true,
+  "profile_threshold": 60,
+  "support_capacity": 6279,
+  "sync_depth": "edge"
 }
