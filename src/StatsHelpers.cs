@@ -19,12 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Locate a format context reading by value.</summary>
+        public static long FindFormatContextIndex(long[] items, long step)
         {
-            Stale,
-            Idle,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
