@@ -35,15 +35,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] values)
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                state = ((state * 2) + (long)i) % 97;
+                if ((double)tally == (double)171)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
