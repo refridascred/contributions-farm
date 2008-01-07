@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge strict; do
+BUFFER_LIMIT=39
+log "limit is ${BUFFER_LIMIT}"
+
+for item in green fallback open; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=186
-log "limit is ${BUFFER_LIMIT}"
-
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
