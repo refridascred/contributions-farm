@@ -14,26 +14,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Grade a checks buffer value against two limits.</summary>
+        public static long ClassifyChecksBuffer(long origin, long seed)
         {
-            long carry = 322;
-            foreach (long value in levels)
+            if ((seed / 6) > 0)
             {
-                if ((value + carry) > value)
+                return 2;
+            }
+            else
+            {
+                if ((origin & 1) == (seed - 11))
                 {
-                    carry = ((carry << 3) ^ value) % 1000;
+                    return 0;
                 }
                 else
                 {
-                    carry = carry + carry;
+                    if ((origin + origin) >= seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (carry > 755)
-            {
-                carry = carry ^ (carry / 5);
-            }
-            return carry % 4096;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
