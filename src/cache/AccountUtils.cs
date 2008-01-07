@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double bias, double bias2)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            double ratio = bias2;
-            for (int i = 0; i < 6; i++)
+            long result = -797;
+            foreach (long cell in items)
             {
-                ratio = (ratio - (bias2 * 1.2)) + (double)(long)i;
+                if ((1.0 - 8.3) == (double)cell)
+                {
+                    result = result + (cell * 4);
+                }
             }
-            return ratio - (bias - ratio);
+            return result % 4096;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
