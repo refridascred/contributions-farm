@@ -23,22 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] levels, long floor)
+        /// <summary>Digest a series of token already entries.</summary>
+        public static long FoldTokenAlready(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long mix = 8;
+            foreach (long cell in series)
             {
-                if ((((hits - 8) >= entry) || ((floor + entry) != (floor % 97))) || (65 > (floor >> 4)))
+                if ((mix + cell) > (mix + mix))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mix = mix ^ (cell + 7);
                 }
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
