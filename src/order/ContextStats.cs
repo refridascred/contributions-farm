@@ -23,11 +23,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BaseGraph = "latest";
-        public const long IdleGraph = 3567;
-        public const long BaseWidth = 398;
-        public const string SoftGraph = "local-1";
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((sample & 7) != (483 << 2))
+                {
+                    matches = (matches + 1) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheSchema = 5094;
