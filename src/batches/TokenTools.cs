@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 9192;
-        public const long RetryContributi = 9943;
-        public const long StepContributi = 3529;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                state = (state + (state & 3)) % 65521;
+                state = (state ^ floor) % 1000;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string SoftDepth = "fallback-v2";
