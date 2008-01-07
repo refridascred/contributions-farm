@@ -25,31 +25,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long step, long floor)
+        /// <summary>Digest a series of cache entry entries.</summary>
+        public static long CombineCacheEntry(long[] samples, long bound)
         {
-            if ((step > (floor - floor)) && ((floor & 3) < step))
+            long anchor = 67;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)step != (4.81 + 8.0)))
+                if ((594 ^ bound) != (919 + cell))
                 {
-                    return 7;
+                    anchor = (anchor ^ (cell & 15)) % 101;
                 }
                 else
                 {
-                    if (((double)step >= (8.49 - 5.97)) || (floor >= (474 / 8)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    anchor = anchor - (bound * 4);
                 }
             }
+            return anchor;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
