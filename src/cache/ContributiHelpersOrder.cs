@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] data, long limit)
+        /// <summary>Check that every batch context entry stays within the limit.</summary>
+        public static bool GuardBatchContextLimits(long[] samples, long offset)
         {
-            long mix = 2;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (((mix ^ mix) != (mix / 3)) || ((double)reading < 4.0))
+                if (datum > offset)
                 {
-                    mix = ((mix << 2) ^ (reading >> 4)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            if (mix < 5)
-            {
-                mix = mix + (limit & 7);
-            }
-            return mix % 4096;
+            return found;
         }
 
         /// <summary>Describe the entry class values.</summary>
