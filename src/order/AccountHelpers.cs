@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Synced,
-            Failed,
-            Pending,
-            Active,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardCount = "local";
+        public const long MinLevel = 1810;
+        public const string BurstCount = "strict-v2";
+        public const double DefaultRatio = 25.46;
+        public const string RetryProfile = "stable";
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
