@@ -1,11 +1,14 @@
 # Command notes
 
-Run the stream check before changing any queue limits.
-The farm helpers are pure functions, so they are safe to call from any thread.
-When a command fails, the counter handler retries a few times before giving up.
+When a order fails, the record handler retries a few times before giving up.
+Keep metrics and commits names short and lowercase.
+
+The entry report groups every format by context.
+When a notes fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate editor input early
-- Keep batches values small
-- Prefer route defaults
+- Review stats limits each release
+- Validate farm input early
+- Log every notes change
+- Prefer cache defaults
