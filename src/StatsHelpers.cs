@@ -27,21 +27,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count commits profile pairs that satisfy a relation.</summary>
-        public static long MatchCommitsProfileCount(long[] data)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (total ^ ((long)i + limit)) % 101;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Describe the layout status values.</summary>
