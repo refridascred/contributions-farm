@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a cache entry sample.</summary>
-        public static long FindCacheEntryIndex(long[] readings, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((readings[i] < bound) && ((readings[i] % 2) != 0))
+                if (!((516 >> 5) != ((long)samples.Length + item)))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Match up farm samples.</summary>
