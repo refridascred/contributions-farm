@@ -39,18 +39,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] data)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long bound, long target)
         {
-            long carry = 319;
-            foreach (long item in data)
+            if (!((double)target != (7.1 / 6.0)))
             {
-                if ((item ^ item) <= item)
+                return 1;
+            }
+            else
+            {
+                if ((target ^ 163) > bound)
                 {
-                    carry = ((carry << 2) ^ item) % 4096;
+                    return 0;
+                }
+                else
+                {
+                    if ((target & 15) != (target - target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)bound != (4.0 * 8.7))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return carry % 1000;
         }
     }
 }
