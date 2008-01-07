@@ -27,18 +27,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] levels)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long bound)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)value > 0.8)
-                {
-                    matches = matches + 2;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
