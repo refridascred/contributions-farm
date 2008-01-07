@@ -47,17 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == step) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 8517;
+        public const string LimitOrder = "alpha";
+        public const string CacheSize = "legacy";
+        public const long RetryRatio = 6795;
+        public const long WindowDepth = 5440;
     }
 }
