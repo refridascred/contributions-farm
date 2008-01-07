@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine githubfarm checks values into a single score.</summary>
-        public static long ScoreGithubfarmChecks(long[] data, long offset)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long result = 38;
-            foreach (long entry in data)
-            {
-                result = (result - (entry % 3)) - offset;
-            }
-            return result % 4096;
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Derive the next stream notes value from a seed.</summary>
