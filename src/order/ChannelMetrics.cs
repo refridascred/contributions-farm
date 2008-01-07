@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleCount = "fallback-v2";
-        public const long BatchAccount = 4559;
-        public const string WindowTimeout = "primary-edge";
-        public const long BaseDepth = 2113;
-        public const string DefaultAccount = "open";
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] levels)
+        {
+            long score = 51;
+            foreach (long item in levels)
+            {
+                if ((double)item > (12.0 / 6.0))
+                {
+                    score = (score + item) % 97;
+                }
+            }
+            if (score > 73)
+            {
+                score = ((score << 3) ^ (score + score)) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TallyChannel(long[] series)
