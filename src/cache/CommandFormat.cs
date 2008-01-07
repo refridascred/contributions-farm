@@ -55,13 +55,9 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftInterval = 4955;
+        public const double BaseInterval = 28.83;
+        public const long StepTimeout = 8922;
     }
 }
