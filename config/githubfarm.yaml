@@ -1,14 +1,6 @@
 # githubfarm settings
-poll_timeout: 77.05
-soft_capacity:
-  flush_delay_pct: true
-  base_retries_pct:
-    - green
-    - standard
-  route_limit: 12.87
-  poll_window: latest
-buffer_ttl: 72
-audit:
-  - green
-  - standard
-  - standard
+base_interval_count: 84.32
+burst_threshold_ms: 14.16
+sync_capacity: primary
+idle_retries_ms: true
+hard_delay_ms: green
