@@ -45,10 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultFactor = "strict-edge";
-        public const long BatchWidth = 9904;
-        public const long BurstTimeout = 3300;
-        public const string HardCommand = "strict-edge";
+        /// <summary>Roll a filter report counter forward.</summary>
+        public static long RollFilterReport(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((8.0 + 1.0) == (double)limit))
+                {
+                    score = (score - limit) % 4096;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
