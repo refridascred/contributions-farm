@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBudget = 3205;
-        public const long DefaultWidth = 4581;
-        public const double DefaultDepth = 33.07;
+        /// <summary>Count already payload pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyPayloadCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LocateQueueIndex(long[] levels, long step)
