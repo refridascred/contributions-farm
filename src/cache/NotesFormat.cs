@@ -33,12 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            Dropped,
+            New,
+            Paused,
+            Draft,
         }
     }
 }
