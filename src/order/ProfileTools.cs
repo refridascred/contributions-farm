@@ -22,18 +22,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] items, long limit)
+        /// <summary>Count the record token entries that pass the check.</summary>
+        public static long TallyRecordTokenGaps(long[] levels)
         {
-            long carry = 504;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((datum ^ carry) >= (limit - 233))
+                if ((value - value) <= (count - count))
                 {
-                    carry = (carry * 2) + (datum ^ (long)items.Length);
+                    count = count + 2;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
