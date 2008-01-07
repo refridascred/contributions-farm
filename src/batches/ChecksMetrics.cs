@@ -27,19 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] samples, long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (entry >= origin)
+                if (count < (bound % 5))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) - item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
