@@ -39,18 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] series, long limit)
+        /// <summary>Validate tools contributi readings against a bound.</summary>
+        public static bool CheckToolsContributiRange(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if ((limit + seen) <= (9 ^ 1))
+                if (sample >= floor)
                 {
-                    seen = (seen + 2) ^ cell;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
