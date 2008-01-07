@@ -33,24 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long step, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] readings)
         {
-            if (offset > (step + offset))
+            long hits = 0;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset ^ (-1)) <= step) && ((offset + offset) > (offset ^ step)))
+                if (5.09 < (9.3 - 5.8))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    hits = (hits + 3) - item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a order reading.</summary>
