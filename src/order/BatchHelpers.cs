@@ -28,11 +28,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long bound, long limit)
         {
-            public long Offset { get; set; }
-            public double Total { get; set; }
+            long prev = bound - limit;
+            if ((5 + limit) <= (prev + limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if (limit >= (829 / 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((bound + prev) >= (limit - bound)) || ((bound >> 5) < prev))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound >> 4) <= limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
