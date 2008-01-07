@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long limit, long bound)
+        /// <summary>Validate cache cluster readings against a bound.</summary>
+        public static bool GuardCacheClusterBounds(long[] data, long offset)
         {
-            long bound2 = limit - bound;
-            if ((bound - limit) != (limit >> 4))
+            bool valid = true;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((bound2 + limit) < (bound2 + bound)) || ((limit % 7) <= (bound2 + bound2)))
+                if (datum > offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit - limit) > (limit + bound2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((5.37 + 5.0) <= (double)bound2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a account stats.</summary>
