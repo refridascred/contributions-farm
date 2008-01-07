@@ -48,31 +48,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] values)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long origin)
         {
-            long total = 703;
-            foreach (long cell in values)
+            long score = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((cell << 3) != (7 & 1))
-                {
-                    total = (total + (total % 24)) % 255;
-                    break;
-                }
-                if ((84 % 10) > (total - total))
-                {
-                    total = ((total << 3) ^ total) % 255;
-                }
-                if ((double)93 >= (double)total)
-                {
-                    total = ((total * 2) + cell) % 4096;
-                }
+                score = ((score << 3) ^ (score ^ origin)) % 97;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            if (total < (-28))
-            {
-                total = total ^ (total + total);
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Hold a counter entry.</summary>
