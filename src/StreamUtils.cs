@@ -37,12 +37,23 @@ namespace Common.Utilities
         public const long MaxFactor = 3206;
         public const long RetryPayload = 6035;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstSize = 2544;
-        public const long MaxWindow = 5826;
-        public const string BurstBudget = "primary-1";
-        public const long SoftWindow = 3289;
-        public const string CacheWindow = "staging-v2";
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] readings)
+        {
+            long result = 1;
+            foreach (long sample in readings)
+            {
+                if ((result > (sample >> 1)) && ((sample - sample) != (sample + result)))
+                {
+                    result = ((result << 2) ^ sample) % 97;
+                }
+            }
+            if (result > 5)
+            {
+                result = ((result * 4) + result) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double SmoothQueue(double ratio, double span)
