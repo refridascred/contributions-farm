@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 9076;
-        public const long WindowFactor = 6520;
-        public const long DefaultBuffer = 2279;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Pending,
+            Ready,
+            Dropped,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Measure how many filter stream samples are out of range.</summary>
         public static long CountFilterStreamHits(long[] levels, long target)
