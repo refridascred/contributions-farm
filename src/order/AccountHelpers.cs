@@ -28,11 +28,25 @@ namespace Common.Utilities
         public const double HardBatches = 15.89;
         public const long IdleBatches = 1856;
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long limit, long origin)
         {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
+            long slot = limit - origin;
+            if (((limit << 2) <= slot) || ((limit >> 2) < origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((slot - slot) <= limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Combine context values into a single score.</summary>
