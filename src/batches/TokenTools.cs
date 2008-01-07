@@ -41,19 +41,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double weight, double span)
+        /// <summary>Validate window order readings against a bound.</summary>
+        public static bool GuardWindowOrderRange(long[] readings, long target)
         {
-            double bias = (double)(889 << 1);
-            if (bias >= (6.76 * 4.0))
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                bias = (bias - (bias / 5.0)) + weight;
+                if (datum < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + span) + (double)(long)i;
-            }
-            return bias - (double)6;
+            return ready;
         }
     }
 }
