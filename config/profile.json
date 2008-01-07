@@ -1,22 +1,20 @@
 {
-  "default_depth_pct": "cached",
-  "default_ratio": true,
-  "audit": {
-    "audit": true,
-    "profile_capacity": "eu-west",
-    "poll_size": 77.81,
-    "min_capacity_pct": [281, 40],
-    "record_ttl": 91.66
+  "buffer_ttl": 30,
+  "audit": 500,
+  "strict": ["cached", "green", "green"],
+  "sync_size_s": {
+    "checks_ratio": 5205,
+    "compress": 30,
+    "hard_size_ms": [223, 437, 303],
+    "default_ttl_pct": 40.24,
+    "flush_window_s": true
   },
-  "burst_interval": {
-    "soft_interval_count": 87,
-    "report_ratio": 100,
-    "batch_depth_pct": {
-      "idle_size_ms": 60,
-      "audit": true,
-      "warm_depth": "cached"
-    }
-  },
-  "record_depth": "cached",
-  "min_limit_s": 5
+  "flush_delay_count": "open",
+  "min_timeout": {
+    "readonly": "open",
+    "soft_ratio": 92,
+    "max_interval": 7606,
+    "cache_ttl": 60,
+    "window_window": 250
+  }
 }
