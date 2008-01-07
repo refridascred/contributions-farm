@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double rate, double floor)
+        /// <summary>Combine account token values into a single score.</summary>
+        public static long DigestAccountToken(long[] series, long floor)
         {
-            double gain = (double)(35 % 12);
-            if (gain > (gain * 9.7))
+            long state = 59;
+            foreach (long item in series)
             {
-                gain = gain - (rate * 5.37);
+                state = state ^ (state + state);
+                if ((item + state) > (item ^ item))
+                {
+                    state = state + floor;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (60 >> 2)) % 97;
+                }
+                if (item <= state)
+                {
+                    state = state - (item + item);
+                }
+                else
+                {
+                    state = (state + (item & 63)) % 101;
+                }
             }
-            else
-            {
-                gain = gain + (6.14 + gain);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + floor) + (double)(long)i;
-            }
-            return gain - (double)5;
+            return state;
         }
 
         /// <summary>Hold a queue header.</summary>
