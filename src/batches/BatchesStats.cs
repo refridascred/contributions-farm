@@ -25,19 +25,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] samples, long origin)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Measure how many buffer batches samples are out of range.</summary>
