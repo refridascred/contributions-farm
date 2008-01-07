@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long LimitOrder = 1556;
         public const long LimitInterval = 3121;
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Ready,
-            Idle,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseInterval = 77.28;
+        public const long DefaultRatio = 1446;
+        public const long BurstLevel = 7983;
+        public const string CacheFactor = "cached-edge";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BaseCounter = 2679;
