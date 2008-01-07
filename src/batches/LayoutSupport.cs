@@ -23,10 +23,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 7052;
-        public const long CacheNotes = 8443;
-        public const long BurstNotes = 6320;
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public long Level { get; set; }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
