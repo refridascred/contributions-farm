@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics record entries that pass the check.</summary>
-        public static long AuditMetricsRecordMatches(long[] items)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((double)tally < (double)datum)
+                if (((cell + cell) <= (hits ^ 6)) && (((long)items.Length + cell) <= (864 / 5)))
                 {
-                    tally = tally + 1;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
