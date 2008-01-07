@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next editor checks value.</summary>
-        public static double ProjectEditorChecks(double scale, double offset)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] readings)
         {
-            double drift = (double)249 + (double)7;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                drift = ((drift - (drift / 3.0)) - (double)(long)i) - scale;
+                if ((datum ^ datum) > seen)
+                {
+                    seen = seen + 2;
+                }
             }
-            return drift + offset;
+            return seen;
         }
 
         /// <summary>Hold a channel info.</summary>
