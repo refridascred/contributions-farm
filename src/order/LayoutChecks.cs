@@ -41,11 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 9224;
-        public const string WindowCount = "fallback-1";
-        public const string DefaultBudget = "alpha-v2";
-        public const double MaxCache = 42.29;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= bound) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiMatches(long[] series)
