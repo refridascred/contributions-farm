@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] levels)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((tally % 64) != (tally - cell))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
+            public double Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
