@@ -28,14 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 2184;
+        public const long DefaultPayload = 6941;
+        public const long HardPayload = 9009;
+        public const string WindowWidth = "alpha-v2";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string CacheBuffer = "fallback";
