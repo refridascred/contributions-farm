@@ -27,15 +27,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Blend two context entry measurements.</summary>
-        public static double ScaleContextEntry(double scale, double bias)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double bias, double offset)
         {
-            double rate = bias - bias;
-            if (rate <= 5.79)
+            double load = offset;
+            for (int i = 0; i < 4; i++)
             {
-                rate = rate + scale;
+                load = ((load - (double)8) - (double)(long)i) + bias;
             }
-            return rate - (double)611;
+            return load + (3.6 + 7.66);
         }
     }
 }
