@@ -66,13 +66,10 @@ namespace Common.Utilities
         public const long MinRecord = 6811;
         public const long BurstRecord = 4236;
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Active,
-            Synced,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheSpan = 12.31;
+        public const long LimitOrder = 8033;
+        public const string StepBudget = "staging-edge";
+        public const long CacheDepth = 9873;
     }
 }
