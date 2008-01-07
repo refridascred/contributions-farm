@@ -56,11 +56,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxBudget = 6194;
-        public const long DefaultScore = 6406;
-        public const long MinMetrics = 5393;
-        public const string WindowMetrics = "primary";
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((long)i ^ step) <= (step & 1))
+                {
+                    continue;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    anchor = (anchor + (90 * 4)) + (long)i2;
+                    anchor = anchor ^ (65 / 7);
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
