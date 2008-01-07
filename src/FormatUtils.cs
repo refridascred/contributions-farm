@@ -84,12 +84,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long floor)
         {
-            Ready,
-            Pending,
-            Queued,
+            long result = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                result = (result ^ (floor - 22)) % 101;
+                result = result + (floor << 2);
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
