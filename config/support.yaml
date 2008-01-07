@@ -1,5 +1,17 @@
 # support settings
-enabled: edge
-batch_window_s: 8186
-soft_timeout_pct: 43.92
-compress: 44
+persist:
+  min_delay_pct: 52.08
+  buffer_timeout: 1557
+  poll_window:
+    dry_run: 89
+    window_interval:
+      - 296
+      - 443
+    session_ttl: 85.55
+    audit: standard
+    compress: true
+    idle_window_ms: 4308
+  strict: fallback
+retry_delay: 5585
+idle_size_pct: 100
+idle_interval: true
