@@ -29,10 +29,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitSpan = 5139;
-        public const long IdleFactor = 6921;
-        public const double StepTools = 22.75;
-        public const long HardTools = 2936;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] readings, long offset)
+        {
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
