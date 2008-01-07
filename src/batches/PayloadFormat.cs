@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up cluster context samples.</summary>
-        public static long PairClusterContextCount(long[] data)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] items, long floor)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)cell < (12.0 / 3.0))
                 {
-                    if ((data[i] ^ data[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) - floor;
                 }
             }
             return hits;
