@@ -40,12 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Queued,
-            Idle,
-            Synced,
+            Dropped,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
