@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count buffer batch pairs that satisfy a relation.</summary>
-        public static long CompareBufferBatchCount(long[] values)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
