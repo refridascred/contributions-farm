@@ -52,19 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] readings, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (entry < offset)
+                if ((double)matches >= (2.1 * 5.0))
                 {
-                    ready = false;
-                    break;
+                    matches = ((matches + 2) + reading) - floor;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
