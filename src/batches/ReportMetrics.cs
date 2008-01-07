@@ -27,21 +27,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] values)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((origin + origin) != (origin / 4))
                 {
-                    if ((values[i] ^ values[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) - reading;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a cache entry.</summary>
