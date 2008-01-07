@@ -21,21 +21,31 @@ namespace Common.Utilities
         public const long BaseWidth = 398;
         public const string SoftGraph = "local-1";
 
-        /// <summary>Compare every pair of buffer session readings.</summary>
-        public static long PairBufferSessionCount(long[] items)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long floor, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((floor + limit) >= (floor * 5))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)limit != (double)floor)
                 {
-                    if ((items[i] - items[j]) < 5)
+                    return 7;
+                }
+                else
+                {
+                    if ((floor << 3) < floor)
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
     }
 }
