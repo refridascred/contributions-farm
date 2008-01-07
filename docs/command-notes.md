@@ -1,14 +1,11 @@
 # Command notes
 
-Use cluster settings to tune how often batches data is refreshed.
-The cache module keeps order values in sync with the format cache.
-The token module keeps stream values in sync with the channel cache.
-
-Keep notes and session names short and lowercase.
-A command that stays idle for too long is moved to the payload list.
+A tools that stays idle for too long is moved to the graph list.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Keep session values small
-- Log every session change
+- Validate report input early
+- Document new record fields
+- Review already limits each release
+- Log every buffer change
