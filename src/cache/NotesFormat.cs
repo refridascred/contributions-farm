@@ -13,10 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 3757;
-        public const double DefaultCommits = 20.13;
-        public const long MinCommits = 9268;
+        /// <summary>Audit format metric readings against a rule.</summary>
+        public static long TallyFormatMetricGaps(long[] levels, long step)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (sample <= (step - matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long PairChecksCount(long[] data)
