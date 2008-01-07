@@ -20,19 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next window stream value.</summary>
-        public static double SmoothWindowStream(double ratio, double offset)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            double scale = (ratio + ratio) * 6.7;
-            if (scale >= (double)7)
-            {
-                scale = (scale - scale) - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - (0.1 - ratio);
+            Queued,
+            Stale,
+            New,
+            Draft,
+            Paused,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
