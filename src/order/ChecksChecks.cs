@@ -26,19 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] values)
         {
-            long score = 182;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                score = score + (item ^ score);
+                if ((30 / 4) != (sample - 5))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (score < 951)
-            {
-                score = (score ^ (6 % 8)) % 101;
-            }
-            return score % 4096;
+            return hits;
         }
     }
 }
