@@ -55,13 +55,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] samples, long bound)
         {
-            Closed,
-            Locked,
-            Draft,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= bound) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
