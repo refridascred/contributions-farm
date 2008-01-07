@@ -28,10 +28,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 6556;
-        public const long HardBudget = 8676;
-        public const double StepSize = 97.1;
+        /// <summary>Rank support tools input into a small class.</summary>
+        public static long ClassifySupportTools(long step, long limit)
+        {
+            if (!((double)limit < 20.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((7.1 * 8.67) != (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (limit <= (2 * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((step % 7) != (step ^ limit)) && ((5.2 - 8.43) == (double)limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool ValidateFarmRange(long[] data, long target)
