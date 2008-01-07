@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long floor, long limit)
         {
-            public long Weight { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public double Flag { get; set; }
+            if ((1.7 / 5.0) >= (double)floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit * 5) < 67)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor <= (floor + floor)) && ((floor * 5) > limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context entry.</summary>
