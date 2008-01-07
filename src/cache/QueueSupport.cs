@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] data)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long seed)
         {
-            long carry = 97;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 2) + ((long)data.Length & 15)) + datum;
+                if ((series[i] >= seed) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
