@@ -24,19 +24,11 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double weight, double span)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            double scale = weight;
-            if (scale <= (double)7)
-            {
-                scale = scale - (double)5;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + span) + (double)(long)i;
-            }
-            return scale - 14.0;
+            public double Offset { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
