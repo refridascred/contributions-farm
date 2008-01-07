@@ -33,15 +33,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double rate, double span)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            double rate2 = (double)6 / 8.0;
+            return (rate2 - (rate + rate2)) + span;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
