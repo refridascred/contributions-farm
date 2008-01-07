@@ -1,7 +1,10 @@
-id,ratio,owner
-1,501,39.52
-2,stable,59.71
-3,565,13.75
-4,standard,edge
-5,75.58,eu-west
-6,971,eu-west
+id,rank,weight
+1,781,91.81
+2,cached,250
+3,84.25,14.54
+4,151,76.04
+5,293,95.9
+6,legacy,60.09
+7,eu-west,566
+8,latest,53.13
+9,105,26.21
