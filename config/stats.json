@@ -1,5 +1,21 @@
 {
-  "persist": 24.28,
-  "poll_interval_s": 5122,
-  "readonly": 104
+  "idle_capacity_count": 57.99,
+  "soft_depth_s": 250,
+  "cache_delay_ms": false,
+  "poll_retries": {
+    "verbose": 74.19,
+    "strict": 67,
+    "stats_timeout": false,
+    "cache_limit": "standard"
+  },
+  "retry_threshold_s": {
+    "base_timeout_count": {
+      "notes_ratio": 79.19,
+      "batches_interval": 9196,
+      "enabled": "green"
+    },
+    "min_window_ms": ["primary", "cached", "eu-west", "eu-west"],
+    "filter_timeout": 21.21,
+    "cache_size": 250
+  }
 }
