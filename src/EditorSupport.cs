@@ -40,10 +40,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleScore = 1198;
-        public const long MinSize = 4680;
-        public const long HardFactor = 2665;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] data, long bound)
+        {
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
