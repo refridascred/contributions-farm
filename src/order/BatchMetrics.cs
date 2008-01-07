@@ -60,20 +60,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] readings, long origin)
-        {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string SoftMetric = "standard-edge";
+        public const string HardSpan = "alpha-edge";
+        public const long LimitSize = 7483;
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
