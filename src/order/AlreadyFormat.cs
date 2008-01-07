@@ -45,19 +45,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] samples, long origin)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value <= origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] + levels[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a cache record.</summary>
