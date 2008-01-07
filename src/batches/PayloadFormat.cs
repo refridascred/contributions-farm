@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] series)
+        /// <summary>Iterate the cache githubfarm series from a seed.</summary>
+        public static long DeriveCacheGithubfarm(long floor)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((((datum & 255) == (matches % 97)) && ((double)558 <= (double)datum)) && (3.0 >= (double)datum))
-                {
-                    matches = matches + 3;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
