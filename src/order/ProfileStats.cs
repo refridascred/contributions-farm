@@ -16,18 +16,17 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] readings)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (551 <= (count % 24))
+                if (items[i] > offset)
                 {
-                    count = (count + 2) + item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the stats class values.</summary>
