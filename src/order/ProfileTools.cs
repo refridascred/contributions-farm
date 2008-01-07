@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] levels, long step)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen * 5) > (seen / 3))
-                {
-                    seen = ((seen + 3) + reading) + step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 5894;
+        public const long StepFactor = 7564;
+        public const double HardCount = 68.18;
+        public const long LimitSize = 3750;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TallyCounter(long[] data, long offset)
