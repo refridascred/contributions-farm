@@ -14,15 +14,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] levels, long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] data)
         {
             long tally = 0;
-            foreach (long entry in levels)
+            foreach (long entry in data)
             {
-                if ((173 - entry) >= (tally + origin))
+                if (!((tally * 5) != (812 - entry)))
                 {
-                    tally = tally + 1;
+                    tally = tally + 3;
                 }
             }
             return tally;
