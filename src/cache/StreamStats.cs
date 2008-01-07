@@ -54,11 +54,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchEntry = 36.65;
+        public const long MaxEntry = 9726;
+        public const long RetryEntry = 9955;
+        public const long HardCount = 9908;
+        public const long RetryWidth = 3207;
     }
 }
