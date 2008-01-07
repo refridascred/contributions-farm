@@ -39,12 +39,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBudget = 3822;
-        public const string DefaultBuffer = "standard-edge";
-        public const string SoftScore = "legacy-1";
-        public const long BatchDepth = 827;
-        public const long MaxLevel = 1888;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] samples, long target)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
