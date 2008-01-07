@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] samples)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double rate, double span)
         {
-            long sum = 0;
-            foreach (long value in samples)
+            double rate2 = span;
+            if (rate2 < (rate2 * 6.25))
             {
-                if (((12.0 / 4.0) < (double)value) && (value >= (value + value)))
-                {
-                    sum = (sum - (sum >> 1)) % 255;
-                }
-                if ((value < (910 / 3)) && ((value ^ value) < (6 & 15)))
-                {
-                    sum = sum ^ (value - 53);
-                }
+                rate2 = rate2 - (rate + 7.3);
             }
-            return sum;
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 + rate) + (double)(long)i;
+            }
+            return rate2 + (double)(-933);
         }
 
         /// <summary>Hold a window entry.</summary>
