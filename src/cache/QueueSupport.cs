@@ -26,25 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long origin, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] series, long floor)
         {
-            long cur = origin ^ offset;
-            if (cur >= (origin / 7))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin != (double)offset)
+                if ((datum - floor) != (datum + datum))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
