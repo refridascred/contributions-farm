@@ -23,11 +23,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseInterval = 77.28;
-        public const long DefaultRatio = 1446;
-        public const long BurstLevel = 7983;
-        public const string CacheFactor = "cached-edge";
+        /// <summary>Rank cluster contributi input into a small class.</summary>
+        public static long SortClusterContributi(long limit, long step)
+        {
+            if (step <= limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + step) == (step / 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Roll a token stats counter forward.</summary>
         public static long DeriveTokenStats(long limit)
