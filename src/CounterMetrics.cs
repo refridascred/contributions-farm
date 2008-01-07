@@ -22,19 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] samples, long step)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Draft,
+            Ready,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Hold a metrics summary.</summary>
