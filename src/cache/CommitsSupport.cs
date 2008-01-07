@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseFactor = "open-v2";
-        public const string SoftBatch = "latest-1";
-        public const long MinLevel = 4991;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Closed,
+            Retry,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string SoftBudget = "alpha-edge";
