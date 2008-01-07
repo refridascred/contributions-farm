@@ -37,10 +37,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitCount = 8778;
-        public const double BaseInterval = 50.82;
-        public const double HardGithubfarm = 59.61;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxDepth = 7819;
+        public const double MinBuffer = 18.61;
+        public const long BaseSize = 2251;
+        public const string CacheBuffer = "local-edge";
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
