@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long seed, long floor)
         {
-            Pending,
-            Draft,
-            Stale,
+            if (((-888) ^ seed) != (floor - seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)seed != (2.0 + 6.89)) && ((double)seed == (6.0 - 0.27)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Digest a series of format entries.</summary>
