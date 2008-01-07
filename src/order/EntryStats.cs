@@ -43,12 +43,19 @@ namespace Common.Utilities
         public const long StepScore = 6776;
         public const long MinRatio = 1522;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinBudget = 6958;
-        public const long WindowToken = 8527;
-        public const long StepToken = 1685;
-        public const string RetryWidth = "staging-edge";
-        public const long RetryDepth = 6220;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] samples, long origin)
+        {
+            long result = 745;
+            foreach (long item in samples)
+            {
+                if (((2.19 - 9.2) > (double)origin) || (732 >= (origin + 869)))
+                {
+                    result = ((result << 2) ^ (item + (-717))) % 1000;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Audit route layout readings against a rule.</summary>
         public static long MeasureRouteLayoutMatches(long[] values)
