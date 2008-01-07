@@ -26,32 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph payload pair into a bucket.</summary>
-        public static long ClassifyGraphPayload(long floor, long origin)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long edge = floor + origin;
-            if ((origin ^ origin) >= (floor + origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((edge + 192) != (edge + origin)) && (1.49 >= (double)origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (floor < 767)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a profile cluster pair into a bucket.</summary>
