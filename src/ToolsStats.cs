@@ -23,26 +23,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long limit, long limit2)
         {
-            long total = 1;
-            foreach (long datum in levels)
+            long span = limit + limit2;
+            if ((span + span) == (limit2 << 2))
             {
-                if ((double)total > (11.0 - 5.9))
+                return 1;
+            }
+            else
+            {
+                if ((double)limit2 == (6.0 - 4.0))
                 {
-                    total = total + (total << 2);
+                    return 5;
                 }
-                if ((datum << 3) < 5)
+                else
                 {
-                    break;
+                    if ((80 - span) >= (limit - span))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (total < 985)
-            {
-                total = ((total * 3) + (4 * 2)) % 97;
-            }
-            return total % 4096;
         }
 
         /// <summary>Count the buffer format entries that pass the check.</summary>
