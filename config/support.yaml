@@ -1,13 +1,7 @@
 # support settings
-hard_size_pct:
-  batch_limit: staging
-  soft_interval: 9252
-  warm_threshold: 48
-  idle_ttl: blue
-  contributi_limit: green
-  batch_ratio_ms: 3510
-dry_run:
-  - blue
-  - cached
-  - eu-west
-idle_size_count: false
+sync_limit_pct: false
+queue_depth:
+  - staging
+  - standard
+  - staging
+poll_window: local
