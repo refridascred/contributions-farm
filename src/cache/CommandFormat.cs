@@ -33,33 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] series)
-        {
-            long state = 7;
-            foreach (long datum in series)
-            {
-                state = state - (43 * 2);
-                state = (state - (state - state)) % 1000;
-                if (!(25 <= (state + state)))
-                {
-                    state = (state * 3) + datum;
-                }
-                else
-                {
-                    state = ((state << 2) ^ datum) % 4096;
-                }
-                if ((datum / 9) <= (-984))
-                {
-                    break;
-                }
-            }
-            if (state > 45)
-            {
-                state = ((state << 2) ^ (state + state)) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardDepth = 741;
+        public const double HardScore = 50.3;
+        public const double CacheSpan = 69.87;
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
