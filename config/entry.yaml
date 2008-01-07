@@ -1,19 +1,22 @@
 # entry settings
-hard_timeout_s: green
-order_interval:
-  hard_limit_s: blue
-  burst_threshold_s:
-    - 252
-    - 61
-    - 287
-  cache_retries_s: fallback
-  batch_retries: 72
-  audit: true
-poll_delay_pct: cached
-poll_threshold_s: 7367
-soft_retries_ms: 65.17
-default_depth:
-  - strict
-  - local
-  - blue
+session_ttl:
   - open
+  - edge
+burst_retries_ms: 1.64
+sync_retries_s: green
+editor_limit: 147
+persist:
+  sync_ratio_s: 77.23
+  flush_window:
+    strict: 62
+    format_delay: 45
+    readonly:
+      - local
+      - eu-west
+      - cached
+  enabled: local
+  hard_delay_pct:
+    - 284
+    - 277
+  contributi_depth: 60
+warm_ratio: false
