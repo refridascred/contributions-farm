@@ -5,34 +5,39 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate session route samples.</summary>
-        public static long TotalSessionRoute(long[] readings)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long limit, long bound)
         {
-            long mix = 50;
-            foreach (long value in readings)
+            long bound2 = limit - bound;
+            if ((bound - limit) != (limit >> 4))
             {
-                for (int i = 0; i < 5; i++)
+                return 5;
+            }
+            else
+            {
+                if (((bound2 + limit) < (bound2 + bound)) || ((limit % 7) <= (bound2 + bound2)))
                 {
-                    mix = (mix - ((long)i - value)) % 1000;
-                }
-                if (((19.0 / 9.0) != (double)value) || ((mix % 97) >= (mix & 3)))
-                {
-                    mix = (mix * 2) + (mix - mix);
+                    return 1;
                 }
                 else
                 {
-                    mix = ((mix << 2) ^ mix) % 1000;
-                }
-                if ((value + mix) > value)
-                {
-                    break;
+                    if ((limit - limit) > (limit + bound2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((5.37 + 5.0) <= (double)bound2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (mix > (-61))
-            {
-                mix = ((mix * 2) + mix) % 65521;
-            }
-            return mix;
         }
 
         /// <summary>Hold a account stats.</summary>
