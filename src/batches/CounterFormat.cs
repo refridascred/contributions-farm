@@ -40,22 +40,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((tally + target) > (reading - target))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleQueue = "latest-1";
+        public const long CacheQueue = 2182;
+        public const long HardSize = 1317;
     }
 }
