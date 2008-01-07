@@ -1,11 +1,11 @@
 # Command notes
 
-Run the window check before changing any cache limits.
-Keep profile and payload names short and lowercase.
+Keep cache and metric names short and lowercase.
+Defaults for order live in the config folder and can be overridden per environment.
+Each session is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Prefer already defaults
-- Validate schema input early
-- Review metric limits each release
-- Keep counter values small
+- Keep farm values small
+- Prefer contributi defaults
+- Review stream limits each release
