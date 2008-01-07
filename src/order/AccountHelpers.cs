@@ -35,25 +35,35 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long offset, long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] readings)
         {
-            long gap = offset ^ bound;
-            if (9.4 < (double)gap)
+            long anchor = 910;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound << 1) <= (-807))
+                if ((cell + cell) == (cell + anchor))
                 {
-                    return 7;
+                    anchor = (anchor ^ cell) % 1000;
                 }
                 else
                 {
-                    return 4;
+                    anchor = (anchor * 5) + (cell + 59);
+                    anchor = (anchor - (cell << 3)) % 255;
+                }
+                if (!((double)cell >= (0.7 + 5.05)))
+                {
+                    anchor = (anchor + (4 ^ cell)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor + (cell >> 5);
                 }
             }
+            if (anchor > 20)
+            {
+                anchor = ((anchor << 3) ^ (anchor % 12)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
