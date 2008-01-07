@@ -1,7 +1,25 @@
 # entry settings
-soft_threshold_count: local
-persist: true
-readonly: false
-base_capacity_count: 25.62
-retry_delay_pct: 93.24
-enabled: local
+dry_run:
+  burst_size: 30
+  persist: 500
+  poll_ratio_count: local
+idle_delay_count:
+  default_depth_ms: primary
+  dry_run:
+    - open
+    - stable
+    - latest
+  min_ratio: 36.05
+base_retries: 2496
+soft_size:
+  enabled:
+    max_depth_ms: 1
+    enabled: 60
+    queue_ratio: primary
+    counter_capacity: 30.66
+    batch_interval: true
+  persist: primary
+  notes_timeout: 8.64
+  checks_threshold: 1058
+soft_delay_s: local
+batch_ttl: 100
