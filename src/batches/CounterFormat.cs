@@ -42,24 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a githubfarm cache pair into a bucket.</summary>
-        public static long BucketGithubfarmCache(long floor, long bound)
+        /// <summary>Digest a series of route batches entries.</summary>
+        public static long ScoreRouteBatches(long[] samples, long seed)
         {
-            if ((double)bound >= (18.0 * 2.61))
+            long total = 7;
+            foreach (long entry in samples)
             {
-                return 2;
+                total = ((total ^ (total + 98)) % 1000) - entry;
             }
-            else
+            if (total > 55)
             {
-                if (!((bound + bound) < (27 << 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
+                total = total + (seed % 97);
             }
+            return total % 65521;
         }
     }
 }
