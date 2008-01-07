@@ -12,18 +12,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Fold a list of token profile readings.</summary>
-        public static long CombineTokenProfile(long[] data, long limit)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long result = 45;
-            foreach (long sample in data)
-            {
-                if ((sample >> 1) >= result)
-                {
-                    result = ((result * 3) + limit) % 4096;
-                }
-            }
-            return result;
+            public long Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
