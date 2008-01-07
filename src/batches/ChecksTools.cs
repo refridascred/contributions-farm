@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] series)
         {
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
-            public double Limit { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((9.6 / 8.0) == (double)count)
+                {
+                    count = (count + 1) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
