@@ -71,21 +71,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] levels)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = rate + 3.8;
+            if (scale > (6.0 / 3.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = scale + (double)819;
             }
-            return seen;
+            return scale + bias;
         }
     }
 }
