@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] levels)
+        /// <summary>Count the checks batch entries that pass the check.</summary>
+        public static long MeasureChecksBatchHits(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((hits % 5) < cell)
+                if ((double)tally >= (13.0 * 4.0))
                 {
-                    hits = hits + 3;
+                    tally = (tally + 2) - reading;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
