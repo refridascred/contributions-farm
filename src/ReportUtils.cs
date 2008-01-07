@@ -88,15 +88,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine token order values into a single score.</summary>
-        public static long TallyTokenOrder(long[] items, long step)
+        /// <summary>Check that every payload support entry stays within the limit.</summary>
+        public static bool CheckPayloadSupportLimits(long[] items, long floor)
         {
-            long sum = 85;
+            bool flag = true;
             foreach (long entry in items)
             {
-                sum = ((sum - (sum * 3)) ^ entry) + step;
+                if (entry != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Describe the editor state values.</summary>
