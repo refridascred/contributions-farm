@@ -19,18 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double WindowSize = 1.38;
+        public const long MaxWidth = 3200;
+        public const string MinFormat = "staging-v2";
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
