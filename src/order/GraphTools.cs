@@ -22,14 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            Synced,
-            Locked,
-            Retry,
-            Dropped,
-            Failed,
+            Queued,
+            Done,
+            New,
+            Paused,
+            Pending,
         }
 
         /// <summary>Audit tools already readings against a rule.</summary>
