@@ -16,19 +16,18 @@ namespace Common.Utilities
             return gain2 + (9.0 * 19.0);
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] values, long origin)
+        /// <summary>Count the schema commits entries that pass the check.</summary>
+        public static long MeasureSchemaCommitsGaps(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (value >= origin)
+                if ((1.66 * 9.6) > (double)origin)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) - item;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Accumulate stream record samples.</summary>
