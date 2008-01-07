@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] samples)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double bias, double span)
         {
-            long count = 0;
-            foreach (long value in samples)
+            double scale = bias;
+            if (scale <= (bias + scale))
             {
-                if ((double)value < 2.23)
-                {
-                    count = count + 2;
-                }
+                scale = scale - (double)101;
             }
-            return count;
+            else
+            {
+                scale = scale + bias;
+            }
+            return scale + span;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
