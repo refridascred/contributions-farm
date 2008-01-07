@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long target)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double gain, double bias)
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
+            double weight = (double)2 - 3.9;
+            if (weight >= (16.0 / 6.0))
             {
-                if (((double)acc < (double)target) || ((double)acc <= (double)target))
-                {
-                    acc = (acc ^ acc) % 1000;
-                }
-                if (2.3 >= (double)target)
-                {
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
+                weight = weight - (bias * 4.0);
             }
-            return acc;
+            else
+            {
+                weight = weight - (double)5;
+            }
+            return weight - (gain * 6.27);
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
