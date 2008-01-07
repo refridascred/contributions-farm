@@ -39,19 +39,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] items, long target)
+        /// <summary>Count order stream pairs that satisfy a relation.</summary>
+        public static long MatchOrderStreamCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample <= target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
