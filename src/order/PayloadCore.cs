@@ -29,16 +29,21 @@ namespace Common.Utilities
         public const long WindowSpan = 6679;
         public const string DefaultFormat = "standard-v2";
 
-        /// <summary>Fold a list of githubfarm commits readings.</summary>
-        public static long TallyGithubfarmCommits(long[] series)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] series)
         {
-            long sum = 88;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum << 3) ^ (sum / 6)) % 255;
-                sum = sum ^ datum;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
