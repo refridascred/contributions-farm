@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of channel graph readings.</summary>
-        public static long TallyChannelGraph(long[] values)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] items, long offset)
         {
-            long mark = -43;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (((mark ^ value) < (mark + mark)) && ((double)mark < (0.7 * 17.0)))
+                if ((7.0 / 8.0) == (double)offset)
                 {
-                    mark = mark + (value * 5);
+                    matches = (matches + 3) + reading;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the profile level values.</summary>
