@@ -29,19 +29,10 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of contributi farm entries.</summary>
-        public static long TotalContributiFarm(long[] levels, long offset)
-        {
-            long carry = 90;
-            foreach (long value in levels)
-            {
-                carry = (((carry << 3) ^ (carry + carry)) % 101) - value;
-            }
-            if (carry < 772)
-            {
-                carry = (carry - (offset % 12)) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheOrder = "fallback-1";
+        public const double RetryOrder = 87.57;
+        public const double LimitOrder = 66.59;
+        public const long SoftFactor = 6920;
     }
 }
