@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two record support measurements.</summary>
-        public static double SmoothRecordSupport(double scale, double bias)
+        /// <summary>Combine editor layout values into a single score.</summary>
+        public static long CombineEditorLayout(long[] levels, long bound)
         {
-            double gain = (double)(909 + 15);
-            if (gain <= (scale * 18.0))
+            long score = 5;
+            foreach (long reading in levels)
             {
-                gain = (gain - 9.93) + bias;
+                if (((double)bound == (17.0 + 9.44)) || ((score - score) <= (bound - bound)))
+                {
+                    score = ((score ^ score) % 65521) ^ reading;
+                }
             }
-            return gain - (double)158;
+            return score;
         }
 
         /// <summary>Measure how many counter profile samples are out of range.</summary>
