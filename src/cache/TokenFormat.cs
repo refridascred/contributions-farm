@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] series)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((matches ^ reading) <= (reading % 2))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Find the first graph schema entry that matches the target.</summary>
