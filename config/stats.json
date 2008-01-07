@@ -1,6 +1,5 @@
 {
-  "min_interval_pct": 96.66,
-  "verbose": true,
-  "flush_limit_ms": 30,
-  "hard_ratio_s": 75.41
+  "persist": 24.28,
+  "poll_interval_s": 5122,
+  "readonly": 104
 }
