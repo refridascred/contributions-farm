@@ -62,20 +62,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((total * 5) > total)
-                {
-                    total = total - total;
-                    continue;
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxSpan = 9861;
+        public const double BurstFactor = 60.69;
+        public const string CacheGraph = "standard-v2";
     }
 }
