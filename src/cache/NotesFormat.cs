@@ -36,13 +36,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long step, long seed)
         {
-            Dropped,
-            New,
-            Paused,
-            Draft,
+            if (step < (seed & 127))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step - step) <= seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((seed << 2) != (3 & 255)) || ((double)seed >= (16.0 * 4.7)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
