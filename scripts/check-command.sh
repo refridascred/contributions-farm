@@ -6,21 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in fallback eu-west edge legacy; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-mode="${1:-legacy}"
+mode="${1:-strict}"
 case "${mode}" in
-    standard)
+    legacy)
         log "fast path"
         ;;
     *)
