@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] values, long step)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Retry,
+            Idle,
+            Done,
         }
 
         /// <summary>Accumulate stream samples.</summary>
