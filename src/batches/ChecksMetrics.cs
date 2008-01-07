@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
             Locked,
+            Synced,
             New,
-            Draft,
-            Closed,
+            Active,
         }
 
         /// <summary>Find the first commits tools entry that matches the target.</summary>
