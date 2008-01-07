@@ -13,18 +13,20 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] readings)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long origin)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (seen <= (seen + seen))
+                long count = ((long)i >> 4) / 7;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    seen = (seen + 1) + entry;
+                    state = ((state ^ (count * 4)) % 65521) ^ (long)i2;
                 }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a session entry.</summary>
