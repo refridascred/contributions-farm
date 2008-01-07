@@ -88,11 +88,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxLevel = 1288;
-        public const string BatchCommand = "local-edge";
-        public const string SoftRatio = "strict-v2";
-        public const long BaseCount = 6622;
+        /// <summary>Combine token order values into a single score.</summary>
+        public static long TallyTokenOrder(long[] items, long step)
+        {
+            long sum = 85;
+            foreach (long entry in items)
+            {
+                sum = ((sum - (sum * 3)) ^ entry) + step;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
