@@ -36,18 +36,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double weight, double floor)
         {
-            long carry = 15;
-            foreach (long cell in readings)
+            double gain = floor;
+            if (gain <= (gain - 9.42))
             {
-                if ((2.4 / 3.0) != (double)carry)
-                {
-                    carry = (carry - (cell % 8)) % 65521;
-                }
+                gain = (gain - (gain - gain)) - weight;
             }
-            return carry % 1000;
+            else
+            {
+                gain = gain + floor;
+            }
+            return gain - (9.0 / 9.0);
         }
     }
 }
