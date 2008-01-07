@@ -35,39 +35,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long offset, long target)
-        {
-            long step = offset ^ target;
-            if (!((step / 3) <= (step % 100)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (step >= 229)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (target > 76)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset % 100) == (target >> 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 9843;
+        public const long MinQueue = 5476;
+        public const long WindowQueue = 9206;
+        public const long IdleInterval = 4266;
     }
 }
