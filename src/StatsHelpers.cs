@@ -59,38 +59,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long limit, long limit2)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double rate, double floor)
         {
-            if ((double)limit == (3.2 - 4.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((3.1 - 20.0) > (double)limit2)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((2 / 6) >= (limit2 >> 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)limit2 > (double)limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            double gain = floor - (rate - rate);
+            return gain + floor;
         }
     }
 }
