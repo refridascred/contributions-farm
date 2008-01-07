@@ -27,31 +27,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long origin, long limit)
-        {
-            if ((19.0 < (double)origin) && ((double)origin >= 7.41))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((988 % 2) >= origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((0 + origin) < (62 / 2)) || ((limit + origin) > origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 8907;
+        public const string IdleCommand = "alpha-1";
+        public const double RetryBudget = 10.6;
+        public const long LimitSize = 7908;
+        public const long BurstRatio = 6491;
     }
 }
