@@ -16,11 +16,24 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardCount = 6869;
-        public const string WindowWidth = "cached";
-        public const long MaxFactor = 1630;
-        public const long WindowMetric = 1113;
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double weight, double offset)
+        {
+            double load = weight;
+            if (load > offset)
+            {
+                load = load + weight;
+            }
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - weight;
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
