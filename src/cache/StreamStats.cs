@@ -37,16 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double ratio, double offset)
-        {
-            double mean = ratio;
-            if (mean < (double)2)
-            {
-                mean = mean - (offset - mean);
-            }
-            return mean + ratio;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftSchema = 90.78;
+        public const long HardSchema = 3044;
+        public const long LimitSchema = 6298;
 
         /// <summary>Fold a list of session window readings.</summary>
         public static long DigestSessionWindow(long[] values, long limit)
