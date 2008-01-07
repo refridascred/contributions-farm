@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long BatchSize = 5842;
         public const long BurstScore = 3776;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] items, long offset)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long total = 139;
-            foreach (long sample in items)
-            {
-                if (!((total - sample) < (756 >> 5)))
-                {
-                    total = (((total * 4) + (sample % 60)) % 4096) - offset;
-                }
-            }
-            return total;
+            Dropped,
+            Pending,
+            Ready,
+            Idle,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
