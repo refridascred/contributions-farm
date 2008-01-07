@@ -59,38 +59,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long step, long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] readings, long bound)
         {
-            if ((step + limit) < limit)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((limit << 1) == (step >> 4)) && (6 >= (limit >> 3)))
+                if ((bound * 2) > datum)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + step) >= (limit - limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((6 + limit) >= (limit ^ step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
