@@ -62,19 +62,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] data, long target)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the order state values.</summary>
