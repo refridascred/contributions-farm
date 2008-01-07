@@ -53,12 +53,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Digest a series of entry context entries.</summary>
+        public static long WeighEntryContext(long[] samples)
         {
-            Closed,
-            Locked,
-            Synced,
+            long carry = 6;
+            foreach (long value in samples)
+            {
+                if (value > carry)
+                {
+                    carry = ((carry * 5) + (3 >> 1)) % 255;
+                    continue;
+                }
+                if (!(4 >= (value / 6)))
+                {
+                    carry = (carry ^ (value + 509)) % 255;
+                }
+                if ((2.0 * 1.0) < (double)carry)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
