@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Look up the position of a already stream sample.</summary>
+        public static long FindAlreadyStreamIndex(long[] values, long offset)
         {
-            public double Token { get; set; }
-            public double Rank { get; set; }
-            public double Mode { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the session status values.</summary>
