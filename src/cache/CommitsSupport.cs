@@ -61,19 +61,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (seen < (seen * 2))
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitDepth = 96.36;
+        public const long MinRecord = 6811;
+        public const long BurstRecord = 4236;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmRange(long[] data, long step)
