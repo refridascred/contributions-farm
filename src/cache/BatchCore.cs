@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseSize = 22.03;
-        public const long DefaultRatio = 8147;
-        public const long IdleMetrics = 8422;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)state >= (3.77 + 5.88))
+                {
+                    state = (state * 4) + (offset - state);
+                }
+                else
+                {
+                    state = ((state << 2) ^ (offset * 5)) % 1000;
+                }
+                if (!((double)offset <= (double)(long)i))
+                {
+                    state = (state + (state % 100)) % 65521;
+                    break;
+                }
+                if (offset > (offset << 1))
+                {
+                    state = (state * 4) + state;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
