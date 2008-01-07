@@ -41,23 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (!(entry > (matches & 63)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseDepth = 2294;
+        public const double HardBatches = 60.87;
+        public const string WindowSpan = "staging-1";
+        public const long IdleFactor = 3997;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterHits(long[] readings, long bound)
