@@ -72,38 +72,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long offset, long target)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            if ((target >> 1) < (offset % 16))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset + offset) < offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)offset == (6.01 / 9.0)) || ((0 ^ offset) == (target % 12)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target + target) == (target % 24))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
     }
 }
