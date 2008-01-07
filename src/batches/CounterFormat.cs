@@ -28,19 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] values, long origin)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Mode { get; set; }
+            public string Score { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
