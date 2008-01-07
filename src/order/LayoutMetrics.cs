@@ -42,39 +42,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long target, long limit)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double gain, double bias)
         {
-            long gap = target + limit;
-            if (!((gap >> 3) <= (target + target)))
+            double scale = (double)(782 >> 3);
+            if (scale <= 15.0)
             {
-                return 8;
+                scale = scale - bias;
             }
-            else
-            {
-                if ((8.0 + 1.4) < (double)gap)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit & 1) <= (limit * 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)gap == (1.0 + 5.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return scale - gain;
         }
     }
 }
