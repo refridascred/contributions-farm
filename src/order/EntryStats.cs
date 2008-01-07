@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] samples)
+        /// <summary>Count buffer batch pairs that satisfy a relation.</summary>
+        public static long CompareBufferBatchCount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) < 20)
+                    if ((values[i] ^ values[j]) > 17)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
