@@ -1,7 +1,6 @@
 {
-  "strict": true,
-  "hard_limit_count": "blue",
-  "cache_size_pct": 15.06,
-  "enabled": 56.71,
-  "warm_depth_count": [241, 40]
+  "soft_ttl_ms": ["open", "fallback", "edge", "open"],
+  "strict": "primary",
+  "default_limit": "stable",
+  "sync_depth": 27
 }
