@@ -29,13 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Idle,
-            Retry,
-            Done,
-            Pending,
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Locate a context account reading by value.</summary>
