@@ -1,5 +1,18 @@
 {
-  "batch_retries": 83.32,
-  "min_threshold": false,
-  "warm_threshold": false
+  "flush_delay": 8259,
+  "max_delay_pct": "eu-west",
+  "counter_window": "green",
+  "poll_window_count": {
+    "idle_threshold": {
+      "persist": 57.99,
+      "flush_capacity_pct": "open",
+      "dry_run": ["local", "open", "blue"],
+      "default_capacity_pct": 7506
+    },
+    "sync_size": "green",
+    "dry_run": [103, 77, 426, 6],
+    "warm_size_ms": 277,
+    "warm_delay_pct": "latest"
+  },
+  "dry_run": ["blue", "open", "edge", "latest"]
 }
