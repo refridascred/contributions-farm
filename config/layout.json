@@ -1,6 +1,22 @@
 {
-  "sync_size_ms": 100,
-  "warm_interval_count": "green",
-  "channel_ttl": false,
-  "graph_size": "cached"
+  "sync_timeout": 0.46,
+  "compress": {
+    "default_size": "primary",
+    "retry_depth": "cached",
+    "strict": "cached",
+    "idle_capacity_s": {
+      "default_limit_pct": "staging",
+      "persist": "fallback",
+      "entry_ratio": "stable",
+      "warm_retries": "open",
+      "retry_delay": "latest",
+      "notes_retries": "staging"
+    },
+    "stats_window": 30,
+    "default_ratio_s": "cached"
+  },
+  "strict": "standard",
+  "payload_depth": [119, 1, 470],
+  "dry_run": 500,
+  "burst_threshold_ms": false
 }
