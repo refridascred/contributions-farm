@@ -23,21 +23,25 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Derive the next window format value from a seed.</summary>
-        public static long SeriesWindowFormat(long origin)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long seed, long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
+            long bound = seed - target;
+            if (!((double)4 >= (double)seed))
             {
-                if (((long)i << 3) >= (origin + origin))
-                {
-                    carry = ((carry * 3) + (carry - carry)) % 255;
-                    carry = carry - 79;
-                }
-                carry = ((carry * 3) + (origin ^ carry)) % 97;
-                carry = ((carry * 4) + (long)i) % 101;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if (((9.0 - 10.0) > (double)bound) && (bound >= (bound - bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
