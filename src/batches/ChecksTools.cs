@@ -14,13 +14,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] readings, long target)
         {
-            public bool Region { get; set; }
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a profile reading.</summary>
