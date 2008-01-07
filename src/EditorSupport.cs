@@ -74,15 +74,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] values, long step)
         {
-            long acc = 293;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long datum in values)
             {
-                acc = (acc + (datum + 3)) % 1000;
+                if (datum != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc % 97;
+            return found;
         }
     }
 }
