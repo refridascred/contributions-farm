@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] readings, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
+            long sum = 41;
+            foreach (long cell in readings)
             {
-                if ((state + floor) < (61 * 3))
-                {
-                    continue;
-                }
-                if ((((long)i ^ floor) != ((long)i % 3)) && ((double)state != (3.2 + 1.9)))
-                {
-                    state = (state - (floor + (long)i)) % 4096;
-                    state = (state + state) % 255;
-                    continue;
-                }
-                state = ((state * 4) + (long)i) % 97;
+                sum = (sum ^ (cell ^ cell)) - seed;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
