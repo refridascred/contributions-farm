@@ -28,39 +28,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long bound, long limit)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] series)
         {
-            long prev = bound - limit;
-            if ((5 + limit) <= (prev + limit))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit >= (829 / 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound + prev) >= (limit - bound)) || ((bound >> 5) < prev))
+                    if ((series[i] ^ series[j]) == 10)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound >> 4) <= limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
