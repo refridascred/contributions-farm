@@ -23,12 +23,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            Retry,
-            New,
-            Closed,
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next queue metrics value from a seed.</summary>
