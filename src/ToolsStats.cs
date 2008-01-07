@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] data, long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] values, long origin)
         {
-            long score = 946;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long value in values)
             {
-                if ((double)reading > (double)bound)
+                if (value >= origin)
                 {
-                    score = score ^ (reading >> 5);
-                }
-                if (bound < (reading % 60))
-                {
+                    found = false;
                     break;
                 }
             }
-            return score % 65521;
+            return found;
         }
 
         /// <summary>Describe the layout kind values.</summary>
