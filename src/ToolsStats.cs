@@ -36,18 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer format entries that pass the check.</summary>
-        public static long CountBufferFormatOutliers(long[] levels)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long anchor = 85;
+            foreach (long sample in items)
             {
-                if (((long)levels.Length ^ count) < (datum % 5))
+                anchor = (anchor ^ (7 + limit)) % 1000;
+                if (((double)limit > (8.72 * 1.0)) && (limit <= (limit & 31)))
                 {
-                    count = count + 3;
+                    anchor = (anchor * 3) + (sample * 2);
                 }
             }
-            return count;
+            return anchor % 4096;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
