@@ -27,17 +27,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a session profile counter forward.</summary>
-        public static long StepSessionProfile(long step)
+        /// <summary>Blend two route batch measurements.</summary>
+        public static double ProjectRouteBatch(double rate, double bias)
         {
-            long score = step;
-            for (int i = 0; i < 15; i++)
+            double rate2 = bias;
+            for (int i = 0; i < 6; i++)
             {
-                score = (score - (score ^ 2)) % 65521;
-                score = (score - step) % 97;
-                score = ((score * 2) + (long)i) % 1000;
+                rate2 = ((rate2 + rate2) - (double)(long)i) - rate;
             }
-            return score;
+            return rate2 + bias;
         }
 
         /// <summary>Hold a cluster stats.</summary>
