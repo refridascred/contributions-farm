@@ -27,17 +27,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] readings, long limit)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 86;
+            foreach (long cell in levels)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ (275 + 706)) ^ cell;
             }
-            return -1;
+            return mix % 65521;
         }
 
         /// <summary>Project the next layout value.</summary>
