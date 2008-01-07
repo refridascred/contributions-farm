@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+mode="${1:-legacy}"
 case "${mode}" in
-    latest)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=110
-log "limit is ${BUFFER_LIMIT}"
+for item in fallback legacy stable; do
+    log "checking ${item}"
+done
