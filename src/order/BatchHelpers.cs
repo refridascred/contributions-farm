@@ -19,18 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] values, long seed)
+        /// <summary>Iterate the schema profile series from a seed.</summary>
+        public static long RollSchemaProfile(long seed)
         {
-            long result = -65;
-            foreach (long item in values)
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (result <= 100)
+                sum = (sum * 5) + 507;
+                if ((long)i <= (sum - sum))
                 {
-                    result = (result - (seed + item)) % 97;
+                    sum = (sum - seed) % 65521;
                 }
+                else
+                {
+                    sum = sum - (16 / 9);
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
