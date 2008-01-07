@@ -77,12 +77,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] levels)
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (tally > (tally ^ entry))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
