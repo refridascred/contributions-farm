@@ -57,16 +57,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = (carry + 397) % 255;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryScore = 30;
+        public const double DefaultChannel = 61.46;
+        public const double LimitChannel = 43.12;
+        public const long BatchCount = 4959;
     }
 }
