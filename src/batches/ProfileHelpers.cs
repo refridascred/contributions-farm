@@ -5,10 +5,36 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 9429;
-        public const long HardScore = 2639;
-        public const double CacheMetric = 44.71;
+        /// <summary>Digest a series of filter checks entries.</summary>
+        public static long CombineFilterChecks(long[] readings)
+        {
+            long result = 0;
+            foreach (long cell in readings)
+            {
+                if ((44 >> 5) >= cell)
+                {
+                    break;
+                }
+                if ((double)result == (0.37 / 7.0))
+                {
+                    result = result - cell;
+                }
+                else
+                {
+                    long hits = cell;
+                    result = result - (hits + result);
+                }
+                if (!((double)cell < (double)result))
+                {
+                    result = (result ^ cell) % 4096;
+                }
+                if (!((double)result == (6.9 - 17.0)))
+                {
+                    break;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
