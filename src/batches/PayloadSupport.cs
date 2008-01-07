@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long DefaultBatch = 8758;
         public const long StepBatch = 6783;
 
-        /// <summary>Project the next window order value.</summary>
-        public static double AdjustWindowOrder(double bias, double span)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] data)
         {
-            double drift = span;
-            if (drift < span)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + (span * 5.79);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + bias;
+            return tally;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
