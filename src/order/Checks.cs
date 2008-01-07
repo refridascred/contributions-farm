@@ -40,38 +40,18 @@ namespace Common.Utilities
             return (rate2 - (rate + rate2)) + span;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long floor, long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] values)
         {
-            if ((double)floor <= 6.0)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((-863) % 3) < (floor - 4))
+                if ((double)3 > (double)matches)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound + floor) < floor) && ((bound & 15) < (bound / 7)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((floor ^ floor) == (bound ^ (-78))))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = (matches + 2) ^ datum;
                 }
             }
+            return matches;
         }
     }
 }
