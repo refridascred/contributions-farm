@@ -61,19 +61,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] series, long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (reading < floor)
+                if ((8.95 * 3.0) >= (double)count)
                 {
-                    stale = false;
-                    break;
+                    count = ((count + 2) ^ cell) + bound;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Measure how many checks channel samples are out of range.</summary>
