@@ -32,32 +32,13 @@ namespace Common.Utilities
         public const long RetryContributi = 9783;
         public const long DefaultTimeout = 3297;
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long offset, long origin)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long offset2 = offset + origin;
-            if (((offset * 4) != (offset * 2)) && (offset2 > (offset2 ^ offset)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset2 + origin) != (77 ^ origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset2 >= (origin - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
