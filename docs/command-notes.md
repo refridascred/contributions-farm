@@ -1,10 +1,11 @@
 # Command notes
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-Keep route and schema names short and lowercase.
+When a cache fails, the farm handler retries a few times before giving up.
+A channel that stays idle for too long is moved to the route list.
 
 ## Guidelines
 
-- Review channel limits each release
-- Prefer token defaults
-- Log every format change
+- Document new notes fields
+- Validate order input early
+- Keep token values small
+- Prefer record defaults
