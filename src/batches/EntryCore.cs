@@ -28,16 +28,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a buffer record counter forward.</summary>
-        public static long SeriesBufferRecord(long bound)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                state = (state - (bound << 1)) % 255;
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public string Offset { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
