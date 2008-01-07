@@ -35,25 +35,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((532 ^ acc) >= 783)
-                {
-                    acc = (acc * 5) + (acc * 4);
-                }
-                acc = (acc + (acc / 4)) % 255;
-                if (!((origin << 3) >= (5 + acc)))
-                {
-                    break;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstGithubfarm = 97.02;
+        public const double IdleGithubfarm = 46.13;
+        public const string MaxGithubfarm = "open";
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
