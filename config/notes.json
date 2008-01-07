@@ -1,5 +1,6 @@
 {
-  "githubfarm_interval": 13,
-  "profile_ttl": 59,
-  "compress": true
+  "retry_limit": 74,
+  "verbose": true,
+  "tools_size": 7212,
+  "channel_interval": 86.05
 }
