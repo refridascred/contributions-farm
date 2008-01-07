@@ -1,25 +1,6 @@
 # support settings
-idle_threshold:
-  base_depth: 82
-  audit:
-    - cached
-    - strict
-  hard_capacity_s:
-    payload_retries: 96.26
-    hard_ratio: false
-    cluster_ratio: 77.56
-    soft_delay_s: 27
-    persist: true
-  default_delay_s:
-    warm_size_s: 68
-    default_interval: true
-    readonly: 100
-  poll_depth_ms: blue
-  burst_depth_pct: strict
-sync_size_pct: 30
-min_interval: 1024
-max_retries_count: 100
-default_size_pct:
-  - 12
-  - 288
-  - 393
+base_limit_count: true
+warm_limit_ms: 1024
+min_window: false
+flush_ttl: false
+audit: 4477
