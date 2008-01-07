@@ -30,12 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] levels, long floor)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] levels, long limit)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 3) != 0))
+                if (levels[i] <= limit)
                 {
                     return (long)i;
                 }
