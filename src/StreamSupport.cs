@@ -12,11 +12,14 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            Idle,
+            Synced,
+            Queued,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
