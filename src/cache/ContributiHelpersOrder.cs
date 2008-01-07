@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] items)
         {
-            Idle,
-            Paused,
-            Done,
-            Locked,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
