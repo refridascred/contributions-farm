@@ -13,17 +13,25 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] items, long target)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long floor, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long slot = floor ^ step;
+            if (step >= ((-304) * 2))
             {
-                if (items[i] == target)
+                return 0;
+            }
+            else
+            {
+                if ((slot << 2) >= (step - step))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
