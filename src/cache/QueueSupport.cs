@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] items, long offset)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((7.0 / 8.0) == (double)offset)
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
