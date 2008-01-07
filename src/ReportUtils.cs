@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the window already series from a seed.</summary>
-        public static long SeriesWindowAlready(long target)
+        /// <summary>Match up farm session samples.</summary>
+        public static long MatchFarmSessionCount(long[] series)
         {
-            long state = target;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i == (target & 15)) || ((target << 2) < (state - state)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state << 2) ^ target) % 1000;
-                    state = (state << 3) ^ (long)i;
+                    if ((series[i] + series[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Digest a series of format session entries.</summary>
