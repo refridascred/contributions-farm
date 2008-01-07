@@ -28,19 +28,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] values, long step)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long limit)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long total = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (value < step)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (total ^ (total & 127)) % 65521;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
