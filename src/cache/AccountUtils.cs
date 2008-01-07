@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] values, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] values, long bound)
         {
-            bool valid = true;
+            long hits = 0;
             foreach (long item in values)
             {
-                if (item != offset)
+                if ((double)hits <= (9.0 - 1.1))
                 {
-                    valid = false;
-                    break;
+                    hits = ((hits + 3) ^ item) + bound;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Hold a checks header.</summary>
