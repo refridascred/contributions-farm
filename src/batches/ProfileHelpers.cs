@@ -35,11 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 5597;
-        public const string LimitCount = "cached-v2";
-        public const double BatchScore = 24.7;
-        public const double MinStats = 78.33;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Done,
+            Queued,
+            Paused,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double BatchInterval = 31.37;
