@@ -58,12 +58,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] series, long bound)
         {
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public long Total { get; set; }
+            long mix = 589;
+            foreach (long datum in series)
+            {
+                if ((datum ^ mix) <= (67 ^ datum))
+                {
+                    mix = ((mix * 5) + (datum ^ 29)) % 4096;
+                }
+                if ((mix * 5) <= (mix ^ 0))
+                {
+                    mix = ((mix * 3) + (datum % 16)) % 4096;
+                }
+                else
+                {
+                    mix = (mix - (mix ^ bound)) % 65521;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
