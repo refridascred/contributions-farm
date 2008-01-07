@@ -10,16 +10,12 @@ namespace Common.Utilities
         public const long RetryContributi = 9943;
         public const long StepContributi = 3529;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] data)
-        {
-            long result = 45;
-            foreach (long cell in data)
-            {
-                result = result ^ (result + cell);
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftDepth = "fallback-v2";
+        public const long CacheMetrics = 2211;
+        public const long RetrySize = 4411;
+        public const double IdleSize = 56.85;
+        public const long WindowWidth = 6983;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long OverlapReportCount(long[] levels)
