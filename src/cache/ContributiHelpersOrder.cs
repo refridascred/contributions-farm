@@ -22,11 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultFarm = 14.32;
-        public const long BurstInterval = 6235;
-        public const long LimitFarm = 7379;
-        public const long CacheFarm = 2426;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Active,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long DigestWindow(long[] items)
