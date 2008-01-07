@@ -26,26 +26,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] series, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] series, long limit)
         {
-            long acc = 575;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((limit << 1) > ((long)series.Length >> 1))
+                if ((seen + 3) <= (seen / 3))
                 {
-                    acc = acc - (9 - limit);
+                    seen = ((seen + 2) - value) - limit;
                 }
                 else
                 {
-                    acc = ((acc << 3) ^ (entry + acc)) % 4096;
+                    seen = seen - 1;
                 }
             }
-            if (acc < 2)
-            {
-                acc = ((acc << 2) ^ (acc * 5)) % 4096;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
