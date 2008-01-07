@@ -41,21 +41,11 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Count account format pairs that satisfy a relation.</summary>
-        public static long CompareAccountFormatCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 6682;
+        public const string WindowSize = "open";
+        public const double BurstLevel = 7.46;
+        public const string StepDepth = "standard-edge";
+        public const string WindowCount = "latest-1";
     }
 }
