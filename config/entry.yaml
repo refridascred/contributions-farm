@@ -1,29 +1,10 @@
 # entry settings
-support_retries:
-  - 273
-  - 429
-burst_ratio_count:
-  flush_ttl_s: 7539
-  context_limit:
-    - 6
-    - 120
-    - 479
-  default_size_ms: green
-  sync_depth_ms: 69.37
-  farm_size: 76.8
-  enabled:
-    verbose: 95
-    readonly: 500
-    hard_threshold: true
-default_depth_ms: primary
-enabled: 250
-idle_ratio_count:
-  commits_timeout:
-    strict: blue
-    readonly: standard
-    warm_ratio_pct: 42.17
-    compress: 70.27
-  enabled: 6
-  audit: 250
-  hard_interval_s: primary
-default_delay_count: true
+default_ratio: primary
+entry_timeout: blue
+base_window:
+  hard_timeout_ms: true
+  soft_retries_count: false
+  buffer_timeout: 32.35
+  soft_interval_ms: true
+  batch_threshold_ms: stable
+warm_window_pct: 5370
