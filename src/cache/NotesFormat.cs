@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] items, long seed)
+        /// <summary>Combine githubfarm checks values into a single score.</summary>
+        public static long ScoreGithubfarmChecks(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long result = 38;
+            foreach (long entry in data)
             {
-                if ((matches * 4) >= seed)
-                {
-                    matches = (matches + 3) + cell;
-                }
+                result = (result - (entry % 3)) - offset;
             }
-            return matches;
+            return result % 4096;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
