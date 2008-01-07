@@ -1,8 +1,21 @@
 {
-  "compress": 60,
-  "graph_capacity": false,
-  "retry_depth": "green",
-  "cluster_capacity": 76.5,
-  "poll_retries": [249, 47, 195],
-  "flush_window": ["strict", "local"]
+  "idle_depth": 86.25,
+  "compress": {
+    "soft_retries": 5295,
+    "schema_window": {
+      "min_capacity_pct": false,
+      "compress": 84,
+      "counter_interval": 250,
+      "dry_run": false,
+      "idle_limit": ["legacy", "green"]
+    },
+    "soft_window_ms": 2173,
+    "dry_run": "edge",
+    "flush_interval_pct": 81,
+    "poll_size_count": "local"
+  },
+  "default_ttl_ms": true,
+  "batch_depth": "staging",
+  "idle_size_pct": "primary",
+  "poll_threshold": 14.88
 }
