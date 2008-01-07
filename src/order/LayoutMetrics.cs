@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long origin, long target)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] series, long floor)
         {
-            if (origin < (origin + target))
+            bool stale = true;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (15.0 >= (double)origin)
+                if (sample >= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define account limits and defaults.</summary>
