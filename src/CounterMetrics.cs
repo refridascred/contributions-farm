@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] levels, long step)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            long state = 44;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state - step) % 101) ^ reading;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
