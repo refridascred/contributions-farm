@@ -24,21 +24,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] samples)
+        /// <summary>Rank metric commits input into a small class.</summary>
+        public static long ClassifyMetricCommits(long bound, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long edge = bound - origin;
+            if (((origin + 924) <= (edge / 7)) || ((bound + origin) >= origin))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)edge <= (15.0 / 7.0))
                 {
-                    if ((samples[i] + samples[j]) == 12)
+                    return 5;
+                }
+                else
+                {
+                    if (!((bound / 2) > (bound << 3)))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((-2) < (origin * 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
