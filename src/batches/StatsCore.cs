@@ -71,11 +71,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
+            public double Owner { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
