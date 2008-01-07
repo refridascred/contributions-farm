@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double scale, double bias)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            double scale2 = bias;
-            if (scale2 >= (double)9)
-            {
-                scale2 = scale2 + (scale * 9.27);
-            }
-            else
-            {
-                scale2 = scale2 - (scale2 * 10.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 + bias) + (double)(long)i;
-            }
-            return scale2 + bias;
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Count account counter pairs that satisfy a relation.</summary>
