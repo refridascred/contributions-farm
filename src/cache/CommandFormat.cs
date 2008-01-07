@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long seed, long floor)
+        /// <summary>Match up queue checks samples.</summary>
+        public static long PairQueueChecksCount(long[] data)
         {
-            if (((-888) ^ seed) != (floor - seed))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)seed != (2.0 + 6.89)) && ((double)seed == (6.0 - 0.27)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    if ((data[i] - data[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of format entries.</summary>
