@@ -14,10 +14,40 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 33.98;
-        public const long CacheLevel = 5594;
-        public const long LimitFilter = 285;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long step, long bound)
+        {
+            long gap = step + bound;
+            if (!(gap < (bound + gap)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((3.73 * 9.0) > (double)bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step + bound) < gap)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((step & 127) < (bound + gap)) && ((gap + 93) != (step / 6)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long ClassifyCommand(long target, long target2)
