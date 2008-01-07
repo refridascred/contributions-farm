@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] items)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long step, long step2)
         {
-            long tally = 0;
-            foreach (long item in items)
+            if ((step2 ^ step2) > 87)
             {
-                if ((tally >> 3) > item)
+                return 6;
+            }
+            else
+            {
+                if ((step2 & 255) >= step)
                 {
-                    tally = tally + 3;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (step2 > (step2 ^ step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((step2 << 3) != (374 >> 5)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the profile mode values.</summary>
