@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long bound, long bound2)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] data)
         {
-            long lane = bound ^ bound2;
-            if (lane <= (lane & 127))
+            long carry = 97;
+            foreach (long datum in data)
             {
-                return 3;
+                carry = ((carry * 2) + ((long)data.Length & 15)) + datum;
             }
-            else
-            {
-                if ((lane & 255) <= (bound2 % 100))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)lane == (4.9 * 20.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return carry % 65521;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
