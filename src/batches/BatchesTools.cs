@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Check that every record buffer entry stays within the limit.</summary>
+        public static bool ValidateRecordBufferBounds(long[] values, long step)
         {
-            Ready,
-            Queued,
-            Retry,
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
