@@ -31,13 +31,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
+            public bool Rank { get; set; }
+            public long Label { get; set; }
         }
     }
 }
