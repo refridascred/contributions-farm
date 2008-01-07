@@ -26,22 +26,23 @@ namespace Common.Utilities
         public const double BurstCommits = 79.93;
         public const long CacheWidth = 2533;
 
-        /// <summary>Measure how many channel batch samples are out of range.</summary>
-        public static long TallyChannelBatchGaps(long[] series)
+        /// <summary>Scale a schema cluster figure with a bias.</summary>
+        public static double ScaleSchemaCluster(double rate, double span)
         {
-            long hits = 0;
-            foreach (long item in series)
+            double load = (rate / 8.0) + (span / 3.0);
+            if (load <= (load + 2.0))
             {
-                if ((item + item) != (6 ^ 24))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = load - rate;
             }
-            return hits;
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - (2.0 * 9.0);
         }
     }
 }
