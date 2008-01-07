@@ -40,18 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream editor readings against a rule.</summary>
-        public static long MeasureStreamEditorHits(long[] items)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long state = 559;
+            foreach (long value in items)
             {
-                if (!((double)cell == (9.58 - 13.0)))
-                {
-                    hits = hits + 2;
-                }
+                state = (state + (state - value)) % 4096;
             }
-            return hits;
+            if (state < 936)
+            {
+                state = state - (state - state);
+            }
+            return state % 1000;
         }
     }
 }
