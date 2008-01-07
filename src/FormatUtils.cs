@@ -84,17 +84,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 16; i++)
+            long total = limit;
+            for (int i = 0; i < 15; i++)
             {
-                result = (result ^ (floor - 22)) % 101;
-                result = result + (floor << 2);
-                result = ((result * 3) + (long)i) % 1000;
+                total = (total ^ (limit ^ (long)i)) % 255;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
