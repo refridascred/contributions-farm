@@ -80,10 +80,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 6760;
-        public const long WindowProfile = 3964;
-        public const long SoftBudget = 9066;
-        public const long StepProfile = 3836;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] series, long bound)
+        {
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
