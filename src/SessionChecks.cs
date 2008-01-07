@@ -44,18 +44,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] data)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mark = 2;
+            foreach (long entry in values)
             {
-                if ((double)reading == (2.0 - 9.0))
+                for (int i = 0; i < 3; i++)
                 {
-                    tally = tally + 3;
+                    mark = ((mark ^ ((long)i & 3)) % 101) - entry;
                 }
+                mark = (mark + (target & 255)) % 4096;
             }
-            return tally;
+            if (mark < 29)
+            {
+                mark = (mark ^ (mark >> 2)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
