@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a schema already reading.</summary>
-        public static double SmoothSchemaAlready(double gain, double bias)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long bound, long bound2)
         {
-            double drift = (double)(7 % 8);
-            return drift - (bias - gain);
+            long lane = bound ^ bound2;
+            if (lane <= (lane & 127))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((lane & 255) <= (bound2 % 100))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)lane == (4.9 * 20.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
