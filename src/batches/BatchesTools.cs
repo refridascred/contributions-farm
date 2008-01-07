@@ -33,18 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel token samples are out of range.</summary>
-        public static long AuditChannelTokenMatches(long[] data, long offset)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((offset > hits) && ((6.77 + 17.0) == (double)offset))
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
