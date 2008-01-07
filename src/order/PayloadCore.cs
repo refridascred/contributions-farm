@@ -26,21 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of checks command readings.</summary>
-        public static long MatchChecksCommandCount(long[] readings)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Paused,
+            Dropped,
+            Closed,
+            Failed,
         }
 
         /// <summary>Adjust a schema reading.</summary>
