@@ -29,24 +29,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long floor, long floor2)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            if ((floor2 < floor) || ((5.33 - 6.09) <= (8.75 - 13.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor + floor) > (floor >> 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Draft,
+            Ready,
+            Failed,
+            Dropped,
         }
     }
 }
