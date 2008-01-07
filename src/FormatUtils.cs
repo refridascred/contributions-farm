@@ -84,16 +84,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long limit)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] series, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                total = (total ^ (limit ^ (long)i)) % 255;
-                total = ((total * 3) + (long)i) % 101;
+                if (reading < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
