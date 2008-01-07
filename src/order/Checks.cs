@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] samples, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] series)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (value < offset)
+                if ((double)value <= (18.0 * 2.24))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
