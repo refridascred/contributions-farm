@@ -59,14 +59,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            Locked,
-            Paused,
-            Queued,
-            Failed,
-            Draft,
+            Synced,
+            Retry,
+            Stale,
+            New,
         }
     }
 }
