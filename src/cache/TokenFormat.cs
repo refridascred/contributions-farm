@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            public double Flag { get; set; }
             public long Weight { get; set; }
-            public long Count { get; set; }
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define command limits and defaults.</summary>
