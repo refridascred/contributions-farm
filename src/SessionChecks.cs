@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            New,
+            Pending,
             Idle,
-            Dropped,
+            Closed,
+            Active,
+            Draft,
         }
 
         /// <summary>Hold a stats stats.</summary>
