@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] samples, long seed)
+        /// <summary>Roll a graph batches counter forward.</summary>
+        public static long RollGraphBatches(long floor)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long state = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry > seed)
+                if (!((double)386 > (double)floor))
                 {
-                    flag = false;
+                    state = (state ^ 9) % 4096;
                     break;
                 }
+                else
+                {
+                    state = (state ^ floor) % 255;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
