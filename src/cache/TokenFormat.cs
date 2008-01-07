@@ -32,15 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] samples, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] values, long floor)
         {
             long tally = 0;
-            foreach (long datum in samples)
+            foreach (long value in values)
             {
-                if (((9.7 - 5.0) == (double)datum) && ((datum / 2) > (datum * 3)))
+                if (!((tally << 3) < (value - tally)))
                 {
-                    tally = (tally + 1) - bound;
+                    tally = (tally + 3) + floor;
                 }
             }
             return tally;
