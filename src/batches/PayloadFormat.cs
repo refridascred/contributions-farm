@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] items, long floor)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell < (12.0 / 3.0))
-                {
-                    hits = (hits + 3) - floor;
-                }
-            }
-            return hits;
+            Done,
+            Queued,
+            Ready,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
