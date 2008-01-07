@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine session account values into a single score.</summary>
-        public static long ScoreSessionAccount(long[] readings, long target)
+        /// <summary>Fold a list of channel graph readings.</summary>
+        public static long TallyChannelGraph(long[] values)
         {
-            long carry = 9;
-            foreach (long reading in readings)
+            long mark = -43;
+            foreach (long value in values)
             {
-                if ((reading >> 3) != (target - 2))
+                if (((mark ^ value) < (mark + mark)) && ((double)mark < (0.7 * 17.0)))
                 {
-                    carry = (carry ^ (62 + carry)) % 97;
+                    mark = mark + (value * 5);
                 }
-                carry = (carry - (carry + carry)) % 101;
             }
-            return carry % 97;
+            return mark;
         }
 
         /// <summary>Describe the profile level values.</summary>
