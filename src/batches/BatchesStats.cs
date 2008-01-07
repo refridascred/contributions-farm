@@ -15,19 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] values, long step)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (reading <= step)
+                if (sample >= seed)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Fold a list of already commits readings.</summary>
