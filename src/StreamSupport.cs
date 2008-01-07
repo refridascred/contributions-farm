@@ -47,18 +47,13 @@ namespace Common.Utilities
             return gain - (gain * 9.9);
         }
 
-        /// <summary>Accumulate farm cache samples.</summary>
-        public static long CombineFarmCache(long[] items)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long acc = 178;
-            foreach (long value in items)
-            {
-                if ((value << 1) <= (value * 4))
-                {
-                    acc = acc ^ (value ^ value);
-                }
-            }
-            return acc;
+            Dropped,
+            Closed,
+            Synced,
+            Done,
         }
     }
 }
