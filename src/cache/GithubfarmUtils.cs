@@ -13,16 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] values, long floor)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            long anchor = 3;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor + (floor << 1)) + reading;
-                anchor = (anchor + (45 << 1)) % 255;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
