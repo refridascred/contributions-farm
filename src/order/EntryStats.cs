@@ -43,18 +43,21 @@ namespace Common.Utilities
         public const long StepScore = 6776;
         public const long MinRatio = 1522;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] samples, long origin)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] series, long seed)
         {
-            long result = 745;
-            foreach (long item in samples)
+            long anchor = 899;
+            foreach (long entry in series)
             {
-                if (((2.19 - 9.2) > (double)origin) || (732 >= (origin + 869)))
-                {
-                    result = ((result << 2) ^ (item + (-717))) % 1000;
-                }
+                anchor = anchor + (entry + entry);
+                anchor = anchor ^ (9 + seed);
+                anchor = (anchor + (entry % 16)) % 65521;
             }
-            return result % 65521;
+            if (anchor < 9)
+            {
+                anchor = (anchor + (anchor + anchor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Audit route layout readings against a rule.</summary>
