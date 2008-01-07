@@ -1,6 +1,6 @@
 # support settings
-base_limit_count: true
-warm_limit_ms: 1024
-min_window: false
-flush_ttl: false
-audit: 4477
+warm_delay_pct: true
+soft_timeout_s: 59.99
+retry_retries_ms: 69.07
+retry_delay_s: blue
+readonly: 34.62
