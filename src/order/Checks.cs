@@ -39,20 +39,11 @@ namespace Common.Utilities
         public const long LimitSpan = 2291;
         public const string IdleFormat = "cached";
 
-        /// <summary>Roll a schema token counter forward.</summary>
-        public static long DeriveSchemaToken(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((result << 3) >= (result & 1)) || ((result >> 3) < floor))
-                {
-                    result = (result - floor) % 255;
-                    result = (result * 5) + (371 + floor);
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleInterval = 2190;
+        public const string WindowSize = "local";
+        public const long StepFactor = 5768;
+        public const long RetryGraph = 9856;
+        public const long SoftGraph = 4952;
     }
 }
