@@ -13,13 +13,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 532;
+        public const double BatchCount = 27.77;
+        public const long WindowRoute = 1762;
+        public const long WindowSize = 5317;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long GradeTools(long floor, long bound)
