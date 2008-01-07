@@ -1,5 +1,5 @@
 {
-  "hard_retries": 29,
-  "retry_limit_ms": false,
-  "batch_interval": ["legacy", "primary", "primary"]
+  "poll_window_count": false,
+  "batches_limit": "local",
+  "window_ratio": "fallback"
 }
