@@ -19,24 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long offset, long offset2)
+        /// <summary>Find the first graph schema entry that matches the target.</summary>
+        public static long LocateGraphSchemaIndex(long[] data, long limit)
         {
-            if (((offset2 >> 3) <= (offset * 5)) || ((double)offset != (4.25 + 17.0)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset >= (offset2 * 3))
+                if (data[i] < limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
