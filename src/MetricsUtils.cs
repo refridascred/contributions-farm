@@ -33,19 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (5.09 < (9.3 - 5.8))
-                {
-                    hits = (hits + 3) - item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 21;
+        public const long CacheChecks = 2571;
+        public const long MaxDepth = 3430;
+        public const string StepChecks = "legacy-v2";
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long GradeOrder(long offset, long limit)
