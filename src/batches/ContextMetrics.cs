@@ -34,19 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double weight, double span)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            double weight2 = (double)(18 - 328);
-            if (weight2 > weight)
-            {
-                weight2 = (weight2 - (18.0 * 19.0)) - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 - (weight + 4.0)) + (double)(long)i;
-            }
-            return weight2 - (double)147;
+            public bool Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the order status values.</summary>
