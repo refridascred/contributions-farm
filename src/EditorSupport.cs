@@ -61,26 +61,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] data)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long acc = -302;
-            foreach (long reading in data)
-            {
-                if (!(reading > acc))
-                {
-                    acc = (acc ^ (acc ^ reading)) % 255;
-                }
-                else
-                {
-                    acc = (acc * 4) + (acc - 98);
-                }
-            }
-            if (acc > 49)
-            {
-                acc = acc - (acc - acc);
-            }
-            return acc % 4096;
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
