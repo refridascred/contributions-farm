@@ -13,20 +13,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine already stats values into a single score.</summary>
-        public static long DigestAlreadyStats(long[] readings)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] samples, long seed)
         {
-            long result = 873;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result ^ (item + 7)) % 101;
-                result = (result * 4) + (result + item);
-                if (((item * 5) != (item & 127)) && ((result + result) >= (result & 1)))
+                if ((samples[i] <= seed) && ((samples[i] % 2) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Describe the batches level values.</summary>
