@@ -40,19 +40,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] series, long bound)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= bound)
+                if (levels[i] <= origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a profile record.</summary>
