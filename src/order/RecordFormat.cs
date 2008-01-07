@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] values)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long bound, long origin)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long offset = bound ^ origin;
+            if (((offset * 2) >= (origin / 2)) || ((double)origin == (15.0 - 3.6)))
             {
-                if (value <= (tally * 4))
+                return 0;
+            }
+            else
+            {
+                if ((614 * 4) != (offset + origin))
                 {
-                    tally = tally + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin > (3.04 * 8.01))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the token status values.</summary>
