@@ -41,13 +41,21 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Count account format pairs that satisfy a relation.</summary>
+        public static long CompareAccountFormatCount(long[] series)
         {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public double Size { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
