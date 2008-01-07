@@ -37,19 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate context layout readings against a bound.</summary>
-        public static bool CheckContextLayoutBounds(long[] levels, long seed)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleInterval = 5291;
+        public const string HardMetrics = "strict";
+        public const string LimitFactor = "cached-v2";
+        public const long SoftBudget = 4622;
+        public const long MaxMetrics = 7414;
     }
 }
