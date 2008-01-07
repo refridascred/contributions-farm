@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
+            Stale,
+            Paused,
+            Active,
         }
 
         /// <summary>Combine format values into a single score.</summary>
