@@ -1,9 +1,6 @@
 # githubfarm settings
-batch_limit:
-  - standard
-  - eu-west
-counter_interval: 3946
-persist: 37.33
-cache_limit_pct:
-  - 83
-  - 269
+notes_capacity: standard
+default_retries: 500
+burst_limit: standard
+warm_ratio: 60
+default_retries_s: open
