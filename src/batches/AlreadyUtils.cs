@@ -48,12 +48,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double rate, double offset)
         {
-            Queued,
-            New,
-            Pending,
+            double gain = offset / 3.0;
+            if (gain > (double)585)
+            {
+                gain = (gain - (double)6) - rate;
+            }
+            else
+            {
+                gain = gain - (double)634;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - 3.1) - (double)(long)i;
+            }
+            return gain - (0.2 - 20.0);
         }
     }
 }
