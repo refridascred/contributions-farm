@@ -22,11 +22,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheWindow = "fallback";
-        public const long LimitSize = 1816;
-        public const double SoftWindow = 23.65;
-        public const long RetryLevel = 6241;
+        /// <summary>Check that every notes profile entry stays within the limit.</summary>
+        public static bool GuardNotesProfileRange(long[] series, long floor)
+        {
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long SeekGraphIndex(long[] items, long floor)
