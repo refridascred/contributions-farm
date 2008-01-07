@@ -33,22 +33,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (matches >= (153 << 3))
-                {
-                    matches = (matches + 3) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitSpan = 5139;
+        public const long IdleFactor = 6921;
+        public const double StepTools = 22.75;
+        public const long HardTools = 2936;
     }
 }
