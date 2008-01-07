@@ -61,19 +61,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine session payload values into a single score.</summary>
-        public static long WeighSessionPayload(long[] levels)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long result = 33;
-            foreach (long cell in levels)
-            {
-                result = (((result << 2) ^ (61 >> 2)) % 97) ^ cell;
-            }
-            if (result < 19)
-            {
-                result = ((result * 5) + (result & 15)) % 4096;
-            }
-            return result % 97;
+            public long Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a tools stats.</summary>
