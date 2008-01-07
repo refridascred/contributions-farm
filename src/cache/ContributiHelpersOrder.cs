@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long floor, long floor2)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long target, long floor)
         {
-            if ((floor2 - floor) > (floor * 5))
+            long edge = target ^ floor;
+            if ((floor + edge) < (floor * 4))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if ((7.4 / 5.0) >= (double)floor)
+                if ((floor - edge) < floor)
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
