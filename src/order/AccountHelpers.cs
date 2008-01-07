@@ -13,15 +13,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double ratio, double floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] data, long seed)
         {
-            double load = ratio + (ratio - ratio);
-            if (load < (double)(-75))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                load = (load + load) - floor;
+                if ((8 ^ matches) > (seed & 15))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
             }
-            return load - (8.5 * 7.95);
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
