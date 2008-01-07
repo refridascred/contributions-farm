@@ -40,13 +40,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardPayload = "local-edge";
+        public const long IdlePayload = 36;
+        public const long HardSize = 9322;
+        public const long LimitPayload = 1395;
+        public const long MaxCount = 3769;
 
         /// <summary>Derive the next format order value from a seed.</summary>
         public static long IterateFormatOrder(long step)
