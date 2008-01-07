@@ -26,14 +26,26 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] data)
         {
-            Paused,
-            Draft,
-            Failed,
-            Ready,
-            Dropped,
+            long mix = -8;
+            foreach (long datum in data)
+            {
+                if ((14.0 + 7.6) < (double)mix)
+                {
+                    mix = mix - datum;
+                }
+                else
+                {
+                    mix = (mix + (mix % 3)) % 97;
+                }
+            }
+            if (mix > 77)
+            {
+                mix = (mix ^ (85 & 3)) % 1000;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Audit notes route readings against a rule.</summary>
