@@ -14,26 +14,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of payload layout entries.</summary>
-        public static long FoldPayloadLayout(long[] readings)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long acc = 516;
-            foreach (long entry in readings)
-            {
-                if ((entry << 1) <= entry)
-                {
-                    acc = acc ^ ((-498) * 3);
-                }
-                if ((entry > (entry * 4)) && ((2.0 / 8.0) <= (double)(long)readings.Length))
-                {
-                    break;
-                }
-            }
-            if (acc > 65)
-            {
-                acc = acc + (acc >> 4);
-            }
-            return acc % 1000;
+            Done,
+            Stale,
+            Retry,
+            Draft,
+            Active,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
