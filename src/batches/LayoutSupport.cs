@@ -23,13 +23,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double weight, double span)
         {
-            public string Mode { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Size { get; set; }
+            double bias = weight;
+            if (bias > (double)4)
+            {
+                bias = bias + weight;
+            }
+            else
+            {
+                bias = bias + (double)82;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + span) + (double)(long)i;
+            }
+            return bias - (double)8;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
