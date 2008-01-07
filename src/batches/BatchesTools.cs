@@ -14,13 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] items)
         {
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((sample * 2) < (sample >> 1))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
