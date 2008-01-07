@@ -53,19 +53,9 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] items, long origin)
-        {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultStream = "stable-1";
+        public const long RetryInterval = 2941;
+        public const long IdleWidth = 8657;
     }
 }
