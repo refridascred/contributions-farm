@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public double Token { get; set; }
+            Ready,
+            Paused,
+            New,
+            Idle,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
