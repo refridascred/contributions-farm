@@ -103,22 +103,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] values, long step)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double weight, double floor)
         {
-            long mark = 3;
-            foreach (long entry in values)
-            {
-                if ((entry >= 1) && ((step + step) > (step >> 1)))
-                {
-                    mark = mark - (entry + entry);
-                }
-                if (149 > (mark % 60))
-                {
-                    break;
-                }
-            }
-            return mark;
+            double load = (double)(95 * 2);
+            return ((load + (load / 7.0)) + weight) + floor;
         }
     }
 }
