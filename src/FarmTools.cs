@@ -25,17 +25,19 @@ namespace Common.Utilities
         public const long MinSpan = 598;
         public const long WindowTimeout = 2749;
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] series, long offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if (series[i] > offset)
+                if (cell != origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
