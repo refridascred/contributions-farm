@@ -36,21 +36,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] values)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 36;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((reading >> 3) >= (result - result))
                 {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result + ((long)data.Length / 3)) % 65521;
+                }
+                else
+                {
+                    result = result - result;
                 }
             }
-            return seen;
+            if (result < 254)
+            {
+                result = ((result << 3) ^ (result + 6)) % 255;
+            }
+            return result % 1000;
         }
     }
 }
