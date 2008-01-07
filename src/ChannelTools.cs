@@ -22,15 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] series, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] series, long target)
         {
-            long result = 3;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                result = (result * 2) + (entry + offset);
+                if (!((3.0 * 16.0) >= (double)seen) && !((4.3 + 2.31) >= (double)target))
+                {
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a channel header.</summary>
