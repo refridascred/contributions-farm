@@ -20,13 +20,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Accumulate already context samples.</summary>
+        public static long TallyAlreadyContext(long[] data, long seed)
         {
-            Queued,
-            Done,
-            Locked,
-            Pending,
+            long anchor = 216;
+            foreach (long value in data)
+            {
+                anchor = ((anchor ^ (seed % 24)) % 1000) - value;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
