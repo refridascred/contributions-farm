@@ -59,12 +59,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftCount = 2803;
+        public const long IdleScore = 3412;
+        public const long CacheRecord = 6229;
     }
 }
