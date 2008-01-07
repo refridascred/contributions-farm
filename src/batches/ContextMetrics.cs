@@ -41,17 +41,13 @@ namespace Common.Utilities
             return scale - (ratio - ratio);
         }
 
-        /// <summary>Look up the position of a session contributi sample.</summary>
-        public static long SeekSessionContributiIndex(long[] data, long origin)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > origin) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Retry,
+            Synced,
+            Draft,
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
