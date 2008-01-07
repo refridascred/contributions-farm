@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] data)
         {
-            Dropped,
-            Pending,
-            Ready,
-            Idle,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((value % 12) < ((long)data.Length * 2))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
