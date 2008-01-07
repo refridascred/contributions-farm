@@ -76,18 +76,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] readings)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long origin)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long result = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (sample > (sample >> 4))
-                {
-                    tally = tally + 1;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
     }
 }
