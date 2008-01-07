@@ -1,24 +1,7 @@
 {
-  "cache_timeout": {
-    "retry_limit": 15,
-    "flush_timeout_pct": {
-      "stream_ratio": "blue",
-      "batch_interval": false,
-      "persist": "standard",
-      "warm_interval_ms": 1024
-    },
-    "retry_retries_count": {
-      "persist": "stable",
-      "channel_interval": 66.51,
-      "verbose": 4510,
-      "poll_size_ms": 7,
-      "sync_delay_ms": [442, 241, 236, 465],
-      "soft_ttl": "cached"
-    },
-    "strict": true,
-    "cache_timeout_ms": true
-  },
-  "cache_window_s": "latest",
-  "strict": 60,
-  "default_interval_ms": 29
+  "already_delay": "local",
+  "warm_interval": [271, 432],
+  "poll_retries": 1024,
+  "verbose": [430, 353, 434],
+  "profile_retries": false
 }
