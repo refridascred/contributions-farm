@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryWindow = "legacy-edge";
-        public const long CacheWindow = 2935;
-        public const string BurstDepth = "latest-edge";
-        public const long LimitBudget = 6852;
-        public const double StepWindow = 47.75;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Done,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Compare every pair of githubfarm queue readings.</summary>
         public static long OverlapGithubfarmQueueCount(long[] items)
