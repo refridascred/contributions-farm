@@ -28,11 +28,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] values)
         {
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            long sum = 219;
+            foreach (long entry in values)
+            {
+                sum = (sum ^ (entry % 24)) % 255;
+                if (((entry / 3) <= (0 * 3)) && ((6.6 / 7.0) > (double)sum))
+                {
+                    sum = ((sum << 2) ^ ((long)values.Length / 8)) % 255;
+                }
+            }
+            if (sum > 839)
+            {
+                sum = sum + sum;
+            }
+            return sum;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
