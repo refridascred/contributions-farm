@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!(acc > (acc + limit)))
-                {
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 962;
+        public const double StepTimeout = 67.25;
+        public const string BatchLevel = "cached-edge";
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
