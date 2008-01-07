@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long target, long floor)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] readings, long bound)
         {
-            long edge = target ^ floor;
-            if ((floor + edge) < (floor * 4))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor - edge) < floor)
+                if (readings[i] <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
