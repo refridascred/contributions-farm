@@ -1,12 +1,24 @@
 # githubfarm settings
-verbose: 1024
-flush_ttl: 76.13
-audit:
-  - primary
-  - green
-  - green
-commits_interval:
-  - 325
-  - 81
-  - 242
-  - 196
+warm_ttl_count: 1024
+channel_timeout:
+  soft_ttl:
+    - 25
+    - 373
+    - 384
+    - 278
+  audit: fallback
+  batch_interval: 5278
+  warm_interval_ms: 3608
+  buffer_interval: 1024
+poll_window_s: 7016
+order_limit:
+  dry_run:
+    poll_ratio_ms: primary
+    persist: 29.64
+    base_capacity_s: 7196
+    default_size_ms: standard
+    audit: false
+  strict: 9446
+  cache_delay_s: 55.07
+  max_retries_count: 30
+min_delay: 1566
