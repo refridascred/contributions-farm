@@ -33,14 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Iterate the stats buffer series from a seed.</summary>
+        public static long IterateStatsBuffer(long step)
         {
-            Closed,
-            Ready,
-            Paused,
-            Draft,
-            Queued,
+            long sum = step;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
