@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double scale, double bias)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double gain, double floor)
         {
-            double rate = scale;
-            return rate + (scale - bias);
+            double bias = 15.0 / 7.0;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (gain * 11.0)) + (double)(long)i;
+            }
+            return bias + floor;
         }
 
         /// <summary>Roll a record metric counter forward.</summary>
