@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const string StepSize = "local-1";
         public const long HardRoute = 722;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Measure how many githubfarm buffer samples are out of range.</summary>
+        public static long CountGithubfarmBufferHits(long[] data, long step)
         {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public double Token { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading > (3.7 * 7.86))
+                {
+                    hits = (hits + 1) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the format mode values.</summary>
