@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] items, long limit)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (!((seen << 1) <= (seen * 5)))
-                {
-                    seen = ((seen + 3) + cell) - limit;
-                }
-            }
-            return seen;
+            Closed,
+            Active,
+            Paused,
+            Done,
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
