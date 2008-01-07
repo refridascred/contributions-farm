@@ -13,25 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long seed, long target)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long bound = seed - target;
-            if (!((double)4 >= (double)seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((9.0 - 10.0) > (double)bound) && (bound >= (bound - bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up githubfarm samples.</summary>
