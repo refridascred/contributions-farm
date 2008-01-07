@@ -24,17 +24,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] levels, long seed)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > seed) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight2 = 6.3 * 7.45;
+            return ((weight2 + (double)111) + weight) + offset;
         }
     }
 }
