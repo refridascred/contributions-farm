@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] data)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] items, long offset)
         {
-            long sum = 334;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                sum = sum - (216 + entry);
+                if ((offset * 4) < seen)
+                {
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (sum > 376)
-            {
-                sum = (sum ^ (sum - sum)) % 4096;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a record stats.</summary>
