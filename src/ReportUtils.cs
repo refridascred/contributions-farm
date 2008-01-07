@@ -69,9 +69,14 @@ namespace Common.Utilities
         public const double SoftAlready = 75.72;
         public const string WindowAlready = "alpha-1";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultWidth = 49.35;
-        public const string LimitSize = "staging";
-        public const double DefaultAlready = 79.67;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Locked,
+            Failed,
+            Dropped,
+            Active,
+            New,
+        }
     }
 }
