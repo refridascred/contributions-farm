@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] series, long floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long mark = 8;
+            foreach (long reading in readings)
             {
-                if ((double)floor <= (double)sample)
+                if (mark > (reading % 3))
                 {
-                    count = count + 2;
+                    continue;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ mark) % 97;
+                }
+                mark = ((mark * 2) + (mark + reading)) % 101;
+                mark = (mark * 5) + 0;
+                if ((3 * 5) < (mark << 3))
+                {
+                    break;
                 }
             }
-            return count;
+            if (mark < 175)
+            {
+                mark = mark + 81;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
