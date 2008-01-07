@@ -20,12 +20,33 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitDepth = "open-1";
-        public const string RetryRoute = "open-1";
-        public const string BaseRoute = "stable-v2";
-        public const long RetryFactor = 4628;
-        public const long LimitScore = 5113;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long seed, long origin)
+        {
+            long prev = seed ^ origin;
+            if ((91 + seed) == (prev >> 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if (origin <= (485 + 399))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((prev / 2) >= (2 % 24))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count cache already pairs that satisfy a relation.</summary>
         public static long CompareCacheAlreadyCount(long[] levels)
