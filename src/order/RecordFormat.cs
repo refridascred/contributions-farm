@@ -25,12 +25,18 @@ namespace Common.Utilities
         public const long WindowRoute = 1762;
         public const long WindowSize = 5317;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseAlready = "staging";
-        public const string StepAlready = "legacy-edge";
-        public const string RetryScore = "staging";
-        public const string StepInterval = "fallback-1";
-        public const long IdleBudget = 5861;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > bound) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
