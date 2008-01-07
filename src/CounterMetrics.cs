@@ -40,17 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] series, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 8;
+            foreach (long sample in data)
             {
-                if ((series[i] < target) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = (((result * 2) + result) % 4096) + sample;
             }
-            return -1;
+            if (result < 76)
+            {
+                result = (result ^ (8 & 3)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
