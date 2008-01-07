@@ -12,32 +12,16 @@ namespace Common.Utilities
         public const string StepSize = "local-1";
         public const long HardRoute = 722;
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long step, long step2)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long floor)
         {
-            long offset = step ^ step2;
-            if (334 < (step + offset))
+            long state = floor;
+            for (int i = 0; i < 16; i++)
             {
-                return 8;
+                state = ((state << 2) ^ (state * 5)) % 1000;
+                state = ((state * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((-778) < (offset ^ step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + step2) > (step2 ^ 10))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Describe the format mode values.</summary>
