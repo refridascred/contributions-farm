@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxRatio = 49.07;
-        public const long DefaultCommits = 2527;
-        public const double SoftCommits = 60.37;
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long SeriesNotes(long limit)
