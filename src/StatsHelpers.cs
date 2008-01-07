@@ -48,10 +48,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchCount = 8891;
-        public const string SoftTimeout = "cached";
-        public const long LimitInterval = 4585;
-        public const long SoftSpan = 9897;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowLevel = "latest";
+        public const double RetryTimeout = 85.23;
+        public const long MaxEntry = 5364;
     }
 }
