@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] readings, long step)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Failed,
+            Idle,
+            Closed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
