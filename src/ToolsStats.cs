@@ -11,18 +11,32 @@ namespace Common.Utilities
         public const long MaxSize = 8073;
         public const long StepCommand = 3646;
 
-        /// <summary>Count the schema commits entries that pass the check.</summary>
-        public static long MeasureSchemaCommitsGaps(long[] items, long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long target, long seed)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long gap = target + seed;
+            if ((gap + seed) >= (seed - 479))
             {
-                if ((1.66 * 9.6) > (double)origin)
+                return 4;
+            }
+            else
+            {
+                if (gap >= (seed << 3))
                 {
-                    tally = (tally + 2) - item;
+                    return 0;
+                }
+                else
+                {
+                    if ((gap ^ seed) >= (331 >> 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the buffer format entries that pass the check.</summary>
