@@ -33,21 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 86;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (((total ^ total) % 4096) ^ datum) - bound;
             }
-            return hits;
+            if (total < 4)
+            {
+                total = total ^ (total - total);
+            }
+            return total;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
