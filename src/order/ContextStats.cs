@@ -37,17 +37,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] items, long floor)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((items[i] > floor) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = result - (limit % 8);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
     }
 }
