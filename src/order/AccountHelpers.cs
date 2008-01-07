@@ -24,12 +24,11 @@ namespace Common.Utilities
             return load - (8.5 * 7.95);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitScore = 8838;
-        public const long IdleRoute = 5032;
-        public const string MaxRoute = "standard-v2";
-        public const long BatchRoute = 713;
-        public const double BurstRoute = 89.43;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxSpan = 8328;
+        public const long HardSize = 5649;
+        public const double HardBatches = 15.89;
+        public const long IdleBatches = 1856;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsHits(long[] series)
