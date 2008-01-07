@@ -25,20 +25,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double rate, double floor)
-        {
-            double load = rate;
-            if (load <= floor)
-            {
-                load = load + (10.0 + floor);
-            }
-            else
-            {
-                load = load + (rate / 5.0);
-            }
-            return load + (6.5 / 4.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double HardDepth = 65.04;
+        public const double WindowRoute = 96.3;
+        public const double SoftRoute = 80.99;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double BurstCommits = 82.49;
