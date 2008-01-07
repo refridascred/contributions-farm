@@ -1,5 +1,12 @@
 {
-  "warm_depth_pct": 6012,
-  "default_size_ms": "fallback",
-  "audit": 48
+  "dry_run": 68.08,
+  "stats_interval": true,
+  "tools_capacity": {
+    "soft_threshold_count": 79.26,
+    "base_ratio_ms": 88.67,
+    "poll_limit_count": 85.95,
+    "profile_limit": "stable"
+  },
+  "warm_threshold_pct": 37,
+  "idle_window_count": 68.4
 }
