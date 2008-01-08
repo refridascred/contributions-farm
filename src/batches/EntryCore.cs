@@ -22,31 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a tools route pair into a bucket.</summary>
-        public static long ClassifyToolsRoute(long target, long bound)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long step)
         {
-            if ((bound >> 2) > (bound ^ target))
+            long score = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((0 + 282) <= (target + bound)))
+                long matches = (step - (long)i) ^ score;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 0;
+                    score = (score ^ (matches * 5)) + (long)i2;
                 }
-                else
-                {
-                    if (!((7.0 - 9.1) > (double)target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
+            return score;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
