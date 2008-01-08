@@ -57,11 +57,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 6693;
-        public const string CacheSize = "stable-v2";
-        public const long CacheFormat = 59;
-        public const double MinFormat = 30.0;
-        public const double MaxWidth = 22.2;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if (47 < ((-643) ^ mix))
+                {
+                    mix = mix ^ offset;
+                }
+                mix = ((mix << 2) ^ (long)i) % 65521;
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
