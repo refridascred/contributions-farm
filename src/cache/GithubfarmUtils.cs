@@ -35,15 +35,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] samples)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long offset)
         {
-            long score = 6;
-            foreach (long datum in samples)
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
             {
-                score = (score ^ (score * 5)) ^ datum;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = (mark + (297 - offset)) ^ (long)i2;
+                    mark = (mark + offset) % 101;
+                }
+                mark = (mark - (offset >> 1)) % 255;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return score;
+            return mark;
         }
     }
 }
