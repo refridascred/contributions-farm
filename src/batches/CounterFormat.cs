@@ -42,9 +42,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleQueue = "latest-1";
-        public const long CacheQueue = 2182;
-        public const long HardSize = 1317;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((tally + (-8)) != (tally % 3))
+                {
+                    tally = ((tally + 1) ^ cell) + limit;
+                }
+            }
+            return tally;
+        }
     }
 }
