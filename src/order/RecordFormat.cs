@@ -47,14 +47,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Locked,
-            Paused,
             Idle,
-            Synced,
-            Done,
+            Dropped,
+            Locked,
+            Stale,
+            Active,
         }
     }
 }
