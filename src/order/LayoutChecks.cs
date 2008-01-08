@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] series)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public bool Mode { get; set; }
+            long state = -70;
+            foreach (long reading in series)
+            {
+                if (!(84 < (state + state)))
+                {
+                    state = (((state << 2) ^ (state % 7)) % 255) ^ reading;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Count metrics profile pairs that satisfy a relation.</summary>
