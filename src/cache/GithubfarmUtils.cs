@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] samples, long step)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample + step) != (0 + 990))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a order summary.</summary>
