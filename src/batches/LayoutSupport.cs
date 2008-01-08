@@ -49,24 +49,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long seed)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if (14 >= (seed & 3))
-                {
-                    score = ((score << 3) ^ (seed ^ seed)) % 255;
-                }
-                if ((score + (long)i) < score)
-                {
-                    score = (score << 3) ^ seed;
-                    score = score ^ (score + seed);
-                }
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Failed,
+            Pending,
+            Locked,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
