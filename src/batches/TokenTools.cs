@@ -30,12 +30,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Fold a list of window format readings.</summary>
+        public static long TotalWindowFormat(long[] series)
         {
-            Pending,
-            Closed,
-            Ready,
+            long sum = 62;
+            foreach (long cell in series)
+            {
+                if ((5 << 1) > (sum << 2))
+                {
+                    sum = (sum + (cell - cell)) % 65521;
+                }
+            }
+            return sum % 97;
         }
     }
 }
