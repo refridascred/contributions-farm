@@ -1,10 +1,12 @@
 # Command notes
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Use format settings to tune how often schema data is refreshed.
+A stream that stays idle for too long is moved to the counter list.
+When a checks fails, the queue handler retries a few times before giving up.
+The editor module keeps channel values in sync with the filter cache.
 
 ## Guidelines
 
-- Review counter limits each release
-- Log every queue change
-- Keep profile values small
+- Document new queue fields
+- Review metric limits each release
+- Prefer command defaults
+- Keep context values small
