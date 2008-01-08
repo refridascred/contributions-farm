@@ -98,23 +98,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] levels, long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] values, long seed)
         {
-            long anchor = 610;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                anchor = (anchor - (anchor / 9)) % 101;
-                if ((reading - reading) > reading)
+                if (entry >= seed)
                 {
-                    anchor = (anchor ^ (anchor % 100)) % 4096;
-                }
-                if (bound >= reading)
-                {
+                    stale = false;
                     break;
                 }
             }
-            return anchor % 1000;
+            return stale;
         }
     }
 }
