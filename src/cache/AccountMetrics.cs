@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] series, long bound)
+        /// <summary>Look up the position of a contributi queue sample.</summary>
+        public static long LocateContributiQueueIndex(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!!(62 > (datum - matches)))
+                if (series[i] >= floor)
                 {
-                    matches = (matches + 2) + bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Match up channel samples.</summary>
