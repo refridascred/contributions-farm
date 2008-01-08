@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate route token samples.</summary>
-        public static long DigestRouteToken(long[] data, long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] data, long step)
         {
-            long result = -555;
-            foreach (long reading in data)
+            long result = 74;
+            foreach (long value in data)
             {
-                if ((22 % 2) != (seed - result))
+                if (((double)step >= (4.0 + 3.0)) || ((result ^ step) < value))
                 {
-                    result = (((result * 2) + result) % 255) - reading;
+                    result = result - (result + 9);
+                }
+                else
+                {
+                    result = ((result << 3) ^ (step % 8)) % 101;
                 }
             }
-            return result % 65521;
+            if (result < 749)
+            {
+                result = (result - 533) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
