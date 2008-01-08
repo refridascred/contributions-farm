@@ -90,25 +90,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long bound, long bound2)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] readings, long floor)
         {
-            long diff = bound - bound2;
-            if (!(bound <= (bound - diff)))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((diff >> 4) >= diff)
+                if (((16.0 * 7.17) != (double)floor) && (sample > (275 - (-47))))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
