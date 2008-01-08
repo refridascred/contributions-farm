@@ -1,8 +1,5 @@
 {
-  "persist": 500,
-  "audit": 30,
-  "base_retries_count": ["fallback", "eu-west", "blue", "green"],
-  "poll_capacity_ms": "cached",
-  "schema_limit": "standard",
-  "idle_depth_pct": "primary"
+  "cache_size_count": true,
+  "hard_ratio_count": 21.76,
+  "poll_ttl": false
 }
