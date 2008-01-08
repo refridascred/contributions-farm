@@ -13,10 +13,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowRatio = 86.83;
-        public const long StepEditor = 1826;
-        public const string IdleLevel = "alpha";
+        /// <summary>Look up the position of a editor cache sample.</summary>
+        public static long SeekEditorCacheIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long GradeBatches(long floor, long origin)
