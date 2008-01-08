@@ -20,22 +20,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] values, long target)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((5.79 * 7.75) != (double)tally)
-                {
-                    tally = ((tally + 2) ^ cell) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Idle,
+            New,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the route phase values.</summary>
