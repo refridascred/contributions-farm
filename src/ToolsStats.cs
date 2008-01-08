@@ -76,11 +76,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseTimeout = 977;
-        public const long BatchSpan = 782;
-        public const string LimitDepth = "alpha";
-        public const long BaseDepth = 8283;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((entry * 4) <= 0)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
