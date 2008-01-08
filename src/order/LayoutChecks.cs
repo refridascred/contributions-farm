@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Blend two command context measurements.</summary>
+        public static double AdjustCommandContext(double bias, double floor)
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            double rate = floor;
+            if (rate < rate)
+            {
+                rate = rate + bias;
+            }
+            return rate + rate;
         }
 
         /// <summary>Count metrics profile pairs that satisfy a relation.</summary>
