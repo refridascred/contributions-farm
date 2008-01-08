@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] levels, long seed)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((seen > datum) && !((seed + datum) >= datum))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Done,
+            Paused,
+            Draft,
+            Queued,
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
