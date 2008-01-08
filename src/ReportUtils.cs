@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit already batch readings against a rule.</summary>
-        public static long CountAlreadyBatchOutliers(long[] data)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long floor, long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long slot = floor + offset;
+            if ((((-5) ^ floor) > (offset << 3)) || ((double)floor >= (8.0 - 14.0)))
             {
-                if (datum > count)
+                return 1;
+            }
+            else
+            {
+                if ((7 >> 2) <= offset)
                 {
-                    count = count + 3;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((2 + slot) != (offset << 1)) || ((65 * 3) >= (floor ^ (-827))))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the notes payload series from a seed.</summary>
