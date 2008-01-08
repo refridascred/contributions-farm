@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public bool Weight { get; set; }
-            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Classify a counter tools pair into a bucket.</summary>
