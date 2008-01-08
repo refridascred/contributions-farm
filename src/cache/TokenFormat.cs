@@ -41,9 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MaxFormat = "stable";
-        public const string HardFormat = "strict-edge";
-        public const long WindowWidth = 5177;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Idle,
+            Done,
+            Locked,
+        }
     }
 }
