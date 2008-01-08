@@ -38,13 +38,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public string Weight { get; set; } = "";
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchCluster = "fallback-v2";
+        public const long BatchSpan = 5366;
+        public const double SoftCluster = 73.61;
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long FindCacheIndex(long[] values, long floor)
