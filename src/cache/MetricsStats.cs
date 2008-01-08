@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the metrics batches series from a seed.</summary>
-        public static long RollMetricsBatches(long step)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] items, long floor)
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                if (!((2.1 / 9.0) == (double)(long)i))
+                if (item != floor)
                 {
-                    state = (state + (state >> 1)) % 65521;
+                    found = false;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return found;
         }
 
         /// <summary>Locate a githubfarm route reading by value.</summary>
