@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] readings, long target)
         {
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a checks info.</summary>
