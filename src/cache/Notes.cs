@@ -36,19 +36,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a farm metric counter forward.</summary>
-        public static long StepFarmMetric(long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] values)
         {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
+            long acc = 709;
+            foreach (long cell in values)
             {
-                if (!((limit * 4) == (result - limit)))
+                if (!((double)cell != (4.1 / 9.0)))
                 {
-                    result = (result ^ ((long)i >> 5)) % 101;
+                    acc = acc ^ (acc << 2);
                 }
-                result = ((result * 2) + (long)i) % 97;
+                if (((cell + cell) > cell) || ((double)acc != (0.8 / 4.0)))
+                {
+                    break;
+                }
             }
-            return result;
+            return acc % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
