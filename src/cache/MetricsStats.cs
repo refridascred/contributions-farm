@@ -26,19 +26,22 @@ namespace Common.Utilities
         public const string HardCount = "standard-v2";
         public const string MinBudget = "fallback-edge";
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] levels)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] samples)
         {
-            long carry = 599;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                carry = ((carry - (566 % 16)) % 65521) - item;
+                if ((5.1 - 8.9) >= (double)seen)
+                {
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (carry < (-720))
-            {
-                carry = ((carry << 3) ^ (carry + carry)) % 4096;
-            }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
