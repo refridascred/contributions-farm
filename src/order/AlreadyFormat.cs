@@ -50,13 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Queued,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinRatio = 17.28;
+        public const double CacheBudget = 40.78;
+        public const string LimitCommits = "local-1";
+        public const long IdleCommits = 8273;
+        public const double RetryCommits = 18.24;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LookupQueueIndex(long[] samples, long step)
