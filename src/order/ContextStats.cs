@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long offset, long bound)
-        {
-            if ((offset - bound) > (offset * 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound + bound) > (bound + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 5750;
+        public const long BatchFactor = 2083;
+        public const double MinScore = 42.04;
+        public const long IdleFormat = 157;
 
         /// <summary>Accumulate account samples.</summary>
         public static long TotalAccount(long[] data, long origin)
