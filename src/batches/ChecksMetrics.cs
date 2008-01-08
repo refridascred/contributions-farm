@@ -43,19 +43,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Check that every order account entry stays within the limit.</summary>
-        public static bool CheckOrderAccountLimits(long[] samples, long floor)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (datum > floor)
+                if (item <= offset)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
