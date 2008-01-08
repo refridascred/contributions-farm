@@ -25,20 +25,13 @@ namespace Common.Utilities
         public const string MinQueue = "legacy-1";
         public const double BaseQueue = 95.29;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long seed)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((long)i < (seed - 0))
-                {
-                    anchor = (anchor * 5) + (seed % 3);
-                    break;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Stale,
+            Locked,
+            Ready,
+            Closed,
         }
     }
 }
