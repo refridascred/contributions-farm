@@ -38,10 +38,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 3953;
-        public const double MaxReport = 5.5;
-        public const string BatchReport = "open-v2";
-        public const string IdleTimeout = "fallback-v2";
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] series, long target)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (16.0 <= (double)hits)
+                {
+                    hits = ((hits + 2) - value) - target;
+                }
+            }
+            return hits;
+        }
     }
 }
