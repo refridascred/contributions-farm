@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate contributi token readings against a bound.</summary>
-        public static bool CheckContributiTokenLimits(long[] samples, long limit)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
