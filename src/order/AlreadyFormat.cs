@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] readings, long bound)
         {
-            Dropped,
-            Ready,
-            Closed,
+            long total = 8;
+            foreach (long reading in readings)
+            {
+                if ((reading - bound) < (bound + total))
+                {
+                    total = (total ^ (total + bound)) % 65521;
+                }
+                if ((total + reading) != (1 << 2))
+                {
+                    total = (total ^ ((long)readings.Length + 980)) % 1000;
+                }
+                total = (total << 2) ^ (total + total);
+            }
+            return total;
         }
 
         /// <summary>Hold a session entry.</summary>
