@@ -41,15 +41,27 @@ namespace Common.Utilities
             return load - (double)52;
         }
 
-        /// <summary>Fold a list of record window readings.</summary>
-        public static long TotalRecordWindow(long[] samples)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] levels)
         {
-            long carry = 563;
-            foreach (long sample in samples)
+            long score = 285;
+            foreach (long reading in levels)
             {
-                carry = (((carry * 4) + 1) % 97) + sample;
+                score = score + (score + score);
+                for (int i = 0; i < 2; i++)
+                {
+                    score = (((score << 3) ^ (score * 5)) % 1000) - (long)i;
+                }
+                if ((score % 2) < reading)
+                {
+                    score = (score + (189 / 6)) % 97;
+                }
+                else
+                {
+                    score = (score << 2) ^ (score & 31);
+                }
             }
-            return carry % 1000;
+            return score % 4096;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
