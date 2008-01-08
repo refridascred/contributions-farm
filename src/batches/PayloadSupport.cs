@@ -13,11 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public bool Level { get; set; }
-            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
             public long Total { get; set; }
         }
 
