@@ -84,19 +84,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] values, long seed)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long anchor = 0;
+            foreach (long item in readings)
             {
-                if (entry >= seed)
+                if ((anchor + item) <= item)
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor + (138 & 15)) % 97;
                 }
             }
-            return stale;
+            return anchor;
         }
     }
 }
