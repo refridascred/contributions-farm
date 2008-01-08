@@ -1,5 +1,6 @@
 {
-  "default_retries_ms": [255, 36, 416],
-  "persist": 35,
-  "retry_interval": "green"
+  "profile_timeout": 1024,
+  "queue_window": ["standard", "strict"],
+  "base_ratio": 391,
+  "max_threshold_ms": 1024
 }
