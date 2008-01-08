@@ -66,19 +66,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] series, long target)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            long mark = 57;
-            foreach (long cell in series)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                mark = (mark + cell) % 1000;
+                if ((sum >> 4) > seed)
+                {
+                    sum = ((sum << 3) ^ (seed * 5)) % 255;
+                }
+                else
+                {
+                    sum = sum - sum;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            if (mark < 50)
-            {
-                mark = mark ^ target;
-            }
-            return mark % 4096;
+            return sum;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
