@@ -38,18 +38,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (!(((7.5 * 1.0) > (9.4 + 6.6)) && ((double)seen <= (4.9 + 6.5))))
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 9854;
+        public const long MaxCount = 8252;
+        public const long BaseCount = 6656;
     }
 }
