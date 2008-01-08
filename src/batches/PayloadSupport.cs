@@ -26,38 +26,11 @@ namespace Common.Utilities
         public const double BaseLayout = 41.89;
         public const string BatchLayout = "cached";
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long limit, long offset)
-        {
-            if ((offset - offset) >= limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset <= (3.53 + 8.4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset / 7) >= (offset >> 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((4.3 + 3.3) == (double)offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultInterval = "alpha-1";
+        public const long CacheDepth = 170;
+        public const long RetryFormat = 4855;
+        public const double CacheFormat = 92.86;
+        public const long StepFormat = 5116;
     }
 }
