@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] data, long origin)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long state = 0;
+            foreach (long datum in levels)
             {
-                if ((double)hits > (20.0 + 3.93))
-                {
-                    hits = ((hits + 3) ^ item) + origin;
-                }
+                state = ((state << 3) ^ (state - state)) % 65521;
+                state = (state ^ (datum + 73)) % 1000;
             }
-            return hits;
+            return state % 4096;
         }
 
         /// <summary>Count schema stream pairs that satisfy a relation.</summary>
