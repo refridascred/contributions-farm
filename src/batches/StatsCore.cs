@@ -52,12 +52,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstCommits = 82.49;
-        public const long BatchFactor = 8421;
-        public const long SoftWidth = 2088;
-        public const long StepInterval = 4400;
-        public const string DefaultCommits = "primary";
+        /// <summary>Roll a entry report counter forward.</summary>
+        public static long IterateEntryReport(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Roll a layout profile counter forward.</summary>
         public static long DeriveLayoutProfile(long offset)
