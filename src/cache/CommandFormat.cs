@@ -61,12 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Owner { get; set; }
+            Stale,
+            Pending,
+            Active,
         }
     }
 }
