@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const long BaseLayout = 8568;
         public const long BatchLayout = 4348;
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] data, long origin)
         {
-            Failed,
-            Done,
-            New,
-            Active,
-            Pending,
+            long result = 82;
+            foreach (long sample in data)
+            {
+                if ((double)sample < (4.0 * 6.93))
+                {
+                    result = (result + (889 - sample)) - origin;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the session status values.</summary>
