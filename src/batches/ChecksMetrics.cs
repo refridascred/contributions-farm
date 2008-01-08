@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] series)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            long state = 67;
-            foreach (long reading in series)
+            long anchor = 847;
+            foreach (long entry in items)
             {
-                state = (state * 2) + (state - reading);
+                anchor = ((anchor ^ (435 << 2)) % 255) - entry;
             }
-            return state;
+            return anchor % 97;
         }
 
         /// <summary>Describe the account state values.</summary>
