@@ -45,18 +45,13 @@ namespace Common.Utilities
         public const long HardSchema = 3044;
         public const long LimitSchema = 6298;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] levels)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)(long)levels.Length <= (double)46)
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
+            Closed,
+            Locked,
+            Paused,
+            Retry,
         }
     }
 }
