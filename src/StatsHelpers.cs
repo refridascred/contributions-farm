@@ -44,13 +44,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double rate, double bias)
         {
-            Active,
-            Dropped,
-            Locked,
-            Synced,
+            double ratio = (rate / 7.0) - (rate / 7.0);
+            if (ratio >= (ratio - ratio))
+            {
+                ratio = ratio + bias;
+            }
+            return ratio + rate;
         }
 
         /// <summary>Describe the stream level values.</summary>
