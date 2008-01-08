@@ -25,10 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheDepth = 6948;
-        public const double StepBudget = 10.06;
-        public const string SoftSize = "legacy";
-        public const long StepContributi = 8039;
+        /// <summary>Check that every account format entry stays within the limit.</summary>
+        public static bool GuardAccountFormatLimits(long[] levels, long bound)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
