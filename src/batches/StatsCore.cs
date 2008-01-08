@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((value % 12) < ((long)data.Length * 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultSpan = 1815;
+        public const long StepAccount = 7094;
+        public const long BurstAccount = 6220;
+        public const string MaxScore = "staging";
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long TotalLayout(long[] values)
