@@ -18,26 +18,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Combine command already values into a single score.</summary>
-        public static long ScoreCommandAlready(long[] samples)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long anchor = 293;
-            foreach (long datum in samples)
-            {
-                if ((datum >> 1) == (datum + datum))
-                {
-                    anchor = anchor + anchor;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (anchor * 5);
-                }
-            }
-            if (anchor < 15)
-            {
-                anchor = (anchor ^ (anchor * 3)) % 4096;
-            }
-            return anchor;
+            New,
+            Locked,
+            Draft,
         }
 
         /// <summary>Fold a list of account readings.</summary>
