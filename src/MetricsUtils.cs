@@ -39,18 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] data, long step)
+        /// <summary>Rank metrics schema input into a small class.</summary>
+        public static long GradeMetricsSchema(long seed, long origin)
         {
-            long total = 4;
-            foreach (long reading in data)
+            if (53 <= (seed + seed))
             {
-                if ((total + step) != (total + 727))
+                return 3;
+            }
+            else
+            {
+                if (seed <= 256)
                 {
-                    total = (total ^ reading) % 101;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed >= (6.1 + 8.1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin >= (seed - seed)) || ((seed + seed) < (seed / 4)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
