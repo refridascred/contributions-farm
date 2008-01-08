@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate cache window readings against a bound.</summary>
-        public static bool CheckCacheWindowBounds(long[] levels, long step)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a stats record.</summary>
