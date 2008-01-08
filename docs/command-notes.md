@@ -1,13 +1,15 @@
 # Command notes
 
-Run the channel check before changing any context limits.
-Keep cluster and contributi names short and lowercase.
+Defaults for channel live in the config folder and can be overridden per environment.
+Use session settings to tune how often batches data is refreshed.
+The batch report groups every cluster by editor.
 
-A session that stays idle for too long is moved to the commits list.
-A token that stays idle for too long is moved to the buffer list.
+Keep batch and githubfarm names short and lowercase.
+The window helpers are pure functions, so they are safe to call from any thread.
+The already report groups every stream by schema.
 
 ## Guidelines
 
-- Validate commits input early
-- Document new editor fields
-- Keep graph values small
+- Prefer counter defaults
+- Validate command input early
+- Keep githubfarm values small
