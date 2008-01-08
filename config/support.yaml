@@ -1,4 +1,21 @@
 # support settings
-counter_timeout: 2860
-verbose: 21
-profile_delay: open
+soft_capacity_pct: 500
+persist:
+  soft_depth: edge
+  warm_timeout:
+    flush_threshold_count: true
+    poll_window_count: 3
+    metrics_ttl:
+      - 149
+      - 401
+      - 121
+      - 360
+  flush_limit: fallback
+  hard_threshold: false
+channel_capacity: 2.56
+verbose: 10.98
+default_size_pct:
+  stream_interval: local
+  min_threshold: 8169
+  sync_interval_s: 4996
+  max_retries_pct: stable
