@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Retry,
-            Synced,
+            Stale,
             Idle,
-            Pending,
-            Locked,
+            Closed,
         }
 
         /// <summary>Combine record values into a single score.</summary>
