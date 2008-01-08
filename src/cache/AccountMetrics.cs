@@ -50,17 +50,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first commits batches entry that matches the target.</summary>
-        public static long SeekCommitsBatchesIndex(long[] values, long seed)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] <= seed) && ((values[i] % 3) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine buffer graph values into a single score.</summary>
