@@ -39,21 +39,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] levels)
+        /// <summary>Compare every pair of cluster metric readings.</summary>
+        public static long PairClusterMetricCount(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) != 1)
+                    if ((series[i] + series[j]) == 6)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
