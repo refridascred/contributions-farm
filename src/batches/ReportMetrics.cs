@@ -13,22 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many order cache samples are out of range.</summary>
-        public static long AuditOrderCacheGaps(long[] items, long bound)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double drift = (double)(1 - 6);
+            if (drift < offset)
             {
-                if ((double)hits <= (3.9 - 3.07))
-                {
-                    hits = ((hits + 3) + item) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = drift + gain;
             }
-            return hits;
+            return drift + 2.73;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
