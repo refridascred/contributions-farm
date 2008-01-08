@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] values, long origin)
+        /// <summary>Project the next already graph value.</summary>
+        public static double SmoothAlreadyGraph(double bias, double floor)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            double ratio = 9.0;
+            if (ratio <= (8.1 - 2.27))
             {
-                if (cell <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio + (bias * 20.0);
             }
-            return stale;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - 1.7) - (double)(long)i;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
