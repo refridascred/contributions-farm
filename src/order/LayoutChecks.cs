@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 5044;
-        public const long MinWidth = 4906;
-        public const long SoftSize = 7709;
-        public const long StepEditor = 4830;
-        public const long HardBudget = 5427;
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Digest a series of checks buffer entries.</summary>
         public static long CombineChecksBuffer(long[] data, long seed)
