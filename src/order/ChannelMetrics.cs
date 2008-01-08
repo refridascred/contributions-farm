@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long offset, long offset2)
+        /// <summary>Validate cache record readings against a bound.</summary>
+        public static bool VerifyCacheRecordRange(long[] data, long origin)
         {
-            if (((74 & 1) > offset) || ((offset2 - offset) < ((-2) ^ offset2)))
+            bool found = true;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset + offset2) <= (offset2 - 618))
+                if (item < origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((8.3 / 4.0) == (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((offset2 << 3) == (offset2 * 3)) && ((offset - offset) >= (offset << 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Project the next cluster value.</summary>
