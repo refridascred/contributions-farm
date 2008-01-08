@@ -60,18 +60,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] levels)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((17.0 - 2.73) <= (double)reading)
+                if ((readings[i] < origin) && ((readings[i] % 2) == 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
