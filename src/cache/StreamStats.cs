@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate notes stats samples.</summary>
-        public static long ScoreNotesStats(long[] data, long offset)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long mark = 405;
-            foreach (long reading in data)
-            {
-                if ((4 + mark) <= (mark % 12))
-                {
-                    mark = (mark ^ offset) % 97;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (3 + reading);
-                }
-            }
-            return mark;
+            Draft,
+            Retry,
+            New,
+            Idle,
         }
 
         /// <summary>Match up context samples.</summary>
