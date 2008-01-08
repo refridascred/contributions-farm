@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double gain, double offset)
         {
-            Dropped,
-            Draft,
-            Closed,
-            Queued,
+            double gain2 = (double)5 * 9.1;
+            if (gain2 >= gain2)
+            {
+                gain2 = gain2 + (offset / 2.0);
+            }
+            else
+            {
+                gain2 = gain2 - gain2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 - (double)71) + (double)(long)i;
+            }
+            return gain2 - gain;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
