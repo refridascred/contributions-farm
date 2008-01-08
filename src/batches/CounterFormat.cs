@@ -33,19 +33,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double rate, double floor)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            double ratio = rate + floor;
-            if (ratio <= (floor + rate))
-            {
-                ratio = ratio + floor;
-            }
-            else
-            {
-                ratio = ratio - (ratio * 7.0);
-            }
-            return ratio + (rate + floor);
+            Queued,
+            Locked,
+            Failed,
+            Stale,
+            Ready,
         }
     }
 }
