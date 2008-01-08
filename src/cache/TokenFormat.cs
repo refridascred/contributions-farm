@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] values, long limit)
         {
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
