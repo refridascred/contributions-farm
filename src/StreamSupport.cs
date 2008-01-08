@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of checks payload entries.</summary>
-        public static long TallyChecksPayload(long[] levels, long step)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long origin, long origin2)
         {
-            long carry = 221;
-            foreach (long entry in levels)
+            long offset = origin - origin2;
+            if ((origin - offset) > (4 - offset))
             {
-                if ((1 + entry) < (step ^ entry))
+                return 3;
+            }
+            else
+            {
+                if (((origin + offset) <= origin) || ((origin2 << 1) < (origin2 * 4)))
                 {
-                    carry = ((carry * 5) + (entry >> 2)) % 97;
+                    return 7;
                 }
-                if (!((16.0 + 7.0) <= (double)entry))
+                else
                 {
-                    break;
+                    if (((1.5 + 13.0) <= (double)origin2) || ((5.18 * 5.0) > (double)origin2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Measure how many layout report samples are out of range.</summary>
