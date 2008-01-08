@@ -16,18 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] samples)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)0 != (double)count)
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
