@@ -1,18 +1,5 @@
 {
-  "base_capacity": {
-    "cache_interval_count": {
-      "soft_size_pct": 38,
-      "order_timeout": "blue",
-      "readonly": 3165
-    },
-    "audit": 24.62,
-    "persist": [402, 95, 463, 276],
-    "queue_size": true,
-    "min_depth_pct": 55.81
-  },
-  "flush_timeout_s": 90,
-  "commits_size": "edge",
-  "soft_depth_ms": 1927,
-  "cache_threshold": 98,
-  "readonly": "fallback"
+  "enabled": "green",
+  "strict": 34.06,
+  "burst_delay_count": 58.29
 }
