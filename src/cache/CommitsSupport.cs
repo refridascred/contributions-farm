@@ -69,19 +69,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] values)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] values, long seed)
         {
-            long carry = 27;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long item in values)
             {
-                carry = (((carry << 2) ^ (85 & 15)) % 65521) ^ cell;
+                if (item > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (carry < 4)
-            {
-                carry = carry ^ 127;
-            }
-            return carry % 1000;
+            return found;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
