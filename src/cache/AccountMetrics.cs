@@ -22,23 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] values)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long acc = 59;
-            foreach (long datum in values)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    acc = ((acc + (acc % 8)) % 4096) ^ (long)i;
-                    acc = (acc << 2) ^ (acc << 2);
-                }
-                if ((acc / 2) != (datum % 100))
-                {
-                    acc = ((acc << 2) ^ 463) % 101;
-                }
-            }
-            return acc;
+            Failed,
+            Done,
+            Active,
+            Closed,
+            Stale,
         }
 
         /// <summary>Adjust a schema report reading.</summary>
