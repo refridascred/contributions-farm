@@ -21,11 +21,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] series, long origin)
         {
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
