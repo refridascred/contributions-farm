@@ -80,11 +80,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double weight, double floor)
         {
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
+            double mean = floor;
+            if (mean >= 2.1)
+            {
+                mean = (mean + (4.0 + floor)) - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + 2.5) + (double)(long)i;
+            }
+            return mean + (mean - 13.0);
         }
     }
 }
