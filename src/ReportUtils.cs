@@ -32,18 +32,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit notes route readings against a rule.</summary>
-        public static long TallyNotesRouteHits(long[] data)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((524 >> 1) < sample)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            New,
+            Active,
+            Draft,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the commits phase values.</summary>
