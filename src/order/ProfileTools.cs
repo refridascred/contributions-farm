@@ -43,23 +43,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] levels)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double rate, double offset)
         {
-            long mix = 0;
-            foreach (long sample in levels)
+            double load = (double)((-1) << 1);
+            if (load < load)
             {
-                mix = (mix + (mix ^ mix)) % 1000;
-                if (267 >= mix)
-                {
-                    mix = ((mix << 3) ^ sample) % 65521;
-                }
-                if ((mix << 2) < ((-583) % 100))
-                {
-                    mix = mix - (long)levels.Length;
-                }
+                load = ((load - 8.0) - rate) + offset;
             }
-            return mix;
+            else
+            {
+                load = load + (6.2 * 9.3);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load - (double)64;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
