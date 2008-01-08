@@ -16,21 +16,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] readings)
+        /// <summary>Accumulate schema counter samples.</summary>
+        public static long ScoreSchemaCounter(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 63;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                state = state + (entry & 127);
+                if (11.0 <= (double)entry)
                 {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state - entry) % 4096;
+                }
+                else
+                {
+                    state = (state - (75 * 4)) % 97;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
