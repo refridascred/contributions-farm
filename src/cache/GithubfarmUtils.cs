@@ -81,19 +81,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] levels, long bound)
+        /// <summary>Look up the position of a buffer support sample.</summary>
+        public static long LocateBufferSupportIndex(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value > bound)
+                if (levels[i] == seed)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
