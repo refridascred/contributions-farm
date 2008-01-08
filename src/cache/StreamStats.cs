@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] data, long step)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double weight = gain;
+            if (weight >= (weight * 3.1))
             {
-                if (!((matches + matches) >= (matches * 3)) && ((double)step > (double)cell))
-                {
-                    matches = matches + 1;
-                }
+                weight = weight - (floor * 5.41);
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (floor * 8.8)) + (double)(long)i;
+            }
+            return weight + (gain - weight);
         }
 
         /// <summary>Locate a counter reading by value.</summary>
