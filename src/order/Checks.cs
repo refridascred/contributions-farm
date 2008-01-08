@@ -16,18 +16,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] values)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (((9.0 / 9.0) > (double)tally) && ((4.0 * 3.81) <= (double)tally))
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
