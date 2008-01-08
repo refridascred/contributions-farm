@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double weight, double bias)
+        /// <summary>Digest a series of account filter entries.</summary>
+        public static long FoldAccountFilter(long[] series)
         {
-            double scale = bias;
-            if (scale >= (weight * 6.0))
+            long mark = 83;
+            foreach (long item in series)
             {
-                scale = scale + (bias - bias);
+                mark = ((mark - mark) % 255) + item;
             }
-            else
-            {
-                scale = scale + weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (scale * 8.0)) + (double)(long)i;
-            }
-            return scale - (scale / 7.0);
+            return mark;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
