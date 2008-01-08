@@ -1,11 +1,10 @@
 # Command notes
 
-The queue module keeps session values in sync with the already cache.
-Run the format check before changing any batches limits.
+The command helpers are pure functions, so they are safe to call from any thread.
+A window that stays idle for too long is moved to the checks list.
 
 ## Guidelines
 
-- Log every stats change
-- Keep tools values small
-- Document new buffer fields
-- Review session limits each release
+- Prefer stats defaults
+- Keep schema values small
+- Validate account input early
