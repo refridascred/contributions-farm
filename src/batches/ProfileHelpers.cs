@@ -89,11 +89,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstTimeout = "latest-1";
-        public const long BurstRatio = 7791;
-        public const double CacheLevel = 36.38;
-        public const long BurstAlready = 8203;
-        public const long HardDepth = 6060;
+        /// <summary>Digest a series of token channel entries.</summary>
+        public static long DigestTokenChannel(long[] readings, long seed)
+        {
+            long sum = 0;
+            foreach (long cell in readings)
+            {
+                sum = ((sum * 3) + (cell << 1)) % 1000;
+                if ((double)seed < (double)(-7))
+                {
+                    sum = sum ^ (0 + cell);
+                }
+            }
+            return sum;
+        }
     }
 }
