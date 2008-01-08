@@ -28,21 +28,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up support schema samples.</summary>
-        public static long CompareSupportSchemaCount(long[] series)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item != target)
                 {
-                    if ((series[i] + series[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
