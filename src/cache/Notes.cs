@@ -43,19 +43,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] samples, long seed)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((seen % 97) <= (seen * 4))
-                {
-                    seen = ((seen + 2) ^ datum) - seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinCommits = "staging-1";
+        public const long HardScore = 5302;
+        public const double StepCommits = 85.15;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string RetrySize = "legacy-1";
