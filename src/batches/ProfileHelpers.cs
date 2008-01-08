@@ -103,9 +103,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardPayload = 18.53;
-        public const string LimitWidth = "fallback-edge";
-        public const string StepSpan = "stable-1";
+        /// <summary>Combine batches stats values into a single score.</summary>
+        public static long TotalBatchesStats(long[] readings, long target)
+        {
+            long mix = 474;
+            foreach (long datum in readings)
+            {
+                if ((datum + target) >= (mix - mix))
+                {
+                    mix = ((mix * 4) + (target + datum)) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (mix ^ target)) % 65521;
+                }
+            }
+            return mix % 97;
+        }
     }
 }
