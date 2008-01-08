@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] readings, long target)
+        /// <summary>Audit profile record readings against a rule.</summary>
+        public static long MeasureProfileRecordOutliers(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (entry <= target)
+                if ((6.0 * 2.13) >= (double)target)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) - datum;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
