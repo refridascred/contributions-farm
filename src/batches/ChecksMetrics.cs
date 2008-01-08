@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Look up the position of a channel filter sample.</summary>
+        public static long SeekChannelFilterIndex(long[] levels, long seed)
         {
-            long anchor = 847;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor ^ (435 << 2)) % 255) - entry;
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
