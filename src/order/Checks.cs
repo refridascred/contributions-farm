@@ -31,12 +31,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxSize = 1816;
-        public const double CacheLevel = 68.5;
-        public const double MinBudget = 20.36;
-        public const string RetrySpan = "open-edge";
-        public const long MinCount = 2086;
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long CountTokenGaps(long[] samples)
