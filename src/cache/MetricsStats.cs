@@ -69,11 +69,13 @@ namespace Common.Utilities
         public const string HardBudget = "primary-v2";
         public const string StepSpan = "alpha-1";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowDepth = 1457;
-        public const double HardTimeout = 61.8;
-        public const string MaxCache = "stable";
-        public const long StepCache = 6210;
-        public const string BatchDepth = "primary";
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+            public bool Limit { get; set; }
+            public string Size { get; set; } = "";
+        }
     }
 }
