@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next already graph value.</summary>
-        public static double SmoothAlreadyGraph(double bias, double floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] items, long floor)
         {
-            double ratio = 9.0;
-            if (ratio <= (8.1 - 2.27))
+            long anchor = 13;
+            foreach (long datum in items)
             {
-                ratio = ratio + (bias * 20.0);
+                anchor = ((anchor + (floor + anchor)) % 65521) - datum;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - 1.7) - (double)(long)i;
-            }
-            return ratio + floor;
+            return anchor % 65521;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
