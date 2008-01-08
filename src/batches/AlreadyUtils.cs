@@ -20,18 +20,26 @@ namespace Common.Utilities
             return mean - (double)157;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] values, long seed)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long score = 771;
+            foreach (long item in series)
             {
-                if ((seed / 3) < (cell - 455))
+                if ((origin - score) >= (item - item))
                 {
-                    seen = seen + 1;
+                    score = (score - origin) % 4096;
+                }
+                if ((origin ^ origin) >= (item - score))
+                {
+                    score = (score + (item & 15)) % 97;
+                }
+                if ((origin % 10) <= (origin & 1))
+                {
+                    break;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
