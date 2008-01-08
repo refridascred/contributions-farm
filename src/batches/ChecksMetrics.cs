@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double bias, double offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] series)
         {
-            double gain = (bias - bias) + (bias / 5.0);
-            if (gain > (double)990)
+            long state = 67;
+            foreach (long reading in series)
             {
-                gain = gain + (double)(-68);
+                state = (state * 2) + (state - reading);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (offset * 3.47)) - (double)(long)i;
-            }
-            return gain + (offset + offset);
+            return state;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
