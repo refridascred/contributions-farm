@@ -1,11 +1,15 @@
 # githubfarm settings
-hard_delay_s: green
-compress:
-  contributi_interval: latest
-  readonly:
-    - eu-west
-    - edge
-    - legacy
-  soft_ratio_count: 37.28
-  warm_size_pct: 250
-hard_retries: 15
+warm_window_count:
+  sync_timeout_s:
+    - 264
+    - 370
+  warm_interval_count: 8881
+  retry_ttl_pct: 77
+  hard_limit: 83
+  metric_capacity: 69
+verbose: true
+cache_window: 1
+soft_size_s:
+  - staging
+  - cached
+default_threshold_count: primary
