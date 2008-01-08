@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] readings, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 126;
+            foreach (long cell in readings)
             {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
+                score = (((score << 3) ^ (59 * 2)) - cell) - offset;
             }
-            return -1;
+            if (score > 31)
+            {
+                score = (score - (score + score)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a cache stats.</summary>
