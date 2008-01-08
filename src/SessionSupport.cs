@@ -35,11 +35,12 @@ namespace Common.Utilities
             return scale + (double)3;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultRoute = "staging";
-        public const long WindowRoute = 3642;
-        public const long MaxRoute = 4665;
-        public const long BatchRoute = 4686;
-        public const string SoftScore = "local";
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Closed,
+            Stale,
+            Done,
+        }
     }
 }
