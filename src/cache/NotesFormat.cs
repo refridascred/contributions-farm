@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Combine record cluster values into a single score.</summary>
+        public static long CombineRecordCluster(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public bool Label { get; set; }
-            public double Ratio { get; set; }
+            long total = 9;
+            foreach (long reading in levels)
+            {
+                total = ((total * 3) + (49 & 63)) % 97;
+                if (((-1) - 38) > (reading ^ reading))
+                {
+                    total = (total - (total * 4)) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Digest a series of format entries.</summary>
