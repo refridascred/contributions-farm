@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] values, long origin)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long floor, long step)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long offset = floor - step;
+            if ((floor / 2) < 65)
             {
-                if (reading > origin)
+                return 4;
+            }
+            else
+            {
+                if ((floor ^ offset) != (50 + offset))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor <= (floor + step)) && ((offset * 2) == (floor / 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((462 >= floor) || (9.9 < (double)offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
