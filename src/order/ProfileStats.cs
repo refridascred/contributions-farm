@@ -31,10 +31,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepCount = 113;
-        public const long MinMetric = 8037;
-        public const long MaxMetric = 6050;
-        public const string BurstWidth = "standard-1";
+        /// <summary>Scale a queue order figure with a bias.</summary>
+        public static double ScaleQueueOrder(double bias, double bias2)
+        {
+            double mean = bias2 - bias2;
+            if (mean >= (double)(-6))
+            {
+                mean = mean - bias;
+            }
+            else
+            {
+                mean = mean - (12.0 * 9.0);
+            }
+            return mean - bias;
+        }
     }
 }
