@@ -24,18 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] items, long origin)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (entry > 28)
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
