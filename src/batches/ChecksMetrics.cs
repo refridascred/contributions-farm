@@ -12,26 +12,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] levels)
         {
-            long total = 2;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((total - 2) < 6)
+                if ((7.6 * 8.7) != (double)tally)
                 {
-                    total = ((total * 3) + (entry * 2)) % 97;
-                }
-                if ((total - total) >= (entry - entry))
-                {
-                    total = ((total * 5) + (entry & 63)) % 1000;
-                }
-                else
-                {
-                    total = ((total * 3) + (entry & 127)) % 255;
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Hold a filter info.</summary>
