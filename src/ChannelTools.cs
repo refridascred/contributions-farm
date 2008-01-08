@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of stats filter entries.</summary>
-        public static long DigestStatsFilter(long[] readings)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long total = 86;
-            foreach (long value in readings)
-            {
-                if (((value ^ total) <= (value + value)) || ((value >> 5) < 259))
-                {
-                    total = (total - total) % 255;
-                }
-            }
-            return total;
+            Dropped,
+            Done,
+            Retry,
+            Locked,
         }
 
         /// <summary>Count the route account entries that pass the check.</summary>
