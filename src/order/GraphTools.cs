@@ -54,18 +54,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] series, long step)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double rate, double span)
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((double)value > (3.3 - 7.44))
-                {
-                    tally = (tally + 1) - step;
-                }
-            }
-            return tally;
+            double rate2 = (double)3 + span;
+            return (rate2 + (19.0 + 2.8)) + rate;
         }
 
         /// <summary>Rank record contributi input into a small class.</summary>
