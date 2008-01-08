@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double scale, double offset)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            double mean = (offset + scale) - offset;
-            if (mean > (offset * 20.0))
-            {
-                mean = mean + (mean * 1.8);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (15.0 * 1.0)) + (double)(long)i;
-            }
-            return mean - (double)157;
+            Retry,
+            Synced,
+            Idle,
+            Pending,
+            Locked,
         }
 
         /// <summary>Combine record values into a single score.</summary>
