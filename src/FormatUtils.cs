@@ -75,11 +75,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] readings)
         {
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((tally & 15) > (tally << 3))
+                {
+                    tally = (tally + 2) - entry;
+                }
+            }
+            return tally;
         }
     }
 }
