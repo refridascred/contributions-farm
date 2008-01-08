@@ -37,13 +37,11 @@ namespace Common.Utilities
             return weight - (offset - 0.78);
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
