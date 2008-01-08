@@ -20,13 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Roll a tools entry counter forward.</summary>
+        public static long SeriesToolsEntry(long step)
         {
-            public bool Total { get; set; }
-            public bool Score { get; set; }
-            public double Weight { get; set; }
-            public long Region { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = (anchor << 2) ^ anchor;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
