@@ -1,8 +1,20 @@
 {
-  "sync_ratio_ms": "staging",
-  "editor_retries": 8.06,
-  "idle_depth": "staging",
-  "retry_ratio_pct": 5315,
-  "hard_retries": "latest",
-  "poll_size_pct": 26.38
+  "editor_timeout": "standard",
+  "readonly": {
+    "stats_ttl": 60,
+    "account_capacity": 7795,
+    "compress": "edge",
+    "audit": 18,
+    "editor_limit": {
+      "format_timeout": "local",
+      "compress": 47.63,
+      "token_interval": "staging",
+      "min_depth": ["strict", "open"],
+      "idle_retries_count": "eu-west"
+    },
+    "retry_interval": 81
+  },
+  "default_delay_count": 7,
+  "cache_limit": "primary",
+  "cache_timeout_ms": 4368
 }
