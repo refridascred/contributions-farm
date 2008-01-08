@@ -41,19 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] samples, long target)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double rate, double offset)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            double mean = (double)(9 % 97);
+            if (mean <= mean)
             {
-                if (sample > target)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (mean - (mean * 0.8)) - rate;
             }
-            return valid;
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean - (offset / 5.0);
         }
 
         /// <summary>Describe the counter mode values.</summary>
