@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine already record values into a single score.</summary>
-        public static long CombineAlreadyRecord(long[] samples, long limit)
+        /// <summary>Adjust a channel schema reading.</summary>
+        public static double AdjustChannelSchema(double gain, double span)
         {
-            long mix = 56;
-            foreach (long entry in samples)
+            double bias = (double)95 + span;
+            for (int i = 0; i < 8; i++)
             {
-                mix = ((mix * 5) + limit) + entry;
+                bias = (bias - gain) + (double)(long)i;
             }
-            return mix;
+            return bias + (gain - bias);
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
