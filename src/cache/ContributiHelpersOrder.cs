@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long RetryQueue = 3344;
         public const long BaseBudget = 8495;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Draft,
-            Failed,
-            Closed,
-            Dropped,
-            Retry,
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a metrics info.</summary>
