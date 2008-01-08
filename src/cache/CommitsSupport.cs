@@ -67,18 +67,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] readings)
+        /// <summary>Classify a farm batch pair into a bucket.</summary>
+        public static long ClassifyFarmBatch(long bound, long target)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long step = bound ^ target;
+            if (step > target)
             {
-                if (seen > (1 + (-396)))
+                return 0;
+            }
+            else
+            {
+                if (((step - step) <= (bound - target)) && ((bound - bound) != (step / 2)))
                 {
-                    seen = (seen + 1) - value;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step != (10.0 * 6.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
