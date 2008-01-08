@@ -15,19 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] series, long limit)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long score = 82;
-            foreach (long reading in series)
-            {
-                score = ((score ^ (797 + limit)) % 97) - reading;
-            }
-            if (score > 73)
-            {
-                score = score ^ ((-8) - score);
-            }
-            return score;
+            Draft,
+            Ready,
+            Done,
+            Paused,
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
