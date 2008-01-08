@@ -34,11 +34,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] levels)
         {
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (!((tally - (-1)) <= (tally + 13)))
+                {
+                    tally = (tally + 2) - reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next layout value.</summary>
