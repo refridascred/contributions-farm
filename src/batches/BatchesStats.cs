@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long HardScore = 508;
         public const long MinStream = 6176;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Check that every support context entry stays within the limit.</summary>
+        public static bool ValidateSupportContextBounds(long[] levels, long limit)
         {
-            Queued,
-            Paused,
-            Draft,
-            Done,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
