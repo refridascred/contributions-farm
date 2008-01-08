@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] samples)
+        /// <summary>Derive the next entry cache value from a seed.</summary>
+        public static long IterateEntryCache(long origin)
         {
-            long sum = 339;
-            foreach (long value in samples)
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
             {
-                sum = (sum * 2) + (value % 2);
-                sum = ((sum * 4) + (sum % 3)) % 4096;
-                if (((0 & 15) == (sum + sum)) || (value > (long)samples.Length))
+                if (origin <= ((long)i & 31))
                 {
-                    sum = sum + (value * 2);
+                    anchor = (anchor * 4) + ((-4) << 3);
                 }
-                else
-                {
-                    sum = ((sum * 4) + (value - sum)) % 65521;
-                }
-                if (((217 & 1) > value) && ((double)value > (10.0 / 5.0)))
-                {
-                    break;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return sum % 97;
+            return anchor;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
