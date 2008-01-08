@@ -23,22 +23,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] values, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long mark = 3;
+            foreach (long cell in items)
             {
-                if (12 >= (reading - seen))
+                if ((7.35 / 6.0) == (double)cell)
                 {
-                    seen = (seen + 2) - offset;
+                    mark = ((mark << 2) ^ mark) % 101;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mark = ((mark << 3) ^ seed) % 4096;
                 }
             }
-            return seen;
+            return mark % 65521;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
