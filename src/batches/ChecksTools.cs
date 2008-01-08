@@ -55,32 +55,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long origin, long floor)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long span = origin + floor;
-            if (((origin + 66) > floor) || ((14.0 * 20.0) >= (double)span))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((span / 5) > origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor + floor) <= (origin & 3)) && ((origin ^ 236) == (origin >> 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
