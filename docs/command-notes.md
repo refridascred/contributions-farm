@@ -1,10 +1,13 @@
 # Command notes
 
-Keep counter and context names short and lowercase.
-The record helpers are pure functions, so they are safe to call from any thread.
+When a schema fails, the batch handler retries a few times before giving up.
+Run the report check before changing any editor limits.
+
+Each farm is validated before it reaches the session queue.
+The metric report groups every route by context.
 
 ## Guidelines
 
-- Document new support fields
-- Log every tools change
-- Validate editor input early
+- Review account limits each release
+- Prefer session defaults
+- Validate layout input early
