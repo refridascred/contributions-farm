@@ -41,17 +41,9 @@ namespace Common.Utilities
         public const double MinBatch = 90.66;
         public const long WindowBatch = 280;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinSpan = 4851;
+        public const long MaxFormat = 2421;
+        public const string HardWidth = "legacy";
     }
 }
