@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Count the counter tools entries that pass the check.</summary>
+        public static long TallyCounterToolsGaps(long[] levels, long floor)
         {
-            Idle,
-            Active,
-            Queued,
-            Locked,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!((742 - reading) != (floor - floor)) && ((4 + floor) <= 58))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
