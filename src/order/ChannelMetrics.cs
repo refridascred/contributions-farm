@@ -29,18 +29,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] series, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] items)
         {
-            long count = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((value ^ floor) <= (value + value))
+                if (!((0.69 + 0.2) >= 4.58))
                 {
-                    count = count + 1;
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
