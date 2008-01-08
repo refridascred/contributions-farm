@@ -1,26 +1,8 @@
 # entry settings
-command_window:
-  default_delay_s: 7439
-  sync_capacity_pct: 250
-  retry_retries: 85.41
-retry_ttl_s:
-  session_delay: eu-west
-  cache_window: false
-  report_window:
-    soft_retries:
-      - strict
-      - edge
-      - eu-west
-    base_timeout_pct: 2675
-    compress: blue
-    batch_retries_pct: 80.57
-    max_interval_s: 34
-  hard_threshold_ms:
-    idle_delay_pct: 26.2
-    tools_size: true
-    report_interval: blue
-    max_limit_s: local
-    base_retries: 71.8
-    soft_timeout_count: open
-  batch_ttl_s: strict
-soft_window_ms: blue
+report_window: 27.36
+audit: strict
+warm_window_pct: standard
+enabled:
+  - 283
+  - 470
+burst_capacity_pct: false
