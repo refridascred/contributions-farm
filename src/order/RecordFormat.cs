@@ -38,24 +38,38 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long step)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long target, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            if (((double)step != (double)target) && ((step + 50) > target))
             {
-                if (((long)i ^ step) <= (step & 1))
-                {
-                    continue;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = (anchor + (90 * 4)) + (long)i2;
-                    anchor = anchor ^ (65 / 7);
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if (!((939 & 31) <= target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target / 2) == (step % 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((17 + target) < target) || ((step + target) < (0 / 9)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a report summary.</summary>
