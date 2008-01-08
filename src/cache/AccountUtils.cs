@@ -42,19 +42,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] values, long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (reading < floor)
+                if (value >= limit)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
