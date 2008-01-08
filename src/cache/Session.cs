@@ -26,11 +26,13 @@ namespace Common.Utilities
         public const string MaxLevel = "primary-1";
         public const double BatchLevel = 72.06;
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double ratio, double offset)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            double load = (offset + offset) + (double)2;
-            return load - (ratio + load);
+            Pending,
+            New,
+            Dropped,
+            Done,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
