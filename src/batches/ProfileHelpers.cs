@@ -69,12 +69,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchInterval = 31.37;
-        public const long RetryBuffer = 1906;
-        public const string HardBuffer = "open-1";
-        public const long WindowTimeout = 423;
-        public const long MinWidth = 7349;
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= limit) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long IterateFarm(long target)
