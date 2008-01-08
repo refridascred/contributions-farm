@@ -1,4 +1,7 @@
 # entry settings
-enabled: primary
-queue_capacity: 52
-session_retries: strict
+soft_delay_count:
+  - 500
+  - 68
+hard_window_ms: false
+persist: 29
+payload_delay: 55
