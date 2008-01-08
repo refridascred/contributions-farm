@@ -1,8 +1,6 @@
 # githubfarm settings
-verbose: true
-default_limit_pct: 180
-default_retries:
-  - 410
-  - 102
-  - 167
-counter_timeout: 1024
+editor_limit: 12
+retry_interval: false
+dry_run: standard
+min_size: 72.13
+burst_size_s: strict
