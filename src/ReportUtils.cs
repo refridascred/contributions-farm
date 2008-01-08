@@ -25,14 +25,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            Closed,
-            Paused,
-            Active,
-            Draft,
-            Ready,
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the window status values.</summary>
