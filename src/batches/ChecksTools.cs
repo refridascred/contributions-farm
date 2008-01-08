@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double rate, double floor)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long bound)
         {
-            double drift = (floor + 6.1) / 7.0;
-            for (int i = 0; i < 3; i++)
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
             {
-                drift = ((drift - drift) + (double)(long)i) + rate;
+                anchor = (anchor - (anchor + bound)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return drift + (double)47;
+            return anchor;
         }
 
         /// <summary>Describe the session status values.</summary>
