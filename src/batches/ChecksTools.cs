@@ -24,19 +24,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] data, long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (entry < floor)
+                if ((seen >> 3) <= (398 - 4))
                 {
-                    ok = false;
-                    break;
+                    seen = ((seen + 2) ^ value) + step;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
