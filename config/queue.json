@@ -1,6 +1,10 @@
 {
-  "audit": "eu-west",
-  "editor_size": ["fallback", "latest", "latest"],
-  "poll_interval_pct": true,
-  "cache_limit_ms": "eu-west"
+  "tools_window": 2.21,
+  "base_retries": {
+    "sync_size": true,
+    "audit": false,
+    "base_size_s": 1024,
+    "sync_delay_s": [372, 487, 472, 117]
+  },
+  "sync_ttl_s": 98.11
 }
