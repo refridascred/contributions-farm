@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] samples, long step)
         {
-            public bool Size { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
