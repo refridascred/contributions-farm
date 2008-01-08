@@ -27,12 +27,18 @@ namespace Common.Utilities
         public const long SoftFilter = 8663;
         public const long WindowFilter = 4302;
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] data)
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum == (7.0 / 8.0))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
