@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next metric counter value from a seed.</summary>
-        public static long StepMetricCounter(long limit)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] readings, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a schema options.</summary>
