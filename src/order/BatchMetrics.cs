@@ -73,16 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next context queue value.</summary>
-        public static double ProjectContextQueue(double bias, double floor)
-        {
-            double ratio = bias;
-            if (ratio < ratio)
-            {
-                ratio = (ratio + bias) - floor;
-            }
-            return ratio + (double)6;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultCount = 4954;
+        public const long HardLevel = 6061;
+        public const long BaseOrder = 7554;
+        public const long HardOrder = 6540;
+        public const double SoftOrder = 45.86;
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
