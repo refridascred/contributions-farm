@@ -20,11 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] items, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public string Total { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((hits + origin) >= 47)
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
