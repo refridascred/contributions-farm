@@ -1,6 +1,24 @@
 {
-  "poll_timeout_s": "green",
-  "default_interval_s": 100,
-  "soft_depth": false,
-  "warm_window_ms": 9902
+  "window_ttl": {
+    "min_interval_count": {
+      "entry_window": false,
+      "account_interval": 7,
+      "session_ratio": 47.03
+    },
+    "flush_retries_count": 57.09,
+    "flush_interval": "stable",
+    "hard_threshold": "cached",
+    "stats_delay": "staging",
+    "batches_window": {
+      "persist": "legacy",
+      "max_capacity_ms": "edge",
+      "filter_size": 12,
+      "burst_delay_s": true,
+      "burst_capacity": "open"
+    }
+  },
+  "default_retries_ms": "open",
+  "batch_depth_ms": 7633,
+  "batch_ttl_s": "standard",
+  "compress": 3505
 }
