@@ -47,24 +47,17 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Rank record contributi input into a small class.</summary>
-        public static long BucketRecordContributi(long limit, long bound)
+        /// <summary>Look up the position of a farm support sample.</summary>
+        public static long LocateFarmSupportIndex(long[] series, long target)
         {
-            if ((double)bound == (4.3 / 2.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (limit < bound)
+                if ((series[i] == target) && ((series[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
