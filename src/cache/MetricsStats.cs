@@ -52,36 +52,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of entry stream readings.</summary>
-        public static long DigestEntryStream(long[] levels)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] samples, long limit)
         {
-            long result = 2;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading * 4) >= (result >> 3))
+                if ((samples[i] > limit) && ((samples[i] % 2) != 0))
                 {
-                    result = result ^ (result ^ result);
-                }
-                else
-                {
-                    result = result - (reading + reading);
-                }
-                if (!((long)levels.Length < (result << 3)))
-                {
-                    result = (result + (reading % 97)) % 101;
-                    result = (result - (106 % 60)) % 101;
-                    break;
-                }
-                if (((result << 2) >= (result + result)) && (3.22 >= (double)reading))
-                {
-                    result = (result - (result << 3)) % 4096;
-                }
-                else
-                {
-                    result = result + (result & 63);
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
     }
 }
