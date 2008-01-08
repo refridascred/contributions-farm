@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next entry cache value from a seed.</summary>
-        public static long IterateEntryCache(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                if (origin <= ((long)i & 31))
-                {
-                    anchor = (anchor * 4) + ((-4) << 3);
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 1790;
+        public const string RetryCount = "primary-edge";
+        public const long IdleCommits = 2707;
+        public const string StepCommits = "fallback";
+        public const long MaxSize = 5798;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long TotalGithubfarm(long[] levels)
