@@ -45,39 +45,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long limit, long limit2)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] data, long bound)
         {
-            long prev = limit + limit2;
-            if (limit2 > (5 * 3))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (355 > (prev * 2))
+                if (data[i] < bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((prev + prev) != (limit2 & 255))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)limit2 >= (double)prev)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
