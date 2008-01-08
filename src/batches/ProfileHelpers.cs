@@ -61,12 +61,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] series, long target)
         {
-            Done,
-            Queued,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
