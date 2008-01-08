@@ -36,19 +36,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two format cluster measurements.</summary>
-        public static double BlendFormatCluster(double scale, double floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long seed)
         {
-            double drift = floor;
-            if (drift < (scale * 17.0))
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
             {
-                drift = drift - (scale / 2.0);
+                anchor = (anchor << 3) ^ seed;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (floor - 9.0)) + (double)(long)i;
-            }
-            return drift + 11.0;
+            return anchor;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
