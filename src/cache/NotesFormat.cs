@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const string BatchDepth = "fallback";
         public const long IdleCounter = 349;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepRatio = 212;
-        public const long WindowTools = 2241;
-        public const long MaxScore = 6032;
-        public const long SoftTools = 668;
-        public const long HardWidth = 2694;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] values)
+        {
+            long result = 300;
+            foreach (long sample in values)
+            {
+                result = ((result * 5) + (sample % 7)) % 1000;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long DeriveGithubfarm(long step)
