@@ -35,18 +35,19 @@ namespace Common.Utilities
         public const long SoftFilter = 8663;
         public const long WindowFilter = 4302;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] data)
+        /// <summary>Validate payload farm readings against a bound.</summary>
+        public static bool CheckPayloadFarmLimits(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if ((double)datum == (7.0 / 8.0))
+                if (entry < seed)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
