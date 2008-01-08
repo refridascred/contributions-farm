@@ -44,15 +44,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double bias, double floor)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            double drift = bias + 8.0;
-            for (int i = 0; i < 5; i++)
-            {
-                drift = ((drift - 1.0) + (double)(long)i) + floor;
-            }
-            return drift + (drift / 8.0);
+            public double Owner { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
