@@ -1,5 +1,11 @@
 {
-  "record_size": 85.75,
-  "compress": 60,
-  "enabled": "blue"
+  "burst_threshold": true,
+  "soft_depth": "staging",
+  "readonly": {
+    "audit": 1.0,
+    "idle_delay": 60,
+    "queue_limit": "blue",
+    "idle_interval_count": "latest",
+    "metric_interval": [131, 159]
+  }
 }
