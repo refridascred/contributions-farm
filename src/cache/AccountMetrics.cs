@@ -22,17 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] levels, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 59;
+            foreach (long datum in values)
             {
-                if (levels[i] <= step)
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    acc = ((acc + (acc % 8)) % 4096) ^ (long)i;
+                    acc = (acc << 2) ^ (acc << 2);
+                }
+                if ((acc / 2) != (datum % 100))
+                {
+                    acc = ((acc << 2) ^ 463) % 101;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
