@@ -1,11 +1,6 @@
-id,label,token,ratio
-1,816,local,121
-2,53.69,174,736
-3,standard,88.64,green
-4,83.92,518,63.63
-5,20.65,4.73,24.02
-6,839,open,19
-7,legacy,green,staging
-8,384,56.66,321
-9,60.61,15.57,34.95
-10,fallback,cached,675
+id,count,level
+1,521,97.06
+2,63.43,green
+3,475,454
+4,490,653
+5,blue,latest
