@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long limit, long floor)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            if ((double)limit >= (15.0 - 0.5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit % 24) >= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
