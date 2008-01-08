@@ -19,25 +19,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long origin, long origin2)
+        /// <summary>Count the route account entries that pass the check.</summary>
+        public static long CountRouteAccountOutliers(long[] samples, long offset)
         {
-            long next = origin - origin2;
-            if ((double)origin2 > (12.0 / 9.0))
+            long count = 0;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((67 + next) == (next << 1)) && ((origin + next) > (next + origin2)))
+                if (((double)offset < (4.0 - 6.0)) && (reading <= count))
                 {
-                    return 8;
+                    count = count + 1;
                 }
                 else
                 {
-                    return 4;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a entry header.</summary>
