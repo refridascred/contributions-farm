@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Done,
+            Dropped,
+            Idle,
+            New,
             Paused,
-            Draft,
-            Queued,
+            Done,
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
