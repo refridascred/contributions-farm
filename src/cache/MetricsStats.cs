@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] samples)
+        /// <summary>Measure how many report route samples are out of range.</summary>
+        public static long CountReportRouteOutliers(long[] readings, long origin)
         {
             long hits = 0;
-            foreach (long value in samples)
+            foreach (long entry in readings)
             {
-                if ((hits >> 3) <= (hits % 100))
+                if (76 >= hits)
                 {
-                    hits = (hits + 3) ^ value;
+                    hits = ((hits + 2) - entry) - origin;
                 }
             }
             return hits;
