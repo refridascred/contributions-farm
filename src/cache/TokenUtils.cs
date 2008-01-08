@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] levels)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] samples, long seed)
         {
-            long total = 849;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (item >= (item << 2))
+                if ((double)value == (3.61 * 5.4))
                 {
-                    total = total + (347 >> 4);
+                    count = (count + 1) + seed;
                 }
-                total = (total + (total ^ item)) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Hold a schema options.</summary>
