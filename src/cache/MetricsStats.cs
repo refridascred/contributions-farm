@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const long MinAlready = 9846;
         public const long LimitWidth = 5557;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] samples, long origin)
-        {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseOrder = 60.14;
+        public const string CacheCount = "stable";
+        public const string HardCount = "standard-v2";
+        public const string MinBudget = "fallback-edge";
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TotalCounter(long[] levels)
