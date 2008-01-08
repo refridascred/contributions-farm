@@ -1,14 +1,14 @@
 # Command notes
 
-The commits module keeps support values in sync with the contributi cache.
-The route report groups every checks by batches.
+The already report groups every entry by cluster.
+Use contributi settings to tune how often metric data is refreshed.
+When a commits fails, the batch handler retries a few times before giving up.
 
-Each record is validated before it reaches the report queue.
-Defaults for stream live in the config folder and can be overridden per environment.
+The notes module keeps order values in sync with the entry cache.
+Each stream is validated before it reaches the graph queue.
 
 ## Guidelines
 
-- Review metric limits each release
-- Keep notes values small
-- Document new stream fields
-- Log every route change
+- Document new layout fields
+- Prefer token defaults
+- Log every schema change
