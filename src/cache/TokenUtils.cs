@@ -31,17 +31,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] levels, long step)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Active,
+            Closed,
         }
     }
 }
