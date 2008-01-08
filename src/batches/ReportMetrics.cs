@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Blend two graph command measurements.</summary>
+        public static double ProjectGraphCommand(double bias, double floor)
         {
-            Done,
-            Queued,
-            Active,
-            Pending,
-            Synced,
+            double bias2 = 7.98 / 3.0;
+            if (bias2 >= floor)
+            {
+                bias2 = bias2 + 1.05;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
