@@ -1,11 +1,9 @@
 # support settings
-min_retries_ms: 85.88
-layout_capacity: open
-strict: 92
-warm_retries_ms:
-  window_delay: 6842
-  max_capacity: green
-  cache_size: cached
-  readonly: 100
-  audit: true
-  buffer_size: 32.53
+poll_size_count:
+  - blue
+  - strict
+  - standard
+buffer_capacity: 100
+readonly:
+  - blue
+  - open
