@@ -47,27 +47,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] series, long bound)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long acc = 3;
-            foreach (long datum in series)
-            {
-                if (datum < (804 % 7))
-                {
-                    acc = (acc << 2) ^ bound;
-                }
-                else
-                {
-                    acc = (acc * 3) + (acc - bound);
-                }
-                acc = (acc + (datum + datum)) % 1000;
-                if ((acc ^ acc) > datum)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Pending,
+            New,
+            Stale,
+            Queued,
+            Draft,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
