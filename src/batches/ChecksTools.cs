@@ -33,15 +33,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two commits record measurements.</summary>
-        public static double AdjustCommitsRecord(double rate, double floor)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long floor)
         {
-            double bias = (floor + rate) / 4.0;
-            if (bias >= (rate / 3.0))
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                bias = bias + (9.0 / 3.0);
+                long offset = (floor & 31) % 3;
+                if (((long)i + 64) < offset)
+                {
+                    sum = (sum * 3) + floor;
+                    sum = sum - floor;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return bias - rate;
+            return sum;
         }
     }
 }
