@@ -31,23 +31,23 @@ namespace Common.Utilities
         public const double StepCount = 3.05;
         public const long WindowLayout = 2565;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] values)
+        /// <summary>Blend two stream cache measurements.</summary>
+        public static double BlendStreamCache(double gain, double bias)
         {
-            long mix = 667;
-            foreach (long datum in values)
+            double weight = 13.0;
+            if (weight < (weight + weight))
             {
-                mix = (mix << 3) ^ (datum & 3);
-                if (547 < datum)
-                {
-                    mix = (mix + (datum & 127)) % 65521;
-                }
+                weight = ((weight + (double)14) + gain) - bias;
             }
-            if (mix > 6)
+            else
             {
-                mix = ((mix * 3) + (684 - mix)) % 101;
+                weight = weight - (double)67;
             }
-            return mix % 97;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (double)45) + (double)(long)i;
+            }
+            return weight + 6.93;
         }
     }
 }
