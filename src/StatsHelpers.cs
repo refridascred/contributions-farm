@@ -65,21 +65,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the buffer notes series from a seed.</summary>
-        public static long StepBufferNotes(long bound)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double ratio, double floor)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            double drift = (double)136;
+            if (drift < drift)
             {
-                if (!((long)i >= bound))
-                {
-                    score = score - (score - (long)i);
-                    score = score + (score - (long)i);
-                }
-                score = (score + ((long)i - score)) % 97;
-                score = ((score * 3) + (long)i) % 1000;
+                drift = drift + (double)971;
             }
-            return score;
+            else
+            {
+                drift = drift + (ratio + 16.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (ratio / 6.0)) + (double)(long)i;
+            }
+            return drift + floor;
         }
     }
 }
