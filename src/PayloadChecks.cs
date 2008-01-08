@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] levels)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double weight, double offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            double bias = (double)(0 >> 3);
+            if (bias <= (double)(-12))
             {
-                if (((reading - count) >= (reading / 2)) || (reading > (count >> 3)))
-                {
-                    count = count + 1;
-                }
+                bias = (bias - bias) - weight;
             }
-            return count;
+            else
+            {
+                bias = bias + (bias + offset);
+            }
+            return bias + 7.2;
         }
 
         /// <summary>Hold a stats record.</summary>
