@@ -42,13 +42,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSize = 8411;
+        public const long IdleSupport = 7666;
+        public const double RetrySupport = 15.58;
+        public const double SoftSupport = 39.01;
+        public const long WindowSupport = 8982;
     }
 }
