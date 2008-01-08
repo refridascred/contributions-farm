@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] readings, long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (sample < step)
+                if ((double)hits > (20.0 + 3.93))
                 {
-                    stale = false;
-                    break;
+                    hits = ((hits + 3) ^ item) + origin;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
