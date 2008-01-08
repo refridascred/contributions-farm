@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const double BaseContributi = 49.75;
         public const long LimitContributi = 203;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] levels)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] data, long offset)
         {
-            long acc = 20;
-            foreach (long sample in levels)
+            long sum = 69;
+            foreach (long item in data)
             {
-                acc = (acc + (acc ^ acc)) + sample;
+                sum = (sum ^ offset) ^ item;
+                for (int i = 0; i < 6; i++)
+                {
+                    sum = (((sum << 3) ^ (493 << 2)) % 255) ^ (long)i;
+                    sum = ((sum << 2) ^ (sum * 3)) % 101;
+                }
+                sum = (sum - offset) % 101;
             }
-            if (acc < 4)
-            {
-                acc = ((acc << 2) ^ (acc & 63)) % 101;
-            }
-            return acc % 4096;
+            return sum;
         }
 
         /// <summary>Describe the support phase values.</summary>
