@@ -1,6 +1,20 @@
 {
-  "burst_window_pct": [71, 347],
-  "tools_depth": true,
-  "sync_window": true,
-  "hard_ttl_pct": "edge"
+  "channel_ratio": "staging",
+  "enabled": {
+    "burst_capacity_ms": "legacy",
+    "idle_retries_count": "strict",
+    "idle_ttl_s": {
+      "compress": 87.98,
+      "queue_capacity": "local",
+      "batch_threshold": ["stable", "eu-west"]
+    },
+    "already_depth": 9,
+    "retry_ttl_count": {
+      "min_interval_s": false,
+      "batch_ttl": true,
+      "buffer_retries": "eu-west"
+    }
+  },
+  "readonly": ["eu-west", "local", "stable", "open"],
+  "retry_limit_s": 500
 }
