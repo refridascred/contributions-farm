@@ -36,21 +36,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of channel format readings.</summary>
-        public static long OverlapChannelFormatCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxWidth = 4874;
+        public const double LimitScore = 18.14;
+        public const long DefaultFormat = 4598;
     }
 }
