@@ -54,23 +54,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double ratio, double floor)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] readings, long target)
         {
-            double scale = floor / 8.0;
-            if (scale < floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = (scale - (17.0 * 9.0)) + ratio;
+                if ((readings[i] < target) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (double)583;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (floor * 18.0)) + (double)(long)i;
-            }
-            return scale - 9.7;
+            return -1;
         }
     }
 }
