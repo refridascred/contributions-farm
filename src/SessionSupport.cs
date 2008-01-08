@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] levels, long seed)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double rate, double bias)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            double scale = (double)9 + bias;
+            if (scale < (8.2 - rate))
             {
-                if ((seed * 4) != (0 - 18))
-                {
-                    count = (count + 1) ^ entry;
-                }
+                scale = scale + scale;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale + (double)3;
         }
 
         /// <summary>Define route limits and defaults.</summary>
