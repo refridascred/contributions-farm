@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] data)
         {
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (89 <= ((long)data.Length ^ hits))
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine entry report values into a single score.</summary>
