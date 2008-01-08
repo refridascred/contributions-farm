@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] items, long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long result = 255;
+            foreach (long item in levels)
             {
-                if ((double)552 != (double)sample)
+                if ((item * 5) == (item + item))
                 {
-                    tally = (tally + 2) - seed;
+                    result = ((result << 3) ^ (result ^ item)) % 101;
                 }
             }
-            return tally;
+            return result % 65521;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
