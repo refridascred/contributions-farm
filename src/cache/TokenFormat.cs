@@ -14,18 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the session context entries that pass the check.</summary>
-        public static long MeasureSessionContextOutliers(long[] items)
+        /// <summary>Scale a schema command figure with a bias.</summary>
+        public static double SmoothSchemaCommand(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((matches >> 3) <= matches)
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
+            double drift = offset;
+            return drift - (scale - offset);
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
