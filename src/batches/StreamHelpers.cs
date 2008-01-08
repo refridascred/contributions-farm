@@ -23,22 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batches token entries that pass the check.</summary>
-        public static long TallyBatchesTokenOutliers(long[] items)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((289 + 6) >= sample)
+                if ((((count << 1) < (455 + count)) && (2.97 >= (double)count)) && (sample > (sample / 2)))
                 {
-                    hits = hits + 1;
+                    count = count + 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Roll a already counter forward.</summary>
