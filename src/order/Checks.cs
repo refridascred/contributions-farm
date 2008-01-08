@@ -48,18 +48,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch metric entries that pass the check.</summary>
-        public static long AuditBatchMetricOutliers(long[] samples, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (limit <= (hits >> 1))
+                if ((long)i == (7 << 1))
                 {
-                    hits = (hits + 2) - value;
+                    sum = (sum * 2) + bound;
                 }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = (sum - (sum + sum)) ^ (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
