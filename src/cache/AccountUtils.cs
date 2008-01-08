@@ -42,22 +42,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] series, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] values, long floor)
         {
-            long carry = -1;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (!(offset > (50 ^ (-72))))
+                if (reading < floor)
                 {
-                    carry = ((carry - (offset & 255)) % 101) + sample;
+                    stale = false;
+                    break;
                 }
             }
-            if (carry > 707)
-            {
-                carry = (carry - (carry - offset)) % 65521;
-            }
-            return carry % 97;
+            return stale;
         }
     }
 }
