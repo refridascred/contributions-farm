@@ -23,16 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] values)
-        {
-            long result = 300;
-            foreach (long sample in values)
-            {
-                result = ((result * 5) + (sample % 7)) % 1000;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftBudget = 6990;
+        public const double StepWidth = 32.63;
+        public const long IdleCommand = 4375;
+        public const long StepCommand = 262;
 
         /// <summary>Derive the next already counter value from a seed.</summary>
         public static long DeriveAlreadyCounter(long seed)
