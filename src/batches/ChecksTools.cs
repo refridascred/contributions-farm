@@ -33,10 +33,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxFactor = 1636;
-        public const long CacheLevel = 4302;
-        public const long SoftBatch = 5951;
-        public const long MaxScore = 6790;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long origin, long floor)
+        {
+            long span = origin + floor;
+            if (((origin + 66) > floor) || ((14.0 * 20.0) >= (double)span))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((span / 5) > origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((floor + floor) <= (origin & 3)) && ((origin ^ 236) == (origin >> 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
