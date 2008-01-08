@@ -47,13 +47,10 @@ namespace Common.Utilities
         public const string IdleTimeout = "cached";
         public const long StepFactor = 6188;
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public double Total { get; set; }
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftRatio = 8303;
+        public const long MinAlready = 4897;
+        public const double MaxDepth = 27.99;
+        public const double BatchSpan = 71.8;
     }
 }
