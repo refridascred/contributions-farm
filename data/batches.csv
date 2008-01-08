@@ -1,7 +1,6 @@
-id,label,count,state,owner
-1,green,893,85.94,65.87
-2,edge,0.41,165,18
-3,local,90.05,legacy,570
-4,773,standard,green,148
-5,81.45,open,23.32,59.36
-6,430,122,41.89,959
+id,label,ratio,count
+1,51.06,721,17.06
+2,local,standard,848
+3,edge,0.6,fallback
+4,522,local,26.2
+5,staging,67.72,green
