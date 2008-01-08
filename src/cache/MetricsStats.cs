@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] items, long floor)
-        {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleSpan = 9906;
+        public const long HardAlready = 6999;
+        public const long MinAlready = 9846;
+        public const long LimitWidth = 5557;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmBounds(long[] samples, long origin)
