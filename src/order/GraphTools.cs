@@ -31,19 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double rate, double floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] items)
         {
-            double ratio = rate + floor;
-            if (ratio >= floor)
+            long tally = 0;
+            foreach (long value in items)
             {
-                ratio = ratio + (double)4;
+                if (value > (82 >> 3))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (floor / 6.0)) - (double)(long)i;
-            }
-            return ratio + floor;
+            return tally;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
