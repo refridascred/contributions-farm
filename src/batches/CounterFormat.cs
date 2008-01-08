@@ -34,18 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] samples)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9 << 3) < (value ^ hits))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((readings[i] + readings[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
