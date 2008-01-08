@@ -46,21 +46,38 @@ namespace Common.Utilities
             return (rate - (floor + rate)) + weight;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] values)
+        /// <summary>Classify a batch context pair into a bucket.</summary>
+        public static long ClassifyBatchContext(long bound, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((bound - bound) < (702 >> 2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((86 & 63) >= (step + step)) && ((step + bound) >= (step << 1)))
                 {
-                    if ((values[i] ^ values[j]) == 9)
+                    return 6;
+                }
+                else
+                {
+                    if ((11.0 + 6.2) < (double)step)
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step >> 5) != (step + step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
