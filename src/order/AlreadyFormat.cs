@@ -53,12 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Validate token batch readings against a bound.</summary>
+        public static bool CheckTokenBatchBounds(long[] data, long seed)
         {
-            public long Level { get; set; }
-            public double Token { get; set; }
-            public bool Limit { get; set; }
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
