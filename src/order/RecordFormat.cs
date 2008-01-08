@@ -35,14 +35,12 @@ namespace Common.Utilities
         public const long IdleFactor = 4214;
         public const double IdleChecks = 21.59;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
             Draft,
-            Pending,
-            Retry,
-            Queued,
-            Synced,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the layout state values.</summary>
