@@ -36,10 +36,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseSupport = "legacy-edge";
-        public const string RetrySupport = "alpha";
-        public const long DefaultTimeout = 1588;
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            Failed,
+            New,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long FindCacheIndex(long[] values, long floor)
