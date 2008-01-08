@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long seed, long origin)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] readings, long limit)
         {
-            if ((seed % 2) <= origin)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin - seed) < (3 % 7))
+                if (readings[i] < limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a cache stats.</summary>
