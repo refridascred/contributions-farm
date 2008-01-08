@@ -46,13 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] values, long floor)
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
