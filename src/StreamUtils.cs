@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] data)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] - data[j]) == 6)
+                    if ((samples[i] ^ samples[j]) > 6)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
