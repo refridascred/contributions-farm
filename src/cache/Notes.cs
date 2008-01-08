@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] items)
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public bool Rank { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally - entry) < entry)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a account tools reading.</summary>
