@@ -29,15 +29,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up profile support samples.</summary>
-        public static long PairProfileSupportCount(long[] levels)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] data)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) != 18)
+                    if ((data[i] - data[j]) < 1)
                     {
                         tally = tally + 1;
                     }
