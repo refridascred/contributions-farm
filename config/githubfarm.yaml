@@ -1,10 +1,17 @@
 # githubfarm settings
-strict: 2695
-default_ratio: true
-cache_retries: 52.23
-support_window:
-  retry_depth_ms: true
-  sync_window_pct: 14
-  soft_delay: 56
-  base_ratio_count: 3203
-  cache_delay: 100
+warm_timeout_ms:
+  - green
+  - primary
+  - staging
+soft_threshold:
+  - standard
+  - standard
+  - legacy
+compress: true
+poll_delay_pct: primary
+layout_interval:
+  - 278
+  - 121
+  - 118
+  - 437
+hard_limit: primary
