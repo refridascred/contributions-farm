@@ -28,11 +28,10 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 406;
+        public const long CacheChecks = 2165;
+        public const double RetryFactor = 83.88;
+        public const long MinSize = 4047;
     }
 }
