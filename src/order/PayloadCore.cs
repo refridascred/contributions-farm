@@ -13,12 +13,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseRoute = "fallback";
-        public const long LimitRoute = 6609;
-        public const string StepDepth = "latest-edge";
-        public const long BaseFactor = 6973;
-        public const long StepRoute = 1644;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] readings, long limit)
+        {
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long OverlapRouteCount(long[] items)
