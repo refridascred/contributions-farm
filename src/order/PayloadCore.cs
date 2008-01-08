@@ -27,21 +27,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Audit schema notes readings against a rule.</summary>
+        public static long TallySchemaNotesGaps(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading / 3) != (reading + 35))
                 {
-                    if ((items[i] + items[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) + limit;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
