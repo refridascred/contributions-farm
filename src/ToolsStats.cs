@@ -46,11 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public bool Mode { get; set; }
-            public double Stamp { get; set; }
+            public long Label { get; set; }
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
