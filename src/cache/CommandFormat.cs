@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a buffer record counter forward.</summary>
-        public static long SeriesBufferRecord(long offset)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((13 - offset) < offset)
-                {
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
