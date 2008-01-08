@@ -35,15 +35,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] values)
+        /// <summary>Count cluster report pairs that satisfy a relation.</summary>
+        public static long OverlapClusterReportCount(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] - values[j]) > 0)
+                    if ((levels[i] - levels[j]) < 16)
                     {
                         hits = hits + 1;
                     }
