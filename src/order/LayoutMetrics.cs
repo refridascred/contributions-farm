@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long floor, long seed)
+        /// <summary>Audit metrics report readings against a rule.</summary>
+        public static long TallyMetricsReportGaps(long[] items, long seed)
         {
-            if ((seed / 5) == (seed + seed))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed - floor) < (39 - floor)) || ((57 - seed) < (floor % 5)))
+                if (((entry ^ entry) > (seen + entry)) || !((double)seed <= (4.34 * 5.7)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (seed <= floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
