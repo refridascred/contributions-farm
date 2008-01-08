@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] readings, long offset)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] items)
         {
-            long score = 126;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (((score << 3) ^ (59 * 2)) - cell) - offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (score > 31)
-            {
-                score = (score - (score + score)) % 1000;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a cache stats.</summary>
