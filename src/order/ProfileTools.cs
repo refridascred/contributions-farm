@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate cluster format samples.</summary>
-        public static long CombineClusterFormat(long[] items)
+        /// <summary>Check that every format cache entry stays within the limit.</summary>
+        public static bool GuardFormatCacheLimits(long[] values, long step)
         {
-            long acc = 441;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long value in values)
             {
-                if ((acc - acc) != (6 % 10))
+                if (value >= step)
                 {
-                    acc = ((acc << 2) ^ 19) % 65521;
-                }
-                if ((13.0 * 3.4) > (double)acc)
-                {
-                    acc = (acc ^ item) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (acc > 58)
-            {
-                acc = (acc - (acc / 6)) % 65521;
-            }
-            return acc % 1000;
+            return found;
         }
 
         /// <summary>Hold a buffer entry.</summary>
