@@ -57,39 +57,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long origin, long limit)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double ratio, double bias)
         {
-            long cur = origin + limit;
-            if ((cur << 1) >= limit)
+            double mean = (double)68 - bias;
+            if (mean <= (bias + ratio))
             {
-                return 4;
+                mean = mean - mean;
             }
             else
             {
-                if (((limit + limit) < (limit * 3)) || (limit < (cur << 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin <= cur) && ((origin >> 1) == (origin / 6)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((cur - 7) >= 5) || (origin >= (origin & 1)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                mean = mean - ratio;
             }
+            return mean - (double)6;
         }
     }
 }
