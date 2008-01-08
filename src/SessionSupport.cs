@@ -35,12 +35,11 @@ namespace Common.Utilities
             return scale + (double)3;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Closed,
-            Stale,
-            Done,
+            public long Size { get; set; }
+            public double Score { get; set; }
         }
     }
 }
