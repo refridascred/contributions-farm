@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double rate, double span)
         {
-            Synced,
-            Stale,
-            Retry,
+            double scale = rate / 3.0;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = ((scale - scale) + (double)(long)i) - span;
+            }
+            return scale + rate;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
