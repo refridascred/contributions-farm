@@ -47,18 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor notes samples are out of range.</summary>
-        public static long TallyEditorNotesOutliers(long[] samples)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long origin)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((hits << 2) < (4 + entry))
-                {
-                    hits = hits + 3;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
     }
 }
