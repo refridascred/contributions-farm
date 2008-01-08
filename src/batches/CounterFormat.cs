@@ -27,12 +27,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftLevel = 2533;
+        public const long BaseTools = 6824;
+        public const double CacheSize = 86.69;
+        public const long BatchTools = 6715;
     }
 }
