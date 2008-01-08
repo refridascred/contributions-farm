@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] readings, long origin)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (scale * 9.58) / 3.0;
+            if (rate > offset)
             {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
+                rate = rate + (offset + offset);
             }
-            return -1;
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + scale) + (double)(long)i;
+            }
+            return rate - (double)287;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
