@@ -81,38 +81,14 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long offset, long floor)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            if ((floor - floor) == (4 * 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor < (floor * 3)) && ((floor + floor) < (25 & 127)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(offset > (floor << 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (10.0 > (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Retry,
+            Active,
+            Pending,
+            Ready,
         }
     }
 }
