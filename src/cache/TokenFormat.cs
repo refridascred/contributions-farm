@@ -37,12 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Derive the next token buffer value from a seed.</summary>
+        public static long StepTokenBuffer(long seed)
         {
-            Idle,
-            Done,
-            Locked,
+            long total = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
