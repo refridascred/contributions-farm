@@ -47,21 +47,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine payload layout values into a single score.</summary>
-        public static long TotalPayloadLayout(long[] series)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long score = 617;
-            foreach (long item in series)
-            {
-                score = (score + (item << 1)) % 97;
-                score = ((score << 3) ^ (score + score)) % 101;
-                score = score + (584 >> 1);
-            }
-            if (score < 11)
-            {
-                score = (score + 130) % 101;
-            }
-            return score % 1000;
+            Retry,
+            Done,
+            Stale,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
