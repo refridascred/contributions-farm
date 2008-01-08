@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Digest a series of support schema entries.</summary>
+        public static long CombineSupportSchema(long[] levels, long limit)
         {
-            Done,
-            Ready,
-            Draft,
-            Idle,
+            long mix = 682;
+            foreach (long item in levels)
+            {
+                mix = (((mix << 2) ^ ((long)levels.Length * 2)) % 1000) + item;
+                if ((limit * 3) >= (0 + mix))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
