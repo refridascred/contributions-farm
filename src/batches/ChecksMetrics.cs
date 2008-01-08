@@ -65,23 +65,12 @@ namespace Common.Utilities
             return gain + (floor + gain);
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] values, long limit)
-        {
-            long acc = 447;
-            foreach (long entry in values)
-            {
-                if ((entry % 24) > acc)
-                {
-                    acc = ((acc << 2) ^ acc) + limit;
-                }
-            }
-            if (acc > (-26))
-            {
-                acc = (acc + (acc ^ acc)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchFormat = 75.22;
+        public const double MaxRatio = 86.79;
+        public const long BatchBudget = 829;
+        public const long HardTimeout = 6445;
+        public const string StepFormat = "local";
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
