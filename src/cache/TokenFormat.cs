@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many stats cluster samples are out of range.</summary>
-        public static long CountStatsClusterHits(long[] samples, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (offset < (datum % 64))
+                if (!((59 << 2) <= bound))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 2) - datum;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
