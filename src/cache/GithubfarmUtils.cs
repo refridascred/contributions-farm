@@ -37,10 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepFactor = 6762;
-        public const string MaxEditor = "standard";
-        public const long BatchScore = 3417;
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long IterateStream(long offset)
