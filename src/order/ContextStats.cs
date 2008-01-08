@@ -10,32 +10,13 @@ namespace Common.Utilities
         public const long BaseLayout = 8568;
         public const long BatchLayout = 4348;
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long offset, long limit)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long offset2 = offset ^ limit;
-            if ((double)offset2 > (double)48)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset2 >> 1) > (3 << 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (limit > (offset ^ offset2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
