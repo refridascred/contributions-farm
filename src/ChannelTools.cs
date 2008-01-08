@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] series)
+        /// <summary>Grade a report batch value against two limits.</summary>
+        public static long SortReportBatch(long offset, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)offset == (0.87 - 11.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((double)seed != (7.0 * 2.1)))
                 {
-                    if ((series[i] - series[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the commits level values.</summary>
