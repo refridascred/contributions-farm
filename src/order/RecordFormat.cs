@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] items, long origin)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double scale = 5.22 + (bias + floor);
+            if (scale < 10.0)
             {
-                if ((9.7 + 2.4) <= (double)seen)
-                {
-                    seen = ((seen + 3) + item) - origin;
-                }
+                scale = scale + (scale + scale);
             }
-            return seen;
+            else
+            {
+                scale = scale + (floor - 8.1);
+            }
+            return scale + (scale * 8.0);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
