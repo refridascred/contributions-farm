@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] levels)
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
+            long state = 97;
+            foreach (long entry in levels)
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                if (77 > (state >> 2))
+                {
+                    state = state + 191;
+                }
+                state = ((state * 2) + (state - entry)) % 4096;
+                if ((entry * 2) >= entry)
+                {
+                    state = (state + (entry - state)) % 1000;
+                }
+                else
+                {
+                    state = state + state;
+                }
             }
-            return acc;
+            return state % 4096;
         }
 
         /// <summary>Locate a report reading by value.</summary>
