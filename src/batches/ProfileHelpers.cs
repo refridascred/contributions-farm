@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Iterate the buffer stream series from a seed.</summary>
+        public static long SeriesBufferStream(long origin)
         {
-            Active,
-            Draft,
-            Idle,
-            Queued,
-            Synced,
+            long total = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                total = (total - ((long)i % 100)) % 65521;
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
