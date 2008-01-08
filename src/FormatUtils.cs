@@ -33,25 +33,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long seed, long offset)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long edge = seed + offset;
-            if (!(edge >= (offset << 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset != (7.0 - 2.33))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Fold a list of stats order readings.</summary>
