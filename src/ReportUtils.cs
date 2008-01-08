@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const string WindowTools = "primary-edge";
         public const string DefaultTools = "cached-1";
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] samples, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] levels, long limit)
         {
-            long result = 392;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                result = (result ^ (cell << 2)) - origin;
-                if ((double)cell <= (double)result)
+                if (!(tally > (599 / 8)))
                 {
-                    break;
+                    tally = ((tally + 1) + value) + limit;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the window status values.</summary>
