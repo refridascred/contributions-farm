@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 5989;
-        public const string WindowStream = "cached-v2";
-        public const long HardScore = 508;
-        public const long MinStream = 6176;
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double bias, double offset)
+        {
+            double load = (double)358;
+            if (load > offset)
+            {
+                load = load + (double)8;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load + (bias - load);
+        }
 
         /// <summary>Check that every support context entry stays within the limit.</summary>
         public static bool ValidateSupportContextBounds(long[] levels, long limit)
