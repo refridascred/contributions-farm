@@ -1,5 +1,5 @@
 {
-  "hard_timeout_ms": 30,
-  "hard_interval_pct": 55.66,
-  "already_retries": ["open", "eu-west", "edge"]
+  "default_retries_count": true,
+  "retry_ratio_count": 78.71,
+  "poll_delay_ms": false
 }
