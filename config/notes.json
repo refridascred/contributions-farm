@@ -1,18 +1,5 @@
 {
-  "retry_capacity_s": "eu-west",
-  "retry_interval_ms": "cached",
-  "flush_delay_count": 1024,
-  "enabled": 2475,
-  "base_capacity_ms": {
-    "cache_window_count": "stable",
-    "checks_interval": [257, 355],
-    "readonly": ["stable", "eu-west", "legacy"],
-    "batch_ttl_pct": {
-      "flush_window": 4.85,
-      "retry_depth_ms": 10,
-      "context_timeout": true,
-      "audit": false,
-      "metric_capacity": 1738
-    }
-  }
+  "hard_timeout_ms": 30,
+  "hard_interval_pct": 55.66,
+  "already_retries": ["open", "eu-west", "edge"]
 }
