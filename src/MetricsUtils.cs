@@ -49,13 +49,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long limit, long limit2)
         {
-            Dropped,
-            Synced,
-            Idle,
-            Ready,
+            long prev = limit + limit2;
+            if (limit2 > (5 * 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (355 > (prev * 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((prev + prev) != (limit2 & 255))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)limit2 >= (double)prev)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
