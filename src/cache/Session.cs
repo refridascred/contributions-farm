@@ -35,17 +35,32 @@ namespace Common.Utilities
             return load + (ratio - 6.26);
         }
 
-        /// <summary>Find the first profile cache entry that matches the target.</summary>
-        public static long LocateProfileCacheIndex(long[] items, long offset)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long seed, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long next = seed ^ bound;
+            if (((3.2 / 5.0) > (double)next) || (bound >= (seed ^ bound)))
             {
-                if (items[i] <= offset)
+                return 7;
+            }
+            else
+            {
+                if ((double)next >= (10.0 / 3.0))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((next * 3) != (2 + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
