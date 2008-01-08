@@ -42,14 +42,12 @@ namespace Common.Utilities
         public const double BurstNotes = 1.84;
         public const long WindowNotes = 8775;
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Stale,
-            New,
-            Locked,
-            Ready,
-            Draft,
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
     }
 }
