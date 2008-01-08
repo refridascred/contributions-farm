@@ -25,14 +25,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Done,
-            Idle,
-            New,
-            Failed,
-            Stale,
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the route phase values.</summary>
