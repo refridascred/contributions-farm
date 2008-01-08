@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] readings, long floor)
+        /// <summary>Accumulate stream cache samples.</summary>
+        public static long FoldStreamCache(long[] items, long bound)
         {
-            long mark = -7;
-            foreach (long item in readings)
+            long acc = -26;
+            foreach (long reading in items)
             {
-                if (floor <= item)
-                {
-                    mark = (mark << 2) ^ ((long)readings.Length ^ item);
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (mark & 15);
-                }
+                acc = (((acc - (7 - 100)) % 1000) ^ reading) + bound;
+                acc = ((acc * 3) + (acc / 7)) % 65521;
             }
-            return mark;
+            return acc % 97;
         }
 
         /// <summary>Project the next filter value.</summary>
