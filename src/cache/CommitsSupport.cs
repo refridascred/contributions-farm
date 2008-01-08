@@ -5,35 +5,34 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank report layout input into a small class.</summary>
-        public static long RankReportLayout(long seed, long seed2)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long limit, long step)
         {
-            long next = seed + seed2;
-            if ((double)seed2 == (8.74 * 4.86))
+            if (((6.52 + 5.8) >= (double)step) && ((step << 2) > (step << 1)))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if ((seed2 << 3) > seed2)
+                if ((step - 431) > (67 * 4))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if (((seed << 2) < (-828)) && ((seed % 5) > (seed << 3)))
+                    if ((limit * 5) == (step * 5))
                     {
-                        return 2;
+                        return 6;
                     }
                     else
                     {
-                        if (1 < ((-7) + next))
+                        if ((step >> 5) > step)
                         {
-                            return 7;
+                            return 1;
                         }
                         else
                         {
-                            return 1;
+                            return 4;
                         }
                     }
                 }
