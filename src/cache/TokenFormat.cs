@@ -39,11 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double weight, double offset)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            double weight2 = 6.3 * 7.45;
-            return ((weight2 + (double)111) + weight) + offset;
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
         }
     }
 }
