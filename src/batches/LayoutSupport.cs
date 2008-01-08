@@ -44,12 +44,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
             Failed,
+            Paused,
+            Dropped,
+            Done,
             Pending,
-            Locked,
         }
 
         /// <summary>Grade a already editor value against two limits.</summary>
