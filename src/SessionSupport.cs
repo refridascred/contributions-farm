@@ -32,11 +32,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] readings)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading - (long)readings.Length) > count)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
