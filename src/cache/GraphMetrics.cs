@@ -53,18 +53,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] data, long seed)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((0.8 + 2.6) >= (double)seed)
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
