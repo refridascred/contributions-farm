@@ -47,21 +47,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] items)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Done,
+            Failed,
+            Closed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Match up session samples.</summary>
