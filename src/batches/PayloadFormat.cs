@@ -12,10 +12,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 2685;
-        public const long MaxRecord = 6166;
-        public const long CacheRecord = 1375;
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the commits metrics entries that pass the check.</summary>
         public static long MeasureCommitsMetricsHits(long[] samples, long step)
