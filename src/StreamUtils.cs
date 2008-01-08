@@ -40,19 +40,18 @@ namespace Common.Utilities
         public const long RetryRatio = 2387;
         public const string BaseEditor = "local-v2";
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] series)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] data)
         {
             long hits = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= (hits + entry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] ^ data[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
