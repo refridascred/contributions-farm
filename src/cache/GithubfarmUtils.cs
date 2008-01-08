@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] readings, long origin)
+        /// <summary>Grade a already batch value against two limits.</summary>
+        public static long RankAlreadyBatch(long offset, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((origin + 0) > offset)
             {
-                if (readings[i] > origin)
+                return 2;
+            }
+            else
+            {
+                if ((double)origin > (5.0 * 8.69))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((origin ^ offset) <= (309 / 7)) || ((offset * 3) < origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)origin != (double)727)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the cache account entries that pass the check.</summary>
