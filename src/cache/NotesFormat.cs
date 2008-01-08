@@ -22,24 +22,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] values, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                state = state ^ (254 * 3);
-                if ((8.7 / 8.0) == (double)step)
+                if (entry != origin)
                 {
-                    state = state + 52;
+                    stale = false;
+                    break;
                 }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    state = (((state * 2) + ((-49) % 12)) % 4096) - (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return stale;
         }
     }
 }
