@@ -1,17 +1,11 @@
 # entry settings
-batch_size:
-  token_timeout: 500
-  persist:
-    - eu-west
-    - stable
-    - edge
-  account_limit:
-    - 214
-    - 155
-    - 33
-    - 341
-  retry_retries_count: stable
-  contributi_capacity: 250
-  dry_run: eu-west
-report_retries: fallback
-dry_run: legacy
+soft_retries:
+  - eu-west
+  - standard
+  - open
+compress:
+  - 105
+  - 302
+min_interval_pct: false
+persist: 100
+max_window_pct: 72.33
