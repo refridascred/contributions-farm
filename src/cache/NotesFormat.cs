@@ -18,22 +18,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] levels)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (!((864 + 642) <= tally))
+                if (sample != origin)
                 {
-                    tally = (tally + 2) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
