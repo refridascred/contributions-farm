@@ -68,21 +68,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] series)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 71;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((anchor + item) > anchor)
                 {
-                    if ((series[i] + series[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor * 3) + 3) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (item - item)) % 1000;
                 }
             }
-            return seen;
+            return anchor % 4096;
         }
     }
 }
