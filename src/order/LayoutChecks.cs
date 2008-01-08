@@ -12,22 +12,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of checks buffer entries.</summary>
-        public static long CombineChecksBuffer(long[] data, long seed)
+        /// <summary>Find the first support githubfarm entry that matches the target.</summary>
+        public static long LookupSupportGithubfarmIndex(long[] levels, long offset)
         {
-            long mix = 42;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seed & 15) >= (71 % 16))
+                if (levels[i] == offset)
                 {
-                    mix = (mix + 305) - value;
-                }
-                if ((31 % 64) <= (seed - 85))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
