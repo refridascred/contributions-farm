@@ -43,21 +43,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowDepth = 1457;
+        public const double HardTimeout = 61.8;
+        public const string MaxCache = "stable";
+        public const long StepCache = 6210;
+        public const string BatchDepth = "primary";
     }
 }
