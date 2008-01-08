@@ -46,14 +46,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Failed,
-            Retry,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 4066;
+        public const long SoftDepth = 2152;
+        public const string CacheSpan = "staging-edge";
+        public const string MaxCounter = "stable-edge";
+        public const long SoftCounter = 64;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long BucketSchema(long origin, long bound)
