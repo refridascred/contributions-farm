@@ -47,16 +47,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double weight, double span)
-        {
-            double ratio = weight;
-            if (ratio > ratio)
-            {
-                ratio = (ratio + weight) - span;
-            }
-            return ratio - weight;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstWidth = 436;
+        public const string HardLevel = "alpha-edge";
+        public const string HardGithubfarm = "open-1";
+        public const double BatchLevel = 98.21;
+        public const long LimitGithubfarm = 8502;
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
