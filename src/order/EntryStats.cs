@@ -64,21 +64,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up buffer token samples.</summary>
-        public static long OverlapBufferTokenCount(long[] data)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((limit + reading) != (reading ^ 31))
                 {
-                    if ((data[i] ^ data[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
