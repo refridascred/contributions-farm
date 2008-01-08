@@ -75,18 +75,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks channel samples are out of range.</summary>
-        public static long MeasureChecksChannelHits(long[] series)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (((matches - entry) < (35 + matches)) || ((entry + matches) != (entry ^ entry)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Idle,
+            Pending,
+            Failed,
+            Draft,
         }
     }
 }
