@@ -26,12 +26,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Combine window already values into a single score.</summary>
+        public static long ScoreWindowAlready(long[] series, long limit)
         {
-            public long Label { get; set; }
-            public double Level { get; set; }
-            public long Total { get; set; }
+            long score = 36;
+            foreach (long datum in series)
+            {
+                score = (((score + score) % 4096) + datum) + limit;
+            }
+            return score;
         }
 
         /// <summary>Accumulate channel samples.</summary>
