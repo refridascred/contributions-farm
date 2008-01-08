@@ -1,6 +1,5 @@
 {
-  "persist": "strict",
-  "metric_ratio": true,
-  "sync_capacity": false,
-  "retry_capacity_ms": false
+  "burst_window": 20,
+  "report_capacity": "primary",
+  "poll_window": 79.34
 }
