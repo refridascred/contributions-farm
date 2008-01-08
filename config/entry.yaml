@@ -1,5 +1,17 @@
 # entry settings
-flush_retries_pct: 7044
-filter_ttl: 6.89
-idle_capacity: fallback
-min_window_pct: 500
+batch_size:
+  token_timeout: 500
+  persist:
+    - eu-west
+    - stable
+    - edge
+  account_limit:
+    - 214
+    - 155
+    - 33
+    - 341
+  retry_retries_count: stable
+  contributi_capacity: 250
+  dry_run: eu-west
+report_retries: fallback
+dry_run: legacy
