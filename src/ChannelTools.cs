@@ -22,18 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine session commits values into a single score.</summary>
-        public static long DigestSessionCommits(long[] readings)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long total = 868;
-            foreach (long datum in readings)
-            {
-                if (!(3.5 <= (double)total))
-                {
-                    total = ((total << 3) ^ (datum << 1)) % 101;
-                }
-            }
-            return total % 97;
+            Done,
+            Paused,
+            Idle,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a entry header.</summary>
