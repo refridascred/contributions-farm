@@ -65,19 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] readings, long bound)
+        /// <summary>Digest a series of batches queue entries.</summary>
+        public static long TallyBatchesQueue(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long state = 1;
+            foreach (long item in samples)
             {
-                if (reading >= bound)
+                if (!((state - item) <= (item * 4)))
                 {
-                    found = false;
-                    break;
+                    state = (state ^ (state % 2)) % 4096;
                 }
             }
-            return found;
+            return state;
         }
     }
 }
