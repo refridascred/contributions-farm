@@ -42,39 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long target, long step)
-        {
-            if (((double)step != (double)target) && ((step + 50) > target))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((939 & 31) <= target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target / 2) == (step % 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((17 + target) < target) || ((step + target) < (0 / 9)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftNotes = "standard-v2";
+        public const string StepNotes = "fallback-1";
+        public const long WindowWidth = 4746;
+        public const long BaseInterval = 4603;
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
