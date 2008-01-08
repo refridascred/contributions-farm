@@ -1,22 +1,7 @@
 # entry settings
-soft_threshold_pct: 4728
-cache_threshold_pct:
-  batch_delay_ms:
-    - stable
-    - strict
-    - eu-west
-    - open
-  verbose: false
-  retry_depth:
-    max_size: staging
-    sync_retries: fallback
-    graph_window: local
-dry_run: green
-readonly:
-  buffer_limit: 2
-  enabled:
-    - strict
-    - local
-    - primary
-  burst_delay_ms: blue
-cache_ratio: 89.09
+retry_ratio: true
+retry_timeout_count: 81.08
+persist:
+  - stable
+  - stable
+audit: strict
