@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] levels, long origin)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Done,
+            Failed,
+            Retry,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
