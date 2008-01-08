@@ -54,12 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 403;
-        public const long BaseWidth = 343;
-        public const long StepFactor = 923;
-        public const double IdleFarm = 65.69;
-        public const long WindowFarm = 2009;
+        /// <summary>Count cluster buffer pairs that satisfy a relation.</summary>
+        public static long CompareClusterBufferCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double SoftNotes = 1.74;
