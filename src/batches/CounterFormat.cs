@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitToken = "staging-1";
-        public const long SoftToken = 5189;
-        public const double RetryToken = 0.49;
-        public const long BurstToken = 7064;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long origin, long floor)
+        {
+            if ((floor << 1) < (origin - origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor > (floor - floor)) && ((floor - floor) == (origin >> 5)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin % 97) <= origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (2.2 < (double)floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LookupFarmIndex(long[] samples, long offset)
