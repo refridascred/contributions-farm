@@ -1,4 +1,7 @@
 # githubfarm settings
-warm_interval: 69.47
-enabled: true
-batch_delay: 43.95
+persist: legacy
+batch_threshold_ms: staging
+idle_threshold_count:
+  base_interval_pct: eu-west
+  batch_window_pct: true
+  compress: true
