@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] values, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] items, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (values[i] == step)
+                if ((double)552 != (double)sample)
                 {
-                    return (long)i;
+                    tally = (tally + 2) - seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate payload format samples.</summary>
