@@ -49,23 +49,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a format context figure with a bias.</summary>
-        public static double ProjectFormatContext(double bias, double floor)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            double ratio = (bias / 4.0) - (double)962;
-            if (ratio < 20.0)
-            {
-                ratio = ratio + ratio;
-            }
-            else
-            {
-                ratio = ratio + (ratio + 6.2);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - floor) + (double)(long)i;
-            }
-            return ratio - floor;
+            Stale,
+            New,
+            Locked,
+            Ready,
+            Draft,
         }
     }
 }
