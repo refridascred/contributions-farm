@@ -13,32 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long origin, long bound)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long bound2 = origin ^ bound;
-            if ((7 <= (origin & 63)) || ((origin - 419) <= (bound2 << 2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (origin < (-336))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (75 <= bound2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
