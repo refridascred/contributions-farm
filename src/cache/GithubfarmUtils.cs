@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] series, long bound)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < bound)
+                if (readings[i] > origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Measure how many record payload samples are out of range.</summary>
