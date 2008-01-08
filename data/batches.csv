@@ -1,6 +1,9 @@
-id,owner,label
-1,local,76.52
-2,704,48.51
-3,latest,62.55
-4,14.01,stable
-5,open,63.9
+id,count,owner,ratio
+1,61.94,84.89,598
+2,57.46,79.5,green
+3,1.97,blue,blue
+4,517,eu-west,949
+5,staging,primary,286
+6,330,93.77,322
+7,628,31.57,41.55
+8,13.94,strict,standard
