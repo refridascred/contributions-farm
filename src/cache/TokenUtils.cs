@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] samples, long target)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((5.0 < (double)value) || ((double)(long)samples.Length >= (double)86)) || (((double)target > 3.0) && (43 > (tally + target))))
+                if ((readings[i] <= floor) && ((readings[i] % 3) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
