@@ -43,38 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long bound, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] levels, long target)
         {
-            if (!((538 / 7) > (origin * 4)))
+            long state = 7;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((origin - bound) >= origin) || ((double)origin <= (double)449))
+                if (89 > (target % 7))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (origin < ((-5) / 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((bound + origin) > (origin + origin)) && (origin <= (70 + bound)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    state = ((state * 5) + (target >> 5)) - entry;
                 }
             }
+            if (state < 31)
+            {
+                state = state + (state >> 2);
+            }
+            return state % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
