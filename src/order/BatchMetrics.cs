@@ -23,21 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] values)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] data, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = -8;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix ^ 2) % 4096) + reading;
             }
-            return count;
+            if (mix > 1)
+            {
+                mix = ((mix << 3) ^ bound) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a command context sample.</summary>
