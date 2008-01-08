@@ -21,18 +21,20 @@ namespace Common.Utilities
         public const string MinQueue = "legacy-1";
         public const double BaseQueue = 95.29;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] data, long step)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long seed)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (((5 - 48) != (seen - step)) || !((double)634 <= (double)item))
+                if ((long)i < (seed - 0))
                 {
-                    seen = seen + 2;
+                    anchor = (anchor * 5) + (seed % 3);
+                    break;
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
     }
 }
