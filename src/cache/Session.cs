@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many schema already samples are out of range.</summary>
-        public static long MeasureSchemaAlreadyOutliers(long[] values, long step)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] series, long step)
         {
-            long count = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((cell * 4) >= (step & 15)) || ((double)step != (double)233)) || !(((long)values.Length + cell) == (step >> 5)))
+                if (series[i] <= step)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
