@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long target, long offset)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long span = target - offset;
-            if (((target ^ span) != (59 >> 5)) || ((span - (-136)) < target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target - target) >= span)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset ^ span) < offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public bool Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
