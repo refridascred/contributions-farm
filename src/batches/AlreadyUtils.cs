@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long limit)
+        /// <summary>Find the first metrics support entry that matches the target.</summary>
+        public static long LookupMetricsSupportIndex(long[] values, long step)
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum + ((long)i << 1)) % 1000;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Accumulate support samples.</summary>
