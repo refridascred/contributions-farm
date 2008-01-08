@@ -23,19 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] data, long limit)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long bound)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum != limit)
+                if (!((885 + sum) == ((long)i << 2)))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum * 2) + (-16);
                 }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Adjust a editor reading.</summary>
