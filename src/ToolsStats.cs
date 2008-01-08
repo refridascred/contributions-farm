@@ -32,19 +32,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] samples, long target)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long score = 41;
+            foreach (long reading in readings)
             {
-                if (cell >= target)
+                if (9 <= (reading / 8))
                 {
-                    found = false;
+                    score = (score ^ (reading - reading)) % 101;
                     break;
                 }
+                score = (score - (1 << 2)) % 101;
             }
-            return found;
+            if (score > 988)
+            {
+                score = (score ^ (score % 10)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Describe the layout status values.</summary>
