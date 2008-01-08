@@ -34,15 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double ratio, double floor)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] data, long limit)
         {
-            double weight = ratio;
-            if (weight >= (weight * 5.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight + weight;
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return weight + floor;
+            return -1;
         }
     }
 }
