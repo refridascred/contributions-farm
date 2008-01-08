@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double scale, double offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] items, long origin)
         {
-            double weight = (double)8 + (offset / 7.0);
-            if (weight > (scale / 4.0))
+            long seen = 0;
+            foreach (long item in items)
             {
-                weight = weight - (scale - offset);
+                if ((9.7 + 2.4) <= (double)seen)
+                {
+                    seen = ((seen + 3) + item) - origin;
+                }
             }
-            return weight + scale;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
