@@ -14,12 +14,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxCount = 69.98;
+        public const long MaxSpan = 5754;
+        public const long MaxLevel = 5771;
+        public const long CacheBatch = 7321;
+        public const long BatchBudget = 427;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long LimitSpan = 1851;
