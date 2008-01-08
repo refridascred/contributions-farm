@@ -20,18 +20,22 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Combine channel notes values into a single score.</summary>
-        public static long FoldChannelNotes(long[] series, long bound)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] data)
         {
-            long mix = 562;
-            foreach (long item in series)
+            long mark = 14;
+            foreach (long value in data)
             {
-                if ((368 + item) < (bound - mix))
+                if (((double)value == (double)mark) || (mark <= (value - mark)))
                 {
-                    mix = (mix << 2) ^ (bound >> 5);
+                    mark = ((mark << 3) ^ 636) % 65521;
                 }
             }
-            return mix;
+            if (mark < 0)
+            {
+                mark = (mark + mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the order cache series from a seed.</summary>
