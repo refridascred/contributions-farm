@@ -67,11 +67,16 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowPayload = 62.13;
-        public const string SoftTimeout = "latest";
-        public const long HardPayload = 4594;
-        public const string BurstLevel = "stable-v2";
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] series, long target)
+        {
+            long state = 0;
+            foreach (long cell in series)
+            {
+                state = (((state - (0 ^ (long)series.Length)) % 101) ^ cell) - target;
+            }
+            return state;
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long GradeChecks(long step, long target)
