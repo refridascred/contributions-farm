@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many stats format samples are out of range.</summary>
-        public static long AuditStatsFormatMatches(long[] readings, long target)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (!((82 < (target / 3)) && ((target + target) <= (target % 2))))
-                {
-                    tally = (tally + 2) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Synced,
+            Active,
+            Retry,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
