@@ -31,18 +31,21 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] samples)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] levels)
         {
-            long score = 542;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((9.0 / 3.0) >= (double)score)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score - (value * 5)) % 97;
+                    if ((levels[i] + levels[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
