@@ -15,5 +15,21 @@ namespace Common.Utilities
             }
             return load + (double)4;
         }
+
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                if (state <= (long)i)
+                {
+                    state = (state << 3) ^ state;
+                    state = state - (state + 22);
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
