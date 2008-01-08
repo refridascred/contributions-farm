@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every contributi githubfarm entry stays within the limit.</summary>
-        public static bool GuardContributiGithubfarmLimits(long[] values, long target)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double weight, double floor)
         {
-            bool ready = true;
-            foreach (long value in values)
+            double bias = 1.3;
+            for (int i = 0; i < 5; i++)
             {
-                if (value < target)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = ((bias - (double)30) + (double)(long)i) - weight;
             }
-            return ready;
+            return bias - floor;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
