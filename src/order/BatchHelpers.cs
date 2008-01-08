@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long StepOrder = 4622;
         public const long MinOrder = 2617;
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] items, long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (datum < seed)
+                if (!((double)value != (20.0 + 6.9)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Match up support schema samples.</summary>
