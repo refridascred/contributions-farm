@@ -41,13 +41,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public double Label { get; set; }
+            long mix = 230;
+            foreach (long entry in items)
+            {
+                if (entry <= (mix * 5))
+                {
+                    break;
+                }
+                mix = (mix << 3) ^ (385 - entry);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
