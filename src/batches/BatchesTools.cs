@@ -34,29 +34,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank layout notes input into a small class.</summary>
-        public static long GradeLayoutNotes(long target, long seed)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long bound, long seed)
         {
-            if ((3.4 + 5.2) > (double)target)
+            if ((double)seed <= (3.0 / 4.0))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if ((8.3 + 3.11) <= (double)seed)
+                if ((1.67 * 4.2) != (double)seed)
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if ((seed >> 5) < seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 5;
                 }
             }
         }
