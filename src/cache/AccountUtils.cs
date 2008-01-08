@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] items, long floor)
-        {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseSchema = 58.41;
+        public const string SoftSize = "cached-edge";
+        public const long CacheSchema = 4873;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
