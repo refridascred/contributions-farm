@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Measure how many batch tools samples are out of range.</summary>
+        public static long TallyBatchToolsMatches(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((seen <= reading) && ((double)seen <= 7.91))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next notes value.</summary>
