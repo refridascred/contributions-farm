@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 1790;
-        public const string RetryCount = "primary-edge";
-        public const long IdleCommits = 2707;
-        public const string StepCommits = "fallback";
-        public const long MaxSize = 5798;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitWidth = 2232;
+        public const long WindowContributi = 3702;
+        public const long StepSize = 1431;
+        public const double BaseContributi = 49.75;
+        public const long LimitContributi = 203;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long TotalGithubfarm(long[] levels)
