@@ -56,22 +56,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] series, long limit)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (!(limit > matches))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            New,
+            Done,
+            Ready,
+            Stale,
         }
     }
 }
