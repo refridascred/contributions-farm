@@ -1,25 +1,11 @@
 # githubfarm settings
-retry_ratio_s: edge
-compress:
-  hard_interval_s: staging
-  poll_size_ms: strict
-  hard_window_s:
-    - primary
-    - local
-    - staging
-poll_window_s:
-  - 457
-  - 430
-  - 400
-  - 428
-sync_ttl_count:
-  warm_timeout_count: 29.67
-  persist: 60
-  poll_capacity_count: fallback
-  soft_threshold_count: true
-stats_threshold:
+audit: 16
+batch_ttl_ms: false
+default_size: 83
+strict: false
+base_depth:
   - stable
-  - staging
-  - latest
-  - green
-batch_retries: true
+  - cached
+  - blue
+  - stable
+format_delay: fallback
