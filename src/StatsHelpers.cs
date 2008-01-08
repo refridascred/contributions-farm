@@ -25,23 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next farm counter value.</summary>
-        public static double ProjectFarmCounter(double ratio, double bias)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] samples)
         {
-            double drift = (ratio / 5.0) * 12.0;
-            if (drift <= (double)6)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                drift = drift + (drift - 1.31);
+                if ((seen ^ seen) > sample)
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                drift = drift - (drift / 3.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - ratio) + (double)(long)i;
-            }
-            return drift + bias;
+            return seen;
         }
 
         /// <summary>Rank tools schema input into a small class.</summary>
