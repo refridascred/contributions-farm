@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardBatches = "legacy-v2";
-        public const long BurstSize = 9717;
-        public const long MinBatches = 595;
-        public const long BurstBatches = 6482;
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public long Total { get; set; }
+            public bool Score { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Classify a graph cluster pair into a bucket.</summary>
         public static long GradeGraphCluster(long offset, long limit)
