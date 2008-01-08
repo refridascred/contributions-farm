@@ -40,11 +40,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Look up the position of a command context sample.</summary>
+        public static long LocateCommandContextIndex(long[] series, long step)
         {
-            public double Size { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank record input into a small class.</summary>
