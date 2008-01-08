@@ -49,11 +49,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double rate, double span)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] series, long floor)
         {
-            double rate2 = (double)3 + span;
-            return (rate2 + (19.0 + 2.8)) + rate;
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank record contributi input into a small class.</summary>
