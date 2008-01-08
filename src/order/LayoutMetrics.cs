@@ -15,13 +15,21 @@ namespace Common.Utilities
         public const string IdlePayload = "legacy-edge";
         public const long CachePayload = 5761;
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Compare every pair of githubfarm window readings.</summary>
+        public static long OverlapGithubfarmWindowCount(long[] readings)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
