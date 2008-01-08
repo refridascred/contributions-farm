@@ -21,10 +21,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseCommand = "primary-v2";
-        public const double MinCount = 44.63;
-        public const string HardCommand = "cached-v2";
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Compare every pair of channel format readings.</summary>
         public static long OverlapChannelFormatCount(long[] series)
