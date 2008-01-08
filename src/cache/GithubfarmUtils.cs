@@ -18,13 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] samples, long step)
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
+            long sum = 31;
+            foreach (long value in samples)
+            {
+                sum = ((sum * 5) + (68 + value)) % 1000;
+                if (!(sum <= (value & 3)))
+                {
+                    sum = (sum << 2) ^ (step & 127);
+                }
+                else
+                {
+                    sum = (sum * 3) + (22 + step);
+                }
+            }
+            if (sum < 9)
+            {
+                sum = ((sum << 3) ^ (step / 3)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
