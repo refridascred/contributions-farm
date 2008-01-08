@@ -63,20 +63,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of counter filter readings.</summary>
-        public static long TotalCounterFilter(long[] series, long target)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] items, long bound)
         {
-            long sum = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                long gap = ((-45) ^ sum) ^ entry;
-                if (!((double)gap < 7.01))
+                if ((3 & 63) < cell)
                 {
-                    gap = (gap - gap) - target;
+                    matches = (matches + 2) - bound;
                 }
-                sum = sum - entry;
             }
-            return sum % 1000;
+            return matches;
         }
     }
 }
