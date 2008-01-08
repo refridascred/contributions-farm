@@ -1,30 +1,17 @@
 {
-  "record_threshold": "edge",
-  "tools_retries": {
-    "min_interval_ms": true,
-    "hard_delay_pct": 6090,
-    "min_threshold_pct": 6596
+  "max_capacity": "local",
+  "poll_retries_pct": {
+    "audit": 1759,
+    "soft_ratio_ms": 63.16,
+    "min_timeout_ms": "stable",
+    "enabled": 30,
+    "default_size_s": 7869
   },
-  "token_delay": 100,
-  "soft_interval_count": {
-    "token_timeout": 60,
-    "sync_retries": 40.98,
-    "checks_interval": false,
-    "warm_size_pct": 37.38,
-    "route_timeout": false,
-    "audit": 85.41
+  "layout_retries": {
+    "batch_size_pct": 53,
+    "sync_retries_ms": true,
+    "persist": false,
+    "hard_ratio": "fallback"
   },
-  "format_ttl": {
-    "channel_threshold": "strict",
-    "soft_limit_ms": true,
-    "hard_retries_count": {
-      "hard_interval": "blue",
-      "batch_size": true,
-      "hard_ttl_s": 23.83,
-      "poll_limit_s": 500,
-      "warm_ttl_pct": 56,
-      "sync_window_count": ["legacy", "blue", "latest", "standard"]
-    }
-  },
-  "max_ratio_count": "eu-west"
+  "default_ttl_count": 250
 }
