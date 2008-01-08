@@ -20,18 +20,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many report route samples are out of range.</summary>
-        public static long CountReportRouteOutliers(long[] readings, long origin)
+        /// <summary>Locate a githubfarm route reading by value.</summary>
+        public static long FindGithubfarmRouteIndex(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (76 >= hits)
+                if (levels[i] == bound)
                 {
-                    hits = ((hits + 2) - entry) - origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
