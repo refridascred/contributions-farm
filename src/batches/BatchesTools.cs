@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] items)
         {
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-            public double Region { get; set; }
+            long score = 853;
+            foreach (long value in items)
+            {
+                if ((score >> 2) != (value - score))
+                {
+                    score = score ^ (score / 5);
+                }
+                if (127 <= (score + value))
+                {
+                    score = ((score << 3) ^ (1 + value)) % 4096;
+                }
+            }
+            if (score > 892)
+            {
+                score = score - (score - score);
+            }
+            return score;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
