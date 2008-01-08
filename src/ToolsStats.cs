@@ -24,19 +24,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] items, long limit)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long offset)
         {
-            long anchor = 85;
-            foreach (long sample in items)
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = (anchor ^ (7 + limit)) % 1000;
-                if (((double)limit > (8.72 * 1.0)) && (limit <= (limit & 31)))
+                if ((mix * 5) == (offset ^ offset))
                 {
-                    anchor = (anchor * 3) + (sample * 2);
+                    mix = (mix + ((-1) - 1)) % 65521;
+                    mix = (mix * 4) + mix;
+                    continue;
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return anchor % 4096;
+            return mix;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
