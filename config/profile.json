@@ -1,17 +1,5 @@
 {
-  "retry_capacity_ms": {
-    "already_window": [357, 235, 201],
-    "default_size": 7865,
-    "flush_ratio_ms": false,
-    "tools_limit": {
-      "warm_retries_ms": "cached",
-      "batch_capacity": "blue",
-      "audit": 34.09,
-      "verbose": false,
-      "record_delay": 75.62
-    }
-  },
-  "queue_threshold": 6831,
-  "report_interval": "latest",
-  "entry_ratio": [121, 472, 463]
+  "account_retries": false,
+  "cache_ratio_s": 500,
+  "batch_window": [19, 436]
 }
