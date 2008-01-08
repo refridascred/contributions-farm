@@ -1,4 +1,24 @@
 # githubfarm settings
-readonly: fallback
-min_timeout: legacy
-burst_window_pct: cached
+strict:
+  max_retries_count:
+    strict: false
+    batch_capacity_count:
+      - 189
+      - 318
+      - 41
+      - 103
+    flush_timeout: true
+    max_window: true
+  batch_retries: eu-west
+  enabled: 59
+  base_retries_ms: fallback
+  sync_size_s:
+    verbose: 100
+    soft_capacity_count: edge
+    sync_depth: latest
+    record_delay: 35.18
+    max_window: false
+sync_ratio_ms: green
+enabled: 99
+max_ttl_pct: false
+batch_retries_pct: false
