@@ -22,15 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double rate, double bias)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long limit)
         {
-            double load = rate;
-            if (load > load)
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
             {
-                load = load + (double)40;
+                mix = mix - (93 - limit);
+                mix = (mix << 3) ^ mix;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return load + (bias / 9.0);
+            return mix;
         }
 
         /// <summary>Project the next farm counter value.</summary>
