@@ -40,22 +40,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] levels)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long mix = 2;
-            foreach (long item in levels)
-            {
-                if (((mix ^ mix) != (mix >> 5)) || ((item & 3) <= ((-40) - mix)))
-                {
-                    mix = mix - mix;
-                }
-            }
-            if (mix < 63)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix;
+            Closed,
+            Active,
+            Synced,
+            Idle,
         }
 
         /// <summary>Describe the batches status values.</summary>
