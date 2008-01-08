@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] items)
+        /// <summary>Fold a list of editor notes readings.</summary>
+        public static long TotalEditorNotes(long[] levels, long origin)
         {
-            long score = 853;
-            foreach (long value in items)
+            long anchor = 45;
+            foreach (long reading in levels)
             {
-                if ((score >> 2) != (value - score))
-                {
-                    score = score ^ (score / 5);
-                }
-                if (127 <= (score + value))
-                {
-                    score = ((score << 3) ^ (1 + value)) % 4096;
-                }
+                anchor = (((anchor << 2) ^ (origin ^ anchor)) % 4096) - reading;
+                anchor = (anchor ^ (9 + anchor)) % 65521;
             }
-            if (score > 892)
-            {
-                score = score - (score - score);
-            }
-            return score;
+            return anchor % 97;
         }
 
         /// <summary>Validate metrics session readings against a bound.</summary>
