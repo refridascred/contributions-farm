@@ -41,10 +41,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftSpan = 86.87;
-        public const double BurstRatio = 34.89;
-        public const string MaxMetric = "alpha";
-        public const long BaseMetric = 3672;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] readings, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
