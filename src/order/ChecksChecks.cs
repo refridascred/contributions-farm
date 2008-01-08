@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter cache samples are out of range.</summary>
-        public static long AuditCounterCacheMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell <= (cell << 1)) || ((6.11 / 5.0) == (double)hits)) || ((cell / 5) <= (hits % 16)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryWidth = 845;
+        public const string SoftTimeout = "staging-1";
+        public const long WindowPayload = 1687;
+        public const string IdleTimeout = "cached";
+        public const long StepFactor = 6188;
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long SeekMetricsIndex(long[] values, long target)
