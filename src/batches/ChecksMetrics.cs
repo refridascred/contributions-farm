@@ -26,13 +26,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
-            public double Mode { get; set; }
+            Pending,
+            Synced,
+            Dropped,
+            Active,
+            Closed,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
