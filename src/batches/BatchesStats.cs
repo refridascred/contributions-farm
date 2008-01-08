@@ -31,18 +31,17 @@ namespace Common.Utilities
         public const string BatchDepth = "legacy-edge";
         public const long WindowFilter = 2296;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] levels, long step)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen % 24) > step)
+                if (readings[i] >= origin)
                 {
-                    seen = (seen + 1) + cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
