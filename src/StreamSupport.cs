@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double gain, double bias)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double ratio, double floor)
         {
-            double load = (bias + gain) - (gain * 20.0);
-            if (load >= bias)
+            double bias = ratio + (double)7;
+            if (bias < floor)
             {
-                load = load + (double)38;
+                bias = bias + (double)724;
             }
             else
             {
-                load = load + (load + load);
+                bias = bias + floor;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (gain + load)) + (double)(long)i;
-            }
-            return load + (bias * 4.8);
+            return bias + ratio;
         }
 
         /// <summary>Define record limits and defaults.</summary>
