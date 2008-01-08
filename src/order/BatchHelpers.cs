@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 758;
-        public const long MaxSize = 715;
-        public const long BaseNotes = 7320;
-        public const long BatchLevel = 8805;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Locked,
+            Closed,
+            Active,
+            New,
+            Ready,
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool ValidateOrderLimits(long[] items, long seed)
