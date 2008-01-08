@@ -1,14 +1,11 @@
 # Command notes
 
-The entry module keeps session values in sync with the notes cache.
-Keep account and account names short and lowercase.
-
-The notes helpers are pure functions, so they are safe to call from any thread.
-A batch that stays idle for too long is moved to the schema list.
+Use support settings to tune how often checks data is refreshed.
+Each metrics is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Review route limits each release
-- Document new route fields
-- Log every counter change
-- Validate report input early
+- Document new window fields
+- Keep buffer values small
+- Prefer schema defaults
+- Review window limits each release
