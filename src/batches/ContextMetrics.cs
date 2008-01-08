@@ -31,19 +31,14 @@ namespace Common.Utilities
             return rate - 7.0;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long origin)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((origin + mix) < mix)
-                {
-                    continue;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Ready,
+            Active,
+            Failed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
