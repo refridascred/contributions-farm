@@ -33,13 +33,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] levels)
         {
-            Synced,
-            Stale,
-            Closed,
-            Paused,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (!(((-409) - datum) >= (seen << 3)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate layout order readings against a bound.</summary>
