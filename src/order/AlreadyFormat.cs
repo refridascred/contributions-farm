@@ -56,17 +56,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] samples, long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry * 3) + (carry / 8);
-                carry = carry + 40;
-                carry = ((carry * 5) + (long)i) % 101;
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
