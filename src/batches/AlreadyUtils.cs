@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Combine notes queue values into a single score.</summary>
+        public static long TallyNotesQueue(long[] items)
         {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public double Level { get; set; }
-            public long Label { get; set; }
+            long sum = -696;
+            foreach (long reading in items)
+            {
+                if ((reading - reading) >= reading)
+                {
+                    sum = ((sum * 3) + reading) % 255;
+                }
+                else
+                {
+                    sum = (sum * 4) + (reading & 31);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Validate metric stats readings against a bound.</summary>
