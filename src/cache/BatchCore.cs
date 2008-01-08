@@ -25,22 +25,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Accumulate account payload samples.</summary>
-        public static long WeighAccountPayload(long[] series, long offset)
+        /// <summary>Check that every support metric entry stays within the limit.</summary>
+        public static bool VerifySupportMetricRange(long[] levels, long bound)
         {
-            long anchor = 10;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if ((8.7 / 8.0) == (double)offset)
+                if (value >= bound)
                 {
-                    anchor = anchor - (entry + 915);
-                }
-                if ((offset & 31) < (anchor >> 5))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return anchor % 1000;
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
