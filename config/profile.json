@@ -1,6 +1,5 @@
 {
-  "warm_depth_ms": false,
-  "soft_limit_s": 250,
-  "compress": 79,
-  "sync_ratio": ["standard", "cached", "fallback", "strict"]
+  "default_retries_ms": [255, 36, 416],
+  "persist": 35,
+  "retry_interval": "green"
 }
