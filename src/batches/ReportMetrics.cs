@@ -33,22 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] data, long origin)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long mix = -7;
-            foreach (long cell in data)
-            {
-                if ((cell << 3) >= (origin + origin))
-                {
-                    mix = (mix - mix) % 101;
-                }
-            }
-            if (mix > 53)
-            {
-                mix = mix ^ (origin >> 5);
-            }
-            return mix;
+            Paused,
+            Pending,
+            Active,
+            Closed,
         }
     }
 }
