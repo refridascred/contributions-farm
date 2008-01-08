@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of schema commits entries.</summary>
-        public static long WeighSchemaCommits(long[] series)
+        /// <summary>Iterate the order metric series from a seed.</summary>
+        public static long IterateOrderMetric(long seed)
         {
-            long acc = 504;
-            foreach (long datum in series)
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((datum << 1) <= (acc ^ acc))
-                {
-                    break;
-                }
-                acc = acc - acc;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Fold a list of command readings.</summary>
