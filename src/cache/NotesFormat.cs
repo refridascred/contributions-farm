@@ -29,15 +29,13 @@ namespace Common.Utilities
         public const long IdleCommand = 4375;
         public const long StepCommand = 262;
 
-        /// <summary>Derive the next already counter value from a seed.</summary>
-        public static long DeriveAlreadyCounter(long seed)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            Stale,
+            Ready,
+            Closed,
+            Idle,
         }
     }
 }
