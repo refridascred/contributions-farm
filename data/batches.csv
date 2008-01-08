@@ -1,9 +1,8 @@
-id,count,owner,ratio
-1,61.94,84.89,598
-2,57.46,79.5,green
-3,1.97,blue,blue
-4,517,eu-west,949
-5,staging,primary,286
-6,330,93.77,322
-7,628,31.57,41.55
-8,13.94,strict,standard
+id,level,weight,state
+1,54.63,blue,6.32
+2,995,42.06,3.63
+3,624,60.17,34.29
+4,624,fallback,22.98
+5,fallback,stable,340
+6,strict,16.72,eu-west
+7,green,741,646
