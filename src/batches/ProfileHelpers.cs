@@ -82,22 +82,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache context readings against a rule.</summary>
-        public static long MeasureCacheContextHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((entry / 2) <= (seen + entry))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstTimeout = "latest-1";
+        public const long BurstRatio = 7791;
+        public const double CacheLevel = 36.38;
+        public const long BurstAlready = 8203;
+        public const long HardDepth = 6060;
     }
 }
