@@ -22,15 +22,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double weight, double floor)
+        /// <summary>Classify a tools route pair into a bucket.</summary>
+        public static long ClassifyToolsRoute(long target, long bound)
         {
-            double load = (double)(1 - 97);
-            for (int i = 0; i < 3; i++)
+            if ((bound >> 2) > (bound ^ target))
             {
-                load = ((load - (19.0 - load)) + (double)(long)i) + weight;
+                return 2;
             }
-            return load + floor;
+            else
+            {
+                if (!((0 + 282) <= (target + bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((7.0 - 9.1) > (double)target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
