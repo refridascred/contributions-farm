@@ -14,12 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Count the layout commits entries that pass the check.</summary>
+        public static long CountLayoutCommitsGaps(long[] items)
         {
-            Paused,
-            Queued,
-            Closed,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((486 - tally) > (entry % 64))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a already reading.</summary>
