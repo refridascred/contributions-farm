@@ -20,31 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long seed, long target)
+        /// <summary>Measure how many batch payload samples are out of range.</summary>
+        public static long CountBatchPayloadMatches(long[] series)
         {
-            if ((392 * 2) <= (target - seed))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed - seed) > target)
+                if (cell < 8)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target % 8) >= seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a context info.</summary>
