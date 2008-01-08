@@ -40,19 +40,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double gain, double floor)
+        /// <summary>Digest a series of channel route entries.</summary>
+        public static long TallyChannelRoute(long[] series, long origin)
         {
-            double weight = gain;
-            if (weight >= (weight * 3.1))
+            long result = 24;
+            foreach (long datum in series)
             {
-                weight = weight - (floor * 5.41);
+                if (((result << 2) > (result * 5)) && ((origin + datum) != (95 ^ 2)))
+                {
+                    result = (result * 3) + result;
+                }
+                else
+                {
+                    result = (result - (result - datum)) % 255;
+                }
+                if ((double)origin <= (3.0 - 4.07))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (result < 67)
             {
-                weight = (weight + (floor * 8.8)) + (double)(long)i;
+                result = (result << 2) ^ (origin + result);
             }
-            return weight + (gain - weight);
+            return result;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
