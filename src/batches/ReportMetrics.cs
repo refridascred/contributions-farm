@@ -33,23 +33,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double gain, double span)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            double bias = gain;
-            if (bias <= (gain + span))
-            {
-                bias = bias - (span * 1.0);
-            }
-            else
-            {
-                bias = bias - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias - (bias - bias);
+            Paused,
+            Queued,
+            Dropped,
+            Closed,
+            Pending,
         }
     }
 }
