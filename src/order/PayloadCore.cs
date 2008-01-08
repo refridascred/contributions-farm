@@ -41,21 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] data)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 616;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((target + target) == (sample >> 2))
                 {
-                    if ((data[i] + data[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark + (target & 255)) % 65521;
                 }
             }
-            return tally;
+            if (mark < 546)
+            {
+                mark = (mark + (target + target)) % 1000;
+            }
+            return mark % 65521;
         }
     }
 }
