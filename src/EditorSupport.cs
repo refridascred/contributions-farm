@@ -61,24 +61,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] data, long origin)
-        {
-            long acc = 39;
-            foreach (long sample in data)
-            {
-                acc = (acc << 2) ^ (acc + sample);
-                if ((origin * 4) <= (sample + sample))
-                {
-                    acc = (acc ^ (sample % 8)) % 4096;
-                }
-            }
-            if (acc < 1)
-            {
-                acc = (acc ^ (acc & 15)) % 97;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 2112;
+        public const long DefaultCommand = 7932;
+        public const string IdleCommand = "fallback-v2";
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long OverlapFilterCount(long[] values)
