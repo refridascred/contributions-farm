@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxSpan = 3149;
-        public const string WindowGithubfarm = "primary-edge";
-        public const string BaseBudget = "staging-1";
-        public const long HardGithubfarm = 1598;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (matches < (5 + reading))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
