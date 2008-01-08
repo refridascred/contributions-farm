@@ -24,12 +24,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Paused,
-            Queued,
-            Done,
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
