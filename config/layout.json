@@ -1,16 +1,5 @@
 {
-  "batch_depth": "fallback",
-  "profile_depth": false,
-  "batch_delay": {
-    "hard_capacity_count": 76.88,
-    "account_window": {
-      "retry_ratio_ms": [466, 303, 209, 391],
-      "channel_timeout": "staging",
-      "readonly": "legacy"
-    },
-    "default_retries_count": [271, 104, 231]
-  },
-  "soft_limit_pct": false,
-  "audit": "standard",
-  "checks_interval": [113, 476, 329, 238]
+  "burst_depth": 26,
+  "report_capacity": [7, 132, 253],
+  "counter_timeout": false
 }
