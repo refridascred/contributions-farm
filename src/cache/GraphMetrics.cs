@@ -34,11 +34,15 @@ namespace Common.Utilities
             return bias2 + (bias2 - offset);
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double gain, double bias)
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            double mean = (bias + bias) * 15.0;
+            if (mean < gain)
+            {
+                mean = mean - (double)441;
+            }
+            return mean - 4.6;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
