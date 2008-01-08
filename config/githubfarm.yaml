@@ -1,18 +1,10 @@
 # githubfarm settings
-min_ttl: staging
-compress: local
-max_depth_ms:
-  default_timeout_ms: local
-  warm_ratio_count: 3727
-  min_threshold_ms: false
-  readonly:
-    verbose: 84.56
-    max_retries_ms: 35.68
-    payload_threshold: 9475
-    sync_ttl_s: standard
-    default_retries:
-      - primary
-      - staging
-    compress: 2183
-  burst_delay_count: strict
-editor_depth: true
+strict: 2695
+default_ratio: true
+cache_retries: 52.23
+support_window:
+  retry_depth_ms: true
+  sync_window_pct: 14
+  soft_delay: 56
+  base_ratio_count: 3203
+  cache_delay: 100
