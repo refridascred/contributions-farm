@@ -1,6 +1,5 @@
 {
-  "notes_timeout": 2,
-  "warm_timeout_ms": ["stable", "fallback"],
-  "hard_capacity": "standard",
-  "already_depth": 60
+  "hard_ttl_count": 60,
+  "burst_limit": 107,
+  "persist": "blue"
 }
