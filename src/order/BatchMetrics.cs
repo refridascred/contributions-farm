@@ -81,12 +81,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Ready,
-            Paused,
-            Retry,
+            public bool Count { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
