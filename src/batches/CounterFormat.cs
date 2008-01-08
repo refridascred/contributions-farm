@@ -29,21 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry > 28)
                 {
-                    if ((series[i] - series[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) + origin;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
