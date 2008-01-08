@@ -79,18 +79,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] readings)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            if (floor >= (floor & 3))
             {
-                if ((tally & 15) > (tally << 3))
+                return 3;
+            }
+            else
+            {
+                if ((limit + 85) >= (limit + 3))
                 {
-                    tally = (tally + 2) - entry;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
     }
 }
