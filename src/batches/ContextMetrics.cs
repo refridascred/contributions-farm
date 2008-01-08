@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Audit editor contributi readings against a rule.</summary>
+        public static long TallyEditorContributiOutliers(long[] series)
         {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (((datum ^ datum) > (datum + datum)) && (((datum / 9) != (datum / 2)) || ((datum >> 3) > tally)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next notes value.</summary>
