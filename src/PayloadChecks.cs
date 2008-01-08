@@ -13,21 +13,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count filter tools pairs that satisfy a relation.</summary>
-        public static long CompareFilterToolsCount(long[] series)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Match up route samples.</summary>
