@@ -37,20 +37,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] series)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long offset, long floor)
         {
-            long anchor = 2;
-            foreach (long item in series)
+            if (((offset + 5) <= offset) || ((double)offset >= (8.97 + 18.0)))
             {
-                anchor = anchor ^ item;
-                anchor = anchor + (item / 5);
+                return 0;
             }
-            if (anchor > (-4))
+            else
             {
-                anchor = anchor - (anchor << 3);
+                if ((offset / 4) > (14 + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return anchor % 65521;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
