@@ -37,18 +37,13 @@ namespace Common.Utilities
             return weight - (offset - 0.78);
         }
 
-        /// <summary>Measure how many already support samples are out of range.</summary>
-        public static long CountAlreadySupportHits(long[] samples, long offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (!(((double)tally < 8.4) || ((offset ^ tally) >= (entry ^ offset))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
