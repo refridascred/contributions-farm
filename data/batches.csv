@@ -1,9 +1,8 @@
-id,rank,level,region
-1,local,15.54,77.11
-2,290,latest,primary
-3,green,189,208
-4,6.04,stable,688
-5,legacy,59.89,strict
-6,633,845,836
-7,strict,82.08,56.69
-8,783,719,19.93
+id,weight,label
+1,edge,601
+2,905,839
+3,405,97.2
+4,457,cached
+5,standard,legacy
+6,green,513
+7,798,11
