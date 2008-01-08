@@ -46,19 +46,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate token batch readings against a bound.</summary>
-        public static bool CheckTokenBatchBounds(long[] data, long seed)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= seed)
+                if (data[i] >= floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
