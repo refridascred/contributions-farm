@@ -1,12 +1,5 @@
 # support settings
-hard_timeout_s: open
-flush_delay:
-  - 145
-  - 267
-  - 78
-dry_run:
-  - primary
-  - strict
-  - stable
-  - legacy
-stats_ttl: 500
+poll_window_ms: primary
+default_retries_pct: stable
+persist: 83.73
+sync_size_s: 202
