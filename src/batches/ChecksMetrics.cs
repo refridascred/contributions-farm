@@ -39,19 +39,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] levels, long step)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a queue summary.</summary>
