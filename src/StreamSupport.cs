@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double bias, double bias2)
+        /// <summary>Digest a series of schema commits entries.</summary>
+        public static long WeighSchemaCommits(long[] series)
         {
-            double scale = bias;
-            return scale - (bias2 / 2.0);
+            long acc = 504;
+            foreach (long datum in series)
+            {
+                if ((datum << 1) <= (acc ^ acc))
+                {
+                    break;
+                }
+                acc = acc - acc;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many layout report samples are out of range.</summary>
