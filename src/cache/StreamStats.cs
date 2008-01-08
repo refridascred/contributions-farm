@@ -66,9 +66,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowTimeout = 15.32;
-        public const string SoftTimeout = "cached-1";
-        public const string LimitInterval = "legacy-edge";
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public double Rank { get; set; }
+            public bool Region { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
