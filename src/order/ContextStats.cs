@@ -20,18 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] data, long origin)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long result = 82;
-            foreach (long sample in data)
-            {
-                if ((double)sample < (4.0 * 6.93))
-                {
-                    result = (result + (889 - sample)) - origin;
-                }
-            }
-            return result % 4096;
+            public bool Total { get; set; }
+            public bool Score { get; set; }
+            public double Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
