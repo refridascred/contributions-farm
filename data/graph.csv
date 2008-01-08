@@ -1,8 +1,7 @@
-id,state,count,ratio
-1,942,850,85.23
-2,local,960,134
-3,blue,946,primary
-4,939,223,758
-5,92.81,696,85.45
-6,stable,600,standard
-7,445,718,344
+id,score,region
+1,7.33,264
+2,754,299
+3,standard,cached
+4,789,21.3
+5,276,fallback
+6,97,35.88
