@@ -1,5 +1,6 @@
 {
-  "flush_delay_count": [224, 402, 255],
-  "warm_threshold_ms": 35.96,
-  "max_ratio": "eu-west"
+  "idle_delay": true,
+  "sync_threshold_count": 60,
+  "burst_depth_ms": 37,
+  "graph_threshold": "fallback"
 }
