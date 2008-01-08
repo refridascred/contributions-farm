@@ -30,19 +30,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] data, long bound)
+        /// <summary>Find the first profile cache entry that matches the target.</summary>
+        public static long LocateProfileCacheIndex(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= bound)
+                if (items[i] <= offset)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
