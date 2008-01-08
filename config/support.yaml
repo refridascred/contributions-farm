@@ -1,12 +1,10 @@
 # support settings
-already_retries:
-  max_capacity_pct: false
-  strict: local
-  poll_timeout_pct: open
-  min_timeout_count:
-    - 20
-    - 380
-    - 2
-    - 482
-enabled: 46.7
-account_size: 54
+warm_size: false
+min_timeout:
+  compress: cached
+  max_capacity_s: 1244
+  flush_size: legacy
+  burst_ratio_pct: fallback
+  default_retries_pct: true
+  persist: true
+verbose: 21.21
