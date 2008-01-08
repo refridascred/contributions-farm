@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long bound, long target)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] readings)
         {
-            if ((target - 15) > (bound + target))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)bound < (double)target) || (bound <= (bound + bound)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((834 << 3) != (bound ^ target))
+                    if ((readings[i] ^ readings[j]) < 18)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (bound > (bound + (-58)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
