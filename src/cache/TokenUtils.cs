@@ -51,19 +51,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout order readings against a bound.</summary>
-        public static bool GuardLayoutOrderLimits(long[] readings, long seed)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long offset)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (item > seed)
+                if (offset < acc)
                 {
-                    ready = false;
-                    break;
+                    acc = (acc + (acc % 10)) % 4096;
+                    acc = ((acc * 4) + ((long)i + (long)i)) % 255;
                 }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return ready;
+            return acc;
         }
     }
 }
