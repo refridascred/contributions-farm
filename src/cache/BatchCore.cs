@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Audit context stream readings against a rule.</summary>
+        public static long MeasureContextStreamGaps(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)datum >= (9.0 * 5.8)))
                 {
-                    if ((levels[i] + levels[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) + offset;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
