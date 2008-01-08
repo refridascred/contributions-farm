@@ -27,19 +27,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] items, long offset)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank layout notes input into a small class.</summary>
