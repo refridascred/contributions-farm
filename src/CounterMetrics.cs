@@ -23,19 +23,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] items)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] items)
         {
-            long total = 45;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((value & 1) != (total << 1)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    continue;
+                    if ((items[i] - items[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = total ^ (long)items.Length;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Adjust a editor reading.</summary>
