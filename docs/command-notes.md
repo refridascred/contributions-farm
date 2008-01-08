@@ -1,14 +1,10 @@
 # Command notes
 
-The route report groups every channel by commits.
-When a filter fails, the schema handler retries a few times before giving up.
-
-When a cluster fails, the report handler retries a few times before giving up.
-Keep batch and order names short and lowercase.
+The stream helpers are pure functions, so they are safe to call from any thread.
+Run the window check before changing any already limits.
 
 ## Guidelines
 
-- Keep graph values small
-- Document new checks fields
-- Validate cache input early
-- Prefer window defaults
+- Document new metric fields
+- Review session limits each release
+- Prefer account defaults
