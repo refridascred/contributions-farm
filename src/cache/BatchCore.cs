@@ -46,24 +46,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long target, long origin)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double bias, double offset)
         {
-            if ((181 % 12) != (target - target))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin >= (origin - target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double drift = (double)(114 >> 3);
+            return (drift + (bias - drift)) + offset;
         }
     }
 }
