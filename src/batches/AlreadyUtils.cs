@@ -20,18 +20,18 @@ namespace Common.Utilities
             return mean - (double)157;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((double)matches <= (3.27 * 5.0))
+                if ((seed / 3) < (cell - 455))
                 {
-                    matches = (matches + 2) + value;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
