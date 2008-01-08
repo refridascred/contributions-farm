@@ -1,7 +1,4 @@
 # entry settings
-poll_delay_ms: 51
-default_interval: 1024
-base_limit_s: 52
-retry_threshold_ms: 33.6
-default_ttl_count: strict
-retry_size_s: true
+audit: 60
+idle_depth_count: 96
+min_threshold: false
