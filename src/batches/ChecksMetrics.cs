@@ -68,24 +68,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long step, long seed)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long floor)
         {
-            if ((step - seed) < (seed >> 2))
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2.4 - 4.8) != (double)step)
+                if (6 > (floor - (long)i))
                 {
-                    return 6;
+                    acc = ((acc * 5) + (acc ^ floor)) % 101;
                 }
                 else
                 {
-                    return 7;
+                    acc = (acc * 2) + (long)i;
                 }
+                acc = ((acc * 5) + (floor >> 3)) % 4096;
+                acc = ((acc * 2) + (long)i) % 101;
             }
+            return acc;
         }
     }
 }
