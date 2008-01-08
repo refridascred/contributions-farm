@@ -1,5 +1,12 @@
 # support settings
-hard_threshold_ms: 100
-retry_threshold: fallback
-order_depth: 99
-layout_window: green
+already_retries:
+  max_capacity_pct: false
+  strict: local
+  poll_timeout_pct: open
+  min_timeout_count:
+    - 20
+    - 380
+    - 2
+    - 482
+enabled: 46.7
+account_size: 54
