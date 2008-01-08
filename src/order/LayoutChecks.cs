@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long StepEditor = 4830;
         public const long HardBudget = 5427;
 
-        /// <summary>Count metrics profile pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsProfileCount(long[] values)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item < target)
                 {
-                    if ((values[i] + values[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
