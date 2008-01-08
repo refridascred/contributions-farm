@@ -1,4 +1,7 @@
 # entry settings
-hard_limit: local
-hard_limit_count: 1
-metrics_depth: 33.1
+warm_ratio_pct: 32
+sync_delay_s: 61.6
+default_timeout_pct: 43
+readonly: 6600
+sync_retries_count: 82.49
+sync_ttl_s: 72
