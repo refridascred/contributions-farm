@@ -14,19 +14,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] samples, long offset)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
