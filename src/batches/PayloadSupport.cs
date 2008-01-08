@@ -14,21 +14,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] data)
+        /// <summary>Adjust a support buffer reading.</summary>
+        public static double BlendSupportBuffer(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = gain;
+            if (bias >= (bias - bias))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = bias + bias;
             }
-            return hits;
+            return bias + floor;
         }
 
         /// <summary>Hold a profile record.</summary>
