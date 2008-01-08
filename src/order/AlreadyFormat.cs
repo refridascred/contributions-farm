@@ -21,19 +21,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] series, long bound)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            New,
+            Locked,
         }
 
         /// <summary>Match up already samples.</summary>
