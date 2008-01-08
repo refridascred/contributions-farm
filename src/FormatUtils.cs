@@ -23,10 +23,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitScore = 3294;
-        public const string MaxCount = "latest-v2";
-        public const long WindowOrder = 2727;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] data, long step)
+        {
+            long result = 6;
+            foreach (long entry in data)
+            {
+                if (!((double)entry < (double)result))
+                {
+                    result = ((result << 3) ^ (step + result)) % 65521;
+                }
+                else
+                {
+                    result = result - result;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
