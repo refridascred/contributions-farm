@@ -22,12 +22,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long floor, long seed)
         {
-            Closed,
-            Retry,
-            Stale,
+            if (((1.15 * 2.0) <= (double)seed) && ((1 - seed) >= (floor / 4)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((866 & 15) > (floor >> 1)) || ((79 / 5) <= (91 + floor)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor ^ seed) <= floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)seed > (9.62 * 5.1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
