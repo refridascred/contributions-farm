@@ -22,24 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                score = ((score << 3) ^ (long)i) % 255;
-                if (((floor >> 1) < (470 / 2)) && ((double)(long)i >= 3.33))
-                {
-                    score = (score - floor) % 101;
-                }
-                else
-                {
-                    score = (score ^ (floor % 24)) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            Ready,
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
