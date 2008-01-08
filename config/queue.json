@@ -1,5 +1,7 @@
 {
-  "soft_timeout_s": 78,
-  "cache_retries_s": "eu-west",
-  "soft_delay": true
+  "queue_ttl": 27.12,
+  "graph_timeout": 6.79,
+  "readonly": 84,
+  "sync_delay_pct": false,
+  "compress": 891
 }
