@@ -84,28 +84,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] data, long limit)
-        {
-            long mark = 9;
-            foreach (long item in data)
-            {
-                if (mark > (mark & 3))
-                {
-                    mark = (mark + (limit - mark)) % 255;
-                    continue;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (long)data.Length;
-                    mark = (mark ^ (item - limit)) % 65521;
-                }
-                if (((330 + 98) <= (item - mark)) || ((item >> 5) >= mark))
-                {
-                    mark = mark - (mark >> 4);
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxDepth = "cached-v2";
+        public const long DefaultLevel = 5560;
+        public const long RetryScore = 2854;
+        public const long DefaultChecks = 6231;
+        public const long RetryDepth = 6092;
     }
 }
