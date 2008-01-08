@@ -41,18 +41,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] items, long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long mix = 0;
+            foreach (long sample in levels)
             {
-                if ((sample + seed) != ((long)items.Length << 1))
+                mix = (mix + (mix ^ mix)) % 1000;
+                if (267 >= mix)
                 {
-                    seen = seen + 3;
+                    mix = ((mix << 3) ^ sample) % 65521;
+                }
+                if ((mix << 2) < ((-583) % 100))
+                {
+                    mix = mix - (long)levels.Length;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
