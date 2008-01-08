@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Validate farm notes readings against a bound.</summary>
+        public static bool VerifyFarmNotesRange(long[] readings, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (!((0 + (-6)) > ((long)i % 8)))
+                if (sample != seed)
                 {
-                    result = ((result << 2) ^ ((long)i + seed)) % 1000;
+                    ready = false;
+                    break;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Describe the editor phase values.</summary>
