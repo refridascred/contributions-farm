@@ -23,26 +23,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] data)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long mix = -8;
-            foreach (long datum in data)
-            {
-                if ((14.0 + 7.6) < (double)mix)
-                {
-                    mix = mix - datum;
-                }
-                else
-                {
-                    mix = (mix + (mix % 3)) % 97;
-                }
-            }
-            if (mix > 77)
-            {
-                mix = (mix ^ (85 & 3)) % 1000;
-            }
-            return mix % 1000;
+            Locked,
+            Failed,
+            Retry,
+            Closed,
         }
 
         /// <summary>Audit notes route readings against a rule.</summary>
