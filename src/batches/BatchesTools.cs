@@ -17,11 +17,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchBudget = "staging";
-        public const long MaxSpan = 177;
-        public const long HardWidth = 1749;
-        public const long LimitScore = 1520;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
