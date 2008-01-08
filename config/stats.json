@@ -1,12 +1,5 @@
 {
-  "soft_timeout": {
-    "tools_ratio": "local",
-    "idle_threshold": 85.84,
-    "retry_delay": "stable"
-  },
-  "dry_run": 7910,
-  "warm_window_pct": "primary",
-  "editor_ttl": 7048,
-  "max_ttl_pct": ["strict", "eu-west", "blue", "strict"],
-  "warm_depth_pct": "blue"
+  "session_window": 7.29,
+  "sync_retries_count": 31,
+  "metric_retries": 9618
 }
