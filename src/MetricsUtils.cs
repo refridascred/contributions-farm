@@ -34,21 +34,22 @@ namespace Common.Utilities
         public const string IdleLevel = "latest-1";
         public const long WindowInterval = 9953;
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] readings)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = -2;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)cell < (double)(-26)) && ((848 % 3) == (limit % 5)))
                 {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total * 5) + cell) % 97;
                 }
             }
-            return matches;
+            if (total > 761)
+            {
+                total = ((total * 4) + total) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Compare every pair of command queue readings.</summary>
