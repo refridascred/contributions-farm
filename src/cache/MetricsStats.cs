@@ -46,17 +46,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] readings, long origin)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
