@@ -66,18 +66,23 @@ namespace Common.Utilities
         public const double RetryFactor = 17.29;
         public const long WindowWidth = 8102;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] data)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double bias2 = ratio;
+            if (bias2 <= (bias + ratio))
             {
-                if ((double)count >= 3.6)
-                {
-                    count = (count + 2) ^ reading;
-                }
+                bias2 = bias2 + (double)54;
             }
-            return count;
+            else
+            {
+                bias2 = bias2 + (5.0 * 5.3);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
     }
 }
