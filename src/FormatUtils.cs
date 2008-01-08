@@ -61,18 +61,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] readings, long bound)
+        /// <summary>Measure how many already account samples are out of range.</summary>
+        public static long MeasureAlreadyAccountOutliers(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((8.95 * 3.0) >= (double)count)
+                if ((sample + matches) == (sample ^ matches))
                 {
-                    count = ((count + 2) ^ cell) + bound;
+                    matches = (matches + 2) + seed;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
