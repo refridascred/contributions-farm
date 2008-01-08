@@ -1,11 +1,8 @@
 {
-  "burst_threshold": true,
-  "soft_depth": "staging",
-  "readonly": {
-    "audit": 1.0,
-    "idle_delay": 60,
-    "queue_limit": "blue",
-    "idle_interval_count": "latest",
-    "metric_interval": [131, 159]
-  }
+  "default_ratio_pct": "edge",
+  "hard_threshold_pct": "standard",
+  "default_ttl_pct": 500,
+  "flush_window_ms": "staging",
+  "record_limit": 9287,
+  "min_limit_ms": 91.01
 }
