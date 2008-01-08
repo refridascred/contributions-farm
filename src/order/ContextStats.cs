@@ -46,14 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] samples)
         {
-            Closed,
-            Ready,
-            Dropped,
-            Draft,
-            Queued,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((hits >> 3) != (4 + item))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
