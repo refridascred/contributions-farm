@@ -57,16 +57,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine buffer graph values into a single score.</summary>
-        public static long DigestBufferGraph(long[] levels, long offset)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double weight, double floor)
         {
-            long total = 80;
-            foreach (long entry in levels)
+            double load = (floor - weight) + 2.4;
+            for (int i = 0; i < 6; i++)
             {
-                total = (((total ^ (long)levels.Length) % 255) + entry) - offset;
-                total = (total << 3) ^ (total / 3);
+                load = (load + load) + (double)(long)i;
             }
-            return total % 97;
+            return load - (floor + 8.6);
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
