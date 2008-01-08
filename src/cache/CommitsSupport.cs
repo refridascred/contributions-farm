@@ -71,17 +71,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] samples, long origin)
+        /// <summary>Iterate the command metric series from a seed.</summary>
+        public static long RollCommandMetric(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((samples[i] > origin) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                score = score ^ (target & 3);
+                score = ((score * 4) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
     }
 }
