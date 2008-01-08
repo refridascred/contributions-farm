@@ -14,21 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] samples)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 849;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item >= (item << 2))
                 {
-                    if ((samples[i] - samples[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = total + (347 >> 4);
                 }
+                total = (total + (total ^ item)) % 97;
             }
-            return matches;
+            return total % 4096;
         }
 
         /// <summary>Hold a schema options.</summary>
