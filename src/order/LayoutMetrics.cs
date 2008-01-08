@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (((double)tally < (7.2 + 7.5)) || ((double)cell < (6.0 + 3.33)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetrySize = "local-edge";
+        public const double RetryCluster = 47.29;
+        public const double StepCluster = 61.69;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TotalMetric(long[] values, long origin)
