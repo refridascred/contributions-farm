@@ -52,10 +52,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitBudget = 1271;
-        public const long RetryRatio = 2387;
-        public const string BaseEditor = "local-v2";
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] data, long seed)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (9 < seen)
+                {
+                    seen = ((seen + 3) - value) - seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long FindClusterIndex(long[] values, long limit)
