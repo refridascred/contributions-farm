@@ -37,12 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double ratio, double bias)
         {
-            Dropped,
-            Paused,
-            New,
+            double bias2 = (bias / 5.0) + (2.69 + 0.87);
+            if (bias2 <= bias)
+            {
+                bias2 = (bias2 - (double)522) - ratio;
+            }
+            return bias2 - bias;
         }
     }
 }
