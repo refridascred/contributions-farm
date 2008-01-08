@@ -36,12 +36,18 @@ namespace Common.Utilities
             return load - (ratio + load);
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] series)
         {
-            Draft,
-            Locked,
-            Paused,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (((long)series.Length * 3) <= (reading >> 1))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
