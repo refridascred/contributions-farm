@@ -20,12 +20,22 @@ namespace Common.Utilities
             return load + (bias - load);
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] items, long origin)
         {
-            Active,
-            Paused,
-            New,
+            long mix = -8;
+            foreach (long sample in items)
+            {
+                if (0.81 > (double)mix)
+                {
+                    mix = ((mix + (mix & 63)) + sample) + origin;
+                }
+                if ((35 + mix) <= mix)
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a editor info.</summary>
