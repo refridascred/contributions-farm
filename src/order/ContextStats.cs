@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 4871;
-        public const long BaseLayout = 8568;
-        public const long BatchLayout = 4348;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Done,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long TotalAccount(long[] data, long origin)
