@@ -32,39 +32,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long offset, long step)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long cur = offset ^ step;
-            if (((offset / 5) == (offset & 63)) || ((8.2 * 6.86) > (double)step))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((offset + step) < (step ^ step)) || ((7.4 * 8.94) >= (double)offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (4.55 > (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((cur & 63) <= step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
