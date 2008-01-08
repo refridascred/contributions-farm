@@ -1,6 +1,7 @@
-id,ratio,weight,active,count
-1,683,721,401,strict
-2,20.35,39.21,17.55,10.06
-3,74.71,92.17,24.28,69.23
-4,9.4,406,edge,open
-5,9.22,fallback,851,29.58
+id,state,region,count
+1,staging,open,903
+2,staging,21.05,122
+3,434,44.11,standard
+4,27,primary,167
+5,565,4.14,open
+6,eu-west,13.31,local
