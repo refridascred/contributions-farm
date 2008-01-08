@@ -60,22 +60,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] readings, long step)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] readings, long bound)
         {
-            long carry = 719;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if ((step >> 4) != (value + carry))
+                if (reading >= bound)
                 {
-                    carry = ((carry * 4) + (carry + step)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            if (carry < 91)
-            {
-                carry = carry + (step - step);
-            }
-            return carry;
+            return found;
         }
     }
 }
