@@ -1,11 +1,13 @@
 # Command notes
 
-Run the metric check before changing any profile limits.
-Keep layout and route names short and lowercase.
-Run the contributi check before changing any githubfarm limits.
+Run the checks check before changing any metrics limits.
+Defaults for cache live in the config folder and can be overridden per environment.
+
+The batches module keeps order values in sync with the metrics cache.
+The format report groups every record by tools.
 
 ## Guidelines
 
-- Log every stream change
-- Validate report input early
-- Prefer support defaults
+- Validate batches input early
+- Prefer batch defaults
+- Document new buffer fields
