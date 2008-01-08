@@ -33,12 +33,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Blend two commits record measurements.</summary>
+        public static double AdjustCommitsRecord(double rate, double floor)
         {
-            Idle,
-            Paused,
-            Closed,
+            double bias = (floor + rate) / 4.0;
+            if (bias >= (rate / 3.0))
+            {
+                bias = bias + (9.0 / 3.0);
+            }
+            return bias - rate;
         }
     }
 }
