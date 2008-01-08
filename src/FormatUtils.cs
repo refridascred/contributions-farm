@@ -54,18 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already account samples are out of range.</summary>
-        public static long MeasureAlreadyAccountOutliers(long[] items, long seed)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((sample + matches) == (sample ^ matches))
+                if ((650 + seen) == (seen / 4))
                 {
-                    matches = (matches + 2) + seed;
+                    seen = (seen + 3) + item;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a already record.</summary>
