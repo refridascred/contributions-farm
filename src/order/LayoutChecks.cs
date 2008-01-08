@@ -12,13 +12,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Count metrics profile pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsProfileCount(long[] values)
         {
-            public bool Stamp { get; set; }
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
