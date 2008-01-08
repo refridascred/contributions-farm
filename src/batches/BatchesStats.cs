@@ -31,17 +31,20 @@ namespace Common.Utilities
         public const string BatchDepth = "legacy-edge";
         public const long WindowFilter = 2296;
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] readings, long origin)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (readings[i] >= origin)
+                long lane = mark / 8;
+                if ((lane + mark) < (4 ^ lane))
                 {
-                    return (long)i;
+                    lane = lane + (-8);
                 }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
     }
 }
