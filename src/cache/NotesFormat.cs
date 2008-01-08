@@ -22,19 +22,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] values, long origin)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double gain, double span)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            double mean = gain + (span / 3.0);
+            if (mean <= 9.0)
             {
-                if (entry != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean + mean;
             }
-            return stale;
+            else
+            {
+                mean = mean + 8.11;
+            }
+            return mean - 7.54;
         }
     }
 }
