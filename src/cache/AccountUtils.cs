@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] values, long target)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] data, long bound)
         {
-            long state = 29;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long item in data)
             {
-                state = ((((state << 3) ^ 55) % 101) ^ datum) + target;
+                if (item >= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
