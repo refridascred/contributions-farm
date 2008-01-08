@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetrySize = "local-edge";
-        public const double RetryCluster = 47.29;
-        public const double StepCluster = 61.69;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long floor, long seed)
+        {
+            if ((seed / 5) == (seed + seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((seed - floor) < (39 - floor)) || ((57 - seed) < (floor % 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (seed <= floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long SoftPayload = 6391;
