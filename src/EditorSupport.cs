@@ -47,10 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 2112;
-        public const long DefaultCommand = 7932;
-        public const string IdleCommand = "fallback-v2";
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
+        {
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Digest a series of batches token entries.</summary>
         public static long TotalBatchesToken(long[] data, long target)
