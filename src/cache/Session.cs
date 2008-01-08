@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] items, long target)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long floor)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell != target)
+                if ((carry & 255) != (floor >> 4))
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry << 2) ^ ((long)i >> 1)) % 101;
                 }
+                else
+                {
+                    carry = (carry * 4) + 46;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
