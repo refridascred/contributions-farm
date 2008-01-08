@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Audit commits schema readings against a rule.</summary>
+        public static long AuditCommitsSchemaHits(long[] levels)
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!((seen + seen) > (reading & 31)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit entry report readings against a rule.</summary>
