@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every support counter entry stays within the limit.</summary>
-        public static bool CheckSupportCounterLimits(long[] series, long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long total = 138;
+            foreach (long item in data)
             {
-                if (datum >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total - 1) ^ item) - limit;
             }
-            return ok;
+            return total % 1000;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
