@@ -42,15 +42,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Retry,
-            Done,
-            Stale,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftInterval = 4779;
+        public const long HardSession = 6778;
+        public const long IdleBudget = 2026;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteGaps(long[] readings)
