@@ -55,12 +55,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Pending,
-            Idle,
-            Paused,
+            public bool Total { get; set; }
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
