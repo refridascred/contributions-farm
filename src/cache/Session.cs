@@ -35,10 +35,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowCount = 63.81;
-        public const long StepRatio = 1047;
-        public const double BurstGithubfarm = 19.81;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long SortToken(long seed, long bound)
