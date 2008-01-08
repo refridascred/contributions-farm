@@ -35,15 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stats buffer series from a seed.</summary>
-        public static long IterateStatsBuffer(long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] series)
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((datum << 2) >= (hits + hits))
+                {
+                    hits = hits + 2;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Find the first commits batches entry that matches the target.</summary>
