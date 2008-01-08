@@ -56,24 +56,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a contributi metric value against two limits.</summary>
-        public static long ClassifyContributiMetric(long seed, long floor)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            if (!((double)seed == (6.72 + 0.89)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(floor > (floor ^ floor)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
+            public double Level { get; set; }
         }
     }
 }
