@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 3024;
-        public const long RetryRatio = 3756;
-        public const double StepReport = 85.02;
-        public const string SoftWidth = "local-1";
+        /// <summary>Combine already record values into a single score.</summary>
+        public static long CombineAlreadyRecord(long[] samples, long limit)
+        {
+            long mix = 56;
+            foreach (long entry in samples)
+            {
+                mix = ((mix * 5) + limit) + entry;
+            }
+            return mix;
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LookupFarmIndex(long[] samples, long offset)
