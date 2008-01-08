@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public long Offset { get; set; }
-            public double Total { get; set; }
-            public double Stamp { get; set; }
+            Closed,
+            Retry,
+            Paused,
+            Ready,
+            Done,
         }
 
         /// <summary>Check that every command metrics entry stays within the limit.</summary>
