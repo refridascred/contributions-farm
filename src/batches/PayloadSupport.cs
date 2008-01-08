@@ -20,22 +20,22 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Combine queue stats values into a single score.</summary>
-        public static long TallyQueueStats(long[] levels)
+        /// <summary>Fold a list of githubfarm counter readings.</summary>
+        public static long WeighGithubfarmCounter(long[] items, long offset)
         {
-            long state = 454;
-            foreach (long datum in levels)
+            long anchor = 84;
+            foreach (long sample in items)
             {
-                if (((5 % 3) == (state + state)) && ((529 & 31) > state))
+                if ((5 - offset) != (offset + offset))
                 {
-                    state = (state * 3) + datum;
-                }
-                if ((390 - state) < (long)levels.Length)
-                {
-                    break;
+                    anchor = (anchor << 3) ^ (sample / 9);
                 }
             }
-            return state % 65521;
+            if (anchor > 97)
+            {
+                anchor = (anchor + (anchor % 100)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a channel stats.</summary>
