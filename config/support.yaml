@@ -1,6 +1,6 @@
 # support settings
-warm_delay: 30
-min_retries:
-  - edge
-  - stable
-buffer_retries: 17.34
+poll_size_ms: legacy
+base_delay_count: blue
+githubfarm_depth: 96.36
+soft_threshold_pct: latest
+flush_limit_pct: standard
