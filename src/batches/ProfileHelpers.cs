@@ -78,17 +78,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] series, long target)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
