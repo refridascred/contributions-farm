@@ -1,7 +1,8 @@
 {
-  "retry_timeout_pct": 56,
-  "dry_run": 14,
-  "strict": "edge",
-  "base_capacity_ms": 29.27,
-  "schema_limit": 405
+  "strict": 2811,
+  "metrics_size": false,
+  "compress": 3,
+  "burst_threshold_count": "legacy",
+  "session_depth": "fallback",
+  "token_limit": 6552
 }
