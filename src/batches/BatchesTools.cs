@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many buffer metric samples are out of range.</summary>
-        public static long CountBufferMetricHits(long[] data, long target)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((datum >> 1) != (target + target))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Project the next notes value.</summary>
