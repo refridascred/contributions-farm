@@ -27,18 +27,13 @@ namespace Common.Utilities
         public const string IdleTimeout = "cached";
         public const long StepFactor = 6188;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] readings, long origin)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (reading < (2 % 3))
-                {
-                    seen = (seen + 3) + origin;
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
