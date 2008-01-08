@@ -1,18 +1,5 @@
 {
-  "queue_capacity": "staging",
-  "flush_retries_count": {
-    "report_limit": 24,
-    "flush_window": 61,
-    "burst_delay": "legacy",
-    "dry_run": 0.59
-  },
-  "session_delay": 60.76,
-  "sync_ratio_s": {
-    "cache_window_pct": "latest",
-    "retry_timeout_s": "local",
-    "cache_delay": "open",
-    "filter_capacity": "cached",
-    "cache_size_count": "strict"
-  },
-  "idle_ttl": 20
+  "soft_delay_pct": "edge",
+  "flush_delay": "primary",
+  "strict": ["open", "eu-west", "stable"]
 }
