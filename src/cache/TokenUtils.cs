@@ -28,12 +28,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] items)
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public double Weight { get; set; }
+            long state = 82;
+            foreach (long entry in items)
+            {
+                state = (state * 3) + (entry + state);
+                state = state ^ (state * 2);
+            }
+            return state % 97;
         }
     }
 }
