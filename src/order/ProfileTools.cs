@@ -22,13 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public double Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a commits header.</summary>
