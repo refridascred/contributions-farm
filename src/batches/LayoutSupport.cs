@@ -19,10 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinBudget = 7550;
-        public const long CacheScore = 7774;
-        public const long HardScore = 6298;
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double scale, double floor)
+        {
+            double drift = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + scale) + (double)(long)i;
+            }
+            return drift - (double)(-72);
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long WindowSpan = 4522;
