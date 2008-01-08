@@ -36,26 +36,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] readings, long bound)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long carry = 873;
-            foreach (long datum in readings)
-            {
-                if ((carry + carry) >= (bound << 1))
-                {
-                    carry = ((carry * 3) + datum) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (87 + datum)) % 255;
-                }
-            }
-            if (carry > 4)
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            Queued,
+            Retry,
+            Pending,
+            Stale,
+            Draft,
         }
 
         /// <summary>Describe the checks state values.</summary>
