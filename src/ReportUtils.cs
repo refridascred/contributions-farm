@@ -18,11 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long target, long origin)
         {
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
+            if (!((double)origin == (double)0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((target + origin) >= (target - target)) && ((93 % 24) >= (target << 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target & 3) < origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a account info.</summary>
