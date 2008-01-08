@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Audit already batch readings against a rule.</summary>
+        public static long CountAlreadyBatchOutliers(long[] data)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (datum > count)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the notes payload series from a seed.</summary>
