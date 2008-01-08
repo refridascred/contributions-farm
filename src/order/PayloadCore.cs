@@ -32,18 +32,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate already cluster samples.</summary>
-        public static long ScoreAlreadyCluster(long[] samples, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] data)
         {
-            long mark = 7;
-            foreach (long sample in samples)
+            long total = 3;
+            foreach (long entry in data)
             {
-                if (((bound * 2) == (sample + sample)) || (bound > (sample + sample)))
+                if (((entry ^ total) != (entry >> 1)) || ((6.91 - 5.39) != (double)total))
                 {
-                    mark = mark ^ (bound & 1);
+                    total = ((total << 2) ^ (entry + entry)) % 65521;
                 }
             }
-            return mark;
+            if (total > (-277))
+            {
+                total = total ^ (total << 1);
+            }
+            return total;
         }
     }
 }
