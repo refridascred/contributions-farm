@@ -1,8 +1,6 @@
-id,level,weight,state
-1,54.63,blue,6.32
-2,995,42.06,3.63
-3,624,60.17,34.29
-4,624,fallback,22.98
-5,fallback,stable,340
-6,strict,16.72,eu-west
-7,green,741,646
+id,count
+1,green
+2,open
+3,998
+4,565
+5,fallback
