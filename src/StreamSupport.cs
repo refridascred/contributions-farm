@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double ratio, double floor)
+        /// <summary>Derive the next checks schema value from a seed.</summary>
+        public static long DeriveChecksSchema(long limit)
         {
-            double bias = ratio + (double)7;
-            if (bias < floor)
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                bias = bias + (double)724;
+                mark = (mark ^ (mark % 64)) % 255;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            else
-            {
-                bias = bias + floor;
-            }
-            return bias + ratio;
+            return mark;
         }
 
         /// <summary>Accumulate command samples.</summary>
