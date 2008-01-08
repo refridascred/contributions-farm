@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultInterval = 1786;
+        public const double SoftContext = 81.81;
+        public const double StepContext = 44.13;
+        public const long BatchContext = 9419;
+        public const long RetryContext = 8288;
 
         /// <summary>Match up layout samples.</summary>
         public static long PairLayoutCount(long[] data)
