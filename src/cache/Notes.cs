@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long step, long step2)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            if ((double)step < (5.8 / 6.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step << 3) > (step2 % 24))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Rank counter input into a small class.</summary>
