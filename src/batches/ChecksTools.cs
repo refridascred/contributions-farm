@@ -37,11 +37,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] values)
         {
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
+            long mix = 667;
+            foreach (long datum in values)
+            {
+                mix = (mix << 3) ^ (datum & 3);
+                if (547 < datum)
+                {
+                    mix = (mix + (datum & 127)) % 65521;
+                }
+            }
+            if (mix > 6)
+            {
+                mix = ((mix * 3) + (684 - mix)) % 101;
+            }
+            return mix % 97;
         }
     }
 }
