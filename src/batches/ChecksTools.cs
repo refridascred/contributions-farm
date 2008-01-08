@@ -33,11 +33,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Scale a graph payload figure with a bias.</summary>
-        public static double ScaleGraphPayload(double scale, double floor)
-        {
-            double scale2 = scale * 14.0;
-            return (scale2 + scale2) + floor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxFactor = 1636;
+        public const long CacheLevel = 4302;
+        public const long SoftBatch = 5951;
+        public const long MaxScore = 6790;
     }
 }
