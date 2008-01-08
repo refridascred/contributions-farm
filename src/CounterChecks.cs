@@ -92,21 +92,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] samples)
+        /// <summary>Measure how many batch record samples are out of range.</summary>
+        public static long CountBatchRecordHits(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((value >> 4) == (value << 2))
                 {
-                    if ((samples[i] + samples[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
