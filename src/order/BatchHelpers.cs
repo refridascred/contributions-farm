@@ -19,26 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate payload format samples.</summary>
-        public static long FoldPayloadFormat(long[] items)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] data, long bound)
         {
-            long mark = 299;
-            foreach (long reading in items)
+            long result = 886;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 4; i++)
+                if ((20.0 / 8.0) > (double)reading)
                 {
-                    mark = ((mark - ((long)i + mark)) % 97) ^ reading;
+                    result = (result + reading) - bound;
                 }
-                if ((double)mark != (4.1 - 6.0))
+                if (18 >= reading)
                 {
-                    mark = ((mark * 5) + (56 - 0)) % 97;
+                    break;
                 }
             }
-            if (mark > (-2))
+            if (result > 959)
             {
-                mark = ((mark << 2) ^ (mark / 3)) % 101;
+                result = (result - (result << 2)) % 97;
             }
-            return mark % 65521;
+            return result;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
