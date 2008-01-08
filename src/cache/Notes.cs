@@ -36,16 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long seed)
+        /// <summary>Find the first editor context entry that matches the target.</summary>
+        public static long SeekEditorContextIndex(long[] readings, long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor << 3) ^ seed;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
