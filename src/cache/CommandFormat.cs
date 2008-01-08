@@ -19,32 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a session commits value against two limits.</summary>
-        public static long ClassifySessionCommits(long bound, long origin)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] series)
         {
-            long bound2 = bound - origin;
-            if ((9.29 + 12.0) > (double)origin)
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((bound2 * 5) < (bound & 3)) || ((bound & 63) <= origin))
+                if ((double)hits < (0.09 * 15.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound2 - bound2) < (bound / 5)) || ((origin - bound) > (bound ^ bound2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = (hits + 3) ^ value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
