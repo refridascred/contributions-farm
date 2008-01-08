@@ -12,17 +12,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first support githubfarm entry that matches the target.</summary>
-        public static long LookupSupportGithubfarmIndex(long[] levels, long offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = -2;
+            foreach (long sample in series)
             {
-                if (levels[i] == offset)
+                if (sample <= (sample + sample))
                 {
-                    return (long)i;
+                    sum = ((sum * 3) + (sample * 2)) % 65521;
                 }
             }
-            return -1;
+            if (sum > 76)
+            {
+                sum = sum - (sum << 3);
+            }
+            return sum;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
