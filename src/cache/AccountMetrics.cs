@@ -19,11 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            public bool Level { get; set; }
-            public bool Total { get; set; }
+            public bool Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
