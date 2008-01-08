@@ -11,22 +11,14 @@ namespace Common.Utilities
         public const long RetryQueue = 3344;
         public const long BaseBudget = 8495;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] data, long step)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (step < (77 ^ sample))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Failed,
+            Closed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Hold a metrics info.</summary>
