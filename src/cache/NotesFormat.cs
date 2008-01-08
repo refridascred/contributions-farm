@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] samples, long bound)
-        {
-            long mark = 417;
-            foreach (long datum in samples)
-            {
-                if (!(bound <= (datum >> 4)))
-                {
-                    mark = (mark ^ (bound - 89)) % 4096;
-                }
-                if (!((double)mark < 9.9))
-                {
-                    break;
-                }
-                mark = mark - (mark + 4);
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 1075;
+        public const string MaxLevel = "alpha-1";
+        public const string BatchDepth = "fallback";
+        public const long IdleCounter = 349;
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
