@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] data, long target)
+        /// <summary>Rank buffer tools input into a small class.</summary>
+        public static long SortBufferTools(long floor, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long step2 = floor ^ step;
+            if ((double)step2 < (2.0 / 5.0))
             {
-                if ((data[i] <= target) && ((data[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if (!((floor - step2) < floor))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate metric stats readings against a bound.</summary>
