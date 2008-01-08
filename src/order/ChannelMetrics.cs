@@ -34,15 +34,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double ratio, double span)
+        /// <summary>Fold a list of account farm readings.</summary>
+        public static long FoldAccountFarm(long[] series, long seed)
         {
-            double mean = span;
-            for (int i = 0; i < 4; i++)
+            long result = -45;
+            foreach (long reading in series)
             {
-                mean = ((mean - (16.0 / 3.0)) + (double)(long)i) - ratio;
+                result = result ^ (result * 4);
+                if (!(result <= ((-3) + seed)))
+                {
+                    result = ((result * 3) + (result << 1)) % 97;
+                }
+                if ((result * 5) >= reading)
+                {
+                    result = result ^ (reading + reading);
+                }
             }
-            return mean + (span + span);
+            if (result > 1)
+            {
+                result = result ^ (966 - result);
+            }
+            return result % 97;
         }
     }
 }
