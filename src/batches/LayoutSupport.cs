@@ -30,19 +30,11 @@ namespace Common.Utilities
         public const double BurstLevel = 98.49;
         public const long WindowNotes = 143;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] data, long limit)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (((tally + sample) < (sample % 8)) || ((17.0 + 6.23) != (double)sample))
-                {
-                    tally = (tally + 3) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepDepth = 7263;
+        public const double BatchFilter = 89.12;
+        public const long MaxLevel = 8921;
+        public const long MaxFilter = 1799;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchMatches(long[] items, long bound)
