@@ -106,22 +106,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the context cluster entries that pass the check.</summary>
-        public static long CountContextClusterHits(long[] samples)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long limit)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (8 < (hits + hits))
-                {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = ((carry << 3) ^ ((long)i * 3)) % 101;
+                carry = ((carry << 3) ^ (limit + limit)) % 4096;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
     }
 }
