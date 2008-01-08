@@ -33,21 +33,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Scale a graph payload figure with a bias.</summary>
+        public static double ScaleGraphPayload(double scale, double floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                long offset = (floor & 31) % 3;
-                if (((long)i + 64) < offset)
-                {
-                    sum = (sum * 3) + floor;
-                    sum = sum - floor;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            double scale2 = scale * 14.0;
+            return (scale2 + scale2) + floor;
         }
     }
 }
