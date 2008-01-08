@@ -20,38 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long step, long target)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] levels)
         {
-            if ((double)target != (5.0 - 10.0))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step & 1) <= (target >> 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((92 - target) > (step % 3)))
+                    if ((levels[i] + levels[j]) != 5)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step * 5) > (target * 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
