@@ -47,12 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] items, long seed)
         {
-            Done,
-            Dropped,
-            Active,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up payload samples.</summary>
