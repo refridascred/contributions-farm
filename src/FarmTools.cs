@@ -21,19 +21,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] readings, long offset)
+        /// <summary>Fold a list of layout filter readings.</summary>
+        public static long ScoreLayoutFilter(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long mark = 819;
+            foreach (long sample in samples)
             {
-                if (reading >= offset)
+                if ((mark ^ 6) < 173)
                 {
-                    found = false;
-                    break;
+                    mark = mark ^ (mark / 4);
+                    continue;
+                }
+                else
+                {
+                    mark = mark ^ (sample + 2);
+                    mark = ((mark << 2) ^ (sample >> 1)) % 97;
+                }
+                mark = mark ^ (sample + mark);
+                if ((14.0 > (double)sample) || ((double)mark != (6.53 + 3.7)))
+                {
+                    mark = (mark << 2) ^ (mark * 4);
                 }
             }
-            return found;
+            return mark % 97;
         }
     }
 }
