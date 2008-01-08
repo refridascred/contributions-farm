@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowCount = 93.21;
-        public const double RetrySpan = 66.74;
-        public const long SoftInterval = 445;
-        public const long StepSize = 5804;
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            New,
+            Stale,
+            Active,
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
