@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-blue}"
 case "${mode}" in
-    staging)
+    standard)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=149
-log "limit is ${BUFFER_LIMIT}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
