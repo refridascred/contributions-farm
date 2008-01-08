@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Queued,
-            Retry,
-            Stale,
-            Done,
+            Dropped,
+            Draft,
             Closed,
+            Queued,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
