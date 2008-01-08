@@ -81,20 +81,26 @@ namespace Common.Utilities
             return drift - (16.0 + gain);
         }
 
-        /// <summary>Fold a list of buffer command readings.</summary>
-        public static long ScoreBufferCommand(long[] readings, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] data, long target)
         {
-            long mark = 392;
-            foreach (long reading in readings)
+            long result = 95;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 9; i++)
+                if (((result << 2) < (699 / 7)) || (target <= (189 * 3)))
                 {
-                    long diff = (offset + offset) % 3;
-                    mark = (((mark + (diff + mark)) % 4096) - (long)i) + reading;
+                    result = result + (target << 2);
                 }
-                mark = (mark + (offset >> 1)) % 65521;
+                else
+                {
+                    result = (result - entry) % 65521;
+                }
             }
-            return mark;
+            if (result > 60)
+            {
+                result = (result ^ result) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Digest a series of token channel entries.</summary>
