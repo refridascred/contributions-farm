@@ -11,21 +11,14 @@ namespace Common.Utilities
         public const long HardScore = 508;
         public const long MinStream = 6176;
 
-        /// <summary>Compare every pair of filter window readings.</summary>
-        public static long CompareFilterWindowCount(long[] samples)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Synced,
+            Draft,
+            Dropped,
+            Paused,
+            Queued,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
