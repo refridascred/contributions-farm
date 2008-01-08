@@ -44,38 +44,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a stream profile value against two limits.</summary>
-        public static long BucketStreamProfile(long seed, long limit)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] samples)
         {
-            if ((seed % 10) >= 16)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit < (limit + limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((1 >> 3) == (187 + limit))
+                    if ((samples[i] + samples[j]) != 11)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((limit % 12) != (seed - limit)) || ((limit + seed) > limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a already info.</summary>
