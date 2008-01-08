@@ -46,20 +46,19 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] samples, long target)
         {
-            long total = -78;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                for (int i = 0; i < 9; i++)
+                if (sample > target)
                 {
-                    total = ((total ^ (reading + total)) % 1000) ^ (long)i;
+                    valid = false;
+                    break;
                 }
-                total = ((total * 5) + total) % 65521;
-                total = total + total;
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
