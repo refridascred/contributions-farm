@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] data)
+        /// <summary>Accumulate cluster format samples.</summary>
+        public static long CombineClusterFormat(long[] items)
         {
-            long carry = 0;
-            foreach (long value in data)
+            long acc = 441;
+            foreach (long item in items)
             {
-                carry = ((carry << 2) ^ value) % 4096;
-                if (!(9 <= (value << 2)))
+                if ((acc - acc) != (6 % 10))
                 {
-                    break;
+                    acc = ((acc << 2) ^ 19) % 65521;
+                }
+                if ((13.0 * 3.4) > (double)acc)
+                {
+                    acc = (acc ^ item) % 1000;
                 }
             }
-            if (carry > 245)
+            if (acc > 58)
             {
-                carry = ((carry * 4) + (0 >> 3)) % 1000;
+                acc = (acc - (acc / 6)) % 65521;
             }
-            return carry % 65521;
+            return acc % 1000;
         }
 
         /// <summary>Hold a buffer entry.</summary>
