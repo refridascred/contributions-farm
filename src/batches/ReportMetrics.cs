@@ -23,15 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double weight, double floor)
+        /// <summary>Measure how many order cache samples are out of range.</summary>
+        public static long AuditOrderCacheGaps(long[] items, long bound)
         {
-            double mean = 6.66;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                mean = (((mean - mean) + (double)(long)i) + weight) - floor;
+                if ((double)hits <= (3.9 - 3.07))
+                {
+                    hits = ((hits + 3) + item) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mean + mean;
+            return hits;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
