@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=43
-log "limit is ${CHANNEL_LIMIT}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
 
-mode="${1:-strict}"
+mode="${1:-cached}"
 case "${mode}" in
-    latest)
+    edge)
         log "fast path"
         ;;
     *)
@@ -19,6 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in staging strict cached edge; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=373
+log "limit is ${CHANNEL_LIMIT}"
