@@ -37,12 +37,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public string Weight { get; set; } = "";
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitRatio = "standard-1";
+        public const double IdleDepth = 36.59;
+        public const double LimitSpan = 16.29;
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
