@@ -44,21 +44,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count contributi stats pairs that satisfy a relation.</summary>
-        public static long MatchContributiStatsCount(long[] readings)
+        /// <summary>Grade a stream profile value against two limits.</summary>
+        public static long BucketStreamProfile(long seed, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((seed % 10) >= 16)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (limit < (limit + limit))
                 {
-                    if ((readings[i] ^ readings[j]) > 12)
+                    return 2;
+                }
+                else
+                {
+                    if ((1 >> 3) == (187 + limit))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((limit % 12) != (seed - limit)) || ((limit + seed) > limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
