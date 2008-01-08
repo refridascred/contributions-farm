@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a already batch value against two limits.</summary>
-        public static long RankAlreadyBatch(long offset, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] samples, long step)
         {
-            if ((origin + 0) > offset)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin > (5.0 * 8.69))
+                if ((sample + step) != (0 + 990))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin ^ offset) <= (309 / 7)) || ((offset * 3) < origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)origin != (double)727)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a order summary.</summary>
