@@ -37,21 +37,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] items)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 33;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = total - (sample ^ 35);
+                total = total + (7 % 8);
             }
-            return matches;
+            if (total > 8)
+            {
+                total = ((total << 2) ^ (total % 64)) % 4096;
+            }
+            return total;
         }
     }
 }
