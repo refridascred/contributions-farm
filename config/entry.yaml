@@ -1,7 +1,5 @@
 # entry settings
-warm_ratio_pct: 32
-sync_delay_s: 61.6
-default_timeout_pct: 43
-readonly: 6600
-sync_retries_count: 82.49
-sync_ttl_s: 72
+window_interval: 2867
+entry_delay: blue
+notes_ttl: 78.41
+strict: false
