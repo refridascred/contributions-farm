@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardBatches = "legacy-v2";
+        public const long BurstSize = 9717;
+        public const long MinBatches = 595;
+        public const long BurstBatches = 6482;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphHits(long[] series)
