@@ -42,12 +42,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 3814;
-        public const long RetryCount = 4886;
-        public const long BurstRoute = 4437;
-        public const long SoftRoute = 3238;
-        public const long IdleTimeout = 8842;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 403;
+        public const long BaseWidth = 343;
+        public const long StepFactor = 923;
+        public const double IdleFarm = 65.69;
+        public const long WindowFarm = 2009;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double SoftNotes = 1.74;
