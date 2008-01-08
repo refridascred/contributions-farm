@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a githubfarm payload sample.</summary>
-        public static long SeekGithubfarmPayloadIndex(long[] values, long origin)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (values[i] < origin)
+                if (reading > floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
