@@ -1,7 +1,5 @@
 {
-  "record_window": "local",
-  "retry_depth_ms": ["green", "local", "stable"],
-  "batches_window": 81.09,
-  "account_depth": 23.48,
-  "burst_interval": "latest"
+  "burst_retries_ms": 89.29,
+  "hard_size_ms": 50.64,
+  "enabled": 60
 }
