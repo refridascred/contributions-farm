@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] values)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (value < matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Done,
+            Dropped,
+            Locked,
+            Ready,
+            Active,
         }
 
         /// <summary>Match up tools samples.</summary>
