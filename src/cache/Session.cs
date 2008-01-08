@@ -21,16 +21,13 @@ namespace Common.Utilities
         public const string MaxLevel = "primary-1";
         public const double BatchLevel = 72.06;
 
-        /// <summary>Iterate the schema stats series from a seed.</summary>
-        public static long SeriesSchemaStats(long step)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long total = step;
-            for (int i = 0; i < 18; i++)
-            {
-                total = total ^ (total << 2);
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Queued,
+            Dropped,
+            Stale,
+            Idle,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
