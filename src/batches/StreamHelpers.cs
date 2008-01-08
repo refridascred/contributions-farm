@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Check that every contributi githubfarm entry stays within the limit.</summary>
+        public static bool GuardContributiGithubfarmLimits(long[] values, long target)
         {
-            Failed,
-            Synced,
-            Draft,
-            Dropped,
-            Active,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
