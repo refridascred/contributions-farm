@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a stats graph reading by value.</summary>
-        public static long SeekStatsGraphIndex(long[] readings, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (readings[i] < target)
+                if ((origin * 2) > (11 / 7))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + value;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Project the next filter value.</summary>
