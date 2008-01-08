@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first command account entry that matches the target.</summary>
-        public static long FindCommandAccountIndex(long[] data, long bound)
+        /// <summary>Fold a list of window schema readings.</summary>
+        public static long CombineWindowSchema(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 1;
+            foreach (long sample in series)
             {
-                if (data[i] >= bound)
+                if ((sample / 7) == (sample + sample))
                 {
-                    return (long)i;
+                    anchor = (anchor * 4) + (anchor - (-57));
+                }
+                if ((-3) <= (sample >> 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
