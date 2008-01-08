@@ -35,12 +35,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Dropped,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepCount = 113;
+        public const long MinMetric = 8037;
+        public const long MaxMetric = 6050;
+        public const string BurstWidth = "standard-1";
     }
 }
