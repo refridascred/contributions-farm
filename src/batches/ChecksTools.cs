@@ -24,19 +24,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] readings, long step)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((seen >> 3) <= (398 - 4))
-                {
-                    seen = ((seen + 2) ^ value) + step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryLayout = 82.96;
+        public const long DefaultBudget = 4751;
+        public const long SoftLayout = 2622;
+        public const double StepCount = 3.05;
+        public const long WindowLayout = 2565;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TotalChecks(long[] values)
