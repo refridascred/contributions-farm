@@ -63,17 +63,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] readings, long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] readings, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((readings[i] > seed) && ((readings[i] % 5) != 0))
+                if ((matches + matches) == (origin - matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
