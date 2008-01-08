@@ -51,22 +51,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                long slot = (limit << 2) * 4;
-                if ((double)(long)i == (8.8 + 5.0))
-                {
-                    sum = sum ^ (limit & 127);
-                    sum = (sum * 5) + ((long)i + slot);
-                }
-                sum = sum - (limit + sum);
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Region { get; set; }
+            public double Count { get; set; }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
