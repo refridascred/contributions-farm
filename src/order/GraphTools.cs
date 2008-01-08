@@ -61,17 +61,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseLayout = "strict-edge";
+        public const double DefaultScore = 72.5;
+        public const long CacheLayout = 4700;
     }
 }
