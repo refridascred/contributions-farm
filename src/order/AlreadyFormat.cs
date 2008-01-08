@@ -24,11 +24,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] data, long seed)
         {
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
+            long sum = 185;
+            foreach (long cell in data)
+            {
+                sum = ((sum - (seed % 10)) % 101) ^ cell;
+                sum = (sum ^ seed) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
