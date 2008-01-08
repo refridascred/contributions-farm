@@ -1,11 +1,6 @@
 # entry settings
-warm_limit_count: 84.34
-default_ttl:
-  command_threshold:
-    retry_window: 500
-    flush_delay_count: 93.8
-    cache_limit_s: edge
-  audit: latest
-  flush_threshold: 57
-  min_capacity_count: true
-enabled: 61
+idle_ratio_count: cached
+order_retries: standard
+readonly: edge
+min_ttl_pct: 6696
+soft_delay_s: 2473
