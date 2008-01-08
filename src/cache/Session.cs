@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of window schema readings.</summary>
-        public static long CombineWindowSchema(long[] series)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long anchor = 1;
-            foreach (long sample in series)
-            {
-                if ((sample / 7) == (sample + sample))
-                {
-                    anchor = (anchor * 4) + (anchor - (-57));
-                }
-                if ((-3) <= (sample >> 3))
-                {
-                    break;
-                }
-            }
-            return anchor % 97;
+            Paused,
+            Dropped,
+            Closed,
+            Queued,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
