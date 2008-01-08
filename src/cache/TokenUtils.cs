@@ -42,22 +42,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] series, long limit)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double scale = 2.06 * 10.0;
+            if (scale <= scale)
             {
-                if ((matches & 1) <= (limit ^ 1))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = (scale + (floor * 4.1)) - weight;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (double)9) + (double)(long)i;
+            }
+            return scale - floor;
         }
     }
 }
