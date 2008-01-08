@@ -42,16 +42,19 @@ namespace Common.Utilities
             return gain + (double)310;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long bound)
+        /// <summary>Check that every stream githubfarm entry stays within the limit.</summary>
+        public static bool ValidateStreamGithubfarmRange(long[] items, long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                total = (total + (total << 2)) % 255;
-                total = ((total * 4) + (long)i) % 4093;
+                if (reading >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
     }
 }
