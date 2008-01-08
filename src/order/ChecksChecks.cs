@@ -23,27 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] readings, long bound)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] items, long floor)
         {
-            long carry = 7;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (!(0.31 < (double)reading))
+                if (value > floor)
                 {
-                    carry = (carry << 3) ^ reading;
-                }
-                carry = carry + (bound - 0);
-                if ((71 & 31) > bound)
-                {
-                    carry = carry - reading;
+                    flag = false;
+                    break;
                 }
             }
-            if (carry > 55)
-            {
-                carry = (carry - (carry - carry)) % 4096;
-            }
-            return carry % 65521;
+            return flag;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
