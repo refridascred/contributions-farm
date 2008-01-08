@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Validate stream record readings against a bound.</summary>
+        public static bool ValidateStreamRecordRange(long[] data, long step)
         {
-            Pending,
-            Ready,
-            Closed,
-            Queued,
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
