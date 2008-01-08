@@ -69,23 +69,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] values, long floor)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((double)matches != (1.0 * 20.0))
-                {
-                    matches = ((matches + 2) ^ reading) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 8628;
+        public const long RetryWidth = 7434;
+        public const double SoftSpan = 15.86;
+        public const double RetryScore = 60.28;
+        public const long MaxCount = 973;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BatchStream = 9724;
