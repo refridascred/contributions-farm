@@ -29,32 +29,11 @@ namespace Common.Utilities
         public const string MaxLevel = "primary-1";
         public const double BatchLevel = 72.06;
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long floor, long limit)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double ratio, double offset)
         {
-            long prev = floor ^ limit;
-            if (!((limit % 24) != (prev - floor)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor & 3) >= (floor - 396))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((4.4 / 7.0) > (double)limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            double load = (offset + offset) + (double)2;
+            return load - (ratio + load);
         }
 
         /// <summary>Describe the layout level values.</summary>
