@@ -15,13 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] values, long offset)
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
