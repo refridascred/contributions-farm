@@ -1,12 +1,5 @@
 {
-  "stream_capacity": true,
-  "burst_window_s": 68.03,
-  "verbose": 85.3,
-  "compress": 181,
-  "audit": {
-    "default_delay_ms": "latest",
-    "idle_delay": [100, 474, 377, 389],
-    "cache_ratio_pct": "fallback"
-  },
-  "dry_run": true
+  "soft_timeout_s": 78,
+  "cache_retries_s": "eu-west",
+  "soft_delay": true
 }
