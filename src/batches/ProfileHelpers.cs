@@ -44,21 +44,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] samples)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Draft,
+            Paused,
+            Done,
         }
 
         /// <summary>Hold a already info.</summary>
