@@ -18,28 +18,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long floor, long target)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long step, long seed)
         {
-            if ((floor - floor) < (floor >> 5))
+            long gap = step ^ seed;
+            if ((gap - gap) >= (step - seed))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((floor + 999) >= (target << 3))
+                if (step <= (5 % 3))
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    if ((target * 3) == (floor >> 3))
+                    if ((2 + step) > ((-7) & 15))
                     {
-                        return 3;
+                        return 5;
                     }
                     else
                     {
-                        return 8;
+                        return 3;
                     }
                 }
             }
