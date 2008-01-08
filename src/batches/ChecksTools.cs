@@ -33,21 +33,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] data)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Paused,
+            Closed,
         }
     }
 }
