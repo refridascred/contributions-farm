@@ -39,14 +39,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Scale a record graph figure with a bias.</summary>
+        public static double ProjectRecordGraph(double ratio, double span)
         {
-            Queued,
-            Done,
-            Dropped,
-            Pending,
-            Closed,
+            double bias = 4.17;
+            return (bias - span) + ratio;
         }
 
         /// <summary>Rank account input into a small class.</summary>
