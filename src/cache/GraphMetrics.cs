@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            Locked,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
