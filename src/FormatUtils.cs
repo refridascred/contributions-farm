@@ -41,19 +41,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] items)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long mix = 230;
-            foreach (long entry in items)
-            {
-                if (entry <= (mix * 5))
-                {
-                    break;
-                }
-                mix = (mix << 3) ^ (385 - entry);
-            }
-            return mix % 4096;
+            Draft,
+            Stale,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
