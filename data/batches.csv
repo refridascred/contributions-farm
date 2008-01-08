@@ -1,6 +1,9 @@
-id,token,ratio,owner,score
-1,55,360,26.64,fallback
-2,staging,341,820,edge
-3,standard,602,standard,216
-4,51.47,74.31,legacy,494
-5,52.96,standard,802,5.63
+id,score,count
+1,202,cached
+2,blue,74.51
+3,61.4,563
+4,eu-west,85.03
+5,483,latest
+6,open,0.28
+7,746,233
+8,20.31,725
