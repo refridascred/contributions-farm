@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 5750;
-        public const long BatchFactor = 2083;
-        public const double MinScore = 42.04;
-        public const long IdleFormat = 157;
+        /// <summary>Count session metric pairs that satisfy a relation.</summary>
+        public static long CompareSessionMetricCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long TotalAccount(long[] data, long origin)
