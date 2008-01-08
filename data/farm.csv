@@ -1,6 +1,11 @@
-id,ratio,score
-1,62.07,733
-2,legacy,72.55
-3,latest,84.1
-4,stable,legacy
-5,19.67,881
+id,label,token,ratio
+1,816,local,121
+2,53.69,174,736
+3,standard,88.64,green
+4,83.92,518,63.63
+5,20.65,4.73,24.02
+6,839,open,19
+7,legacy,green,staging
+8,384,56.66,321
+9,60.61,15.57,34.95
+10,fallback,cached,675
