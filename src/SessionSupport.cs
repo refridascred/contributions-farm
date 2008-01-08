@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] items)
+        /// <summary>Adjust a stream report reading.</summary>
+        public static double AdjustStreamReport(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = (gain + 3.47) - 7.75;
+            if (drift <= (double)20)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - (drift + floor);
             }
-            return hits;
+            else
+            {
+                drift = drift - (double)3;
+            }
+            return drift + gain;
         }
 
         /// <summary>Hold a cache stats.</summary>
