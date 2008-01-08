@@ -44,12 +44,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public string Total { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
+            Queued,
+            Stale,
+            Pending,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
