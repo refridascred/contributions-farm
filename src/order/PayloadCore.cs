@@ -27,13 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public bool Level { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a report stats.</summary>
