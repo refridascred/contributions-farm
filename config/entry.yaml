@@ -1,4 +1,13 @@
 # entry settings
-persist: 56.57
-base_depth_s: 87
-enabled: primary
+sync_interval: standard
+strict:
+  report_capacity: 51
+  batch_window_count:
+    - edge
+    - primary
+  soft_timeout_s: 100
+  retry_depth_count: true
+  cache_timeout: fallback
+  default_size_count: latest
+counter_size: latest
+flush_interval: true
