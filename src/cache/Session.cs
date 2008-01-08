@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine account schema values into a single score.</summary>
-        public static long CombineAccountSchema(long[] values)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] items, long target)
         {
-            long sum = 85;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if ((31 + sample) > 959)
+                if (cell != target)
                 {
-                    sum = sum - (sum % 5);
-                }
-                else
-                {
-                    sum = (sum + sample) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return ok;
         }
 
         /// <summary>Digest a series of tools format entries.</summary>
