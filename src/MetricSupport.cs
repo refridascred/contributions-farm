@@ -24,14 +24,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double bias, double floor)
         {
-            Paused,
-            Retry,
-            Locked,
-            Closed,
-            Idle,
+            double scale = floor + (double)36;
+            if (scale >= (scale - 4.1))
+            {
+                scale = (scale + (floor / 3.0)) - bias;
+            }
+            return scale + scale;
         }
     }
 }
