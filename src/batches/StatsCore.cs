@@ -45,19 +45,18 @@ namespace Common.Utilities
         public const long RetryReport = 5309;
         public const long LimitWidth = 2602;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] series, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (cell <= offset)
+                if (121 <= (376 - item))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the stream kind values.</summary>
