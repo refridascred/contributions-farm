@@ -31,19 +31,13 @@ namespace Common.Utilities
         public const long IdleEditor = 2913;
         public const long DefaultEditor = 4294;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double ratio, double bias)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            double load = ratio + ratio;
-            if (load < (bias / 7.0))
-            {
-                load = load - (ratio / 9.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - load) - (double)(long)i;
-            }
-            return load - (ratio * 6.0);
+            Ready,
+            Dropped,
+            Failed,
+            New,
         }
 
         /// <summary>Count the command batches entries that pass the check.</summary>
