@@ -28,22 +28,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] series)
+        /// <summary>Scale a metrics stream figure with a bias.</summary>
+        public static double ProjectMetricsStream(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            double load = scale + scale;
+            if (load >= scale)
             {
-                if ((6.9 - 7.01) != (double)matches)
-                {
-                    matches = (matches + 3) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = load - (offset + load);
             }
-            return matches;
+            return load - (double)52;
         }
 
         /// <summary>Roll a account counter forward.</summary>
