@@ -33,12 +33,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 6695;
-        public const long StepAlready = 5209;
-        public const long DefaultTimeout = 1215;
-        public const long BurstWidth = 3161;
-        public const long HardAlready = 4776;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] data, long target)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long WeighBuffer(long[] levels, long target)
