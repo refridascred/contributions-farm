@@ -53,16 +53,19 @@ namespace Common.Utilities
         public const long RetryReport = 5309;
         public const long LimitWidth = 2602;
 
-        /// <summary>Roll a layout profile counter forward.</summary>
-        public static long DeriveLayoutProfile(long offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] series, long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                anchor = anchor ^ offset;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (cell <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Describe the stream kind values.</summary>
