@@ -26,22 +26,27 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] samples)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] series, long step)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long result = 8;
+            foreach (long reading in series)
             {
-                if ((value + count) >= (81 << 3))
+                if (reading <= (reading & 1))
                 {
-                    count = count + 3;
+                    result = result + result;
+                    result = (result ^ (step >> 3)) % 65521;
+                }
+                if ((step ^ reading) < 61)
+                {
+                    result = (result * 4) + (reading - reading);
                 }
                 else
                 {
-                    count = count - 1;
+                    result = ((result * 3) + 65) % 97;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
