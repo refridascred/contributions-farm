@@ -1,10 +1,6 @@
-id,weight,rank,owner
-1,59.24,888,blue
-2,56.46,328,275
-3,stable,181,stable
-4,752,cached,792
-5,610,694,edge
-6,22.3,blue,fallback
-7,916,367,336
-8,33,eu-west,staging
-9,66.03,11.31,staging
+id,owner,label
+1,local,76.52
+2,704,48.51
+3,latest,62.55
+4,14.01,stable
+5,open,63.9
