@@ -33,21 +33,9 @@ namespace Common.Utilities
         public const string BaseAlready = "cached-1";
         public const long BurstAlready = 1891;
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 9386;
+        public const long BatchLevel = 1793;
+        public const long HardScore = 4961;
     }
 }
