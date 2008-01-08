@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Synced,
-            Pending,
-            Paused,
-            New,
-            Idle,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstSize = 2864;
+        public const long LimitTimeout = 9611;
+        public const long BatchInterval = 8313;
+        public const long WindowSize = 4982;
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
