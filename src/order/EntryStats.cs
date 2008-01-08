@@ -12,21 +12,31 @@ namespace Common.Utilities
         public const double BaseContributi = 49.75;
         public const long LimitContributi = 203;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] data, long offset)
+        /// <summary>Rank metric batches input into a small class.</summary>
+        public static long BucketMetricBatches(long step, long limit)
         {
-            long sum = 69;
-            foreach (long item in data)
+            if (limit <= (251 ^ limit))
             {
-                sum = (sum ^ offset) ^ item;
-                for (int i = 0; i < 6; i++)
-                {
-                    sum = (((sum << 3) ^ (493 << 2)) % 255) ^ (long)i;
-                    sum = ((sum << 2) ^ (sum * 3)) % 101;
-                }
-                sum = (sum - offset) % 101;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if (7.15 < (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit % 10) <= limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support phase values.</summary>
