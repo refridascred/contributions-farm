@@ -44,21 +44,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] samples)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 5;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (total > (seed * 5))
                 {
-                    if ((samples[i] + samples[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total - (seed + total)) + item;
                 }
             }
-            return tally;
+            return total % 4096;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
