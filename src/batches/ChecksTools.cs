@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const double MinBudget = 88.82;
         public const long BatchWidth = 7989;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] data)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((value % 16) == (value * 5))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public string Count { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a queue info.</summary>
