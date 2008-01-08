@@ -1,6 +1,15 @@
 {
-  "idle_capacity_s": false,
-  "warm_delay_ms": 5127,
-  "idle_interval": true,
-  "base_timeout_count": "edge"
+  "warm_interval_count": "legacy",
+  "hard_timeout_pct": {
+    "cluster_limit": [352, 403],
+    "idle_interval_count": 250,
+    "filter_ttl": {
+      "cache_retries_ms": "edge",
+      "profile_window": 3791,
+      "compress": true
+    }
+  },
+  "buffer_limit": 295,
+  "hard_ratio_ms": ["latest", "staging", "local"],
+  "counter_ratio": true
 }
