@@ -14,18 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] readings, long seed)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((item + item) <= seed)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the account level values.</summary>
