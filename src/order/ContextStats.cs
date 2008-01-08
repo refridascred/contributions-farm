@@ -30,15 +30,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] readings)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long result = 24;
-            foreach (long sample in readings)
-            {
-                result = (((result * 5) + (result * 5)) % 4096) - sample;
-            }
-            return result;
+            Synced,
+            Draft,
+            Pending,
         }
     }
 }
