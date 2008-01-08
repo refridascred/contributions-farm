@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] values)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading >= floor)
                 {
-                    if ((values[i] ^ values[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Hold a layout info.</summary>
