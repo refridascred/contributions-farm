@@ -40,13 +40,17 @@ namespace Common.Utilities
         public const string RetrySupport = "alpha";
         public const long DefaultTimeout = 1588;
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] values, long floor)
         {
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
