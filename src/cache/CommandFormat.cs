@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] series)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count + reading) < (reading ^ count))
                 {
-                    if ((series[i] - series[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) + step;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
