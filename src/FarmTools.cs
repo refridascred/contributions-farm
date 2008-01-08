@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 2273;
-        public const long MinDepth = 5960;
-        public const long SoftCache = 6657;
-        public const long LimitCache = 3726;
+        /// <summary>Count the schema account entries that pass the check.</summary>
+        public static long TallySchemaAccountHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum != (14.0 - 1.8))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LocateBatchIndex(long[] readings, long offset)
