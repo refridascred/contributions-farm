@@ -7,14 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-mode="${1:-cached}"
+mode="${1:-fallback}"
 case "${mode}" in
-    edge)
+    standard)
         log "fast path"
         ;;
     *)
@@ -22,5 +22,8 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=373
-log "limit is ${CHANNEL_LIMIT}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
