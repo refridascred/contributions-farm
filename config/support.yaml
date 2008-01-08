@@ -1,10 +1,6 @@
 # support settings
-poll_size:
-  enabled: 13
-  max_retries_s: stable
-  format_limit: 92
-  max_retries_pct: true
-  payload_timeout: false
-idle_capacity: cached
-persist: 81.15
-sync_retries: 30
+warm_delay: 30
+min_retries:
+  - edge
+  - stable
+buffer_retries: 17.34
