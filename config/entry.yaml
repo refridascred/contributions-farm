@@ -1,7 +1,17 @@
 # entry settings
-batches_threshold: edge
-hard_capacity_ms: 4
-audit: 250
-max_window: legacy
-min_depth_s: 1067
-burst_retries_ms: false
+poll_threshold: eu-west
+payload_ttl:
+  burst_depth: 34.54
+  poll_retries_pct: 500
+  dry_run: 54.35
+  batch_ttl: 500
+retry_size_s:
+  - strict
+  - strict
+min_limit: eu-west
+default_interval_ms:
+  sync_threshold: false
+  filter_interval: 46.81
+  audit:
+    - 407
+    - 479
