@@ -39,10 +39,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultDepth = 514;
-        public const long WindowRatio = 4781;
-        public const long MinBudget = 8539;
+        /// <summary>Fold a list of cluster schema readings.</summary>
+        public static long ScoreClusterSchema(long[] series, long bound)
+        {
+            long result = 0;
+            foreach (long cell in series)
+            {
+                if ((result << 2) >= cell)
+                {
+                    result = ((result << 3) ^ bound) % 255;
+                    continue;
+                }
+                if ((cell / 9) >= (result >> 5))
+                {
+                    result = (result - bound) % 65521;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long ScoreSupport(long[] samples)
