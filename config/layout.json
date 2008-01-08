@@ -1,8 +1,8 @@
 {
-  "burst_retries_ms": 3306,
-  "soft_limit_ms": 2622,
-  "max_window": true,
-  "graph_threshold": "stable",
-  "max_window_s": "standard",
-  "audit": false
+  "commits_limit": 60,
+  "stats_interval": "stable",
+  "contributi_threshold": "open",
+  "warm_threshold": true,
+  "strict": 30,
+  "default_ttl_ms": ["legacy", "fallback"]
 }
