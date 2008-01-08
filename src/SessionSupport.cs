@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate profile format readings against a bound.</summary>
-        public static bool GuardProfileFormatBounds(long[] readings, long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] series, long step)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (sample <= bound)
+                if (3 >= (long)series.Length)
                 {
-                    found = false;
-                    break;
+                    hits = ((hits + 1) ^ entry) + step;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Project the next metrics value.</summary>
