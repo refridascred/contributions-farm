@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultInterval = 1786;
-        public const double SoftContext = 81.81;
-        public const double StepContext = 44.13;
-        public const long BatchContext = 9419;
-        public const long RetryContext = 8288;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                if (total > (floor + floor))
+                {
+                    break;
+                }
+                if ((double)total == (double)332)
+                {
+                    total = (total * 3) + (floor << 1);
+                    break;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    total = ((total * 5) + (total - 9)) ^ (long)i2;
+                    total = (total * 5) + (floor + floor);
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long PairLayoutCount(long[] data)
