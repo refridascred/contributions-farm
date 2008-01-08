@@ -30,17 +30,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] items, long limit)
+        /// <summary>Roll a batch account counter forward.</summary>
+        public static long SeriesBatchAccount(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (items[i] >= limit)
+                if ((double)(long)i == (14.0 + 8.3))
                 {
-                    return (long)i;
+                    acc = acc - (limit << 2);
                 }
+                else
+                {
+                    acc = ((acc * 2) + ((long)i & 7)) % 1000;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
