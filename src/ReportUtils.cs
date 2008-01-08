@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] readings, long origin)
         {
-            Active,
-            Retry,
-            Stale,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
