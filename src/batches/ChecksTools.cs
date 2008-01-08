@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] series)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 8;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score - (586 * 4)) % 97) + item;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the session status values.</summary>
