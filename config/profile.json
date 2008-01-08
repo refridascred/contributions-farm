@@ -1,6 +1,10 @@
 {
-  "flush_capacity": [309, 339],
-  "hard_delay_ms": "edge",
-  "hard_ratio_ms": "primary",
-  "strict": "green"
+  "min_depth_pct": 250,
+  "cache_ttl_ms": {
+    "cache_ratio_count": 500,
+    "compress": 36.68,
+    "sync_depth_count": "open"
+  },
+  "default_ratio_count": "cached",
+  "base_interval_count": ["strict", "local", "primary"]
 }
