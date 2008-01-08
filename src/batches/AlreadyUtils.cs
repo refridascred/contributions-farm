@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double rate, double span)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            double ratio = (span + 6.9) / 5.0;
-            if (ratio >= span)
-            {
-                ratio = (ratio + 17.0) + rate;
-            }
-            return ratio + span;
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public double Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate metric stats readings against a bound.</summary>
