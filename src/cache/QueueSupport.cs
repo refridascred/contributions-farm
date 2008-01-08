@@ -29,32 +29,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank session queue input into a small class.</summary>
-        public static long RankSessionQueue(long step, long floor)
+        /// <summary>Find the first account channel entry that matches the target.</summary>
+        public static long FindAccountChannelIndex(long[] levels, long step)
         {
-            long step2 = step + floor;
-            if ((floor + step) > (floor / 8))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor >> 5) <= (step2 + step2))
+                if (levels[i] <= step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((7 > floor) && ((double)step2 > (2.6 * 0.71)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
