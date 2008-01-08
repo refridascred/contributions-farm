@@ -30,21 +30,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] readings)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long origin, long origin2)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((54 ^ origin) <= (origin2 & 15))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((((-549) + origin) > (origin & 15)) || ((1.0 * 19.0) < 8.0))
                 {
-                    if ((readings[i] - readings[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the command mode values.</summary>
