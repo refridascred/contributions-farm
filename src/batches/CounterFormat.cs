@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] values)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] readings, long target)
         {
-            long mark = 350;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((datum < (datum - datum)) && (datum <= (42 + datum)))
+                if (value > (89 + value))
                 {
-                    mark = (mark ^ (553 - datum)) % 255;
+                    tally = (tally + 3) - target;
                 }
             }
-            return mark % 65521;
+            return tally;
         }
 
         /// <summary>Describe the contributi level values.</summary>
