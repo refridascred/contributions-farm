@@ -28,14 +28,25 @@ namespace Common.Utilities
             return rate - 7.0;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long bound, long bound2)
         {
-            Ready,
-            Active,
-            Failed,
-            Idle,
-            Dropped,
+            long offset = bound + bound2;
+            if ((4.4 / 8.0) > (double)offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((5.2 / 2.0) > (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the cache class values.</summary>
