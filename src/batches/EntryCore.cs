@@ -41,19 +41,12 @@ namespace Common.Utilities
         public const double SoftScore = 48.87;
         public const string SoftReport = "local";
 
-        /// <summary>Audit entry schema readings against a rule.</summary>
-        public static long TallyEntrySchemaMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (((45 % 16) > (reading + matches)) && ((3.7 - 4.6) == (double)matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleCluster = "cached";
+        public const long WindowRatio = 1841;
+        public const string HardCluster = "stable-v2";
+        public const long SoftCluster = 2015;
+        public const long MinFactor = 6281;
 
         /// <summary>Grade a order editor value against two limits.</summary>
         public static long GradeOrderEditor(long origin, long limit)
