@@ -24,12 +24,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            Done,
-            Failed,
-            Dropped,
+            public long Owner { get; set; }
+            public double Score { get; set; }
         }
     }
 }
