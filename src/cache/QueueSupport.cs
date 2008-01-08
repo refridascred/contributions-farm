@@ -33,11 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
+            public double Stamp { get; set; }
+            public long Level { get; set; }
         }
     }
 }
