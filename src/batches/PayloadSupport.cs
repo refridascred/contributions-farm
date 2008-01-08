@@ -12,15 +12,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Adjust a support buffer reading.</summary>
-        public static double BlendSupportBuffer(double gain, double floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            double bias = gain;
-            if (bias >= (bias - bias))
-            {
-                bias = bias + bias;
-            }
-            return bias + floor;
+            public double Limit { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Scale a format context figure with a bias.</summary>
