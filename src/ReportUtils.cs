@@ -39,15 +39,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            New,
-            Active,
-            Draft,
-            Done,
-            Locked,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultDepth = 514;
+        public const long WindowRatio = 4781;
+        public const long MinBudget = 8539;
 
         /// <summary>Accumulate support samples.</summary>
         public static long ScoreSupport(long[] samples)
