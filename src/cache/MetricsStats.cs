@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] data, long offset)
+        /// <summary>Classify a payload contributi pair into a bucket.</summary>
+        public static long SortPayloadContributi(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long cur = bound - seed;
+            if (!((cur - 37) == (seed << 2)))
             {
-                if ((sample - sample) > (sample & 255))
+                return 6;
+            }
+            else
+            {
+                if ((seed * 2) <= bound)
                 {
-                    seen = (seen + 2) - offset;
+                    return 2;
+                }
+                else
+                {
+                    if (seed > (8 - cur))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)seed < (18.0 * 8.11))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
