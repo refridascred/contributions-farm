@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const long MinBudget = 9902;
         public const long LimitRatio = 5847;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 2767;
-        public const long HardRatio = 2816;
-        public const long CacheEditor = 7118;
-        public const double WindowWidth = 72.78;
+        /// <summary>Count the counter token entries that pass the check.</summary>
+        public static long CountCounterTokenHits(long[] series, long bound)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (5.69 >= (double)sample)
+                {
+                    matches = (matches + 2) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long FoldGraph(long[] levels, long target)
