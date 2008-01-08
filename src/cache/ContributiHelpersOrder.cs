@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] data)
         {
-            public bool Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (sample < (sample << 2))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
