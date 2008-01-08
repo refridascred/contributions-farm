@@ -63,21 +63,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Locate a metrics schema reading by value.</summary>
+        public static long SeekMetricsSchemaIndex(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (readings[i] <= target)
                 {
-                    if ((values[i] - values[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
