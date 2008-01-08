@@ -19,22 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] samples, long bound)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (8.7 < (double)hits)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = ((hits + 1) + cell) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] + readings[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
