@@ -19,15 +19,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Iterate the batches metric series from a seed.</summary>
-        public static long IterateBatchesMetric(long origin)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double scale, double offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
+            double load = 7.2;
+            if (load > (scale - offset))
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                load = load + 7.88;
             }
-            return anchor;
+            return load - (load / 8.0);
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
