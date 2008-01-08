@@ -1,9 +1,4 @@
 # entry settings
-batches_delay: strict
-hard_ttl_ms: 2356
-compress: strict
-warm_depth:
-  report_size: false
-  strict: false
-  verbose: local
-burst_capacity: true
+enabled: primary
+queue_capacity: 52
+session_retries: strict
