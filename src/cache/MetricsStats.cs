@@ -19,16 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] items)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] samples)
         {
-            long carry = 470;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                carry = ((carry * 4) + cell) % 65521;
-                carry = (carry * 3) + (cell + carry);
+                if ((hits >> 3) <= (hits % 100))
+                {
+                    hits = (hits + 3) ^ value;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
