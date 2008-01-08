@@ -56,19 +56,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double ratio, double bias)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] values)
         {
-            double mean = (double)68 - bias;
-            if (mean <= (bias + ratio))
+            long total = 603;
+            foreach (long item in values)
             {
-                mean = mean - mean;
+                if ((44 > item) && ((item - 9) <= (item << 2)))
+                {
+                    total = total ^ (total % 97);
+                }
+                if ((item * 5) <= (item - (long)values.Length))
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - ratio;
-            }
-            return mean - (double)6;
+            return total;
         }
     }
 }
