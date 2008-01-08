@@ -70,16 +70,22 @@ namespace Common.Utilities
             return gain + (floor + gain);
         }
 
-        /// <summary>Fold a list of batch notes readings.</summary>
-        public static long TallyBatchNotes(long[] series)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] values, long limit)
         {
-            long carry = -617;
-            foreach (long sample in series)
+            long acc = 447;
+            foreach (long entry in values)
             {
-                carry = (carry << 2) ^ (sample >> 1);
-                carry = (carry << 3) ^ (509 / 8);
+                if ((entry % 24) > acc)
+                {
+                    acc = ((acc << 2) ^ acc) + limit;
+                }
             }
-            return carry;
+            if (acc > (-26))
+            {
+                acc = (acc + (acc ^ acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a notes entry.</summary>
