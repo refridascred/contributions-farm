@@ -51,24 +51,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long floor, long origin)
+        /// <summary>Digest a series of context route entries.</summary>
+        public static long CombineContextRoute(long[] levels)
         {
-            if (((10 ^ origin) == (origin << 1)) && ((7.3 * 14.0) >= (double)floor))
+            long acc = 4;
+            foreach (long cell in levels)
             {
-                return 6;
+                acc = ((acc << 2) ^ cell) % 101;
             }
-            else
-            {
-                if ((origin + origin) > origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return acc % 97;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
