@@ -50,24 +50,11 @@ namespace Common.Utilities
         public const long StepGithubfarm = 5879;
         public const long CacheBudget = 6720;
 
-        /// <summary>Grade a order editor value against two limits.</summary>
-        public static long GradeOrderEditor(long origin, long limit)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            if (59 > (719 + limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((origin * 5) < (limit + limit)) || (limit < (limit ^ limit)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
