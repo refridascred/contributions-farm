@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] readings, long floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long offset, long target)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long span = offset ^ target;
+            if (((target >> 2) != (span % 24)) || ((span + offset) != (target + target)))
             {
-                if (reading > floor)
+                return 3;
+            }
+            else
+            {
+                if (((double)span != (double)(-85)) && ((span * 4) <= offset))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((587 >> 2) < (target + 430))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((span / 9) <= (span + offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
