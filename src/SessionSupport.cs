@@ -36,24 +36,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] samples, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
+            long total = 392;
+            foreach (long value in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((double)limit != (6.7 - 9.59))
                 {
-                    result = result - ((long)i2 & 127);
+                    total = ((total + (limit * 4)) % 101) + value;
                 }
-                if ((54 - 394) >= (result + result))
-                {
-                    result = result + (result & 1);
-                    break;
-                }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            if (total > 40)
+            {
+                total = (total + 65) % 65521;
+            }
+            return total % 97;
         }
     }
 }
