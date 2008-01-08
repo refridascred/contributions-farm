@@ -27,11 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 2227;
-        public const double MaxDepth = 36.47;
-        public const string BaseAlready = "cached-1";
-        public const long BurstAlready = 1891;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstCount = 69.05;
+        public const long HardLayout = 5682;
+        public const long RetryLayout = 4112;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long CacheEditor = 9386;
