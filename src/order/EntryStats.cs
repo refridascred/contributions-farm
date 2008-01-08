@@ -50,19 +50,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] readings)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long bound, long step)
         {
-            long acc = 806;
-            foreach (long reading in readings)
+            long delta = bound + step;
+            if ((double)step != (20.0 / 8.0))
             {
-                acc = (acc - (reading + reading)) % 1000;
-                if (((reading * 3) < acc) && ((reading & 1) < reading))
+                return 7;
+            }
+            else
+            {
+                if (((delta ^ 53) >= step) && ((5.1 / 8.0) < (double)delta))
                 {
-                    acc = (acc ^ reading) % 101;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return acc % 1000;
         }
 
         /// <summary>Hold a commits summary.</summary>
