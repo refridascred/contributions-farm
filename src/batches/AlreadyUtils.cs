@@ -61,13 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] levels, long seed)
         {
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
+            long sum = 423;
+            foreach (long entry in levels)
+            {
+                if (sum < (sum % 8))
+                {
+                    sum = (((sum + (sum + 8)) % 4096) + entry) + seed;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
