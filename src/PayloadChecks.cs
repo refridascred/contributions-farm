@@ -35,15 +35,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Pending,
-            Dropped,
-            Active,
-            New,
-            Closed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 8921;
+        public const long IdleTimeout = 2044;
+        public const long StepStream = 5489;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long RetryCache = 917;
