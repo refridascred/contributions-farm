@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long target, long limit)
         {
-            Active,
-            Stale,
-            Done,
-            Queued,
+            if ((target + limit) >= (target + target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (target >= limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Roll a buffer record counter forward.</summary>
