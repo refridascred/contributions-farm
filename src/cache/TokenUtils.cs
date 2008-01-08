@@ -31,12 +31,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            New,
-            Active,
-            Closed,
+            public double Owner { get; set; }
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public double Total { get; set; }
         }
     }
 }
