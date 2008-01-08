@@ -51,22 +51,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] items, long step)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((entry >> 1) >= (tally - tally))
-                {
-                    tally = (tally + 1) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Blend two checks measurements.</summary>
