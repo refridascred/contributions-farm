@@ -47,13 +47,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] items)
         {
-            Failed,
-            Pending,
-            Dropped,
-            Locked,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((86 % 7) <= cell)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
