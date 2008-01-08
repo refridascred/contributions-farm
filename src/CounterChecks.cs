@@ -75,14 +75,9 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Stale,
-            Retry,
-            Active,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleWidth = 6326;
+        public const double SoftProfile = 46.34;
+        public const long BatchWidth = 5858;
     }
 }
