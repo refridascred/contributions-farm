@@ -43,19 +43,9 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Roll a filter report counter forward.</summary>
-        public static long RollFilterReport(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((8.0 + 1.0) == (double)limit))
-                {
-                    score = (score - limit) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseTimeout = 780;
+        public const long DefaultPayload = 8440;
+        public const long MaxFactor = 1929;
     }
 }
