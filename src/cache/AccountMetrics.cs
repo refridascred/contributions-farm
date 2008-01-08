@@ -44,21 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] readings)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((9.26 * 2.0) != (double)seen)
                 {
-                    if ((readings[i] - readings[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = ((seen + 2) + item) - floor;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Combine buffer graph values into a single score.</summary>
