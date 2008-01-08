@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] samples, long target)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Ready,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the entry class values.</summary>
