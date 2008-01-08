@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long target, long step)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long limit)
         {
-            long gap = target - step;
-            if (((target - gap) <= (gap + target)) && (target >= (gap + gap)))
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
+                sum = (sum + ((long)i << 1)) % 1000;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((8.46 - 9.9) != (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Accumulate support samples.</summary>
