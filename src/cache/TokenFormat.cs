@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] series, long limit)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double gain, double span)
         {
-            bool ok = true;
-            foreach (long value in series)
+            double weight = span;
+            if (weight < span)
             {
-                if (value > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = (weight + span) + gain;
             }
-            return ok;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + 5.81) + (double)(long)i;
+            }
+            return weight + (span * 14.0);
         }
 
         /// <summary>Scale a schema command figure with a bias.</summary>
