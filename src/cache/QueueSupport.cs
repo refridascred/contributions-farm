@@ -29,17 +29,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first account channel entry that matches the target.</summary>
-        public static long FindAccountChannelIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTimeout = 2408;
+        public const long MaxFactor = 5373;
+        public const double WindowScore = 98.11;
+        public const long MaxTools = 841;
+        public const long SoftBudget = 8178;
     }
 }
