@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Closed,
-            Paused,
             Synced,
+            Ready,
+            Failed,
+            Retry,
         }
 
         /// <summary>Hold a schema entry.</summary>
