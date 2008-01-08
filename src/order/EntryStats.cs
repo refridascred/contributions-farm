@@ -56,18 +56,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] data, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((3.05 * 5.82) < (double)seed)
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 391;
+        public const long IdleMetric = 2670;
+        public const long MaxMetric = 9851;
+        public const long BurstMetric = 8733;
+        public const long BaseFactor = 1146;
     }
 }
