@@ -30,23 +30,10 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((offset ^ 177) == (offset - datum))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 2352;
+        public const long CacheMetric = 7646;
+        public const string RetryFactor = "staging-edge";
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
