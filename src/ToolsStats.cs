@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleScore = "strict-1";
+        public const string StepTimeout = "cached-1";
+        public const long BurstInterval = 4047;
+        public const long DefaultSpan = 6437;
+        public const long BurstWidth = 9547;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long GradeReport(long step, long seed)
