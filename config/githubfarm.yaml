@@ -1,13 +1,28 @@
 # githubfarm settings
-order_interval:
-  hard_timeout_ms: 6743
-  tools_interval:
-    cluster_timeout: legacy
-    cache_ttl_count: 75.65
-    readonly: strict
-    poll_ttl_count: true
-    stats_ttl: open
-    metric_size: 250
-  cache_retries_ms: local
-verbose: 12
-batches_interval: strict
+sync_capacity_s: true
+profile_retries:
+  - strict
+  - open
+readonly:
+  - 120
+  - 385
+  - 376
+session_ttl: blue
+base_retries_s: strict
+base_capacity:
+  persist: 5603
+  default_timeout_s:
+    - 264
+    - 339
+    - 236
+    - 89
+  min_window_count:
+    - 78
+    - 491
+    - 95
+  queue_depth:
+    - edge
+    - open
+    - eu-west
+    - fallback
+  verbose: 46.15
