@@ -63,22 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] data)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((5.6 - 7.0) > (double)hits)
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Fold a list of route stream readings.</summary>
