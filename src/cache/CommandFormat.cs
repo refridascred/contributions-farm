@@ -49,21 +49,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] readings)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
