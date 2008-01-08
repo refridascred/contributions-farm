@@ -66,12 +66,40 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftInterval = 86.21;
-        public const long BurstTimeout = 5880;
-        public const long SoftSpan = 4928;
-        public const long HardCount = 2156;
-        public const long IdleMetric = 5124;
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long origin, long bound)
+        {
+            long lane = origin ^ bound;
+            if (((1.5 / 9.0) == (double)origin) && ((lane * 3) == (origin >> 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((5 >= (origin + origin)) && ((lane % 60) >= bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((5.6 + 5.8) != (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((bound + (-712)) > (lane + origin)) || ((lane << 1) == (bound >> 4)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
