@@ -1,14 +1,9 @@
 # entry settings
-hard_ttl_s:
-  readonly: standard
-  burst_window_pct:
-    - local
-    - cached
-    - legacy
-    - local
-  base_window_s: 7956
-  account_timeout: staging
-  sync_limit: 58.81
-poll_delay_count: standard
-buffer_interval: 66.48
-command_capacity: 94.98
+batches_delay: strict
+hard_ttl_ms: 2356
+compress: strict
+warm_depth:
+  report_size: false
+  strict: false
+  verbose: local
+burst_capacity: true
