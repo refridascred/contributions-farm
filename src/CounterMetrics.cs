@@ -23,10 +23,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitDepth = 1631;
-        public const long BaseSpan = 9875;
-        public const long HardBudget = 517;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] items)
+        {
+            long total = 45;
+            foreach (long value in items)
+            {
+                if (!((value & 1) != (total << 1)))
+                {
+                    continue;
+                }
+                total = total ^ (long)items.Length;
+            }
+            return total;
+        }
 
         /// <summary>Adjust a editor reading.</summary>
         public static double ProjectEditor(double ratio, double span)
