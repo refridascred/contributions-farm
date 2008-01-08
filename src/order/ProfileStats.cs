@@ -56,12 +56,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Grade a support githubfarm value against two limits.</summary>
+        public static long GradeSupportGithubfarm(long target, long bound)
         {
-            public bool Size { get; set; }
-            public bool Mode { get; set; }
-            public double Level { get; set; }
+            long next = target - bound;
+            if (target < (target * 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)next == (7.3 / 3.0)) || ((30 ^ target) == (89 + next)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
