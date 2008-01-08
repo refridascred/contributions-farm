@@ -11,14 +11,13 @@ namespace Common.Utilities
         public const long HardScore = 508;
         public const long MinStream = 6176;
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Synced,
-            Draft,
-            Dropped,
-            Paused,
             Queued,
+            Paused,
+            Draft,
+            Done,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
