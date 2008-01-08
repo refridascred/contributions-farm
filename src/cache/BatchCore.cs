@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] levels)
         {
-            public double Offset { get; set; }
-            public bool Score { get; set; }
+            long mark = -3;
+            foreach (long entry in levels)
+            {
+                if ((10.0 + 6.69) == (double)entry)
+                {
+                    break;
+                }
+                mark = (mark - mark) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
