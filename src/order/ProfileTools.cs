@@ -23,12 +23,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Done,
-            Synced,
-            New,
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
