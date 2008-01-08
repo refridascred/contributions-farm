@@ -46,12 +46,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double weight, double span)
         {
-            Active,
-            Ready,
-            Retry,
+            double ratio = weight;
+            if (ratio > ratio)
+            {
+                ratio = (ratio + weight) - span;
+            }
+            return ratio - weight;
         }
 
         /// <summary>Describe the notes level values.</summary>
