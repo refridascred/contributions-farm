@@ -24,15 +24,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long score = -300;
-            foreach (long reading in levels)
-            {
-                score = ((score * 2) + (80 - 74)) + reading;
-            }
-            return score % 97;
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
