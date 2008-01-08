@@ -1,5 +1,6 @@
 {
-  "cache_size_count": true,
-  "hard_ratio_count": 21.76,
-  "poll_ttl": false
+  "verbose": 24.47,
+  "notes_ttl": 47,
+  "token_capacity": false,
+  "burst_threshold": ["staging", "cached"]
 }
