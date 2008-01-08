@@ -51,22 +51,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] items)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long limit)
         {
-            long sum = 85;
-            foreach (long item in items)
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((sum >> 4) <= (sum << 1))
+                long slot = (limit << 2) * 4;
+                if ((double)(long)i == (8.8 + 5.0))
                 {
-                    sum = ((sum ^ (sum + sum)) % 255) - item;
+                    sum = sum ^ (limit & 127);
+                    sum = (sum * 5) + ((long)i + slot);
                 }
+                sum = sum - (limit + sum);
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            if (sum > 245)
-            {
-                sum = (sum - (sum & 3)) % 65521;
-            }
-            return sum % 1000;
+            return sum;
         }
     }
 }
