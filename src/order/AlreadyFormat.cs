@@ -41,18 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] data)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            double gain = bias;
+            if (gain >= (bias + gain))
             {
-                if (((double)hits < 3.0) || (((13.0 * 3.9) <= (double)hits) || ((double)cell > (1.0 - 2.0))))
-                {
-                    hits = hits + 3;
-                }
+                gain = (gain - gain) + ratio;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - bias) - (double)(long)i;
+            }
+            return gain - 9.58;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
