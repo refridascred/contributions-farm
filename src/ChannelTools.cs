@@ -32,12 +32,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public long Total { get; set; }
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
