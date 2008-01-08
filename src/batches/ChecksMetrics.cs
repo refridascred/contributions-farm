@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a channel filter sample.</summary>
-        public static long SeekChannelFilterIndex(long[] levels, long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (levels[i] < seed)
+                if (((double)seen > (9.18 - 2.0)) && ((double)datum <= (5.3 - 6.0)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
