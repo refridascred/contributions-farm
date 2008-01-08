@@ -58,14 +58,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Count order payload pairs that satisfy a relation.</summary>
+        public static long OverlapOrderPayloadCount(long[] items)
         {
-            Ready,
-            Synced,
-            Stale,
-            Pending,
-            Retry,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
