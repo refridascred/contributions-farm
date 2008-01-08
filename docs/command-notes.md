@@ -1,13 +1,12 @@
 # Command notes
 
-When a schema fails, the batch handler retries a few times before giving up.
-Run the report check before changing any editor limits.
-
-Each farm is validated before it reaches the session queue.
-The metric report groups every route by context.
+The farm helpers are pure functions, so they are safe to call from any thread.
+When a commits fails, the batches handler retries a few times before giving up.
+Use schema settings to tune how often order data is refreshed.
 
 ## Guidelines
 
-- Review account limits each release
-- Prefer session defaults
-- Validate layout input early
+- Document new commits fields
+- Keep layout values small
+- Prefer stats defaults
+- Review metric limits each release
