@@ -40,19 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] items, long limit)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Closed,
+            Idle,
+            Draft,
+            Ready,
         }
 
         /// <summary>Hold a batches header.</summary>
