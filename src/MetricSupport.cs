@@ -14,20 +14,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two profile token measurements.</summary>
-        public static double BlendProfileToken(double scale, double floor)
-        {
-            double load = (floor - scale) - (scale - scale);
-            if (load <= 11.0)
-            {
-                load = load - floor;
-            }
-            else
-            {
-                load = load - (scale - 7.8);
-            }
-            return load - (double)2;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepRatio = 6654;
+        public const double SoftLevel = 7.84;
+        public const long MaxCommits = 9446;
+        public const double BatchCommits = 10.6;
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
