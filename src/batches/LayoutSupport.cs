@@ -20,19 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] readings, long origin)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double weight, double span)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            double mean = span;
+            if (mean > weight)
             {
-                if (entry > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = mean - (4.96 / 9.0);
             }
-            return valid;
+            return mean + weight;
         }
 
         /// <summary>Combine command values into a single score.</summary>
