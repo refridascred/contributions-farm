@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Failed,
-            Ready,
-            Active,
-            Idle,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 3024;
+        public const long RetryRatio = 3756;
+        public const double StepReport = 85.02;
+        public const string SoftWidth = "local-1";
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
