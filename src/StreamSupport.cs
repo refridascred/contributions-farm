@@ -22,13 +22,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Draft,
-            Dropped,
-            Ready,
-            New,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinBatch = "local";
+        public const long HardRatio = 1129;
+        public const double IdleSpan = 98.33;
     }
 }
