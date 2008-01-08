@@ -28,16 +28,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long seed)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] readings)
         {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state - (state % 100)) % 1000;
-                state = ((state * 5) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
