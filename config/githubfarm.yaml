@@ -1,6 +1,11 @@
 # githubfarm settings
-editor_limit: 12
-retry_interval: false
-dry_run: standard
-min_size: 72.13
-burst_size_s: strict
+hard_delay_s: green
+compress:
+  contributi_interval: latest
+  readonly:
+    - eu-west
+    - edge
+    - legacy
+  soft_ratio_count: 37.28
+  warm_size_pct: 250
+hard_retries: 15
