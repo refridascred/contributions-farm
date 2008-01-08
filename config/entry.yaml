@@ -1,15 +1,7 @@
 # entry settings
-base_interval_ms: 29
-warm_size:
-  sync_capacity_s: 3313
-  tools_ttl: 39
-  flush_size: 60
-  base_ratio_count:
-    verbose: false
-    enabled: blue
-    burst_size: 58.83
-    retry_retries: 80
-    idle_retries_count: 77
-    cache_size_count: fallback
-  support_depth: 30
-compress: staging
+batches_threshold: edge
+hard_capacity_ms: 4
+audit: 250
+max_window: legacy
+min_depth_s: 1067
+burst_retries_ms: false
