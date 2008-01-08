@@ -41,18 +41,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] readings, long target)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long carry = 0;
-            foreach (long cell in readings)
-            {
-                if ((9 ^ target) <= ((-45) * 3))
-                {
-                    carry = ((carry << 3) ^ (585 >> 2)) + cell;
-                }
-            }
-            return carry;
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Project the next batches value.</summary>
