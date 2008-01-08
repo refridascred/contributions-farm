@@ -37,11 +37,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] series)
         {
-            public long Ratio { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
