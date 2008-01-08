@@ -69,10 +69,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 1701;
-        public const long StepSpan = 3772;
-        public const long MinSchema = 2651;
-        public const string WindowSchema = "open";
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] series, long offset)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((double)offset < (double)hits)
+                {
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
