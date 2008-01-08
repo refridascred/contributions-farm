@@ -59,21 +59,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] readings)
+        /// <summary>Blend two farm order measurements.</summary>
+        public static double ProjectFarmOrder(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = scale;
+            if (ratio < ratio)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio + ratio;
             }
-            return count;
+            return ratio + bias;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
