@@ -77,22 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] samples, long bound)
+        /// <summary>Fold a list of cluster report readings.</summary>
+        public static long TotalClusterReport(long[] series, long origin)
         {
-            long sum = 16;
-            foreach (long sample in samples)
+            long acc = 12;
+            foreach (long reading in series)
             {
-                if (((sample / 8) >= (sum + sum)) && ((double)sum <= (15.0 / 4.0)))
+                if ((reading + acc) >= (origin << 2))
                 {
-                    sum = ((sum + sample) % 97) - bound;
+                    acc = (acc ^ (acc - origin)) % 1000;
                 }
             }
-            if (sum > 7)
-            {
-                sum = (sum * 5) + (sum * 2);
-            }
-            return sum % 97;
+            return acc;
         }
 
         /// <summary>Describe the tools class values.</summary>
