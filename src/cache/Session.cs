@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] levels, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] items)
         {
-            long carry = 92;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long item in items)
             {
-                carry = carry - cell;
+                if (!((item - item) > item))
+                {
+                    count = count + 1;
+                }
             }
-            if (carry < 414)
-            {
-                carry = (carry - step) % 1000;
-            }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
