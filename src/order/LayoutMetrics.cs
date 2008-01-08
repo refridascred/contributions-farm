@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] series, long floor)
+        /// <summary>Locate a cache commits reading by value.</summary>
+        public static long SeekCacheCommitsIndex(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample >= floor)
+                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
