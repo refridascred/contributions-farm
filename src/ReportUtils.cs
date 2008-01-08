@@ -54,22 +54,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] samples)
+        /// <summary>Count editor order pairs that satisfy a relation.</summary>
+        public static long OverlapEditorOrderCount(long[] series)
         {
-            long mark = 7;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry + (-7)) <= (mark >> 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = mark - 48;
-                }
-                else
-                {
-                    mark = (mark + (mark / 7)) % 1000;
+                    if ((series[i] + series[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return count;
         }
     }
 }
