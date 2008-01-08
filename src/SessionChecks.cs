@@ -37,19 +37,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] series, long bound)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long target, long limit)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            if (target < (limit << 3))
             {
-                if (cell > bound)
+                return 2;
+            }
+            else
+            {
+                if (target > (target + 13))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((2 >> 4) > target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
