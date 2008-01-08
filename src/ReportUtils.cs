@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long floor, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long step, long seed)
         {
-            long slot = floor + offset;
-            if ((((-5) ^ floor) > (offset << 3)) || ((double)floor >= (8.0 - 14.0)))
+            if (((double)seed > (7.5 * 2.04)) && ((double)step > (double)5))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if ((7 >> 2) <= offset)
+                if (((double)seed < (12.0 - 7.76)) && ((7 ^ step) > step))
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    if (((2 + slot) != (offset << 1)) || ((65 * 3) >= (floor ^ (-827))))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 1;
                 }
             }
         }
