@@ -11,18 +11,23 @@ namespace Common.Utilities
         public const long MinBatches = 595;
         public const long BurstBatches = 6482;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] series)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long mark = 483;
+            foreach (long reading in data)
             {
-                if ((count << 2) == (datum >> 1))
+                long tally = 6;
+                if ((tally + tally) < (mark << 2))
                 {
-                    count = count + 3;
+                    break;
+                }
+                if ((double)reading > (9.37 + 15.0))
+                {
+                    mark = ((mark << 2) ^ (163 + (-5))) + limit;
                 }
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
