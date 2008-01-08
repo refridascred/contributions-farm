@@ -50,12 +50,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 8285;
-        public const double RetryChecks = 96.77;
-        public const long SoftChecks = 1896;
-        public const string HardCount = "stable-1";
-        public const long HardChecks = 359;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool GuardSchemaBounds(long[] series, long offset)
