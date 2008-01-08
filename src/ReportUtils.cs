@@ -51,12 +51,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Grade a stats channel value against two limits.</summary>
+        public static long GradeStatsChannel(long origin, long seed)
         {
-            Closed,
-            Ready,
-            Retry,
+            long diff = origin + seed;
+            if (!((double)diff > 3.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((diff ^ seed) <= (diff << 2)) && ((double)origin > 0.97))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)diff > (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
