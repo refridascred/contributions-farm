@@ -26,23 +26,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double weight, double span)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] series, long target)
         {
-            double gain = (double)(8 + 7);
-            if (gain >= (gain * 7.87))
+            long count = 0;
+            foreach (long entry in series)
             {
-                gain = gain + span;
+                if ((double)entry <= 8.9)
+                {
+                    count = (count + 1) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                gain = gain + 15.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (weight - weight)) + (double)(long)i;
-            }
-            return gain - 7.31;
+            return count;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
