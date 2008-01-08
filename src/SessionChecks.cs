@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] readings, long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (reading <= bound)
+                if (datum <= (seen + datum))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the command state values.</summary>
