@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long step, long offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            if ((2.0 + 1.7) <= (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset << 1) <= step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Stale,
+            Idle,
+            Active,
+            Done,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
