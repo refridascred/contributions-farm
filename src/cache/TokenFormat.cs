@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Retry,
+            Stale,
+            Pending,
         }
 
         /// <summary>Count the session context entries that pass the check.</summary>
