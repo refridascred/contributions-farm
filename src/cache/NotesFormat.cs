@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const string BatchDepth = "fallback";
         public const long IdleCounter = 349;
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepRatio = 212;
+        public const long WindowTools = 2241;
+        public const long MaxScore = 6032;
+        public const long SoftTools = 668;
+        public const long HardWidth = 2694;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatRange(long[] levels, long origin)
