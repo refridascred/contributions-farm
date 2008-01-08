@@ -19,15 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] series)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] samples, long bound)
         {
             long hits = 0;
-            foreach (long value in series)
+            foreach (long cell in samples)
             {
-                if ((double)hits < (0.09 * 15.0))
+                if (8.7 < (double)hits)
                 {
-                    hits = (hits + 3) ^ value;
+                    hits = ((hits + 1) + cell) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
