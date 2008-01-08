@@ -53,12 +53,19 @@ namespace Common.Utilities
         public const double MaxRoute = 3.07;
         public const long BaseFactor = 3427;
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double weight, double floor)
         {
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            double ratio = weight;
+            if (ratio >= weight)
+            {
+                ratio = ratio + (floor - floor);
+            }
+            else
+            {
+                ratio = ratio + 8.0;
+            }
+            return ratio - (floor * 5.36);
         }
 
         /// <summary>Describe the schema level values.</summary>
