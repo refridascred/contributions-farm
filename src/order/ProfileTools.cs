@@ -37,19 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (1.0 > (double)entry)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 1866;
+        public const string StepToken = "open-1";
+        public const string HardBudget = "latest-v2";
+        public const double MaxSize = 63.07;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool ValidateFilterBounds(long[] readings, long limit)
