@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 8333;
-        public const long SoftFarm = 6065;
-        public const double HardLevel = 93.16;
-        public const double DefaultFarm = 90.66;
-        public const long StepLevel = 1904;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenMatches(long[] levels)
