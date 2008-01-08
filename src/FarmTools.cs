@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 9917;
-        public const long CacheTimeout = 7869;
-        public const long SoftQueue = 3586;
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the profile batches series from a seed.</summary>
         public static long SeriesProfileBatches(long target)
