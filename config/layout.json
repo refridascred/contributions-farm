@@ -1,5 +1,21 @@
 {
-  "max_interval": 4170,
-  "poll_depth_count": 60,
-  "notes_interval": false
+  "max_capacity": {
+    "warm_capacity_ms": {
+      "soft_limit": false,
+      "retry_timeout_s": "cached",
+      "flush_interval_pct": 27,
+      "persist": 6.02
+    },
+    "min_window_pct": 69.64,
+    "idle_capacity_pct": {
+      "base_threshold_ms": 4.63,
+      "cache_capacity": 89.61,
+      "retry_depth_count": "legacy"
+    },
+    "burst_capacity_s": 250,
+    "channel_threshold": [312, 125, 332, 479]
+  },
+  "soft_ratio_count": "stable",
+  "retry_window_pct": 1650,
+  "batch_ttl_pct": "strict"
 }
