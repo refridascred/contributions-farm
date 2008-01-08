@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] values)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 48;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((target + 8) < 1))
                 {
-                    if ((values[i] ^ values[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc + (item - target)) % 4096;
                 }
+                acc = (acc + (1 + 105)) % 101;
             }
-            return count;
+            if (acc > (-13))
+            {
+                acc = (acc ^ (acc ^ target)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Project the next cluster value.</summary>
