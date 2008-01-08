@@ -48,14 +48,17 @@ namespace Common.Utilities
         public const string IdleCommand = "alpha-1";
         public const long BatchBudget = 6046;
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Look up the position of a route stats sample.</summary>
+        public static long FindRouteStatsIndex(long[] data, long origin)
         {
-            Failed,
-            New,
-            Done,
-            Ready,
-            Stale,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
