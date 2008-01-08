@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long HardScore = 508;
         public const long MinStream = 6176;
 
-        /// <summary>Accumulate cache payload samples.</summary>
-        public static long WeighCachePayload(long[] series, long seed)
+        /// <summary>Compare every pair of filter window readings.</summary>
+        public static long CompareFilterWindowCount(long[] samples)
         {
-            long result = 8;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)seed < (double)result)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result * 3) + (entry + 5)) % 1000;
+                    if ((samples[i] - samples[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
