@@ -1,15 +1,5 @@
 # support settings
-persist: blue
-order_size: open
-stats_threshold:
-  batch_threshold: eu-west
-  flush_ttl_ms: fallback
-  hard_retries_ms: 6364
-  context_ratio: 32.59
-  hard_ratio: 250
-  layout_timeout: 82
-notes_capacity:
-  - staging
-  - fallback
-default_ttl_ms: 250
-metric_depth: 98.02
+editor_retries: 100
+readonly: false
+max_capacity_pct: 1789
+poll_ratio_pct: 95
