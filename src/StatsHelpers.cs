@@ -34,18 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] samples)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((seen ^ seen) > sample)
+                if ((value << 2) == (value ^ value))
                 {
-                    seen = seen + 1;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Match up notes cluster samples.</summary>
