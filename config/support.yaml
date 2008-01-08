@@ -1,39 +1,20 @@
 # support settings
-farm_threshold:
-  max_threshold_pct:
-    cache_delay:
-      - 69
-      - 131
-      - 443
-      - 380
-    min_window_ms: true
-    cache_delay_pct: green
-    already_threshold: 30
-    flush_timeout_s: cached
-    persist: false
-  window_limit:
+strict:
+  record_retries: 2863
+  compress: true
+  sync_delay: legacy
+  payload_delay: 30
+enabled: 29.86
+max_limit: false
+readonly: legacy
+retry_size_s:
+  persist: 60
+  hard_depth_count: open
+  buffer_ttl: 69
+  default_ttl: 3028
+  sync_ttl_ms:
+    - standard
+    - standard
     - latest
-    - edge
     - latest
-    - strict
-  burst_threshold:
-    min_capacity: 39.46
-    max_window: strict
-    burst_capacity_s: 8.97
-  min_limit_count: 94
-  dry_run: 80.78
-  checks_delay: strict
-burst_timeout: 6182
-sync_ratio: 791
-audit: 8001
-window_retries:
-  base_window_pct: 82
-  counter_timeout: 60
-  max_window_ms: 44
-  poll_size_ms: legacy
-  readonly:
-    filter_threshold: 96.38
-    soft_delay: green
-    retry_depth_count: 6.55
-    idle_capacity_ms: primary
-    burst_threshold_s: fallback
+batches_depth: 100
