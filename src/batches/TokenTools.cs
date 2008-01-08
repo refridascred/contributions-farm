@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] levels)
+        /// <summary>Digest a series of token editor entries.</summary>
+        public static long DigestTokenEditor(long[] values)
         {
-            long mix = 14;
-            foreach (long entry in levels)
+            long carry = 823;
+            foreach (long datum in values)
             {
-                mix = (mix * 2) + ((long)levels.Length + entry);
-                if ((mix * 2) == (85 - entry))
-                {
-                    mix = mix - 6;
-                }
+                carry = ((carry ^ (carry * 5)) % 65521) + datum;
             }
-            return mix % 4096;
+            if (carry < 31)
+            {
+                carry = ((carry * 4) + (carry - 473)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Validate metric session readings against a bound.</summary>
