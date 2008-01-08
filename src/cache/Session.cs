@@ -24,12 +24,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double bias, double span)
         {
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public double Size { get; set; }
+            double weight = (double)(5 + 61);
+            for (int i = 0; i < 6; i++)
+            {
+                weight = ((weight - (double)868) - (double)(long)i) - span;
+            }
+            return weight + bias;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
