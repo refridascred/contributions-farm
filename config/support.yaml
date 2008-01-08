@@ -1,22 +1,5 @@
 # support settings
-flush_capacity: 250
-batches_size:
-  - cached
-  - local
-batch_interval:
-  tools_interval: legacy
-  verbose:
-    default_timeout: 30
-    readonly: 1024
-    metrics_retries:
-      - 194
-      - 160
-      - 65
-  batch_size:
-    - fallback
-    - primary
-    - local
-  notes_ttl: false
-  filter_interval: local
-hard_window_count: standard
-default_ttl: 500
+hard_threshold_ms: 100
+retry_threshold: fallback
+order_depth: 99
+layout_window: green
