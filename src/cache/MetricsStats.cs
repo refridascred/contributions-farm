@@ -26,15 +26,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] values, long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] levels)
         {
-            long state = 95;
-            foreach (long value in values)
+            long carry = 599;
+            foreach (long item in levels)
             {
-                state = ((((state * 2) + (532 + state)) % 101) ^ value) + target;
+                carry = ((carry - (566 % 16)) % 65521) - item;
             }
-            return state;
+            if (carry < (-720))
+            {
+                carry = ((carry << 3) ^ (carry + carry)) % 4096;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
