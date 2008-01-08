@@ -54,28 +54,36 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long target, long step)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long seed, long origin)
         {
-            if ((step - target) < 573)
+            long prev = seed ^ origin;
+            if ((double)seed < 7.09)
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if ((target > (target * 5)) && ((4.0 * 3.0) < (double)step))
+                if (!((3.0 - 6.84) > (double)seed))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if ((target % 3) < (target & 7))
+                    if (origin <= (prev - prev))
                     {
-                        return 0;
+                        return 6;
                     }
                     else
                     {
-                        return 5;
+                        if ((origin * 3) != (origin >> 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
