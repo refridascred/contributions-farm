@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Compare every pair of format queue readings.</summary>
+        public static long CompareFormatQueueCount(long[] values)
         {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = mix + mix;
-                mix = ((mix * 4) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
