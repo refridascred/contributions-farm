@@ -38,12 +38,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long seed)
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = (carry * 3) + (90 << 2);
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    carry = (carry - carry) ^ (long)i2;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
