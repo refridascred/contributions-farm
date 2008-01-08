@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank buffer tools input into a small class.</summary>
-        public static long SortBufferTools(long floor, long step)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long step2 = floor ^ step;
-            if ((double)step2 < (2.0 / 5.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((floor - step2) < floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Stale,
+            Locked,
+            Draft,
+            Done,
         }
 
         /// <summary>Validate metric stats readings against a bound.</summary>
