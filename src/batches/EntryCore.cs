@@ -22,20 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long step)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] samples, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
+            long anchor = 513;
+            foreach (long datum in samples)
             {
-                long matches = (step - (long)i) ^ score;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    score = (score ^ (matches * 5)) + (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 4093;
+                anchor = ((anchor + (1 & 127)) + datum) + offset;
             }
-            return score;
+            return anchor % 4096;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
