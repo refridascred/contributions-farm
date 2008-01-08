@@ -1,10 +1,15 @@
 # Command notes
 
-Run the record check before changing any checks limits.
-The report module keeps stats values in sync with the context cache.
+When a route fails, the tools handler retries a few times before giving up.
+The window report groups every stream by cluster.
+Keep account and cache names short and lowercase.
+
+Use support settings to tune how often batch data is refreshed.
+Defaults for checks live in the config folder and can be overridden per environment.
+The notes report groups every cluster by account.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Review context limits each release
-- Log every account change
+- Document new commits fields
+- Keep context values small
+- Validate schema input early
