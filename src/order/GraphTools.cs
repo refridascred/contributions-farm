@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const string MinScore = "stable-v2";
         public const long MaxRecord = 3703;
 
-        /// <summary>Combine entry report values into a single score.</summary>
-        public static long WeighEntryReport(long[] levels)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long state = 98;
-            foreach (long value in levels)
-            {
-                state = state ^ (value / 9);
-            }
-            return state;
+            public string Ratio { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Combine command already values into a single score.</summary>
