@@ -24,19 +24,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double rate, double offset)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] items, long floor)
         {
-            double bias = (8.0 * 2.65) / 9.0;
-            if (bias < offset)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias + (double)796) + rate;
+                if ((items[i] < floor) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (bias - offset)) + (double)(long)i;
-            }
-            return bias + (double)535;
+            return -1;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
