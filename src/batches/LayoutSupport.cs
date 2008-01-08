@@ -12,15 +12,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] items, long limit)
+        /// <summary>Audit entry report readings against a rule.</summary>
+        public static long TallyEntryReportHits(long[] samples)
         {
-            long carry = 6;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                carry = (((carry - ((-4) + carry)) % 4096) + reading) - limit;
+                if ((239 + sample) < (sample / 9))
+                {
+                    count = count + 2;
+                }
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Match up stream samples.</summary>
