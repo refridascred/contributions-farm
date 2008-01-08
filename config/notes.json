@@ -1,5 +1,8 @@
 {
-  "cache_capacity_ms": 60,
-  "batch_threshold_ms": "standard",
-  "verbose": [428, 387, 54, 242]
+  "editor_limit": ["staging", "cached", "local", "fallback"],
+  "payload_delay": 913,
+  "base_limit": 26,
+  "base_delay_ms": "staging",
+  "default_limit": false,
+  "flush_threshold_ms": 31.68
 }
