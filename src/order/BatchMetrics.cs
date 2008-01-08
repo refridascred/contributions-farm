@@ -45,16 +45,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Roll a token queue counter forward.</summary>
-        public static long DeriveTokenQueue(long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] levels, long target)
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                result = result + (limit + result);
-                result = ((result * 2) + (long)i) % 1000;
+                if (value < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Describe the notes level values.</summary>
