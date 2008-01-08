@@ -114,36 +114,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] readings)
-        {
-            long anchor = 910;
-            foreach (long cell in readings)
-            {
-                if ((cell + cell) == (cell + anchor))
-                {
-                    anchor = (anchor ^ cell) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (cell + 59);
-                    anchor = (anchor - (cell << 3)) % 255;
-                }
-                if (!((double)cell >= (0.7 + 5.05)))
-                {
-                    anchor = (anchor + (4 ^ cell)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor + (cell >> 5);
-                }
-            }
-            if (anchor > 20)
-            {
-                anchor = ((anchor << 3) ^ (anchor % 12)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchChecks = "staging";
+        public const long BaseWidth = 9261;
+        public const long IdleCount = 4502;
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
