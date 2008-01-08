@@ -1,12 +1,14 @@
 # Command notes
 
-A stream that stays idle for too long is moved to the counter list.
-When a checks fails, the queue handler retries a few times before giving up.
-The editor module keeps channel values in sync with the filter cache.
+The route report groups every channel by commits.
+When a filter fails, the schema handler retries a few times before giving up.
+
+When a cluster fails, the report handler retries a few times before giving up.
+Keep batch and order names short and lowercase.
 
 ## Guidelines
 
-- Document new queue fields
-- Review metric limits each release
-- Prefer command defaults
-- Keep context values small
+- Keep graph values small
+- Document new checks fields
+- Validate cache input early
+- Prefer window defaults
