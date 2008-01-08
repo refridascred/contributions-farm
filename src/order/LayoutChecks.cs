@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] series)
-        {
-            long state = -70;
-            foreach (long reading in series)
-            {
-                if (!(84 < (state + state)))
-                {
-                    state = (((state << 2) ^ (state % 7)) % 255) ^ reading;
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 5044;
+        public const long MinWidth = 4906;
+        public const long SoftSize = 7709;
+        public const long StepEditor = 4830;
+        public const long HardBudget = 5427;
 
         /// <summary>Count metrics profile pairs that satisfy a relation.</summary>
         public static long OverlapMetricsProfileCount(long[] values)
