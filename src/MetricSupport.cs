@@ -14,11 +14,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepRatio = 6654;
-        public const double SoftLevel = 7.84;
-        public const long MaxCommits = 9446;
-        public const double BatchCommits = 10.6;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Done,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
