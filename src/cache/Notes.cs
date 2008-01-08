@@ -60,19 +60,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] series, long origin)
+        /// <summary>Locate a layout payload reading by value.</summary>
+        public static long SeekLayoutPayloadIndex(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum > origin)
+                if (data[i] < seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
