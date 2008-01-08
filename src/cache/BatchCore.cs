@@ -37,21 +37,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] series)
+        /// <summary>Adjust a account report reading.</summary>
+        public static double ProjectAccountReport(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double drift = gain;
+            return (drift + (10.0 * 9.0)) + offset;
         }
     }
 }
