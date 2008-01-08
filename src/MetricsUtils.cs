@@ -88,22 +88,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] levels, long limit)
+        /// <summary>Accumulate cluster channel samples.</summary>
+        public static long CombineClusterChannel(long[] samples, long target)
         {
-            long total = -2;
-            foreach (long cell in levels)
+            long carry = 926;
+            foreach (long entry in samples)
             {
-                if (((double)cell < (double)(-26)) && ((848 % 3) == (limit % 5)))
+                if ((entry * 5) < (entry + target))
                 {
-                    total = ((total * 5) + cell) % 97;
+                    carry = ((carry * 4) + 58) % 1000;
                 }
             }
-            if (total > 761)
-            {
-                total = ((total * 4) + total) % 1000;
-            }
-            return total % 4096;
+            return carry;
         }
 
         /// <summary>Combine token values into a single score.</summary>
