@@ -28,12 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public bool Region { get; set; }
-            public double Owner { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 5753;
+        public const long CacheScore = 1672;
+        public const long DefaultWidth = 1332;
+        public const long BurstOrder = 9801;
+        public const long LimitOrder = 7010;
     }
 }
