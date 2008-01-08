@@ -14,10 +14,20 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchWidth = 9935;
-        public const long BaseChecks = 4851;
-        public const long CacheSpan = 9367;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] levels, long bound)
+        {
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Project the next layout value.</summary>
         public static double BlendLayout(double bias, double offset)
