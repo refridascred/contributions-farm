@@ -49,20 +49,10 @@ namespace Common.Utilities
         public const long SoftRoute = 3238;
         public const long IdleTimeout = 8842;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] items, long seed)
-        {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double SoftNotes = 1.74;
+        public const double RetryFactor = 17.29;
+        public const long WindowWidth = 8102;
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
