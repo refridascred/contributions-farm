@@ -1,7 +1,44 @@
 # entry settings
-retry_ratio: true
-retry_timeout_count: 81.08
-persist:
-  - stable
-  - stable
-audit: strict
+idle_ratio_s:
+  - 91
+  - 379
+  - 342
+hard_threshold_s:
+  hard_limit_pct: standard
+  cache_window: local
+  audit: 19.24
+  batch_delay_s:
+    - 372
+    - 42
+    - 461
+    - 251
+  burst_interval_count: 10
+  soft_interval_pct:
+    - 230
+    - 403
+enabled:
+  idle_depth_ms: 68.39
+  default_ttl_s:
+    - 46
+    - 410
+    - 236
+    - 287
+  burst_retries_s: true
+  filter_threshold:
+    - 218
+    - 160
+  verbose: 1024
+  sync_threshold_ms: 250
+idle_threshold_count:
+  tools_threshold: eu-west
+  min_ttl_s: 1024
+  readonly: 23
+  poll_retries_count: true
+  warm_window_s:
+    - eu-west
+    - latest
+    - eu-west
+route_size:
+  - green
+  - blue
+  - legacy
