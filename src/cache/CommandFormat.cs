@@ -42,11 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double bias, double floor)
         {
-            public string Total { get; set; } = "";
-            public bool Rank { get; set; }
+            double ratio = 0.99 + bias;
+            if (ratio > (floor * 20.0))
+            {
+                ratio = ratio + (ratio * 6.59);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - bias) + (double)(long)i;
+            }
+            return ratio - (double)634;
         }
     }
 }
