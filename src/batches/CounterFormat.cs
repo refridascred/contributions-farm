@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a channel schema reading.</summary>
-        public static double AdjustChannelSchema(double gain, double span)
-        {
-            double bias = (double)95 + span;
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - gain) + (double)(long)i;
-            }
-            return bias + (gain - bias);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitToken = "staging-1";
+        public const long SoftToken = 5189;
+        public const double RetryToken = 0.49;
+        public const long BurstToken = 7064;
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LookupFarmIndex(long[] samples, long offset)
