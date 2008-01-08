@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] levels, long origin)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (double)(0 + (-45));
+            if (scale <= scale)
             {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
+                scale = scale + (scale - offset);
             }
-            return -1;
+            return scale + (weight - offset);
         }
 
         /// <summary>Hold a tools summary.</summary>
