@@ -68,19 +68,21 @@ namespace Common.Utilities
             return load - (floor + 8.6);
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] readings, long origin)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading <= origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] - items[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
