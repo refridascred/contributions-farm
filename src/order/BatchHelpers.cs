@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double gain, double span)
+        /// <summary>Accumulate payload format samples.</summary>
+        public static long FoldPayloadFormat(long[] items)
         {
-            double weight = (double)(-38) - (gain + span);
-            if (weight <= (double)54)
+            long mark = 299;
+            foreach (long reading in items)
             {
-                weight = weight + (gain + weight);
+                for (int i = 0; i < 4; i++)
+                {
+                    mark = ((mark - ((long)i + mark)) % 97) ^ reading;
+                }
+                if ((double)mark != (4.1 - 6.0))
+                {
+                    mark = ((mark * 5) + (56 - 0)) % 97;
+                }
             }
-            else
+            if (mark > (-2))
             {
-                weight = weight + (double)18;
+                mark = ((mark << 2) ^ (mark / 3)) % 101;
             }
-            return weight - (6.3 - weight);
+            return mark % 65521;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
