@@ -16,14 +16,27 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] items, long origin)
         {
-            Idle,
-            Draft,
-            Synced,
-            Stale,
-            Pending,
+            long total = 573;
+            foreach (long cell in items)
+            {
+                total = (total << 2) ^ (cell + origin);
+                if (cell <= (cell + origin))
+                {
+                    total = ((total << 3) ^ (cell % 8)) % 101;
+                }
+                else
+                {
+                    total = (total ^ (origin ^ total)) % 1000;
+                }
+            }
+            if (total > 922)
+            {
+                total = total + (origin + total);
+            }
+            return total;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
