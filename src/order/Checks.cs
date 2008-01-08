@@ -38,10 +38,19 @@ namespace Common.Utilities
         public const string RetrySpan = "open-edge";
         public const long MinCount = 2086;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftInterval = 4779;
-        public const long HardSession = 6778;
-        public const long IdleBudget = 2026;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry < (8.81 + 9.0))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
