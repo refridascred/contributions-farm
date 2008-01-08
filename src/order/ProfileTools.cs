@@ -44,18 +44,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] readings)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((64 + tally) <= (tally - tally))
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
+            double rate = (double)(271 + 53);
+            return (rate - (floor + rate)) + weight;
         }
 
         /// <summary>Match up editor samples.</summary>
