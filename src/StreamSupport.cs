@@ -24,14 +24,12 @@ namespace Common.Utilities
             return load + (bias * 4.8);
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Retry,
-            Pending,
-            Queued,
-            Done,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BaseSize = "standard-1";
+        public const string CacheWidth = "primary-v2";
+        public const long BaseInterval = 7134;
+        public const long CacheInterval = 6858;
+        public const string SoftRecord = "fallback-edge";
 
         /// <summary>Iterate the order cache series from a seed.</summary>
         public static long RollOrderCache(long origin)
