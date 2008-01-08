@@ -1,5 +1,5 @@
 # entry settings
-dry_run: open
-sync_depth_pct: 4235
-strict: green
-poll_retries_pct: 34.23
+flush_retries_pct: 7044
+filter_ttl: 6.89
+idle_capacity: fallback
+min_window_pct: 500
