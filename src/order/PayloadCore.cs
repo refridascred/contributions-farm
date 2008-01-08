@@ -33,19 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] data, long target)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
