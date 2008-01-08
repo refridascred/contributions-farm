@@ -28,18 +28,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] data, long limit)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((matches + limit) <= (matches - limit))
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-            }
-            return matches;
+            Idle,
+            Synced,
+            Retry,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a report stats.</summary>
