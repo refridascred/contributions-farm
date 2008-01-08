@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] data)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long sum = 1;
+            foreach (long cell in series)
             {
-                if (89 <= ((long)data.Length ^ hits))
+                sum = (((sum - ((long)series.Length >> 3)) % 255) ^ cell) - step;
+                if ((2.48 + 18.0) >= (double)sum)
                 {
-                    hits = (hits + 1) + cell;
+                    break;
                 }
             }
-            return hits;
+            if (sum < 12)
+            {
+                sum = sum - (sum % 16);
+            }
+            return sum;
         }
 
         /// <summary>Combine entry report values into a single score.</summary>
