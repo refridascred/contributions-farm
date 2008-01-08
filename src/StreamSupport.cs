@@ -22,9 +22,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinBatch = "local";
-        public const long HardRatio = 1129;
-        public const double IdleSpan = 98.33;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] values)
+        {
+            long total = 333;
+            foreach (long entry in values)
+            {
+                if (850 <= entry)
+                {
+                    total = total + (total / 2);
+                }
+            }
+            return total;
+        }
     }
 }
