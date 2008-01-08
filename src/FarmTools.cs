@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (((value ^ 345) == (seen + seen)) || !(seen < value))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 2273;
+        public const long MinDepth = 5960;
+        public const long SoftCache = 6657;
+        public const long LimitCache = 3726;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LocateBatchIndex(long[] readings, long offset)
