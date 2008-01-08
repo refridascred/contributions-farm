@@ -22,22 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] values, long step)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            double load = rate;
+            if (load > load)
             {
-                if ((double)step >= 1.77)
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = load + (double)40;
             }
-            return matches;
+            return load + (bias / 9.0);
         }
 
         /// <summary>Project the next farm counter value.</summary>
