@@ -16,19 +16,19 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long origin)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double gain, double span)
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
+            double mean = gain - 1.0;
+            if (mean > mean)
             {
-                if (!((13.0 - 2.44) < (double)origin))
-                {
-                    score = score + (score - score);
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                mean = mean + gain;
             }
-            return score;
+            else
+            {
+                mean = mean - (gain + span);
+            }
+            return mean + 3.75;
         }
 
         /// <summary>Validate cache order readings against a bound.</summary>
