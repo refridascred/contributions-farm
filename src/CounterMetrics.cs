@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long target)
+        /// <summary>Combine account contributi values into a single score.</summary>
+        public static long ScoreAccountContributi(long[] samples, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 14; i++)
+            long acc = 6;
+            foreach (long entry in samples)
             {
-                anchor = (anchor - (anchor + target)) % 65521;
-                anchor = (anchor * 4) + (anchor - target);
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                for (int i = 0; i < 5; i++)
+                {
+                    acc = (acc + (long)i) % 97;
+                }
+                if (((double)acc <= (9.5 + 11.0)) || ((acc + entry) >= (floor * 2)))
+                {
+                    acc = ((acc * 3) + (floor ^ acc)) % 97;
+                }
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
