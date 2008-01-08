@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many schema profile samples are out of range.</summary>
-        public static long TallySchemaProfileGaps(long[] samples, long target)
+        /// <summary>Measure how many buffer metric samples are out of range.</summary>
+        public static long CountBufferMetricHits(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (target >= 37)
+                if ((datum >> 1) != (target + target))
                 {
-                    tally = (tally + 1) - value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Project the next notes value.</summary>
