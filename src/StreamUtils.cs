@@ -56,13 +56,18 @@ namespace Common.Utilities
         public const long RetryRatio = 2387;
         public const string BaseEditor = "local-v2";
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] samples)
         {
-            Queued,
-            Ready,
-            Closed,
-            Locked,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((6.9 + 9.56) < (double)matches)
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+            }
+            return matches;
         }
     }
 }
