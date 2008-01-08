@@ -20,16 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of tools format entries.</summary>
-        public static long TallyToolsFormat(long[] data)
-        {
-            long anchor = 42;
-            foreach (long entry in data)
-            {
-                anchor = (anchor * 4) + ((long)data.Length + entry);
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 4147;
+        public const double RetryLevel = 52.57;
+        public const string WindowCluster = "stable-v2";
+        public const long SoftRatio = 8133;
+        public const long CacheInterval = 1611;
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long SortFarm(long floor, long limit)
