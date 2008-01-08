@@ -39,16 +39,21 @@ namespace Common.Utilities
             return load - (double)52;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] items)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result << 3) ^ ((long)i % 60)) % 255;
-                result = ((result * 3) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
