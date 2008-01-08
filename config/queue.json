@@ -1,7 +1,6 @@
 {
-  "queue_window": "edge",
-  "poll_capacity_pct": 32,
-  "account_capacity": 1024,
-  "buffer_limit": ["legacy", "green", "local", "eu-west"],
-  "retry_delay_count": 98.62
+  "hard_window": 20.93,
+  "audit": [285, 350, 240],
+  "default_capacity_count": 88.67,
+  "channel_delay": 45
 }
