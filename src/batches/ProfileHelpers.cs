@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] data)
+        /// <summary>Check that every githubfarm session entry stays within the limit.</summary>
+        public static bool GuardGithubfarmSessionBounds(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((8.0 + 20.0) == (double)hits)
+                if (reading > limit)
                 {
-                    hits = (hits + 1) ^ value;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the counter status values.</summary>
