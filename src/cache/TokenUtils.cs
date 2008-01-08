@@ -19,22 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] levels)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long mark = -199;
+            foreach (long datum in samples)
             {
-                if (!(((-409) - datum) >= (seen << 3)))
+                if (datum > (datum ^ 5))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mark = ((mark * 5) + (mark ^ mark)) % 101;
                 }
             }
-            return seen;
+            if (mark > 3)
+            {
+                mark = mark ^ 15;
+            }
+            return mark;
         }
 
         /// <summary>Project the next account value.</summary>
