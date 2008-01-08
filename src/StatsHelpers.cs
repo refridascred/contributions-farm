@@ -63,14 +63,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] items, long target)
         {
-            Paused,
-            Dropped,
-            Stale,
-            Draft,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
