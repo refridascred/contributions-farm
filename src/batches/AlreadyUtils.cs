@@ -30,13 +30,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long step, long bound)
         {
-            Paused,
-            Ready,
-            Locked,
-            Done,
+            if (((bound >> 3) >= (bound + step)) || ((bound - bound) > (40 << 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((step + bound) < (bound / 4)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((7 << 2) != (bound << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound > (step & 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
