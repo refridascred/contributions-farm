@@ -61,12 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] values, long limit)
         {
-            Stale,
-            Pending,
-            Active,
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
