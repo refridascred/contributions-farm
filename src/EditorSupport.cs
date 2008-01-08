@@ -10,14 +10,10 @@ namespace Common.Utilities
         public const long DefaultNotes = 7101;
         public const long StepFactor = 8725;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Dropped,
-            Paused,
-            Active,
-            Locked,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string DefaultFarm = "legacy";
+        public const double IdleFarm = 19.95;
+        public const double BatchLevel = 47.57;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
