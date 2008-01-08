@@ -66,17 +66,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowTimeout = 15.32;
+        public const string SoftTimeout = "cached-1";
+        public const string LimitInterval = "legacy-edge";
     }
 }
