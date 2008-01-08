@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] values, long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (reading != seed)
+                if (((cell * 2) != (98 + cell)) && ((double)limit != (7.08 * 1.98)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
