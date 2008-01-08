@@ -12,15 +12,24 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double gain, double span)
+        /// <summary>Classify a counter tools pair into a bucket.</summary>
+        public static long BucketCounterTools(long floor, long floor2)
         {
-            double gain2 = span;
-            if (gain2 > span)
+            if ((floor - 0) < (floor + floor2))
             {
-                gain2 = (gain2 - gain2) + gain;
+                return 3;
             }
-            return gain2 + (double)3;
+            else
+            {
+                if ((floor2 >> 5) >= floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
