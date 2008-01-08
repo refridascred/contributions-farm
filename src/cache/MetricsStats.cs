@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double gain, double bias)
+        /// <summary>Iterate the metrics batches series from a seed.</summary>
+        public static long RollMetricsBatches(long step)
         {
-            double drift = bias + gain;
-            if (drift < drift)
+            long state = step;
+            for (int i = 0; i < 18; i++)
             {
-                drift = drift + (drift - 9.2);
+                if (!((2.1 / 9.0) == (double)(long)i))
+                {
+                    state = (state + (state >> 1)) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (drift * 4.0)) - (double)(long)i;
-            }
-            return drift - gain;
+            return state;
         }
 
         /// <summary>Measure how many report route samples are out of range.</summary>
