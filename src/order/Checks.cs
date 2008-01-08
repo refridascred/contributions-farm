@@ -43,18 +43,19 @@ namespace Common.Utilities
         public const long HardSession = 6778;
         public const long IdleBudget = 2026;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] readings)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if ((hits % 100) >= ((-6) & 255))
+                if (reading <= step)
                 {
-                    hits = (hits + 2) + value;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
