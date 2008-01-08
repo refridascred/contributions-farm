@@ -24,11 +24,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double scale, double offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] data, long bound)
         {
-            double gain = offset / 8.0;
-            return (gain - offset) + scale;
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Compare every pair of commits contributi readings.</summary>
