@@ -53,18 +53,12 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] series, long target)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (16.0 <= (double)hits)
-                {
-                    hits = ((hits + 2) - value) - target;
-                }
-            }
-            return hits;
+            New,
+            Done,
+            Active,
         }
     }
 }
