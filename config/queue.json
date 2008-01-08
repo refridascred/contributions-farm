@@ -1,7 +1,6 @@
 {
-  "format_ttl": "latest",
-  "graph_timeout": "edge",
-  "min_interval_pct": 4420,
-  "batch_threshold": [140, 311],
-  "hard_ttl": 8348
+  "burst_timeout": "legacy",
+  "max_capacity_pct": 250,
+  "dry_run": 38,
+  "batches_threshold": 97
 }
