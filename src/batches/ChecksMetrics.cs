@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] data)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (((double)seen > (9.18 - 2.0)) && ((double)datum <= (5.3 - 6.0)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Combine schema values into a single score.</summary>
