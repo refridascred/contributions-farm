@@ -19,15 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] series, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] values, long step)
         {
-            long anchor = -2;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                anchor = (anchor ^ bound) + entry;
+                if ((double)seen == (double)step)
+                {
+                    seen = (seen + 1) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
