@@ -13,18 +13,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] data)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long item in data)
+            double weight = (double)8 + (offset / 7.0);
+            if (weight > (scale / 4.0))
             {
-                if (!((-4) <= hits))
-                {
-                    hits = (hits + 1) ^ item;
-                }
+                weight = weight - (scale - offset);
             }
-            return hits;
+            return weight + scale;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
