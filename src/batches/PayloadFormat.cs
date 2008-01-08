@@ -31,10 +31,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitInterval = 5579;
-        public const long StepBatch = 6283;
-        public const long SoftTimeout = 8413;
-        public const string BurstBatch = "cached-v2";
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value != (double)bound)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
