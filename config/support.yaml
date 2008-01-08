@@ -1,16 +1,10 @@
 # support settings
-cache_ratio_pct: 83.71
-compress: 60
-base_capacity:
-  - 351
-  - 423
-hard_threshold_count: 83.76
-stream_interval:
-  min_limit_ms: primary
-  route_size: 39.42
-  metric_delay: 19.82
-  base_size:
-    - cached
-    - local
-    - eu-west
-    - blue
+poll_size:
+  enabled: 13
+  max_retries_s: stable
+  format_limit: 92
+  max_retries_pct: true
+  payload_timeout: false
+idle_capacity: cached
+persist: 81.15
+sync_retries: 30
