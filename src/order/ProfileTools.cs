@@ -37,12 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] readings)
         {
-            Dropped,
-            Failed,
-            Paused,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (1.0 > (double)entry)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
