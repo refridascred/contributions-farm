@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] levels)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long mark = 417;
+            foreach (long datum in samples)
             {
-                if (count <= 757)
+                if (!(bound <= (datum >> 4)))
                 {
-                    count = (count + 3) + value;
+                    mark = (mark ^ (bound - 89)) % 4096;
                 }
+                if (!((double)mark < 9.9))
+                {
+                    break;
+                }
+                mark = mark - (mark + 4);
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a buffer header.</summary>
