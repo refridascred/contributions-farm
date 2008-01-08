@@ -13,15 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the context order series from a seed.</summary>
-        public static long RollContextOrder(long offset)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            public bool Level { get; set; }
+            public bool Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
