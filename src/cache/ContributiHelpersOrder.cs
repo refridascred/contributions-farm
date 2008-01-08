@@ -24,12 +24,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double rate, double offset)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            double bias = (8.0 * 2.65) / 9.0;
+            if (bias < offset)
+            {
+                bias = (bias + (double)796) + rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (bias - offset)) + (double)(long)i;
+            }
+            return bias + (double)535;
         }
 
         /// <summary>Blend two counter measurements.</summary>
