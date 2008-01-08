@@ -47,22 +47,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] levels, long target)
+        /// <summary>Roll a farm metric counter forward.</summary>
+        public static long StepFarmMetric(long limit)
         {
-            long state = 7;
-            foreach (long entry in levels)
+            long result = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (89 > (target % 7))
+                if (!((limit * 4) == (result - limit)))
                 {
-                    state = ((state * 5) + (target >> 5)) - entry;
+                    result = (result ^ ((long)i >> 5)) % 101;
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
-            if (state < 31)
-            {
-                state = state + (state >> 2);
-            }
-            return state % 1000;
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
