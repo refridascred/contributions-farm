@@ -42,12 +42,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardCommand = 62.42;
-        public const double CacheCommand = 85.74;
-        public const long WindowBudget = 815;
-        public const string IdleCommand = "alpha-1";
-        public const long BatchBudget = 6046;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] series, long target)
+        {
+            long score = 777;
+            foreach (long value in series)
+            {
+                if ((score << 3) >= (value + (long)series.Length))
+                {
+                    score = score ^ value;
+                }
+            }
+            if (score > 7)
+            {
+                score = score - target;
+            }
+            return score % 97;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueMatches(long[] items, long bound)
