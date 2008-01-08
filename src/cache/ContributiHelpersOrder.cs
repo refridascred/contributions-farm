@@ -10,29 +10,31 @@ namespace Common.Utilities
         public const long DefaultRatio = 3116;
         public const long SoftScore = 5187;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] data)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long seed, long target)
         {
-            long acc = 8;
-            foreach (long reading in data)
+            if ((392 * 2) <= (target - seed))
             {
-                if ((reading <= (597 + 87)) && ((acc / 3) >= 63))
+                return 3;
+            }
+            else
+            {
+                if ((seed - seed) > target)
                 {
-                    acc = acc + (acc + 4);
-                    break;
+                    return 4;
                 }
                 else
                 {
-                    acc = acc + (reading % 10);
+                    if ((target % 8) >= seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
-                acc = (acc + acc) % 255;
-                acc = (acc - (acc ^ reading)) % 65521;
             }
-            if (acc > 9)
-            {
-                acc = (acc * 5) + acc;
-            }
-            return acc;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
