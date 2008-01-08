@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double weight, double offset)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] series)
         {
-            double bias = (double)(0 >> 3);
-            if (bias <= (double)(-12))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = (bias - bias) - weight;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias + (bias + offset);
-            }
-            return bias + 7.2;
+            return tally;
         }
 
         /// <summary>Hold a stats record.</summary>
