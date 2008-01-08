@@ -56,18 +56,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] samples)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] readings)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((double)reading <= 1.0) || ((double)reading >= (double)matches)) && (6.1 < (double)reading))
                 {
-                    if ((samples[i] + samples[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
