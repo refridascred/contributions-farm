@@ -23,19 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long bound)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] readings, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (!((885 + sum) == ((long)i << 2)))
+                if (reading > limit)
                 {
-                    sum = (sum * 2) + (-16);
+                    valid = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Accumulate cache samples.</summary>
