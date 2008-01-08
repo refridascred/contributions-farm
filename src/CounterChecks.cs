@@ -29,17 +29,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] values, long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 2;
+            foreach (long item in levels)
             {
-                if (values[i] > origin)
+                if (((mix ^ mix) != (mix >> 5)) || ((item & 3) <= ((-40) - mix)))
                 {
-                    return (long)i;
+                    mix = mix - mix;
                 }
             }
-            return -1;
+            if (mix < 63)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Describe the batches status values.</summary>
