@@ -1,9 +1,12 @@
 # support settings
-default_capacity_count: 174
-audit: 49.95
-max_window: standard
-cache_retries:
-  flush_ratio_ms: legacy
-  soft_size: true
-  batch_interval_s: false
-route_capacity: 3852
+hard_timeout_s: open
+flush_delay:
+  - 145
+  - 267
+  - 78
+dry_run:
+  - primary
+  - strict
+  - stable
+  - legacy
+stats_ttl: 500
