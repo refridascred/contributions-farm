@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] readings)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long mark = 20;
-            foreach (long sample in readings)
-            {
-                if (mark <= (mark << 3))
-                {
-                    mark = mark ^ (sample + mark);
-                }
-            }
-            return mark;
+            Done,
+            Queued,
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
