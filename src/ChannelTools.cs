@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstTimeout = 5463;
-        public const long MinLevel = 704;
-        public const long LimitCommand = 9833;
-        public const long DefaultFactor = 9118;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((long)i > (origin + origin))
+                {
+                    score = (score ^ (score - origin)) % 65521;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long RollContext(long offset)
