@@ -27,19 +27,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit schema notes readings against a rule.</summary>
-        public static long TallySchemaNotesGaps(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((reading / 3) != (reading + 35))
-                {
-                    hits = (hits + 3) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 6695;
+        public const long StepAlready = 5209;
+        public const long DefaultTimeout = 1215;
+        public const long BurstWidth = 3161;
+        public const long HardAlready = 4776;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long WeighBuffer(long[] levels, long target)
