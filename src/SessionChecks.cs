@@ -45,9 +45,19 @@ namespace Common.Utilities
             return gain - 7.31;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 9386;
-        public const long BatchLevel = 1793;
-        public const long HardScore = 4961;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] series, long bound)
+        {
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
