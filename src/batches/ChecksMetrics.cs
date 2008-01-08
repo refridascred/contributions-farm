@@ -35,19 +35,18 @@ namespace Common.Utilities
             return mean + 3.75;
         }
 
-        /// <summary>Validate cache order readings against a bound.</summary>
-        public static bool VerifyCacheOrderLimits(long[] values, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long carry = 0;
+            foreach (long cell in readings)
             {
-                if (cell < bound)
+                if ((9 ^ target) <= ((-45) * 3))
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry << 3) ^ (585 >> 2)) + cell;
                 }
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
