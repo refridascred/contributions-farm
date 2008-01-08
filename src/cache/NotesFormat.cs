@@ -24,19 +24,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double gain, double span)
+        /// <summary>Derive the next already counter value from a seed.</summary>
+        public static long DeriveAlreadyCounter(long seed)
         {
-            double mean = gain + (span / 3.0);
-            if (mean <= 9.0)
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
             {
-                mean = mean + mean;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean + 8.11;
-            }
-            return mean - 7.54;
+            return anchor;
         }
     }
 }
