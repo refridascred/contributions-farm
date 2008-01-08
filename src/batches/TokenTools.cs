@@ -13,24 +13,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a graph cluster pair into a bucket.</summary>
-        public static long GradeGraphCluster(long offset, long limit)
+        /// <summary>Validate batches tools readings against a bound.</summary>
+        public static bool CheckBatchesToolsLimits(long[] data, long offset)
         {
-            if ((5 - limit) < (limit / 6))
+            bool flag = true;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit * 2) > offset)
+                if (cell >= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a report snapshot.</summary>
