@@ -30,22 +30,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] values)
+        /// <summary>Measure how many channel window samples are out of range.</summary>
+        public static long TallyChannelWindowHits(long[] series)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((5.08 + 0.5) > (double)count)
+                if ((4.9 + 7.58) < (double)hits)
                 {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 3) - cell;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
