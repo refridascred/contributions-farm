@@ -27,12 +27,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public bool Token { get; set; }
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
+            Failed,
+            Locked,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define support limits and defaults.</summary>
