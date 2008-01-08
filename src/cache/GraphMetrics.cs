@@ -26,19 +26,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] levels, long bound)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long limit, long origin)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long offset = limit + origin;
+            if (((421 - 32) <= offset) && ((origin % 12) != (82 & 63)))
             {
-                if (entry >= bound)
+                return 7;
+            }
+            else
+            {
+                if ((origin * 4) > (offset - origin))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the batch mode values.</summary>
