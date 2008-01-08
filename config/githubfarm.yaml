@@ -1,7 +1,16 @@
 # githubfarm settings
-persist: legacy
-batch_threshold_ms: staging
-idle_threshold_count:
-  base_interval_pct: eu-west
-  batch_window_pct: true
-  compress: true
+min_ratio:
+  - latest
+  - open
+base_size_s:
+  persist: edge
+  strict:
+    soft_window_ms: stable
+    commits_timeout: open
+    max_limit_count: staging
+    layout_ttl: blue
+    hard_window_count: local
+    default_window: standard
+  burst_delay: 92.53
+strict: open
+sync_timeout: 500
