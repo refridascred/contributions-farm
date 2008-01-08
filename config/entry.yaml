@@ -1,5 +1,9 @@
 # entry settings
-cache_ratio_pct: 8565
-flush_delay_pct: legacy
-format_limit: 25.81
-warm_timeout_count: 30
+retry_delay_count: true
+poll_threshold_s: local
+hard_retries_count: true
+max_depth:
+  - cached
+  - local
+  - eu-west
+cache_limit_count: standard
