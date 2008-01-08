@@ -39,13 +39,25 @@ namespace Common.Utilities
             return weight - (offset - 0.78);
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long offset, long limit)
         {
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-            public long Token { get; set; }
+            long slot = offset + limit;
+            if ((double)limit > 6.61)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((28 >> 2) < (offset >> 2)) || ((double)slot <= 9.7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
