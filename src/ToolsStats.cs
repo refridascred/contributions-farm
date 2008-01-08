@@ -24,21 +24,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long offset)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((mix * 5) == (offset ^ offset))
-                {
-                    mix = (mix + ((-1) - 1)) % 65521;
-                    mix = (mix * 4) + mix;
-                    continue;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Paused,
+            Queued,
+            Done,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
