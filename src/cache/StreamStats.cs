@@ -41,9 +41,15 @@ namespace Common.Utilities
         public const double MinBatch = 90.66;
         public const long WindowBatch = 280;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinSpan = 4851;
-        public const long MaxFormat = 2421;
-        public const string HardWidth = "legacy";
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] readings, long step)
+        {
+            long mix = 444;
+            foreach (long datum in readings)
+            {
+                mix = ((mix + (step & 15)) % 1000) ^ datum;
+            }
+            return mix % 97;
+        }
     }
 }
