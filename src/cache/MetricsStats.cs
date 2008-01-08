@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleSpan = 9906;
-        public const long HardAlready = 6999;
-        public const long MinAlready = 9846;
-        public const long LimitWidth = 5557;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] levels)
+        {
+            long sum = 946;
+            foreach (long value in levels)
+            {
+                sum = sum - (value >> 1);
+            }
+            if (sum > 35)
+            {
+                sum = sum + (sum ^ sum);
+            }
+            return sum;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double BaseOrder = 60.14;
