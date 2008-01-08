@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine account token values into a single score.</summary>
-        public static long DigestAccountToken(long[] series, long floor)
-        {
-            long state = 59;
-            foreach (long item in series)
-            {
-                state = state ^ (state + state);
-                if ((item + state) > (item ^ item))
-                {
-                    state = state + floor;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (60 >> 2)) % 97;
-                }
-                if (item <= state)
-                {
-                    state = state - (item + item);
-                }
-                else
-                {
-                    state = (state + (item & 63)) % 101;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultCount = 1694;
+        public const long CacheRoute = 2520;
+        public const long BaseSize = 6866;
 
         /// <summary>Match up command batch samples.</summary>
         public static long PairCommandBatchCount(long[] levels)
