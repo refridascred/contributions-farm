@@ -20,21 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] levels)
+        /// <summary>Measure how many record payload samples are out of range.</summary>
+        public static long AuditRecordPayloadGaps(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((8.3 - 2.9) == (double)count)
                 {
-                    if ((levels[i] + levels[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = ((count + 1) - item) + floor;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Match up account samples.</summary>
