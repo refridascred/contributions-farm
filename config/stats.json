@@ -1,5 +1,5 @@
 {
-  "sync_timeout": "stable",
-  "soft_ratio_count": ["local", "fallback", "eu-west", "open"],
-  "audit": 63.33
+  "payload_limit": [26, 312],
+  "metrics_interval": "open",
+  "flush_depth": [484, 392, 144]
 }
