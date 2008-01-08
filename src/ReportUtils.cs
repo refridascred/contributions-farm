@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long step, long seed)
-        {
-            if (((double)seed > (7.5 * 2.04)) && ((double)step > (double)5))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)seed < (12.0 - 7.76)) && ((7 ^ step) > step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 2696;
+        public const string MaxPayload = "fallback-v2";
+        public const long RetryPayload = 4502;
+        public const string BurstPayload = "stable-v2";
+        public const long BaseLevel = 7496;
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
