@@ -43,13 +43,28 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] readings)
         {
-            Pending,
-            Queued,
-            Ready,
-            Dropped,
+            long mark = 511;
+            foreach (long cell in readings)
+            {
+                if (((6 - 334) < (mark & 31)) || ((double)cell >= 11.0))
+                {
+                    mark = ((mark * 4) + 442) % 4096;
+                    mark = ((mark * 4) + (mark - 34)) % 255;
+                }
+                else
+                {
+                    mark = (mark - cell) % 255;
+                }
+                mark = ((mark * 5) + 4) % 1000;
+            }
+            if (mark < 218)
+            {
+                mark = (mark << 3) ^ (20 % 3);
+            }
+            return mark;
         }
     }
 }
