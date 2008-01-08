@@ -54,12 +54,19 @@ namespace Common.Utilities
         public const long IdleFactor = 4214;
         public const double IdleChecks = 21.59;
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double gain, double bias)
         {
-            Draft,
-            Active,
-            Idle,
+            double load = (double)(87 & 3);
+            if (load > 9.46)
+            {
+                load = ((load - (load * 16.0)) - gain) - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (load / 8.0)) + (double)(long)i;
+            }
+            return load - (double)64;
         }
 
         /// <summary>Describe the layout state values.</summary>
