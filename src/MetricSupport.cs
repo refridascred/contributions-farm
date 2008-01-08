@@ -26,21 +26,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 75;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                carry = (carry + limit) % 255;
+                carry = (carry + carry) % 97;
+                if (((datum / 6) <= carry) || ((double)datum >= 2.0))
                 {
-                    if ((items[i] ^ items[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            if (carry > 96)
+            {
+                carry = (carry + (long)data.Length) % 97;
+            }
+            return carry % 4096;
         }
     }
 }
