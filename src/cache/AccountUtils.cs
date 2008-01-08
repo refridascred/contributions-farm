@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the stream context entries that pass the check.</summary>
-        public static long CountStreamContextHits(long[] values)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long mix = -7;
+            foreach (long sample in samples)
             {
-                if ((entry >> 5) >= (entry >> 2))
+                if ((double)origin <= (5.7 + 3.0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mix = (mix + (sample & 15)) % 97;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a layout info.</summary>
