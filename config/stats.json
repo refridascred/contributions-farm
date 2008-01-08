@@ -1,8 +1,15 @@
 {
-  "idle_timeout_pct": 64,
-  "strict": "fallback",
-  "flush_window": "primary",
-  "cache_limit_s": "cached",
-  "audit": "edge",
-  "batch_ratio_s": 6968
+  "cache_retries": 6254,
+  "session_size": {
+    "flush_limit_pct": 1640,
+    "enabled": false,
+    "verbose": 30
+  },
+  "batches_interval": {
+    "persist": 39.44,
+    "batch_window": 16,
+    "compress": 2929
+  },
+  "default_window_count": "open",
+  "min_depth": 4730
 }
