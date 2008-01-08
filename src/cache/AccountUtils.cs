@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] samples, long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long limit, long floor)
         {
-            long mix = -7;
-            foreach (long sample in samples)
+            long edge = limit ^ floor;
+            if (edge < (7 ^ edge))
             {
-                if ((double)origin <= (5.7 + 3.0))
+                return 6;
+            }
+            else
+            {
+                if (edge >= (1 + 5))
                 {
-                    mix = (mix + (sample & 15)) % 97;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit % 16) > edge)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Match up buffer filter samples.</summary>
