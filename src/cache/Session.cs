@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Measure how many schema already samples are out of range.</summary>
+        public static long MeasureSchemaAlreadyOutliers(long[] values, long step)
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                total = (total - ((long)i % 10)) % 101;
-                total = ((total * 5) + (long)i) % 97;
+                if ((((cell * 4) >= (step & 15)) || ((double)step != (double)233)) || !(((long)values.Length + cell) == (step >> 5)))
+                {
+                    count = count + 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
