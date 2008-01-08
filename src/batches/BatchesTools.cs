@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] data, long origin)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= origin) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the buffer class values.</summary>
