@@ -27,11 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Validate metrics session readings against a bound.</summary>
+        public static bool ValidateMetricsSessionBounds(long[] values, long origin)
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
