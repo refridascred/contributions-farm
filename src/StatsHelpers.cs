@@ -65,11 +65,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Iterate the buffer notes series from a seed.</summary>
+        public static long StepBufferNotes(long bound)
         {
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
+            long score = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((long)i >= bound))
+                {
+                    score = score - (score - (long)i);
+                    score = score + (score - (long)i);
+                }
+                score = (score + ((long)i - score)) % 97;
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
