@@ -39,25 +39,18 @@ namespace Common.Utilities
             return weight - (offset - 0.78);
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long offset, long limit)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] readings, long limit)
         {
-            long slot = offset + limit;
-            if ((double)limit > 6.61)
+            long total = -13;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((28 >> 2) < (offset >> 2)) || ((double)slot <= 9.7))
+                if (((-98) + value) >= (limit >> 1))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    total = ((total * 4) + (limit / 9)) % 255;
                 }
             }
+            return total % 65521;
         }
     }
 }
