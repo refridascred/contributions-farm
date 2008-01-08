@@ -14,10 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinInterval = 69.9;
-        public const double IdleRoute = 23.75;
-        public const double RetryBudget = 56.04;
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TallySchema(long[] series, long offset)
