@@ -25,22 +25,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] data, long step)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            double drift = (double)(749 >> 5);
+            if (drift <= (ratio / 5.0))
             {
-                if ((seen <= (16 + reading)) && ((step / 8) <= (reading / 3)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = (drift - 8.2) + span;
             }
-            return seen;
+            else
+            {
+                drift = drift + (double)9;
+            }
+            return drift + drift;
         }
 
         /// <summary>Define report limits and defaults.</summary>
