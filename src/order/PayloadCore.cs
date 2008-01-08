@@ -32,11 +32,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSize = 8411;
-        public const long IdleSupport = 7666;
-        public const double RetrySupport = 15.58;
-        public const double SoftSupport = 39.01;
-        public const long WindowSupport = 8982;
+        /// <summary>Accumulate already cluster samples.</summary>
+        public static long ScoreAlreadyCluster(long[] samples, long bound)
+        {
+            long mark = 7;
+            foreach (long sample in samples)
+            {
+                if (((bound * 2) == (sample + sample)) || (bound > (sample + sample)))
+                {
+                    mark = mark ^ (bound & 1);
+                }
+            }
+            return mark;
+        }
     }
 }
