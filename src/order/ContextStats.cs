@@ -32,15 +32,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] levels)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] levels)
         {
             long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((tally - (-1)) <= (tally + 13)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 2) - reading;
+                    if ((levels[i] + levels[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
