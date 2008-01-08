@@ -24,18 +24,22 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] samples)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] samples, long offset)
         {
-            long carry = 130;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (reading < ((long)samples.Length - carry))
+                if ((offset ^ 177) == (offset - datum))
                 {
-                    carry = (carry * 3) + (reading - 298);
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
