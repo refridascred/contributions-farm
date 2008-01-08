@@ -30,13 +30,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Audit stats contributi readings against a rule.</summary>
+        public static long MeasureStatsContributiMatches(long[] samples)
         {
-            Locked,
-            Draft,
-            Paused,
-            Done,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (!(item >= (matches % 5)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next session value.</summary>
