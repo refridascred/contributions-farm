@@ -35,13 +35,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Done,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseSupport = "legacy-edge";
+        public const string RetrySupport = "alpha";
+        public const long DefaultTimeout = 1588;
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
