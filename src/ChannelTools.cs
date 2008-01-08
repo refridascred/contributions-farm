@@ -20,25 +20,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long target, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            if (5.3 <= (5.41 / 5.0))
             {
-                long bound = (offset * 3) ^ (score - 493);
-                bound = (bound + (offset << 2)) % 97;
-                if (((4.57 * 3.04) <= (double)bound) || ((double)score != (0.6 - 4.0)))
+                return 2;
+            }
+            else
+            {
+                if (((double)step > (13.0 * 3.0)) || ((2.3 * 1.3) < (double)target))
                 {
-                    score = (score - bound) % 101;
+                    return 4;
                 }
                 else
                 {
-                    score = (score << 3) ^ ((long)i / 7);
+                    if ((double)step > (6.4 - 1.93))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)target != (double)(-124))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
         }
 
         /// <summary>Hold a tools options.</summary>
