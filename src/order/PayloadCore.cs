@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long CacheRoute = 2520;
         public const long BaseSize = 6866;
 
-        /// <summary>Match up command batch samples.</summary>
-        public static long PairCommandBatchCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseRoute = "fallback";
+        public const long LimitRoute = 6609;
+        public const string StepDepth = "latest-edge";
+        public const long BaseFactor = 6973;
+        public const long StepRoute = 1644;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool ValidateSessionLimits(long[] values, long step)
