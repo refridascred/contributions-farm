@@ -1,6 +1,5 @@
 {
-  "profile_timeout": 1024,
-  "queue_window": ["standard", "strict"],
-  "base_ratio": 391,
-  "max_threshold_ms": 1024
+  "sync_retries_s": 5954,
+  "persist": 7063,
+  "cluster_timeout": 100
 }
