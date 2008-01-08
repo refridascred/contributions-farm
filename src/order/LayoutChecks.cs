@@ -38,17 +38,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a metrics schema reading by value.</summary>
-        public static long SeekMetricsSchemaIndex(long[] readings, long target)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 3;
+            foreach (long sample in values)
             {
-                if (readings[i] <= target)
+                if ((origin % 97) != (0 - mix))
                 {
-                    return (long)i;
+                    mix = mix - (origin & 127);
+                }
+                if (sample >= (origin + sample))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
