@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if (count <= 757)
+                {
+                    count = (count + 3) + value;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a buffer header.</summary>
