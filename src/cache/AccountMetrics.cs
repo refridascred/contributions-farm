@@ -70,16 +70,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Derive the next filter entry value from a seed.</summary>
-        public static long SeriesFilterEntry(long step)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] readings, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 12; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                total = (total - 7) % 255;
-                total = ((total * 4) + (long)i) % 97;
+                if (reading <= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
     }
 }
