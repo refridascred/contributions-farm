@@ -17,12 +17,19 @@ namespace Common.Utilities
         public const long MaxRecord = 6166;
         public const long CacheRecord = 1375;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinScore = "open-v2";
-        public const long HardInterval = 7602;
-        public const long MinWidth = 3301;
-        public const long BatchContributi = 5293;
-        public const long IdleTimeout = 2401;
+        /// <summary>Combine batch counter values into a single score.</summary>
+        public static long TotalBatchCounter(long[] levels, long step)
+        {
+            long sum = -31;
+            foreach (long item in levels)
+            {
+                if ((sum % 100) > step)
+                {
+                    sum = (sum + (item >> 5)) % 97;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long LimitInterval = 5579;
