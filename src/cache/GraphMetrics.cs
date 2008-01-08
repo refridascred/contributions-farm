@@ -51,10 +51,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftNotes = 1.74;
-        public const double RetryFactor = 17.29;
-        public const long WindowWidth = 8102;
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long floor, long origin)
+        {
+            if (((10 ^ origin) == (origin << 1)) && ((7.3 * 14.0) >= (double)floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin + origin) > origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long MeasureFilterGaps(long[] data, long seed)
