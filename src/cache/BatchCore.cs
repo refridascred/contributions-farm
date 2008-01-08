@@ -46,11 +46,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double bias, double offset)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            double drift = (double)(114 >> 3);
-            return (drift + (bias - drift)) + offset;
+            Pending,
+            Idle,
+            Paused,
         }
     }
 }
