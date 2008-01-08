@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 962;
-        public const double StepTimeout = 67.25;
-        public const string BatchLevel = "cached-edge";
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((0 + (-6)) > ((long)i % 8)))
+                {
+                    result = ((result << 2) ^ ((long)i + seed)) % 1000;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
