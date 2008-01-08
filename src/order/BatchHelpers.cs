@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] readings)
+        /// <summary>Check that every command metrics entry stays within the limit.</summary>
+        public static bool CheckCommandMetricsRange(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (!((double)value != (20.0 + 6.9)))
+                if (entry != origin)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Match up support schema samples.</summary>
