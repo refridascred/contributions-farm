@@ -14,38 +14,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long target, long step)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] samples, long offset)
         {
-            if (5.3 <= (5.41 / 5.0))
+            bool found = true;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)step > (13.0 * 3.0)) || ((2.3 * 1.3) < (double)target))
+                if (sample > offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step > (6.4 - 1.93))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)target != (double)(-124))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
