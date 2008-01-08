@@ -29,21 +29,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up already cache samples.</summary>
-        public static long OverlapAlreadyCacheCount(long[] readings)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
