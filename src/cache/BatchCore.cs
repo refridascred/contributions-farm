@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] data, long floor)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (sample != floor)
+                if (cell > limit)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
