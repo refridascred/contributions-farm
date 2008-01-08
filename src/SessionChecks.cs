@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long offset, long limit)
         {
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            long edge = offset + limit;
+            if (((limit - limit) >= (edge + limit)) && ((limit + edge) == (limit >> 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((96 >> 5) >= limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit < (offset / 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((offset - limit) <= edge) && ((3.0 * 6.61) <= (8.9 / 5.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a context sample.</summary>
