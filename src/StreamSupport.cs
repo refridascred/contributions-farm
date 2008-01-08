@@ -37,19 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every context token entry stays within the limit.</summary>
-        public static bool VerifyContextTokenRange(long[] series, long origin)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            double rate = (double)(97 - 672);
+            if (rate >= 10.0)
             {
-                if (sample > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = ((rate - (rate + 7.55)) + ratio) + floor;
             }
-            return stale;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (rate / 9.0)) + (double)(long)i;
+            }
+            return rate - 17.0;
         }
     }
 }
