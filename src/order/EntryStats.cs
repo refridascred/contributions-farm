@@ -56,17 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] readings, long origin)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a route snapshot.</summary>
