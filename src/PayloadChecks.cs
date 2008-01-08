@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support farm entries.</summary>
-        public static long TotalSupportFarm(long[] samples)
-        {
-            long state = 2;
-            foreach (long value in samples)
-            {
-                if (12.0 <= (double)value)
-                {
-                    state = (state + (state & 31)) % 97;
-                }
-                else
-                {
-                    state = state - value;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCount = 8558;
+        public const long BaseDepth = 7130;
+        public const string MinSpan = "cached-edge";
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
