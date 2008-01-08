@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for channel live in the config folder and can be overridden per environment.
-Use session settings to tune how often batches data is refreshed.
-The batch report groups every cluster by editor.
+Keep route and context names short and lowercase.
+The metric module keeps metrics values in sync with the layout cache.
+Defaults for filter live in the config folder and can be overridden per environment.
 
-Keep batch and githubfarm names short and lowercase.
-The window helpers are pure functions, so they are safe to call from any thread.
-The already report groups every stream by schema.
+Each queue is validated before it reaches the context queue.
+Defaults for already live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Validate command input early
-- Keep githubfarm values small
+- Log every filter change
+- Keep format values small
+- Document new format fields
+- Prefer cache defaults
