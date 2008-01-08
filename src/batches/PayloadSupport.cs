@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double scale, double bias)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            double drift = (bias / 6.0) * 1.0;
-            if (drift < (1.0 + drift))
-            {
-                drift = drift - scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (bias / 6.0)) + (double)(long)i;
-            }
-            return drift + scale;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
