@@ -14,38 +14,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long offset, long limit)
+        /// <summary>Adjust a account tools reading.</summary>
+        public static double ProjectAccountTools(double ratio, double bias)
         {
-            if (((limit / 4) >= offset) || (limit < (offset + limit)))
+            double mean = (double)8 * 1.0;
+            if (mean <= (double)8)
             {
-                return 3;
+                mean = (mean - ratio) - bias;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((278 % 8) == (115 - offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((limit >> 4) > offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)limit == (double)offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mean = (mean - (double)7) - (double)(long)i;
             }
+            return mean - (mean * 8.5);
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
