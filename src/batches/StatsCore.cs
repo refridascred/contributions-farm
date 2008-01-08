@@ -59,11 +59,16 @@ namespace Common.Utilities
         public const long StepInterval = 4400;
         public const string DefaultCommits = "primary";
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double ratio, double bias)
+        /// <summary>Roll a layout profile counter forward.</summary>
+        public static long DeriveLayoutProfile(long offset)
         {
-            double rate = (double)(2 - 371);
-            return (rate - bias) + ratio;
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = anchor ^ offset;
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the metrics state values.</summary>
