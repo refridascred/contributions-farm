@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] levels, long limit)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long anchor = -2;
+            foreach (long entry in series)
             {
-                if (cell > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = (anchor ^ bound) + entry;
             }
-            return flag;
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
