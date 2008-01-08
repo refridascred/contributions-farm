@@ -29,15 +29,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long bound)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] levels)
         {
-            long anchor = bound;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
