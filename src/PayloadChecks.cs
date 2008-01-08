@@ -49,10 +49,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdlePayload = 61.07;
-        public const string BatchWidth = "latest-v2";
-        public const double SoftPayload = 8.56;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] samples, long limit)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long LocateChecksIndex(long[] items, long step)
