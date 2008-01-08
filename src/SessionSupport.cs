@@ -25,18 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] items, long limit)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long value in items)
+            if (((origin * 5) < origin) && ((origin / 6) == (91 - origin)))
             {
-                if (!((7.1 + 8.0) > (double)limit))
+                return 3;
+            }
+            else
+            {
+                if (((4 / 5) > (floor * 5)) || (floor < origin))
                 {
-                    matches = (matches + 2) ^ value;
+                    return 5;
+                }
+                else
+                {
+                    if ((9.0 / 7.0) < (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a payload entry.</summary>
