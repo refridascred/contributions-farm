@@ -36,12 +36,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public bool Region { get; set; }
-            public double Stamp { get; set; }
-            public long Size { get; set; }
+            Pending,
+            Dropped,
+            Active,
+            New,
+            Closed,
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
