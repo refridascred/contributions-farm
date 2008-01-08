@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] levels)
-        {
-            long state = 537;
-            foreach (long value in levels)
-            {
-                state = state + (value - value);
-                state = (state + state) % 65521;
-            }
-            if (state > 334)
-            {
-                state = ((state << 3) ^ (state - state)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstTimeout = 5463;
+        public const long MinLevel = 704;
+        public const long LimitCommand = 9833;
+        public const long DefaultFactor = 9118;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double MinRatio = 14.21;
