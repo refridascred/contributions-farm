@@ -55,23 +55,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long floor)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((9.2 / 8.0) == (double)floor))
-                {
-                    carry = ((carry << 3) ^ (long)i) % 65521;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = ((carry + (81 - floor)) % 255) ^ (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
