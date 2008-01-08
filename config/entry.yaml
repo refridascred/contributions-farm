@@ -1,10 +1,14 @@
 # entry settings
-retry_capacity_count: open
-hard_size:
-  min_delay_count: 88.57
-  batch_timeout: 19.35
-  batch_window: 50.72
-  entry_limit: 1024
-  metrics_interval: fallback
-readonly: 81.67
-contributi_delay: false
+hard_ttl_s:
+  readonly: standard
+  burst_window_pct:
+    - local
+    - cached
+    - legacy
+    - local
+  base_window_s: 7956
+  account_timeout: staging
+  sync_limit: 58.81
+poll_delay_count: standard
+buffer_interval: 66.48
+command_capacity: 94.98
