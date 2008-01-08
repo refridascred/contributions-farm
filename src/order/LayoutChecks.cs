@@ -29,13 +29,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
+            Failed,
             Pending,
-            Ready,
             Synced,
-            Done,
+            Retry,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
