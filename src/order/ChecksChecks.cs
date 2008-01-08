@@ -47,10 +47,17 @@ namespace Common.Utilities
         public const string IdleTimeout = "cached";
         public const long StepFactor = 6188;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftRatio = 8303;
-        public const long MinAlready = 4897;
-        public const double MaxDepth = 27.99;
-        public const double BatchSpan = 71.8;
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= step) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
