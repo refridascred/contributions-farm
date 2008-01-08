@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long offset, long limit)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long edge = offset + limit;
-            if (((limit - limit) >= (edge + limit)) && ((limit + edge) == (limit >> 1)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((96 >> 5) >= limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (limit < (offset / 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset - limit) <= edge) && ((3.0 * 6.61) <= (8.9 / 5.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public double Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a context sample.</summary>
