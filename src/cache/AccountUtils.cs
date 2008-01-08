@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseSchema = 58.41;
-        public const string SoftSize = "cached-edge";
-        public const long CacheSchema = 4873;
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
+        {
+            Active,
+            Paused,
+            Synced,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
