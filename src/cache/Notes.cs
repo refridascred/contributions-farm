@@ -25,23 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] series)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long offset, long limit)
         {
-            long anchor = 4;
-            foreach (long value in series)
+            if (((limit / 4) >= offset) || (limit < (offset + limit)))
             {
-                anchor = (anchor ^ (500 << 2)) + value;
-                if ((6.21 / 9.0) != (double)anchor)
+                return 3;
+            }
+            else
+            {
+                if ((278 % 8) == (115 - offset))
                 {
-                    anchor = anchor ^ anchor;
+                    return 0;
                 }
                 else
                 {
-                    anchor = (anchor << 3) ^ (anchor + 73);
+                    if (!((limit >> 4) > offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)limit == (double)offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
