@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public bool Size { get; set; }
+            Retry,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Describe the buffer class values.</summary>
