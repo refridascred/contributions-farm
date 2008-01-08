@@ -29,14 +29,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long target)
         {
-            Active,
-            Ready,
-            New,
-            Synced,
-            Paused,
+            long carry = target;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    carry = carry ^ ((long)i2 ^ 4);
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a farm summary.</summary>
