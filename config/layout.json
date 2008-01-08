@@ -1,5 +1,8 @@
 {
-  "burst_depth": 26,
-  "report_capacity": [7, 132, 253],
-  "counter_timeout": false
+  "sync_ratio_ms": "staging",
+  "editor_retries": 8.06,
+  "idle_depth": "staging",
+  "retry_ratio_pct": 5315,
+  "hard_retries": "latest",
+  "poll_size_pct": 26.38
 }
