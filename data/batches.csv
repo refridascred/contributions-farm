@@ -1,7 +1,10 @@
-id,region,rank
-1,open,open
-2,804,138
-3,open,41.97
-4,545,504
-5,34.52,blue
-6,cached,71.68
+id,state,token,label
+1,176,eu-west,14.65
+2,96.74,cached,stable
+3,57.69,legacy,607
+4,strict,513,76.4
+5,stable,standard,387
+6,open,strict,open
+7,86.57,strict,497
+8,eu-west,stable,cached
+9,143,983,667
