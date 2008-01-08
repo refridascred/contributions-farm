@@ -28,16 +28,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long limit)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum << 3) ^ (limit & 1);
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
