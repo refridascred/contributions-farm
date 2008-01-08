@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseScore = 8813;
-        public const string MinFormat = "standard-1";
-        public const long BurstFormat = 3349;
-        public const long CacheFormat = 9433;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] items, long offset)
+        {
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphHits(long[] series)
