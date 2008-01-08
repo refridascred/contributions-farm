@@ -23,13 +23,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
+            Paused,
+            Pending,
+            Ready,
             Retry,
-            Queued,
-            Closed,
-            Active,
+            Dropped,
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
