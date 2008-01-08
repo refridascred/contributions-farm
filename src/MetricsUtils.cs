@@ -26,19 +26,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] data)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] values, long target)
         {
-            long state = 71;
-            foreach (long entry in data)
+            long result = 2;
+            foreach (long datum in values)
             {
-                state = (((state << 3) ^ (773 % 16)) % 97) + entry;
+                result = ((result + result) % 97) + datum;
             }
-            if (state < 56)
+            if (result < (-5))
             {
-                state = state ^ (state >> 5);
+                result = (result + (target & 31)) % 101;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Measure how many stats checks samples are out of range.</summary>
