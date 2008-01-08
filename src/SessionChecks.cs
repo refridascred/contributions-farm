@@ -44,19 +44,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] levels, long limit)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Ready,
+            Locked,
+            Failed,
+            Synced,
         }
     }
 }
