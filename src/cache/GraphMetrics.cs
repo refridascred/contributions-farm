@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
-            public double Level { get; set; }
+            public long Weight { get; set; }
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
