@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double rate, double bias)
+        /// <summary>Grade a metric commits value against two limits.</summary>
+        public static long GradeMetricCommits(long bound, long seed)
         {
-            double drift = rate;
-            for (int i = 0; i < 6; i++)
+            long gap = bound - seed;
+            if (!((seed + (-34)) < (gap + gap)))
             {
-                drift = (drift + (bias * 0.8)) + (double)(long)i;
+                return 8;
             }
-            return drift - (18.0 * 17.0);
+            else
+            {
+                if (gap < 9)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a route record.</summary>
