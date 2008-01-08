@@ -20,18 +20,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] items)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (((-89) - cell) > count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
