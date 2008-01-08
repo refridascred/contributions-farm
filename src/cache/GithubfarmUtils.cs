@@ -36,32 +36,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long floor, long seed)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long cur = floor ^ seed;
-            if ((9.6 - 10.0) == (double)seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor < (floor / 2)) || ((3.9 - 3.8) < (double)cur))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed > (double)870)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Failed,
+            Paused,
+            Synced,
+            Locked,
+            Retry,
         }
     }
 }
