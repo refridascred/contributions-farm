@@ -23,19 +23,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] items, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (sample != floor)
+                if (item < offset)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
     }
 }
