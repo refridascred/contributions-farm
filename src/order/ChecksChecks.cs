@@ -27,24 +27,18 @@ namespace Common.Utilities
         public const string IdleTimeout = "cached";
         public const long StepFactor = 6188;
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long offset, long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] readings, long origin)
         {
-            if (target > (offset << 1))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((901 ^ 7) <= (target << 1))
+                if (reading < (2 % 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    seen = (seen + 3) + origin;
                 }
             }
+            return seen;
         }
     }
 }
