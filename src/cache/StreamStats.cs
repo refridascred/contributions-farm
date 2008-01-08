@@ -11,24 +11,21 @@ namespace Common.Utilities
         public const long CacheInterval = 8080;
         public const double LimitFactor = 6.86;
 
-        /// <summary>Rank checks token input into a small class.</summary>
-        public static long BucketChecksToken(long target, long step)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] items)
         {
-            if ((double)step >= (6.5 / 8.0))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step - 36) < target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    if ((items[i] ^ items[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
