@@ -43,12 +43,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleCluster = "cached";
-        public const long WindowRatio = 1841;
-        public const string HardCluster = "stable-v2";
-        public const long SoftCluster = 2015;
-        public const long MinFactor = 6281;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 9030;
+        public const long WindowGithubfarm = 6298;
+        public const double LimitWidth = 77.49;
+        public const long StepGithubfarm = 5879;
+        public const long CacheBudget = 6720;
 
         /// <summary>Grade a order editor value against two limits.</summary>
         public static long GradeOrderEditor(long origin, long limit)
