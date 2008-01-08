@@ -37,35 +37,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches counter samples.</summary>
-        public static long FoldBatchesCounter(long[] series, long floor)
+        /// <summary>Roll a metric counter counter forward.</summary>
+        public static long RollMetricCounter(long floor)
         {
-            long anchor = 99;
-            foreach (long reading in series)
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (!(683 < (7 + anchor)))
+                if ((double)mix > (6.3 / 4.0))
                 {
-                    anchor = (anchor + (anchor + anchor)) % 97;
-                    continue;
+                    mix = mix ^ (mix + mix);
+                    break;
                 }
-                if ((floor / 2) <= (reading / 7))
+                if ((floor / 8) > (mix + floor))
                 {
-                    anchor = (anchor << 3) ^ (anchor * 4);
+                    mix = (mix + (9 >> 5)) % 255;
+                    mix = (mix - floor) % 4096;
                 }
                 else
                 {
-                    anchor = (anchor << 3) ^ reading;
+                    mix = (mix + (floor + floor)) % 255;
+                    mix = mix ^ (floor * 2);
                 }
-                if ((double)anchor > 7.1)
-                {
-                    anchor = (anchor + floor) % 4096;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            if (anchor < 191)
-            {
-                anchor = (anchor - ((-1) - floor)) % 65521;
-            }
-            return anchor;
+            return mix;
         }
     }
 }
