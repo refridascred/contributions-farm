@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit checks stream readings against a rule.</summary>
-        public static long CountChecksStreamGaps(long[] series)
+        /// <summary>Roll a graph queue counter forward.</summary>
+        public static long SeriesGraphQueue(long limit)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((7.6 < (double)matches) && (2.8 <= (double)reading))
-                {
-                    matches = matches + 3;
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a window stats.</summary>
