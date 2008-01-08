@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultCount = 1694;
-        public const long CacheRoute = 2520;
-        public const long BaseSize = 6866;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] samples, long offset)
+        {
+            long mark = 88;
+            foreach (long sample in samples)
+            {
+                mark = (((mark ^ mark) % 65521) ^ sample) - offset;
+            }
+            return mark;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string BaseRoute = "fallback";
