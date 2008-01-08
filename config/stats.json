@@ -1,6 +1,11 @@
 {
-  "verbose": 24.47,
-  "notes_ttl": 47,
-  "token_capacity": false,
-  "burst_threshold": ["staging", "cached"]
+  "cache_interval_pct": "latest",
+  "notes_interval": {
+    "retry_limit_ms": true,
+    "editor_delay": 86,
+    "account_limit": true,
+    "flush_depth": "eu-west",
+    "cluster_delay": true
+  },
+  "sync_capacity": 9150
 }
