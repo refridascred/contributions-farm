@@ -20,16 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a tools entry counter forward.</summary>
-        public static long SeriesToolsEntry(long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 17; i++)
+            long mix = 32;
+            foreach (long sample in samples)
             {
-                anchor = (anchor << 2) ^ anchor;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (!((5.1 - 0.6) < (double)(long)samples.Length))
+                {
+                    mix = (mix - (mix / 8)) % 97;
+                }
+                if ((double)sample > 6.0)
+                {
+                    mix = (mix - (-795)) % 65521;
+                }
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Scale a layout commits figure with a bias.</summary>
