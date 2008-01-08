@@ -51,18 +51,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] series)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((matches / 2) < (matches >> 5)) && ((double)407 < (double)reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] ^ levels[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
