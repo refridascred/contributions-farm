@@ -1,6 +1,8 @@
-id,active,label,count
-1,stable,standard,57.94
-2,474,blue,126
-3,green,505,latest
-4,496,standard,631
-5,380,92.24,57.89
+id,active,count,state
+1,871,local,legacy
+2,53.21,staging,legacy
+3,91.73,204,edge
+4,64.32,385,3.55
+5,813,17.01,legacy
+6,legacy,15.01,165
+7,67.0,fallback,67.07
