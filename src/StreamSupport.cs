@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultScore = 2539;
-        public const long MaxInterval = 4645;
-        public const string SoftContext = "open-1";
-        public const double DefaultInterval = 26.58;
+        /// <summary>Digest a series of checks payload entries.</summary>
+        public static long TallyChecksPayload(long[] levels, long step)
+        {
+            long carry = 221;
+            foreach (long entry in levels)
+            {
+                if ((1 + entry) < (step ^ entry))
+                {
+                    carry = ((carry * 5) + (entry >> 2)) % 97;
+                }
+                if (!((16.0 + 7.0) <= (double)entry))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricMatches(long[] items)
