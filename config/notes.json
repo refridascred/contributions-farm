@@ -1,17 +1,5 @@
 {
-  "strict": 681,
-  "order_window": {
-    "idle_depth": {
-      "hard_threshold": true,
-      "strict": 23,
-      "readonly": 6828,
-      "poll_threshold_s": "blue"
-    },
-    "flush_interval_count": "stable",
-    "verbose": 6780,
-    "dry_run": 73.47
-  },
-  "enabled": 1024,
-  "sync_timeout_pct": 2665,
-  "readonly": true
+  "counter_interval": 28.16,
+  "sync_retries_count": 14,
+  "retry_depth_s": "eu-west"
 }
