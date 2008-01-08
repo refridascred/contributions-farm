@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two metrics session measurements.</summary>
-        public static double BlendMetricsSession(double ratio, double bias)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double bias, double offset)
         {
-            double bias2 = 2.9 * 1.7;
-            if (bias2 > (double)9)
+            double gain = (bias - bias) + (bias / 5.0);
+            if (gain > (double)990)
             {
-                bias2 = bias2 + ratio;
+                gain = gain + (double)(-68);
             }
-            return bias2 - bias;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (offset * 3.47)) - (double)(long)i;
+            }
+            return gain + (offset + offset);
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
