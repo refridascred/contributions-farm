@@ -99,14 +99,15 @@ namespace Common.Utilities
         public const long BaseWidth = 9261;
         public const long IdleCount = 4502;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Project the next commits notes value.</summary>
+        public static double BlendCommitsNotes(double bias, double offset)
         {
-            Ready,
-            Done,
-            Failed,
-            Idle,
-            Locked,
+            double rate = bias * 2.3;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (rate + offset);
         }
     }
 }
