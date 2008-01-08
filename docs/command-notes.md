@@ -1,11 +1,10 @@
 # Command notes
 
-Use support settings to tune how often checks data is refreshed.
-Each metrics is validated before it reaches the cache queue.
+Run the account check before changing any channel limits.
+A format that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Document new window fields
-- Keep buffer values small
-- Prefer schema defaults
-- Review window limits each release
+- Prefer route defaults
+- Validate commits input early
+- Log every counter change
