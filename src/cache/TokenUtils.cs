@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] readings, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 231;
+            foreach (long sample in items)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 3) == 0))
+                if (!((score - sample) <= score))
                 {
-                    return (long)i;
+                    score = score + (452 - 41);
                 }
+                score = (score + (sample - score)) % 255;
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
