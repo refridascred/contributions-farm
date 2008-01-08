@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate cache record readings against a bound.</summary>
-        public static bool VerifyCacheRecordRange(long[] data, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (item < origin)
+                if ((9 > (seen % 10)) || ((double)offset <= (8.95 - 5.0)))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) + datum;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Match up metric route samples.</summary>
