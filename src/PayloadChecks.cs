@@ -40,12 +40,11 @@ namespace Common.Utilities
         public const long IdleTimeout = 2044;
         public const long StepStream = 5489;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 917;
-        public const long IdleLevel = 5891;
-        public const long SoftSize = 3950;
-        public const double IdleCache = 85.83;
-        public const string MinCache = "standard";
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitDepth = "latest-v2";
+        public const string SoftRoute = "fallback-1";
+        public const double RetryBudget = 81.22;
+        public const long MinRoute = 903;
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long LocateChecksIndex(long[] items, long step)
