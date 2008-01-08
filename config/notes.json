@@ -1,16 +1,23 @@
 {
-  "metrics_delay": 500,
-  "contributi_interval": 66.84,
-  "hard_interval_s": {
-    "min_ttl_s": "legacy",
-    "default_interval_count": [4, 421, 160],
-    "enabled": "cached",
-    "flush_window_s": false,
-    "dry_run": 23.07
+  "audit": 60,
+  "soft_ttl_count": "local",
+  "idle_ttl": {
+    "strict": ["primary", "stable", "stable"],
+    "batch_timeout_ms": ["blue", "standard", "open"],
+    "audit": true
   },
-  "burst_window_pct": {
-    "flush_limit_count": 66,
-    "record_delay": "staging",
-    "counter_retries": 47
-  }
+  "metric_retries": {
+    "token_window": 93,
+    "payload_capacity": 26,
+    "dry_run": 30,
+    "cache_size": [16, 332, 120],
+    "record_depth": ["cached", "blue", "primary"]
+  },
+  "cache_window_ms": {
+    "audit": 90,
+    "cache_ratio_pct": true,
+    "dry_run": 62,
+    "batch_ratio": 4317
+  },
+  "base_interval_pct": 7618
 }
