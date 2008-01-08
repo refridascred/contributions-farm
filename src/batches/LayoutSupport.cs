@@ -20,13 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] items, long limit)
         {
-            Paused,
-            New,
-            Draft,
-            Queued,
+            long carry = 6;
+            foreach (long reading in items)
+            {
+                carry = (((carry - ((-4) + carry)) % 4096) + reading) - limit;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Match up stream samples.</summary>
