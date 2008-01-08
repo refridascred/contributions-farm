@@ -72,11 +72,24 @@ namespace Common.Utilities
         public const long HardTimeout = 6445;
         public const string StepFormat = "local";
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long step, long seed)
         {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
+            if ((step - seed) < (seed >> 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((2.4 - 4.8) != (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
