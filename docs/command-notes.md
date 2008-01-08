@@ -1,10 +1,15 @@
 # Command notes
 
-When a schema fails, the channel handler retries a few times before giving up.
-Run the window check before changing any token limits.
+The order report groups every record by counter.
+A buffer that stays idle for too long is moved to the layout list.
+
+The cache module keeps context values in sync with the account cache.
+Use buffer settings to tune how often metric data is refreshed.
+The filter module keeps metric values in sync with the filter cache.
 
 ## Guidelines
 
-- Log every farm change
-- Keep entry values small
-- Document new route fields
+- Prefer schema defaults
+- Log every queue change
+- Validate buffer input early
+- Document new cluster fields
