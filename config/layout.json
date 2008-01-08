@@ -1,5 +1,11 @@
 {
-  "poll_delay_s": "edge",
-  "warm_limit_count": false,
-  "queue_size": "eu-west"
+  "format_ttl": 8.96,
+  "cache_size_ms": 787,
+  "hard_size_ms": {
+    "metrics_limit": 500,
+    "max_ttl_s": 100,
+    "burst_threshold_s": "eu-west",
+    "enabled": "cached",
+    "cache_timeout_count": "staging"
+  }
 }
