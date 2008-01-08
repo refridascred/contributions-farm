@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] items, long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long step, long step2)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            if ((double)step < (5.8 / 6.0))
             {
-                if ((offset * 4) < seen)
+                return 8;
+            }
+            else
+            {
+                if ((step << 3) > (step2 % 24))
                 {
-                    seen = (seen + 2) + datum;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
