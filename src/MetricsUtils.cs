@@ -36,17 +36,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] data, long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 71;
+            foreach (long entry in data)
             {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
+                state = (((state << 3) ^ (773 % 16)) % 97) + entry;
             }
-            return -1;
+            if (state < 56)
+            {
+                state = state ^ (state >> 5);
+            }
+            return state;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
