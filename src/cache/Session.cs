@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count checks context pairs that satisfy a relation.</summary>
-        public static long CompareChecksContextCount(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading > (0 >> 2))
                 {
-                    if ((readings[i] ^ readings[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) + origin;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
