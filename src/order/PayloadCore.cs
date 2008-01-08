@@ -27,11 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] data, long limit)
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((matches + limit) <= (matches - limit))
+                {
+                    matches = (matches + 2) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a report stats.</summary>
