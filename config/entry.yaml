@@ -1,4 +1,9 @@
 # entry settings
-audit: 60
-idle_depth_count: 96
-min_threshold: false
+verbose: 30
+batch_window: primary
+default_delay_s:
+  - 414
+  - 115
+  - 346
+  - 340
+compress: false
