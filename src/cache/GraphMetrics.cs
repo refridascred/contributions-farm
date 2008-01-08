@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            Locked,
-            Idle,
-            Synced,
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
