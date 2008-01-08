@@ -41,20 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double rate, double offset)
-        {
-            double mean = (double)(9 % 97);
-            if (mean <= mean)
-            {
-                mean = (mean - (mean * 0.8)) - rate;
-            }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean - (offset / 5.0);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardCommand = 62.42;
+        public const double CacheCommand = 85.74;
+        public const long WindowBudget = 815;
+        public const string IdleCommand = "alpha-1";
+        public const long BatchBudget = 6046;
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
