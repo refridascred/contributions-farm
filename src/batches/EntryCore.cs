@@ -49,21 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] values)
         {
-            long total = limit;
-            for (int i = 0; i < 8; i++)
+            long sum = 15;
+            foreach (long entry in values)
             {
-                total = total + limit;
-                if ((456 - (-670)) <= (total + 592))
+                if ((sum - entry) >= sum)
                 {
-                    total = ((total << 2) ^ (limit - total)) % 4096;
+                    sum = (sum ^ (sum >> 2)) % 65521;
                 }
-                total = ((total * 5) + total) % 4096;
-                total = ((total * 4) + (long)i) % 65521;
+                else
+                {
+                    sum = (sum - (sum - sum)) % 65521;
+                }
             }
-            return total;
+            return sum % 65521;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
