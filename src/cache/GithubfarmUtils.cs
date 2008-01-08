@@ -21,19 +21,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] series, long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (value > origin)
+                if (((item / 9) > tally) && (((0.5 * 9.83) > (double)item) || (item >= (item - item))))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) + target;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Digest a series of already entries.</summary>
