@@ -45,10 +45,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardFactor = 837;
-        public const string BatchStream = "strict-1";
-        public const double BurstRatio = 97.61;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
+        }
 
         /// <summary>Fold a list of entry stream readings.</summary>
         public static long DigestEntryStream(long[] levels)
