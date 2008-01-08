@@ -37,19 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (((item / 9) > tally) && (((0.5 * 9.83) > (double)item) || (item >= (item - item))))
-                {
-                    tally = (tally + 2) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepFactor = 6762;
+        public const string MaxEditor = "standard";
+        public const long BatchScore = 3417;
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long IterateStream(long offset)
