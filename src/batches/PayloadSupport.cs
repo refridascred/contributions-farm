@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitAccount = 93.76;
-        public const long MaxSize = 4414;
-        public const string HardCount = "standard-edge";
-        public const long StepCount = 5485;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] levels, long seed)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((seen > datum) && !((seed + datum) >= datum))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long ClassifyRoute(long offset, long seed)
