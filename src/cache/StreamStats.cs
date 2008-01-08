@@ -66,17 +66,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] readings, long step)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double rate, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = span;
+            if (drift < (drift * 8.7))
             {
-                if ((readings[i] < step) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + 0.47) - rate;
             }
-            return -1;
+            return drift + drift;
         }
     }
 }
