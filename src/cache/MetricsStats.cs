@@ -45,12 +45,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Classify a token record pair into a bucket.</summary>
+        public static long SortTokenRecord(long target, long target2)
         {
-            public string Size { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
+            long lane = target + target2;
+            if ((402 / 5) >= (target2 ^ target2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((lane << 1) <= (target + 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target * 5) <= (818 + (-986)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of entry stream readings.</summary>
