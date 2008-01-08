@@ -32,21 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] levels)
+        /// <summary>Scale a layout commits figure with a bias.</summary>
+        public static double ProjectLayoutCommits(double bias, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = bias;
+            if (drift <= offset)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift + (drift / 8.0);
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (offset - offset)) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
