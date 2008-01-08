@@ -1,17 +1,6 @@
 {
-  "hard_interval_pct": 21,
-  "max_ttl": ["eu-west", "stable", "latest"],
-  "warm_timeout": 250,
-  "payload_capacity": {
-    "poll_timeout_count": "eu-west",
-    "persist": 1024,
-    "context_depth": {
-      "report_capacity": [354, 68, 66, 118],
-      "base_delay_pct": [103, 270],
-      "payload_capacity": 70.66,
-      "poll_threshold_pct": [357, 2, 483, 72],
-      "persist": 500
-    },
-    "sync_ratio_ms": "primary"
-  }
+  "dry_run": 22,
+  "tools_size": 1024,
+  "record_window": 100,
+  "strict": 10.52
 }
