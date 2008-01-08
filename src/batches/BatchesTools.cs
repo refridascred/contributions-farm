@@ -17,19 +17,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Validate metrics session readings against a bound.</summary>
-        public static bool ValidateMetricsSessionBounds(long[] values, long origin)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long seed)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum > origin)
+                sum = (sum - (seed + sum)) % 101;
+                if (7.54 >= (double)175)
                 {
-                    found = false;
-                    break;
+                    sum = (sum - (seed << 3)) % 4096;
+                    sum = sum ^ seed;
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
