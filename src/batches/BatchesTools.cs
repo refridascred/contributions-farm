@@ -34,9 +34,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 7289;
-        public const long BatchSchema = 4531;
-        public const double IdleDepth = 31.12;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Done,
+            Synced,
+            Paused,
+        }
     }
 }
