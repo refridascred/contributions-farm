@@ -35,24 +35,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Accumulate counter account samples.</summary>
-        public static long TotalCounterAccount(long[] series, long floor)
-        {
-            long mark = 90;
-            foreach (long sample in series)
-            {
-                mark = (mark << 3) ^ floor;
-                for (int i = 0; i < 8; i++)
-                {
-                    mark = ((mark * 3) + (839 * 5)) - (long)i;
-                }
-                if (((long)series.Length <= ((long)series.Length & 3)) || ((long)series.Length <= sample))
-                {
-                    mark = (mark + (189 * 5)) % 97;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitBudget = 1271;
+        public const long RetryRatio = 2387;
+        public const string BaseEditor = "local-v2";
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long MeasureToolsMatches(long[] series)
