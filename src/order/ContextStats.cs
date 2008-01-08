@@ -20,16 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 5) + (mark ^ mark)) % 255;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public bool Owner { get; set; }
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Scale a layout commits figure with a bias.</summary>
