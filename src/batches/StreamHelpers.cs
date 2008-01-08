@@ -92,18 +92,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] levels, long origin)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] series)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long anchor = 6;
+            foreach (long value in series)
             {
-                if (((double)count <= (5.1 + 9.99)) || !((4 % 24) >= sample))
+                anchor = anchor ^ (value >> 1);
+                if (((value + anchor) >= (579 / 9)) || ((value - value) > value))
                 {
-                    count = (count + 2) + origin;
+                    anchor = anchor + (anchor - anchor);
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
