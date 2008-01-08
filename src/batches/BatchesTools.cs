@@ -34,24 +34,9 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long bound, long seed)
-        {
-            if ((double)seed <= (3.0 / 4.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((1.67 * 4.2) != (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 7289;
+        public const long BatchSchema = 4531;
+        public const double IdleDepth = 31.12;
     }
 }
