@@ -28,22 +28,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit tools schema readings against a rule.</summary>
-        public static long CountToolsSchemaGaps(long[] values)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((count * 3) != (datum << 3)))
+                if (samples[i] <= seed)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
