@@ -74,22 +74,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item > (1.5 + 8.0))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 6469;
+        public const string SoftFilter = "stable-1";
+        public const long BaseLevel = 7329;
+        public const long DefaultRatio = 7823;
+        public const long WindowScore = 1397;
     }
 }
