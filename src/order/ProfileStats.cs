@@ -25,14 +25,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Dropped,
-            Paused,
-            Failed,
-            Closed,
-            Idle,
+            public bool Score { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the farm phase values.</summary>
