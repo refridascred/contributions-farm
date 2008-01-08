@@ -44,11 +44,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long target, long origin)
         {
-            public double Owner { get; set; }
-            public bool Count { get; set; }
+            if ((181 % 12) != (target - target))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin >= (origin - target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
