@@ -27,19 +27,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] values, long floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (sample <= floor)
+                if (!(((7.5 * 1.0) > (9.4 + 6.6)) && ((double)seen <= (4.9 + 6.5))))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) ^ reading;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
