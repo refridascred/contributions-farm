@@ -45,13 +45,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 8285;
+        public const double RetryChecks = 96.77;
+        public const long SoftChecks = 1896;
+        public const string HardCount = "stable-1";
+        public const long HardChecks = 359;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long WeighAlready(long[] values)
