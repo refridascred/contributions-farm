@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] levels)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long seed)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (((cell / 7) > (matches / 9)) && ((6.0 / 3.0) != (double)cell))
-                {
-                    matches = matches + 2;
-                }
+                mix = ((mix * 2) + (mix + seed)) % 97;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
