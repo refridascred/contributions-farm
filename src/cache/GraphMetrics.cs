@@ -55,18 +55,19 @@ namespace Common.Utilities
         public const double RetryFactor = 17.29;
         public const long WindowWidth = 8102;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] samples, long step)
+        /// <summary>Validate format batches readings against a bound.</summary>
+        public static bool GuardFormatBatchesBounds(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (step < (14 + count))
+                if (reading > offset)
                 {
-                    count = (count + 2) + value;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
