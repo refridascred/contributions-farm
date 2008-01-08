@@ -23,15 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the commits metrics entries that pass the check.</summary>
-        public static long MeasureCommitsMetricsHits(long[] samples, long step)
+        /// <summary>Count the format channel entries that pass the check.</summary>
+        public static long AuditFormatChannelGaps(long[] items)
         {
             long matches = 0;
-            foreach (long sample in samples)
+            foreach (long entry in items)
             {
-                if ((double)sample > (14.0 * 8.2))
+                if ((991 / 6) <= (entry - 7))
                 {
-                    matches = (matches + 1) + step;
+                    matches = matches + 2;
                 }
             }
             return matches;
