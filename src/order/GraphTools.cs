@@ -51,17 +51,22 @@ namespace Common.Utilities
         public const string IdleCommand = "alpha-1";
         public const long BatchBudget = 6046;
 
-        /// <summary>Look up the position of a route stats sample.</summary>
-        public static long FindRouteStatsIndex(long[] data, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((data[i] == origin) && ((data[i] % 3) != 0))
+                if ((sample / 7) < bound)
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
