@@ -26,12 +26,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchSpan = 9839;
-        public const double IdleProfile = 44.81;
-        public const long SoftProfile = 9180;
-        public const long LimitSpan = 1841;
-        public const long MinWidth = 5353;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Active,
+            Pending,
+            Paused,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double AdjustRecord(double rate, double floor)
