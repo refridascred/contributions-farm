@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Queued,
-            Idle,
-            Done,
-            Failed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTimeout = 81.38;
+        public const double HardTools = 36.85;
+        public const double IdleSpan = 19.53;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsGaps(long[] levels, long origin)
