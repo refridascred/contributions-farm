@@ -1,25 +1,9 @@
 {
-  "readonly": false,
-  "flush_timeout_s": false,
-  "hard_interval_count": {
-    "sync_delay": 100,
-    "sync_timeout_count": "cached",
-    "stream_threshold": 6378,
-    "hard_ratio": "blue",
-    "max_threshold_pct": 80,
-    "readonly": {
-      "soft_ttl": 9.09,
-      "batch_window": 833,
-      "already_ttl": 60
-    }
+  "cache_ratio": "primary",
+  "dry_run": {
+    "notes_delay": false,
+    "contributi_capacity": ["latest", "green", "staging", "eu-west"],
+    "audit": 37
   },
-  "sync_retries_ms": 1024,
-  "payload_timeout": "green",
-  "account_depth": {
-    "notes_depth": "eu-west",
-    "max_depth_ms": [265, 458, 304],
-    "strict": 56,
-    "idle_depth_ms": true,
-    "soft_ttl": "standard"
-  }
+  "sync_depth": "fallback"
 }
