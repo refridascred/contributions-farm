@@ -36,10 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryDepth = 5460;
-        public const double SoftScore = 48.87;
-        public const string SoftReport = "local";
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string IdleCluster = "cached";
