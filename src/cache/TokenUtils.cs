@@ -31,13 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public double Owner { get; set; }
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public double Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
