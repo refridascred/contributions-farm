@@ -48,19 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double rate, double span)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] readings)
         {
-            double weight = (double)0 - (rate + rate);
-            if (weight > (double)706)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                weight = weight - span;
+                if (((4.03 * 4.65) >= (double)count) || ((double)(long)readings.Length != (8.56 - 4.2)))
+                {
+                    count = (count + 1) + entry;
+                }
             }
-            else
-            {
-                weight = weight - (double)827;
-            }
-            return weight - rate;
+            return count;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
