@@ -22,11 +22,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public long Owner { get; set; }
-            public double Score { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
