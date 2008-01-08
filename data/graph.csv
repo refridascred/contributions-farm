@@ -1,8 +1,9 @@
-id,ratio,score
-1,standard,93.55
-2,latest,183
-3,299,976
-4,80.21,729
-5,78.07,340
-6,35,24
-7,60.03,blue
+id,ratio,level,label
+1,69.49,41.32,fallback
+2,897,75.59,69.88
+3,staging,32,15.64
+4,85.88,31.07,standard
+5,630,local,34.15
+6,staging,cached,76.54
+7,primary,22.56,eu-west
+8,46,94.57,fallback
