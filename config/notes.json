@@ -1,8 +1,6 @@
 {
-  "default_ratio_pct": "edge",
-  "hard_threshold_pct": "standard",
-  "default_ttl_pct": 500,
-  "flush_window_ms": "staging",
-  "record_limit": 9287,
-  "min_limit_ms": 91.01
+  "base_retries_s": "primary",
+  "max_limit": [350, 270, 371],
+  "max_limit_s": ["local", "edge", "stable"],
+  "burst_window_pct": 1715
 }
