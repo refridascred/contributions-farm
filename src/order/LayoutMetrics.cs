@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const double RetryCluster = 47.29;
         public const double StepCluster = 61.69;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] readings, long seed)
-        {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 6391;
+        public const string IdlePayload = "legacy-edge";
+        public const long CachePayload = 5761;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
