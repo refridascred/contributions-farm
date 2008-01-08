@@ -32,12 +32,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Adjust a schema entry reading.</summary>
+        public static double SmoothSchemaEntry(double weight, double floor)
         {
-            Synced,
-            Draft,
-            Pending,
+            double drift = (double)(972 / 5);
+            if (drift > weight)
+            {
+                drift = drift + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (floor / 4.0)) + (double)(long)i;
+            }
+            return drift - 0.42;
         }
     }
 }
