@@ -36,13 +36,10 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Retry,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepWidth = 6478;
+        public const long RetryWidth = 6979;
+        public const long IdleWidth = 1277;
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
