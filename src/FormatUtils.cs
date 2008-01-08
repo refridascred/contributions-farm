@@ -63,12 +63,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 8628;
-        public const long RetryWidth = 7434;
-        public const double SoftSpan = 15.86;
-        public const double RetryScore = 60.28;
-        public const long MaxCount = 973;
+        /// <summary>Match up cluster already samples.</summary>
+        public static long MatchClusterAlreadyCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BatchStream = 9724;
