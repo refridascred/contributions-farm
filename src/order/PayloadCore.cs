@@ -14,18 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] items, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((hits + origin) >= 47)
+                if (bound < (bound ^ bound))
                 {
-                    hits = (hits + 2) + datum;
+                    seen = (seen + 3) + datum;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the payload state values.</summary>
