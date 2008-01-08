@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two cache tools measurements.</summary>
-        public static double ProjectCacheTools(double scale, double span)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long bound)
         {
-            double mean = (double)678;
-            if (mean >= (double)49)
+            long total = bound;
+            for (int i = 0; i < 22; i++)
             {
-                mean = (mean + 0.93) + scale;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return mean - (span + mean);
+            return total;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
