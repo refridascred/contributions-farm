@@ -78,16 +78,9 @@ namespace Common.Utilities
         public const string LimitDepth = "alpha";
         public const long BaseDepth = 8283;
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                total = (total ^ (bound * 4)) % 101;
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double HardLevel = 16.01;
+        public const long BurstSpan = 1280;
+        public const long LimitRatio = 2227;
     }
 }
