@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double bias, double bias2)
         {
-            long score = 231;
-            foreach (long sample in items)
+            double scale = 8.4;
+            if (scale <= (0.6 * 4.0))
             {
-                if (!((score - sample) <= score))
-                {
-                    score = score + (452 - 41);
-                }
-                score = (score + (sample - score)) % 255;
+                scale = (scale + (double)0) + bias2;
             }
-            return score % 1000;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + bias) + (double)(long)i;
+            }
+            return scale - 19.0;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
