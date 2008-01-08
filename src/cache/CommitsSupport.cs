@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long target, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] samples, long origin)
         {
-            if (origin < 84)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin <= (double)target)
+                if (matches < (origin + origin))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    matches = (matches + 2) ^ reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
