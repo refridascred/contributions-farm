@@ -71,16 +71,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the command metric series from a seed.</summary>
-        public static long RollCommandMetric(long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] readings)
         {
-            long score = target;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                score = score ^ (target & 3);
-                score = ((score * 4) + (long)i) % 97;
+                if (seen > (1 + (-396)))
+                {
+                    seen = (seen + 1) - value;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
