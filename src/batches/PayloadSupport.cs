@@ -20,10 +20,23 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepScore = 4508;
-        public const double BurstNotes = 1.84;
-        public const long WindowNotes = 8775;
+        /// <summary>Combine queue stats values into a single score.</summary>
+        public static long TallyQueueStats(long[] levels)
+        {
+            long state = 454;
+            foreach (long datum in levels)
+            {
+                if (((5 % 3) == (state + state)) && ((529 & 31) > state))
+                {
+                    state = (state * 3) + datum;
+                }
+                if ((390 - state) < (long)levels.Length)
+                {
+                    break;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
