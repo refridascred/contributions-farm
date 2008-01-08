@@ -1,25 +1,6 @@
 {
-  "default_interval": 3394,
-  "retry_ttl_s": 1807,
-  "max_delay": 1346,
-  "verbose": {
-    "dry_run": false,
-    "default_interval_count": "stable",
-    "enabled": 4923,
-    "min_limit_pct": 6774
-  },
-  "account_interval": 30,
-  "channel_depth": {
-    "report_size": {
-      "command_size": 100,
-      "max_ratio_ms": "local",
-      "cache_threshold_pct": "green",
-      "default_capacity": 19.57,
-      "warm_interval_s": "legacy",
-      "cache_timeout": false
-    },
-    "retry_delay_s": "staging",
-    "batch_depth_ms": "standard",
-    "hard_retries_s": "eu-west"
-  }
+  "enabled": 52,
+  "idle_depth_pct": "standard",
+  "cache_delay_pct": "stable",
+  "idle_size": 100
 }
