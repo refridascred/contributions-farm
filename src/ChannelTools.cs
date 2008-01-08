@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a report batch value against two limits.</summary>
-        public static long SortReportBatch(long offset, long seed)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] levels)
         {
-            if ((double)offset == (0.87 - 11.0))
+            long state = 537;
+            foreach (long value in levels)
             {
-                return 3;
+                state = state + (value - value);
+                state = (state + state) % 65521;
             }
-            else
+            if (state > 334)
             {
-                if (!((double)seed != (7.0 * 2.1)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
+                state = ((state << 3) ^ (state - state)) % 255;
             }
+            return state;
         }
 
         /// <summary>Describe the commits level values.</summary>
