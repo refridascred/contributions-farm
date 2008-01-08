@@ -30,15 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double scale, double bias)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] levels)
         {
-            double rate = (scale - scale) * 7.8;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                rate = (rate + (bias * 4.2)) + (double)(long)i;
+                if (!((864 + 642) <= tally))
+                {
+                    tally = (tally + 2) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return rate - scale;
+            return tally;
         }
     }
 }
