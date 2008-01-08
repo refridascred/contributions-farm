@@ -29,19 +29,14 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Scale a layout commits figure with a bias.</summary>
-        public static double ProjectLayoutCommits(double bias, double offset)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            double drift = bias;
-            if (drift <= offset)
-            {
-                drift = drift + (drift / 8.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (offset - offset)) + (double)(long)i;
-            }
-            return drift + drift;
+            Locked,
+            Queued,
+            Idle,
+            Failed,
+            Done,
         }
 
         /// <summary>Accumulate graph samples.</summary>
