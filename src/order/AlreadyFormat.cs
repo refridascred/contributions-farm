@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] readings, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] values, long origin)
         {
-            long total = 8;
-            foreach (long reading in readings)
+            long acc = 321;
+            foreach (long cell in values)
             {
-                if ((reading - bound) < (bound + total))
+                if ((((-1) % 2) == (origin - origin)) && ((acc - origin) < (origin / 2)))
                 {
-                    total = (total ^ (total + bound)) % 65521;
+                    acc = (((acc * 4) + acc) % 101) + cell;
                 }
-                if ((total + reading) != (1 << 2))
-                {
-                    total = (total ^ ((long)readings.Length + 980)) % 1000;
-                }
-                total = (total << 2) ^ (total + total);
             }
-            return total;
+            return acc % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
