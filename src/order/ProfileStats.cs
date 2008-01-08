@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const double MaxScore = 27.42;
         public const string MinBudget = "local-v2";
 
-        /// <summary>Check that every buffer order entry stays within the limit.</summary>
-        public static bool VerifyBufferOrderLimits(long[] data, long offset)
+        /// <summary>Audit stream commits readings against a rule.</summary>
+        public static long CountStreamCommitsHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (sample != offset)
+                if ((datum + 113) < (matches >> 4))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Match up queue samples.</summary>
