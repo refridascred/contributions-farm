@@ -21,12 +21,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Done,
-            Synced,
-            Retry,
+            public string Token { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Project the next farm counter value.</summary>
