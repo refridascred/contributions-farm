@@ -27,21 +27,38 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count cluster report pairs that satisfy a relation.</summary>
-        public static long OverlapClusterReportCount(long[] levels)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long step, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((bound ^ step) > bound) && ((double)bound >= (9.5 - 5.97)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((step > (bound % 7)) || ((7 * 3) <= (bound - bound)))
                 {
-                    if ((levels[i] - levels[j]) < 16)
+                    return 3;
+                }
+                else
+                {
+                    if ((bound >= (step + bound)) && (step >= (step / 5)))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound << 1) == (7 + bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of metrics githubfarm readings.</summary>
