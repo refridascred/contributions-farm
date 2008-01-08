@@ -30,18 +30,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many channel window samples are out of range.</summary>
-        public static long TallyChannelWindowHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((4.9 + 7.58) < (double)hits)
-                {
-                    hits = (hits + 3) - cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheTimeout = 6968;
+        public const double MaxAccount = 39.62;
+        public const double BurstAccount = 23.27;
+        public const long RetryFactor = 9689;
+        public const long LimitSpan = 2067;
     }
 }
