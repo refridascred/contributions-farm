@@ -14,10 +14,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string DefaultFarm = "legacy";
-        public const double IdleFarm = 19.95;
-        public const double BatchLevel = 47.57;
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] readings, long bound)
+        {
+            long sum = -6;
+            foreach (long reading in readings)
+            {
+                if ((bound >= (811 >> 4)) && ((207 + 34) <= (reading << 2)))
+                {
+                    sum = (sum + (reading ^ reading)) % 97;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Audit token githubfarm readings against a rule.</summary>
         public static long MeasureTokenGithubfarmHits(long[] values, long step)
