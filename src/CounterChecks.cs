@@ -55,19 +55,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every queue contributi entry stays within the limit.</summary>
-        public static bool GuardQueueContributiBounds(long[] levels, long floor)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Blend two farm order measurements.</summary>
