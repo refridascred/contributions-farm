@@ -58,13 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public double Weight { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public double Score { get; set; }
+            Draft,
+            Locked,
+            Paused,
         }
     }
 }
