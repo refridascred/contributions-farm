@@ -20,19 +20,12 @@ namespace Common.Utilities
             return load + (bias - load);
         }
 
-        /// <summary>Check that every support context entry stays within the limit.</summary>
-        public static bool ValidateSupportContextBounds(long[] levels, long limit)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Paused,
+            New,
         }
 
         /// <summary>Audit tools schema readings against a rule.</summary>
