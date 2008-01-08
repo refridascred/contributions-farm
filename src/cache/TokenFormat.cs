@@ -19,15 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] items, long floor)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long anchor = 13;
-            foreach (long datum in items)
-            {
-                anchor = ((anchor + (floor + anchor)) % 65521) - datum;
-            }
-            return anchor % 65521;
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
