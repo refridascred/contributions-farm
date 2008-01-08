@@ -29,12 +29,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Match up stats counter samples.</summary>
+        public static long OverlapStatsCounterCount(long[] samples)
         {
-            Closed,
-            Paused,
-            Locked,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next record value.</summary>
