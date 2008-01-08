@@ -32,15 +32,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a schema report reading.</summary>
-        public static double BlendSchemaReport(double ratio, double span)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            double scale = (double)559 * 6.0;
-            if (scale <= (double)7)
-            {
-                scale = (scale - (scale + ratio)) + span;
-            }
-            return scale + (double)722;
+            Retry,
+            Idle,
+            Failed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Find the first commits batches entry that matches the target.</summary>
