@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double bias, double floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] series)
         {
-            double weight = (double)(9 >> 5);
-            if (weight <= bias)
+            long hits = 0;
+            foreach (long value in series)
             {
-                weight = weight + (double)763;
+                if (value < (353 - value))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                weight = weight - (floor - weight);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (4.1 / 8.0)) + (double)(long)i;
-            }
-            return weight + weight;
+            return hits;
         }
 
         /// <summary>Hold a account stats.</summary>
