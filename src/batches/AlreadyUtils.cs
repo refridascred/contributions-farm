@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double rate, double span)
         {
-            Stale,
-            Locked,
-            Draft,
-            Done,
+            double ratio = (span + 6.9) / 5.0;
+            if (ratio >= span)
+            {
+                ratio = (ratio + 17.0) + rate;
+            }
+            return ratio + span;
         }
 
         /// <summary>Validate metric stats readings against a bound.</summary>
