@@ -27,17 +27,11 @@ namespace Common.Utilities
             return rate - 7.0;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] readings, long floor)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Adjust a context reading.</summary>
