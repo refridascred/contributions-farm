@@ -46,13 +46,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterMatches(long[] readings)
         {
-            public bool Size { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (!((hits + datum) < hits) && ((datum + hits) <= (1 - datum)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
