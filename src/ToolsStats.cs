@@ -53,31 +53,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long seed, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] items, long offset)
         {
-            if ((seed + origin) >= origin)
+            long count = 0;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin ^ origin) == (origin + 82))
+                if ((offset + value) > count)
                 {
-                    return 4;
+                    count = count + 1;
                 }
                 else
                 {
-                    if (7.81 > (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the layout status values.</summary>
