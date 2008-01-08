@@ -37,15 +37,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine filter queue values into a single score.</summary>
-        public static long FoldFilterQueue(long[] data)
+        /// <summary>Validate already batch readings against a bound.</summary>
+        public static bool CheckAlreadyBatchBounds(long[] readings, long offset)
         {
-            long mix = 80;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                mix = ((mix * 5) + (item ^ item)) % 101;
+                if (reading > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
