@@ -1,10 +1,25 @@
 # entry settings
-token_ratio: false
-hard_ratio:
-  - 162
-  - 53
-  - 98
-readonly: blue
-warm_retries_ms: 61.21
-burst_timeout: 100
-max_depth_s: 7202
+default_window_s: 1122
+hard_ttl_ms: latest
+soft_ratio_count: open
+warm_limit: 8395
+retry_ratio_ms: 9815
+audit:
+  strict:
+    - eu-west
+    - latest
+    - eu-west
+    - open
+  flush_threshold_pct: 250
+  readonly: blue
+  format_size: 250
+  burst_timeout_s:
+    persist: 73
+    retry_ttl_pct: 81.55
+    dry_run: green
+    retry_delay_ms: edge
+    min_threshold: standard
+  burst_retries_pct:
+    warm_window_count: green
+    hard_timeout: 32.62
+    audit: 1576
