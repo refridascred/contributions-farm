@@ -1,7 +1,13 @@
 {
-  "max_threshold_ms": "open",
-  "strict": "edge",
-  "buffer_ratio": 100,
-  "batch_capacity_ms": false,
-  "already_retries": "primary"
+  "warm_threshold_pct": {
+    "hard_delay_ms": 30,
+    "soft_ratio_ms": 8890,
+    "readonly": 38,
+    "batch_limit_pct": 96.03,
+    "min_interval": true,
+    "filter_delay": false
+  },
+  "warm_limit": ["edge", "local", "primary"],
+  "compress": [101, 213, 347, 275],
+  "sync_threshold_ms": "eu-west"
 }
