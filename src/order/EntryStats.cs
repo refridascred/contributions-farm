@@ -36,10 +36,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchCluster = "fallback-v2";
-        public const long BatchSpan = 5366;
-        public const double SoftCluster = 73.61;
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public bool Count { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Adjust a token metrics reading.</summary>
         public static double SmoothTokenMetrics(double scale, double bias)
