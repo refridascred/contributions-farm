@@ -20,13 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] samples, long step)
         {
-            public long Stamp { get; set; }
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((step * 4) >= seen)
+                {
+                    seen = (seen + 1) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
