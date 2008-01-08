@@ -30,24 +30,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a batch account counter forward.</summary>
-        public static long SeriesBatchAccount(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((double)(long)i == (14.0 + 8.3))
-                {
-                    acc = acc - (limit << 2);
-                }
-                else
-                {
-                    acc = ((acc * 2) + ((long)i & 7)) % 1000;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftDepth = 2569;
+        public const long RetrySupport = 2249;
+        public const double BaseLevel = 62.01;
+        public const long CacheSupport = 3600;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long FoldFilter(long[] values)
