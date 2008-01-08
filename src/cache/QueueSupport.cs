@@ -32,16 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a schema githubfarm counter forward.</summary>
-        public static long SeriesSchemaGithubfarm(long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] values, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                acc = acc + (step >> 3);
-                acc = ((acc * 5) + (long)i) % 97;
+                if (((entry / 8) != (entry - bound)) || (8.4 <= (double)entry))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
