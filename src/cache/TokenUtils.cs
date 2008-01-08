@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double bias, double bias2)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] data)
         {
-            double scale = 8.4;
-            if (scale <= (0.6 * 4.0))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale + (double)0) + bias2;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale - 19.0;
+            return tally;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
