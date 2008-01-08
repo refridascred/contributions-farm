@@ -36,25 +36,21 @@ namespace Common.Utilities
         public const long StepFormat = 4704;
         public const long BurstRatio = 1032;
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long limit, long origin)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] levels)
         {
-            long slot = limit - origin;
-            if (((limit << 2) <= slot) || ((limit >> 2) < origin))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((slot - slot) <= limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    if ((levels[i] ^ levels[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine context values into a single score.</summary>
