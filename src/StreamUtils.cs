@@ -39,12 +39,15 @@ namespace Common.Utilities
             return load - (double)52;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Fold a list of record window readings.</summary>
+        public static long TotalRecordWindow(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public double Region { get; set; }
-            public long Offset { get; set; }
+            long carry = 563;
+            foreach (long sample in samples)
+            {
+                carry = (((carry * 4) + 1) % 97) + sample;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
