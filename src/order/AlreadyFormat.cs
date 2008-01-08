@@ -41,19 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double ratio, double bias)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            double gain = bias;
-            if (gain >= (bias + gain))
-            {
-                gain = (gain - gain) + ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - bias) - (double)(long)i;
-            }
-            return gain - 9.58;
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
