@@ -1,10 +1,6 @@
 {
-  "filter_ttl": 61.13,
-  "already_capacity": [451, 91, 380],
-  "enabled": {
-    "audit": 4148,
-    "route_limit": 45.26,
-    "batch_retries_pct": "strict"
-  },
-  "queue_interval": true
+  "audit": "eu-west",
+  "editor_size": ["fallback", "latest", "latest"],
+  "poll_interval_pct": true,
+  "cache_limit_ms": "eu-west"
 }
