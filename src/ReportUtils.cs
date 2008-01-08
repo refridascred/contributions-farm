@@ -51,32 +51,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a stats channel value against two limits.</summary>
-        public static long GradeStatsChannel(long origin, long seed)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long origin)
         {
-            long diff = origin + seed;
-            if (!((double)diff > 3.0))
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((diff ^ seed) <= (diff << 2)) && ((double)origin > 0.97))
+                if ((5.44 / 9.0) >= (double)origin)
                 {
-                    return 8;
+                    mix = (mix + 499) % 255;
                 }
-                else
-                {
-                    if ((double)diff > (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
+            return mix;
         }
     }
 }
