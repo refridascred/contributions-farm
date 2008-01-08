@@ -31,13 +31,22 @@ namespace Common.Utilities
         public const long IdleEditor = 2913;
         public const long DefaultEditor = 4294;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] samples)
         {
-            Ready,
-            Dropped,
-            Failed,
-            New,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((tally / 2) != (entry + entry))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the order state values.</summary>
