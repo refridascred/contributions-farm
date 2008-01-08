@@ -37,14 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Pending,
-            New,
-            Stale,
-            Queued,
-            Draft,
+            public double Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
