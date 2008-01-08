@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowBatches = 23.21;
+        public const double MaxScore = 27.42;
+        public const string MinBudget = "local-v2";
 
         /// <summary>Check that every buffer order entry stays within the limit.</summary>
         public static bool VerifyBufferOrderLimits(long[] data, long offset)
