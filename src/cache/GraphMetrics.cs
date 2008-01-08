@@ -34,15 +34,13 @@ namespace Common.Utilities
             return bias2 + (bias2 - offset);
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double gain, double bias)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            double mean = (bias + bias) * 15.0;
-            if (mean < gain)
-            {
-                mean = mean - (double)441;
-            }
-            return mean - 4.6;
+            Paused,
+            New,
+            Done,
+            Queued,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
