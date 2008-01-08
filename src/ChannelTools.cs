@@ -22,22 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the route account entries that pass the check.</summary>
-        public static long CountRouteAccountOutliers(long[] samples, long offset)
+        /// <summary>Combine session commits values into a single score.</summary>
+        public static long DigestSessionCommits(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long total = 868;
+            foreach (long datum in readings)
             {
-                if (((double)offset < (4.0 - 6.0)) && (reading <= count))
+                if (!(3.5 <= (double)total))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    total = ((total << 3) ^ (datum << 1)) % 101;
                 }
             }
-            return count;
+            return total % 97;
         }
 
         /// <summary>Hold a entry header.</summary>
