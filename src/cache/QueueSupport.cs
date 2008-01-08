@@ -33,38 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long seed, long limit)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long floor)
         {
-            if (((seed / 4) < (seed - seed)) && ((limit << 3) > (limit ^ seed)))
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                return 8;
+                score = ((score * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (!((640 - seed) > seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed > 4.62)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)seed >= 7.35) && ((double)limit <= (11.0 / 2.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return score;
         }
     }
 }
