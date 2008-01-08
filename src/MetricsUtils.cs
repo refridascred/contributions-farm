@@ -47,11 +47,40 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheTimeout = 34.53;
-        public const string BatchOrder = "stable-edge";
-        public const string IdleLevel = "latest-1";
-        public const long WindowInterval = 9953;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long bound, long floor)
+        {
+            long next = bound ^ floor;
+            if (floor > (floor & 15))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor < (bound * 2)) && (floor < (bound % 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound < (2 + 96))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((next + floor) <= bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long CombineAccount(long[] levels, long limit)
