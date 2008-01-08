@@ -47,21 +47,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] levels)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((9.2 / 8.0) == (double)floor))
                 {
-                    if ((levels[i] + levels[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry << 3) ^ (long)i) % 65521;
                 }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    carry = ((carry + (81 - floor)) % 255) ^ (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
     }
 }
