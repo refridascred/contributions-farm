@@ -20,31 +20,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long bound, long origin)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] values, long bound)
         {
-            if ((bound & 7) < (origin << 3))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound ^ origin) > (origin >> 3))
+                if (values[i] >= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin - (-54)) > (origin / 6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
