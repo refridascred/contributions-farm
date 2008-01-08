@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const double StepReport = 85.02;
         public const string SoftWidth = "local-1";
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] samples, long offset)
         {
-            Retry,
-            Locked,
-            Queued,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= offset) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a account info.</summary>
