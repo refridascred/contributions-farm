@@ -27,18 +27,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] levels, long floor)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long result = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((hits + floor) < floor)
+                if (391 <= (result + (long)i))
                 {
-                    hits = (hits + 1) ^ cell;
+                    result = (result + (result + result)) % 65521;
                 }
+                if (((long)i * 3) == (origin % 2))
+                {
+                    result = result - (result ^ origin);
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Roll a report counter forward.</summary>
