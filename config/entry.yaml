@@ -1,22 +1,4 @@
 # entry settings
-sync_threshold: 76
-batches_limit: 57.69
-soft_depth_count:
-  warm_ttl_count: true
-  hard_size: true
-  flush_timeout_ms: 1.32
-  schema_capacity:
-    idle_window:
-      - 351
-      - 270
-      - 446
-    soft_ttl: 9131
-    command_capacity: staging
-  max_threshold_s:
-    - 84
-    - 190
-    - 467
-  readonly: 5467
-min_threshold_pct: true
-cache_size: false
-soft_capacity_s: false
+base_threshold_pct: green
+flush_capacity_pct: 32.06
+verbose: 10.42
