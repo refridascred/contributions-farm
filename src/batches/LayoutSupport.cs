@@ -63,17 +63,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] readings, long origin)
+        /// <summary>Fold a list of counter filter readings.</summary>
+        public static long TotalCounterFilter(long[] series, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 0;
+            foreach (long entry in series)
             {
-                if ((readings[i] < origin) && ((readings[i] % 2) == 0))
+                long gap = ((-45) ^ sum) ^ entry;
+                if (!((double)gap < 7.01))
                 {
-                    return (long)i;
+                    gap = (gap - gap) - target;
                 }
+                sum = sum - entry;
             }
-            return -1;
+            return sum % 1000;
         }
     }
 }
