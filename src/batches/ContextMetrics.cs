@@ -55,15 +55,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a batches metrics reading.</summary>
-        public static double SmoothBatchesMetrics(double rate, double span)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] readings)
         {
-            double rate2 = rate;
-            if (rate2 > (span + rate))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                rate2 = rate2 + span;
+                if (((long)readings.Length - entry) <= (entry + entry))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return rate2 - rate2;
+            return count;
         }
     }
 }
