@@ -16,12 +16,17 @@ namespace Common.Utilities
             return load + (gain + load);
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] readings, long offset)
         {
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
