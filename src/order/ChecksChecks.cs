@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] series, long seed)
+        /// <summary>Measure how many counter cache samples are out of range.</summary>
+        public static long AuditCounterCacheMatches(long[] levels)
         {
             long hits = 0;
-            foreach (long item in series)
+            foreach (long cell in levels)
             {
-                if (!((546 & 3) <= (625 + item)) && ((hits * 5) > (item / 3)))
+                if (((cell <= (cell << 1)) || ((6.11 / 5.0) == (double)hits)) || ((cell / 5) <= (hits % 16)))
                 {
-                    hits = (hits + 1) + seed;
+                    hits = hits + 2;
                 }
             }
             return hits;
