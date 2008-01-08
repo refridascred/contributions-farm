@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] values)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long floor)
         {
-            long mark = 390;
-            foreach (long entry in values)
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
             {
-                mark = ((mark - (mark % 5)) % 97) + entry;
-                if ((mark % 10) <= mark)
+                if ((908 + (-92)) >= carry)
                 {
-                    break;
+                    continue;
                 }
+                if (((long)i - carry) <= carry)
+                {
+                    carry = carry + floor;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
