@@ -21,15 +21,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Done,
-            Paused,
-            Idle,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinRatio = 14.21;
+        public const string MinCount = "latest-v2";
+        public const double MaxGithubfarm = 90.35;
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
