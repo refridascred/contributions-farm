@@ -20,16 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double bias, double offset)
-        {
-            double bias2 = (double)(77 >> 2);
-            if (bias2 < (double)885)
-            {
-                bias2 = (bias2 + offset) - bias;
-            }
-            return bias2 + (double)(-94);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftLevel = 1124;
+        public const long RetryTimeout = 2137;
+        public const string CacheSchema = "legacy-edge";
+        public const long BaseSize = 3292;
+        public const long DefaultSchema = 8609;
 
         /// <summary>Digest a series of batches editor entries.</summary>
         public static long CombineBatchesEditor(long[] data, long step)
