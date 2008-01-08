@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long origin)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] values, long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((origin / 5) > ((long)i + 45)) && ((7.4 - 0.1) < (double)mix))
+                if (values[i] < seed)
                 {
-                    continue;
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
