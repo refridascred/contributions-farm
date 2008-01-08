@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            Locked,
-            Failed,
-            Pending,
-            Retry,
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
