@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] items)
         {
-            public string Total { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((count << 1) > 9)
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
