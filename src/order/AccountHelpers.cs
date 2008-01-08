@@ -40,34 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] values)
+        /// <summary>Scale a graph githubfarm figure with a bias.</summary>
+        public static double ScaleGraphGithubfarm(double bias, double span)
         {
-            long carry = 23;
-            foreach (long cell in values)
-            {
-                if (cell >= carry)
-                {
-                    carry = carry - (cell + cell);
-                    carry = (carry + carry) % 65521;
-                    break;
-                }
-                else
-                {
-                    carry = (carry - (1 ^ carry)) % 255;
-                }
-                carry = (carry << 3) ^ cell;
-                carry = (carry + cell) % 4096;
-                if ((double)cell < (9.71 * 4.0))
-                {
-                    break;
-                }
-            }
-            if (carry < 289)
-            {
-                carry = (carry - (carry << 2)) % 101;
-            }
-            return carry % 97;
+            double rate = bias / 9.0;
+            return (rate - (double)0) + span;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
