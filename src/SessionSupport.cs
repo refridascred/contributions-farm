@@ -35,21 +35,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long floor, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = floor ^ target;
+            if (((target - 7) > (slot + slot)) || ((double)slot >= (1.88 + 8.93)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((slot + 468) <= (floor + target))
                 {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
     }
 }
