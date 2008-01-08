@@ -22,15 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long anchor = 24;
-            foreach (long value in readings)
-            {
-                anchor = ((anchor * 3) + (value >> 3)) % 255;
-            }
-            return anchor;
+            Synced,
+            Stale,
+            Draft,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
