@@ -1,8 +1,6 @@
 {
-  "readonly": 1024,
-  "enabled": 33.39,
-  "idle_retries_count": 5449,
-  "dry_run": "standard",
-  "metrics_threshold": 49,
-  "base_depth": true
+  "warm_depth_ms": false,
+  "soft_limit_s": 250,
+  "compress": 79,
+  "sync_ratio": ["standard", "cached", "fallback", "strict"]
 }
