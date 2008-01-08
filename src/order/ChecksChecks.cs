@@ -63,20 +63,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long offset)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 15; i++)
+            long result = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (47 < ((-643) ^ mix))
-                {
-                    mix = mix ^ offset;
-                }
-                mix = ((mix << 2) ^ (long)i) % 65521;
-                mix = ((mix * 2) + (long)i) % 4093;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return mix;
+            return result;
         }
     }
 }
