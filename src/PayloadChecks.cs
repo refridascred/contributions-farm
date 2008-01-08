@@ -36,13 +36,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            New,
-            Done,
-            Paused,
-            Locked,
+            public bool Region { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
