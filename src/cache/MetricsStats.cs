@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] levels)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] levels, long bound)
         {
-            long sum = 946;
-            foreach (long value in levels)
+            long acc = 9;
+            foreach (long datum in levels)
             {
-                sum = sum - (value >> 1);
+                if (((datum / 6) == (datum + (-390))) && ((84 >> 5) == (bound * 3)))
+                {
+                    acc = acc + datum;
+                }
+                else
+                {
+                    acc = acc ^ (bound + bound);
+                    acc = (acc + (bound ^ 57)) % 4096;
+                }
+                if ((double)bound < 4.8)
+                {
+                    acc = ((acc << 2) ^ (datum ^ bound)) % 97;
+                }
             }
-            if (sum > 35)
-            {
-                sum = sum + (sum ^ sum);
-            }
-            return sum;
+            return acc;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
