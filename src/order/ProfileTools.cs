@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double bias, double floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] data)
         {
-            double drift = (9.2 * 3.01) - (bias - floor);
-            if (drift >= drift)
+            long score = 660;
+            foreach (long entry in data)
             {
-                drift = drift + drift;
+                if ((score % 16) > (entry * 3))
+                {
+                    score = score - (entry & 3);
+                }
+                else
+                {
+                    score = ((score << 2) ^ (entry % 7)) % 97;
+                }
             }
-            else
+            if (score > 962)
             {
-                drift = drift + (bias + floor);
+                score = (score - (score ^ score)) % 255;
             }
-            return drift + (double)513;
+            return score;
         }
 
         /// <summary>Hold a buffer entry.</summary>
