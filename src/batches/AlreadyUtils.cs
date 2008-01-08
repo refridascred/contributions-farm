@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine notes queue values into a single score.</summary>
-        public static long TallyNotesQueue(long[] items)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double scale, double offset)
         {
-            long sum = -696;
-            foreach (long reading in items)
+            double mean = (offset + scale) - offset;
+            if (mean > (offset * 20.0))
             {
-                if ((reading - reading) >= reading)
-                {
-                    sum = ((sum * 3) + reading) % 255;
-                }
-                else
-                {
-                    sum = (sum * 4) + (reading & 31);
-                }
+                mean = mean + (mean * 1.8);
             }
-            return sum;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (15.0 * 1.0)) + (double)(long)i;
+            }
+            return mean - (double)157;
         }
 
         /// <summary>Validate metric stats readings against a bound.</summary>
