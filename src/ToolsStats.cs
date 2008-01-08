@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleScore = "strict-1";
-        public const string StepTimeout = "cached-1";
-        public const long BurstInterval = 4047;
-        public const long DefaultSpan = 6437;
-        public const long BurstWidth = 9547;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleScore = 8035;
+        public const string BaseBuffer = "latest";
+        public const double MaxBuffer = 37.17;
+        public const double MinDepth = 26.63;
 
         /// <summary>Check that every format context entry stays within the limit.</summary>
         public static bool GuardFormatContextLimits(long[] items, long floor)
