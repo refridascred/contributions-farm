@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] values, long offset)
+        /// <summary>Blend two profile token measurements.</summary>
+        public static double BlendProfileToken(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            double load = (floor - scale) - (scale - scale);
+            if (load <= 11.0)
             {
-                if (entry != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load - floor;
             }
-            return flag;
+            else
+            {
+                load = load - (scale - 7.8);
+            }
+            return load - (double)2;
         }
 
         /// <summary>Hold a metrics summary.</summary>
