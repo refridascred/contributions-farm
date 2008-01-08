@@ -32,14 +32,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] samples, long seed)
         {
-            Retry,
-            Idle,
-            Failed,
-            Ready,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first commits batches entry that matches the target.</summary>
