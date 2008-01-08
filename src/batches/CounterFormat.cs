@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] readings, long target)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (value > (89 + value))
+                if (sample < origin)
                 {
-                    tally = (tally + 3) - target;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a route record.</summary>
