@@ -29,19 +29,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] levels, long limit)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Pending,
+            Stale,
         }
 
         /// <summary>Compare every pair of session readings.</summary>
