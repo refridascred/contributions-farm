@@ -63,10 +63,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardSize = 3453;
-        public const long StepInterval = 5735;
-        public const string RetryStream = "fallback-edge";
-        public const string SoftStream = "primary-v2";
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
     }
 }
