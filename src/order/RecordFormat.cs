@@ -33,18 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] data)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((-4) <= hits))
                 {
-                    if ((series[i] ^ series[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) ^ item;
                 }
             }
             return hits;
