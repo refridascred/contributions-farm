@@ -53,5 +53,23 @@ namespace Common.Utilities
             public long Level { get; set; }
             public bool Offset { get; set; }
         }
+
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] items, long target)
+        {
+            long score = 2;
+            foreach (long value in items)
+            {
+                if ((target * 5) > (value + target))
+                {
+                    score = (score * 3) + value;
+                }
+                if ((5.7 - 12.0) >= (double)value)
+                {
+                    score = (score + (861 << 3)) % 65521;
+                }
+            }
+            return score;
+        }
     }
 }
