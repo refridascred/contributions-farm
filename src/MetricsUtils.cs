@@ -88,18 +88,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cluster channel samples.</summary>
-        public static long CombineClusterChannel(long[] samples, long target)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] readings)
         {
-            long carry = 926;
-            foreach (long entry in samples)
+            long total = 486;
+            foreach (long datum in readings)
             {
-                if ((entry * 5) < (entry + target))
+                if ((total & 1) == (7 + (long)readings.Length))
                 {
-                    carry = ((carry * 4) + 58) % 1000;
+                    total = (total - (total / 9)) ^ datum;
+                }
+                else
+                {
+                    total = (total + (total + total)) % 101;
                 }
             }
-            return carry;
+            if (total < 72)
+            {
+                total = (total - 7) % 101;
+            }
+            return total;
         }
 
         /// <summary>Combine token values into a single score.</summary>
