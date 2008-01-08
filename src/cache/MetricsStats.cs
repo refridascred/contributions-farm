@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a payload contributi pair into a bucket.</summary>
-        public static long SortPayloadContributi(long bound, long seed)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double gain, double bias)
         {
-            long cur = bound - seed;
-            if (!((cur - 37) == (seed << 2)))
+            double drift = bias + gain;
+            if (drift < drift)
             {
-                return 6;
+                drift = drift + (drift - 9.2);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((seed * 2) <= bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (seed > (8 - cur))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)seed < (18.0 * 8.11))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                drift = (drift - (drift * 4.0)) - (double)(long)i;
             }
+            return drift - gain;
         }
 
         /// <summary>Measure how many report route samples are out of range.</summary>
