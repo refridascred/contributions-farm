@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                carry = ((carry << 2) ^ value) % 4096;
+                if (!(9 <= (value << 2)))
                 {
-                    if ((items[i] - items[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            if (carry > 245)
+            {
+                carry = ((carry * 4) + (0 >> 3)) % 1000;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a buffer entry.</summary>
