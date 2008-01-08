@@ -19,19 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] levels, long step)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long target, long seed)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long diff = target - seed;
+            if (seed < (target * 3))
             {
-                if (sample >= step)
+                return 8;
+            }
+            else
+            {
+                if (!((diff >> 2) < seed))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((8.0 / 9.0) == (double)seed) && ((seed ^ seed) < (-5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((42 - seed) < 515) || ((seed & 31) > (diff & 127)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
