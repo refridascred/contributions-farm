@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Rank layout payload input into a small class.</summary>
+        public static long BucketLayoutPayload(long seed, long floor)
         {
-            Stale,
-            Queued,
-            Idle,
+            if (((seed + seed) <= (floor * 5)) || ((1.0 * 5.0) != (double)seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((seed + floor) < (floor + floor)) && ((seed << 2) > (2 % 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed != (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two entry measurements.</summary>
