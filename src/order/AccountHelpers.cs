@@ -40,21 +40,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] values)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 23;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell >= carry)
                 {
-                    if ((values[i] ^ values[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = carry - (cell + cell);
+                    carry = (carry + carry) % 65521;
+                    break;
+                }
+                else
+                {
+                    carry = (carry - (1 ^ carry)) % 255;
+                }
+                carry = (carry << 3) ^ cell;
+                carry = (carry + cell) % 4096;
+                if ((double)cell < (9.71 * 4.0))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (carry < 289)
+            {
+                carry = (carry - (carry << 2)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the window status values.</summary>
