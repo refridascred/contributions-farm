@@ -11,24 +11,18 @@ namespace Common.Utilities
         public const string SoftContext = "open-1";
         public const double DefaultInterval = 26.58;
 
-        /// <summary>Classify a filter payload pair into a bucket.</summary>
-        public static long GradeFilterPayload(long origin, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] items)
         {
-            if ((origin * 3) == (origin + origin))
+            long seen = 0;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin + origin) > (50 * 5))
+                if ((value * 4) < 484)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the order cache series from a seed.</summary>
