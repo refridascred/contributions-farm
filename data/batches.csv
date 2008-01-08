@@ -1,8 +1,6 @@
-id,level,label
-1,eu-west,60.07
-2,primary,95.44
-3,361,56.26
-4,504,fallback
-5,standard,blue
-6,15.68,open
-7,blue,76.89
+id,token,ratio,region
+1,493,26.25,staging
+2,fallback,295,436
+3,legacy,68.64,standard
+4,48.37,109,29.22
+5,cached,88.77,6.39
