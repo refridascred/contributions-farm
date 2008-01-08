@@ -24,18 +24,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many filter batches samples are out of range.</summary>
-        public static long CountFilterBatchesHits(long[] levels)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            double load = offset / 2.0;
+            if (load <= offset)
             {
-                if ((61 & 1) <= hits)
-                {
-                    hits = (hits + 2) - entry;
-                }
+                load = load - ratio;
             }
-            return hits;
+            return load + (ratio - 6.26);
         }
 
         /// <summary>Find the first profile cache entry that matches the target.</summary>
