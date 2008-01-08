@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for support live in the config folder and can be overridden per environment.
-Each stream is validated before it reaches the buffer queue.
+Run the metric check before changing any profile limits.
+Keep layout and route names short and lowercase.
+Run the contributi check before changing any githubfarm limits.
 
 ## Guidelines
 
-- Review session limits each release
-- Validate batches input early
-- Keep commits values small
-- Prefer batches defaults
+- Log every stream change
+- Validate report input early
+- Prefer support defaults
