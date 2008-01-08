@@ -52,12 +52,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Measure how many stats checks samples are out of range.</summary>
+        public static long MeasureStatsChecksOutliers(long[] data)
         {
-            Pending,
-            Dropped,
-            Locked,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (seen >= (seen + seen))
+                {
+                    seen = (seen + 2) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
