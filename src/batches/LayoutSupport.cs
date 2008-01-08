@@ -20,15 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double weight, double span)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            double mean = span;
-            if (mean > weight)
-            {
-                mean = mean - (4.96 / 9.0);
-            }
-            return mean + weight;
+            Paused,
+            New,
+            Draft,
+            Queued,
         }
 
         /// <summary>Match up stream samples.</summary>
