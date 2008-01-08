@@ -59,39 +59,21 @@ namespace Common.Utilities
         public const string MaxCounter = "stable-edge";
         public const long SoftCounter = 64;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long origin, long bound)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] levels)
         {
-            long next = origin + bound;
-            if (!((bound / 3) < (0 + bound)))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (next >= (next >> 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin > (3.33 * 5.4))
+                    if ((levels[i] + levels[j]) < 2)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound <= (origin / 6)) && (84 <= (origin & 255)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
