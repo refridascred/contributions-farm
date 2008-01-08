@@ -44,22 +44,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] levels, long bound)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value != (double)bound)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Retry,
+            Paused,
+            Stale,
+            Synced,
         }
     }
 }
