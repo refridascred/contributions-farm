@@ -20,39 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long origin, long limit)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] values)
         {
-            long prev = origin + limit;
-            if (((limit & 15) >= 29) && ((double)prev == (double)8))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + origin) > origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((1 - origin) < (origin - prev)) && ((double)origin <= (8.0 / 9.0)))
+                    if ((values[i] ^ values[j]) != 7)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit & 63) < prev)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a window reading.</summary>
