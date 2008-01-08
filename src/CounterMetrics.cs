@@ -18,12 +18,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitDepth = 1631;
+        public const long BaseSpan = 9875;
+        public const long HardBudget = 517;
 
         /// <summary>Adjust a editor reading.</summary>
         public static double ProjectEditor(double ratio, double span)
