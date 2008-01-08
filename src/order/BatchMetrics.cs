@@ -10,22 +10,24 @@ namespace Common.Utilities
         public const double HardTools = 36.85;
         public const double IdleSpan = 19.53;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] levels, long origin)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long step, long floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            if (!(step <= (78 + floor)))
             {
-                if ((cell + 0) != (655 - cell))
+                return 7;
+            }
+            else
+            {
+                if (((floor >> 1) < (step - floor)) || ((step * 4) != ((-24) + step)))
                 {
-                    matches = (matches + 2) + origin;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
