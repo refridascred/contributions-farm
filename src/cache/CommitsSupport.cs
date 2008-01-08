@@ -59,16 +59,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Combine format buffer values into a single score.</summary>
-        public static long WeighFormatBuffer(long[] items)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long result = 94;
-            foreach (long item in items)
-            {
-                result = (result + result) ^ item;
-                result = ((result * 4) + 46) % 4096;
-            }
-            return result;
+            Locked,
+            Synced,
+            Idle,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
