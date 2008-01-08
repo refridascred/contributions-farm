@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the profile batches series from a seed.</summary>
-        public static long SeriesProfileBatches(long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] levels, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if (cell > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Adjust a support reading.</summary>
