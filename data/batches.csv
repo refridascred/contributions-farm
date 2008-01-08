@@ -1,7 +1,7 @@
-id,state,region,count
-1,staging,open,903
-2,staging,21.05,122
-3,434,44.11,standard
-4,27,primary,167
-5,565,4.14,open
-6,eu-west,13.31,local
+id,label,count,state,owner
+1,green,893,85.94,65.87
+2,edge,0.41,165,18
+3,local,90.05,legacy,570
+4,773,standard,green,148
+5,81.45,open,23.32,59.36
+6,430,122,41.89,959
