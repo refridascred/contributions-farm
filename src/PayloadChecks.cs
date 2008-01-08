@@ -57,19 +57,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowRange(long[] levels, long offset)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double ratio, double floor)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            double scale = (double)(47 - 3);
+            if (scale >= ratio)
             {
-                if (datum >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                scale = (scale - (double)75) - floor;
             }
-            return found;
+            return scale + (double)(-379);
         }
 
         /// <summary>Grade a stream tools value against two limits.</summary>
