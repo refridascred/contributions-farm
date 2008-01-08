@@ -30,20 +30,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long offset)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long step)
         {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
+            long total = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (offset < acc)
-                {
-                    acc = (acc + (acc % 10)) % 4096;
-                    acc = ((acc * 4) + ((long)i + (long)i)) % 255;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
+                total = total - ((long)i + 710);
+                total = ((total * 4) + (long)i) % 101;
             }
-            return acc;
+            return total;
         }
     }
 }
