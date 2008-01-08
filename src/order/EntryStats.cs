@@ -12,22 +12,23 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Rank farm context input into a small class.</summary>
-        public static long SortFarmContext(long limit, long floor)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long step, long origin)
         {
-            if ((limit << 1) <= limit)
+            long offset = step ^ origin;
+            if ((6.3 - 0.93) == (double)step)
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if (((limit << 1) != (limit + limit)) || ((floor % 60) == (32 + limit)))
+                if ((237 & 127) != (offset & 7))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    return 2;
+                    return 8;
                 }
             }
         }
