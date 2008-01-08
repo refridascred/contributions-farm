@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] levels, long step)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((count + reading) < (reading ^ count))
-                {
-                    count = (count + 1) + step;
-                }
-            }
-            return count;
+            Synced,
+            Pending,
+            Closed,
+            Active,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
