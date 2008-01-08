@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinSpan = 722;
-        public const long CacheReport = 7071;
-        public const long DefaultReport = 1434;
-        public const long IdleLevel = 4019;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Paused,
+            Synced,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Find the first session support entry that matches the target.</summary>
         public static long SeekSessionSupportIndex(long[] readings, long seed)
