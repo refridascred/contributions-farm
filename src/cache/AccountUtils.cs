@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up buffer filter samples.</summary>
-        public static long CompareBufferFilterCount(long[] series)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = bias;
+            if (mean > (1.4 / 5.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean - rate;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - bias) - (double)(long)i;
+            }
+            return mean + rate;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
