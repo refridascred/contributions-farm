@@ -65,17 +65,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] values, long limit)
+        /// <summary>Digest a series of commits cache entries.</summary>
+        public static long CombineCommitsCache(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 481;
+            foreach (long sample in data)
             {
-                if ((values[i] >= limit) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = total - (sample + total);
+                total = (total - ((long)data.Length - sample)) % 101;
             }
-            return -1;
+            if (total < 7)
+            {
+                total = (total ^ offset) % 97;
+            }
+            return total % 97;
         }
     }
 }
