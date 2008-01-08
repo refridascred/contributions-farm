@@ -30,12 +30,18 @@ namespace Common.Utilities
             return drift - (scale - offset);
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] samples)
         {
-            Locked,
-            Idle,
-            Synced,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((322 - (long)samples.Length) > (tally ^ entry))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
