@@ -24,21 +24,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] levels)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((count >> 1) <= 3)
                 {
-                    if ((levels[i] - levels[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the tools level values.</summary>
