@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] items, long bound)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((((bound << 1) > (value % 5)) || ((double)value != (double)bound)) && ((value ^ seen) >= (value % 5)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
