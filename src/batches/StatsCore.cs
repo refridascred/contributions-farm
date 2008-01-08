@@ -19,39 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long floor, long offset)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long offset2 = floor - offset;
-            if ((offset2 & 255) > (offset * 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if (57 > (72 + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((offset2 >> 3) >= (offset >> 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)offset2 < (double)floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Queued,
+            Stale,
+            Locked,
         }
 
         /// <summary>Match up already cache samples.</summary>
