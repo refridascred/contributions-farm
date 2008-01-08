@@ -1,5 +1,6 @@
 {
-  "warm_limit_pct": 2356,
-  "hard_window": "primary",
-  "dry_run": "staging"
+  "readonly": "eu-west",
+  "cache_limit": ["edge", "blue", "strict"],
+  "hard_interval_ms": false,
+  "soft_size": 896
 }
