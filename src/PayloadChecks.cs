@@ -57,15 +57,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double ratio, double floor)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] items, long step)
         {
-            double scale = (double)(47 - 3);
-            if (scale >= ratio)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale - (double)75) - floor;
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return scale + (double)(-379);
+            return -1;
         }
 
         /// <summary>Grade a stream tools value against two limits.</summary>
