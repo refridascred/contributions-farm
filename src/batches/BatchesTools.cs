@@ -26,38 +26,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long floor, long origin)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] samples)
         {
-            if (99 <= (origin >> 4))
+            long anchor = -6;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)origin >= (0.11 / 2.0)) || ((origin - floor) <= (floor % 12)))
+                if (!(((long)samples.Length - anchor) < (cell - anchor)))
                 {
-                    return 6;
+                    anchor = ((anchor << 3) ^ (cell >> 1)) % 255;
+                    continue;
                 }
-                else
+                if ((anchor >> 1) >= (2 ^ anchor))
                 {
-                    if ((floor / 8) <= (floor % 97))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((7.52 * 1.5) < (double)floor) && (floor < (origin % 8)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    anchor = anchor + (cell * 3);
                 }
             }
+            if (anchor < 3)
+            {
+                anchor = (anchor << 2) ^ (anchor + anchor);
+            }
+            return anchor % 1000;
         }
     }
 }
