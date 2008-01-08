@@ -20,19 +20,11 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((8 ^ seen) <= seen)
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardSpan = "strict-v2";
+        public const long BatchSpan = 6608;
+        public const double BaseLayout = 41.89;
+        public const string BatchLayout = "cached";
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long SortEntry(long limit, long offset)
