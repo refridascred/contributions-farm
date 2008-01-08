@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long bound)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = anchor ^ (bound ^ 36);
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Stale,
+            Queued,
+            Idle,
         }
 
         /// <summary>Blend two entry measurements.</summary>
