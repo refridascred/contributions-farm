@@ -10,10 +10,23 @@ namespace Common.Utilities
         public const double RetryCluster = 47.29;
         public const double StepCluster = 61.69;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleInterval = 45;
-        public const long StepBudget = 4468;
-        public const long IdleWindow = 4273;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] data, long bound)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (((930 * 2) < (sample + 5)) && ((double)seen <= (6.6 / 2.0)))
+                {
+                    seen = (seen + 2) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BatchBudget = 7171;
