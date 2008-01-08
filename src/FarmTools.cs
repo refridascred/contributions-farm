@@ -10,11 +10,16 @@ namespace Common.Utilities
         public const long CacheTimeout = 7869;
         public const long SoftQueue = 3586;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 9768;
-        public const long MaxRoute = 5176;
-        public const long StepRoute = 8987;
-        public const double IdleRoute = 42.85;
+        /// <summary>Iterate the profile batches series from a seed.</summary>
+        public static long SeriesProfileBatches(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool CheckBatchRange(long[] readings, long offset)
