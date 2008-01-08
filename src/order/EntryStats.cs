@@ -5,31 +5,28 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long bound, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] samples)
         {
-            if ((double)target < (9.99 * 13.0))
+            long sum = 339;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((9 - 27) > (bound ^ target))
+                sum = (sum * 2) + (value % 2);
+                sum = ((sum * 4) + (sum % 3)) % 4096;
+                if (((0 & 15) == (sum + sum)) || (value > (long)samples.Length))
                 {
-                    return 5;
+                    sum = sum + (value * 2);
                 }
                 else
                 {
-                    if (!(target >= (-8)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    sum = ((sum * 4) + (value - sum)) % 65521;
+                }
+                if (((217 & 1) > value) && ((double)value > (10.0 / 5.0)))
+                {
+                    break;
                 }
             }
+            return sum % 97;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
