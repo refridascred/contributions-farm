@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] values, long origin)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long limit, long floor)
         {
-            long acc = 321;
-            foreach (long cell in values)
+            if ((double)limit >= (15.0 - 0.5))
             {
-                if ((((-1) % 2) == (origin - origin)) && ((acc - origin) < (origin / 2)))
+                return 1;
+            }
+            else
+            {
+                if ((limit % 24) >= floor)
                 {
-                    acc = (((acc * 4) + acc) % 101) + cell;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return acc % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
