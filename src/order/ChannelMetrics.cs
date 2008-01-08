@@ -39,13 +39,13 @@ namespace Common.Utilities
             return weight - (offset - 0.78);
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Ready,
-            New,
-            Failed,
-            Pending,
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public long Token { get; set; }
         }
     }
 }
