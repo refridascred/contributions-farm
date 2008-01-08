@@ -44,15 +44,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            New,
+            Draft,
+            Stale,
         }
     }
 }
