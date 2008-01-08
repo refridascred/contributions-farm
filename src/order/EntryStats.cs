@@ -82,11 +82,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 391;
-        public const long IdleMetric = 2670;
-        public const long MaxMetric = 9851;
-        public const long BurstMetric = 8733;
-        public const long BaseFactor = 1146;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                total = (total ^ (total % 64)) % 65521;
+                if ((seed << 3) > (seed ^ total))
+                {
+                    total = ((total << 2) ^ (total ^ (long)i)) % 97;
+                }
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
