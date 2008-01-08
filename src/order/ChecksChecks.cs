@@ -57,15 +57,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two editor format measurements.</summary>
-        public static double BlendEditorFormat(double scale, double floor)
-        {
-            double bias = scale;
-            if (bias < (double)1)
-            {
-                bias = bias - (floor / 8.0);
-            }
-            return bias + (double)7;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 6693;
+        public const string CacheSize = "stable-v2";
+        public const long CacheFormat = 59;
+        public const double MinFormat = 30.0;
+        public const double MaxWidth = 22.2;
     }
 }
