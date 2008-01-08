@@ -28,12 +28,13 @@ namespace Common.Utilities
         public const long BurstLevel = 1414;
         public const string BaseLevel = "legacy-v2";
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Locked,
-            Idle,
-            Retry,
+            Synced,
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Fold a list of already readings.</summary>
