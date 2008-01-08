@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseLevel = 74.06;
+        public const string BurstWidth = "local-v2";
+        public const long StepScore = 6874;
+        public const long DefaultCount = 8122;
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
