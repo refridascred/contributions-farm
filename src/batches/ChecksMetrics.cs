@@ -78,9 +78,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 4663;
-        public const string RetryEditor = "legacy-edge";
-        public const double WindowDepth = 96.16;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+        }
     }
 }
