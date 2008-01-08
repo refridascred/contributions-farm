@@ -46,21 +46,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((64 + tally) <= (tally - tally))
                 {
-                    if ((levels[i] + levels[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) + item;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
