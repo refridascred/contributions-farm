@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] samples, long origin)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (((double)seen <= (19.0 - 3.1)) && (((double)cell <= 5.64) && (6 <= (origin % 8))))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            Retry,
+            Done,
         }
 
         /// <summary>Measure how many order cache samples are out of range.</summary>
