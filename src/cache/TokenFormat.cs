@@ -22,13 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long offset, long target)
         {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public double Mode { get; set; }
+            if ((8.0 * 9.2) >= (double)target)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset + 27) != (offset & 255))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
