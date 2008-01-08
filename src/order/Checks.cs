@@ -16,22 +16,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of contributi already entries.</summary>
-        public static long TotalContributiAlready(long[] items)
+        /// <summary>Accumulate tools support samples.</summary>
+        public static long CombineToolsSupport(long[] items, long seed)
         {
-            long mix = 920;
-            foreach (long item in items)
+            long mark = 24;
+            foreach (long cell in items)
             {
-                if (((double)mix < (18.0 / 5.0)) && ((mix - item) >= ((-630) >> 5)))
-                {
-                    mix = mix ^ (mix << 2);
-                }
-                if (((97 + mix) < (3 + item)) && ((item >> 5) == (item + item)))
-                {
-                    break;
-                }
+                mark = ((mark ^ (mark + mark)) % 4096) - cell;
             }
-            return mix;
+            if (mark > 7)
+            {
+                mark = (mark - (seed / 9)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Combine layout report values into a single score.</summary>
