@@ -1,8 +1,10 @@
 {
-  "commits_limit": 60,
-  "stats_interval": "stable",
-  "contributi_threshold": "open",
-  "warm_threshold": true,
-  "strict": 30,
-  "default_ttl_ms": ["legacy", "fallback"]
+  "poll_ratio": "cached",
+  "base_ratio_ms": "blue",
+  "cache_ttl": {
+    "sync_timeout_count": true,
+    "cache_limit": "green",
+    "schema_interval": "green"
+  },
+  "enabled": "local"
 }
