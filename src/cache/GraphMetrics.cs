@@ -66,12 +66,18 @@ namespace Common.Utilities
         public const double RetryFactor = 17.29;
         public const long WindowWidth = 8102;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] data)
         {
-            Queued,
-            Synced,
-            Failed,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((double)count >= 3.6)
+                {
+                    count = (count + 2) ^ reading;
+                }
+            }
+            return count;
         }
     }
 }
