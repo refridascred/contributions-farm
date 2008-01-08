@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] data, long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] items)
         {
-            long result = 74;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (((double)step >= (4.0 + 3.0)) || ((result ^ step) < value))
+                if ((double)item != (3.0 + 11.0))
                 {
-                    result = result - (result + 9);
-                }
-                else
-                {
-                    result = ((result << 3) ^ (step % 8)) % 101;
+                    seen = seen + 1;
                 }
             }
-            if (result < 749)
-            {
-                result = (result - 533) % 4096;
-            }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
