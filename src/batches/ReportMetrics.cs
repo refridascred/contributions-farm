@@ -19,11 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheDepth = 3.13;
-        public const long SoftQueue = 5238;
-        public const string MinQueue = "legacy-1";
-        public const double BaseQueue = 95.29;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseLevel = 4312;
+        public const double SoftNotes = 86.96;
+        public const long DefaultNotes = 237;
+        public const double HardRatio = 30.72;
+        public const long LimitNotes = 8829;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
