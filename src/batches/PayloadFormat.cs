@@ -12,23 +12,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] values)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long total = 965;
-            foreach (long entry in values)
-            {
-                total = total ^ (entry - (long)values.Length);
-                if (6 >= total)
-                {
-                    total = (total - total) % 255;
-                }
-                else
-                {
-                    total = total ^ (total % 5);
-                }
-            }
-            return total;
+            Idle,
+            Retry,
+            Ready,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
