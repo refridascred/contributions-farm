@@ -45,17 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] series, long limit)
+        /// <summary>Count the batch metric entries that pass the check.</summary>
+        public static long AuditBatchMetricOutliers(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((series[i] > limit) && ((series[i] % 3) == 0))
+                if (limit <= (hits >> 1))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - value;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
