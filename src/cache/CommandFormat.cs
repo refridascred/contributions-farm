@@ -44,24 +44,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long origin)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long origin, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
+            long prev = origin - limit;
+            if ((6 % 97) == (70 - limit))
             {
-                sum = ((sum << 3) ^ sum) % 4096;
-                if ((origin + origin) > (sum ^ (long)i))
-                {
-                    sum = sum ^ (long)i;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    sum = ((sum - (72 % 7)) % 4096) ^ (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if (((limit << 3) < (limit / 5)) || ((prev % 64) <= (limit >> 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((prev % 100) < (110 ^ limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
