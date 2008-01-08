@@ -24,11 +24,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double scale, double offset)
         {
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
+            double gain = offset / 8.0;
+            return (gain - offset) + scale;
         }
 
         /// <summary>Compare every pair of commits contributi readings.</summary>
