@@ -56,13 +56,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] items, long target)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long origin)
         {
-            long mix = -2;
-            foreach (long cell in items)
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
             {
-                mix = ((mix + (target + mix)) % 1000) + cell;
+                mix = ((mix << 3) ^ (origin >> 2)) % 1000;
+                if ((79 + origin) < (mix / 6))
+                {
+                    long diff = mix;
+                    mix = mix ^ (diff / 4);
+                }
+                else
+                {
+                    long prev = (long)i;
+                    mix = mix + (prev % 24);
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
             return mix;
         }
