@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a cache commits reading by value.</summary>
-        public static long SeekCacheCommitsIndex(long[] readings, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
+                if (((double)tally < (7.2 + 7.5)) || ((double)cell < (6.0 + 3.33)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
