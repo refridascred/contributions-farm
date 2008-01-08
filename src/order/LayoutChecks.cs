@@ -29,13 +29,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Done,
-            Active,
-            Closed,
+            Pending,
             Ready,
+            Synced,
+            Done,
         }
 
         /// <summary>Locate a metrics schema reading by value.</summary>
