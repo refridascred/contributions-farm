@@ -55,19 +55,18 @@ namespace Common.Utilities
         public const double RetryFactor = 17.29;
         public const long WindowWidth = 8102;
 
-        /// <summary>Validate format batches readings against a bound.</summary>
-        public static bool GuardFormatBatchesBounds(long[] levels, long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (reading > offset)
+                if ((0.8 + 2.6) >= (double)seed)
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
