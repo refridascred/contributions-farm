@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] values, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((((double)bound >= (double)hits) || ((3 & 7) < (hits - hits))) && ((bound + (long)values.Length) >= (-49)))
+                if (sample > floor)
                 {
-                    hits = (hits + 2) + entry;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Describe the cache state values.</summary>
