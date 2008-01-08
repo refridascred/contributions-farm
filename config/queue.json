@@ -1,12 +1,5 @@
 {
-  "warm_depth_pct": {
-    "warm_ttl_ms": "latest",
-    "poll_retries_s": true,
-    "hard_depth_s": "latest",
-    "persist": "local",
-    "readonly": "cached",
-    "min_ttl_pct": 61.63
-  },
-  "checks_timeout": 9913,
-  "readonly": [346, 376, 341, 1]
+  "checks_retries": 76.48,
+  "account_size": 18.08,
+  "retry_capacity_pct": ["fallback", "stable", "primary"]
 }
