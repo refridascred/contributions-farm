@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] levels, long offset)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (offset <= seen)
+                if (sample > origin)
                 {
-                    seen = (seen + 3) ^ reading;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
