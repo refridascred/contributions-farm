@@ -49,25 +49,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a support githubfarm value against two limits.</summary>
-        public static long GradeSupportGithubfarm(long target, long bound)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long next = target - bound;
-            if (target < (target * 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)next == (7.3 / 3.0)) || ((30 ^ target) == (89 + next)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Ready,
+            Dropped,
+            Stale,
         }
     }
 }
