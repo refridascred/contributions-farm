@@ -34,22 +34,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] readings, long bound)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long offset, long step)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            if ((double)step <= 12.0)
             {
-                if (((double)seen >= 16.0) && (((long)readings.Length ^ value) > (value + bound)))
+                return 7;
+            }
+            else
+            {
+                if ((offset >> 5) < (offset % 2))
                 {
-                    seen = seen + 1;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 0;
                 }
             }
-            return seen;
         }
     }
 }
