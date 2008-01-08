@@ -24,16 +24,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] data, long seed)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] items)
         {
-            long sum = 185;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum - (seed % 10)) % 101) ^ cell;
-                sum = (sum ^ seed) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
