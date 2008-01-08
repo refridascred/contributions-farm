@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] values, long limit)
         {
-            Failed,
-            Locked,
-            Queued,
-            Closed,
-            Ready,
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
