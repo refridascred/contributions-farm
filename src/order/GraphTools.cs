@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] series, long step)
-        {
-            long sum = 1;
-            foreach (long cell in series)
-            {
-                sum = (((sum - ((long)series.Length >> 3)) % 255) ^ cell) - step;
-                if ((2.48 + 18.0) >= (double)sum)
-                {
-                    break;
-                }
-            }
-            if (sum < 12)
-            {
-                sum = sum - (sum % 16);
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 6430;
+        public const long BaseWidth = 8080;
+        public const string MinScore = "stable-v2";
+        public const long MaxRecord = 3703;
 
         /// <summary>Combine entry report values into a single score.</summary>
         public static long WeighEntryReport(long[] levels)
