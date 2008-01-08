@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] data, long target)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            double weight = (double)(9 >> 5);
+            if (weight <= bias)
             {
-                if (sample <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight + (double)763;
             }
-            return valid;
+            else
+            {
+                weight = weight - (floor - weight);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (4.1 / 8.0)) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Hold a account stats.</summary>
