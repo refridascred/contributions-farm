@@ -1,5 +1,5 @@
 {
-  "account_retries": false,
-  "cache_ratio_s": 500,
-  "batch_window": [19, 436]
+  "burst_threshold_ms": 99,
+  "poll_ratio_ms": "eu-west",
+  "enabled": [405, 497, 192]
 }
