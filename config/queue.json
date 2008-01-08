@@ -1,6 +1,6 @@
 {
-  "hard_window": 20.93,
-  "audit": [285, 350, 240],
-  "default_capacity_count": 88.67,
-  "channel_delay": 45
+  "min_timeout": "primary",
+  "retry_timeout": "stable",
+  "record_limit": 250,
+  "verbose": [29, 83, 296]
 }
