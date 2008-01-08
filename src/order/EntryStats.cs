@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long bound, long target)
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
+            if ((double)target < (9.99 * 13.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((9 - 27) > (bound ^ target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(target >= (-8)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
