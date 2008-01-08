@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardGithubfarm = 55.88;
-        public const string WindowGithubfarm = "alpha-v2";
-        public const long RetryGithubfarm = 5992;
-        public const long HardInterval = 3832;
-        public const long CacheGithubfarm = 4648;
+        /// <summary>Adjust a entry layout reading.</summary>
+        public static double BlendEntryLayout(double bias, double floor)
+        {
+            double rate = bias;
+            if (rate > floor)
+            {
+                rate = rate - (bias - bias);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - 9.5) + (double)(long)i;
+            }
+            return rate - (rate + 9.2);
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long SortOrder(long seed, long target)
