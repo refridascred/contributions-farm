@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] items)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 390;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                mark = ((mark - (mark % 5)) % 97) + entry;
+                if ((mark % 10) <= mark)
                 {
-                    if ((items[i] + items[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
