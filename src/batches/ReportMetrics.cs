@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] items)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((8.2 + 4.0) < (double)value)
+                if ((tally ^ reading) < (floor + reading))
                 {
-                    hits = hits + 2;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
