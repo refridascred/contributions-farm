@@ -20,19 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] samples, long seed)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Draft,
+            Synced,
+            Stale,
+            Pending,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
