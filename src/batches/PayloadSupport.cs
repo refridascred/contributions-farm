@@ -20,22 +20,18 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Fold a list of githubfarm counter readings.</summary>
-        public static long WeighGithubfarmCounter(long[] items, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] samples)
         {
-            long anchor = 84;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((5 - offset) != (offset + offset))
+                if ((8 ^ seen) <= seen)
                 {
-                    anchor = (anchor << 3) ^ (sample / 9);
+                    seen = (seen + 1) + datum;
                 }
             }
-            if (anchor > 97)
-            {
-                anchor = (anchor + (anchor % 100)) % 4096;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
