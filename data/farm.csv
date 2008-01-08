@@ -1,10 +1,7 @@
-id,state,rank
-1,standard,470
-2,eu-west,open
-3,187,13.48
-4,standard,stable
-5,842,3.56
-6,92.3,latest
-7,blue,legacy
-8,229,43.38
-9,primary,9.57
+id,rank,active,score
+1,234,edge,69.46
+2,655,32.26,2.13
+3,95.19,eu-west,edge
+4,847,82.4,96.08
+5,44.28,955,69.1
+6,54.13,457,edge
