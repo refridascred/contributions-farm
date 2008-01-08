@@ -1,6 +1,6 @@
 {
-  "base_retries_s": "primary",
-  "max_limit": [350, 270, 371],
-  "max_limit_s": ["local", "edge", "stable"],
-  "burst_window_pct": 1715
+  "audit": 42.26,
+  "profile_depth": "edge",
+  "githubfarm_ttl": 6185,
+  "idle_window": "strict"
 }
