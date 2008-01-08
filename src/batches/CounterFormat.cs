@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many batches contributi samples are out of range.</summary>
-        public static long TallyBatchesContributiHits(long[] samples)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((4.4 / 7.0) < (double)value)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Retry,
+            Locked,
+            Queued,
+            Draft,
         }
 
         /// <summary>Match up schema samples.</summary>
