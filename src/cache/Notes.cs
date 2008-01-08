@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] items)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((tally - entry) < entry)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Match up checks samples.</summary>
