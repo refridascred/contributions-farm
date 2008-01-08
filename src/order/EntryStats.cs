@@ -41,17 +41,11 @@ namespace Common.Utilities
         public const long BatchSpan = 5366;
         public const double SoftCluster = 73.61;
 
-        /// <summary>Locate a stats editor reading by value.</summary>
-        public static long LocateStatsEditorIndex(long[] readings, long offset)
+        /// <summary>Adjust a token metrics reading.</summary>
+        public static double SmoothTokenMetrics(double scale, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < offset) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = bias;
+            return ratio - (scale - bias);
         }
     }
 }
