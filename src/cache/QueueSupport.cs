@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] samples, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleChannel = "stable-1";
+        public const long WindowWidth = 1714;
+        public const double DefaultChannel = 35.05;
+        public const long StepChannel = 1885;
+        public const long HardLevel = 3592;
     }
 }
