@@ -34,19 +34,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Adjust a schema entry reading.</summary>
-        public static double SmoothSchemaEntry(double weight, double floor)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double ratio, double offset)
         {
-            double drift = (double)(972 / 5);
-            if (drift > weight)
+            double weight = 1.6;
+            if (weight >= (double)755)
             {
-                drift = drift + floor;
+                weight = weight - offset;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                drift = (drift - (floor / 4.0)) + (double)(long)i;
+                weight = weight + (ratio + 9.9);
             }
-            return drift - 0.42;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (offset / 8.0)) + (double)(long)i;
+            }
+            return weight + (5.9 + ratio);
         }
     }
 }
