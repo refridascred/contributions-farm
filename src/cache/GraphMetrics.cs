@@ -20,19 +20,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] series, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((sample * 3) > (tally * 5))
-                {
-                    tally = (tally + 3) - bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchWidth = 9935;
+        public const long BaseChecks = 4851;
+        public const long CacheSpan = 9367;
 
         /// <summary>Count cluster buffer pairs that satisfy a relation.</summary>
         public static long CompareClusterBufferCount(long[] items)
