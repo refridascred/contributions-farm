@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] levels)
         {
-            Paused,
-            Stale,
-            Synced,
-            Closed,
-            Active,
+            long mix = 14;
+            foreach (long entry in levels)
+            {
+                mix = (mix * 2) + ((long)levels.Length + entry);
+                if ((mix * 2) == (85 - entry))
+                {
+                    mix = mix - 6;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Validate metric session readings against a bound.</summary>
