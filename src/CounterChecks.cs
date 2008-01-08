@@ -44,11 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Check that every queue contributi entry stays within the limit.</summary>
+        public static bool GuardQueueContributiBounds(long[] levels, long floor)
         {
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
