@@ -32,11 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleChannel = "stable-1";
-        public const long WindowWidth = 1714;
-        public const double DefaultChannel = 35.05;
-        public const long StepChannel = 1885;
-        public const long HardLevel = 3592;
+        /// <summary>Roll a schema githubfarm counter forward.</summary>
+        public static long SeriesSchemaGithubfarm(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = acc + (step >> 3);
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
