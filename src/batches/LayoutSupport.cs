@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit commits schema readings against a rule.</summary>
-        public static long AuditCommitsSchemaHits(long[] levels)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (!((seen + seen) > (reading & 31)))
+                if ((datum + 90) != (datum >> 3))
                 {
-                    seen = seen + 3;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Blend two batch measurements.</summary>
