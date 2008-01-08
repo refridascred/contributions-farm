@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema metrics readings against a rule.</summary>
-        public static long TallySchemaMetricsMatches(long[] data, long origin)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally << 1) <= (955 / 6))
+                if ((values[i] >= bound) && ((values[i] % 2) == 0))
                 {
-                    tally = ((tally + 1) - item) - origin;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
