@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] series, long step)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            if ((seed % 2) <= origin)
             {
-                if (3 >= (long)series.Length)
+                return 1;
+            }
+            else
+            {
+                if ((origin - seed) < (3 % 7))
                 {
-                    hits = ((hits + 1) ^ entry) + step;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next metrics value.</summary>
