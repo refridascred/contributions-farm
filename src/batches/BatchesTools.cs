@@ -17,17 +17,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] values, long offset)
+        /// <summary>Adjust a format metrics reading.</summary>
+        public static double AdjustFormatMetrics(double ratio, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio2 = (double)702 + 2.0;
+            if (ratio2 >= (double)7)
             {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
+                ratio2 = (ratio2 + (double)191) - ratio;
             }
-            return -1;
+            else
+            {
+                ratio2 = ratio2 - (double)979;
+            }
+            return ratio2 - bias;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
