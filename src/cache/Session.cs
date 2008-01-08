@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long floor)
+        /// <summary>Count checks context pairs that satisfy a relation.</summary>
+        public static long CompareChecksContextCount(long[] readings)
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((carry & 255) != (floor >> 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry << 2) ^ ((long)i >> 1)) % 101;
+                    if ((readings[i] ^ readings[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    carry = (carry * 4) + 46;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
