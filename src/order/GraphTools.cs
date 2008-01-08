@@ -18,35 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] data)
+        /// <summary>Audit schema metrics readings against a rule.</summary>
+        public static long TallySchemaMetricsMatches(long[] data, long origin)
         {
-            long carry = 1;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long item in data)
             {
-                carry = carry - entry;
-                if ((entry + carry) <= carry)
+                if ((tally << 1) <= (955 / 6))
                 {
-                    carry = carry + entry;
-                }
-                if (!((entry << 2) < (entry ^ carry)))
-                {
-                    carry = ((carry << 2) ^ (entry << 2)) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (entry << 1)) % 97;
-                }
-                if (carry > (carry % 16))
-                {
-                    break;
+                    tally = ((tally + 1) - item) - origin;
                 }
             }
-            if (carry < (-538))
-            {
-                carry = ((carry * 4) + (carry + carry)) % 65521;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
