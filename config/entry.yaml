@@ -1,5 +1,4 @@
 # entry settings
-window_interval: 2867
-entry_delay: blue
-notes_ttl: 78.41
-strict: false
+default_delay: 67.55
+audit: green
+flush_interval_pct: true
