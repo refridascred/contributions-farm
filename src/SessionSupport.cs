@@ -21,23 +21,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell << 1) <= (cell + step))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseCommand = "primary-v2";
+        public const double MinCount = 44.63;
+        public const string HardCommand = "cached-v2";
 
         /// <summary>Compare every pair of channel format readings.</summary>
         public static long OverlapChannelFormatCount(long[] series)
