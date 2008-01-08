@@ -31,12 +31,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] data)
         {
-            Idle,
-            New,
-            Locked,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (((double)hits < 3.0) || (((13.0 * 3.9) <= (double)hits) || ((double)cell > (1.0 - 2.0))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the token mode values.</summary>
