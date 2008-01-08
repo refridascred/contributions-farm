@@ -1,5 +1,18 @@
 {
-  "dry_run": 71,
-  "audit": 60,
-  "flush_limit_s": false
+  "base_size": 2953,
+  "account_limit": "stable",
+  "cache_ratio_ms": {
+    "cache_window_s": "edge",
+    "batch_window_pct": 100,
+    "checks_capacity": [490, 163, 68]
+  },
+  "base_ratio_pct": {
+    "enabled": 30,
+    "base_capacity_count": "standard",
+    "base_ratio_s": "stable",
+    "warm_ratio_ms": 52.8,
+    "warm_window_count": 26
+  },
+  "batches_timeout": ["open", "strict", "eu-west", "green"],
+  "batch_capacity": 27
 }
