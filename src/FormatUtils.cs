@@ -69,24 +69,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long floor, long limit)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            if (floor >= (floor & 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit + 85) >= (limit + 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
