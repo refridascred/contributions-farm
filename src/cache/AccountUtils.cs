@@ -42,13 +42,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] values)
         {
-            Queued,
-            New,
-            Stale,
-            Idle,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((5.08 + 0.5) > (double)count)
+                {
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
