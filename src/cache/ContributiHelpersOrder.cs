@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] levels)
+        /// <summary>Validate route support readings against a bound.</summary>
+        public static bool VerifyRouteSupportBounds(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((matches + cell) <= ((long)levels.Length << 1))
+                if (datum <= floor)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Rank order input into a small class.</summary>
