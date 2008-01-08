@@ -66,18 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics farm readings against a rule.</summary>
-        public static long CountMetricsFarmHits(long[] values)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count < 935) || ((datum * 3) < (datum + datum)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Ready,
+            Retry,
+            Pending,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
