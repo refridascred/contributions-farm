@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of editor notes readings.</summary>
-        public static long TotalEditorNotes(long[] levels, long origin)
+        /// <summary>Measure how many schema profile samples are out of range.</summary>
+        public static long TallySchemaProfileGaps(long[] samples, long target)
         {
-            long anchor = 45;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                anchor = (((anchor << 2) ^ (origin ^ anchor)) % 4096) - reading;
-                anchor = (anchor ^ (9 + anchor)) % 65521;
+                if (target >= 37)
+                {
+                    tally = (tally + 1) - value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Project the next notes value.</summary>
