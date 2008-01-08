@@ -67,15 +67,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double weight, double floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] series, long target)
         {
-            double load = (floor - weight) + 2.4;
-            for (int i = 0; i < 6; i++)
+            long mark = 57;
+            foreach (long cell in series)
             {
-                load = (load + load) + (double)(long)i;
+                mark = (mark + cell) % 1000;
             }
-            return load - (floor + 8.6);
+            if (mark < 50)
+            {
+                mark = mark ^ target;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
