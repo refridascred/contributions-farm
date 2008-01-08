@@ -33,17 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] samples, long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 95;
+            foreach (long value in values)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((((state * 2) + (532 + state)) % 101) ^ value) + target;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
