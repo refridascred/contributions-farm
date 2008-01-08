@@ -101,13 +101,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long step, long target)
         {
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
+            if (((1.46 * 9.87) < (double)step) && ((-27) > target))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((2.55 + 6.52) <= (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((step - target) < (target + step)) && (5 >= (step ^ 74)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
