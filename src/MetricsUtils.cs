@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] series)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long bound, long target)
         {
-            long state = -88;
-            foreach (long reading in series)
+            if ((target - 15) > (bound + target))
             {
-                state = (state ^ (state + reading)) % 4096;
-                if (!((double)reading != (double)(long)series.Length))
+                return 8;
+            }
+            else
+            {
+                if (((double)bound < (double)target) || (bound <= (bound + bound)))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((834 << 3) != (bound ^ target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (bound > (bound + (-58)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Describe the metric phase values.</summary>
