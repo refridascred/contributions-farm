@@ -17,19 +17,23 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Adjust a format metrics reading.</summary>
-        public static double AdjustFormatMetrics(double ratio, double bias)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double bias, double offset)
         {
-            double ratio2 = (double)702 + 2.0;
-            if (ratio2 >= (double)7)
+            double gain = bias * 7.79;
+            if (gain < 6.1)
             {
-                ratio2 = (ratio2 + (double)191) - ratio;
+                gain = gain + 12.0;
             }
             else
             {
-                ratio2 = ratio2 - (double)979;
+                gain = gain - offset;
             }
-            return ratio2 - bias;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + (double)310;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
