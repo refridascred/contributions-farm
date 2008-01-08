@@ -46,19 +46,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double gain, double bias)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            double weight = (double)((-27) & 127);
-            if (weight > weight)
-            {
-                weight = ((weight - 1.6) - gain) - bias;
-            }
-            else
-            {
-                weight = weight - (double)3;
-            }
-            return weight + weight;
+            Paused,
+            Done,
+            Ready,
+            Retry,
+            Pending,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
