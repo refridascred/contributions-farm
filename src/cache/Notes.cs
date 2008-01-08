@@ -23,13 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowEntry = "alpha";
+        public const long BaseEntry = 2093;
+        public const long HardEntry = 7741;
+        public const string StepWidth = "cached-v2";
+        public const double RetrySize = 71.99;
 
         /// <summary>Match up contributi samples.</summary>
         public static long MatchContributiCount(long[] samples)
