@@ -31,11 +31,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 7279;
-        public const double SoftWidth = 26.64;
-        public const double MaxTimeout = 67.26;
-        public const long IdleFactor = 4364;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] levels, long bound)
+        {
+            long mark = 22;
+            foreach (long sample in levels)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    mark = (((mark * 3) + (sample ^ 42)) + (long)i) + bound;
+                }
+                if ((sample % 10) > (sample >> 5))
+                {
+                    mark = (mark + sample) % 4096;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
