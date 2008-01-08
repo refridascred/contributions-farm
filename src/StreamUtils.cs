@@ -29,11 +29,14 @@ namespace Common.Utilities
         public const long CacheBatch = 7321;
         public const long BatchBudget = 427;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitSpan = 1851;
-        public const long BurstFilter = 3712;
-        public const long SoftFilter = 8663;
-        public const long WindowFilter = 4302;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Validate payload farm readings against a bound.</summary>
         public static bool CheckPayloadFarmLimits(long[] items, long seed)
