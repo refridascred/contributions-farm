@@ -11,23 +11,24 @@ namespace Common.Utilities
         public const long MinBatches = 595;
         public const long BurstBatches = 6482;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] values)
+        /// <summary>Classify a graph cluster pair into a bucket.</summary>
+        public static long GradeGraphCluster(long offset, long limit)
         {
-            long state = 739;
-            foreach (long cell in values)
+            if ((5 - limit) < (limit / 6))
             {
-                state = (state - (state >> 1)) % 97;
-                if (cell >= (5 + 986))
+                return 8;
+            }
+            else
+            {
+                if ((limit * 2) > offset)
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (state > 625)
-            {
-                state = (state + (state >> 2)) % 255;
-            }
-            return state;
         }
 
         /// <summary>Hold a report snapshot.</summary>
