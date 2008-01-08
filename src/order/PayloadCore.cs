@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit profile record readings against a rule.</summary>
-        public static long MeasureProfileRecordOutliers(long[] items, long target)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((6.0 * 2.13) >= (double)target)
-                {
-                    matches = (matches + 1) - datum;
-                }
-            }
-            return matches;
+            Queued,
+            Done,
+            Retry,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
