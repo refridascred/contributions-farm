@@ -24,24 +24,17 @@ namespace Common.Utilities
             return drift + 2.73;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long origin, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] levels, long target)
         {
-            if ((-816) > (step >> 3))
+            long total = 972;
+            foreach (long cell in levels)
             {
-                return 0;
+                total = ((total << 2) ^ total) - target;
+                total = total - (total * 2);
+                total = ((total * 4) + cell) % 4096;
             }
-            else
-            {
-                if ((step % 97) <= (origin + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return total % 1000;
         }
     }
 }
