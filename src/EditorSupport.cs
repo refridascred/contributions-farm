@@ -66,21 +66,13 @@ namespace Common.Utilities
         public const long DefaultCommand = 7932;
         public const string IdleCommand = "fallback-v2";
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] values)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
+            public double Level { get; set; }
         }
     }
 }
