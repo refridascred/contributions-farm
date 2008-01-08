@@ -1,9 +1,11 @@
 # entry settings
-verbose: 30
-batch_window: primary
-default_delay_s:
-  - 414
-  - 115
-  - 346
-  - 340
-compress: false
+flush_size_s: 250
+soft_limit_count: 48.15
+enabled:
+  dry_run: 91
+  warm_window_count: true
+  contributi_size: 6917
+  batch_ttl: 56.76
+  min_ttl: true
+schema_retries: 250
+commits_depth: 25.53
