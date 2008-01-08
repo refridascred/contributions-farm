@@ -11,13 +11,38 @@ namespace Common.Utilities
         public const long BatchInterval = 8313;
         public const long WindowSize = 4982;
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long step, long target)
         {
-            Ready,
-            Active,
-            Draft,
-            Paused,
+            if ((double)target != (5.0 - 10.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step & 1) <= (target >> 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((92 - target) > (step % 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step * 5) > (target * 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
