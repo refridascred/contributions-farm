@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next format cluster value.</summary>
-        public static double ProjectFormatCluster(double weight, double span)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] values, long seed)
         {
-            double mean = (span + weight) / 8.0;
-            if (mean >= mean)
+            bool found = true;
+            foreach (long reading in values)
             {
-                mean = mean + mean;
+                if (reading != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean + weight;
+            return found;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
