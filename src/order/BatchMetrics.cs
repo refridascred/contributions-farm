@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTimeout = 81.38;
-        public const double HardTools = 36.85;
-        public const double IdleSpan = 19.53;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 1072;
+        public const long DefaultLevel = 5290;
+        public const string StepFactor = "strict-1";
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long RankStats(long step, long floor)
