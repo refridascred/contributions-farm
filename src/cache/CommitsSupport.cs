@@ -67,13 +67,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] series)
         {
-            Locked,
-            Pending,
-            Retry,
-            New,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
