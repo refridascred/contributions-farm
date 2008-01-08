@@ -20,12 +20,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFactor = 9074;
+        public const string BatchDepth = "legacy-edge";
+        public const long WindowFilter = 2296;
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long SeekSessionIndex(long[] data, long limit)
