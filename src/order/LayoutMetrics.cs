@@ -24,21 +24,12 @@ namespace Common.Utilities
         public const string IdlePayload = "legacy-edge";
         public const long CachePayload = 5761;
 
-        /// <summary>Compare every pair of githubfarm window readings.</summary>
-        public static long OverlapGithubfarmWindowCount(long[] readings)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
