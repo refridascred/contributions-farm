@@ -45,32 +45,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long origin, long limit)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long floor)
         {
-            long prev = origin - limit;
-            if ((6 % 97) == (70 - limit))
+            long state = floor;
+            for (int i = 0; i < 11; i++)
             {
-                return 5;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (((limit << 3) < (limit / 5)) || ((prev % 64) <= (limit >> 5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((prev % 100) < (110 ^ limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
