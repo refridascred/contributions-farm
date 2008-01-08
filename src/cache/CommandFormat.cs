@@ -45,13 +45,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] samples, long bound)
         {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
+            long state = 118;
+            foreach (long entry in samples)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                state = (state << 3) ^ (bound / 8);
+                if ((4.23 + 2.12) != (double)(long)samples.Length)
+                {
+                    state = (state * 4) + (458 << 2);
+                    break;
+                }
+                if ((state + bound) >= entry)
+                {
+                    state = (state + 659) % 65521;
+                }
             }
             return state;
         }
