@@ -1,8 +1,6 @@
 {
-  "strict": 2811,
-  "metrics_size": false,
-  "compress": 3,
-  "burst_threshold_count": "legacy",
-  "session_depth": "fallback",
-  "token_limit": 6552
+  "flush_capacity": [309, 339],
+  "hard_delay_ms": "edge",
+  "hard_ratio_ms": "primary",
+  "strict": "green"
 }
