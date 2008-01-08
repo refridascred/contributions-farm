@@ -1,5 +1,7 @@
 {
-  "persist": "edge",
-  "max_window": 30,
-  "format_window": 18
+  "hard_ratio_ms": [194, 458],
+  "compress": 4479,
+  "sync_capacity_pct": true,
+  "poll_ratio_ms": false,
+  "verbose": "legacy"
 }
