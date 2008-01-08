@@ -13,19 +13,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] series, long target)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] readings, long limit)
         {
-            bool ok = true;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value <= target)
+                if (readings[i] == limit)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Look up the position of a command context sample.</summary>
