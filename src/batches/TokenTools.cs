@@ -35,9 +35,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 4279;
-        public const long LimitStream = 7292;
-        public const double StepWidth = 65.9;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (((double)seen >= 16.0) && (((long)readings.Length ^ value) > (value + bound)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
