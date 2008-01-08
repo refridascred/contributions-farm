@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const double RetryCluster = 47.29;
         public const double StepCluster = 61.69;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] data, long bound)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if (((930 * 2) < (sample + 5)) && ((double)seen <= (6.6 / 2.0)))
+                if (cell <= seed)
                 {
-                    seen = (seen + 2) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a layout info.</summary>
