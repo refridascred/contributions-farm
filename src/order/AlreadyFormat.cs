@@ -57,17 +57,17 @@ namespace Common.Utilities
         public const long IdleCommits = 8273;
         public const double RetryCommits = 18.24;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] levels, long target)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
+                mix = mix - ((long)i << 3);
+                mix = (mix << 2) ^ (floor * 2);
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
     }
 }
