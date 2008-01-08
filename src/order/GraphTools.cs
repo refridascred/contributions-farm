@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double weight, double offset)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double scale = (double)(0 + (-45));
-            if (scale <= scale)
-            {
-                scale = scale + (scale - offset);
-            }
-            return scale + (weight - offset);
+            public bool Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Combine entry report values into a single score.</summary>
