@@ -40,12 +40,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 9030;
-        public const long WindowGithubfarm = 6298;
-        public const double LimitWidth = 77.49;
-        public const long StepGithubfarm = 5879;
-        public const long CacheBudget = 6720;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftInterval = 86.21;
+        public const long BurstTimeout = 5880;
+        public const long SoftSpan = 4928;
+        public const long HardCount = 2156;
+        public const long IdleMetric = 5124;
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double ScaleGithubfarm(double weight, double bias)
