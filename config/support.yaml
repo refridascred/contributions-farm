@@ -1,23 +1,20 @@
 # support settings
-metric_retries: 10.61
-idle_ttl_ms:
-  max_ratio_s: blue
-  default_depth:
-    dry_run: 51.14
-    base_timeout_s: 1024
-    hard_ratio_ms: true
-    max_retries: 9
-  notes_window: local
-  retry_timeout_pct: strict
-  graph_ttl:
-    batch_depth_ms: 93
-    route_timeout: 24
-    buffer_threshold: 56
-    commits_threshold: 79
-    already_window: 7730
-    batch_retries_pct: latest
-session_ttl: primary
-batch_capacity:
-  - edge
+default_size_pct:
+  - blue
   - eu-west
-  - cached
+  - fallback
+  - primary
+base_ttl_ms:
+  notes_threshold: 94.19
+  base_ttl_s:
+    flush_capacity: 87
+    soft_window_count: 570
+    burst_depth_s: 250
+  verbose:
+    - green
+    - cached
+burst_retries:
+  - green
+  - local
+  - green
+  - green
