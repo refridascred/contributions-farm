@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache account entries that pass the check.</summary>
-        public static long MeasureCacheAccountHits(long[] series, long step)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (!((12.0 + 1.46) == (double)step))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
