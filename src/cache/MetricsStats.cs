@@ -45,13 +45,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
+            public string Size { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Fold a list of entry stream readings.</summary>
