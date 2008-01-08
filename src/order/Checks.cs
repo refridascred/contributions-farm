@@ -31,16 +31,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine layout report values into a single score.</summary>
-        public static long FoldLayoutReport(long[] items, long origin)
-        {
-            long carry = 497;
-            foreach (long cell in items)
-            {
-                carry = ((carry * 5) + (cell & 31)) - origin;
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxSize = 1816;
+        public const double CacheLevel = 68.5;
+        public const double MinBudget = 20.36;
+        public const string RetrySpan = "open-edge";
+        public const long MinCount = 2086;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long SoftInterval = 4779;
