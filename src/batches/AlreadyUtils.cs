@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first metrics support entry that matches the target.</summary>
-        public static long LookupMetricsSupportIndex(long[] values, long step)
+        /// <summary>Find the first batches stats entry that matches the target.</summary>
+        public static long SeekBatchesStatsIndex(long[] values, long limit)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] > step)
+                if ((values[i] > limit) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
