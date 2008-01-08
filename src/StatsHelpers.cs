@@ -29,12 +29,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinBudget = 9581;
-        public const string BatchLevel = "local-edge";
-        public const string BurstTimeout = "primary";
-        public const string DefaultCount = "open-1";
-        public const double RetryContext = 15.25;
+        /// <summary>Fold a list of account format readings.</summary>
+        public static long WeighAccountFormat(long[] series, long seed)
+        {
+            long sum = 812;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    sum = ((((sum << 2) ^ (sample / 2)) % 97) - (long)i) + seed;
+                }
+                sum = (sum + (sample & 1)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
