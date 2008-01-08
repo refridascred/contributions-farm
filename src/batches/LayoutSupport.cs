@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every batch filter entry stays within the limit.</summary>
-        public static bool CheckBatchFilterLimits(long[] readings, long target)
+        /// <summary>Validate contributi token readings against a bound.</summary>
+        public static bool CheckContributiTokenLimits(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (reading != target)
+                if (datum <= limit)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
