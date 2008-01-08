@@ -20,24 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] samples, long step)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] samples, long seed)
         {
-            long mark = 47;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                mark = (mark - (step << 1)) % 97;
-                mark = (mark << 3) ^ sample;
-                if (sample >= (mark % 60))
+                if (entry >= seed)
                 {
-                    mark = (mark + (sample / 2)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            if (mark > 130)
-            {
-                mark = mark + (mark + mark);
-            }
-            return mark;
+            return flag;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
