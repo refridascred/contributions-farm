@@ -44,15 +44,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double rate, double bias)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] levels)
         {
-            double ratio = (rate / 7.0) - (rate / 7.0);
-            if (ratio >= (ratio - ratio))
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                ratio = ratio + bias;
+                if (sample <= (sample >> 1))
+                {
+                    matches = matches + 1;
+                }
             }
-            return ratio + rate;
+            return matches;
         }
 
         /// <summary>Describe the stream level values.</summary>
