@@ -38,19 +38,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Validate payload farm readings against a bound.</summary>
-        public static bool CheckPayloadFarmLimits(long[] items, long seed)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long origin)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long acc = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry < seed)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
