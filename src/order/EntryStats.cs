@@ -43,12 +43,12 @@ namespace Common.Utilities
         public const long BatchSpan = 5366;
         public const double SoftCluster = 73.61;
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] values, long floor)
+        /// <summary>Locate a stats editor reading by value.</summary>
+        public static long LocateStatsEditorIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] <= floor)
+                if ((readings[i] < offset) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
