@@ -75,11 +75,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinLayout = "staging";
-        public const string HardLayout = "stable-v2";
-        public const string BaseLevel = "local-1";
-        public const long CacheLayout = 3700;
-        public const long LimitInterval = 7757;
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long target, long bound)
+        {
+            if ((target >> 4) != (target << 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((2.0 * 7.27) >= (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound / 9) <= (bound - bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)target >= (4.87 + 8.3)) && ((double)bound <= 7.08))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
