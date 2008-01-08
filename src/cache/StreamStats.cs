@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] values, long limit)
+        /// <summary>Validate report route readings against a bound.</summary>
+        public static bool CheckReportRouteLimits(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if (entry != limit)
+                if (entry <= origin)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
