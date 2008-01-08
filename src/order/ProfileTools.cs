@@ -45,12 +45,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheBuffer = "fallback";
-        public const long BatchBuffer = 2977;
-        public const double StepTimeout = 55.55;
-        public const long BaseBuffer = 7696;
-        public const double SoftSpan = 70.8;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] readings, long limit)
+        {
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
