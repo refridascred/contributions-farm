@@ -19,26 +19,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] data, long bound)
+        /// <summary>Iterate the batches metric series from a seed.</summary>
+        public static long IterateBatchesMetric(long origin)
         {
-            long result = 886;
-            foreach (long reading in data)
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((20.0 / 8.0) > (double)reading)
-                {
-                    result = (result + reading) - bound;
-                }
-                if (18 >= reading)
-                {
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            if (result > 959)
-            {
-                result = (result - (result << 2)) % 97;
-            }
-            return result;
+            return anchor;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
