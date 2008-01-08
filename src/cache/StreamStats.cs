@@ -11,18 +11,24 @@ namespace Common.Utilities
         public const long CacheInterval = 8080;
         public const double LimitFactor = 6.86;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] series, long bound)
+        /// <summary>Rank checks token input into a small class.</summary>
+        public static long BucketChecksToken(long target, long step)
         {
-            long count = 0;
-            foreach (long entry in series)
+            if ((double)step >= (6.5 / 8.0))
             {
-                if (count < (bound / 3))
+                return 4;
+            }
+            else
+            {
+                if ((step - 36) < target)
                 {
-                    count = (count + 3) + entry;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
