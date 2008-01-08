@@ -40,19 +40,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] readings, long limit)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
