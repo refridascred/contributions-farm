@@ -61,14 +61,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 1137;
+        public const long DefaultBatch = 5055;
+        public const string IdleBatch = "cached-edge";
+        public const long BurstBatch = 7852;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool GuardSchemaBounds(long[] series, long offset)
