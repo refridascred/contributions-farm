@@ -19,16 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next profile layout value from a seed.</summary>
-        public static long DeriveProfileLayout(long step)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long floor, long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 9; i++)
+            long offset2 = floor - offset;
+            if ((offset2 & 255) > (offset * 4))
             {
-                sum = sum ^ (step % 60);
-                sum = ((sum * 3) + (long)i) % 4093;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if (57 > (72 + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((offset2 >> 3) >= (offset >> 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)offset2 < (double)floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up already cache samples.</summary>
