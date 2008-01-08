@@ -29,5 +29,14 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Retry,
+            Failed,
+            Done,
+            Locked,
+        }
     }
 }
