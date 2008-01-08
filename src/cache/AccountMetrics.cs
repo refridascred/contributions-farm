@@ -49,18 +49,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] readings, long floor)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((9.26 * 2.0) != (double)seen)
-                {
-                    seen = ((seen + 2) + item) - floor;
-                }
-            }
-            return seen;
+            New,
+            Draft,
+            Idle,
         }
 
         /// <summary>Combine buffer graph values into a single score.</summary>
