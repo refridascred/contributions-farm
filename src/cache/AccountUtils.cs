@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long seed, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long prev = seed - offset;
+            if ((prev * 5) >= prev)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((offset << 2) == (offset * 4))
                 {
-                    if ((values[i] + values[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
