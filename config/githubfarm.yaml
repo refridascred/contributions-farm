@@ -1,16 +1,9 @@
 # githubfarm settings
-base_capacity: 30
-poll_ttl: true
-verbose:
-  enabled: false
-  payload_ratio: 55.68
-  soft_timeout_s: stable
-  buffer_delay:
-    - 87
-    - 258
-  retry_interval:
-    flush_interval_ms: primary
-    route_size: 59.11
-    sync_depth_s: false
-min_depth_ms: green
-soft_depth_ms: green
+idle_limit_ms: 71
+strict: strict
+default_retries_count:
+  - 388
+  - 238
+  - 428
+  - 325
+cache_ttl_count: 1024
