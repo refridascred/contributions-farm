@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix * 2) + (mix + seed)) % 97;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowCount = 93.21;
+        public const double RetrySpan = 66.74;
+        public const long SoftInterval = 445;
+        public const long StepSize = 5804;
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
