@@ -27,25 +27,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long bound, long step)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long delta = bound + step;
-            if ((double)step != (20.0 / 8.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((delta ^ 53) >= step) && ((5.1 / 8.0) < (double)delta))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Token { get; set; }
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a already info.</summary>
