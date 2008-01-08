@@ -54,11 +54,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetrySize = "legacy-1";
-        public const long DefaultCount = 434;
-        public const long DefaultTimeout = 7691;
-        public const string IdleSize = "primary-v2";
-        public const long RetryLevel = 4234;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Ready,
+            Synced,
+            Stale,
+            Pending,
+            Retry,
+        }
     }
 }
