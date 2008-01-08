@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] samples)
+        /// <summary>Project the next format cluster value.</summary>
+        public static double ProjectFormatCluster(double weight, double span)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            double mean = (span + weight) / 8.0;
+            if (mean >= mean)
             {
-                if ((tally - tally) > (12 << 2))
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean + mean;
             }
-            return tally;
+            return mean + weight;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
