@@ -33,10 +33,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowSize = "primary-v2";
-        public const long MaxSpan = 686;
-        public const double BaseRatio = 56.38;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 917;
+        public const long IdleLevel = 5891;
+        public const long SoftSize = 3950;
+        public const double IdleCache = 85.83;
+        public const string MinCache = "standard";
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long LocateChecksIndex(long[] items, long step)
