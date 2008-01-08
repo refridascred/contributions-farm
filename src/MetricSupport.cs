@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const string BaseLevel = "legacy-edge";
         public const string StepCommand = "stable-edge";
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] samples)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long acc = 5;
-            foreach (long value in samples)
-            {
-                if (((acc + value) != (value * 4)) && ((value >> 4) >= (acc - value)))
-                {
-                    acc = (acc - 177) % 97;
-                }
-                if ((double)value == (7.0 / 5.0))
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
+            public long Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Locate a session metric reading by value.</summary>
