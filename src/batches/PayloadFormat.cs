@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long origin)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] readings, long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score ^ score) % 4096;
-                score = score ^ (score & 7);
-                score = ((score * 5) + (long)i) % 101;
+                if ((readings[i] <= floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the buffer state values.</summary>
