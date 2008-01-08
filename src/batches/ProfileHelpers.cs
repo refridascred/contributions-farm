@@ -5,35 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of filter checks entries.</summary>
-        public static long CombineFilterChecks(long[] readings)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] data)
         {
-            long result = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((44 >> 5) >= cell)
+                if ((8.0 + 20.0) == (double)hits)
                 {
-                    break;
-                }
-                if ((double)result == (0.37 / 7.0))
-                {
-                    result = result - cell;
-                }
-                else
-                {
-                    long hits = cell;
-                    result = result - (hits + result);
-                }
-                if (!((double)cell < (double)result))
-                {
-                    result = (result ^ cell) % 4096;
-                }
-                if (!((double)result == (6.9 - 17.0)))
-                {
-                    break;
+                    hits = (hits + 1) ^ value;
                 }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Describe the counter status values.</summary>
