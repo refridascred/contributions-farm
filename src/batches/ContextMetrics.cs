@@ -46,13 +46,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double weight, double floor)
         {
-            Closed,
-            Pending,
-            Done,
-            New,
+            double mean = weight;
+            if (mean < 5.1)
+            {
+                mean = mean + (floor / 3.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean - (double)701;
         }
 
         /// <summary>Hold a queue record.</summary>
