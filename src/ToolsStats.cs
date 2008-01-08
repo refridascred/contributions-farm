@@ -31,22 +31,31 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] levels, long bound)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long seed, long origin)
         {
-            long mark = 22;
-            foreach (long sample in levels)
+            if ((seed + origin) >= origin)
             {
-                for (int i = 0; i < 4; i++)
+                return 5;
+            }
+            else
+            {
+                if ((origin ^ origin) == (origin + 82))
                 {
-                    mark = (((mark * 3) + (sample ^ 42)) + (long)i) + bound;
+                    return 4;
                 }
-                if ((sample % 10) > (sample >> 5))
+                else
                 {
-                    mark = (mark + sample) % 4096;
+                    if (7.81 > (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mark % 1000;
         }
 
         /// <summary>Describe the layout status values.</summary>
