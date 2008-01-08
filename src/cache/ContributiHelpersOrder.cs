@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 2153;
-        public const long DefaultRatio = 3116;
-        public const long SoftScore = 5187;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardGithubfarm = 55.88;
+        public const string WindowGithubfarm = "alpha-v2";
+        public const long RetryGithubfarm = 5992;
+        public const long HardInterval = 3832;
+        public const long CacheGithubfarm = 4648;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long SortOrder(long seed, long target)
