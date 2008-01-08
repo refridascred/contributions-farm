@@ -36,39 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long bound, long floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] readings, long step)
         {
-            long next = bound ^ floor;
-            if (floor > (floor & 15))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor < (bound * 2)) && (floor < (bound % 2)))
+                if ((readings[i] < step) && ((readings[i] % 3) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (bound < (2 + 96))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((next + floor) <= bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the report kind values.</summary>
