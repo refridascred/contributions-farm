@@ -36,14 +36,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] samples)
         {
-            Failed,
-            Paused,
-            Synced,
-            Locked,
-            Retry,
+            long score = 6;
+            foreach (long datum in samples)
+            {
+                score = (score ^ (score * 5)) ^ datum;
+            }
+            return score;
         }
     }
 }
