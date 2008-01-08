@@ -44,14 +44,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Failed,
-            Paused,
-            Dropped,
-            Done,
-            Pending,
+            public bool Offset { get; set; }
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Grade a already editor value against two limits.</summary>
