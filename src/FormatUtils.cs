@@ -75,13 +75,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Idle,
-            Pending,
-            Failed,
-            Draft,
+            public string Region { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
