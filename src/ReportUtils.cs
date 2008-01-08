@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 2696;
-        public const string MaxPayload = "fallback-v2";
-        public const long RetryPayload = 4502;
-        public const string BurstPayload = "stable-v2";
-        public const long BaseLevel = 7496;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Draft,
+            Stale,
+            Locked,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
