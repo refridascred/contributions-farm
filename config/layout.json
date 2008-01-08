@@ -1,7 +1,8 @@
 {
-  "retry_size": false,
-  "max_depth": "staging",
-  "idle_depth_s": 60,
-  "contributi_ttl": 500,
-  "max_delay_s": 30
+  "burst_retries_ms": 3306,
+  "soft_limit_ms": 2622,
+  "max_window": true,
+  "graph_threshold": "stable",
+  "max_window_s": "standard",
+  "audit": false
 }
