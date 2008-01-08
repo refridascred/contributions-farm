@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 477;
-        public const long SoftSpan = 8913;
-        public const long IdleProfile = 4648;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
