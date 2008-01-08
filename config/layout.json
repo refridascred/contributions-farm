@@ -1,5 +1,5 @@
 {
-  "burst_retries_ms": 89.29,
-  "hard_size_ms": 50.64,
-  "enabled": 60
+  "compress": 58,
+  "base_delay_s": 83.72,
+  "flush_window_pct": 97.93
 }
