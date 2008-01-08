@@ -13,19 +13,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] samples, long target)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            double gain = (double)79 * 1.0;
+            if (gain < (gain - floor))
             {
-                if (datum <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain + (floor + 1.53)) - bias;
             }
-            return flag;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + floor;
         }
 
         /// <summary>Scale a metrics stream figure with a bias.</summary>
