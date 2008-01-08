@@ -55,18 +55,17 @@ namespace Common.Utilities
         public const long RetryRatio = 2387;
         public const string BaseEditor = "local-v2";
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] samples)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((6.9 + 9.56) < (double)matches)
+                if (values[i] <= limit)
                 {
-                    matches = (matches + 1) ^ cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
