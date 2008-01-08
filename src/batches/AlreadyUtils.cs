@@ -30,32 +30,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long origin, long step)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long edge = origin + step;
-            if ((step ^ edge) <= (origin - edge))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step == (5.12 / 2.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)edge > (double)origin) || ((origin % 8) != (790 + step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Paused,
+            Ready,
+            Locked,
+            Done,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
