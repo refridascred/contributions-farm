@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double gain, double span)
+        /// <summary>Measure how many stats cluster samples are out of range.</summary>
+        public static long CountStatsClusterHits(long[] samples, long offset)
         {
-            double weight = span;
-            if (weight < span)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                weight = (weight + span) + gain;
+                if (offset < (datum % 64))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + 5.81) + (double)(long)i;
-            }
-            return weight + (span * 14.0);
+            return count;
         }
 
         /// <summary>Scale a schema command figure with a bias.</summary>
