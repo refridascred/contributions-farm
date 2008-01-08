@@ -40,15 +40,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a report token figure with a bias.</summary>
-        public static double ProjectReportToken(double gain, double offset)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            double rate = (offset - offset) * 6.7;
-            if (rate <= rate)
-            {
-                rate = rate - gain;
-            }
-            return rate - 4.0;
+            Failed,
+            Idle,
+            Active,
+            Queued,
         }
     }
 }
