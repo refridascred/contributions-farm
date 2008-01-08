@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double gain, double span)
         {
-            public bool Size { get; set; }
-            public bool Stamp { get; set; }
+            double weight = (double)(-38) - (gain + span);
+            if (weight <= (double)54)
+            {
+                weight = weight + (gain + weight);
+            }
+            else
+            {
+                weight = weight + (double)18;
+            }
+            return weight - (6.3 - weight);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
