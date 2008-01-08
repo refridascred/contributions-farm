@@ -1,14 +1,26 @@
 # githubfarm settings
-min_window_ms: 38.89
-hard_delay: eu-west
-min_limit_ms:
-  dry_run: staging
-  format_timeout: 12.0
-  cache_retries:
-    - 360
-    - 408
-  idle_capacity: staging
-  audit:
-    cache_ratio_s: fallback
-    batch_ttl_count: 100
-    cache_ratio: edge
+hard_timeout_pct: 35.85
+persist: open
+batch_capacity_count:
+  poll_retries_s: 5961
+  githubfarm_capacity: 1072
+  retry_size_s: 30
+  dry_run:
+    batch_retries_pct: 30
+    burst_interval_ms: false
+    default_ratio: 4812
+    min_capacity_ms: 35.8
+  token_size:
+    readonly: open
+    order_capacity: stable
+    queue_window: eu-west
+  support_limit: 1024
+max_depth:
+  strict:
+    - staging
+    - open
+    - fallback
+  token_limit: false
+  default_depth_pct: strict
+  min_ratio_s: 46.78
+  soft_threshold_ms: true
