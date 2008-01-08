@@ -57,19 +57,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally * 4) > tally)
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdlePayload = 61.07;
+        public const string BatchWidth = "latest-v2";
+        public const double SoftPayload = 8.56;
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long LocateChecksIndex(long[] items, long step)
