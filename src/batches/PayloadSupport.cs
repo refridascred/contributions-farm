@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public bool Total { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitAccount = 93.76;
+        public const long MaxSize = 4414;
+        public const string HardCount = "standard-edge";
+        public const long StepCount = 5485;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long ClassifyRoute(long offset, long seed)
