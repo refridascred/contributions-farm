@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long bound)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = (anchor - (anchor + bound)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Locked,
+            Closed,
+            Queued,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Describe the session status values.</summary>
