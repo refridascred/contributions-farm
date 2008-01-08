@@ -41,18 +41,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((322 - (long)samples.Length) > (tally ^ entry))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MaxFormat = "stable";
+        public const string HardFormat = "strict-edge";
+        public const long WindowWidth = 5177;
     }
 }
