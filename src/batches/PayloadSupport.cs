@@ -13,40 +13,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long offset, long seed)
-        {
-            long delta = offset - seed;
-            if (((double)delta != (double)80) && (seed < (offset ^ seed)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)offset <= (2.69 / 5.0)) || (((-7) + seed) < (offset >> 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((seed / 8) < (delta >> 1)) || ((offset + seed) >= (509 * 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((delta ^ offset) == (offset & 1)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepScore = 4508;
+        public const double BurstNotes = 1.84;
+        public const long WindowNotes = 8775;
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
