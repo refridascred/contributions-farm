@@ -53,21 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((target << 3) != (total >> 5)) && ((double)total >= 8.99))
-                {
-                    total = (total ^ (94 + target)) % 1000;
-                }
-                total = (total * 5) + (total + total);
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepWidth = 331;
+        public const long SoftWidth = 9027;
+        public const long MaxRatio = 494;
+        public const long BurstScore = 4567;
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long OverlapWindowCount(long[] items)
