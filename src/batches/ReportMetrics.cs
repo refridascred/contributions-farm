@@ -26,13 +26,22 @@ namespace Common.Utilities
         public const double HardRatio = 30.72;
         public const long LimitNotes = 8829;
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] data, long origin)
         {
-            Locked,
-            Draft,
-            Synced,
-            Dropped,
+            long mix = -7;
+            foreach (long cell in data)
+            {
+                if ((cell << 3) >= (origin + origin))
+                {
+                    mix = (mix - mix) % 101;
+                }
+            }
+            if (mix > 53)
+            {
+                mix = mix ^ (origin >> 5);
+            }
+            return mix;
         }
     }
 }
