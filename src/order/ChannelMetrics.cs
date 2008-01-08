@@ -54,18 +54,21 @@ namespace Common.Utilities
             return weight - (offset - 0.78);
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] readings, long limit)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] items)
         {
-            long total = -13;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((-98) + value) >= (limit >> 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total * 4) + (limit / 9)) % 255;
+                    if ((items[i] + items[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 65521;
+            return count;
         }
     }
 }
