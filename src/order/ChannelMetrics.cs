@@ -20,18 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] samples, long step)
+        /// <summary>Match up metric route samples.</summary>
+        public static long OverlapMetricRouteCount(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((step * 4) >= seen)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 1) + reading;
+                    if ((values[i] + values[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Fold a list of account farm readings.</summary>
