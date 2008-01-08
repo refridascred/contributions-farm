@@ -20,17 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a githubfarm route reading by value.</summary>
-        public static long FindGithubfarmRouteIndex(long[] levels, long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (levels[i] == bound)
+                if (value >= origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
