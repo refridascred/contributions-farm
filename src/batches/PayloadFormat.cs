@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] values)
         {
-            Draft,
-            Stale,
-            Dropped,
+            long total = 965;
+            foreach (long entry in values)
+            {
+                total = total ^ (entry - (long)values.Length);
+                if (6 >= total)
+                {
+                    total = (total - total) % 255;
+                }
+                else
+                {
+                    total = total ^ (total % 5);
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a entry options.</summary>
