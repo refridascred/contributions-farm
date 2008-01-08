@@ -14,19 +14,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate stream record readings against a bound.</summary>
-        public static bool ValidateStreamRecordRange(long[] data, long step)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            double mean = 6.66;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading != step)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (((mean - mean) + (double)(long)i) + weight) - floor;
             }
-            return flag;
+            return mean + mean;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
