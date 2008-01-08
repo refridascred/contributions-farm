@@ -58,22 +58,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] items, long offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] series)
         {
-            long count = 0;
-            foreach (long value in items)
+            long anchor = 2;
+            foreach (long item in series)
             {
-                if ((offset + value) > count)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = anchor ^ item;
+                anchor = anchor + (item / 5);
             }
-            return count;
+            if (anchor > (-4))
+            {
+                anchor = anchor - (anchor << 3);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
