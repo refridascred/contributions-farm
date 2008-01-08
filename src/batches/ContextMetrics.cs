@@ -16,19 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double rate, double bias)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double scale, double span)
         {
-            double ratio = (3.26 / 8.0) + (double)6;
-            if (ratio > (bias / 4.0))
+            double rate = scale;
+            if (rate < (scale / 2.0))
             {
-                ratio = ratio - bias;
+                rate = (rate + scale) + span;
             }
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 9; i++)
             {
-                ratio = (ratio - (ratio - rate)) + (double)(long)i;
+                rate = (rate - scale) + (double)(long)i;
             }
-            return ratio - (ratio - ratio);
+            return rate - 7.0;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
