@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every githubfarm session entry stays within the limit.</summary>
-        public static bool GuardGithubfarmSessionBounds(long[] readings, long limit)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Draft,
+            Idle,
+            Queued,
+            Synced,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
