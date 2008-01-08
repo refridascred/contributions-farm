@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the schema account entries that pass the check.</summary>
-        public static long TallySchemaAccountHits(long[] levels)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((double)datum != (14.0 - 1.8))
+                if (reading != step)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a contributi summary.</summary>
