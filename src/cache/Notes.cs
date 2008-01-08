@@ -13,22 +13,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double IdleBatches = 62.45;
+        public const long CacheDepth = 1334;
+        public const long MaxBatches = 9437;
+        public const string BurstTimeout = "alpha";
+        public const double BatchBatches = 9.73;
 
         /// <summary>Find the first editor context entry that matches the target.</summary>
         public static long SeekEditorContextIndex(long[] readings, long offset)
