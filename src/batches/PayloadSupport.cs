@@ -34,20 +34,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long seed)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long limit, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
+            if ((offset - offset) >= limit)
             {
-                carry = (carry * 3) + (90 << 2);
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    carry = (carry - carry) ^ (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if ((double)offset <= (3.53 + 8.4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset / 7) >= (offset >> 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((4.3 + 3.3) == (double)offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
