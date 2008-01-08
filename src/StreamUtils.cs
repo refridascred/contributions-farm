@@ -37,13 +37,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long limit)
         {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
-            public string Region { get; set; } = "";
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Roll a account counter forward.</summary>
