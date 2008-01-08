@@ -1,6 +1,10 @@
-id,rank,weight,label,score
-1,460,cached,29.76,65.42
-2,latest,374,blue,70.39
-3,78.5,staging,234,cached
-4,60.7,959,470,fallback
-5,742,42.86,441,843
+id,label
+1,317
+2,518
+3,65
+4,7
+5,stable
+6,strict
+7,534
+8,49.63
+9,18.14
