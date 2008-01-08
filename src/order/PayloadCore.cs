@@ -49,12 +49,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardPayload = "local-edge";
-        public const long IdlePayload = 36;
-        public const long HardSize = 9322;
-        public const long LimitPayload = 1395;
-        public const long MaxCount = 3769;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] values, long step)
+        {
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
