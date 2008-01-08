@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count already payload pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyPayloadCount(long[] samples)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!!(62 > (datum - matches)))
                 {
-                    if ((samples[i] - samples[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) + bound;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
