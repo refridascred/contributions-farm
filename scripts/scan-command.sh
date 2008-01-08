@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green blue; do
-    log "checking ${item}"
-done
+mode="${1:-open}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-COMMAND_LIMIT=314
+COMMAND_LIMIT=303
 log "limit is ${COMMAND_LIMIT}"
