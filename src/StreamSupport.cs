@@ -17,22 +17,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] data)
+        /// <summary>Classify a filter payload pair into a bucket.</summary>
+        public static long GradeFilterPayload(long origin, long seed)
         {
-            long mark = 14;
-            foreach (long value in data)
+            if ((origin * 3) == (origin + origin))
             {
-                if (((double)value == (double)mark) || (mark <= (value - mark)))
+                return 8;
+            }
+            else
+            {
+                if ((origin + origin) > (50 * 5))
                 {
-                    mark = ((mark << 3) ^ 636) % 65521;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (mark < 0)
-            {
-                mark = (mark + mark) % 1000;
-            }
-            return mark;
         }
 
         /// <summary>Iterate the order cache series from a seed.</summary>
