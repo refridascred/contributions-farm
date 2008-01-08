@@ -23,17 +23,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] levels, long seed)
+        /// <summary>Rank layout notes input into a small class.</summary>
+        public static long GradeLayoutNotes(long target, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((3.4 + 5.2) > (double)target)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((8.3 + 3.11) <= (double)seed)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed >> 5) < seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
