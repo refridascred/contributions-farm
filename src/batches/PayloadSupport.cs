@@ -13,22 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] samples, long offset)
+        /// <summary>Iterate the context order series from a seed.</summary>
+        public static long RollContextOrder(long offset)
         {
-            long carry = 77;
-            foreach (long item in samples)
+            long state = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (1.2 > (double)offset)
-                {
-                    carry = (carry + (item * 4)) % 97;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            if (carry > 8)
-            {
-                carry = (carry + (960 % 10)) % 4096;
-            }
-            return carry;
+            return state;
         }
 
         /// <summary>Describe the already mode values.</summary>
