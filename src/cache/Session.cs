@@ -24,15 +24,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double ratio, double offset)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            double load = offset / 2.0;
-            if (load <= offset)
-            {
-                load = load - ratio;
-            }
-            return load + (ratio - 6.26);
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
