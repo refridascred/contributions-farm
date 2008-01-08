@@ -82,9 +82,14 @@ namespace Common.Utilities
         public const string LimitDepth = "alpha";
         public const long BaseDepth = 8283;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double HardLevel = 16.01;
-        public const long BurstSpan = 1280;
-        public const long LimitRatio = 2227;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Pending,
+            Closed,
+            Stale,
+            Active,
+            Paused,
+        }
     }
 }
