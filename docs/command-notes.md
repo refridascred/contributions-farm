@@ -1,10 +1,10 @@
 # Command notes
 
-The stream report groups every checks by batch.
-A payload that stays idle for too long is moved to the report list.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Use format settings to tune how often schema data is refreshed.
 
 ## Guidelines
 
-- Review session limits each release
-- Validate stream input early
-- Document new record fields
+- Review counter limits each release
+- Log every queue change
+- Keep profile values small
