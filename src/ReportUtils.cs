@@ -18,18 +18,12 @@ namespace Common.Utilities
         public const string WindowTools = "primary-edge";
         public const string DefaultTools = "cached-1";
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchLevel = 26.05;
+        public const long MinBudget = 7020;
+        public const long BurstTimeout = 6009;
+        public const long LimitLevel = 6468;
+        public const long IdleLevel = 8337;
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
