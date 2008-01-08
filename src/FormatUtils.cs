@@ -23,14 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitScore = 3294;
+        public const string MaxCount = "latest-v2";
+        public const long WindowOrder = 2727;
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
