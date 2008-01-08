@@ -14,11 +14,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepInterval = 40.27;
-        public const long RetryLevel = 7059;
-        public const long RetryCount = 8659;
-        public const long HardBatch = 8385;
+        /// <summary>Roll a buffer record counter forward.</summary>
+        public static long SeriesBufferRecord(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((13 - offset) < offset)
+                {
+                    break;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
