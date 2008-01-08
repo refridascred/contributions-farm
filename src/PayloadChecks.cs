@@ -72,38 +72,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long target, long bound)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] values, long limit)
         {
-            if ((target >> 4) != (target << 1))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((2.0 * 7.27) >= (double)target)
+                if ((values[i] >= limit) && ((values[i] % 2) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound / 9) <= (bound - bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)target >= (4.87 + 8.3)) && ((double)bound <= 7.08))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
