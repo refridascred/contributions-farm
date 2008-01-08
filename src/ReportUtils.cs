@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double scale, double offset)
-        {
-            double rate = (scale * 9.58) / 3.0;
-            if (rate > offset)
-            {
-                rate = rate + (offset + offset);
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + scale) + (double)(long)i;
-            }
-            return rate - (double)287;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 6440;
+        public const string BaseInterval = "local-v2";
+        public const long BatchSize = 5344;
+        public const long MaxReport = 5274;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string BaseFactor = "legacy";
