@@ -35,11 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 5628;
-        public const long RetryBatch = 2543;
-        public const double MinBatch = 90.66;
-        public const long WindowBatch = 280;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (!((matches + matches) >= (matches * 3)) && ((double)step > (double)cell))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long FoldContext(long[] readings, long step)
