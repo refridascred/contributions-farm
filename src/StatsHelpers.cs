@@ -22,13 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] values, long step)
         {
-            public string Token { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((double)step >= 1.77)
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next farm counter value.</summary>
