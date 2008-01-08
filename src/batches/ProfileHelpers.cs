@@ -20,14 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] levels)
         {
-            Queued,
-            Retry,
-            Pending,
-            Stale,
-            Draft,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (value <= (value + 141))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
