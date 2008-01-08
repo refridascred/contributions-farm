@@ -36,22 +36,32 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] data, long floor)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long floor, long step)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long cur = floor ^ step;
+            if (!((double)floor != (double)cur))
             {
-                if ((cell << 2) < (0 ^ 601))
+                return 6;
+            }
+            else
+            {
+                if (floor >= (1 << 2))
                 {
-                    hits = (hits + 1) + floor;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)step == (8.0 - 8.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
