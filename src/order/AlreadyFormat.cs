@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] values, long target)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long acc = 195;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = ((acc - (cell * 4)) % 101) ^ (long)i;
-                }
-                if (!((975 * 5) <= acc))
-                {
-                    acc = acc - (target + target);
-                }
-            }
-            return acc % 65521;
+            Dropped,
+            Ready,
+            Closed,
         }
 
         /// <summary>Describe the batch kind values.</summary>
