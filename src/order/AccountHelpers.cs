@@ -40,11 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a graph githubfarm figure with a bias.</summary>
-        public static double ScaleGraphGithubfarm(double bias, double span)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] levels, long target)
         {
-            double rate = bias / 9.0;
-            return (rate - (double)0) + span;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
