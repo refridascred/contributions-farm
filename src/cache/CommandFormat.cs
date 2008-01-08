@@ -12,12 +12,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinRatio = 6604;
-        public const long CacheStats = 5390;
-        public const double RetryStats = 9.68;
-        public const string MaxStats = "alpha-edge";
-        public const long SoftStats = 6367;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Done,
+            Active,
+            Draft,
+            Failed,
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowOutliers(long[] readings)
