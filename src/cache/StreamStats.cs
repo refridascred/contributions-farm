@@ -36,13 +36,23 @@ namespace Common.Utilities
         public const long HardSchema = 3044;
         public const long LimitSchema = 6298;
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Digest a series of buffer filter entries.</summary>
+        public static long ScoreBufferFilter(long[] series)
         {
-            Closed,
-            Locked,
-            Paused,
-            Retry,
+            long carry = 28;
+            foreach (long item in series)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    carry = ((carry + item) % 4096) - (long)i;
+                }
+                carry = carry - (carry - item);
+            }
+            if (carry < 98)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
     }
 }
