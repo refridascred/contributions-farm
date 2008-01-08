@@ -38,13 +38,19 @@ namespace Common.Utilities
         public const long CacheMetric = 7646;
         public const string RetryFactor = "staging-edge";
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] data, long origin)
         {
-            Ready,
-            Draft,
-            Stale,
-            Synced,
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the layout state values.</summary>
