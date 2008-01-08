@@ -1,4 +1,4 @@
 # githubfarm settings
-audit: eu-west
-metric_ttl: 1904
-batch_threshold: 8712
+readonly: fallback
+min_timeout: legacy
+burst_window_pct: cached
