@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] series)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long state = 41;
-            foreach (long datum in series)
-            {
-                if ((double)datum == (13.0 + 0.44))
-                {
-                    state = state + (state >> 5);
-                }
-            }
-            return state % 4096;
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Project the next notes value.</summary>
