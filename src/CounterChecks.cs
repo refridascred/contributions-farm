@@ -12,19 +12,32 @@ namespace Common.Utilities
         public const long StepInterval = 745;
         public const string BaseProfile = "cached-v2";
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] series, long offset)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long target, long floor)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long slot = target + floor;
+            if ((double)403 >= (double)slot)
             {
-                if (sample <= offset)
+                return 7;
+            }
+            else
+            {
+                if (!((slot ^ slot) <= (target - target)))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)target <= (6.9 + 6.4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
