@@ -35,12 +35,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public double Limit { get; set; }
+            Done,
+            Locked,
+            Stale,
         }
 
         /// <summary>Hold a route snapshot.</summary>
