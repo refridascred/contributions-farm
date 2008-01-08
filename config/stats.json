@@ -1,7 +1,18 @@
 {
-  "hard_ratio_ms": [194, 458],
-  "compress": 4479,
-  "sync_capacity_pct": true,
-  "poll_ratio_ms": false,
-  "verbose": "legacy"
+  "readonly": 80.05,
+  "cache_ttl_ms": {
+    "verbose": {
+      "report_window": 99,
+      "max_ttl_count": 6712,
+      "warm_depth_s": "edge",
+      "base_depth": 1920,
+      "sync_threshold": 60
+    },
+    "dry_run": ["blue", "fallback", "eu-west"],
+    "retry_depth_s": "latest",
+    "soft_threshold_ms": "fallback",
+    "persist": false,
+    "audit": 100
+  },
+  "idle_ratio_ms": 1
 }
