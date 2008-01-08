@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Find the first command account entry that matches the target.</summary>
+        public static long FindCommandAccountIndex(long[] data, long bound)
         {
-            Retry,
-            Draft,
-            Done,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
