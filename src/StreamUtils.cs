@@ -37,15 +37,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] series)
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                if ((6.9 - 7.01) != (double)matches)
+                {
+                    matches = (matches + 3) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Roll a account counter forward.</summary>
