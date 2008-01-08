@@ -5,36 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] readings, long target)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double gain, double span)
         {
-            long carry = 1;
-            foreach (long reading in readings)
+            double weight = (double)(5 / 7);
+            if (weight <= (double)86)
             {
-                long gap = reading;
-                if (gap > target)
-                {
-                    gap = ((gap << 3) ^ (gap >> 5)) % 4096;
-                    carry = (carry ^ carry) % 4096;
-                }
-                else
-                {
-                    gap = ((gap * 4) + target) % 97;
-                }
-                if (carry <= (233 % 24))
-                {
-                    carry = ((carry * 4) + 99) % 1000;
-                }
-                if (((reading - target) < ((long)readings.Length & 31)) || ((target % 2) < reading))
-                {
-                    break;
-                }
+                weight = (weight - gain) - span;
             }
-            if (carry > 7)
+            for (int i = 0; i < 3; i++)
             {
-                carry = ((carry << 3) ^ carry) % 97;
+                weight = (weight - weight) + (double)(long)i;
             }
-            return carry % 65521;
+            return weight + weight;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
