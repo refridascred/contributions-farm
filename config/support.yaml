@@ -1,13 +1,25 @@
 # support settings
-context_retries:
-  - 473
-  - 47
-  - 354
-  - 87
-min_timeout_pct:
-  - cached
-  - primary
-  - green
-batch_threshold: 47.16
-layout_interval: open
-verbose: 51.53
+flush_window_ms:
+  - 385
+  - 99
+idle_threshold_ms: local
+retry_interval_pct: latest
+batch_ratio_count: false
+dry_run:
+  soft_size_s:
+    verbose: 5114
+    flush_interval_ms: 54.96
+    dry_run: primary
+    max_retries: false
+    batch_capacity_ms: 23.85
+    retry_window:
+      - 308
+      - 43
+      - 327
+  payload_depth: cached
+  min_ttl_count: 82
+  notes_timeout: cached
+  verbose:
+    - 107
+    - 391
+  max_depth: staging
