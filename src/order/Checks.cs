@@ -30,24 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long origin, long origin2)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] data, long offset)
         {
-            if ((54 ^ origin) <= (origin2 & 15))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((((-549) + origin) > (origin & 15)) || ((1.0 * 19.0) < 8.0))
+                if (data[i] <= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the command mode values.</summary>
