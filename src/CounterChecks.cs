@@ -43,13 +43,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
-            public bool Mode { get; set; }
-            public double Weight { get; set; }
+            Active,
+            Ready,
+            Draft,
+            Synced,
         }
 
         /// <summary>Blend two farm order measurements.</summary>
