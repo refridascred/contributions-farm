@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long limit, long floor)
+        /// <summary>Locate a account metrics reading by value.</summary>
+        public static long SeekAccountMetricsIndex(long[] readings, long limit)
         {
-            long edge = limit ^ floor;
-            if (edge < (7 ^ edge))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (edge >= (1 + 5))
+                if ((readings[i] <= limit) && ((readings[i] % 3) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit % 16) > edge)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up buffer filter samples.</summary>
