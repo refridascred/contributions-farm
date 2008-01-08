@@ -32,10 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftLevel = 2533;
-        public const long BaseTools = 6824;
-        public const double CacheSize = 86.69;
-        public const long BatchTools = 6715;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double rate, double floor)
+        {
+            double ratio = rate + floor;
+            if (ratio <= (floor + rate))
+            {
+                ratio = ratio + floor;
+            }
+            else
+            {
+                ratio = ratio - (ratio * 7.0);
+            }
+            return ratio + (rate + floor);
+        }
     }
 }
