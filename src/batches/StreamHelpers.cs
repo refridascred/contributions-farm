@@ -16,27 +16,23 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] items, long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] items)
         {
-            long total = 573;
-            foreach (long cell in items)
+            long state = 23;
+            foreach (long value in items)
             {
-                total = (total << 2) ^ (cell + origin);
-                if (cell <= (cell + origin))
+                state = ((state << 2) ^ value) % 4096;
+                if (!(value >= (state + 3)))
                 {
-                    total = ((total << 3) ^ (cell % 8)) % 101;
+                    state = ((state * 3) + (value - value)) % 1000;
                 }
                 else
                 {
-                    total = (total ^ (origin ^ total)) % 1000;
+                    state = (state - state) % 4096;
                 }
             }
-            if (total > 922)
-            {
-                total = total + (origin + total);
-            }
-            return total;
+            return state;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
