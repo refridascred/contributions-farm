@@ -44,12 +44,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public bool Rank { get; set; }
-            public double Ratio { get; set; }
-            public string Region { get; set; } = "";
+            Synced,
+            Failed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Rank account input into a small class.</summary>
