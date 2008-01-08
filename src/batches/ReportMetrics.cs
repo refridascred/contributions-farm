@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const string MinQueue = "legacy-1";
         public const double BaseQueue = 95.29;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] data, long step)
         {
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (((5 - 48) != (seen - step)) || !((double)634 <= (double)item))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
