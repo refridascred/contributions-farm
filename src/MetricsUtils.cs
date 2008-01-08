@@ -106,17 +106,23 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] levels, long bound)
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
+            long anchor = 610;
+            foreach (long reading in levels)
             {
-                carry = ((carry << 3) ^ ((long)i * 3)) % 101;
-                carry = ((carry << 3) ^ (limit + limit)) % 4096;
-                carry = ((carry * 5) + (long)i) % 1000;
+                anchor = (anchor - (anchor / 9)) % 101;
+                if ((reading - reading) > reading)
+                {
+                    anchor = (anchor ^ (anchor % 100)) % 4096;
+                }
+                if (bound >= reading)
+                {
+                    break;
+                }
             }
-            return carry;
+            return anchor % 1000;
         }
     }
 }
