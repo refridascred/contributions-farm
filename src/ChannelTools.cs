@@ -19,10 +19,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 9422;
-        public const long IdleFactor = 8913;
-        public const long CacheTimeout = 8668;
-        public const string IdleGithubfarm = "legacy-v2";
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < target) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
