@@ -45,19 +45,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] readings, long origin)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Pending,
+            Done,
+            New,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
