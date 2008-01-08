@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultRatio = 58.98;
-        public const double SoftWidth = 10.03;
-        public const double SoftSize = 73.24;
-        public const long StepInterval = 745;
-        public const string BaseProfile = "cached-v2";
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] series)
+        {
+            long total = 75;
+            foreach (long reading in series)
+            {
+                total = total - (total + (long)series.Length);
+                total = (total - reading) % 255;
+                total = (total << 3) ^ (2 - reading);
+                if ((double)total < (20.0 - 6.7))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long ClassifyGithubfarm(long target, long floor)
