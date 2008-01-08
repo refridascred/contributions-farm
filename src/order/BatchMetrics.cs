@@ -55,10 +55,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 3807;
-        public const double DefaultQueue = 61.71;
-        public const long StepLevel = 4058;
-        public const string CacheRatio = "primary-edge";
+        /// <summary>Derive the next graph checks value from a seed.</summary>
+        public static long StepGraphChecks(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
