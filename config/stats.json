@@ -1,5 +1,8 @@
 {
-  "flush_delay_s": 100,
-  "format_ratio": [17, 294, 134],
-  "retry_limit_count": "staging"
+  "idle_timeout_pct": 64,
+  "strict": "fallback",
+  "flush_window": "primary",
+  "cache_limit_s": "cached",
+  "audit": "edge",
+  "batch_ratio_s": 6968
 }
