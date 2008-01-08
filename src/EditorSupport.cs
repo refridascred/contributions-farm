@@ -31,13 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] levels, long limit)
         {
-            public double Size { get; set; }
-            public bool Label { get; set; }
-            public double Offset { get; set; }
-            public double Region { get; set; }
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
