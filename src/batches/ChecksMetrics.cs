@@ -16,19 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double gain, double span)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            double mean = gain - 1.0;
-            if (mean > mean)
-            {
-                mean = mean + gain;
-            }
-            else
-            {
-                mean = mean - (gain + span);
-            }
-            return mean + 3.75;
+            Done,
+            Locked,
+            Idle,
+            Retry,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
