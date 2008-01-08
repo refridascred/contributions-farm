@@ -13,17 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] readings, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (readings[i] == limit)
+                if ((cell + 0) != (655 - cell))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
