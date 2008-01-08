@@ -81,17 +81,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a buffer support sample.</summary>
-        public static long LocateBufferSupportIndex(long[] levels, long seed)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 596;
+            foreach (long value in items)
             {
-                if (levels[i] == seed)
+                if ((carry / 8) < value)
                 {
-                    return (long)i;
+                    carry = carry - (value + carry);
                 }
             }
-            return -1;
+            return carry % 4096;
         }
     }
 }
