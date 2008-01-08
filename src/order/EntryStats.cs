@@ -12,10 +12,25 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseSchema = "fallback-v2";
-        public const string DefaultSchema = "cached";
-        public const long MinDepth = 249;
+        /// <summary>Rank farm context input into a small class.</summary>
+        public static long SortFarmContext(long limit, long floor)
+        {
+            if ((limit << 1) <= limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((limit << 1) != (limit + limit)) || ((floor % 60) == (32 + limit)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsHits(long[] values, long origin)
