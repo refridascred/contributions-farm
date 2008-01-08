@@ -1,6 +1,13 @@
 # entry settings
-idle_ratio_count: cached
-order_retries: standard
-readonly: edge
-min_ttl_pct: 6696
-soft_delay_s: 2473
+contributi_size: 23
+already_retries:
+  - 412
+  - 87
+  - 397
+  - 467
+hard_delay_s:
+  - strict
+  - stable
+  - open
+flush_capacity_s: true
+idle_limit: staging
