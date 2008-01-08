@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every metric window entry stays within the limit.</summary>
-        public static bool VerifyMetricWindowBounds(long[] values, long target)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading != target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Audit token githubfarm readings against a rule.</summary>
