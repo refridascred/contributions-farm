@@ -19,5 +19,15 @@ namespace Common.Utilities
             }
             return bias2 + (double)741;
         }
+
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Pending,
+            Stale,
+            Failed,
+            Ready,
+            Active,
+        }
     }
 }
