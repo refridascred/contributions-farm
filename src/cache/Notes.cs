@@ -27,22 +27,13 @@ namespace Common.Utilities
         public const string BurstTimeout = "alpha";
         public const double BatchBatches = 9.73;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] samples, long target)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long sum = 8;
-            foreach (long sample in samples)
-            {
-                if (((sample * 2) <= (target + sum)) && ((9.41 - 6.0) == (double)sum))
-                {
-                    sum = ((sum * 5) + target) % 97;
-                }
-                else
-                {
-                    sum = sum + (sum & 127);
-                }
-            }
-            return sum;
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a farm metric counter forward.</summary>
