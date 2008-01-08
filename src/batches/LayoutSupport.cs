@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] series)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum + 90) != (datum >> 3))
+                if ((values[i] > step) && ((values[i] % 3) == 0))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Blend two batch measurements.</summary>
