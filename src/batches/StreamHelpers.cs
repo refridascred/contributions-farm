@@ -76,25 +76,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long floor, long target)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] data)
         {
-            long bound = floor ^ target;
-            if ((floor << 1) != ((-93) + bound))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor + floor) <= (target >> 1)) || ((double)target == (9.86 + 2.82)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    if ((data[i] ^ data[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
