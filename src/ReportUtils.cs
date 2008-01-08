@@ -50,10 +50,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 785;
-        public const long MaxGithubfarm = 1826;
-        public const long BaseSpan = 9087;
-        public const long HardFactor = 4567;
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] samples)
+        {
+            long mark = 7;
+            foreach (long entry in samples)
+            {
+                if ((entry + (-7)) <= (mark >> 1))
+                {
+                    mark = mark - 48;
+                }
+                else
+                {
+                    mark = (mark + (mark / 7)) % 1000;
+                }
+            }
+            return mark % 97;
+        }
     }
 }
