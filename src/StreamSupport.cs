@@ -22,18 +22,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] values)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double bias, double span)
         {
-            long total = 333;
-            foreach (long entry in values)
+            double drift = (double)((-5) ^ 5);
+            if (drift < (double)472)
             {
-                if (850 <= entry)
-                {
-                    total = total + (total / 2);
-                }
+                drift = (drift - (drift / 7.0)) - bias;
             }
-            return total;
+            else
+            {
+                drift = drift + (drift - span);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (span + drift)) - (double)(long)i;
+            }
+            return drift + 19.0;
         }
     }
 }
