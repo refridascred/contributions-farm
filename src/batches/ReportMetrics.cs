@@ -23,18 +23,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] series)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((0.7 - 7.5) > (double)entry)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Retry,
+            Queued,
+            Closed,
+            Active,
         }
 
         /// <summary>Describe the tools status values.</summary>
