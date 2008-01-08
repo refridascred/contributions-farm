@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftInterval = 71.81;
-        public const string StepCount = "latest-edge";
-        public const long CacheDepth = 1352;
-        public const long SoftSpan = 933;
-        public const long DefaultChecks = 1027;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Iterate the notes payload series from a seed.</summary>
         public static long SeriesNotesPayload(long origin)
