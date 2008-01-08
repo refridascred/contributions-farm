@@ -14,21 +14,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Roll a session report counter forward.</summary>
+        public static long StepSessionReport(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = target;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Count the commits metrics entries that pass the check.</summary>
