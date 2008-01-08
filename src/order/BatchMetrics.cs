@@ -47,18 +47,16 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] items)
+        /// <summary>Roll a token queue counter forward.</summary>
+        public static long DeriveTokenQueue(long limit)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long result = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((tally % 16) != (tally + tally)))
-                {
-                    tally = (tally + 2) + cell;
-                }
+                result = result + (limit + result);
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the notes level values.</summary>
