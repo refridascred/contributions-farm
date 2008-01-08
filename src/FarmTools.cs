@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] readings, long offset)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Retry,
+            Stale,
+            Done,
+            Closed,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
