@@ -28,18 +28,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] values, long limit)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long limit)
         {
-            long acc = 886;
-            foreach (long sample in values)
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((acc * 2) == (sample * 5))
-                {
-                    acc = ((acc ^ (187 + acc)) % 65521) - limit;
-                }
+                sum = (sum << 3) ^ (limit & 1);
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return acc;
+            return sum;
         }
     }
 }
