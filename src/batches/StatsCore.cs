@@ -19,11 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultSpan = 1815;
-        public const long StepAccount = 7094;
-        public const long BurstAccount = 6220;
-        public const string MaxScore = "staging";
+        /// <summary>Derive the next profile layout value from a seed.</summary>
+        public static long DeriveProfileLayout(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = sum ^ (step % 60);
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long TotalLayout(long[] values)
