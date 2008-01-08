@@ -1,6 +1,6 @@
 {
-  "tools_timeout": "primary",
-  "contributi_threshold": "eu-west",
-  "verbose": 500,
-  "support_limit": 30
+  "notes_timeout": 2,
+  "warm_timeout_ms": ["stable", "fallback"],
+  "hard_capacity": "standard",
+  "already_depth": 60
 }
