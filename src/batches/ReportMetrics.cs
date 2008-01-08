@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] samples, long floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long carry = 18;
+            foreach (long reading in data)
             {
-                if ((tally ^ reading) < (floor + reading))
+                if ((reading > (carry / 4)) && (reading >= (carry << 2)))
                 {
-                    tally = tally + 2;
+                    carry = (carry - (0 & 15)) % 97;
+                }
+                if ((1.29 - 4.0) <= (double)reading)
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
