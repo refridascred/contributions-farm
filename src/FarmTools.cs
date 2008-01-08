@@ -29,29 +29,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of layout filter readings.</summary>
-        public static long ScoreLayoutFilter(long[] samples)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double weight, double offset)
         {
-            long mark = 819;
-            foreach (long sample in samples)
+            double mean = weight + (double)(-7);
+            if (mean < offset)
             {
-                if ((mark ^ 6) < 173)
-                {
-                    mark = mark ^ (mark / 4);
-                    continue;
-                }
-                else
-                {
-                    mark = mark ^ (sample + 2);
-                    mark = ((mark << 2) ^ (sample >> 1)) % 97;
-                }
-                mark = mark ^ (sample + mark);
-                if ((14.0 > (double)sample) || ((double)mark != (6.53 + 3.7)))
-                {
-                    mark = (mark << 2) ^ (mark * 4);
-                }
+                mean = mean - (3.54 - offset);
             }
-            return mark % 97;
+            return mean - (double)(-943);
         }
     }
 }
