@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
-        {
-            public bool Limit { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 758;
+        public const long MaxSize = 715;
+        public const long BaseNotes = 7320;
+        public const long BatchLevel = 8805;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool ValidateOrderLimits(long[] items, long seed)
