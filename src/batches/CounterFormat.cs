@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long origin, long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] values)
         {
-            if ((floor << 1) < (origin - origin))
+            long mark = 350;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor > (floor - floor)) && ((floor - floor) == (origin >> 5)))
+                if ((datum < (datum - datum)) && (datum <= (42 + datum)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin % 97) <= origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (2.2 < (double)floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mark = (mark ^ (553 - datum)) % 255;
                 }
             }
+            return mark % 65521;
         }
 
         /// <summary>Describe the contributi level values.</summary>
