@@ -28,12 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
+            public long Rank { get; set; }
             public long Count { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
