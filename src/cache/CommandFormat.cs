@@ -20,18 +20,11 @@ namespace Common.Utilities
         public const long RetryCount = 8659;
         public const long HardBatch = 8385;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] readings)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((count / 9) >= 1)
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a token info.</summary>
