@@ -1,20 +1,4 @@
 # support settings
-default_size_pct:
-  - blue
-  - eu-west
-  - fallback
-  - primary
-base_ttl_ms:
-  notes_threshold: 94.19
-  base_ttl_s:
-    flush_capacity: 87
-    soft_window_count: 570
-    burst_depth_s: 250
-  verbose:
-    - green
-    - cached
-burst_retries:
-  - green
-  - local
-  - green
-  - green
+counter_timeout: 2860
+verbose: 21
+profile_delay: open
