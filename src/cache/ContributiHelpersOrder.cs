@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a entry layout reading.</summary>
-        public static double BlendEntryLayout(double bias, double floor)
-        {
-            double rate = bias;
-            if (rate > floor)
-            {
-                rate = rate - (bias - bias);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - 9.5) + (double)(long)i;
-            }
-            return rate - (rate + 9.2);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryWidth = 6803;
+        public const long HardCache = 7362;
+        public const double IdleBudget = 32.78;
+        public const string MinCache = "latest";
+        public const long IdleCache = 1405;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long SortOrder(long seed, long target)
