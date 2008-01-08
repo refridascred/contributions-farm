@@ -24,22 +24,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 1884;
+        public const long BatchTools = 7669;
+        public const string LimitTools = "fallback-v2";
+        public const long DefaultTools = 2411;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long StepEditor = 1487;
