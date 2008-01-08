@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] series, long floor)
-        {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxSpan = 3149;
+        public const string WindowGithubfarm = "primary-edge";
+        public const string BaseBudget = "staging-1";
+        public const long HardGithubfarm = 1598;
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
