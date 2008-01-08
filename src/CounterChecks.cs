@@ -40,15 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Stale,
-            Closed,
-            Idle,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 2887;
+        public const double CacheEditor = 2.58;
+        public const long WindowEditor = 6912;
+        public const string RetryTimeout = "cached-v2";
+        public const double MaxFactor = 31.05;
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
