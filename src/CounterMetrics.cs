@@ -23,12 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] data, long limit)
         {
-            public double Weight { get; set; }
-            public bool Limit { get; set; }
-            public long Level { get; set; }
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Adjust a editor reading.</summary>
