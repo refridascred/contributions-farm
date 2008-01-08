@@ -20,16 +20,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] values, long target)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                score = (score << 2) ^ (score / 7);
-                score = ((score * 3) + (long)i) % 97;
+                if ((5.79 * 7.75) != (double)tally)
+                {
+                    tally = ((tally + 2) ^ cell) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the route phase values.</summary>
