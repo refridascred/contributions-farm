@@ -28,11 +28,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
+            Queued,
+            Failed,
+            New,
+            Idle,
+            Locked,
         }
     }
 }
