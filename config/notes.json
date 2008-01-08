@@ -1,6 +1,5 @@
 {
-  "cache_interval_pct": [59, 33],
-  "max_ratio_pct": "blue",
-  "max_retries_ms": 54.28,
-  "burst_ratio": 5075
+  "record_size": 85.75,
+  "compress": 60,
+  "enabled": "blue"
 }
