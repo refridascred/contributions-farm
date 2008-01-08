@@ -37,18 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] series, long limit)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (((double)limit >= (double)count) && ((((-2) * 4) < (limit - reading)) && ((limit % 5) == (reading - reading))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Closed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Describe the token mode values.</summary>
