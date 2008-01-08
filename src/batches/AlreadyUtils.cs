@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] data, long bound)
         {
-            Draft,
-            Ready,
-            Done,
-            Paused,
+            long score = 911;
+            foreach (long reading in data)
+            {
+                if ((reading + bound) < (reading << 2))
+                {
+                    score = score ^ (long)data.Length;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
