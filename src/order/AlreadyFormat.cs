@@ -41,11 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] items)
         {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((count + 53) == (count << 2))
+                {
+                    count = (count + 1) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
