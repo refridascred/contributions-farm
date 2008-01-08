@@ -18,13 +18,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] data, long floor)
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
-            public double Level { get; set; }
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
