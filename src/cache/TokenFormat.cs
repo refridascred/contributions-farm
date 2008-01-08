@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
+            public long Size { get; set; }
             public long Level { get; set; }
-            public double Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Rank stream session input into a small class.</summary>
