@@ -24,17 +24,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] series, long origin)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a notes info.</summary>
