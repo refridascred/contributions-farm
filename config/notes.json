@@ -1,15 +1,7 @@
 {
-  "batch_timeout_ms": "stable",
-  "base_size_count": "blue",
-  "batches_timeout": 6935,
-  "warm_interval_ms": {
-    "cache_timeout_pct": {
-      "audit": 97,
-      "sync_threshold_pct": 1024,
-      "hard_retries_ms": 2536
-    },
-    "already_limit": 97,
-    "order_ratio": 6731,
-    "poll_size": 7062
-  }
+  "hard_retries_s": "blue",
+  "poll_depth_pct": "blue",
+  "poll_ratio": 30,
+  "retry_timeout": true,
+  "strict": "standard"
 }
