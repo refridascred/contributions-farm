@@ -41,12 +41,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] items, long seed)
         {
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((sample + seed) != ((long)items.Length << 1))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
