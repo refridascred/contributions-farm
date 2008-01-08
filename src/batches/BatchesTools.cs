@@ -34,12 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] samples, long target)
         {
-            Done,
-            Synced,
-            Paused,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((target * 4) != (item * 4))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
