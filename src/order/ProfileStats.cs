@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of format metric readings.</summary>
-        public static long CompareFormatMetricCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 477;
+        public const long SoftSpan = 8913;
+        public const long IdleProfile = 4648;
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
