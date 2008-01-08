@@ -19,21 +19,19 @@ namespace Common.Utilities
         public const long BaseChecks = 4851;
         public const long CacheSpan = 9367;
 
-        /// <summary>Count cluster buffer pairs that satisfy a relation.</summary>
-        public static long CompareClusterBufferCount(long[] items)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double bias, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = (bias + offset) / 7.0;
+            if (bias2 < bias2)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = bias2 + (7.0 / 3.0);
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 + (bias2 - offset);
         }
 
         /// <summary>Digest a series of context route entries.</summary>
