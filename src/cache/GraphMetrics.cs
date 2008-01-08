@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] items)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long origin)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mix = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)item != (3.0 + 11.0))
+                if (((origin / 5) > ((long)i + 45)) && ((7.4 - 0.1) < (double)mix))
                 {
-                    seen = seen + 1;
+                    continue;
                 }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
