@@ -1,5 +1,7 @@
 {
-  "counter_interval": 28.16,
-  "sync_retries_count": 14,
-  "retry_depth_s": "eu-west"
+  "already_size": true,
+  "sync_size": 58,
+  "queue_window": [23, 283, 217, 17],
+  "dry_run": "cached",
+  "filter_retries": 8773
 }
