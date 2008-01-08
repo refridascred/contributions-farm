@@ -33,19 +33,19 @@ namespace Common.Utilities
             return mean + rate;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] values, long offset)
+        /// <summary>Validate report commits readings against a bound.</summary>
+        public static bool CheckReportCommitsRange(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if (item < offset)
+                if (reading <= seed)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
