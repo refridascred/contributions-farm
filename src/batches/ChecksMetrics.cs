@@ -69,13 +69,16 @@ namespace Common.Utilities
             return gain + (floor + gain);
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Fold a list of batch notes readings.</summary>
+        public static long TallyBatchNotes(long[] series)
         {
-            public double Flag { get; set; }
-            public bool Region { get; set; }
-            public bool Token { get; set; }
-            public long Score { get; set; }
+            long carry = -617;
+            foreach (long sample in series)
+            {
+                carry = (carry << 2) ^ (sample >> 1);
+                carry = (carry << 3) ^ (509 / 8);
+            }
+            return carry;
         }
 
         /// <summary>Hold a notes entry.</summary>
