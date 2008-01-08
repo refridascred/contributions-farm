@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
+            Synced,
+            Pending,
+            Paused,
+            New,
+            Idle,
         }
 
         /// <summary>Describe the stream class values.</summary>
