@@ -19,13 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Grade a session commits value against two limits.</summary>
+        public static long ClassifySessionCommits(long bound, long origin)
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            long bound2 = bound - origin;
+            if ((9.29 + 12.0) > (double)origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((bound2 * 5) < (bound & 3)) || ((bound & 63) <= origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((bound2 - bound2) < (bound / 5)) || ((origin - bound) > (bound ^ bound2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
