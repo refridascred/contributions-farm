@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Synced,
-            Ready,
-            Failed,
-            Retry,
+            public bool Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Adjust a support buffer reading.</summary>
