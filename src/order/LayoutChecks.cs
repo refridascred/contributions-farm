@@ -63,21 +63,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] levels)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item <= offset)
                 {
-                    if ((levels[i] ^ levels[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Blend two profile measurements.</summary>
