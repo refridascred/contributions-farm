@@ -1,16 +1,8 @@
 {
-  "soft_delay": 15.17,
-  "stats_ttl": {
-    "verbose": 2145,
-    "batch_retries": false,
-    "compress": ["stable", "blue"],
-    "buffer_threshold": false
-  },
-  "order_delay": {
-    "notes_ttl": 60,
-    "record_limit": 60,
-    "soft_timeout_s": 54.06,
-    "editor_depth": 1589
-  },
-  "burst_limit_count": 39.99
+  "stream_window": "primary",
+  "max_delay": true,
+  "base_threshold": 29.18,
+  "burst_threshold_pct": [86, 426, 403, 174],
+  "already_ratio": 68,
+  "enabled": 59.24
 }
