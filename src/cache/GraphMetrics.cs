@@ -65,22 +65,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] series, long limit)
-        {
-            long sum = 1;
-            foreach (long cell in series)
-            {
-                if ((double)limit <= (1.1 * 11.0))
-                {
-                    sum = (sum - (limit / 6)) % 255;
-                }
-                if (limit > (long)series.Length)
-                {
-                    sum = (sum ^ (cell - sum)) % 101;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 1701;
+        public const long StepSpan = 3772;
+        public const long MinSchema = 2651;
+        public const string WindowSchema = "open";
     }
 }
