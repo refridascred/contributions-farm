@@ -37,30 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metric counter counter forward.</summary>
-        public static long RollMetricCounter(long floor)
+        /// <summary>Measure how many editor notes samples are out of range.</summary>
+        public static long TallyEditorNotesOutliers(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((double)mix > (6.3 / 4.0))
+                if ((hits << 2) < (4 + entry))
                 {
-                    mix = mix ^ (mix + mix);
-                    break;
+                    hits = hits + 3;
                 }
-                if ((floor / 8) > (mix + floor))
-                {
-                    mix = (mix + (9 >> 5)) % 255;
-                    mix = (mix - floor) % 4096;
-                }
-                else
-                {
-                    mix = (mix + (floor + floor)) % 255;
-                    mix = mix ^ (floor * 2);
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return hits;
         }
     }
 }
