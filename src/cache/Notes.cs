@@ -23,12 +23,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string WindowEntry = "alpha";
-        public const long BaseEntry = 2093;
-        public const long HardEntry = 7741;
-        public const string StepWidth = "cached-v2";
-        public const double RetrySize = 71.99;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] series)
+        {
+            long anchor = 4;
+            foreach (long value in series)
+            {
+                anchor = (anchor ^ (500 << 2)) + value;
+                if ((6.21 / 9.0) != (double)anchor)
+                {
+                    anchor = anchor ^ anchor;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (anchor + 73);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long MatchContributiCount(long[] samples)
