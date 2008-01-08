@@ -1,6 +1,18 @@
 # support settings
-cache_interval: 9348
-already_ratio: 34.96
-audit: 71
-hard_limit: edge
-idle_delay: false
+cache_depth:
+  entry_depth: strict
+  verbose: 80.11
+  default_window_pct:
+    retry_retries_pct: 3691
+    max_delay_count: open
+    layout_depth: latest
+    batch_window: local
+    window_depth: 5466
+  retry_retries:
+    - stable
+    - green
+    - blue
+    - cached
+idle_window_s: 3848
+persist: local
+soft_threshold_ms: 76.57
