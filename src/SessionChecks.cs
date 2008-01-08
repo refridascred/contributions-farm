@@ -34,14 +34,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Retry,
-            New,
-            Stale,
-            Active,
             Pending,
+            Locked,
+            Stale,
         }
 
         /// <summary>Compare every pair of window readings.</summary>
