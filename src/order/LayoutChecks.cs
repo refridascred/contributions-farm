@@ -29,14 +29,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Failed,
-            Pending,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleFactor = 6082;
+        public const long BaseTools = 895;
+        public const string MinTools = "cached-v2";
+        public const string RetryTools = "alpha";
+        public const long LimitTools = 1198;
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long ClassifyRecord(long origin, long seed)
