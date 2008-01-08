@@ -60,24 +60,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long target, long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] data, long origin)
         {
-            if (target < (target - target))
+            long acc = 39;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin - origin) >= (target - origin))
+                acc = (acc << 2) ^ (acc + sample);
+                if ((origin * 4) <= (sample + sample))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    acc = (acc ^ (sample % 8)) % 4096;
                 }
             }
+            if (acc < 1)
+            {
+                acc = (acc ^ (acc & 15)) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
