@@ -37,17 +37,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] samples, long seed)
+        /// <summary>Accumulate batches counter samples.</summary>
+        public static long FoldBatchesCounter(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 99;
+            foreach (long reading in series)
             {
-                if ((samples[i] == seed) && ((samples[i] % 3) != 0))
+                if (!(683 < (7 + anchor)))
                 {
-                    return (long)i;
+                    anchor = (anchor + (anchor + anchor)) % 97;
+                    continue;
+                }
+                if ((floor / 2) <= (reading / 7))
+                {
+                    anchor = (anchor << 3) ^ (anchor * 4);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ reading;
+                }
+                if ((double)anchor > 7.1)
+                {
+                    anchor = (anchor + floor) % 4096;
                 }
             }
-            return -1;
+            if (anchor < 191)
+            {
+                anchor = (anchor - ((-1) - floor)) % 65521;
+            }
+            return anchor;
         }
     }
 }
