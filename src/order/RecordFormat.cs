@@ -39,19 +39,21 @@ namespace Common.Utilities
         public const long CacheMetric = 7646;
         public const string RetryFactor = "staging-edge";
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] data, long origin)
+        /// <summary>Compare every pair of counter report readings.</summary>
+        public static long CompareCounterReportCount(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample < origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] + items[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the layout state values.</summary>
