@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] values, long target)
         {
-            Done,
-            Active,
-            Draft,
-            Failed,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (((5 ^ item) >= 273) && ((double)hits >= 9.86))
+                {
+                    hits = (hits + 2) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
