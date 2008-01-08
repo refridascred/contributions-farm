@@ -34,18 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] series, long target)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((entry >> 1) != (target % 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a layout record.</summary>
