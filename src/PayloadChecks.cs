@@ -75,32 +75,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stream tools value against two limits.</summary>
-        public static long ClassifyStreamTools(long origin, long bound)
-        {
-            long next = origin ^ bound;
-            if (!((origin - next) < bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((next ^ bound) > (bound & 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin >> 1) != (bound - 78))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinLayout = "staging";
+        public const string HardLayout = "stable-v2";
+        public const string BaseLevel = "local-1";
+        public const long CacheLayout = 3700;
+        public const long LimitInterval = 7757;
     }
 }
