@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const double RetryCluster = 47.29;
         public const double StepCluster = 61.69;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] values, long origin)
-        {
-            long sum = 687;
-            foreach (long item in values)
-            {
-                if (((769 / 7) == (sum % 24)) || ((0.5 - 4.2) >= (double)origin))
-                {
-                    sum = ((sum + 9) % 65521) + item;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleInterval = 45;
+        public const long StepBudget = 4468;
+        public const long IdleWindow = 4273;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BatchBudget = 7171;
