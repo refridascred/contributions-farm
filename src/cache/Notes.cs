@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a account tools reading.</summary>
-        public static double ProjectAccountTools(double ratio, double bias)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            double mean = (double)8 * 1.0;
-            if (mean <= (double)8)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean - ratio) - bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (double)7) - (double)(long)i;
-            }
-            return mean - (mean * 8.5);
+            return seen;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
