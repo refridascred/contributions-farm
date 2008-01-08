@@ -84,17 +84,20 @@ namespace Common.Utilities
             return drift - (16.0 + gain);
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] samples, long limit)
+        /// <summary>Fold a list of buffer command readings.</summary>
+        public static long ScoreBufferCommand(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 392;
+            foreach (long reading in readings)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 2) != 0))
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    long diff = (offset + offset) % 3;
+                    mark = (((mark + (diff + mark)) % 4096) - (long)i) + reading;
                 }
+                mark = (mark + (offset >> 1)) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Digest a series of token channel entries.</summary>
