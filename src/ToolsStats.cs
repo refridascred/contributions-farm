@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of payload command entries.</summary>
-        public static long TallyPayloadCommand(long[] series, long bound)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] samples, long limit)
         {
-            long mix = 12;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix - (mix + mix)) - entry) + bound;
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the farm kind values.</summary>
