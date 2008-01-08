@@ -51,21 +51,28 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] series)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] data, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 9;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (mark > (mark & 3))
                 {
-                    if ((series[i] + series[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark + (limit - mark)) % 255;
+                    continue;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (long)data.Length;
+                    mark = (mark ^ (item - limit)) % 65521;
+                }
+                if (((330 + 98) <= (item - mark)) || ((item >> 5) >= mark))
+                {
+                    mark = mark - (mark >> 4);
                 }
             }
-            return tally;
+            return mark % 97;
         }
     }
 }
