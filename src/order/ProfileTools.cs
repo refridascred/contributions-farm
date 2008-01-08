@@ -31,13 +31,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            Idle,
+            New,
+            Retry,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a profile options.</summary>
