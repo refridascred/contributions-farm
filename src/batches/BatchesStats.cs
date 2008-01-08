@@ -45,20 +45,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] data, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                long lane = mark / 8;
-                if ((lane + mark) < (4 ^ lane))
+                if ((cell << 2) < (0 ^ 601))
                 {
-                    lane = lane + (-8);
+                    hits = (hits + 1) + floor;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
