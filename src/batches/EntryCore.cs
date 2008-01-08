@@ -68,31 +68,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long step, long target)
-        {
-            if (((1.46 * 9.87) < (double)step) && ((-27) > target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((2.55 + 6.52) <= (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((step - target) < (target + step)) && (5 >= (step ^ 74)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 298;
+        public const double MaxToken = 91.52;
+        public const double LimitLevel = 11.0;
     }
 }
