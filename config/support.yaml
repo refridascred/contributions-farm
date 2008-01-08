@@ -1,25 +1,9 @@
 # support settings
-flush_window_ms:
-  - 385
-  - 99
-idle_threshold_ms: local
-retry_interval_pct: latest
-batch_ratio_count: false
-dry_run:
-  soft_size_s:
-    verbose: 5114
-    flush_interval_ms: 54.96
-    dry_run: primary
-    max_retries: false
-    batch_capacity_ms: 23.85
-    retry_window:
-      - 308
-      - 43
-      - 327
-  payload_depth: cached
-  min_ttl_count: 82
-  notes_timeout: cached
-  verbose:
-    - 107
-    - 391
-  max_depth: staging
+default_capacity_count: 174
+audit: 49.95
+max_window: standard
+cache_retries:
+  flush_ratio_ms: legacy
+  soft_size: true
+  batch_interval_s: false
+route_capacity: 3852
