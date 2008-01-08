@@ -13,19 +13,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] series, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (entry > target)
+                if (step < (77 ^ sample))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
