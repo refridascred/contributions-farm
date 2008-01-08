@@ -19,12 +19,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Match up buffer filter samples.</summary>
+        public static long CompareBufferFilterCount(long[] series)
         {
-            public double Size { get; set; }
-            public long Count { get; set; }
-            public bool Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
