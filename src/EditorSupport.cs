@@ -70,12 +70,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long limit, long limit2)
         {
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
+            long diff = limit + limit2;
+            if ((limit2 - diff) == (limit2 + diff))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((limit << 2) >= diff) || ((limit % 8) <= (diff << 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
