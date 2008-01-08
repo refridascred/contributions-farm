@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] items)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            Failed,
+            Idle,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Classify a tools route pair into a bucket.</summary>
