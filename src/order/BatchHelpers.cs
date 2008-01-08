@@ -41,10 +41,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 5061;
-        public const long StepBudget = 5700;
-        public const long BatchSize = 6170;
-        public const double BurstRatio = 57.76;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftSpan = 86.87;
+        public const double BurstRatio = 34.89;
+        public const string MaxMetric = "alpha";
+        public const long BaseMetric = 3672;
     }
 }
