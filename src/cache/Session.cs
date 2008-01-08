@@ -19,21 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of counter payload readings.</summary>
-        public static long MatchCounterPayloadCount(long[] samples)
+        /// <summary>Digest a series of tools format entries.</summary>
+        public static long TallyToolsFormat(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 42;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = (anchor * 4) + ((long)data.Length + entry);
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
