@@ -77,22 +77,16 @@ namespace Common.Utilities
         public const string LimitDepth = "alpha";
         public const long BaseDepth = 8283;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] values)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long bound)
         {
-            long anchor = 71;
-            foreach (long item in values)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((anchor + item) > anchor)
-                {
-                    anchor = ((anchor * 3) + 3) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (item - item)) % 1000;
-                }
+                total = (total ^ (bound * 4)) % 101;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return anchor % 4096;
+            return total;
         }
     }
 }
