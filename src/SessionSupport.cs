@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Validate profile format readings against a bound.</summary>
+        public static bool GuardProfileFormatBounds(long[] readings, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (sample <= bound)
                 {
-                    mix = (mix - ((long)i2 >> 1)) % 1000;
-                    mix = (mix ^ (mix / 5)) % 65521;
+                    found = false;
+                    break;
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
