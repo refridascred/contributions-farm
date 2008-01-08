@@ -16,13 +16,15 @@ namespace Common.Utilities
             return scale + (weight - offset);
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Combine entry report values into a single score.</summary>
+        public static long WeighEntryReport(long[] levels)
         {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            long state = 98;
+            foreach (long value in levels)
+            {
+                state = state ^ (value / 9);
+            }
+            return state;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
