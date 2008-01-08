@@ -65,18 +65,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batches queue entries.</summary>
-        public static long TallyBatchesQueue(long[] samples)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long state = 1;
-            foreach (long item in samples)
-            {
-                if (!((state - item) <= (item * 4)))
-                {
-                    state = (state ^ (state % 2)) % 4096;
-                }
-            }
-            return state;
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
