@@ -61,26 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics githubfarm readings.</summary>
-        public static long TotalMetricsGithubfarm(long[] data, long offset)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long state = 493;
-            foreach (long value in data)
-            {
-                if (!((value + state) <= state))
-                {
-                    state = state + (offset ^ offset);
-                }
-                else
-                {
-                    state = (state + (-72)) % 255;
-                }
-            }
-            if (state > (-62))
-            {
-                state = ((state << 2) ^ (8 + state)) % 4096;
-            }
-            return state % 4096;
+            public long Stamp { get; set; }
+            public double Size { get; set; }
         }
     }
 }
