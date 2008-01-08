@@ -1,10 +1,5 @@
 {
-  "poll_ratio": "cached",
-  "base_ratio_ms": "blue",
-  "cache_ttl": {
-    "sync_timeout_count": true,
-    "cache_limit": "green",
-    "schema_interval": "green"
-  },
-  "enabled": "local"
+  "flush_delay_count": [224, 402, 255],
+  "warm_threshold_ms": 35.96,
+  "max_ratio": "eu-west"
 }
