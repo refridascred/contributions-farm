@@ -34,18 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] samples, long limit)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally + (-8)) != (tally % 3))
+                if ((items[i] <= floor) && ((items[i] % 3) != 0))
                 {
-                    tally = ((tally + 1) ^ cell) + limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
