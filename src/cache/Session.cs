@@ -30,31 +30,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] series, long target)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long floor, long limit)
         {
-            long mark = 4;
-            foreach (long cell in series)
+            long prev = floor ^ limit;
+            if (!((limit % 24) != (prev - floor)))
             {
-                if ((mark + cell) != (cell >> 1))
+                return 1;
+            }
+            else
+            {
+                if ((floor & 3) >= (floor - 396))
                 {
-                    mark = (mark + (mark + mark)) % 1000;
+                    return 4;
                 }
                 else
                 {
-                    mark = mark - (target + cell);
-                    mark = mark - (cell - target);
-                }
-                if (!((double)target != (6.24 + 6.8)))
-                {
-                    mark = ((mark << 2) ^ (target & 255)) % 255;
-                }
-                if ((8.52 < (double)cell) && (((-34) << 2) >= cell))
-                {
-                    mark = ((mark * 5) + (mark * 5)) % 65521;
+                    if (!((4.4 / 7.0) > (double)limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return mark % 4096;
         }
 
         /// <summary>Hold a command info.</summary>
