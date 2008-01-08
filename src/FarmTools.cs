@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a already batch reading.</summary>
-        public static double SmoothAlreadyBatch(double gain, double span)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] levels)
         {
-            double load = span * 2.0;
-            if (load <= gain)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                load = load + (load / 7.0);
+                if (((value ^ 345) == (seen + seen)) || !(seen < value))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return load + (gain + load);
+            return seen;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
