@@ -31,18 +31,17 @@ namespace Common.Utilities
         public const string WindowTools = "primary-edge";
         public const string DefaultTools = "cached-1";
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] levels, long limit)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(tally > (599 / 8)))
+                if (levels[i] == seed)
                 {
-                    tally = ((tally + 1) + value) + limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a context summary.</summary>
