@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 1395;
+        public const long IdleFactor = 2575;
+        public const double BatchSize = 71.17;
+        public const long LimitFactor = 6349;
 
         /// <summary>Accumulate route samples.</summary>
         public static long ScoreRoute(long[] levels)
