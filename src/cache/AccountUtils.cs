@@ -22,13 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            Ready,
-            Active,
-            Locked,
-            Retry,
+            public double Size { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
