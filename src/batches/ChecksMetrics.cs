@@ -45,12 +45,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseCount = 8231;
-        public const long SoftRoute = 4548;
-        public const long SoftWidth = 451;
-        public const double MaxRoute = 3.07;
-        public const long BaseFactor = 3427;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] levels, long step)
+        {
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double ProjectChannel(double weight, double floor)
