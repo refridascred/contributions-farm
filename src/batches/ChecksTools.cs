@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const double MinBudget = 88.82;
         public const long BatchWidth = 7989;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] data)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] data)
         {
-            long anchor = 8;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long value in data)
             {
-                anchor = anchor ^ item;
+                if ((value % 16) == (value * 5))
+                {
+                    matches = matches + 2;
+                }
             }
-            if (anchor < 3)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 97;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a record record.</summary>
