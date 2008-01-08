@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const double MinBudget = 88.82;
         public const long BatchWidth = 7989;
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Accumulate record session samples.</summary>
+        public static long CombineRecordSession(long[] data, long seed)
         {
-            public bool Token { get; set; }
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
+            long sum = 1;
+            foreach (long item in data)
+            {
+                if ((seed + sum) != (sum + 7))
+                {
+                    sum = (((sum * 2) + (long)data.Length) % 255) ^ item;
+                }
+                if (sum > (sum >> 1))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
