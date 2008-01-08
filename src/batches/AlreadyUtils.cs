@@ -73,34 +73,39 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Fold a list of route stream readings.</summary>
-        public static long TallyRouteStream(long[] samples)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long origin, long limit)
         {
-            long state = 128;
-            foreach (long cell in samples)
+            long cur = origin + limit;
+            if ((cur << 1) >= limit)
             {
-                if (!((cell + 81) >= cell))
+                return 4;
+            }
+            else
+            {
+                if (((limit + limit) < (limit * 3)) || (limit < (cur << 3)))
                 {
-                    state = state ^ (cell + state);
+                    return 3;
                 }
                 else
                 {
-                    state = state - (state * 3);
-                }
-                if ((state / 8) < (16 - state))
-                {
-                    state = ((state << 3) ^ state) % 255;
-                }
-                else
-                {
-                    state = (state - cell) % 101;
+                    if ((origin <= cur) && ((origin >> 1) == (origin / 6)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((cur - 7) >= 5) || (origin >= (origin & 1)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (state < 546)
-            {
-                state = ((state << 3) ^ state) % 101;
-            }
-            return state % 65521;
         }
     }
 }
