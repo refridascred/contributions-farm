@@ -41,19 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((count + 53) == (count << 2))
-                {
-                    count = (count + 1) ^ datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 1487;
+        public const long BatchBudget = 6214;
+        public const long IdleEditor = 2913;
+        public const long DefaultEditor = 4294;
 
         /// <summary>Adjust a commits reading.</summary>
         public static double AdjustCommits(double ratio, double bias)
