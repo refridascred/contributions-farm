@@ -36,5 +36,14 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Dropped,
+            Synced,
+            Pending,
+            Locked,
+        }
     }
 }
