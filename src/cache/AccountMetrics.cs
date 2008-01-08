@@ -41,18 +41,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] series)
+        /// <summary>Adjust a schema report reading.</summary>
+        public static double BlendSchemaReport(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double scale = (double)559 * 6.0;
+            if (scale <= (double)7)
             {
-                if ((datum << 2) >= (hits + hits))
-                {
-                    hits = hits + 2;
-                }
+                scale = (scale - (scale + ratio)) + span;
             }
-            return hits;
+            return scale + (double)722;
         }
 
         /// <summary>Find the first commits batches entry that matches the target.</summary>
