@@ -20,19 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate metric session readings against a bound.</summary>
-        public static bool ValidateMetricSessionBounds(long[] series, long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (reading >= step)
+                if ((count << 2) == (datum >> 1))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
