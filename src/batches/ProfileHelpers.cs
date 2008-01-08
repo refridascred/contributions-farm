@@ -39,25 +39,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long floor, long bound)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double gain, double floor)
         {
-            long delta = floor + bound;
-            if ((floor ^ floor) >= (bound >> 5))
+            double drift = (double)(1 + 784);
+            if (drift > floor)
             {
-                return 1;
+                drift = drift - gain;
             }
-            else
-            {
-                if (!((delta - floor) <= (floor / 5)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return drift - (16.0 + gain);
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
