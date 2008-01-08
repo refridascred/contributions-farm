@@ -27,16 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long limit)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                total = (total ^ ((long)i + limit)) % 101;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the layout status values.</summary>
