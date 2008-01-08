@@ -34,15 +34,11 @@ namespace Common.Utilities
             return bias2 + (bias2 - offset);
         }
 
-        /// <summary>Digest a series of context route entries.</summary>
-        public static long CombineContextRoute(long[] levels)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long acc = 4;
-            foreach (long cell in levels)
-            {
-                acc = ((acc << 2) ^ cell) % 101;
-            }
-            return acc % 97;
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
