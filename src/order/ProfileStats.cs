@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long seed)
+        /// <summary>Derive the next metric counter value from a seed.</summary>
+        public static long StepMetricCounter(long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Hold a schema options.</summary>
