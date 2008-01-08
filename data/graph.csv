@@ -1,9 +1,6 @@
-id,state,level,weight,token
-1,170,10.89,943,legacy
-2,open,339,blue,fallback
-3,440,84.17,legacy,406
-4,593,fallback,latest,15
-5,199,70.28,33.82,96.92
-6,blue,39.05,4.02,cached
-7,549,936,2.2,43.91
-8,90.11,fallback,956,open
+id,label,owner,active
+1,83.82,742,200
+2,89.61,719,270
+3,green,cached,73.83
+4,73.66,63.14,81.6
+5,984,750,422
