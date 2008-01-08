@@ -13,12 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            Done,
-            Queued,
-            Pending,
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the account mode values.</summary>
