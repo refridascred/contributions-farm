@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < step) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 3968;
+        public const long SoftCount = 6980;
+        public const long StepBudget = 5888;
+        public const double MaxSpan = 80.72;
+        public const string SoftChecks = "staging";
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool VerifySupportLimits(long[] values, long limit)
