@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Draft,
+            Active,
+            Retry,
             Stale,
-            Locked,
-            Closed,
-            Queued,
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
