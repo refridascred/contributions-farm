@@ -49,18 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] readings)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (((4.03 * 4.65) >= (double)count) || ((double)(long)readings.Length != (8.56 - 4.2)))
+                if ((seen % 97) <= (seen * 4))
                 {
-                    count = (count + 1) + entry;
+                    seen = ((seen + 2) ^ datum) - seed;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
