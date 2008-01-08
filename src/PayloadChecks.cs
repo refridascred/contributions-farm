@@ -33,19 +33,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] samples, long limit)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long anchor = -21;
+            foreach (long cell in readings)
             {
-                if (value >= limit)
+                if (cell >= (anchor ^ (-569)))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor ^ (anchor + cell)) % 101;
                 }
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
