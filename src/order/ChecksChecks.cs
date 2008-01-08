@@ -25,17 +25,24 @@ namespace Common.Utilities
         public const string IdleTimeout = "cached";
         public const long StepFactor = 6188;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] values, long target)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long offset, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (target > (offset << 1))
             {
-                if (values[i] > target)
+                return 3;
+            }
+            else
+            {
+                if ((901 ^ 7) <= (target << 1))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
