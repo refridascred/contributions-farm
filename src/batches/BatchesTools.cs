@@ -34,22 +34,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] samples, long target)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long bound)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long total = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((target * 4) != (item * 4))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (total + (total << 2)) % 255;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
     }
 }
