@@ -1,6 +1,5 @@
 {
-  "audit": 42.26,
-  "profile_depth": "edge",
-  "githubfarm_ttl": 6185,
-  "idle_window": "strict"
+  "min_delay": true,
+  "flush_timeout": "latest",
+  "default_retries_ms": 1454
 }
