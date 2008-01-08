@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Synced,
-            Pending,
-            Closed,
-            Active,
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
