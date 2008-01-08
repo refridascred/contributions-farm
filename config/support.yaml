@@ -1,25 +1,23 @@
 # support settings
-retry_limit_count:
-  - staging
-  - blue
-  - stable
-readonly:
-  base_timeout_count: local
-  idle_ratio_ms: false
-  batch_retries_pct:
-    persist: 3599
-    default_limit_count: true
-    poll_ttl: 100
-  min_depth: false
-  sync_depth_s: fallback
-min_ratio_s: 67
-entry_ttl:
-  - 456
-  - 378
-  - 181
-payload_depth:
-  - 308
-  - 238
-  - 243
-  - 499
-command_window: stable
+batch_ratio_count: 69
+flush_window:
+  - 36
+  - 209
+soft_ratio_ms:
+  contributi_ttl:
+    default_timeout_pct: 66.26
+    poll_size_pct: 250
+    audit:
+      - 155
+      - 178
+      - 282
+    route_delay: 2477
+    idle_ttl_count: 57
+  cache_delay:
+    cache_capacity_pct: 77.62
+    base_limit_pct: local
+    soft_retries_s: fallback
+  persist: true
+  hard_delay_pct: primary
+  cache_retries: legacy
+cache_retries_s: false
