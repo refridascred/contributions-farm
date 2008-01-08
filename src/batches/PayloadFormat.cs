@@ -24,22 +24,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] data, long origin)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long score = -37;
-            foreach (long item in data)
-            {
-                if ((score < (origin + origin)) || ((score - item) == (origin ^ score)))
-                {
-                    score = score - (26 * 4);
-                }
-                else
-                {
-                    score = ((score * 2) + (-9)) % 1000;
-                }
-            }
-            return score;
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of commits contributi readings.</summary>
