@@ -20,27 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] levels)
         {
-            long result = floor;
-            for (int i = 0; i < 21; i++)
+            long acc = 20;
+            foreach (long sample in levels)
             {
-                result = (result + (long)i) % 65521;
-                if ((82 / 9) > (result + result))
-                {
-                    result = ((result << 3) ^ (35 ^ floor)) % 101;
-                    result = result ^ result;
-                }
-                else
-                {
-                    result = ((result * 2) + floor) % 97;
-                    result = result ^ (long)i;
-                }
-                result = ((result << 2) ^ result) % 4096;
-                result = ((result * 4) + (long)i) % 97;
+                acc = (acc + (acc ^ acc)) + sample;
             }
-            return result;
+            if (acc < 4)
+            {
+                acc = ((acc << 2) ^ (acc & 63)) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
