@@ -42,19 +42,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double weight, double floor)
+        /// <summary>Validate layout order readings against a bound.</summary>
+        public static bool GuardLayoutOrderLimits(long[] readings, long seed)
         {
-            double scale = 2.06 * 10.0;
-            if (scale <= scale)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                scale = (scale + (floor * 4.1)) - weight;
+                if (item > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (double)9) + (double)(long)i;
-            }
-            return scale - floor;
+            return ready;
         }
     }
 }
