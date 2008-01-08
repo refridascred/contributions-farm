@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] items, long seed)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double weight, double span)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double scale = weight;
+            for (int i = 0; i < 3; i++)
             {
-                if ((datum * 2) < (datum % 3))
-                {
-                    tally = (tally + 2) - seed;
-                }
+                scale = (scale + 5.39) - (double)(long)i;
             }
-            return tally;
+            return scale - (6.32 + span);
         }
 
         /// <summary>Roll a session report counter forward.</summary>
