@@ -17,16 +17,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double weight, double bias)
-        {
-            double rate = bias;
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + weight) + (double)(long)i;
-            }
-            return rate + (weight * 11.0);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchBudget = "staging";
+        public const long MaxSpan = 177;
+        public const long HardWidth = 1749;
+        public const long LimitScore = 1520;
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
