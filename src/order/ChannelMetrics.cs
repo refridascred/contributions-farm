@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] readings, long bound)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] values)
         {
-            long state = 2;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)89 <= (double)reading))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = ((state * 2) + ((-351) + 7)) % 255;
-                }
-                else
-                {
-                    state = state + (reading / 2);
+                    if ((values[i] ^ values[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state > 8)
-            {
-                state = state - (58 ^ bound);
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Project the next cluster value.</summary>
