@@ -39,19 +39,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] series, long bound)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Ready,
+            Paused,
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
