@@ -74,11 +74,17 @@ namespace Common.Utilities
             return drift + 9.67;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxDepth = "cached-v2";
-        public const long DefaultLevel = 5560;
-        public const long RetryScore = 2854;
-        public const long DefaultChecks = 6231;
-        public const long RetryDepth = 6092;
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > origin) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
