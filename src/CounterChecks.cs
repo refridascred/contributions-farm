@@ -101,18 +101,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] readings, long floor)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((16.0 * 7.17) != (double)floor) && (sample > (275 - (-47))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((samples[i] + samples[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
