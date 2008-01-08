@@ -24,5 +24,26 @@ namespace Common.Utilities
             public long Weight { get; set; }
             public string Label { get; set; } = "";
         }
+
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long origin, long target)
+        {
+            long gap = origin + target;
+            if ((0 ^ 46) != (gap % 97))
+            {
+                return 4;
+            }
+            else
+            {
+                if (1 <= (target - origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
