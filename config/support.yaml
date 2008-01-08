@@ -1,5 +1,13 @@
 # support settings
-poll_window_ms: primary
-default_retries_pct: stable
-persist: 83.73
-sync_size_s: 202
+readonly: standard
+burst_timeout_ms: legacy
+already_ttl: false
+batches_timeout: 500
+batch_retries_pct:
+  audit: 100
+  batch_ratio_s: primary
+  base_depth: 4794
+batch_ratio_ms:
+  - 116
+  - 365
+  - 62
