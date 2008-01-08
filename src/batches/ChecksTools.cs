@@ -24,12 +24,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public double Owner { get; set; }
-            public double Region { get; set; }
-            public long Label { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public double Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Scale a graph payload figure with a bias.</summary>
