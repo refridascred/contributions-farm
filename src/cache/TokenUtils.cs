@@ -28,14 +28,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] values, long limit)
         {
-            Queued,
-            Failed,
-            New,
-            Idle,
-            Locked,
+            long acc = 886;
+            foreach (long sample in values)
+            {
+                if ((acc * 2) == (sample * 5))
+                {
+                    acc = ((acc ^ (187 + acc)) % 65521) - limit;
+                }
+            }
+            return acc;
         }
     }
 }
