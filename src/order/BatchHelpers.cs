@@ -26,19 +26,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] values, long target)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Draft,
+            Done,
+            Retry,
+            Closed,
         }
     }
 }
