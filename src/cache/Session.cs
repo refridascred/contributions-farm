@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] items, long origin)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long total = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading > (0 >> 2))
-                {
-                    tally = (tally + 3) + origin;
-                }
+                total = (total - ((long)i % 10)) % 101;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define token limits and defaults.</summary>
