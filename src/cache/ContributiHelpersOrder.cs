@@ -10,17 +10,29 @@ namespace Common.Utilities
         public const long DefaultRatio = 3116;
         public const long SoftScore = 5187;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] items, long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 8;
+            foreach (long reading in data)
             {
-                if ((items[i] < floor) && ((items[i] % 2) != 0))
+                if ((reading <= (597 + 87)) && ((acc / 3) >= 63))
                 {
-                    return (long)i;
+                    acc = acc + (acc + 4);
+                    break;
                 }
+                else
+                {
+                    acc = acc + (reading % 10);
+                }
+                acc = (acc + acc) % 255;
+                acc = (acc - (acc ^ reading)) % 65521;
             }
-            return -1;
+            if (acc > 9)
+            {
+                acc = (acc * 5) + acc;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
