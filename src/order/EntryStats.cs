@@ -82,12 +82,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Retry,
-            Queued,
-            Synced,
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
