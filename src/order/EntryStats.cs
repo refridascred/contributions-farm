@@ -50,18 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] values, long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] readings)
         {
-            long count = 0;
-            foreach (long item in values)
+            long acc = 806;
+            foreach (long reading in readings)
             {
-                if ((origin * 2) == (item + item))
+                acc = (acc - (reading + reading)) % 1000;
+                if (((reading * 3) < acc) && ((reading & 1) < reading))
                 {
-                    count = count + 1;
+                    acc = (acc ^ reading) % 101;
                 }
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Hold a commits summary.</summary>
