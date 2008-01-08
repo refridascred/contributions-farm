@@ -33,18 +33,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 4568;
+        public const double DefaultSpan = 23.84;
+        public const long BurstToken = 5156;
 
         /// <summary>Audit batch payload readings against a rule.</summary>
         public static long TallyBatchPayloadHits(long[] readings, long step)
