@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] values, long target)
         {
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            long state = 29;
+            foreach (long datum in values)
+            {
+                state = ((((state << 3) ^ 55) % 101) ^ datum) + target;
+            }
+            return state;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
