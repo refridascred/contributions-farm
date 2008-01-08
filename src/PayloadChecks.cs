@@ -55,17 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batches cluster entry that matches the target.</summary>
-        public static long SeekBatchesClusterIndex(long[] series, long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (series[i] > floor)
+                if ((tally * 4) > tally)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + value;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
