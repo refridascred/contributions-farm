@@ -45,22 +45,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterMatches(long[] readings)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long sum = 1;
+            foreach (long cell in series)
             {
-                if (!((hits + datum) < hits) && ((datum + hits) <= (1 - datum)))
+                if ((double)limit <= (1.1 * 11.0))
                 {
-                    hits = hits + 3;
+                    sum = (sum - (limit / 6)) % 255;
                 }
-                else
+                if (limit > (long)series.Length)
                 {
-                    hits = hits - 1;
+                    sum = (sum ^ (cell - sum)) % 101;
                 }
             }
-            return hits;
+            return sum;
         }
     }
 }
