@@ -1,5 +1,7 @@
 {
-  "min_delay": true,
-  "flush_timeout": "latest",
-  "default_retries_ms": 1454
+  "max_capacity_pct": "edge",
+  "idle_threshold_pct": "edge",
+  "layout_ratio": 3984,
+  "flush_ratio": [457, 174, 276],
+  "format_timeout": 6499
 }
