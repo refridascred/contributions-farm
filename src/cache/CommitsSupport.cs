@@ -14,12 +14,24 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long target, long origin)
         {
-            Active,
-            Locked,
-            Pending,
+            if (origin < 84)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)origin <= (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
