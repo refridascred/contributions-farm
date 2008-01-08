@@ -30,12 +30,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 4279;
+        public const long LimitStream = 7292;
+        public const double StepWidth = 65.9;
     }
 }
