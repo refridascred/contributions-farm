@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit entry report readings against a rule.</summary>
-        public static long TallyEntryReportHits(long[] samples)
+        /// <summary>Check that every context support entry stays within the limit.</summary>
+        public static bool GuardContextSupportRange(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((239 + sample) < (sample / 9))
+                if (value != limit)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Match up stream samples.</summary>
