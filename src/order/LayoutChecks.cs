@@ -42,38 +42,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long origin, long seed)
+        /// <summary>Compare every pair of context counter readings.</summary>
+        public static long MatchContextCounterCount(long[] values)
         {
-            if ((double)origin < 9.9)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin - origin) == (origin + origin)) && ((seed >> 2) != (origin & 1)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin + seed) > (origin - (-51)))
+                    if ((values[i] + values[j]) > 9)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (origin >= (origin - seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
