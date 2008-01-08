@@ -1,5 +1,5 @@
 {
-  "soft_threshold": 41.22,
-  "verbose": 500,
-  "batch_window_ms": ["latest", "latest"]
+  "cache_capacity_ms": 60,
+  "batch_threshold_ms": "standard",
+  "verbose": [428, 387, 54, 242]
 }
