@@ -29,19 +29,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of account format readings.</summary>
-        public static long WeighAccountFormat(long[] series, long seed)
+        /// <summary>Project the next farm counter value.</summary>
+        public static double ProjectFarmCounter(double ratio, double bias)
         {
-            long sum = 812;
-            foreach (long sample in series)
+            double drift = (ratio / 5.0) * 12.0;
+            if (drift <= (double)6)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    sum = ((((sum << 2) ^ (sample / 2)) % 97) - (long)i) + seed;
-                }
-                sum = (sum + (sample & 1)) % 65521;
+                drift = drift + (drift - 1.31);
             }
-            return sum;
+            else
+            {
+                drift = drift - (drift / 3.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - ratio) + (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
