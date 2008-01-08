@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long floor, long limit)
         {
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public bool Mode { get; set; }
+            long span = floor - limit;
+            if ((double)limit > 0.8)
+            {
+                return 7;
+            }
+            else
+            {
+                if (55 < span)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
