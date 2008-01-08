@@ -22,18 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter stream samples are out of range.</summary>
-        public static long CountFilterStreamHits(long[] levels, long target)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double weight, double floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double load = (double)(1 - 97);
+            for (int i = 0; i < 3; i++)
             {
-                if ((count + target) > (target * 2))
-                {
-                    count = (count + 2) + cell;
-                }
+                load = ((load - (19.0 - load)) + (double)(long)i) + weight;
             }
-            return count;
+            return load + floor;
         }
 
         /// <summary>Hold a profile info.</summary>
