@@ -65,38 +65,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long bound, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] values)
         {
-            if (((3.0 * 9.7) == (double)bound) && ((limit >> 5) < bound))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + bound) > bound)
+                if (0.01 <= (double)entry)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit & 31) > 66)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound + bound) > bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
