@@ -62,17 +62,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a layout payload reading by value.</summary>
-        public static long SeekLayoutPayloadIndex(long[] data, long seed)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Done,
+            Dropped,
         }
     }
 }
