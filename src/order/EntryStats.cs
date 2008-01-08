@@ -29,25 +29,27 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long step, long origin)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long floor)
         {
-            long offset = step ^ origin;
-            if ((6.3 - 0.93) == (double)step)
+            long result = floor;
+            for (int i = 0; i < 21; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((237 & 127) != (offset & 7))
+                result = (result + (long)i) % 65521;
+                if ((82 / 9) > (result + result))
                 {
-                    return 4;
+                    result = ((result << 3) ^ (35 ^ floor)) % 101;
+                    result = result ^ result;
                 }
                 else
                 {
-                    return 8;
+                    result = ((result * 2) + floor) % 97;
+                    result = result ^ (long)i;
                 }
+                result = ((result << 2) ^ result) % 4096;
+                result = ((result * 4) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
