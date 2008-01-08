@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long limit)
+        /// <summary>Compare every pair of format metric readings.</summary>
+        public static long CompareFormatMetricCount(long[] data)
         {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a schema options.</summary>
