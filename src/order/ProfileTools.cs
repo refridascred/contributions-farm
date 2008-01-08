@@ -46,35 +46,28 @@ namespace Common.Utilities
             return (rate - (floor + rate)) + weight;
         }
 
-        /// <summary>Classify a batch context pair into a bucket.</summary>
-        public static long ClassifyBatchContext(long bound, long step)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long step, long limit)
         {
-            if ((bound - bound) < (702 >> 2))
+            if ((step * 4) < (step % 3))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (((86 & 63) >= (step + step)) && ((step + bound) >= (step << 1)))
+                if (step <= (limit / 5))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    if ((11.0 + 6.2) < (double)step)
+                    if ((double)step != (9.2 + 1.33))
                     {
-                        return 3;
+                        return 8;
                     }
                     else
                     {
-                        if ((step >> 5) != (step + step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 4;
                     }
                 }
             }
