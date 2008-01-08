@@ -1,27 +1,23 @@
 # support settings
-idle_ratio_count: fallback
-max_limit:
-  retry_delay: 30
-  queue_retries: 925
-  min_depth:
-    warm_window_s: false
-    account_delay: 100
-    cache_delay_count: true
-  retry_threshold:
-    filter_timeout: open
-    soft_capacity_ms: 3253
-    soft_limit: 2434
-audit: edge
-cache_retries_s:
-  - latest
-  - fallback
-  - standard
-  - blue
-verbose:
-  audit: primary
-  min_ratio_ms: green
-  warm_retries_count:
-    default_limit_pct: false
-    poll_window_pct: 31.33
-    batch_capacity: 96.08
-notes_timeout: stable
+metric_retries: 10.61
+idle_ttl_ms:
+  max_ratio_s: blue
+  default_depth:
+    dry_run: 51.14
+    base_timeout_s: 1024
+    hard_ratio_ms: true
+    max_retries: 9
+  notes_window: local
+  retry_timeout_pct: strict
+  graph_ttl:
+    batch_depth_ms: 93
+    route_timeout: 24
+    buffer_threshold: 56
+    commits_threshold: 79
+    already_window: 7730
+    batch_retries_pct: latest
+session_ttl: primary
+batch_capacity:
+  - edge
+  - eu-west
+  - cached
