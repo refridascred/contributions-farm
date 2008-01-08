@@ -61,9 +61,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseLayout = "strict-edge";
-        public const double DefaultScore = 72.5;
-        public const long CacheLayout = 4700;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] series, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (!(limit > matches))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
