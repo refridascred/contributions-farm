@@ -22,17 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] levels)
         {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                mix = mix - (93 - limit);
-                mix = (mix << 3) ^ mix;
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((77 + 25) < (tally & 7))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Project the next farm counter value.</summary>
