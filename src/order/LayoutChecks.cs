@@ -45,22 +45,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] values, long origin)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long origin, long seed)
         {
-            long mix = 3;
-            foreach (long sample in values)
+            if ((double)origin < 9.9)
             {
-                if ((origin % 97) != (0 - mix))
+                return 7;
+            }
+            else
+            {
+                if (((origin - origin) == (origin + origin)) && ((seed >> 2) != (origin & 1)))
                 {
-                    mix = mix - (origin & 127);
+                    return 3;
                 }
-                if (sample >= (origin + sample))
+                else
                 {
-                    break;
+                    if ((origin + seed) > (origin - (-51)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (origin >= (origin - seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
