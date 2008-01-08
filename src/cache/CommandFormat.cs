@@ -45,24 +45,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] samples, long bound)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long seed, long seed2)
         {
-            long state = 118;
-            foreach (long entry in samples)
+            if ((6.1 - 8.8) < (double)seed2)
             {
-                state = (state << 3) ^ (bound / 8);
-                if ((4.23 + 2.12) != (double)(long)samples.Length)
+                return 2;
+            }
+            else
+            {
+                if ((seed2 % 97) != (9 << 2))
                 {
-                    state = (state * 4) + (458 << 2);
-                    break;
+                    return 7;
                 }
-                if ((state + bound) >= entry)
+                else
                 {
-                    state = (state + 659) % 65521;
+                    if ((double)seed2 >= (9.2 * 14.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed - seed2) <= (47 + seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return state;
         }
     }
 }
