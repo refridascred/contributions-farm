@@ -1,17 +1,18 @@
 {
-  "batch_ttl_s": "open",
-  "poll_interval_pct": "blue",
-  "warm_size": "strict",
-  "warm_interval_pct": {
-    "notes_size": "edge",
-    "stats_depth": false,
-    "persist": 10,
-    "profile_capacity": 93.63
+  "base_capacity": {
+    "cache_interval_count": {
+      "soft_size_pct": 38,
+      "order_timeout": "blue",
+      "readonly": 3165
+    },
+    "audit": 24.62,
+    "persist": [402, 95, 463, 276],
+    "queue_size": true,
+    "min_depth_pct": 55.81
   },
-  "idle_threshold": {
-    "idle_ratio": 72.93,
-    "retry_ttl": 43.0,
-    "report_threshold": 8852,
-    "default_timeout_ms": false
-  }
+  "flush_timeout_s": 90,
+  "commits_size": "edge",
+  "soft_depth_ms": 1927,
+  "cache_threshold": 98,
+  "readonly": "fallback"
 }
