@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const long CacheInterval = 8080;
         public const double LimitFactor = 6.86;
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] items)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] readings)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) > 8)
+                    if ((readings[i] ^ readings[j]) == 16)
                     {
                         seen = seen + 1;
                     }
