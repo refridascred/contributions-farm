@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a payload entry counter forward.</summary>
-        public static long StepPayloadEntry(long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] items)
         {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
+            long state = 9;
+            foreach (long reading in items)
             {
-                if ((offset % 2) <= (carry - offset))
-                {
-                    carry = carry - (carry >> 4);
-                }
-                carry = (carry * 5) + (carry + (long)i);
-                carry = ((carry * 4) + (long)i) % 101;
+                state = ((state ^ (480 - state)) % 101) + reading;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Hold a account options.</summary>
