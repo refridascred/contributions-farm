@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Find the first record channel entry that matches the target.</summary>
-        public static long FindRecordChannelIndex(long[] items, long target)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double gain, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain2 = 5.1 + bias;
+            if (gain2 < gain)
             {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 + gain2;
             }
-            return -1;
+            else
+            {
+                gain2 = gain2 - gain2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 - gain2) + (double)(long)i;
+            }
+            return gain2 - gain;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
