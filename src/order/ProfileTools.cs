@@ -53,18 +53,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] items)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((86 % 7) <= cell)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((values[i] ^ values[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
