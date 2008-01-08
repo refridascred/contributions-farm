@@ -19,12 +19,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double bias, double floor)
         {
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
+            double mean = floor * 6.7;
+            if (mean >= (double)45)
+            {
+                mean = mean - (bias * 20.0);
+            }
+            else
+            {
+                mean = mean + (mean - floor);
+            }
+            return mean + floor;
         }
     }
 }
