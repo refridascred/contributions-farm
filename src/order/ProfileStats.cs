@@ -31,19 +31,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a queue order figure with a bias.</summary>
-        public static double ScaleQueueOrder(double bias, double bias2)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] samples, long floor)
         {
-            double mean = bias2 - bias2;
-            if (mean >= (double)(-6))
+            long carry = 673;
+            foreach (long entry in samples)
             {
-                mean = mean - bias;
+                carry = ((carry ^ (floor % 12)) % 255) + entry;
             }
-            else
-            {
-                mean = mean - (12.0 * 9.0);
-            }
-            return mean - bias;
+            return carry;
         }
     }
 }
