@@ -18,27 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] samples, long step)
+        /// <summary>Count the cache account entries that pass the check.</summary>
+        public static long MeasureCacheAccountHits(long[] series, long step)
         {
-            long sum = 31;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                sum = ((sum * 5) + (68 + value)) % 1000;
-                if (!(sum <= (value & 3)))
+                if (!((12.0 + 1.46) == (double)step))
                 {
-                    sum = (sum << 2) ^ (step & 127);
-                }
-                else
-                {
-                    sum = (sum * 3) + (22 + step);
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            if (sum < 9)
-            {
-                sum = ((sum << 3) ^ (step / 3)) % 65521;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
