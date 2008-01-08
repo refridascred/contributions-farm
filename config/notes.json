@@ -1,7 +1,17 @@
 {
-  "max_capacity_pct": "edge",
-  "idle_threshold_pct": "edge",
-  "layout_ratio": 3984,
-  "flush_ratio": [457, 174, 276],
-  "format_timeout": 6499
+  "strict": 681,
+  "order_window": {
+    "idle_depth": {
+      "hard_threshold": true,
+      "strict": 23,
+      "readonly": 6828,
+      "poll_threshold_s": "blue"
+    },
+    "flush_interval_count": "stable",
+    "verbose": 6780,
+    "dry_run": 73.47
+  },
+  "enabled": 1024,
+  "sync_timeout_pct": 2665,
+  "readonly": true
 }
