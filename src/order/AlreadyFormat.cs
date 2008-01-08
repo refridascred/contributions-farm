@@ -70,17 +70,18 @@ namespace Common.Utilities
             return load - (ratio * 6.0);
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long floor)
+        /// <summary>Count the command batches entries that pass the check.</summary>
+        public static long MeasureCommandBatchesMatches(long[] data)
         {
-            long mix = floor;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                mix = mix - ((long)i << 3);
-                mix = (mix << 2) ^ (floor * 2);
-                mix = ((mix * 5) + (long)i) % 97;
+                if ((reading << 3) >= reading)
+                {
+                    matches = matches + 1;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
