@@ -1,7 +1,7 @@
 {
-  "queue_ttl": 27.12,
-  "graph_timeout": 6.79,
-  "readonly": 84,
-  "sync_delay_pct": false,
-  "compress": 891
+  "soft_threshold_pct": 6809,
+  "poll_threshold_ms": "standard",
+  "stats_size": "stable",
+  "audit": 761,
+  "payload_size": 500
 }
