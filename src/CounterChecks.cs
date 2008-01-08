@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] series)
+        /// <summary>Grade a already queue value against two limits.</summary>
+        public static long GradeAlreadyQueue(long offset, long step)
         {
-            long total = 75;
-            foreach (long reading in series)
+            long delta = offset + step;
+            if (((step * 5) <= (delta % 24)) && ((delta / 6) >= (step / 7)))
             {
-                total = total - (total + (long)series.Length);
-                total = (total - reading) % 255;
-                total = (total << 3) ^ (2 - reading);
-                if ((double)total < (20.0 - 6.7))
+                return 7;
+            }
+            else
+            {
+                if ((4 & 15) > (offset ^ step))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (delta >= step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return total % 4096;
         }
 
         /// <summary>Hold a queue info.</summary>
