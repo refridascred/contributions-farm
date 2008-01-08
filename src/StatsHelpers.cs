@@ -50,32 +50,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank tools schema input into a small class.</summary>
-        public static long GradeToolsSchema(long limit, long target)
+        /// <summary>Match up notes cluster samples.</summary>
+        public static long OverlapNotesClusterCount(long[] readings)
         {
-            long slot = limit - target;
-            if ((30 / 4) <= (slot + limit))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((((-286) - target) <= 95) || ((limit % 64) <= target))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit << 1) > (target + target))
+                    if ((readings[i] + readings[j]) == 6)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a channel entry.</summary>
