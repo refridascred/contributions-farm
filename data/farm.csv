@@ -1,7 +1,9 @@
-id,rank,active,score
-1,234,edge,69.46
-2,655,32.26,2.13
-3,95.19,eu-west,edge
-4,847,82.4,96.08
-5,44.28,955,69.1
-6,54.13,457,edge
+id,active,ratio
+1,5,green
+2,cached,fallback
+3,53.22,700
+4,blue,26
+5,13.84,100
+6,935,fallback
+7,98.74,687
+8,798,77.93
