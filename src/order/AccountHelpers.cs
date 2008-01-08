@@ -74,21 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 954;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((state + state) > (2 & 255))
                 {
-                    if ((items[i] - items[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((((state << 3) ^ (16 ^ state)) % 101) + datum) + origin;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
