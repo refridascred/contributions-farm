@@ -30,15 +30,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double weight, double offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long bound)
         {
-            double mean = weight + (double)(-7);
-            if (mean < offset)
+            long anchor = bound;
+            for (int i = 0; i < 23; i++)
             {
-                mean = mean - (3.54 - offset);
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return mean - (double)(-943);
+            return anchor;
         }
     }
 }
