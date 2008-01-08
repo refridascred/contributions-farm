@@ -71,24 +71,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long origin, long limit)
+        /// <summary>Count the context cluster entries that pass the check.</summary>
+        public static long CountContextClusterHits(long[] samples)
         {
-            if ((double)origin != (double)(-602))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((43 ^ 663) == (limit >> 1))
+                if (8 < (hits + hits))
                 {
-                    return 0;
+                    hits = (hits + 1) + value;
                 }
                 else
                 {
-                    return 1;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
