@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Find the first record channel entry that matches the target.</summary>
+        public static long FindRecordChannelIndex(long[] items, long target)
         {
-            Done,
-            Retry,
-            New,
-            Closed,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
