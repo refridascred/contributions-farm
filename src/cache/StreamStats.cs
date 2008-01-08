@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 5538;
-        public const string StepEditor = "strict-v2";
-        public const long CacheInterval = 8080;
-        public const double LimitFactor = 6.86;
+        /// <summary>Accumulate notes stats samples.</summary>
+        public static long ScoreNotesStats(long[] data, long offset)
+        {
+            long mark = 405;
+            foreach (long reading in data)
+            {
+                if ((4 + mark) <= (mark % 12))
+                {
+                    mark = (mark ^ offset) % 97;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (3 + reading);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Match up context samples.</summary>
         public static long PairContextCount(long[] readings)
