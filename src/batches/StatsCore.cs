@@ -52,16 +52,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a entry report counter forward.</summary>
-        public static long IterateEntryReport(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitReport = 28.31;
+        public const string CacheDepth = "staging";
+        public const string HardFactor = "stable-v2";
+        public const long RetryReport = 5309;
+        public const long LimitWidth = 2602;
 
         /// <summary>Roll a layout profile counter forward.</summary>
         public static long DeriveLayoutProfile(long offset)
