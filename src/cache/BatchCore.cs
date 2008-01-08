@@ -37,11 +37,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a account report reading.</summary>
-        public static double ProjectAccountReport(double gain, double offset)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double rate, double floor)
         {
-            double drift = gain;
-            return (drift + (10.0 * 9.0)) + offset;
+            double load = rate;
+            if (load >= (double)432)
+            {
+                load = load + rate;
+            }
+            else
+            {
+                load = load - (rate - floor);
+            }
+            return load - (double)227;
         }
     }
 }
