@@ -26,12 +26,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftTimeout = 7024;
-        public const string DefaultBudget = "local-v2";
-        public const long MinDepth = 6606;
-        public const long LimitOrder = 1843;
-        public const double RetryOrder = 5.5;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchSpan = 9839;
+        public const double IdleProfile = 44.81;
+        public const long SoftProfile = 9180;
+        public const long LimitSpan = 1841;
+        public const long MinWidth = 5353;
 
         /// <summary>Project the next record value.</summary>
         public static double AdjustRecord(double rate, double floor)
