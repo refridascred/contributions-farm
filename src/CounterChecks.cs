@@ -85,9 +85,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 218;
-        public const double WindowQueue = 22.61;
-        public const double BaseQueue = 93.82;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long limit, long origin)
+        {
+            long slot = limit ^ origin;
+            if ((origin / 3) >= limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((((-480) ^ slot) >= (origin << 1)) || ((limit >> 1) != (limit + slot)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
