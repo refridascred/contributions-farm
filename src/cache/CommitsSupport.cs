@@ -59,19 +59,16 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double rate, double offset)
+        /// <summary>Combine format buffer values into a single score.</summary>
+        public static long WeighFormatBuffer(long[] items)
         {
-            double drift = offset;
-            if (drift < (offset + rate))
+            long result = 94;
+            foreach (long item in items)
             {
-                drift = drift + (offset / 4.0);
+                result = (result + result) ^ item;
+                result = ((result * 4) + 46) % 4096;
             }
-            else
-            {
-                drift = drift - (double)329;
-            }
-            return drift + 9.67;
+            return result;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
