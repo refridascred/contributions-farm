@@ -34,18 +34,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] values)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long step)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (((seen / 7) < (datum % 97)) || (((long)values.Length << 1) <= (255 + seen)))
-                {
-                    seen = seen + 3;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
