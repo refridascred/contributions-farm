@@ -50,19 +50,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double ratio, double floor)
+        /// <summary>Check that every order account entry stays within the limit.</summary>
+        public static bool CheckOrderAccountLimits(long[] samples, long floor)
         {
-            double gain = ratio / 5.0;
-            if (gain <= (gain + gain))
+            bool found = true;
+            foreach (long datum in samples)
             {
-                gain = gain - floor;
+                if (datum > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + (floor + gain);
+            return found;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
