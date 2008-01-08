@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            Done,
-            Paused,
-            Queued,
+            public bool Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate account samples.</summary>
