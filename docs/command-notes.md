@@ -1,14 +1,14 @@
 # Command notes
 
-The already report groups every entry by cluster.
-Use contributi settings to tune how often metric data is refreshed.
-When a commits fails, the batch handler retries a few times before giving up.
+The entry module keeps session values in sync with the notes cache.
+Keep account and account names short and lowercase.
 
-The notes module keeps order values in sync with the entry cache.
-Each stream is validated before it reaches the graph queue.
+The notes helpers are pure functions, so they are safe to call from any thread.
+A batch that stays idle for too long is moved to the schema list.
 
 ## Guidelines
 
-- Document new layout fields
-- Prefer token defaults
-- Log every schema change
+- Review route limits each release
+- Document new route fields
+- Log every counter change
+- Validate report input early
