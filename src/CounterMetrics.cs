@@ -25,12 +25,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] data, long step)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((seen <= (16 + reading)) && ((step / 8) <= (reading / 3)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
