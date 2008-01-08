@@ -36,25 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long origin, long step)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] data)
         {
-            long lane = origin - step;
-            if ((515 & 31) > (139 - lane))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (step > (origin + lane))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    if ((data[i] ^ data[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
