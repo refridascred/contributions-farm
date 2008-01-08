@@ -42,15 +42,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long offset)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
