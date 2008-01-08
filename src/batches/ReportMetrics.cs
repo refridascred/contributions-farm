@@ -25,13 +25,13 @@ namespace Common.Utilities
         public const string MinQueue = "legacy-1";
         public const double BaseQueue = 95.29;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Stale,
             Locked,
-            Ready,
-            Closed,
+            Draft,
+            Synced,
+            Dropped,
         }
     }
 }
