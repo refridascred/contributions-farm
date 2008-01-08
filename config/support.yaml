@@ -1,5 +1,16 @@
 # support settings
-editor_retries: 100
-readonly: false
-max_capacity_pct: 1789
-poll_ratio_pct: 95
+cache_ratio_pct: 83.71
+compress: 60
+base_capacity:
+  - 351
+  - 423
+hard_threshold_count: 83.76
+stream_interval:
+  min_limit_ms: primary
+  route_size: 39.42
+  metric_delay: 19.82
+  base_size:
+    - cached
+    - local
+    - eu-west
+    - blue
