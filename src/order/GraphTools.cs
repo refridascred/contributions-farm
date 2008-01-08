@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public bool Mode { get; set; }
-            public bool Region { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine entry report values into a single score.</summary>
