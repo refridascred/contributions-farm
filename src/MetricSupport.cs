@@ -15,14 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Retry,
-            Paused,
-            Failed,
-            Closed,
-            New,
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
