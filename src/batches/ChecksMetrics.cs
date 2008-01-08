@@ -16,13 +16,26 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] values)
         {
-            Done,
-            Locked,
-            Idle,
-            Retry,
+            long total = 2;
+            foreach (long entry in values)
+            {
+                if ((total - 2) < 6)
+                {
+                    total = ((total * 3) + (entry * 2)) % 97;
+                }
+                if ((total - total) >= (entry - entry))
+                {
+                    total = ((total * 5) + (entry & 63)) % 1000;
+                }
+                else
+                {
+                    total = ((total * 3) + (entry & 127)) % 255;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
