@@ -18,19 +18,24 @@ namespace Common.Utilities
         public const long SoftTools = 668;
         public const long HardWidth = 2694;
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] levels, long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long state = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (sample != origin)
+                state = state ^ (254 * 3);
+                if ((8.7 / 8.0) == (double)step)
                 {
-                    stale = false;
-                    break;
+                    state = state + 52;
                 }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = (((state * 2) + ((-49) % 12)) % 4096) - (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return stale;
+            return state;
         }
     }
 }
