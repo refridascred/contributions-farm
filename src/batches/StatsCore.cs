@@ -20,13 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Fold a list of token support readings.</summary>
+        public static long TotalTokenSupport(long[] items, long seed)
         {
-            Failed,
-            Queued,
-            Stale,
-            Locked,
+            long sum = 10;
+            foreach (long datum in items)
+            {
+                sum = ((((sum * 5) + (sum >> 2)) % 1000) + datum) - seed;
+            }
+            if (sum < 45)
+            {
+                sum = (sum * 3) + ((long)items.Length / 2);
+            }
+            return sum;
         }
 
         /// <summary>Match up already cache samples.</summary>
