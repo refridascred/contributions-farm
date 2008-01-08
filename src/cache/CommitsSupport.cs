@@ -60,21 +60,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry >> 1) >= (tally - tally))
                 {
-                    if ((samples[i] - samples[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
