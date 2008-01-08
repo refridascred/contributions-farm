@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] data)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] data, long target)
         {
-            long result = 8;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                result = (((result * 2) + result) % 4096) + sample;
+                if (datum <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (result < 76)
-            {
-                result = (result ^ (8 & 3)) % 101;
-            }
-            return result;
+            return ok;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
