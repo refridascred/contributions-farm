@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double rate, double floor)
         {
-            Stale,
-            Closed,
-            Queued,
-            Draft,
+            double drift = (floor + 6.1) / 7.0;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = ((drift - drift) + (double)(long)i) + rate;
+            }
+            return drift + (double)47;
         }
 
         /// <summary>Describe the session status values.</summary>
