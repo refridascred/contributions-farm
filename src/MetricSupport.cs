@@ -15,17 +15,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] series, long offset)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Paused,
+            Failed,
+            Closed,
+            New,
         }
 
         /// <summary>Define order limits and defaults.</summary>
