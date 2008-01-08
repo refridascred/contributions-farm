@@ -13,18 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] values, long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if (((double)bound <= 0.79) || (hits > (hits - hits)))
+                if (value <= target)
                 {
-                    hits = (hits + 1) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Look up the position of a command context sample.</summary>
