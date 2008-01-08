@@ -36,32 +36,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long floor, long step)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long cur = floor ^ step;
-            if (!((double)floor != (double)cur))
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor >= (1 << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step == (8.0 - 8.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
