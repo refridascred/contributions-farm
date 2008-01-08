@@ -1,4 +1,5 @@
 # entry settings
-default_delay: 67.55
-audit: green
-flush_interval_pct: true
+idle_timeout_s: stable
+persist: 60
+cache_timeout_pct: 8491
+checks_threshold: 83
