@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Count the stream context entries that pass the check.</summary>
+        public static long CountStreamContextHits(long[] values)
         {
-            Active,
-            Paused,
-            Synced,
-            Locked,
-            Pending,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((entry >> 5) >= (entry >> 2))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a layout info.</summary>
