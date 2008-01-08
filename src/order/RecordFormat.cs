@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] readings, long floor)
         {
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
-            public bool Weight { get; set; }
+            long mark = -7;
+            foreach (long item in readings)
+            {
+                if (floor <= item)
+                {
+                    mark = (mark << 2) ^ ((long)readings.Length ^ item);
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (mark & 15);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Project the next filter value.</summary>
