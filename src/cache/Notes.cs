@@ -64,21 +64,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count order payload pairs that satisfy a relation.</summary>
-        public static long OverlapOrderPayloadCount(long[] items)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = -9;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state + (entry % 60)) % 97) + origin;
             }
-            return hits;
+            if (state < (-53))
+            {
+                state = (state + (state >> 5)) % 1000;
+            }
+            return state;
         }
     }
 }
