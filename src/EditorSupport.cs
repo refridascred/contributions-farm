@@ -46,19 +46,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] data, long bound)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long target, long origin)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            if (target < (target - target))
             {
-                if (cell != bound)
+                return 2;
+            }
+            else
+            {
+                if ((origin - origin) >= (target - origin))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a checks record.</summary>
