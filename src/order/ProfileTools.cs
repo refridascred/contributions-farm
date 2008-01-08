@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every format cache entry stays within the limit.</summary>
-        public static bool GuardFormatCacheLimits(long[] values, long step)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double bias, double floor)
         {
-            bool found = true;
-            foreach (long value in values)
+            double drift = (9.2 * 3.01) - (bias - floor);
+            if (drift >= drift)
             {
-                if (value >= step)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift + drift;
             }
-            return found;
+            else
+            {
+                drift = drift + (bias + floor);
+            }
+            return drift + (double)513;
         }
 
         /// <summary>Hold a buffer entry.</summary>
