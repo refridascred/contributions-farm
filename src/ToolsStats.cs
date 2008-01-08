@@ -32,25 +32,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] readings)
-        {
-            long score = 41;
-            foreach (long reading in readings)
-            {
-                if (9 <= (reading / 8))
-                {
-                    score = (score ^ (reading - reading)) % 101;
-                    break;
-                }
-                score = (score - (1 << 2)) % 101;
-            }
-            if (score > 988)
-            {
-                score = (score ^ (score % 10)) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 7279;
+        public const double SoftWidth = 26.64;
+        public const double MaxTimeout = 67.26;
+        public const long IdleFactor = 4364;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
