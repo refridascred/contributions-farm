@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Stale,
-            Retry,
-            Done,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardLevel = 1583;
+        public const long WindowCount = 4178;
+        public const double MinEditor = 36.51;
+        public const long MinBudget = 9902;
+        public const long LimitRatio = 5847;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BaseEditor = 2767;
