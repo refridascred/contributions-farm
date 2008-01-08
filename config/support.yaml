@@ -1,14 +1,8 @@
 # support settings
-min_delay_pct:
-  compress:
-    default_ttl: 1686
-    max_interval_pct: 7967
-    cache_delay: 5.97
-  graph_retries:
-    - blue
-    - open
-  readonly: 4171
-farm_delay: 3227
-flush_depth: true
-idle_window_ms: local
-default_capacity: primary
+graph_depth: 60
+batch_interval: 4461
+readonly:
+  - 430
+  - 490
+  - 157
+  - 368
