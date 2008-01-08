@@ -17,5 +17,12 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
