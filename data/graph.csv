@@ -1,8 +1,6 @@
-id,label,score,region,ratio
-1,95.74,24.67,staging,656
-2,61.25,378,758,211
-3,247,394,835,117
-4,645,849,blue,294
-5,27,35.59,752,702
-6,231,standard,378,strict
-7,latest,legacy,905,64.2
+id,label,weight,active
+1,green,59,36.21
+2,790,blue,570
+3,15.29,42.19,314
+4,864,stable,983
+5,81,blue,322
