@@ -13,12 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public bool Score { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 2767;
+        public const long HardRatio = 2816;
+        public const long CacheEditor = 7118;
+        public const double WindowWidth = 72.78;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long FoldGraph(long[] levels, long target)
