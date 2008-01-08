@@ -26,15 +26,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double bias, double span)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] samples, long target)
         {
-            double weight = (double)(5 + 61);
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                weight = ((weight - (double)868) - (double)(long)i) - span;
+                if (datum > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight + bias;
+            return ready;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
