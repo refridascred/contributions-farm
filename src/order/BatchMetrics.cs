@@ -65,15 +65,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next graph checks value from a seed.</summary>
-        public static long StepGraphChecks(long offset)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long bound, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
+            if (((3.0 * 9.7) == (double)bound) && ((limit >> 5) < bound))
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if ((bound + bound) > bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit & 31) > 66)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound + bound) > bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
