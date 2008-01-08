@@ -37,11 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Find the first batches cluster entry that matches the target.</summary>
+        public static long SeekBatchesClusterIndex(long[] series, long floor)
         {
-            public double Count { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
