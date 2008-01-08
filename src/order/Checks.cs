@@ -16,13 +16,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Digest a series of contributi already entries.</summary>
+        public static long TotalContributiAlready(long[] items)
         {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
+            long mix = 920;
+            foreach (long item in items)
+            {
+                if (((double)mix < (18.0 / 5.0)) && ((mix - item) >= ((-630) >> 5)))
+                {
+                    mix = mix ^ (mix << 2);
+                }
+                if (((97 + mix) < (3 + item)) && ((item >> 5) == (item + item)))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
