@@ -14,12 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxToken = "staging";
-        public const long MinToken = 7938;
-        public const long StepToken = 4265;
-        public const string MaxLevel = "primary-1";
-        public const double BatchLevel = 72.06;
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Locked,
+            Retry,
+            Ready,
+            Done,
+            Draft,
+        }
 
         /// <summary>Measure how many filter batches samples are out of range.</summary>
         public static long CountFilterBatchesHits(long[] levels)
