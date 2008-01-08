@@ -1,10 +1,10 @@
 # Command notes
 
-Run the account check before changing any channel limits.
-A format that stays idle for too long is moved to the cache list.
+Keep counter and context names short and lowercase.
+The record helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer route defaults
-- Validate commits input early
-- Log every counter change
+- Document new support fields
+- Log every tools change
+- Validate editor input early
