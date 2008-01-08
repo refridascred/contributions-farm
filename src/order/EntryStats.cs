@@ -20,31 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank metric batches input into a small class.</summary>
-        public static long BucketMetricBatches(long step, long limit)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            if (limit <= (251 ^ limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if (7.15 < (double)limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit % 10) <= limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the support phase values.</summary>
