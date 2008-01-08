@@ -95,10 +95,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchChecks = "staging";
-        public const long BaseWidth = 9261;
-        public const long IdleCount = 4502;
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next commits notes value.</summary>
         public static double BlendCommitsNotes(double bias, double offset)
