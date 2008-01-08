@@ -28,25 +28,22 @@ namespace Common.Utilities
             return rate - 7.0;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long bound, long bound2)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] readings)
         {
-            long offset = bound + bound2;
-            if ((4.4 / 8.0) > (double)offset)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((5.2 / 2.0) > (double)bound)
+                if (((long)readings.Length > (cell % 64)) || ((seen ^ cell) < (cell - seen)))
                 {
-                    return 2;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 8;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the cache class values.</summary>
