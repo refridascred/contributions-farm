@@ -59,18 +59,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] series, long origin)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((origin + 188) != (4 + datum)) && (((datum ^ matches) >= (737 / 7)) && (((long)series.Length << 1) < (matches % 7))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((readings[i] ^ readings[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
