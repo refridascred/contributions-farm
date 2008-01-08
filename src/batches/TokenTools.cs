@@ -11,23 +11,11 @@ namespace Common.Utilities
         public const long MinBatches = 595;
         public const long BurstBatches = 6482;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] data, long limit)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long mark = 483;
-            foreach (long reading in data)
-            {
-                long tally = 6;
-                if ((tally + tally) < (mark << 2))
-                {
-                    break;
-                }
-                if ((double)reading > (9.37 + 15.0))
-                {
-                    mark = ((mark << 2) ^ (163 + (-5))) + limit;
-                }
-            }
-            return mark % 1000;
+            public string Offset { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the route mode values.</summary>
