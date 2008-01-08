@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Draft,
-            Retry,
-            New,
-            Idle,
+            Failed,
+            Locked,
+            Queued,
+            Closed,
+            Ready,
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
