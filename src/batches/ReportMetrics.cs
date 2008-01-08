@@ -32,13 +32,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double gain, double span)
         {
-            Paused,
-            Pending,
-            Active,
-            Closed,
+            double bias = gain;
+            if (bias <= (gain + span))
+            {
+                bias = bias - (span * 1.0);
+            }
+            else
+            {
+                bias = bias - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - (bias - bias);
         }
     }
 }
