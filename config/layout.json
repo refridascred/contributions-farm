@@ -1,13 +1,6 @@
 {
-  "commits_size": 81.49,
-  "warm_ratio_s": 962,
-  "verbose": {
-    "compress": "stable",
-    "layout_depth": 250,
-    "commits_size": 90.76,
-    "dry_run": "green",
-    "soft_size": 95.5
-  },
-  "soft_threshold": 46.25,
-  "audit": 31.69
+  "persist": "strict",
+  "metric_ratio": true,
+  "sync_capacity": false,
+  "retry_capacity_ms": false
 }
