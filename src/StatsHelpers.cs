@@ -21,12 +21,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Stale,
-            Closed,
-            Failed,
+            Done,
+            Synced,
+            Retry,
         }
 
         /// <summary>Project the next farm counter value.</summary>
