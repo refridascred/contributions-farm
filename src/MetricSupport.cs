@@ -24,39 +24,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long limit, long step)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long slot = limit + step;
-            if ((limit >> 2) < (limit & 31))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((slot + (-40)) == (step & 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((step / 9) <= (limit - slot)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit & 1) < (slot % 10))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Retry,
+            Locked,
+            Closed,
+            Idle,
         }
     }
 }
