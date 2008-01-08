@@ -13,14 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Failed,
-            Draft,
-            New,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseFactor = "legacy";
+        public const double WindowTimeout = 81.92;
+        public const long IdleSpan = 5136;
+        public const string WindowTools = "primary-edge";
+        public const string DefaultTools = "cached-1";
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterHits(long[] values, long target)
