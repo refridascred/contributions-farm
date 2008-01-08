@@ -25,11 +25,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 5753;
-        public const long CacheScore = 1672;
-        public const long DefaultWidth = 1332;
-        public const long BurstOrder = 9801;
-        public const long LimitOrder = 7010;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long limit, long step)
+        {
+            long slot = limit + step;
+            if ((limit >> 2) < (limit & 31))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((slot + (-40)) == (step & 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((step / 9) <= (limit - slot)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit & 1) < (slot % 10))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
