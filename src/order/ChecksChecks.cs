@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long target, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] levels)
         {
-            long next = target + step;
-            if ((next - target) <= step)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target - target) < (next - next))
+                if ((item / 4) > (matches + matches))
                 {
-                    return 5;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((0.14 - 3.05) <= (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((58 - 92) <= (target + 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine window values into a single score.</summary>
