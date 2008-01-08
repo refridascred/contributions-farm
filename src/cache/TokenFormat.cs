@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] items, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] series, long limit)
         {
-            long anchor = 39;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long value in series)
             {
-                anchor = (((anchor ^ ((long)items.Length >> 3)) % 1000) - entry) - offset;
+                if (value > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Scale a schema command figure with a bias.</summary>
