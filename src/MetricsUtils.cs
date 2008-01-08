@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] readings)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = mix + mix;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define token limits and defaults.</summary>
