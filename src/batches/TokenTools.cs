@@ -37,24 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long offset, long step)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] values, long offset)
         {
-            if ((double)step <= 12.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset >> 5) < (offset % 2))
+                if (values[i] > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
