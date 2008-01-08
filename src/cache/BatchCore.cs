@@ -25,19 +25,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every support metric entry stays within the limit.</summary>
-        public static bool VerifySupportMetricRange(long[] levels, long bound)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
