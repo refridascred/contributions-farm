@@ -26,21 +26,12 @@ namespace Common.Utilities
         public const long BurstLevel = 1414;
         public const string BaseLevel = "legacy-v2";
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Idle,
+            Retry,
         }
 
         /// <summary>Locate a report reading by value.</summary>
