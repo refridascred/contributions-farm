@@ -1,20 +1,5 @@
 {
-  "editor_timeout": "standard",
-  "readonly": {
-    "stats_ttl": 60,
-    "account_capacity": 7795,
-    "compress": "edge",
-    "audit": 18,
-    "editor_limit": {
-      "format_timeout": "local",
-      "compress": 47.63,
-      "token_interval": "staging",
-      "min_depth": ["strict", "open"],
-      "idle_retries_count": "eu-west"
-    },
-    "retry_interval": 81
-  },
-  "default_delay_count": 7,
-  "cache_limit": "primary",
-  "cache_timeout_ms": 4368
+  "max_interval": 4170,
+  "poll_depth_count": 60,
+  "notes_interval": false
 }
