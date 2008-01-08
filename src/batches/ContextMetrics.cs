@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] series)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            long state = 41;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((double)datum == (13.0 + 0.44))
                 {
-                    state = (state << 3) ^ ((long)i2 + offset);
+                    state = state + (state >> 5);
                 }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return state % 4096;
         }
 
         /// <summary>Project the next notes value.</summary>
