@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double scale, double bias)
         {
-            Dropped,
-            Idle,
-            New,
-            Paused,
-            Done,
+            double drift = (bias / 6.0) * 1.0;
+            if (drift < (1.0 + drift))
+            {
+                drift = drift - scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (bias / 6.0)) + (double)(long)i;
+            }
+            return drift + scale;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
