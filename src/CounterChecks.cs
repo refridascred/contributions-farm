@@ -27,21 +27,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] samples)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample > limit)
                 {
-                    if ((samples[i] + samples[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Check that every queue contributi entry stays within the limit.</summary>
