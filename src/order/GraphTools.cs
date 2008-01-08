@@ -25,21 +25,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up filter window samples.</summary>
-        public static long OverlapFilterWindowCount(long[] readings)
+        /// <summary>Combine command already values into a single score.</summary>
+        public static long ScoreCommandAlready(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 293;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum >> 1) == (datum + datum))
                 {
-                    if ((readings[i] - readings[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = anchor + anchor;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (anchor * 5);
                 }
             }
-            return count;
+            if (anchor < 15)
+            {
+                anchor = (anchor ^ (anchor * 3)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of account readings.</summary>
