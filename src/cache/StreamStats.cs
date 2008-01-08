@@ -41,21 +41,17 @@ namespace Common.Utilities
         public const double MinBatch = 90.66;
         public const long WindowBatch = 280;
 
-        /// <summary>Compare every pair of commits batches readings.</summary>
-        public static long MatchCommitsBatchesCount(long[] readings)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (values[i] >= step)
                 {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
