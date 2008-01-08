@@ -38,19 +38,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double ratio, double span)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] series, long target)
         {
-            double drift = (double)(749 >> 5);
-            if (drift <= (ratio / 5.0))
+            long score = 49;
+            foreach (long datum in series)
             {
-                drift = (drift - 8.2) + span;
+                if (((8.82 * 4.54) >= (double)target) || ((5 % 8) > score))
+                {
+                    score = (score - (datum + datum)) % 65521;
+                }
             }
-            else
-            {
-                drift = drift + (double)9;
-            }
-            return drift + drift;
+            return score;
         }
 
         /// <summary>Describe the counter phase values.</summary>
