@@ -28,39 +28,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank support tools input into a small class.</summary>
-        public static long ClassifySupportTools(long step, long limit)
-        {
-            if (!((double)limit < 20.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((7.1 * 8.67) != (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (limit <= (2 * 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((step % 7) != (step ^ limit)) && ((5.2 - 8.43) == (double)limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheTimeout = 34.53;
+        public const string BatchOrder = "stable-edge";
+        public const string IdleLevel = "latest-1";
+        public const long WindowInterval = 9953;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long PairBatchesCount(long[] readings)
