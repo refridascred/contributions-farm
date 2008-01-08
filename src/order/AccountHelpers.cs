@@ -70,14 +70,31 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long target, long step)
         {
-            Retry,
-            Pending,
-            New,
-            Synced,
-            Active,
+            if ((step - target) < 573)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target > (target * 5)) && ((4.0 * 3.0) < (double)step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target % 3) < (target & 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
