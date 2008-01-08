@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double gain, double span)
         {
-            public double Label { get; set; }
-            public double Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            double gain2 = span;
+            if (gain2 > span)
+            {
+                gain2 = (gain2 - gain2) + gain;
+            }
+            return gain2 + (double)3;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
