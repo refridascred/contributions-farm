@@ -12,12 +12,39 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long offset, long seed)
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            long delta = offset - seed;
+            if (((double)delta != (double)80) && (seed < (offset ^ seed)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)offset <= (2.69 / 5.0)) || (((-7) + seed) < (offset >> 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((seed / 8) < (delta >> 1)) || ((offset + seed) >= (509 * 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((delta ^ offset) == (offset & 1)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a format context figure with a bias.</summary>
