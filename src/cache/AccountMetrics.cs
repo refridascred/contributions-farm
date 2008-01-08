@@ -79,18 +79,16 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] samples, long origin)
+        /// <summary>Derive the next filter entry value from a seed.</summary>
+        public static long SeriesFilterEntry(long step)
         {
-            long anchor = 981;
-            foreach (long value in samples)
+            long total = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (anchor < (anchor % 5))
-                {
-                    anchor = ((anchor - (value - value)) % 97) + origin;
-                }
+                total = (total - 7) % 255;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return anchor;
+            return total;
         }
     }
 }
