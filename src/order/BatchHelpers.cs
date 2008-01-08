@@ -18,33 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long step)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((acc >> 3) == ((long)i + step)))
-                {
-                    acc = (acc * 4) + (acc - 1);
-                    acc = (acc << 3) ^ ((-20) >> 5);
-                }
-                else
-                {
-                    acc = (acc * 2) + (acc << 2);
-                }
-                if (!((double)step != (13.0 / 6.0)))
-                {
-                    acc = ((acc * 3) + (acc + acc)) % 1000;
-                    acc = ((acc * 4) + (step - (long)i)) % 255;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (long)i;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public bool Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the channel phase values.</summary>
