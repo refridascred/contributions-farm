@@ -39,31 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long floor, long floor2)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            if ((0.45 > (double)floor) && ((floor2 << 3) <= (9 + 651)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)floor >= (7.78 + 6.0)) && (((-667) + floor) == (floor2 ^ 58)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor2 & 127) != (7 + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Active,
+            Ready,
+            Retry,
         }
 
         /// <summary>Describe the notes level values.</summary>
