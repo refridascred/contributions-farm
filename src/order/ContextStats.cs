@@ -29,15 +29,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            Locked,
-            Queued,
-            Idle,
-            Failed,
-            Done,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 7771;
+        public const string WindowLevel = "latest-edge";
+        public const long SoftFactor = 531;
+        public const string IdleCommand = "latest-1";
 
         /// <summary>Accumulate graph samples.</summary>
         public static long WeighGraph(long[] readings)
