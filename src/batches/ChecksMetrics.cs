@@ -69,13 +69,13 @@ namespace Common.Utilities
             return gain + (floor + gain);
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            public long Count { get; set; }
-            public double Ratio { get; set; }
-            public double Token { get; set; }
-            public bool Score { get; set; }
+            public double Flag { get; set; }
+            public bool Region { get; set; }
+            public bool Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
