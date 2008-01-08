@@ -29,15 +29,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double bias, double floor)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            double scale = floor + (double)36;
-            if (scale >= (scale - 4.1))
-            {
-                scale = (scale + (floor / 3.0)) - bias;
-            }
-            return scale + scale;
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
