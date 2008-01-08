@@ -23,13 +23,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] values, long offset)
         {
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (12 >= (reading - seen))
+                {
+                    seen = (seen + 2) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batches stats.</summary>
