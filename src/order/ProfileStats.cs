@@ -41,12 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] data, long limit)
         {
-            public bool Score { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a contributi metric value against two limits.</summary>
