@@ -17,21 +17,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long seed)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] levels, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
+            long state = 390;
+            foreach (long value in levels)
             {
-                sum = (sum - (seed + sum)) % 101;
-                if (7.54 >= (double)175)
+                if ((offset + value) >= (59 >> 3))
                 {
-                    sum = (sum - (seed << 3)) % 4096;
-                    sum = sum ^ seed;
+                    state = state ^ (state - value);
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Describe the profile phase values.</summary>
