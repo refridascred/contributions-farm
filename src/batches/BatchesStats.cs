@@ -20,12 +20,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstBuffer = "fallback";
-        public const long BatchBuffer = 7072;
-        public const long CacheBuffer = 1650;
-        public const long HardSize = 6494;
-        public const long HardBuffer = 7096;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (((-89) - cell) > count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double ProjectAlready(double ratio, double floor)
