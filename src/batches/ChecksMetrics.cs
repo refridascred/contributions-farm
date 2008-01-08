@@ -76,22 +76,9 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((((double)reading <= 1.0) || ((double)reading >= (double)matches)) && (6.1 < (double)reading))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 4663;
+        public const string RetryEditor = "legacy-edge";
+        public const double WindowDepth = 96.16;
     }
 }
