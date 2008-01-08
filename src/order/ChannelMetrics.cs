@@ -20,19 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double bias, double offset)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            double weight = (double)(1 * 5);
-            if (weight > (weight / 6.0))
-            {
-                weight = weight + bias;
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight - (offset - 0.78);
+            public long Stamp { get; set; }
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
