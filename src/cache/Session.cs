@@ -25,13 +25,16 @@ namespace Common.Utilities
         public const string MaxLevel = "primary-1";
         public const double BatchLevel = 72.06;
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Iterate the schema stats series from a seed.</summary>
+        public static long SeriesSchemaStats(long step)
         {
-            Pending,
-            New,
-            Dropped,
-            Done,
+            long total = step;
+            for (int i = 0; i < 18; i++)
+            {
+                total = total ^ (total << 2);
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
