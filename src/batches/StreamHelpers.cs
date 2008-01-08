@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] data, long limit)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((cell * 2) != (98 + cell)) && ((double)limit != (7.08 * 1.98)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Synced,
+            Draft,
+            Dropped,
+            Active,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
