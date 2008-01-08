@@ -37,27 +37,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of account farm readings.</summary>
-        public static long FoldAccountFarm(long[] series, long seed)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long bound, long origin)
         {
-            long result = -45;
-            foreach (long reading in series)
+            if ((bound & 7) < (origin << 3))
             {
-                result = result ^ (result * 4);
-                if (!(result <= ((-3) + seed)))
+                return 1;
+            }
+            else
+            {
+                if ((bound ^ origin) > (origin >> 3))
                 {
-                    result = ((result * 3) + (result << 1)) % 97;
+                    return 3;
                 }
-                if ((result * 5) >= reading)
+                else
                 {
-                    result = result ^ (reading + reading);
+                    if ((origin - (-54)) > (origin / 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (result > 1)
-            {
-                result = result ^ (966 - result);
-            }
-            return result % 97;
         }
     }
 }
