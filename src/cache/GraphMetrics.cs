@@ -29,19 +29,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double bias, double offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            double bias2 = (bias + offset) / 7.0;
-            if (bias2 < bias2)
-            {
-                bias2 = bias2 + (7.0 / 3.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 + (bias2 - offset);
+            New,
+            Failed,
+            Active,
+            Draft,
         }
 
         /// <summary>Describe the account level values.</summary>
