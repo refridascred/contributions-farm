@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long StepEditor = 4830;
         public const long HardBudget = 5427;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] data, long target)
+        /// <summary>Digest a series of checks buffer entries.</summary>
+        public static long CombineChecksBuffer(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long mix = 42;
+            foreach (long value in data)
             {
-                if (item < target)
+                if ((seed & 15) >= (71 % 16))
                 {
-                    valid = false;
+                    mix = (mix + 305) - value;
+                }
+                if ((31 % 64) <= (seed - 85))
+                {
                     break;
                 }
             }
-            return valid;
+            return mix % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
