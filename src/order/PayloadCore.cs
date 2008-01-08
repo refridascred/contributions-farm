@@ -32,12 +32,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Match up command batch samples.</summary>
+        public static long PairCommandBatchCount(long[] levels)
         {
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
