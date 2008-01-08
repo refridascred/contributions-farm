@@ -12,31 +12,15 @@ namespace Common.Utilities
         public const long SoftSpan = 933;
         public const long DefaultChecks = 1027;
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long target, long origin)
+        /// <summary>Iterate the notes payload series from a seed.</summary>
+        public static long SeriesNotesPayload(long origin)
         {
-            if (!((double)origin == (double)0))
+            long total = origin;
+            for (int i = 0; i < 13; i++)
             {
-                return 2;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (((target + origin) >= (target - target)) && ((93 % 24) >= (target << 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target & 3) < origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
