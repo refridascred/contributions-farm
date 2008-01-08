@@ -1,6 +1,6 @@
 {
-  "readonly": "eu-west",
-  "cache_limit": ["edge", "blue", "strict"],
-  "hard_interval_ms": false,
-  "soft_size": 896
+  "idle_capacity_s": false,
+  "warm_delay_ms": 5127,
+  "idle_interval": true,
+  "base_timeout_count": "edge"
 }
