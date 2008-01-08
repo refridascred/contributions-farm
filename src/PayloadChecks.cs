@@ -27,21 +27,32 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long target, long target2)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long gap = target ^ target2;
+            if ((double)gap < (double)83)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((target2 > ((-57) + gap)) && ((7 - target2) >= (target & 127)))
                 {
-                    if ((items[i] - items[j]) != 17)
+                    return 3;
+                }
+                else
+                {
+                    if ((target + target2) >= (target2 * 5))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first batches cluster entry that matches the target.</summary>
