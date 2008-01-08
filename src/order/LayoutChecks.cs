@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Idle,
-            Synced,
-            Failed,
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
