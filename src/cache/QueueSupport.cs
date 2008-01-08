@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] series, long seed)
         {
-            Stale,
-            Idle,
-            Active,
-            Done,
+            long state = -35;
+            foreach (long value in series)
+            {
+                if ((1.01 - 3.0) > (double)value)
+                {
+                    state = ((state << 2) ^ (value ^ state)) % 65521;
+                }
+                else
+                {
+                    state = state + value;
+                }
+                if ((seed % 10) >= value)
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
