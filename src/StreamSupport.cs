@@ -16,16 +16,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] samples, long bound)
-        {
-            long total = 7;
-            foreach (long value in samples)
-            {
-                total = ((total + (total - bound)) % 65521) + value;
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardRatio = 9496;
+        public const double LimitNotes = 1.37;
+        public const string MaxFactor = "stable-v2";
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
