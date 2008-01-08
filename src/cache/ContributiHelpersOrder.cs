@@ -41,9 +41,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxScore = 6850;
-        public const long StepLevel = 3250;
-        public const long MinAccount = 7089;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
