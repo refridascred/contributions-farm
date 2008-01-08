@@ -54,11 +54,32 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double bias, double offset)
+        /// <summary>Rank tools schema input into a small class.</summary>
+        public static long GradeToolsSchema(long limit, long target)
         {
-            double load = bias;
-            return (load - bias) + offset;
+            long slot = limit - target;
+            if ((30 / 4) <= (slot + limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((((-286) - target) <= 95) || ((limit % 64) <= target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit << 1) > (target + target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a channel entry.</summary>
