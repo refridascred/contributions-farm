@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long target)
         {
-            New,
-            Stale,
-            Active,
+            long anchor = target;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = (anchor - (anchor + target)) % 65521;
+                anchor = (anchor * 4) + (anchor - target);
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a schema header.</summary>
