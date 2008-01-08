@@ -1,5 +1,5 @@
 {
-  "enabled": "green",
-  "strict": 34.06,
-  "burst_delay_count": 58.29
+  "dry_run": 71,
+  "audit": 60,
+  "flush_limit_s": false
 }
