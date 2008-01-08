@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] items, long bound)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long total = 788;
-            foreach (long item in items)
-            {
-                if ((item & 63) > bound)
-                {
-                    total = total ^ bound;
-                }
-            }
-            if (total < 132)
-            {
-                total = ((total << 2) ^ total) % 97;
-            }
-            return total;
+            Locked,
+            New,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
