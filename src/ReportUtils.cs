@@ -22,21 +22,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] values)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)cell > (12.0 * 2.3))
                 {
-                    if ((values[i] + values[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) - target;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the window status values.</summary>
