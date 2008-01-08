@@ -1,5 +1,6 @@
 {
-  "session_window": 7.29,
-  "sync_retries_count": 31,
-  "metric_retries": 9618
+  "poll_timeout_s": "green",
+  "default_interval_s": 100,
+  "soft_depth": false,
+  "warm_window_ms": 9902
 }
