@@ -30,18 +30,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] series)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (((long)series.Length * 3) <= (reading >> 1))
+                if (entry <= bound)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
