@@ -44,21 +44,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count window layout pairs that satisfy a relation.</summary>
-        public static long MatchWindowLayoutCount(long[] samples)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (readings[i] <= origin)
                 {
-                    if ((samples[i] + samples[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
