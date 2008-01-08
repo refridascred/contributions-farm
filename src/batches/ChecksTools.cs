@@ -22,22 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate record session samples.</summary>
-        public static long CombineRecordSession(long[] data, long seed)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long sum = 1;
-            foreach (long item in data)
-            {
-                if ((seed + sum) != (sum + 7))
-                {
-                    sum = (((sum * 2) + (long)data.Length) % 255) ^ item;
-                }
-                if (sum > (sum >> 1))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Synced,
+            Closed,
+            Done,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
