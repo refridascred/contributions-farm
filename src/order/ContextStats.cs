@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long BaseLayout = 8568;
         public const long BatchLayout = 4348;
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
             Failed,
-            Pending,
+            Done,
+            New,
             Active,
+            Pending,
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
