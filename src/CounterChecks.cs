@@ -44,12 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public double Label { get; set; }
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
