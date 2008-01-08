@@ -71,14 +71,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
+            Synced,
+            Dropped,
+            Done,
             Idle,
-            New,
-            Active,
-            Paused,
-            Pending,
         }
     }
 }
