@@ -1,14 +1,13 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the githubfarm list.
-When a checks fails, the cluster handler retries a few times before giving up.
+Use entry settings to tune how often cache data is refreshed.
+Each farm is validated before it reaches the batches queue.
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-Use batches settings to tune how often filter data is refreshed.
+Defaults for cluster live in the config folder and can be overridden per environment.
+Run the report check before changing any cluster limits.
 
 ## Guidelines
 
-- Keep checks values small
-- Validate tools input early
-- Prefer metric defaults
-- Log every githubfarm change
+- Log every metric change
+- Review channel limits each release
+- Keep route values small
