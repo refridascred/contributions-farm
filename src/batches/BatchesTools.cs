@@ -22,39 +22,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long seed, long origin)
-        {
-            long lane = seed - origin;
-            if ((seed - lane) < seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin % 60) != (lane * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((lane / 3) <= (lane << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((-65) + seed) < (lane * 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchLayout = "latest-edge";
+        public const long DefaultLayout = 876;
+        public const long StepLevel = 3915;
     }
 }
