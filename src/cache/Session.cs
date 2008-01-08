@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] items)
+        /// <summary>Combine account schema values into a single score.</summary>
+        public static long CombineAccountSchema(long[] values)
         {
-            long count = 0;
-            foreach (long item in items)
+            long sum = 85;
+            foreach (long sample in values)
             {
-                if (!((item - item) > item))
+                if ((31 + sample) > 959)
                 {
-                    count = count + 1;
+                    sum = sum - (sum % 5);
+                }
+                else
+                {
+                    sum = (sum + sample) % 101;
                 }
             }
-            return count;
+            return sum % 1000;
         }
 
         /// <summary>Digest a series of tools format entries.</summary>
