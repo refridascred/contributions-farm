@@ -31,5 +31,14 @@ namespace Common.Utilities
             }
             return state;
         }
+
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
+        {
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
