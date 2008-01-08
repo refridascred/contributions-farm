@@ -1,17 +1,17 @@
 {
-  "retry_ratio": 59.97,
-  "compress": 1024,
-  "entry_interval": {
-    "hard_limit": 5.49,
-    "layout_ttl": {
-      "batch_ratio": [1, 215, 79],
-      "strict": "standard",
-      "order_retries": 28.45,
-      "persist": false,
-      "notes_delay": [319, 139, 420],
-      "default_depth_pct": ["staging", "strict", "staging", "cached"]
+  "readonly": 33,
+  "stats_window": ["green", "green", "open", "green"],
+  "commits_capacity": {
+    "batch_ratio_ms": "blue",
+    "compress": [84, 392, 340],
+    "idle_timeout_s": {
+      "burst_window_count": 5294,
+      "cache_threshold_ms": false,
+      "max_ratio_pct": false
     },
-    "base_retries_ms": "latest",
-    "filter_depth": ["standard", "legacy"]
-  }
+    "verbose": [74, 112, 410]
+  },
+  "soft_limit_count": 2805,
+  "account_depth": "latest",
+  "min_threshold_pct": 60
 }
