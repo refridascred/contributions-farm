@@ -33,31 +33,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long seed, long target)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] items, long origin)
         {
-            if (!((398 + seed) != (seed * 5)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target + seed) == (target + 604))
+                if ((items[i] > origin) && ((items[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target * 5) >= (target + seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit batch payload readings against a rule.</summary>
