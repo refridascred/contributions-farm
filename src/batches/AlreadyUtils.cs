@@ -52,22 +52,19 @@ namespace Common.Utilities
         public const string HardCount = "stable-1";
         public const long HardChecks = 359;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] values)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] series, long offset)
         {
-            long total = 603;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((44 > item) && ((item - 9) <= (item << 2)))
+                if (datum != offset)
                 {
-                    total = total ^ (total % 97);
-                }
-                if ((item * 5) <= (item - (long)values.Length))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return total;
+            return valid;
         }
     }
 }
