@@ -29,12 +29,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 2887;
-        public const double CacheEditor = 2.58;
-        public const long WindowEditor = 6912;
-        public const string RetryTimeout = "cached-v2";
-        public const double MaxFactor = 31.05;
+        /// <summary>Match up profile support samples.</summary>
+        public static long PairProfileSupportCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
