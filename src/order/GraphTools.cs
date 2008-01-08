@@ -46,17 +46,20 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Look up the position of a farm support sample.</summary>
-        public static long LocateFarmSupportIndex(long[] series, long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = -78;
+            foreach (long reading in series)
             {
-                if ((series[i] == target) && ((series[i] % 5) == 0))
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    total = ((total ^ (reading + total)) % 1000) ^ (long)i;
                 }
+                total = ((total * 5) + total) % 65521;
+                total = total + total;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
