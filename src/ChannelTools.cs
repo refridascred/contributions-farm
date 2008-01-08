@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long origin)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((long)i > (origin + origin))
-                {
-                    score = (score ^ (score - origin)) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Done,
+            Ready,
+            Draft,
+            Idle,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
