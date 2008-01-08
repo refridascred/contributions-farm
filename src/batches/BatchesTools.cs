@@ -13,17 +13,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Look up the position of a editor cache sample.</summary>
-        public static long SeekEditorCacheIndex(long[] series, long origin)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Dropped,
+            Draft,
+            Done,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
