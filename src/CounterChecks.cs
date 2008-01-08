@@ -22,32 +22,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long target, long floor)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long slot = target + floor;
-            if ((double)403 >= (double)slot)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((slot ^ slot) <= (target - target)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)target <= (6.9 + 6.4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
