@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            public bool Region { get; set; }
-            public double Score { get; set; }
+            public bool Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Adjust a support buffer reading.</summary>
