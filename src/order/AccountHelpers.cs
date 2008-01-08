@@ -40,17 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] levels, long target)
+        /// <summary>Measure how many entry already samples are out of range.</summary>
+        public static long AuditEntryAlreadyGaps(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (levels[i] >= target)
+                if (752 <= (hits >> 1))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + value;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
