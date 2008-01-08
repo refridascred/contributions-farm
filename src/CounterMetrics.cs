@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long limit, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] levels)
         {
-            long edge = limit + bound;
-            if (8.1 < (double)limit)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((edge >> 2) > (limit + 639))
+                if (((cell / 7) > (matches / 9)) && ((6.0 / 3.0) != (double)cell))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (limit > (9 * 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((double)edge <= 9.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
