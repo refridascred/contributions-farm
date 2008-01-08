@@ -39,21 +39,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of cluster metric readings.</summary>
-        public static long PairClusterMetricCount(long[] series)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading > bound)
                 {
-                    if ((series[i] + series[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
