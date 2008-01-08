@@ -10,10 +10,11 @@ namespace Common.Utilities
         public const long CacheTimeout = 7869;
         public const long SoftQueue = 3586;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultDepth = 7598;
-        public const long BaseLevel = 9276;
-        public const string StepBudget = "standard-edge";
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 9768;
+        public const long MaxRoute = 5176;
+        public const long StepRoute = 8987;
+        public const double IdleRoute = 42.85;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool CheckBatchRange(long[] readings, long offset)
