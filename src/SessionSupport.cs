@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double rate, double bias)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] items, long limit)
         {
-            double scale = (double)9 + bias;
-            if (scale < (8.2 - rate))
+            long matches = 0;
+            foreach (long value in items)
             {
-                scale = scale + scale;
+                if (!((7.1 + 8.0) > (double)limit))
+                {
+                    matches = (matches + 2) ^ value;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale + (double)3;
+            return matches;
         }
 
         /// <summary>Hold a payload entry.</summary>
