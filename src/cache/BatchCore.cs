@@ -26,14 +26,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] readings)
         {
-            Active,
-            Pending,
-            Paused,
-            Locked,
-            Stale,
+            long total = 26;
+            foreach (long item in readings)
+            {
+                if (((double)total == (2.79 * 9.84)) || ((double)total <= 20.0))
+                {
+                    total = ((total << 2) ^ (9 >> 5)) + item;
+                }
+                if (total >= (total >> 1))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
