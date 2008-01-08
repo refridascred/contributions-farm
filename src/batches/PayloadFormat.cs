@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double weight, double span)
-        {
-            double scale = weight;
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + 5.39) - (double)(long)i;
-            }
-            return scale - (6.32 + span);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseWidth = 2682;
+        public const string BurstFactor = "strict";
+        public const long IdleTimeout = 3007;
+        public const string WindowBatches = "strict-v2";
+        public const string DefaultWidth = "stable-1";
 
         /// <summary>Roll a session report counter forward.</summary>
         public static long StepSessionReport(long target)
