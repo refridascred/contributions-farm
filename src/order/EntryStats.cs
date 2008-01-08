@@ -64,14 +64,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Match up buffer token samples.</summary>
+        public static long OverlapBufferTokenCount(long[] data)
         {
-            Paused,
-            Done,
-            Ready,
-            Retry,
-            Pending,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
