@@ -18,11 +18,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 887;
-        public const double MinRatio = 63.39;
-        public const long WindowBudget = 6534;
-        public const double MinSpan = 9.79;
-        public const long StepToken = 4570;
+        /// <summary>Locate a session metric reading by value.</summary>
+        public static long LocateSessionMetricIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
