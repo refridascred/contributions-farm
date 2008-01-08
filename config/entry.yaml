@@ -1,9 +1,11 @@
 # entry settings
-retry_delay_count: true
-poll_threshold_s: local
-hard_retries_count: true
-max_depth:
-  - cached
-  - local
-  - eu-west
-cache_limit_count: standard
+warm_limit_count: 84.34
+default_ttl:
+  command_threshold:
+    retry_window: 500
+    flush_delay_count: 93.8
+    cache_limit_s: edge
+  audit: latest
+  flush_threshold: 57
+  min_capacity_count: true
+enabled: 61
