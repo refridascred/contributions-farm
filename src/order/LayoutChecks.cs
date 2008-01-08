@@ -30,12 +30,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleFactor = 6082;
-        public const long BaseTools = 895;
-        public const string MinTools = "cached-v2";
-        public const string RetryTools = "alpha";
-        public const long LimitTools = 1198;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 2) + (score + origin)) % 255;
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long ClassifyRecord(long origin, long seed)
