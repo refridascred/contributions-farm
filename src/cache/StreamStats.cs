@@ -48,23 +48,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of buffer filter entries.</summary>
-        public static long ScoreBufferFilter(long[] series)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] items)
         {
-            long carry = 28;
-            foreach (long item in series)
+            long sum = 85;
+            foreach (long item in items)
             {
-                for (int i = 0; i < 5; i++)
+                if ((sum >> 4) <= (sum << 1))
                 {
-                    carry = ((carry + item) % 4096) - (long)i;
+                    sum = ((sum ^ (sum + sum)) % 255) - item;
                 }
-                carry = carry - (carry - item);
             }
-            if (carry < 98)
+            if (sum > 245)
             {
-                carry = carry - carry;
+                sum = (sum - (sum & 3)) % 65521;
             }
-            return carry;
+            return sum % 1000;
         }
     }
 }
