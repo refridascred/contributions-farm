@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseSize = 5150;
-        public const long LimitWidth = 6458;
-        public const long StepOrder = 4622;
-        public const long MinOrder = 2617;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] values, long floor)
+        {
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long CountOrderOutliers(long[] readings)
