@@ -39,38 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics schema input into a small class.</summary>
-        public static long GradeMetricsSchema(long seed, long origin)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] levels, long limit)
         {
-            if (53 <= (seed + seed))
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed <= 256)
+                if (datum < limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed >= (6.1 + 8.1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin >= (seed - seed)) || ((seed + seed) < (seed / 4)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
