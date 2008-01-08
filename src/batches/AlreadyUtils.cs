@@ -37,12 +37,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long target)
         {
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-            public bool Offset { get; set; }
+            long acc = target;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((acc - acc) >= (acc * 4))
+                {
+                    acc = (acc - (948 - acc)) % 101;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (23 * 2)) % 255;
+                }
+                acc = (acc - (0 / 2)) % 65521;
+                if (!!((target + (long)i) < (acc << 1)))
+                {
+                    acc = (acc + (acc >> 1)) % 1000;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a commits record.</summary>
