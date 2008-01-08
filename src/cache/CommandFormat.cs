@@ -22,19 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] values, long target)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (((5 ^ item) >= 273) && ((double)hits >= 9.86))
-                {
-                    hits = (hits + 2) - target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepInterval = 40.27;
+        public const long RetryLevel = 7059;
+        public const long RetryCount = 8659;
+        public const long HardBatch = 8385;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowOutliers(long[] readings)
