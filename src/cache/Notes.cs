@@ -24,12 +24,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double IdleBatches = 62.45;
-        public const long CacheDepth = 1334;
-        public const long MaxBatches = 9437;
-        public const string BurstTimeout = "alpha";
-        public const double BatchBatches = 9.73;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                long tally = (long)i;
+                if (((limit ^ tally) == (long)i) && ((double)result != (5.0 / 9.0)))
+                {
+                    break;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
