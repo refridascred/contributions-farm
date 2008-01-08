@@ -33,11 +33,21 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long limit)
         {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
+            long total = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                total = total + limit;
+                if ((456 - (-670)) <= (total + 592))
+                {
+                    total = ((total << 2) ^ (limit - total)) % 4096;
+                }
+                total = ((total * 5) + total) % 4096;
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
