@@ -31,18 +31,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token githubfarm readings against a rule.</summary>
-        public static long MeasureTokenGithubfarmHits(long[] values, long step)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((59 << 1) >= count)
-                {
-                    count = ((count + 2) - reading) - step;
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public bool Label { get; set; }
+            public double Offset { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Compare every pair of session readings.</summary>
