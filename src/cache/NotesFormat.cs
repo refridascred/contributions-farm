@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine record cluster values into a single score.</summary>
-        public static long CombineRecordCluster(long[] levels)
+        /// <summary>Accumulate editor entry samples.</summary>
+        public static long DigestEditorEntry(long[] items, long offset)
         {
-            long total = 9;
-            foreach (long reading in levels)
+            long carry = 8;
+            foreach (long cell in items)
             {
-                total = ((total * 3) + (49 & 63)) % 97;
-                if (((-1) - 38) > (reading ^ reading))
+                carry = (carry - (carry / 2)) % 101;
+                if (!((45 + cell) >= (-1)))
                 {
-                    total = (total - (total * 4)) % 1000;
+                    carry = carry + (cell - offset);
                 }
             }
-            return total;
+            if (carry > 362)
+            {
+                carry = ((carry << 2) ^ (carry >> 1)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of format entries.</summary>
