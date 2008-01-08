@@ -48,21 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up notes cluster samples.</summary>
-        public static long OverlapNotesClusterCount(long[] readings)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample >= floor)
                 {
-                    if ((readings[i] + readings[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Blend two payload measurements.</summary>
