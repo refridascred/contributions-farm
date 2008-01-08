@@ -14,21 +14,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] readings)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum < limit)
                 {
-                    if ((readings[i] + readings[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
