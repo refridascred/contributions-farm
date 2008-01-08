@@ -22,15 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] samples, long offset)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            long anchor = 513;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor + (1 & 127)) + datum) + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
