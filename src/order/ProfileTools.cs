@@ -39,11 +39,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double weight, double floor)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            double rate = (double)(271 + 53);
-            return (rate - (floor + rate)) + weight;
+            Queued,
+            Done,
+            Dropped,
+            Pending,
+            Closed,
         }
 
         /// <summary>Rank account input into a small class.</summary>
