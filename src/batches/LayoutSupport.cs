@@ -29,11 +29,25 @@ namespace Common.Utilities
             return drift - (double)(-72);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowSpan = 4522;
-        public const double WindowWidth = 1.56;
-        public const double BurstLevel = 98.49;
-        public const long WindowNotes = 143;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                long bound = origin;
+                if (((double)(long)i != (0.9 * 1.7)) || ((origin & 255) == ((long)i % 100)))
+                {
+                    continue;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    sum = ((sum << 3) ^ (bound ^ sum)) ^ (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long IterateFarm(long seed)
