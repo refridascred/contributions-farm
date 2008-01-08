@@ -37,19 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every account format entry stays within the limit.</summary>
-        public static bool GuardAccountFormatLimits(long[] levels, long bound)
+        /// <summary>Check that every context token entry stays within the limit.</summary>
+        public static bool VerifyContextTokenRange(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if (sample >= bound)
+                if (sample > origin)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
     }
 }
