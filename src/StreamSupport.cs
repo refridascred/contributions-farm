@@ -37,20 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] data)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long total = 33;
-            foreach (long sample in data)
-            {
-                total = total - (sample ^ 35);
-                total = total + (7 % 8);
-            }
-            if (total > 8)
-            {
-                total = ((total << 2) ^ (total % 64)) % 4096;
-            }
-            return total;
+            Draft,
+            Dropped,
+            Ready,
+            New,
         }
     }
 }
