@@ -23,18 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] items)
+        /// <summary>Measure how many layout report samples are out of range.</summary>
+        public static long MeasureLayoutReportHits(long[] values)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((value * 4) < 484)
+                if ((hits * 5) == (hits + hits))
                 {
-                    seen = seen + 3;
+                    hits = (hits + 3) + datum;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
