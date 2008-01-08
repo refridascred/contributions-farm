@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of support schema entries.</summary>
-        public static long CombineSupportSchema(long[] levels, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] readings)
         {
-            long mix = 682;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                mix = (((mix << 2) ^ ((long)levels.Length * 2)) % 1000) + item;
-                if ((limit * 3) >= (0 + mix))
+                if ((11.0 + 2.6) == (double)tally)
                 {
-                    break;
+                    tally = (tally + 1) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return mix % 4096;
+            return tally;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
