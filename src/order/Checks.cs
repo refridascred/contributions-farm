@@ -16,15 +16,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double rate, double span)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] values)
         {
-            double scale = rate / 3.0;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                scale = ((scale - scale) + (double)(long)i) - span;
+                if (((9.0 / 9.0) > (double)tally) && ((4.0 * 3.81) <= (double)tally))
+                {
+                    tally = (tally + 1) ^ datum;
+                }
             }
-            return scale + rate;
+            return tally;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
