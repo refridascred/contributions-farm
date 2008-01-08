@@ -19,37 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long target, long seed)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long offset, long bound)
         {
-            long diff = target - seed;
-            if (seed < (target * 3))
+            if ((bound + 87) > (offset << 3))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (!((diff >> 2) < seed))
+                if ((9.8 - 14.0) != (double)offset)
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if (((8.0 / 9.0) == (double)seed) && ((seed ^ seed) < (-5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((42 - seed) < 515) || ((seed & 31) > (diff & 127)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
