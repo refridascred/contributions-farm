@@ -1,34 +1,5 @@
 # entry settings
-flush_ttl_pct: standard
-route_retries: false
-default_ratio:
-  - 362
-  - 269
-flush_retries_s:
-  - green
-  - standard
-  - fallback
-  - fallback
-poll_limit_ms:
-  dry_run:
-    cluster_timeout: 500
-    cache_timeout_count: true
-    burst_ttl_pct: 1024
-    sync_size_count: 250
-  strict: 100
-  flush_timeout_ms: 63
-  batches_ratio: primary
-  poll_threshold_pct:
-    flush_ratio_s: open
-    audit: primary
-    warm_timeout: 9045
-    enabled:
-      - 190
-      - 32
-      - 50
-    cache_retries_s: false
-    batches_depth: standard
-  enabled: 9226
-cache_ttl_s:
-  - green
-  - green
+window_timeout: 33.09
+warm_delay_count: green
+hard_delay_s: stable
+flush_size_ms: true
