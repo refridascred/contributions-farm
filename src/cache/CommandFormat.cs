@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long target, long limit)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] data)
         {
-            if ((target + limit) >= (target + target))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (target >= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    if ((data[i] ^ data[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a buffer record counter forward.</summary>
