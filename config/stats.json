@@ -1,6 +1,6 @@
 {
-  "enabled": 52,
-  "idle_depth_pct": "standard",
-  "cache_delay_pct": "stable",
-  "idle_size": 100
+  "retry_timeout_ms": 4410,
+  "enabled": "primary",
+  "idle_limit": ["eu-west", "staging"],
+  "compress": "legacy"
 }
