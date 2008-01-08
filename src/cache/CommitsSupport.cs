@@ -55,11 +55,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftDepth = 2569;
-        public const long RetrySupport = 2249;
-        public const double BaseLevel = 62.01;
-        public const long CacheSupport = 3600;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long origin, long origin2)
+        {
+            if (!((double)origin2 == (20.0 - 6.1)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((-6) * 3) < (origin - origin2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long FoldFilter(long[] values)
