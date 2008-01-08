@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] samples)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long origin)
         {
-            long mix = 1;
-            foreach (long entry in samples)
+            long score = origin;
+            for (int i = 0; i < 18; i++)
             {
-                mix = mix ^ (entry / 8);
+                score = (score ^ score) % 4096;
+                score = score ^ (score & 7);
+                score = ((score * 5) + (long)i) % 101;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Describe the buffer state values.</summary>
