@@ -1,6 +1,7 @@
-id,token,ratio,region
-1,493,26.25,staging
-2,fallback,295,436
-3,legacy,68.64,standard
-4,48.37,109,29.22
-5,cached,88.77,6.39
+id,token,score,region
+1,465,local,open
+2,24.08,eu-west,420
+3,70.45,blue,edge
+4,13.41,211,73.49
+5,6.41,719,latest
+6,85.35,51,212
