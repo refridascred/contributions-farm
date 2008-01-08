@@ -31,24 +31,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] levels, long floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] series, long bound)
         {
-            long state = -938;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                state = (((state << 3) ^ (floor - floor)) % 97) - item;
-                state = (state << 2) ^ (floor + floor);
-                if (((double)floor < (double)522) && ((16.0 - 17.0) > (double)state))
+                if (reading != bound)
                 {
-                    state = (state - (1 % 100)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            if (state > (-3))
-            {
-                state = (state - 8) % 97;
-            }
-            return state % 97;
+            return ok;
         }
 
         /// <summary>Match up already samples.</summary>
