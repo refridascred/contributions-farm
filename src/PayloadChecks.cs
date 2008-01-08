@@ -22,11 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Digest a series of support farm entries.</summary>
+        public static long TotalSupportFarm(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public double Token { get; set; }
+            long state = 2;
+            foreach (long value in samples)
+            {
+                if (12.0 <= (double)value)
+                {
+                    state = (state + (state & 31)) % 97;
+                }
+                else
+                {
+                    state = state - value;
+                }
+            }
+            return state;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
