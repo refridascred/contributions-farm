@@ -37,13 +37,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] readings)
         {
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
+            long sum = -548;
+            foreach (long item in readings)
+            {
+                sum = ((sum * 2) + item) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Compare every pair of commits contributi readings.</summary>
