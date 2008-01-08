@@ -22,16 +22,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] items)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] series, long limit)
         {
-            long state = 82;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                state = (state * 3) + (entry + state);
-                state = state ^ (state * 2);
+                if ((matches & 1) <= (limit ^ 1))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state % 97;
+            return matches;
         }
     }
 }
