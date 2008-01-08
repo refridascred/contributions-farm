@@ -1,14 +1,10 @@
 # Command notes
 
-Keep command and window names short and lowercase.
-The window report groups every queue by context.
-
-A channel that stays idle for too long is moved to the checks list.
-Defaults for commits live in the config folder and can be overridden per environment.
-Each already is validated before it reaches the checks queue.
+Run the record check before changing any checks limits.
+The report module keeps stats values in sync with the context cache.
 
 ## Guidelines
 
-- Validate metric input early
+- Prefer cluster defaults
 - Review context limits each release
-- Log every record change
+- Log every account change
