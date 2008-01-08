@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] levels)
+        /// <summary>Look up the position of a githubfarm payload sample.</summary>
+        public static long SeekGithubfarmPayloadIndex(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item / 4) > (matches + matches))
+                if (values[i] < origin)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
