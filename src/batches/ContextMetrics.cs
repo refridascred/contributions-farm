@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Project the next notes value.</summary>
