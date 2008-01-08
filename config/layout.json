@@ -1,13 +1,11 @@
 {
-  "warm_threshold_pct": {
-    "hard_delay_ms": 30,
-    "soft_ratio_ms": 8890,
-    "readonly": 38,
-    "batch_limit_pct": 96.03,
-    "min_interval": true,
-    "filter_delay": false
+  "metric_depth": "staging",
+  "layout_interval": {
+    "dry_run": 30,
+    "default_capacity": ["cached", "local"],
+    "burst_retries_pct": "blue",
+    "cache_window": 28.58
   },
-  "warm_limit": ["edge", "local", "primary"],
-  "compress": [101, 213, 347, 275],
-  "sync_threshold_ms": "eu-west"
+  "buffer_threshold": false,
+  "readonly": ["strict", "cached", "fallback", "fallback"]
 }
