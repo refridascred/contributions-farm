@@ -1,6 +1,11 @@
-id,label,count
-1,58.94,1.71
-2,open,311
-3,761,52.3
-4,staging,latest
-5,stable,879
+id,score,state,token,label
+1,289,51,14,57.1
+2,646,98.41,fallback,33.67
+3,stable,592,749,standard
+4,690,staging,green,40.13
+5,33.59,18.13,889,local
+6,33,stable,875,1.56
+7,latest,81.86,598,226
+8,strict,edge,198,70.49
+9,edge,678,322,11.8
+10,50.47,818,318,standard
