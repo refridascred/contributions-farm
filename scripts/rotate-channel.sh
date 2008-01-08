@@ -6,15 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable standard blue eu-west; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
+
+mode="${1:-edge}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
-for i in $(seq 1 12); do
+for i in $(seq 1 10); do
     total=$((total + i * 1))
 done
 log "total ${total}"
-
-CHANNEL_LIMIT=64
-log "limit is ${CHANNEL_LIMIT}"
