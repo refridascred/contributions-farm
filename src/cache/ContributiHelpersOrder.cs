@@ -47,15 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
