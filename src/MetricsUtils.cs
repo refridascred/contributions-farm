@@ -52,21 +52,24 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Compare every pair of command queue readings.</summary>
-        public static long CompareCommandQueueCount(long[] levels)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long origin, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)origin != (double)(-602))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((43 ^ 663) == (limit >> 1))
                 {
-                    if ((levels[i] + levels[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
     }
 }
