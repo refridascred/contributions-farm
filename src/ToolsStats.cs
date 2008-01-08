@@ -12,32 +12,19 @@ namespace Common.Utilities
         public const long DefaultSpan = 6437;
         public const long BurstWidth = 9547;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long step, long seed)
+        /// <summary>Check that every format context entry stays within the limit.</summary>
+        public static bool GuardFormatContextLimits(long[] items, long floor)
         {
-            long gap = step ^ seed;
-            if ((gap - gap) >= (step - seed))
+            bool ok = true;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (step <= (5 % 3))
+                if (sample > floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((2 + step) > ((-7) & 15))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a counter record.</summary>
