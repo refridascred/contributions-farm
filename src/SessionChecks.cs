@@ -23,39 +23,18 @@ namespace Common.Utilities
         public const string MinTimeout = "cached-edge";
         public const double StepGithubfarm = 3.3;
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long step, long bound)
+        /// <summary>Measure how many stats window samples are out of range.</summary>
+        public static long TallyStatsWindowHits(long[] series)
         {
-            long step2 = step + bound;
-            if ((double)bound != (12.0 / 4.0))
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (step2 >= (bound & 15))
+                if (!((double)count == (4.88 + 9.5)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((8 % 60) <= step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((step + bound) != (step2 % 2)) || ((step2 + 1) != (step2 >> 5)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = (count + 3) - entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
