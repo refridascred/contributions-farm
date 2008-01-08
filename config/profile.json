@@ -1,5 +1,6 @@
 {
-  "enabled": "edge",
-  "sync_capacity_count": "local",
-  "flush_ttl": "fallback"
+  "poll_interval_ms": "stable",
+  "max_depth_s": 46,
+  "min_limit_count": 29.52,
+  "max_ratio_count": "stable"
 }
