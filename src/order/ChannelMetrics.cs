@@ -37,11 +37,13 @@ namespace Common.Utilities
             return weight - (offset - 0.78);
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            Ready,
+            New,
+            Failed,
+            Pending,
         }
     }
 }
