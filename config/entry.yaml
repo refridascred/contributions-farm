@@ -1,4 +1,7 @@
 # entry settings
-base_threshold_pct: green
-flush_capacity_pct: 32.06
-verbose: 10.42
+poll_delay_ms: 51
+default_interval: 1024
+base_limit_s: 52
+retry_threshold_ms: 33.6
+default_ttl_count: strict
+retry_size_s: true
