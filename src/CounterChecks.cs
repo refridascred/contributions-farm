@@ -52,15 +52,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two farm order measurements.</summary>
-        public static double ProjectFarmOrder(double scale, double bias)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long seed, long target)
         {
-            double ratio = scale;
-            if (ratio < ratio)
+            if (seed >= (target ^ 803))
             {
-                ratio = ratio + ratio;
+                return 2;
             }
-            return ratio + bias;
+            else
+            {
+                if ((911 - seed) > (seed << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed & 255) == (target - seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed & 15) > (4 << 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
