@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] series, long origin)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long bound)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((origin * 2) > (11 / 7))
-                {
-                    seen = (seen + 3) + value;
-                }
+                anchor = anchor ^ (bound ^ 36);
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Blend two entry measurements.</summary>
