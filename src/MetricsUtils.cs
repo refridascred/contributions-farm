@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] levels, long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (datum < limit)
+                if ((0.8 > (double)target) && (target < (seen << 1)))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) - sample;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
