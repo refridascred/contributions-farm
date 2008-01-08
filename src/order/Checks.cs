@@ -52,18 +52,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] readings, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((matches + matches) == (origin - matches))
+                if ((hits % 100) >= ((-6) & 255))
                 {
-                    matches = (matches + 1) ^ item;
+                    hits = (hits + 2) + value;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
