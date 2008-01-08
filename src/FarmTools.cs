@@ -14,19 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] levels, long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterGaps(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (cell > origin)
+                if ((2.3 / 7.0) >= (double)entry)
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
