@@ -26,19 +26,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] data, long bound)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Flag { get; set; }
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of commits contributi readings.</summary>
