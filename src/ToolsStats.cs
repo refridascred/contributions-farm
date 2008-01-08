@@ -57,14 +57,22 @@ namespace Common.Utilities
         public const long WindowChecks = 6289;
         public const long BaseChecks = 7108;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Measure how many already counter samples are out of range.</summary>
+        public static long TallyAlreadyCounterHits(long[] items)
         {
-            Pending,
-            Closed,
-            Stale,
-            Active,
-            Paused,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((((6.3 / 2.0) <= (double)cell) && ((matches + matches) >= ((long)items.Length + cell))) && (matches >= (matches % 5)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
