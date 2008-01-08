@@ -41,16 +41,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string WindowCounter = "open-1";
+        public const string HardBudget = "primary-v2";
+        public const string StepSpan = "alpha-1";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long WindowDepth = 1457;
