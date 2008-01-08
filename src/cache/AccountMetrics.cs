@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Look up the position of a contributi queue sample.</summary>
-        public static long LocateContributiQueueIndex(long[] series, long floor)
+        /// <summary>Compare every pair of buffer window readings.</summary>
+        public static long PairBufferWindowCount(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] >= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up channel samples.</summary>
