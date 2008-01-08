@@ -46,19 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenRange(long[] values, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (item < bound)
+                if (((tally + sample) < (sample % 8)) || ((17.0 + 6.23) != (double)sample))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) + limit;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
