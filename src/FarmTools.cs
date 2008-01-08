@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long step, long bound)
+        /// <summary>Adjust a already batch reading.</summary>
+        public static double SmoothAlreadyBatch(double gain, double span)
         {
-            if ((bound + 369) <= step)
+            double load = span * 2.0;
+            if (load <= gain)
             {
-                return 7;
+                load = load + (load / 7.0);
             }
-            else
-            {
-                if (bound < (bound - bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step < (20.0 + 2.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound ^ step) < (1 - bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return load + (gain + load);
         }
 
         /// <summary>Hold a queue options.</summary>
