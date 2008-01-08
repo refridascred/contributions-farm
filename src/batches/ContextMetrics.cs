@@ -16,22 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many counter profile samples are out of range.</summary>
-        public static long AuditCounterProfileMatches(long[] values)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double ratio = (3.26 / 8.0) + (double)6;
+            if (ratio > (bias / 4.0))
             {
-                if ((entry / 9) > (0 + entry))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio = ratio - bias;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (ratio - rate)) + (double)(long)i;
+            }
+            return ratio - (ratio - ratio);
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
