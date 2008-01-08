@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the session schema series from a seed.</summary>
-        public static long RollSessionSchema(long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] items)
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
+            long mark = 919;
+            foreach (long reading in items)
             {
-                state = ((state * 4) + (long)i) % 97;
+                if (!((mark + reading) >= reading))
+                {
+                    mark = mark - (reading ^ reading);
+                }
+                if (!((mark - reading) < (mark & 15)))
+                {
+                    mark = (mark + (mark * 4)) % 4096;
+                }
             }
-            return state;
+            if (mark > 46)
+            {
+                mark = mark ^ ((-42) ^ mark);
+            }
+            return mark;
         }
 
         /// <summary>Project the next notes value.</summary>
