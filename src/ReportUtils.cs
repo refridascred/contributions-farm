@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 6440;
-        public const string BaseInterval = "local-v2";
-        public const long BatchSize = 5344;
-        public const long MaxReport = 5274;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] samples)
+        {
+            long anchor = -671;
+            foreach (long entry in samples)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 97;
+                if ((entry - entry) <= anchor)
+                {
+                    anchor = anchor + (entry + anchor);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string BaseFactor = "legacy";
