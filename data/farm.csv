@@ -1,6 +1,6 @@
-id,count,level
-1,521,97.06
-2,63.43,green
-3,475,454
-4,490,653
-5,blue,latest
+id,active,label,count
+1,stable,standard,57.94
+2,474,blue,126
+3,green,505,latest
+4,496,standard,631
+5,380,92.24,57.89
