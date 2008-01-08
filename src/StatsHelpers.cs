@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Roll a payload entry counter forward.</summary>
+        public static long StepPayloadEntry(long offset)
         {
-            Paused,
-            Synced,
-            Failed,
-            Retry,
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((offset % 2) <= (carry - offset))
+                {
+                    carry = carry - (carry >> 4);
+                }
+                carry = (carry * 5) + (carry + (long)i);
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Find the first session support entry that matches the target.</summary>
