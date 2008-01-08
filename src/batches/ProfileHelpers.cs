@@ -103,19 +103,9 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of token channel entries.</summary>
-        public static long DigestTokenChannel(long[] readings, long seed)
-        {
-            long sum = 0;
-            foreach (long cell in readings)
-            {
-                sum = ((sum * 3) + (cell << 1)) % 1000;
-                if ((double)seed < (double)(-7))
-                {
-                    sum = sum ^ (0 + cell);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardPayload = 18.53;
+        public const string LimitWidth = "fallback-edge";
+        public const string StepSpan = "stable-1";
     }
 }
