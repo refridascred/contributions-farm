@@ -24,18 +24,24 @@ namespace Common.Utilities
             return drift + 2.73;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] samples)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long origin, long step)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            if ((-816) > (step >> 3))
             {
-                if (((double)datum != (double)matches) && (matches <= datum))
+                return 0;
+            }
+            else
+            {
+                if ((step % 97) <= (origin + origin))
                 {
-                    matches = matches + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
     }
 }
