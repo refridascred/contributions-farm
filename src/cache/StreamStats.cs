@@ -14,21 +14,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] readings)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long floor, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (529 <= (floor - limit))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((floor / 2) == (limit >> 1)))
                 {
-                    if ((readings[i] ^ readings[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
