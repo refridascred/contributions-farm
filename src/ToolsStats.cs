@@ -71,15 +71,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Done,
-            Failed,
-            Closed,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseTimeout = 977;
+        public const long BatchSpan = 782;
+        public const string LimitDepth = "alpha";
+        public const long BaseDepth = 8283;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long TotalGraph(long[] values)
