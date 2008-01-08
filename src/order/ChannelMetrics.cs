@@ -42,12 +42,18 @@ namespace Common.Utilities
             return weight - (offset - 0.78);
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Measure how many already support samples are out of range.</summary>
+        public static long CountAlreadySupportHits(long[] samples, long offset)
         {
-            Paused,
-            Retry,
-            Stale,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (!(((double)tally < 8.4) || ((offset ^ tally) >= (entry ^ offset))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
