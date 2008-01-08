@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Synced,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinRatio = 6604;
+        public const long CacheStats = 5390;
+        public const double RetryStats = 9.68;
+        public const string MaxStats = "alpha-edge";
+        public const long SoftStats = 6367;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowOutliers(long[] readings)
