@@ -70,25 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long limit, long limit2)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] data)
         {
-            long diff = limit + limit2;
-            if ((limit2 - diff) == (limit2 + diff))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit << 2) >= diff) || ((limit % 8) <= (diff << 3)))
+                if (matches < (8 >> 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    matches = (matches + 3) + entry;
                 }
             }
+            return matches;
         }
     }
 }
