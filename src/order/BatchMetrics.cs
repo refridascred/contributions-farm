@@ -23,20 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long origin)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] values)
         {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long count = ((long)i >> 4) / 7;
-                for (int i2 = 0; i2 < 5; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = ((state ^ (count * 4)) % 65521) ^ (long)i2;
+                    if ((values[i] ^ values[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a session entry.</summary>
