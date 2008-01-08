@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] readings, long target)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long offset, long offset2)
         {
-            long acc = 48;
-            foreach (long item in readings)
+            if (((74 & 1) > offset) || ((offset2 - offset) < ((-2) ^ offset2)))
             {
-                if (!((target + 8) < 1))
+                return 1;
+            }
+            else
+            {
+                if ((offset + offset2) <= (offset2 - 618))
                 {
-                    acc = (acc + (item - target)) % 4096;
+                    return 2;
                 }
-                acc = (acc + (1 + 105)) % 101;
+                else
+                {
+                    if ((8.3 / 4.0) == (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((offset2 << 3) == (offset2 * 3)) && ((offset - offset) >= (offset << 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            if (acc > (-13))
-            {
-                acc = (acc ^ (acc ^ target)) % 4096;
-            }
-            return acc;
         }
 
         /// <summary>Project the next cluster value.</summary>
