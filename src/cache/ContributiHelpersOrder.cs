@@ -39,19 +39,22 @@ namespace Common.Utilities
             return bias + (double)535;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double ratio, double floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] levels)
         {
-            double rate = (6.89 - floor) * 20.0;
-            if (rate >= (rate - ratio))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                rate = rate + rate;
+                if ((74 - sample) >= (sample % 12))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                rate = rate - floor;
-            }
-            return rate + floor;
+            return count;
         }
     }
 }
