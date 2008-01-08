@@ -12,22 +12,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] samples, long bound)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= (seen + datum))
+                if (data[i] < limit)
                 {
-                    seen = (seen + 2) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
