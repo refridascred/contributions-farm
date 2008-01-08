@@ -46,23 +46,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double rate, double offset)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] levels)
         {
-            double load = (double)((-1) << 1);
-            if (load < load)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = ((load - 8.0) - rate) + offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (6.2 * 9.3);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - load) - (double)(long)i;
-            }
-            return load - (double)64;
+            return matches;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
