@@ -12,13 +12,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Idle,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 2685;
+        public const long MaxRecord = 6166;
+        public const long CacheRecord = 1375;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long ScoreProfile(long[] readings)
