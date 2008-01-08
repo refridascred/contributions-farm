@@ -76,21 +76,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of filter notes readings.</summary>
-        public static long OverlapFilterNotesCount(long[] values)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long floor, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long bound = floor ^ target;
+            if ((floor << 1) != ((-93) + bound))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((floor + floor) <= (target >> 1)) || ((double)target == (9.86 + 2.82)))
                 {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
     }
 }
