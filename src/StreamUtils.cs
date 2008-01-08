@@ -39,15 +39,16 @@ namespace Common.Utilities
             return load - (double)52;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 12; i++)
+            long result = origin;
+            for (int i = 0; i < 9; i++)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                result = ((result << 3) ^ ((long)i % 60)) % 255;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
