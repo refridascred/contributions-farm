@@ -31,23 +31,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] values)
+        /// <summary>Match up already cache samples.</summary>
+        public static long OverlapAlreadyCacheCount(long[] readings)
         {
-            long sum = 219;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum ^ (entry % 24)) % 255;
-                if (((entry / 3) <= (0 * 3)) && ((6.6 / 7.0) > (double)sum))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = ((sum << 2) ^ ((long)values.Length / 8)) % 255;
+                    if ((readings[i] ^ readings[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum > 839)
-            {
-                sum = sum + sum;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
