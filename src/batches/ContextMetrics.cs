@@ -27,14 +27,17 @@ namespace Common.Utilities
             return rate - 7.0;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] readings, long floor)
         {
-            Stale,
-            Ready,
-            Active,
-            Closed,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a context reading.</summary>
