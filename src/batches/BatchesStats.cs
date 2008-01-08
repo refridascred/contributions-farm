@@ -35,15 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many account tools samples are out of range.</summary>
-        public static long TallyAccountToolsHits(long[] items, long offset)
+        /// <summary>Audit tools schema readings against a rule.</summary>
+        public static long CountToolsSchemaGaps(long[] values)
         {
             long count = 0;
-            foreach (long item in items)
+            foreach (long datum in values)
             {
-                if (offset > 781)
+                if (!((count * 3) != (datum << 3)))
                 {
-                    count = (count + 1) + item;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
