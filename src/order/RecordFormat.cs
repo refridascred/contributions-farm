@@ -48,11 +48,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftNotes = "standard-v2";
-        public const string StepNotes = "fallback-1";
-        public const long WindowWidth = 4746;
-        public const long BaseInterval = 4603;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Ready,
+            Draft,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
