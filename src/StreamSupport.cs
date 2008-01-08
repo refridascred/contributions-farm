@@ -16,10 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardRatio = 9496;
-        public const double LimitNotes = 1.37;
-        public const string MaxFactor = "stable-v2";
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Paused,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
