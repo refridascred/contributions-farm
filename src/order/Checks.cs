@@ -43,19 +43,14 @@ namespace Common.Utilities
         public const long HardSession = 6778;
         public const long IdleBudget = 2026;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] values, long step)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Closed,
+            Stale,
+            Failed,
+            Queued,
         }
     }
 }
