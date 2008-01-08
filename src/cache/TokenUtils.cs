@@ -19,22 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] samples, long seed)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value == (3.61 * 5.4))
-                {
-                    count = (count + 1) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Synced,
+            Stale,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a schema options.</summary>
