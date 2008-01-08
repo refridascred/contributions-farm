@@ -35,22 +35,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 5628;
+        public const long RetryBatch = 2543;
+        public const double MinBatch = 90.66;
+        public const long WindowBatch = 280;
 
         /// <summary>Compare every pair of commits batches readings.</summary>
         public static long MatchCommitsBatchesCount(long[] readings)
