@@ -14,13 +14,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] items, long offset)
         {
-            Locked,
-            Dropped,
-            Draft,
-            Done,
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank layout notes input into a small class.</summary>
