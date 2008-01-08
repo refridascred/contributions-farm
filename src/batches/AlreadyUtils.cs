@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] data, long bound)
+        /// <summary>Validate metric stats readings against a bound.</summary>
+        public static bool GuardMetricStatsBounds(long[] series, long step)
         {
-            long score = 911;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if ((reading + bound) < (reading << 2))
+                if (value > step)
                 {
-                    score = score ^ (long)data.Length;
+                    ready = false;
+                    break;
                 }
             }
-            return score % 97;
+            return ready;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
