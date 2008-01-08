@@ -82,15 +82,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long target)
+        /// <summary>Audit cache context readings against a rule.</summary>
+        public static long MeasureCacheContextHits(long[] series)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                if ((entry / 2) <= (seen + entry))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
