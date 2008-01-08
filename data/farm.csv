@@ -1,10 +1,6 @@
-id,token,level
-1,454,226
-2,18.36,11.24
-3,staging,18.1
-4,863,39.56
-5,254,79.13
-6,389,231
-7,fallback,fallback
-8,standard,latest
-9,856,152
+id,label,count
+1,58.94,1.71
+2,open,311
+3,761,52.3
+4,staging,latest
+5,stable,879
