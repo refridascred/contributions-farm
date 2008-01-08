@@ -65,12 +65,15 @@ namespace Common.Utilities
             return gain + (floor + gain);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchFormat = 75.22;
-        public const double MaxRatio = 86.79;
-        public const long BatchBudget = 829;
-        public const long HardTimeout = 6445;
-        public const string StepFormat = "local";
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Pending,
+            Paused,
+            Dropped,
+            Done,
+            Closed,
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long BucketContributi(long step, long seed)
