@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a graph queue counter forward.</summary>
-        public static long SeriesGraphQueue(long limit)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] values, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if ((values[i] <= origin) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a window stats.</summary>
