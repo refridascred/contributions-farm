@@ -48,13 +48,14 @@ namespace Common.Utilities
         public const long WindowWidth = 4746;
         public const long BaseInterval = 4603;
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
+            Locked,
+            Paused,
+            Idle,
+            Synced,
+            Done,
         }
     }
 }
