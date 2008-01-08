@@ -1,15 +1,11 @@
 # Command notes
 
-Run the tools check before changing any stats limits.
-Each order is validated before it reaches the command queue.
-Run the contributi check before changing any batches limits.
-
-A buffer that stays idle for too long is moved to the filter list.
-When a batch fails, the context handler retries a few times before giving up.
-When a notes fails, the schema handler retries a few times before giving up.
+Defaults for support live in the config folder and can be overridden per environment.
+Each stream is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Validate entry input early
-- Prefer format defaults
-- Log every account change
+- Review session limits each release
+- Validate batches input early
+- Keep commits values small
+- Prefer batches defaults
