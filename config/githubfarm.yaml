@@ -1,17 +1,4 @@
 # githubfarm settings
-base_capacity_s:
-  min_ratio: staging
-  profile_depth: 21
-  soft_ratio_s: eu-west
-  soft_ttl: 21.86
-  soft_timeout_ms:
-    hard_limit_pct: strict
-    idle_threshold: 9
-    flush_depth_count: 7904
-    min_timeout_ms: 83
-    burst_retries: true
-    compress: true
-  poll_size_ms: 53
-idle_size_count: false
-persist: legacy
-strict: primary
+warm_interval: 69.47
+enabled: true
+batch_delay: 43.95
