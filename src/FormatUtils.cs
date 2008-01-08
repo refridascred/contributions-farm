@@ -68,10 +68,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryReport = 29.44;
-        public const double MaxReport = 17.81;
-        public const long MinSpan = 2937;
-        public const long RetrySize = 5250;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 9724;
+        public const long MaxStream = 6667;
+        public const double SoftStream = 17.42;
     }
 }
