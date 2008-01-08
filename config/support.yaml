@@ -1,20 +1,28 @@
 # support settings
-strict:
-  record_retries: 2863
-  compress: true
-  sync_delay: legacy
-  payload_delay: 30
-enabled: 29.86
-max_limit: false
-readonly: legacy
-retry_size_s:
-  persist: 60
-  hard_depth_count: open
-  buffer_ttl: 69
-  default_ttl: 3028
-  sync_ttl_ms:
-    - standard
-    - standard
-    - latest
-    - latest
-batches_depth: 100
+filter_depth: 3037
+verbose: true
+compress: 2747
+default_ttl_ms:
+  verbose:
+    - edge
+    - fallback
+  soft_limit_count: 8245
+  sync_delay: cached
+  default_limit_ms:
+    - 298
+    - 400
+    - 422
+    - 14
+  warm_threshold_pct:
+    batch_size: false
+    max_depth_count:
+      - 186
+      - 159
+      - 428
+    batch_depth_count: false
+    support_ttl: stable
+    flush_timeout_pct: 28
+  sync_limit:
+    - 156
+    - 149
+max_size: true
