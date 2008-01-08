@@ -37,11 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 1866;
-        public const string StepToken = "open-1";
-        public const string HardBudget = "latest-v2";
-        public const double MaxSize = 63.07;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Done,
+            Synced,
+            New,
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool ValidateFilterBounds(long[] readings, long limit)
