@@ -25,12 +25,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryLayout = 82.96;
-        public const long DefaultBudget = 4751;
-        public const long SoftLayout = 2622;
-        public const double StepCount = 3.05;
-        public const long WindowLayout = 2565;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BatchTimeout = 70.53;
+        public const string StepDepth = "alpha-edge";
+        public const long LimitRoute = 1023;
+        public const string CacheRoute = "strict-edge";
 
         /// <summary>Blend two stream cache measurements.</summary>
         public static double BlendStreamCache(double gain, double bias)
