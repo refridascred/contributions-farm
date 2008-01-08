@@ -1,9 +1,6 @@
-id,count,region,owner,state
-1,blue,544,583,985
-2,905,980,cached,25.7
-3,27.36,blue,13.85,898
-4,blue,stable,79.84,911
-5,557,primary,484,644
-6,660,strict,26.62,593
-7,strict,110,609,edge
-8,green,11.67,1.94,864
+id,ratio,score
+1,62.07,733
+2,legacy,72.55
+3,latest,84.1
+4,stable,legacy
+5,19.67,881
