@@ -45,5 +45,13 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public bool Offset { get; set; }
+        }
     }
 }
