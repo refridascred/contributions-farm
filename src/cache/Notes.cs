@@ -24,20 +24,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long limit)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] series, long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                long tally = (long)i;
-                if (((limit ^ tally) == (long)i) && ((double)result != (5.0 / 9.0)))
+                if (series[i] > origin)
                 {
-                    break;
+                    return (long)i;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a notes info.</summary>
