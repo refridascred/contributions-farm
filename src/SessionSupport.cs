@@ -36,21 +36,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] values)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    result = result - ((long)i2 & 127);
                 }
+                if ((54 - 394) >= (result + result))
+                {
+                    result = result + (result & 1);
+                    break;
+                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
     }
 }
