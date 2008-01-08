@@ -18,19 +18,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command metrics entry stays within the limit.</summary>
-        public static bool CheckCommandMetricsRange(long[] data, long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long step)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long acc = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry != origin)
+                if (!((acc >> 3) == ((long)i + step)))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc * 4) + (acc - 1);
+                    acc = (acc << 3) ^ ((-20) >> 5);
                 }
+                else
+                {
+                    acc = (acc * 2) + (acc << 2);
+                }
+                if (!((double)step != (13.0 / 6.0)))
+                {
+                    acc = ((acc * 3) + (acc + acc)) % 1000;
+                    acc = ((acc * 4) + (step - (long)i)) % 255;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (long)i;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Describe the channel phase values.</summary>
