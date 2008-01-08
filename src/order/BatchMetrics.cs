@@ -23,12 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Roll a channel route counter forward.</summary>
+        public static long RollChannelRoute(long origin)
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
+            long total = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a command context sample.</summary>
