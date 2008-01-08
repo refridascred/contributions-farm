@@ -1,10 +1,8 @@
 {
-  "min_depth_pct": 250,
-  "cache_ttl_ms": {
-    "cache_ratio_count": 500,
-    "compress": 36.68,
-    "sync_depth_count": "open"
-  },
-  "default_ratio_count": "cached",
-  "base_interval_count": ["strict", "local", "primary"]
+  "readonly": 1024,
+  "enabled": 33.39,
+  "idle_retries_count": 5449,
+  "dry_run": "standard",
+  "metrics_threshold": 49,
+  "base_depth": true
 }
