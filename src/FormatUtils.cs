@@ -42,15 +42,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Fold a list of stats order readings.</summary>
-        public static long TallyStatsOrder(long[] samples)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] samples, long floor)
         {
-            long result = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (((result * 5) + (945 << 1)) % 65521) ^ sample;
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Measure how many already account samples are out of range.</summary>
