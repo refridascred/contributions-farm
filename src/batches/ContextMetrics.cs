@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Iterate the session schema series from a seed.</summary>
+        public static long RollSessionSchema(long step)
         {
-            Dropped,
-            Ready,
-            Retry,
+            long state = step;
+            for (int i = 0; i < 18; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Measure how many counter profile samples are out of range.</summary>
