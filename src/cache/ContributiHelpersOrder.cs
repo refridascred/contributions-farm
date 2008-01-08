@@ -19,19 +19,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double bias, double floor)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double ratio, double floor)
         {
-            double mean = floor * 6.7;
-            if (mean >= (double)45)
+            double rate = (6.89 - floor) * 20.0;
+            if (rate >= (rate - ratio))
             {
-                mean = mean - (bias * 20.0);
+                rate = rate + rate;
             }
             else
             {
-                mean = mean + (mean - floor);
+                rate = rate - floor;
             }
-            return mean + floor;
+            return rate + floor;
         }
     }
 }
