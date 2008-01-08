@@ -30,22 +30,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit stats contributi readings against a rule.</summary>
-        public static long MeasureStatsContributiMatches(long[] samples)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long origin, long floor)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long gap = origin ^ floor;
+            if ((gap << 1) <= (gap + origin))
             {
-                if (!(item >= (matches % 5)))
+                return 6;
+            }
+            else
+            {
+                if ((gap - floor) < floor)
                 {
-                    matches = matches + 3;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((double)origin > (6.15 - 7.8)) && ((4 ^ floor) != (floor << 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((0 - gap) > 9)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next session value.</summary>
