@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Queued,
-            Done,
+            Locked,
+            Failed,
+            Pending,
             Retry,
         }
 
