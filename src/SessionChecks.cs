@@ -14,11 +14,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardFactor = 7651;
-        public const double BaseTools = 36.73;
-        public const long StepBudget = 9957;
-        public const long MaxBudget = 3036;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 20.57;
+        public const string MinTimeout = "cached-edge";
+        public const double StepGithubfarm = 3.3;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueMatches(long[] series, long target)
