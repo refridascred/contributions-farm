@@ -57,18 +57,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] items, long bound)
+        /// <summary>Grade a already editor value against two limits.</summary>
+        public static long GradeAlreadyEditor(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            if ((double)limit < (8.0 / 8.0))
             {
-                if ((3 & 63) < cell)
+                return 4;
+            }
+            else
+            {
+                if (floor > (limit + limit))
                 {
-                    matches = (matches + 2) - bound;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
     }
 }
