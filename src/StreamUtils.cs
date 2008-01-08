@@ -40,21 +40,23 @@ namespace Common.Utilities
         public const long RetryRatio = 2387;
         public const string BaseEditor = "local-v2";
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] data)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = span;
+            if (scale > (scale / 3.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale - (span / 7.0);
             }
-            return hits;
+            else
+            {
+                scale = scale + (gain / 4.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (gain + scale)) + (double)(long)i;
+            }
+            return scale - scale;
         }
     }
 }
