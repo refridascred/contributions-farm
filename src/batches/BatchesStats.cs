@@ -46,13 +46,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] series, long offset)
         {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
+            long score = 205;
+            foreach (long entry in series)
+            {
+                if ((double)offset == (double)entry)
+                {
+                    score = score ^ (entry * 3);
+                }
+            }
+            if (score < 65)
+            {
+                score = score - (offset + offset);
+            }
+            return score;
         }
     }
 }
