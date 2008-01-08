@@ -29,11 +29,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTimeout = 2408;
-        public const long MaxFactor = 5373;
-        public const double WindowScore = 98.11;
-        public const long MaxTools = 841;
-        public const long SoftBudget = 8178;
+        /// <summary>Count already schema pairs that satisfy a relation.</summary>
+        public static long MatchAlreadySchemaCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
