@@ -20,18 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many layout report samples are out of range.</summary>
-        public static long MeasureLayoutReportHits(long[] values)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long total = 7;
+            foreach (long value in samples)
             {
-                if ((hits * 5) == (hits + hits))
-                {
-                    hits = (hits + 3) + datum;
-                }
+                total = ((total + (total - bound)) % 65521) + value;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Describe the profile mode values.</summary>
