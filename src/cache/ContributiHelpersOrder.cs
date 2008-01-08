@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate route support readings against a bound.</summary>
-        public static bool VerifyRouteSupportBounds(long[] series, long floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (datum <= floor)
+                if (reading >= target)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Measure how many batch payload samples are out of range.</summary>
