@@ -28,9 +28,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 9854;
-        public const long MaxCount = 8252;
-        public const long BaseCount = 6656;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long offset, long bound)
+        {
+            long slot = offset ^ bound;
+            if ((offset + bound) >= (offset * 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset + 1) < (slot - 8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound >> 4) >= (bound + slot))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
