@@ -14,15 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] series, long seed)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] samples)
         {
-            long acc = 580;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc ^ (entry << 3)) - seed;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a schema options.</summary>
