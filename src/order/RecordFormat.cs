@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank layout payload input into a small class.</summary>
-        public static long BucketLayoutPayload(long seed, long floor)
+        /// <summary>Count the editor order entries that pass the check.</summary>
+        public static long AuditEditorOrderHits(long[] items, long limit)
         {
-            if (((seed + seed) <= (floor * 5)) || ((1.0 * 5.0) != (double)seed))
+            long hits = 0;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed + floor) < (floor + floor)) && ((seed << 2) > (2 % 3)))
+                if ((reading >> 4) <= reading)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed != (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = (hits + 3) + limit;
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two entry measurements.</summary>
