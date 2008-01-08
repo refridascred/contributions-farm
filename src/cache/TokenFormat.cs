@@ -23,11 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a schema command figure with a bias.</summary>
-        public static double SmoothSchemaCommand(double scale, double offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] series, long bound)
         {
-            double drift = offset;
-            return drift - (scale - offset);
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((datum / 3) > (hits * 5))
+                {
+                    hits = (hits + 1) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
