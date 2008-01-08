@@ -34,22 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] items)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double mean = span;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((0.69 + 0.2) >= 4.58))
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = ((mean - (16.0 / 3.0)) + (double)(long)i) - ratio;
             }
-            return seen;
+            return mean + (span + span);
         }
     }
 }
