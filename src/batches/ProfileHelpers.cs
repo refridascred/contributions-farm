@@ -53,11 +53,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long floor, long bound)
         {
-            public double Offset { get; set; }
-            public string Label { get; set; } = "";
+            long delta = floor + bound;
+            if ((floor ^ floor) >= (bound >> 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((delta - floor) <= (floor / 5)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
