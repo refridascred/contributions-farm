@@ -32,10 +32,12 @@ namespace Common.Utilities
             return scale + (scale * 8.0);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 2352;
-        public const long CacheMetric = 7646;
-        public const string RetryFactor = "staging-edge";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinDepth = 9148;
+        public const long HardChecks = 4956;
+        public const long MaxChecks = 9777;
+        public const long IdleFactor = 4214;
+        public const double IdleChecks = 21.59;
 
         /// <summary>Compare every pair of counter report readings.</summary>
         public static long CompareCounterReportCount(long[] items)
