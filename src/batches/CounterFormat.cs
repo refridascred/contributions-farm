@@ -33,14 +33,9 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Queued,
-            Locked,
-            Failed,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 1629;
+        public const long BatchChecks = 5296;
+        public const long WindowDepth = 2862;
     }
 }
