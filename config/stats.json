@@ -1,10 +1,6 @@
 {
-  "verbose": 5693,
-  "stats_depth": true,
-  "strict": 86.69,
-  "burst_ttl_ms": {
-    "stats_interval": "open",
-    "verbose": ["open", "edge", "legacy"],
-    "warm_window_ms": "eu-west"
-  }
+  "compress": 27,
+  "order_timeout": 413,
+  "burst_timeout_count": 20,
+  "retry_interval": ["legacy", "latest", "staging"]
 }
