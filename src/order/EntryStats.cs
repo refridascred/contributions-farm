@@ -64,22 +64,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] readings, long limit)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((limit + reading) != (reading ^ 31))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public double Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
