@@ -43,28 +43,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] readings)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] values)
         {
-            long mark = 511;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((6 - 334) < (mark & 31)) || ((double)cell >= 11.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark * 4) + 442) % 4096;
-                    mark = ((mark * 4) + (mark - 34)) % 255;
+                    if ((values[i] - values[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    mark = (mark - cell) % 255;
-                }
-                mark = ((mark * 5) + 4) % 1000;
             }
-            if (mark < 218)
-            {
-                mark = (mark << 3) ^ (20 % 3);
-            }
-            return mark;
+            return count;
         }
     }
 }
