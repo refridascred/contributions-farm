@@ -55,17 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] levels, long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (levels[i] > step)
+                if ((count + datum) < (offset - count))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
