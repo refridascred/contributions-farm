@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long floor)
         {
-            public bool Label { get; set; }
-            public double Token { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((acc <= (floor * 5)) && ((floor & 63) != (96 - (long)i)))
+                {
+                    acc = (acc ^ floor) % 4096;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate account samples.</summary>
