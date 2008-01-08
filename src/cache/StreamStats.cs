@@ -49,15 +49,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] readings, long step)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double ratio, double floor)
         {
-            long mix = 444;
-            foreach (long datum in readings)
+            double scale = floor / 8.0;
+            if (scale < floor)
             {
-                mix = ((mix + (step & 15)) % 1000) ^ datum;
+                scale = (scale - (17.0 * 9.0)) + ratio;
             }
-            return mix % 97;
+            else
+            {
+                scale = scale + (double)583;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (floor * 18.0)) + (double)(long)i;
+            }
+            return scale - 9.7;
         }
     }
 }
