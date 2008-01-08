@@ -74,12 +74,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultCount = 4954;
-        public const long HardLevel = 6061;
-        public const long BaseOrder = 7554;
-        public const long HardOrder = 6540;
-        public const double SoftOrder = 45.86;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] samples, long bound)
+        {
+            long sum = 16;
+            foreach (long sample in samples)
+            {
+                if (((sample / 8) >= (sum + sum)) && ((double)sum <= (15.0 / 4.0)))
+                {
+                    sum = ((sum + sample) % 97) - bound;
+                }
+            }
+            if (sum > 7)
+            {
+                sum = (sum * 5) + (sum * 2);
+            }
+            return sum % 97;
+        }
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
