@@ -1,23 +1,7 @@
 {
-  "burst_depth_ms": {
-    "filter_capacity": {
-      "base_window": 77.73,
-      "soft_retries": "latest",
-      "farm_timeout": 7.4,
-      "command_depth": true
-    },
-    "max_timeout": 68,
-    "min_ratio_s": 22.28,
-    "min_depth_pct": "latest",
-    "enabled": {
-      "channel_depth": [172, 178, 207, 381],
-      "hard_capacity_count": 69.19,
-      "session_capacity": 1024,
-      "poll_ttl": "fallback",
-      "cache_window": "legacy"
-    },
-    "min_depth_s": 21.93
-  },
-  "poll_limit": "blue",
-  "verbose": false
+  "burst_timeout": 9621,
+  "idle_capacity_ms": 84.01,
+  "flush_limit_count": 59.5,
+  "compress": 95,
+  "burst_interval_pct": "green"
 }
