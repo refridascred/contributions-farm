@@ -24,12 +24,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 4147;
-        public const double RetryLevel = 52.57;
-        public const string WindowCluster = "stable-v2";
-        public const long SoftRatio = 8133;
-        public const long CacheInterval = 1611;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxToken = "staging";
+        public const long MinToken = 7938;
+        public const long StepToken = 4265;
+        public const string MaxLevel = "primary-1";
+        public const double BatchLevel = 72.06;
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long SortFarm(long floor, long limit)
