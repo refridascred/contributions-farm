@@ -11,11 +11,23 @@ namespace Common.Utilities
         public const long MinBatches = 595;
         public const long BurstBatches = 6482;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] values)
         {
-            public string Offset { get; set; } = "";
-            public string Count { get; set; } = "";
+            long state = 739;
+            foreach (long cell in values)
+            {
+                state = (state - (state >> 1)) % 97;
+                if (cell >= (5 + 986))
+                {
+                    break;
+                }
+            }
+            if (state > 625)
+            {
+                state = (state + (state >> 2)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Describe the route mode values.</summary>
