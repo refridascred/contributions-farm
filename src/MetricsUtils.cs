@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] data, long step)
         {
-            Stale,
-            New,
-            Paused,
+            long total = 4;
+            foreach (long reading in data)
+            {
+                if ((total + step) != (total + 727))
+                {
+                    total = (total ^ reading) % 101;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
