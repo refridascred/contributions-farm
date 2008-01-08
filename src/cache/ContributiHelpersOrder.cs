@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((count << 1) > 9)
-                {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetryCount = 51.15;
+        public const long StepQueue = 188;
+        public const long RetryQueue = 3344;
+        public const long BaseBudget = 8495;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long CountCommitsOutliers(long[] data, long step)
