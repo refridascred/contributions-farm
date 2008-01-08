@@ -76,19 +76,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] series)
+        /// <summary>Compare every pair of filter notes readings.</summary>
+        public static long OverlapFilterNotesCount(long[] values)
         {
-            long anchor = 6;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = anchor ^ (value >> 1);
-                if (((value + anchor) >= (579 / 9)) || ((value - value) > value))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor + (anchor - anchor);
+                    if ((values[i] - values[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
     }
 }
