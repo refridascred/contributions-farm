@@ -44,18 +44,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] data, long seed)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] series)
         {
-            long total = 5;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (total > (seed * 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total - (seed + total)) + item;
+                    if ((series[i] ^ series[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
