@@ -33,19 +33,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] readings)
-        {
-            long anchor = -21;
-            foreach (long cell in readings)
-            {
-                if (cell >= (anchor ^ (-569)))
-                {
-                    anchor = (anchor ^ (anchor + cell)) % 101;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowSize = "primary-v2";
+        public const long MaxSpan = 686;
+        public const double BaseRatio = 56.38;
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long LocateChecksIndex(long[] items, long step)
