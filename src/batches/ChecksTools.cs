@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] data)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long seed)
         {
-            long score = 8;
-            foreach (long item in data)
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
             {
-                score = ((score - (586 * 4)) % 97) + item;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Describe the session status values.</summary>
