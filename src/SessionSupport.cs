@@ -20,19 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] samples, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (sample != seed)
+                if ((seed * 4) != (0 - 18))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) ^ entry;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
