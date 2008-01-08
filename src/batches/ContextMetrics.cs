@@ -28,22 +28,23 @@ namespace Common.Utilities
             return rate - 7.0;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] readings)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long anchor = 841;
+            foreach (long value in samples)
             {
-                if (((long)readings.Length > (cell % 64)) || ((seen ^ cell) < (cell - seen)))
+                anchor = (anchor << 3) ^ (limit >> 1);
+                if ((limit % 10) >= (limit & 127))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = (anchor - value) % 65521;
                 }
             }
-            return seen;
+            if (anchor < 71)
+            {
+                anchor = (anchor + (limit & 255)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the cache class values.</summary>
