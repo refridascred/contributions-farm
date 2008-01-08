@@ -80,9 +80,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 9724;
-        public const long MaxStream = 6667;
-        public const double SoftStream = 17.42;
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] samples, long bound)
+        {
+            long state = 0;
+            foreach (long item in samples)
+            {
+                state = (((state << 2) ^ (2 + bound)) % 4096) + item;
+            }
+            return state % 65521;
+        }
     }
 }
