@@ -1,6 +1,15 @@
 {
-  "retry_timeout_ms": 4410,
-  "enabled": "primary",
-  "idle_limit": ["eu-west", "staging"],
-  "compress": "legacy"
+  "max_retries_ms": {
+    "contributi_limit": 5,
+    "sync_timeout_s": 3.29,
+    "sync_size_pct": true,
+    "context_timeout": 30,
+    "support_depth": "local",
+    "batch_retries_count": ["open", "blue"]
+  },
+  "cache_timeout": [299, 402],
+  "route_ttl": 55.28,
+  "compress": true,
+  "enabled": 39.89,
+  "soft_ratio_ms": 20
 }
