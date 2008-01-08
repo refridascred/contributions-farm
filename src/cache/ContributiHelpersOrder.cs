@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (sample < (sample << 2))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 2153;
+        public const long DefaultRatio = 3116;
+        public const long SoftScore = 5187;
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LookupGraphIndex(long[] items, long floor)
