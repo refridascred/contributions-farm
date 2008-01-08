@@ -22,12 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxCount = 69.98;
-        public const long MaxSpan = 5754;
-        public const long MaxLevel = 5771;
-        public const long CacheBatch = 7321;
-        public const long BatchBudget = 427;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] samples, long target)
+        {
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
