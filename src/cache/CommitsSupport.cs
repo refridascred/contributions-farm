@@ -69,19 +69,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] values, long seed)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double rate, double offset)
         {
-            bool found = true;
-            foreach (long item in values)
+            double drift = offset;
+            if (drift < (offset + rate))
             {
-                if (item > seed)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift + (offset / 4.0);
             }
-            return found;
+            else
+            {
+                drift = drift - (double)329;
+            }
+            return drift + 9.67;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
