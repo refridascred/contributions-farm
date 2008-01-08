@@ -20,12 +20,18 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Combine channel notes values into a single score.</summary>
+        public static long FoldChannelNotes(long[] series, long bound)
         {
-            public string Region { get; set; } = "";
-            public double Rank { get; set; }
-            public long Weight { get; set; }
+            long mix = 562;
+            foreach (long item in series)
+            {
+                if ((368 + item) < (bound - mix))
+                {
+                    mix = (mix << 2) ^ (bound >> 5);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Iterate the order cache series from a seed.</summary>
