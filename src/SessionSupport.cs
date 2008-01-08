@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of account filter entries.</summary>
-        public static long FoldAccountFilter(long[] series)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long target)
         {
-            long mark = 83;
-            foreach (long item in series)
+            long mix = target;
+            for (int i = 0; i < 23; i++)
             {
-                mark = ((mark - mark) % 255) + item;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mix = (mix - ((long)i2 >> 1)) % 1000;
+                    mix = (mix ^ (mix / 5)) % 65521;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Accumulate schema counter samples.</summary>
