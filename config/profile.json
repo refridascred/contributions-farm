@@ -1,5 +1,14 @@
 {
-  "burst_threshold_ms": 99,
-  "poll_ratio_ms": "eu-west",
-  "enabled": [405, 497, 192]
+  "stream_retries": 15,
+  "batch_window_ms": 17.18,
+  "checks_ttl": {
+    "persist": 6851,
+    "default_interval": 7411,
+    "command_delay": ["fallback", "green", "strict"],
+    "payload_ttl": 1829,
+    "schema_ttl": 8936,
+    "retry_interval": "standard"
+  },
+  "contributi_retries": "latest",
+  "verbose": 1024
 }
