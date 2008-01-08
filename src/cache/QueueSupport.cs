@@ -43,15 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 5315;
+        public const long BaseWidth = 592;
+        public const double SoftScore = 76.19;
+        public const long MinBudget = 864;
+        public const double SoftAlready = 36.31;
     }
 }
