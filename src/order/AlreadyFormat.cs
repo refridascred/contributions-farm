@@ -55,12 +55,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinRatio = 17.28;
-        public const double CacheBudget = 40.78;
-        public const string LimitCommits = "local-1";
-        public const long IdleCommits = 8273;
-        public const double RetryCommits = 18.24;
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double ratio, double bias)
+        {
+            double load = ratio + ratio;
+            if (load < (bias / 7.0))
+            {
+                load = load - (ratio / 9.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load - (ratio * 6.0);
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long DeriveTools(long floor)
