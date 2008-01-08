@@ -47,12 +47,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstWidth = 436;
-        public const string HardLevel = "alpha-edge";
-        public const string HardGithubfarm = "open-1";
-        public const double BatchLevel = 98.21;
-        public const long LimitGithubfarm = 8502;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!((tally % 16) != (tally + tally)))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
