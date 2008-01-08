@@ -14,14 +14,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] data, long limit)
         {
-            Locked,
-            Retry,
-            Ready,
-            Done,
-            Draft,
+            long anchor = 901;
+            foreach (long datum in data)
+            {
+                anchor = ((anchor * 3) + (limit ^ limit)) % 4096;
+                anchor = ((anchor << 3) ^ (1 ^ datum)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a session reading.</summary>
