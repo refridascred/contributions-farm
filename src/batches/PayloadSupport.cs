@@ -14,13 +14,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] data)
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a profile record.</summary>
