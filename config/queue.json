@@ -1,5 +1,7 @@
 {
-  "checks_retries": 76.48,
-  "account_size": 18.08,
-  "retry_capacity_pct": ["fallback", "stable", "primary"]
+  "queue_window": "edge",
+  "poll_capacity_pct": 32,
+  "account_capacity": 1024,
+  "buffer_limit": ["legacy", "green", "local", "eu-west"],
+  "retry_delay_count": 98.62
 }
