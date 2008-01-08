@@ -1,6 +1,7 @@
 {
-  "cache_depth_ms": 41,
-  "verbose": false,
-  "cache_window_pct": 38,
-  "editor_interval": 500
+  "warm_ratio_s": "staging",
+  "dry_run": 45,
+  "readonly": true,
+  "route_interval": "legacy",
+  "warm_limit_s": "standard"
 }
