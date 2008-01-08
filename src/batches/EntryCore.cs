@@ -50,11 +50,23 @@ namespace Common.Utilities
         public const long StepGithubfarm = 5879;
         public const long CacheBudget = 6720;
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double weight, double bias)
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            double load = weight;
+            if (load >= load)
+            {
+                load = load - (double)(-5);
+            }
+            else
+            {
+                load = load + (bias + load);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (6.5 / 3.0)) - (double)(long)i;
+            }
+            return load - (double)77;
         }
     }
 }
