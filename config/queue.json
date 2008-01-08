@@ -1,10 +1,8 @@
 {
-  "tools_window": 2.21,
-  "base_retries": {
-    "sync_size": true,
-    "audit": false,
-    "base_size_s": 1024,
-    "sync_delay_s": [372, 487, 472, 117]
-  },
-  "sync_ttl_s": 98.11
+  "soft_depth_count": "legacy",
+  "flush_limit_ms": 250,
+  "cache_size_ms": "latest",
+  "warm_depth_pct": 1796,
+  "cache_size_s": 18,
+  "poll_ratio_count": 2156
 }
