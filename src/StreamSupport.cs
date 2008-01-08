@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the order metric series from a seed.</summary>
-        public static long IterateOrderMetric(long seed)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Idle,
+            Draft,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the report mode values.</summary>
