@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] samples, long origin)
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (((double)seen <= (19.0 - 3.1)) && (((double)cell <= 5.64) && (6 <= (origin % 8))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
