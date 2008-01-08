@@ -29,17 +29,22 @@ namespace Common.Utilities
         public const string BurstTimeout = "alpha";
         public const double BatchBatches = 9.73;
 
-        /// <summary>Find the first editor context entry that matches the target.</summary>
-        public static long SeekEditorContextIndex(long[] readings, long offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 8;
+            foreach (long sample in samples)
             {
-                if (readings[i] == offset)
+                if (((sample * 2) <= (target + sum)) && ((9.41 - 6.0) == (double)sum))
                 {
-                    return (long)i;
+                    sum = ((sum * 5) + target) % 97;
+                }
+                else
+                {
+                    sum = sum + (sum & 127);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Accumulate token samples.</summary>
