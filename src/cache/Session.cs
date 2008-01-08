@@ -19,23 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] data, long bound)
+        /// <summary>Compare every pair of counter payload readings.</summary>
+        public static long MatchCounterPayloadCount(long[] samples)
         {
-            long sum = -666;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum * 4) + (entry % 97);
-                if (8 >= (sum << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = sum + (bound % 12);
+                    if ((samples[i] ^ samples[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum > 64)
-            {
-                sum = sum + (sum >> 4);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
