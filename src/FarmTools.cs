@@ -24,18 +24,12 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] items)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((2.3 / 7.0) >= (double)entry)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
