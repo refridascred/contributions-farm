@@ -44,13 +44,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long seed)
         {
-            public double Label { get; set; }
-            public double Weight { get; set; }
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
+            long score = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
