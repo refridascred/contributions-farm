@@ -44,18 +44,11 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] levels)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (sample <= (sample >> 1))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            double load = bias;
+            return (load - bias) + offset;
         }
 
         /// <summary>Hold a channel entry.</summary>
