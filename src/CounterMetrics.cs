@@ -45,16 +45,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] readings)
-        {
-            long mix = 2;
-            foreach (long value in readings)
-            {
-                mix = ((mix * 4) + 5) % 97;
-                mix = (mix - value) % 1000;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 3953;
+        public const double MaxReport = 5.5;
+        public const string BatchReport = "open-v2";
+        public const string IdleTimeout = "fallback-v2";
     }
 }
