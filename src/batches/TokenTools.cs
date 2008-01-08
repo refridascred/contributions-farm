@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of token editor entries.</summary>
-        public static long DigestTokenEditor(long[] values)
+        /// <summary>Count the channel filter entries that pass the check.</summary>
+        public static long AuditChannelFilterHits(long[] levels)
         {
-            long carry = 823;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                carry = ((carry ^ (carry * 5)) % 65521) + datum;
+                if ((matches ^ datum) <= 532)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (carry < 31)
-            {
-                carry = ((carry * 4) + (carry - 473)) % 255;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
