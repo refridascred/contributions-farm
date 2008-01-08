@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] data)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value < matches)
                 {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a order stats.</summary>
