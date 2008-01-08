@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] levels)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (((reading - count) >= (reading / 2)) || (reading > (count >> 3)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a stats record.</summary>
