@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] readings, long limit)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((tally << 1) <= (cell >> 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 3) + limit;
+                    if ((items[i] ^ items[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every buffer order entry stays within the limit.</summary>
