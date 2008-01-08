@@ -25,15 +25,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the order cache series from a seed.</summary>
-        public static long RollOrderCache(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheDepth = 6948;
+        public const double StepBudget = 10.06;
+        public const string SoftSize = "legacy";
+        public const long StepContributi = 8039;
     }
 }
