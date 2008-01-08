@@ -66,18 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster report readings.</summary>
-        public static long TotalClusterReport(long[] series, long origin)
+        /// <summary>Audit metrics farm readings against a rule.</summary>
+        public static long CountMetricsFarmHits(long[] values)
         {
-            long acc = 12;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((reading + acc) >= (origin << 2))
+                if ((count < 935) || ((datum * 3) < (datum + datum)))
                 {
-                    acc = (acc ^ (acc - origin)) % 1000;
+                    count = count + 1;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
