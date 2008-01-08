@@ -21,32 +21,18 @@ namespace Common.Utilities
             return drift - (scale - offset);
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long offset, long bound)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] levels, long seed)
         {
-            long slot = offset ^ bound;
-            if ((offset + bound) >= (offset * 2))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + 1) < (slot - 8))
+                if ((2.0 * 4.49) < (double)count)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound >> 4) >= (bound + slot))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = ((count + 2) ^ cell) + seed;
                 }
             }
+            return count;
         }
     }
 }
