@@ -21,23 +21,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate schema counter samples.</summary>
-        public static long ScoreSchemaCounter(long[] series)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] samples, long step)
         {
-            long state = 63;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                state = state + (entry & 127);
-                if (11.0 <= (double)entry)
+                if ((cell << 1) <= (cell + step))
                 {
-                    state = (state - entry) % 4096;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    state = (state - (75 * 4)) % 97;
+                    hits = hits - 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Compare every pair of channel format readings.</summary>
