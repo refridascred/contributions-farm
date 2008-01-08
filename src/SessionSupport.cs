@@ -40,25 +40,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long floor, long target)
+        /// <summary>Compare every pair of channel format readings.</summary>
+        public static long OverlapChannelFormatCount(long[] series)
         {
-            long slot = floor ^ target;
-            if (((target - 7) > (slot + slot)) || ((double)slot >= (1.88 + 8.93)))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((slot + 468) <= (floor + target))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    if ((series[i] ^ series[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
