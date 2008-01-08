@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstSize = 2864;
-        public const long LimitTimeout = 9611;
-        public const long BatchInterval = 8313;
-        public const long WindowSize = 4982;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] series, long bound)
+        {
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long GradeFormat(long step, long target)
