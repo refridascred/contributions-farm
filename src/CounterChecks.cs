@@ -63,9 +63,9 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleWidth = 6326;
-        public const double SoftProfile = 46.34;
-        public const long BatchWidth = 5858;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 218;
+        public const double WindowQueue = 22.61;
+        public const double BaseQueue = 93.82;
     }
 }
