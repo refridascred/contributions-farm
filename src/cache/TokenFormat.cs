@@ -19,31 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank stream session input into a small class.</summary>
-        public static long BucketStreamSession(long bound, long origin)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] values, long origin)
         {
-            if ((bound + bound) < origin)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound % 10) >= (19 - bound))
+                if (cell <= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (4.0 <= (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
