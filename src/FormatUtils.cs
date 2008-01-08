@@ -50,18 +50,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] levels)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((650 + seen) == (seen / 4))
+                if ((double)matches != (1.0 * 20.0))
                 {
-                    seen = (seen + 3) + item;
+                    matches = ((matches + 2) ^ reading) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
