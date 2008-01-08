@@ -1,9 +1,6 @@
-id,owner,region,active,state
-1,11,89.14,392,strict
-2,180,328,229,38.78
-3,edge,95.62,758,21.48
-4,strict,704,755,130
-5,legacy,411,fallback,955
-6,59.2,933,eu-west,44
-7,43.8,424,open,204
-8,34.6,414,43.55,84.7
+id,region,label,score,active
+1,primary,107,42.12,legacy
+2,edge,752,548,fallback
+3,open,340,standard,362
+4,latest,fallback,latest,68.95
+5,46,846,open,205
