@@ -38,23 +38,14 @@ namespace Common.Utilities
             return rate - 7.0;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] samples, long limit)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long anchor = 841;
-            foreach (long value in samples)
-            {
-                anchor = (anchor << 3) ^ (limit >> 1);
-                if ((limit % 10) >= (limit & 127))
-                {
-                    anchor = (anchor - value) % 65521;
-                }
-            }
-            if (anchor < 71)
-            {
-                anchor = (anchor + (limit & 255)) % 65521;
-            }
-            return anchor;
+            Stale,
+            Ready,
+            Active,
+            Closed,
+            Idle,
         }
 
         /// <summary>Adjust a context reading.</summary>
