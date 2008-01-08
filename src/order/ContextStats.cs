@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long BaseLayout = 8568;
         public const long BatchLayout = 4348;
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
+            Failed,
+            Pending,
+            Active,
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
