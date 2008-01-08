@@ -88,26 +88,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] readings)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long total = 486;
-            foreach (long datum in readings)
-            {
-                if ((total & 1) == (7 + (long)readings.Length))
-                {
-                    total = (total - (total / 9)) ^ datum;
-                }
-                else
-                {
-                    total = (total + (total + total)) % 101;
-                }
-            }
-            if (total < 72)
-            {
-                total = (total - 7) % 101;
-            }
-            return total;
+            Dropped,
+            Synced,
+            Idle,
+            Ready,
         }
 
         /// <summary>Combine token values into a single score.</summary>
