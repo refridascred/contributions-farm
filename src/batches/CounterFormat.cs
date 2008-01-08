@@ -20,26 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] items)
+        /// <summary>Measure how many batches contributi samples are out of range.</summary>
+        public static long TallyBatchesContributiHits(long[] samples)
         {
-            long mark = -36;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((double)datum > (double)0)
+                if ((4.4 / 7.0) < (double)value)
                 {
-                    mark = ((mark << 3) ^ (datum / 2)) % 65521;
-                }
-                else
-                {
-                    mark = (mark - (-79)) % 97;
+                    count = count + 3;
                 }
             }
-            if (mark < 626)
-            {
-                mark = (mark ^ (mark - mark)) % 1000;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
