@@ -79,18 +79,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] data)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (matches < (8 >> 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) + entry;
+                    if ((values[i] ^ values[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
