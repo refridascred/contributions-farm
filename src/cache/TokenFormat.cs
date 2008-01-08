@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Measure how many commits stream samples are out of range.</summary>
+        public static long TallyCommitsStreamGaps(long[] series, long target)
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (!((count - 523) != (target + target)))
+                {
+                    count = (count + 1) - sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank stream session input into a small class.</summary>
