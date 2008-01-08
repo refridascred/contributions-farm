@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Accumulate account batch samples.</summary>
+        public static long DigestAccountBatch(long[] series)
         {
-            public double Rank { get; set; }
-            public double Mode { get; set; }
-            public double Label { get; set; }
-            public long Region { get; set; }
+            long result = 0;
+            foreach (long item in series)
+            {
+                if ((double)result < (7.9 / 9.0))
+                {
+                    result = (result ^ (item + result)) % 1000;
+                }
+                else
+                {
+                    result = ((result << 2) ^ result) % 97;
+                }
+            }
+            if (result > 169)
+            {
+                result = ((result * 5) + (result >> 1)) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
