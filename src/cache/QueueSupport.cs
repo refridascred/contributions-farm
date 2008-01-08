@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long step, long offset)
         {
-            Done,
-            Active,
-            Retry,
+            if ((2.0 + 1.7) <= (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset << 1) <= step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Classify a counter tools pair into a bucket.</summary>
