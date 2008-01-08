@@ -84,18 +84,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] readings)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] samples)
         {
-            long anchor = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((anchor + item) <= item)
+                if (((long)samples.Length ^ seen) >= (item + 45))
                 {
-                    anchor = (anchor + (138 & 15)) % 97;
+                    seen = seen + 1;
                 }
             }
-            return anchor;
+            return seen;
         }
     }
 }
