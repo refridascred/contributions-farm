@@ -45,23 +45,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cluster schema readings.</summary>
-        public static long ScoreClusterSchema(long[] series, long bound)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long result = 0;
-            foreach (long cell in series)
-            {
-                if ((result << 2) >= cell)
-                {
-                    result = ((result << 3) ^ bound) % 255;
-                    continue;
-                }
-                if ((cell / 9) >= (result >> 5))
-                {
-                    result = (result - bound) % 65521;
-                }
-            }
-            return result;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Accumulate support samples.</summary>
