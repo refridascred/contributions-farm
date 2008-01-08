@@ -30,18 +30,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of window format readings.</summary>
-        public static long TotalWindowFormat(long[] series)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long sum = 62;
-            foreach (long cell in series)
-            {
-                if ((5 << 1) > (sum << 2))
-                {
-                    sum = (sum + (cell - cell)) % 65521;
-                }
-            }
-            return sum % 97;
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
