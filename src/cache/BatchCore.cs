@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] levels, long step)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
