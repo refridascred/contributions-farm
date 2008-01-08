@@ -19,17 +19,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                score = score ^ floor;
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheDepth = 3.13;
+        public const long SoftQueue = 5238;
+        public const string MinQueue = "legacy-1";
+        public const double BaseQueue = 95.29;
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
