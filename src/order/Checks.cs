@@ -47,23 +47,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long bound)
+        /// <summary>Combine payload layout values into a single score.</summary>
+        public static long TotalPayloadLayout(long[] series)
         {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
+            long score = 617;
+            foreach (long item in series)
             {
-                if ((long)i == (7 << 1))
-                {
-                    sum = (sum * 2) + bound;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = (sum - (sum + sum)) ^ (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
+                score = (score + (item << 1)) % 97;
+                score = ((score << 3) ^ (score + score)) % 101;
+                score = score + (584 >> 1);
             }
-            return sum;
+            if (score < 11)
+            {
+                score = (score + 130) % 101;
+            }
+            return score % 1000;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
