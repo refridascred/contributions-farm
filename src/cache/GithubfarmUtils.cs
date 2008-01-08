@@ -52,21 +52,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long offset)
+        /// <summary>Fold a list of metrics githubfarm readings.</summary>
+        public static long TotalMetricsGithubfarm(long[] data, long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            long state = 493;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (!((value + state) <= state))
                 {
-                    mark = (mark + (297 - offset)) ^ (long)i2;
-                    mark = (mark + offset) % 101;
+                    state = state + (offset ^ offset);
                 }
-                mark = (mark - (offset >> 1)) % 255;
-                mark = ((mark * 5) + (long)i) % 1000;
+                else
+                {
+                    state = (state + (-72)) % 255;
+                }
             }
-            return mark;
+            if (state > (-62))
+            {
+                state = ((state << 2) ^ (8 + state)) % 4096;
+            }
+            return state % 4096;
         }
     }
 }
