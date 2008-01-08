@@ -30,16 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long step)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long total = step;
-            for (int i = 0; i < 9; i++)
-            {
-                total = total - ((long)i + 710);
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Dropped,
+            Paused,
+            New,
         }
     }
 }
