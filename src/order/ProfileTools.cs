@@ -29,14 +29,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Validate editor githubfarm readings against a bound.</summary>
+        public static bool GuardEditorGithubfarmRange(long[] values, long origin)
         {
-            Idle,
-            New,
-            Retry,
-            Dropped,
-            Closed,
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
