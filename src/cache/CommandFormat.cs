@@ -40,11 +40,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long origin, long step)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            long lane = origin - step;
+            if ((515 & 31) > (139 - lane))
+            {
+                return 0;
+            }
+            else
+            {
+                if (step > (origin + lane))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a token info.</summary>
