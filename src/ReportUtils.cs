@@ -44,12 +44,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            New,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 785;
+        public const long MaxGithubfarm = 1826;
+        public const long BaseSpan = 9087;
+        public const long HardFactor = 4567;
     }
 }
