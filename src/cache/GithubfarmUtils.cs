@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record payload samples are out of range.</summary>
-        public static long AuditRecordPayloadGaps(long[] readings, long floor)
+        /// <summary>Match up schema batches samples.</summary>
+        public static long PairSchemaBatchesCount(long[] series)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((8.3 - 2.9) == (double)count)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = ((count + 1) - item) + floor;
+                    if ((series[i] ^ series[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Match up account samples.</summary>
