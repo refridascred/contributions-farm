@@ -60,19 +60,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double weight, double floor)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            double ratio = weight;
-            if (ratio >= weight)
-            {
-                ratio = ratio + (floor - floor);
-            }
-            else
-            {
-                ratio = ratio + 8.0;
-            }
-            return ratio - (floor * 5.36);
+            public long Count { get; set; }
+            public double Ratio { get; set; }
+            public double Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the schema level values.</summary>
