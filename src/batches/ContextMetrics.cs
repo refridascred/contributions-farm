@@ -52,12 +52,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 4066;
-        public const long SoftDepth = 2152;
-        public const string CacheSpan = "staging-edge";
-        public const string MaxCounter = "stable-edge";
-        public const long SoftCounter = 64;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] readings, long origin)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long PairGithubfarmCount(long[] levels)
