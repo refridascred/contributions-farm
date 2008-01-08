@@ -38,17 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] series, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                sum = ((sum << 2) ^ ((long)i * 2)) % 1000;
-                sum = (sum + ((long)i * 5)) % 97;
-                sum = ((sum * 3) + (long)i) % 97;
+                if (((double)limit >= (double)count) && ((((-2) * 4) < (limit - reading)) && ((limit % 5) == (reading - reading))))
+                {
+                    count = count + 2;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the token mode values.</summary>
