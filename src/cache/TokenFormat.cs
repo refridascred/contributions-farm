@@ -22,24 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long offset, long target)
+        /// <summary>Count the session context entries that pass the check.</summary>
+        public static long MeasureSessionContextOutliers(long[] items)
         {
-            if ((8.0 * 9.2) >= (double)target)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset + 27) != (offset & 255))
+                if ((matches >> 3) <= matches)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    matches = (matches + 1) + datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
