@@ -62,18 +62,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] values)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)3 > (double)matches)
+                if ((readings[i] > seed) && ((readings[i] % 5) != 0))
                 {
-                    matches = (matches + 2) ^ datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
