@@ -37,17 +37,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] samples, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (samples[i] > seed)
+                if ((value + count) >= (81 << 3))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Match up schema samples.</summary>
