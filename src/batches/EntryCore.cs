@@ -67,40 +67,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long origin, long bound)
-        {
-            long lane = origin ^ bound;
-            if (((1.5 / 9.0) == (double)origin) && ((lane * 3) == (origin >> 1)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((5 >= (origin + origin)) && ((lane % 60) >= bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((5.6 + 5.8) != (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((bound + (-712)) > (lane + origin)) || ((lane << 1) == (bound >> 4)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowPayload = 62.13;
+        public const string SoftTimeout = "latest";
+        public const long HardPayload = 4594;
+        public const string BurstLevel = "stable-v2";
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long GradeChecks(long step, long target)
