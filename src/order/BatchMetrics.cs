@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            Synced,
-            Active,
-            Retry,
+            Queued,
+            Idle,
+            Done,
+            Failed,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
