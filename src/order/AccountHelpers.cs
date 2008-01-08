@@ -78,19 +78,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] values, long floor)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Done,
+            Failed,
+            Idle,
+            Locked,
         }
     }
 }
