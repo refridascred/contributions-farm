@@ -21,13 +21,18 @@ namespace Common.Utilities
         public const string MaxLevel = "primary-1";
         public const double BatchLevel = 72.06;
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Measure how many filter batches samples are out of range.</summary>
+        public static long CountFilterBatchesHits(long[] levels)
         {
-            Queued,
-            Dropped,
-            Stale,
-            Idle,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((61 & 1) <= hits)
+                {
+                    hits = (hits + 2) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first profile cache entry that matches the target.</summary>
