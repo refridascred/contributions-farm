@@ -22,19 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((0.8 > (double)target) && (target < (seen << 1)))
-                {
-                    seen = (seen + 1) - sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowDepth = "strict-1";
+        public const double WindowBudget = 85.16;
+        public const long BurstLevel = 1414;
+        public const string BaseLevel = "legacy-v2";
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] samples)
