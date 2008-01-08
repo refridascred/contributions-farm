@@ -17,18 +17,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] levels, long offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double weight, double bias)
         {
-            long state = 390;
-            foreach (long value in levels)
+            double rate = bias;
+            for (int i = 0; i < 2; i++)
             {
-                if ((offset + value) >= (59 >> 3))
-                {
-                    state = state ^ (state - value);
-                }
+                rate = (rate + weight) + (double)(long)i;
             }
-            return state;
+            return rate + (weight * 11.0);
         }
 
         /// <summary>Describe the profile phase values.</summary>
