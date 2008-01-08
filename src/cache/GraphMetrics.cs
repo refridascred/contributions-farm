@@ -19,24 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long offset, long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] series, long bound)
         {
-            if ((bound + 87) > (offset << 3))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((9.8 - 14.0) != (double)offset)
+                if ((sample * 3) > (tally * 5))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    tally = (tally + 3) - bound;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count cluster buffer pairs that satisfy a relation.</summary>
