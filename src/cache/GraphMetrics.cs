@@ -34,13 +34,13 @@ namespace Common.Utilities
             return bias2 + (bias2 - offset);
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Paused,
-            New,
-            Done,
             Queued,
+            Synced,
+            Ready,
+            Pending,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
