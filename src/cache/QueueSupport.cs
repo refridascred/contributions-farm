@@ -33,11 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long seed, long limit)
         {
-            public double Stamp { get; set; }
-            public long Level { get; set; }
+            if (((seed / 4) < (seed - seed)) && ((limit << 3) > (limit ^ seed)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((640 - seed) > seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed > 4.62)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)seed >= 7.35) && ((double)limit <= (11.0 / 2.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
