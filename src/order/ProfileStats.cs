@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] values)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] readings, long limit)
         {
-            long mix = 81;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (!((6.96 * 15.0) > (9.7 / 8.0)))
+                if (!((tally << 1) <= (cell >> 3)))
                 {
-                    mix = (mix - (mix << 2)) % 97;
-                }
-                if ((long)values.Length < reading)
-                {
-                    break;
+                    tally = (tally + 3) + limit;
                 }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Check that every buffer order entry stays within the limit.</summary>
