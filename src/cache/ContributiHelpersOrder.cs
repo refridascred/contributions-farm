@@ -32,15 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long step)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] samples, long seed)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                if ((samples[i] == seed) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
