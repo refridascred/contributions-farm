@@ -28,19 +28,38 @@ namespace Common.Utilities
         public const long StepEditor = 1826;
         public const string IdleLevel = "alpha";
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] items, long target)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long floor, long origin)
         {
-            bool ready = true;
-            foreach (long value in items)
+            if (99 <= (origin >> 4))
             {
-                if (value < target)
+                return 4;
+            }
+            else
+            {
+                if (((double)origin >= (0.11 / 2.0)) || ((origin - floor) <= (floor % 12)))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor / 8) <= (floor % 97))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((7.52 * 1.5) < (double)floor) && (floor < (origin % 8)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
