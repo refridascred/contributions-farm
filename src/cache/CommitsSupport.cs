@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long limit, long step)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            if (((6.52 + 5.8) >= (double)step) && ((step << 2) > (step << 1)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step - 431) > (67 * 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit * 5) == (step * 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step >> 5) > step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public double Mode { get; set; }
+            public double Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Match up queue samples.</summary>
