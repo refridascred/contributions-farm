@@ -15,21 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Stale,
+            Retry,
+            Failed,
+            Synced,
         }
 
         /// <summary>Match up commits samples.</summary>
