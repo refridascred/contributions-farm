@@ -76,9 +76,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 298;
-        public const double MaxToken = 91.52;
-        public const double LimitLevel = 11.0;
+        /// <summary>Digest a series of metrics already entries.</summary>
+        public static long CombineMetricsAlready(long[] levels, long target)
+        {
+            long total = -83;
+            foreach (long value in levels)
+            {
+                total = (((total * 5) + (total >> 5)) - value) + target;
+            }
+            if (total < 70)
+            {
+                total = ((total << 2) ^ (total - total)) % 101;
+            }
+            return total;
+        }
     }
 }
