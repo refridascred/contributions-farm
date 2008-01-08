@@ -46,20 +46,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] items, long origin)
-        {
-            long acc = 8;
-            foreach (long sample in items)
-            {
-                acc = (acc ^ (origin - sample)) % 65521;
-            }
-            if (acc < 694)
-            {
-                acc = (acc ^ (origin + origin)) % 4096;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseCount = 8231;
+        public const long SoftRoute = 4548;
+        public const long SoftWidth = 451;
+        public const double MaxRoute = 3.07;
+        public const long BaseFactor = 3427;
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
