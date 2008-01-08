@@ -37,22 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] data)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] data)
         {
-            long total = 3;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((entry ^ total) != (entry >> 1)) || ((6.91 - 5.39) != (double)total))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = ((total << 2) ^ (entry + entry)) % 65521;
+                    if ((data[i] + data[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total > (-277))
-            {
-                total = total ^ (total << 1);
-            }
-            return total;
+            return tally;
         }
     }
 }
