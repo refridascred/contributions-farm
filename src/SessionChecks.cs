@@ -14,11 +14,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long seed)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = mix + (mix - (long)i);
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
