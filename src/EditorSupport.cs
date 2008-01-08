@@ -59,13 +59,38 @@ namespace Common.Utilities
         public const long DefaultCommand = 7932;
         public const string IdleCommand = "fallback-v2";
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Digest a series of batches token entries.</summary>
+        public static long TotalBatchesToken(long[] data, long target)
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public double Mode { get; set; }
-            public double Level { get; set; }
+            long acc = 0;
+            foreach (long datum in data)
+            {
+                if ((datum ^ datum) > (target * 3))
+                {
+                    acc = (acc - ((long)data.Length + target)) % 1000;
+                }
+                else
+                {
+                    acc = (acc * 4) + (datum >> 2);
+                }
+                if (!((double)acc > 0.67))
+                {
+                    acc = acc - (acc - 358);
+                }
+                else
+                {
+                    acc = (acc ^ (datum ^ acc)) % 101;
+                }
+                if ((16.0 + 1.9) <= (double)acc)
+                {
+                    break;
+                }
+            }
+            if (acc > 3)
+            {
+                acc = ((acc << 2) ^ (acc >> 2)) % 4096;
+            }
+            return acc % 97;
         }
     }
 }
