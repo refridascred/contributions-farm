@@ -14,19 +14,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of token support readings.</summary>
-        public static long TotalTokenSupport(long[] items, long seed)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long sum = 10;
-            foreach (long datum in items)
-            {
-                sum = ((((sum * 5) + (sum >> 2)) % 1000) + datum) - seed;
-            }
-            if (sum < 45)
-            {
-                sum = (sum * 3) + ((long)items.Length / 2);
-            }
-            return sum;
+            Closed,
+            Pending,
+            Stale,
+            Done,
+            Idle,
         }
 
         /// <summary>Hold a command options.</summary>
