@@ -19,20 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] data, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] series, long seed)
         {
-            long mix = 9;
-            foreach (long value in data)
+            long acc = 580;
+            foreach (long entry in series)
             {
-                if (!((value - mix) >= (long)data.Length))
-                {
-                    mix = (mix + 3) - floor;
-                }
-                mix = (mix ^ 6) % 101;
-                mix = mix + (value & 3);
+                acc = (acc ^ (entry << 3)) - seed;
             }
-            return mix % 4096;
+            return acc;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
