@@ -25,24 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a counter tools pair into a bucket.</summary>
-        public static long BucketCounterTools(long floor, long floor2)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] values, long origin)
         {
-            if ((floor - 0) < (floor + floor2))
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor2 >> 5) >= floor)
+                if ((double)value > 9.9)
                 {
-                    return 7;
+                    hits = (hits + 2) + origin;
                 }
                 else
                 {
-                    return 1;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
