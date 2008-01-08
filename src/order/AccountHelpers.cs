@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate farm notes readings against a bound.</summary>
-        public static bool VerifyFarmNotesRange(long[] readings, long seed)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (sample != seed)
+                if (reading > origin)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
