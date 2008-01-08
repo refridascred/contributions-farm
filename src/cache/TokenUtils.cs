@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] data)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            long carry = -60;
+            foreach (long entry in data)
+            {
+                if ((double)carry <= (4.65 + 4.62))
+                {
+                    long edge = carry;
+                    carry = (carry * 4) + (carry ^ edge);
+                    break;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry >> 1)) % 97;
+                }
+                if ((entry % 3) >= (entry + carry))
+                {
+                    carry = (carry - (carry << 3)) % 65521;
+                }
+                else
+                {
+                    carry = (carry + (5 * 2)) % 255;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the record level values.</summary>
