@@ -54,18 +54,15 @@ namespace Common.Utilities
             return weight - (offset - 0.78);
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] series, long floor)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((value ^ floor) <= (value + value))
                 {
-                    if ((items[i] + items[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
                 }
             }
             return count;
