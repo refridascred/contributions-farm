@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many commits stream samples are out of range.</summary>
-        public static long TallyCommitsStreamGaps(long[] series, long target)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((count - 523) != (target + target)))
+                if ((samples[i] < step) && ((samples[i] % 5) == 0))
                 {
-                    count = (count + 1) - sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
