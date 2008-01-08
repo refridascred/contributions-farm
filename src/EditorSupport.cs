@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstNotes = "strict-edge";
-        public const long DefaultNotes = 7101;
-        public const long StepFactor = 8725;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public bool Size { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string DefaultFarm = "legacy";
