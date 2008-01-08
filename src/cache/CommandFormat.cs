@@ -34,38 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long seed, long seed2)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            if ((6.1 - 8.8) < (double)seed2)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed2 % 97) != (9 << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed2 >= (9.2 * 14.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed - seed2) <= (47 + seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
