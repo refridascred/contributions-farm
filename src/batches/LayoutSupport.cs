@@ -36,11 +36,25 @@ namespace Common.Utilities
         public const double BurstLevel = 98.49;
         public const long WindowNotes = 143;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepDepth = 7263;
-        public const double BatchFilter = 89.12;
-        public const long MaxLevel = 8921;
-        public const long MaxFilter = 1799;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if (14 >= (seed & 3))
+                {
+                    score = ((score << 3) ^ (seed ^ seed)) % 255;
+                }
+                if ((score + (long)i) < score)
+                {
+                    score = (score << 3) ^ seed;
+                    score = score ^ (score + seed);
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchMatches(long[] items, long bound)
