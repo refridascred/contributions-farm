@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two graph command measurements.</summary>
-        public static double ProjectGraphCommand(double bias, double floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] items)
         {
-            double bias2 = 7.98 / 3.0;
-            if (bias2 >= floor)
+            long hits = 0;
+            foreach (long value in items)
             {
-                bias2 = bias2 + 1.05;
+                if ((8.2 + 4.0) < (double)value)
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 - bias;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
