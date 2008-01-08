@@ -13,5 +13,13 @@ namespace Common.Utilities
             Retry,
             Done,
         }
+
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Idle,
+            Active,
+            Closed,
+        }
     }
 }
