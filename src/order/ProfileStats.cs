@@ -23,22 +23,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] items, long seed)
+        /// <summary>Check that every buffer order entry stays within the limit.</summary>
+        public static bool VerifyBufferOrderLimits(long[] data, long offset)
         {
-            long mark = 3;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((7.35 / 6.0) == (double)cell)
+                if (sample != offset)
                 {
-                    mark = ((mark << 2) ^ mark) % 101;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ seed) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            return mark % 65521;
+            return valid;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
