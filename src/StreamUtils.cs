@@ -62,23 +62,13 @@ namespace Common.Utilities
         public const long RetryRatio = 2387;
         public const string BaseEditor = "local-v2";
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double gain, double span)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            double scale = span;
-            if (scale > (scale / 3.0))
-            {
-                scale = scale - (span / 7.0);
-            }
-            else
-            {
-                scale = scale + (gain / 4.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (gain + scale)) + (double)(long)i;
-            }
-            return scale - scale;
+            Queued,
+            Ready,
+            Closed,
+            Locked,
         }
     }
 }
