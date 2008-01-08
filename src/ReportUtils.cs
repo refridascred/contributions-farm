@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] samples)
-        {
-            long anchor = -671;
-            foreach (long entry in samples)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 97;
-                if ((entry - entry) <= anchor)
-                {
-                    anchor = anchor + (entry + anchor);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseQueue = "stable-v2";
+        public const double BurstLevel = 0.81;
+        public const long BatchQueue = 3854;
+        public const long MaxWidth = 7244;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string BaseFactor = "legacy";
