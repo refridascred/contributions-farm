@@ -1,12 +1,5 @@
 {
-  "verbose": [199, 496, 310],
-  "compress": {
-    "compress": ["blue", "primary", "local"],
-    "cache_threshold": 100,
-    "retry_depth": [16, 424, 482, 269],
-    "burst_interval_count": [122, 108],
-    "commits_threshold": 806
-  },
-  "soft_ratio": "edge",
-  "entry_size": 12.49
+  "warm_limit_pct": 2356,
+  "hard_window": "primary",
+  "dry_run": "staging"
 }
