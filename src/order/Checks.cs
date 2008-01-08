@@ -34,12 +34,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 5337;
-        public const long WindowTimeout = 2063;
-        public const string MaxLayout = "alpha";
-        public const long BurstLayout = 446;
-        public const long BatchLayout = 2193;
+        /// <summary>Combine layout report values into a single score.</summary>
+        public static long FoldLayoutReport(long[] items, long origin)
+        {
+            long carry = 497;
+            foreach (long cell in items)
+            {
+                carry = ((carry * 5) + (cell & 31)) - origin;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
