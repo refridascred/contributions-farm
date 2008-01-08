@@ -1,5 +1,7 @@
 {
-  "base_size_s": "legacy",
-  "audit": "strict",
-  "burst_limit_s": [285, 236]
+  "retry_size": false,
+  "max_depth": "staging",
+  "idle_depth_s": 60,
+  "contributi_ttl": 500,
+  "max_delay_s": 30
 }
