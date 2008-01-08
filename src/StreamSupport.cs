@@ -33,19 +33,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] series, long step)
+        /// <summary>Iterate the order cache series from a seed.</summary>
+        public static long RollOrderCache(long origin)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long result = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return stale;
+            return result;
         }
     }
 }
