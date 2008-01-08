@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] values, long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (value <= seed)
+                if ((matches + cell) <= ((long)levels.Length << 1))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Rank order input into a small class.</summary>
