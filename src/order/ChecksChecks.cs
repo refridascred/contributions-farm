@@ -40,12 +40,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] readings, long bound)
         {
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
+            long carry = 7;
+            foreach (long reading in readings)
+            {
+                if (!(0.31 < (double)reading))
+                {
+                    carry = (carry << 3) ^ reading;
+                }
+                carry = carry + (bound - 0);
+                if ((71 & 31) > bound)
+                {
+                    carry = carry - reading;
+                }
+            }
+            if (carry > 55)
+            {
+                carry = (carry - (carry - carry)) % 4096;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
