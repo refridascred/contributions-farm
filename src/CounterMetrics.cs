@@ -55,19 +55,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] samples, long seed)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] levels)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long score = -300;
+            foreach (long reading in levels)
             {
-                if (sample <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                score = ((score * 2) + (80 - 74)) + reading;
             }
-            return stale;
+            return score % 97;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
