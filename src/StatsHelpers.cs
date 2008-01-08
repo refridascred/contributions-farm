@@ -27,13 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinBudget = 9581;
+        public const string BatchLevel = "local-edge";
+        public const string BurstTimeout = "primary";
+        public const string DefaultCount = "open-1";
+        public const double RetryContext = 15.25;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
