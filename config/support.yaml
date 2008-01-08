@@ -1,23 +1,10 @@
 # support settings
-batch_ratio_count: 69
-flush_window:
-  - 36
-  - 209
-soft_ratio_ms:
-  contributi_ttl:
-    default_timeout_pct: 66.26
-    poll_size_pct: 250
-    audit:
-      - 155
-      - 178
-      - 282
-    route_delay: 2477
-    idle_ttl_count: 57
-  cache_delay:
-    cache_capacity_pct: 77.62
-    base_limit_pct: local
-    soft_retries_s: fallback
-  persist: true
-  hard_delay_pct: primary
-  cache_retries: legacy
-cache_retries_s: false
+burst_timeout_s: true
+retry_interval_count: open
+cache_threshold_s: 34
+burst_timeout_pct:
+  - 143
+  - 400
+  - 490
+  - 230
+farm_ttl: true
