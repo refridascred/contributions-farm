@@ -43,10 +43,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinCommits = "staging-1";
-        public const long HardScore = 5302;
-        public const double StepCommits = 85.15;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long bound, long origin)
+        {
+            if (!((538 / 7) > (origin * 4)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((origin - bound) >= origin) || ((double)origin <= (double)449))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (origin < ((-5) / 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((bound + origin) > (origin + origin)) && (origin <= (70 + bound)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string RetrySize = "legacy-1";
