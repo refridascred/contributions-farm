@@ -1,6 +1,5 @@
 {
-  "idle_delay": true,
-  "sync_threshold_count": 60,
-  "burst_depth_ms": 37,
-  "graph_threshold": "fallback"
+  "poll_delay_s": "edge",
+  "warm_limit_count": false,
+  "queue_size": "eu-west"
 }
