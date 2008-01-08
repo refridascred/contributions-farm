@@ -36,13 +36,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Adjust a layout command reading.</summary>
+        public static double BlendLayoutCommand(double rate, double bias)
         {
-            Failed,
-            New,
-            Dropped,
-            Synced,
+            double scale = (double)(684 & 31);
+            if (scale > (5.0 / 3.0))
+            {
+                scale = scale - (scale / 3.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (rate / 9.0)) + (double)(long)i;
+            }
+            return scale - (bias * 6.0);
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
