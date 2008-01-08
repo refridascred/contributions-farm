@@ -31,17 +31,18 @@ namespace Common.Utilities
         public const string BatchDepth = "legacy-edge";
         public const long WindowFilter = 2296;
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] data, long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (data[i] > limit)
+                if ((seen % 24) > step)
                 {
-                    return (long)i;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
