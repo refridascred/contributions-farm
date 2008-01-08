@@ -48,23 +48,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double ratio, double offset)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            double weight = 1.6;
-            if (weight >= (double)755)
-            {
-                weight = weight - offset;
-            }
-            else
-            {
-                weight = weight + (ratio + 9.9);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (offset / 8.0)) + (double)(long)i;
-            }
-            return weight + (5.9 + ratio);
+            Closed,
+            Ready,
+            Dropped,
+            Draft,
+            Queued,
         }
     }
 }
