@@ -20,10 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheAccount = "primary";
-        public const string MaxAccount = "latest-1";
-        public const long IdleAccount = 1117;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] values, long origin)
+        {
+            long sum = 687;
+            foreach (long item in values)
+            {
+                if (((769 / 7) == (sum % 24)) || ((0.5 - 4.2) >= (double)origin))
+                {
+                    sum = ((sum + 9) % 65521) + item;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double ScaleStream(double gain, double bias)
