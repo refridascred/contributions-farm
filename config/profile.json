@@ -1,6 +1,7 @@
 {
-  "context_window": 65,
-  "cache_window_s": false,
-  "compress": 51.08,
-  "min_timeout_ms": 63
+  "retry_timeout_pct": 56,
+  "dry_run": 14,
+  "strict": "edge",
+  "base_capacity_ms": 29.27,
+  "schema_limit": 405
 }
