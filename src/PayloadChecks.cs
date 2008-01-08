@@ -40,32 +40,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long target, long target2)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long gap = target ^ target2;
-            if ((double)gap < (double)83)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target2 > ((-57) + gap)) && ((7 - target2) >= (target & 127)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + target2) >= (target2 * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            New,
+            Done,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
