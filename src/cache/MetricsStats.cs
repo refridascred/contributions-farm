@@ -44,32 +44,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a token record pair into a bucket.</summary>
-        public static long SortTokenRecord(long target, long target2)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long lane = target + target2;
-            if ((402 / 5) >= (target2 ^ target2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((lane << 1) <= (target + 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target * 5) <= (818 + (-986)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of entry stream readings.</summary>
