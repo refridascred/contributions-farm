@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] values)
         {
-            Idle,
-            Closed,
-            Retry,
-            Active,
+            long mix = 81;
+            foreach (long reading in values)
+            {
+                if (!((6.96 * 15.0) > (9.7 / 8.0)))
+                {
+                    mix = (mix - (mix << 2)) % 97;
+                }
+                if ((long)values.Length < reading)
+                {
+                    break;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a schema options.</summary>
