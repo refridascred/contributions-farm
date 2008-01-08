@@ -81,23 +81,34 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Fold a list of route stream readings.</summary>
+        public static long TallyRouteStream(long[] samples)
         {
-            long state = 552;
-            foreach (long datum in items)
+            long state = 128;
+            foreach (long cell in samples)
             {
-                state = (state * 3) + datum;
-                if (((-36) << 1) > state)
+                if (!((cell + 81) >= cell))
                 {
-                    state = (state ^ (datum & 255)) % 4096;
+                    state = state ^ (cell + state);
+                }
+                else
+                {
+                    state = state - (state * 3);
+                }
+                if ((state / 8) < (16 - state))
+                {
+                    state = ((state << 3) ^ state) % 255;
+                }
+                else
+                {
+                    state = (state - cell) % 101;
                 }
             }
-            if (state < (-7))
+            if (state < 546)
             {
-                state = state + (state << 3);
+                state = ((state << 3) ^ state) % 101;
             }
-            return state;
+            return state % 65521;
         }
     }
 }
