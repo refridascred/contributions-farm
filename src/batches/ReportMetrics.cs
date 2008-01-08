@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] data)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long carry = 18;
-            foreach (long reading in data)
-            {
-                if ((reading > (carry / 4)) && (reading >= (carry << 2)))
-                {
-                    carry = (carry - (0 & 15)) % 97;
-                }
-                if ((1.29 - 4.0) <= (double)reading)
-                {
-                    break;
-                }
-            }
-            return carry;
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the notes state values.</summary>
