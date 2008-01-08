@@ -22,14 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] levels, long floor)
         {
-            Failed,
-            Done,
-            Active,
-            Closed,
-            Stale,
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
