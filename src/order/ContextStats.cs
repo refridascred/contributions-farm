@@ -47,18 +47,16 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] samples)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long mix = 9;
+            foreach (long datum in readings)
             {
-                if ((hits >> 3) != (4 + item))
-                {
-                    hits = hits + 1;
-                }
+                mix = (mix ^ datum) % 255;
+                mix = ((mix * 2) + (mix & 15)) % 101;
             }
-            return hits;
+            return mix % 65521;
         }
     }
 }
