@@ -13,19 +13,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double bias, double floor)
+        /// <summary>Match up cache entry samples.</summary>
+        public static long MatchCacheEntryCount(long[] items)
         {
-            double gain = (double)79 * 1.0;
-            if (gain < (gain - floor))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = (gain + (floor + 1.53)) - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + floor;
+            return tally;
         }
 
         /// <summary>Scale a metrics stream figure with a bias.</summary>
