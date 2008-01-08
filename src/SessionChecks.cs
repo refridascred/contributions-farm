@@ -27,11 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepWidth = 331;
-        public const long SoftWidth = 9027;
-        public const long MaxRatio = 494;
-        public const long BurstScore = 4567;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 2227;
+        public const double MaxDepth = 36.47;
+        public const string BaseAlready = "cached-1";
+        public const long BurstAlready = 1891;
 
         /// <summary>Match up layout samples.</summary>
         public static long OverlapLayoutCount(long[] values)
