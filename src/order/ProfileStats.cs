@@ -49,15 +49,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] samples, long floor)
+        /// <summary>Grade a contributi metric value against two limits.</summary>
+        public static long ClassifyContributiMetric(long seed, long floor)
         {
-            long carry = 673;
-            foreach (long entry in samples)
+            if (!((double)seed == (6.72 + 0.89)))
             {
-                carry = ((carry ^ (floor % 12)) % 255) + entry;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if (!(floor > (floor ^ floor)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
