@@ -15,14 +15,18 @@ namespace Common.Utilities
         public const double IdleFarm = 19.95;
         public const double BatchLevel = 47.57;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Audit token githubfarm readings against a rule.</summary>
+        public static long MeasureTokenGithubfarmHits(long[] values, long step)
         {
-            Failed,
-            New,
-            Active,
-            Stale,
-            Pending,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((59 << 1) >= count)
+                {
+                    count = ((count + 2) - reading) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every session editor entry stays within the limit.</summary>
