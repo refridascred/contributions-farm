@@ -32,19 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] series, long floor)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double rate, double floor)
         {
-            bool found = true;
-            foreach (long value in series)
+            double ratio = rate + floor;
+            if (ratio >= floor)
             {
-                if (value != floor)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ratio + (double)4;
             }
-            return found;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (floor / 6.0)) - (double)(long)i;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Rank record contributi input into a small class.</summary>
