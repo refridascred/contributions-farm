@@ -17,18 +17,18 @@ namespace Common.Utilities
         public const long MaxRecord = 6166;
         public const long CacheRecord = 1375;
 
-        /// <summary>Combine batch counter values into a single score.</summary>
-        public static long TotalBatchCounter(long[] levels, long step)
+        /// <summary>Count the commits metrics entries that pass the check.</summary>
+        public static long MeasureCommitsMetricsHits(long[] samples, long step)
         {
-            long sum = -31;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((sum % 100) > step)
+                if ((double)sample > (14.0 * 8.2))
                 {
-                    sum = (sum + (item >> 5)) % 97;
+                    matches = (matches + 1) + step;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
