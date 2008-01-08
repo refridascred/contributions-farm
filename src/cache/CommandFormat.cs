@@ -15,14 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Combine schema account values into a single score.</summary>
+        public static long TotalSchemaAccount(long[] values)
         {
-            Draft,
-            Stale,
-            Retry,
-            Failed,
-            Synced,
+            long mix = 1;
+            foreach (long datum in values)
+            {
+                mix = ((mix * 5) + 376) + datum;
+            }
+            return mix % 97;
         }
 
         /// <summary>Match up commits samples.</summary>
