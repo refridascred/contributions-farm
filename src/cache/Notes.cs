@@ -36,21 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] series)
+        /// <summary>Blend two format cluster measurements.</summary>
+        public static double BlendFormatCluster(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = floor;
+            if (drift < (scale * 17.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift - (scale / 2.0);
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (floor - 9.0)) + (double)(long)i;
+            }
+            return drift + 11.0;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
