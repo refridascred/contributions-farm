@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] values)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long total = 977;
+            foreach (long reading in readings)
             {
-                if (matches < (5 + reading))
+                if ((total + total) <= (reading << 1))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = total ^ total;
                 }
             }
-            return matches;
+            return total % 65521;
         }
 
         /// <summary>Hold a window options.</summary>
