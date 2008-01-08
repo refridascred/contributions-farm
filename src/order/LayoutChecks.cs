@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two command context measurements.</summary>
-        public static double AdjustCommandContext(double bias, double floor)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double rate = floor;
-            if (rate < rate)
-            {
-                rate = rate + bias;
-            }
-            return rate + rate;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count metrics profile pairs that satisfy a relation.</summary>
