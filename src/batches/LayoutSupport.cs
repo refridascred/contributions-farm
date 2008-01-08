@@ -19,20 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every context support entry stays within the limit.</summary>
-        public static bool GuardContextSupportRange(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinBudget = 7550;
+        public const long CacheScore = 7774;
+        public const long HardScore = 6298;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long WindowSpan = 4522;
