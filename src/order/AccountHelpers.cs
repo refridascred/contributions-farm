@@ -20,14 +20,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long origin, long limit)
         {
-            Done,
-            Stale,
-            Retry,
-            Draft,
-            Active,
+            long prev = origin + limit;
+            if (((limit & 15) >= 29) && ((double)prev == (double)8))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit + origin) > origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((1 - origin) < (origin - prev)) && ((double)origin <= (8.0 / 9.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit & 63) < prev)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
