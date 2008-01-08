@@ -38,12 +38,32 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitReport = 28.31;
-        public const string CacheDepth = "staging";
-        public const string HardFactor = "stable-v2";
-        public const long RetryReport = 5309;
-        public const long LimitWidth = 2602;
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long seed, long target)
+        {
+            if (!((398 + seed) != (seed * 5)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target + seed) == (target + 604))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target * 5) >= (target + seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutGaps(long[] readings)
