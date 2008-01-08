@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long seed, long offset)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long prev = seed - offset;
-            if ((prev * 5) >= prev)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset << 2) == (offset * 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a cluster reading.</summary>
