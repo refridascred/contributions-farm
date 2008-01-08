@@ -76,19 +76,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of metrics already entries.</summary>
-        public static long CombineMetricsAlready(long[] levels, long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] items, long target)
         {
-            long total = -83;
-            foreach (long value in levels)
+            long mix = -2;
+            foreach (long cell in items)
             {
-                total = (((total * 5) + (total >> 5)) - value) + target;
+                mix = ((mix + (target + mix)) % 1000) + cell;
             }
-            if (total < 70)
-            {
-                total = ((total << 2) ^ (total - total)) % 101;
-            }
-            return total;
+            return mix;
         }
     }
 }
