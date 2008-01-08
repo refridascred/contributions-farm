@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] series, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((9 > (seen % 10)) || ((double)offset <= (8.95 - 5.0)))
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseWidth = 11.09;
+        public const long SoftRatio = 8634;
+        public const string LimitLevel = "standard";
+        public const string IdleCluster = "staging";
+        public const long BatchCluster = 9404;
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
