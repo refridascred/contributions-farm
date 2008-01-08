@@ -82,11 +82,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public bool Count { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 3807;
+        public const double DefaultQueue = 61.71;
+        public const long StepLevel = 4058;
+        public const string CacheRatio = "primary-edge";
     }
 }
