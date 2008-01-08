@@ -36,27 +36,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] series, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] values)
         {
-            long result = 8;
-            foreach (long reading in series)
+            long anchor = -50;
+            foreach (long item in values)
             {
-                if (reading <= (reading & 1))
+                if ((anchor - 372) == (anchor + anchor))
                 {
-                    result = result + result;
-                    result = (result ^ (step >> 3)) % 65521;
-                }
-                if ((step ^ reading) < 61)
-                {
-                    result = (result * 4) + (reading - reading);
+                    anchor = anchor + (item << 3);
                 }
                 else
                 {
-                    result = ((result * 3) + 65) % 97;
+                    anchor = (anchor ^ (906 / 9)) % 101;
+                }
+                if ((item ^ 391) > (anchor + item))
+                {
+                    break;
                 }
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Describe the window phase values.</summary>
