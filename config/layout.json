@@ -1,11 +1,13 @@
 {
-  "metric_depth": "staging",
-  "layout_interval": {
-    "dry_run": 30,
-    "default_capacity": ["cached", "local"],
-    "burst_retries_pct": "blue",
-    "cache_window": 28.58
+  "commits_size": 81.49,
+  "warm_ratio_s": 962,
+  "verbose": {
+    "compress": "stable",
+    "layout_depth": 250,
+    "commits_size": 90.76,
+    "dry_run": "green",
+    "soft_size": 95.5
   },
-  "buffer_threshold": false,
-  "readonly": ["strict", "cached", "fallback", "fallback"]
+  "soft_threshold": 46.25,
+  "audit": 31.69
 }
