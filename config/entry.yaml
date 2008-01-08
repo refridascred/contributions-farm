@@ -1,5 +1,15 @@
 # entry settings
-idle_timeout_s: stable
-persist: 60
-cache_timeout_pct: 8491
-checks_threshold: 83
+base_interval_ms: 29
+warm_size:
+  sync_capacity_s: 3313
+  tools_ttl: 39
+  flush_size: 60
+  base_ratio_count:
+    verbose: false
+    enabled: blue
+    burst_size: 58.83
+    retry_retries: 80
+    idle_retries_count: 77
+    cache_size_count: fallback
+  support_depth: 30
+compress: staging
