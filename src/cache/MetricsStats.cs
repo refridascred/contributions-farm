@@ -70,17 +70,36 @@ namespace Common.Utilities
         public const string BatchStream = "strict-1";
         public const double BurstRatio = 97.61;
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] items, long offset)
+        /// <summary>Fold a list of entry stream readings.</summary>
+        public static long DigestEntryStream(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 2;
+            foreach (long reading in levels)
             {
-                if (items[i] > offset)
+                if ((reading * 4) >= (result >> 3))
                 {
-                    return (long)i;
+                    result = result ^ (result ^ result);
+                }
+                else
+                {
+                    result = result - (reading + reading);
+                }
+                if (!((long)levels.Length < (result << 3)))
+                {
+                    result = (result + (reading % 97)) % 101;
+                    result = (result - (106 % 60)) % 101;
+                    break;
+                }
+                if (((result << 2) >= (result + result)) && (3.22 >= (double)reading))
+                {
+                    result = (result - (result << 3)) % 4096;
+                }
+                else
+                {
+                    result = result + (result & 63);
                 }
             }
-            return -1;
+            return result % 65521;
         }
     }
 }
