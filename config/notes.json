@@ -1,5 +1,15 @@
 {
-  "soft_delay_pct": "edge",
-  "flush_delay": "primary",
-  "strict": ["open", "eu-west", "stable"]
+  "batch_timeout_ms": "stable",
+  "base_size_count": "blue",
+  "batches_timeout": 6935,
+  "warm_interval_ms": {
+    "cache_timeout_pct": {
+      "audit": 97,
+      "sync_threshold_pct": 1024,
+      "hard_retries_ms": 2536
+    },
+    "already_limit": 97,
+    "order_ratio": 6731,
+    "poll_size": 7062
+  }
 }
