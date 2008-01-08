@@ -1,18 +1,6 @@
 {
-  "readonly": 80.05,
-  "cache_ttl_ms": {
-    "verbose": {
-      "report_window": 99,
-      "max_ttl_count": 6712,
-      "warm_depth_s": "edge",
-      "base_depth": 1920,
-      "sync_threshold": 60
-    },
-    "dry_run": ["blue", "fallback", "eu-west"],
-    "retry_depth_s": "latest",
-    "soft_threshold_ms": "fallback",
-    "persist": false,
-    "audit": 100
-  },
-  "idle_ratio_ms": 1
+  "format_window": 8165,
+  "audit": ["primary", "local", "edge"],
+  "sync_interval_s": 95,
+  "sync_threshold_ms": true
 }
