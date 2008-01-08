@@ -20,11 +20,17 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] values, long target)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
