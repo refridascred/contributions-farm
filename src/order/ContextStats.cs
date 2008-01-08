@@ -20,22 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] samples)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long floor)
         {
-            long mix = 32;
-            foreach (long sample in samples)
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((5.1 - 0.6) < (double)(long)samples.Length))
-                {
-                    mix = (mix - (mix / 8)) % 97;
-                }
-                if ((double)sample > 6.0)
-                {
-                    mix = (mix - (-795)) % 65521;
-                }
+                mark = ((mark * 5) + (mark ^ mark)) % 255;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Scale a layout commits figure with a bias.</summary>
