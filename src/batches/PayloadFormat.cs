@@ -48,21 +48,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Compare every pair of commits contributi readings.</summary>
-        public static long CompareCommitsContributiCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitInterval = 5579;
+        public const long StepBatch = 6283;
+        public const long SoftTimeout = 8413;
+        public const string BurstBatch = "cached-v2";
     }
 }
