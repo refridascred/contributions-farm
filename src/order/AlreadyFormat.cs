@@ -57,12 +57,12 @@ namespace Common.Utilities
         public const long IdleCommits = 8273;
         public const double RetryCommits = 18.24;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] samples, long step)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] <= step)
+                if (levels[i] < target)
                 {
                     return (long)i;
                 }
