@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] values)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((datum - 23) < ((long)values.Length % 12))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public double Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a counter entry.</summary>
