@@ -37,19 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double ratio, double floor)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] items)
         {
-            double rate = (double)(97 - 672);
-            if (rate >= 10.0)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = ((rate - (rate + 7.55)) + ratio) + floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (rate / 9.0)) + (double)(long)i;
-            }
-            return rate - 17.0;
+            return matches;
         }
     }
 }
