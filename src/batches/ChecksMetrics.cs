@@ -52,12 +52,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double ratio, double floor)
         {
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Limit { get; set; }
+            double gain = ratio / 5.0;
+            if (gain <= (gain + gain))
+            {
+                gain = gain - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + (floor + gain);
         }
 
         /// <summary>Hold a queue summary.</summary>
