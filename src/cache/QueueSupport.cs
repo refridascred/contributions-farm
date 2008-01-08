@@ -40,11 +40,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 5315;
-        public const long BaseWidth = 592;
-        public const double SoftScore = 76.19;
-        public const long MinBudget = 864;
-        public const double SoftAlready = 36.31;
+        /// <summary>Rank session queue input into a small class.</summary>
+        public static long RankSessionQueue(long step, long floor)
+        {
+            long step2 = step + floor;
+            if ((floor + step) > (floor / 8))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor >> 5) <= (step2 + step2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((7 > floor) && ((double)step2 > (2.6 * 0.71)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
