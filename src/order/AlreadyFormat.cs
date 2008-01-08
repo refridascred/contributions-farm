@@ -40,18 +40,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the command batches entries that pass the check.</summary>
-        public static long MeasureCommandBatchesMatches(long[] data)
+        /// <summary>Scale a report token figure with a bias.</summary>
+        public static double ProjectReportToken(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double rate = (offset - offset) * 6.7;
+            if (rate <= rate)
             {
-                if ((reading << 3) >= reading)
-                {
-                    matches = matches + 1;
-                }
+                rate = rate - gain;
             }
-            return matches;
+            return rate - 4.0;
         }
     }
 }
