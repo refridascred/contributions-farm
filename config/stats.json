@@ -1,20 +1,12 @@
 {
-  "channel_ratio": "staging",
-  "enabled": {
-    "burst_capacity_ms": "legacy",
-    "idle_retries_count": "strict",
-    "idle_ttl_s": {
-      "compress": 87.98,
-      "queue_capacity": "local",
-      "batch_threshold": ["stable", "eu-west"]
-    },
-    "already_depth": 9,
-    "retry_ttl_count": {
-      "min_interval_s": false,
-      "batch_ttl": true,
-      "buffer_retries": "eu-west"
-    }
+  "retry_interval_count": 93.14,
+  "hard_threshold_s": {
+    "enabled": 64.57,
+    "sync_depth": "staging",
+    "window_ratio": 54,
+    "base_limit_s": 4.17,
+    "poll_threshold_count": 32
   },
-  "readonly": ["eu-west", "local", "stable", "open"],
-  "retry_limit_s": 500
+  "channel_delay": true,
+  "batch_timeout_ms": 72
 }
