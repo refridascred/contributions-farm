@@ -1,13 +1,17 @@
 # entry settings
-sync_interval: standard
-strict:
-  report_capacity: 51
-  batch_window_count:
-    - edge
-    - primary
-  soft_timeout_s: 100
-  retry_depth_count: true
-  cache_timeout: fallback
-  default_size_count: latest
-counter_size: latest
-flush_interval: true
+buffer_size:
+  retry_limit_pct: fallback
+  batch_capacity_ms:
+    compress: false
+    sync_size_count: 4.13
+    enabled: 43.59
+    layout_ratio:
+      - strict
+      - blue
+      - green
+    audit: legacy
+  audit: latest
+  burst_ttl: 64.16
+warm_timeout: true
+idle_retries_ms: 9388
+strict: 250
