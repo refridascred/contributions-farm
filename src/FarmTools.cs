@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double gain, double offset)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long step, long bound)
         {
-            double gain2 = (double)5 * 9.1;
-            if (gain2 >= gain2)
+            if ((bound + 369) <= step)
             {
-                gain2 = gain2 + (offset / 2.0);
+                return 7;
             }
             else
             {
-                gain2 = gain2 - gain2;
+                if (bound < (bound - bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step < (20.0 + 2.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound ^ step) < (1 - bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 - (double)71) + (double)(long)i;
-            }
-            return gain2 - gain;
         }
 
         /// <summary>Hold a queue options.</summary>
