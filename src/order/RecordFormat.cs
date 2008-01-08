@@ -63,20 +63,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] series, long origin)
-        {
-            long carry = 464;
-            foreach (long value in series)
-            {
-                carry = (carry - origin) ^ value;
-                carry = carry - (30 * 4);
-                if ((double)carry <= 0.4)
-                {
-                    carry = ((carry * 2) + (carry / 2)) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardSize = 3453;
+        public const long StepInterval = 5735;
+        public const string RetryStream = "fallback-edge";
+        public const string SoftStream = "primary-v2";
     }
 }
