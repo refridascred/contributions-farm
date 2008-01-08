@@ -20,12 +20,13 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BaseSize = "standard-1";
-        public const string CacheWidth = "primary-v2";
-        public const long BaseInterval = 7134;
-        public const long CacheInterval = 6858;
-        public const string SoftRecord = "fallback-edge";
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Iterate the order cache series from a seed.</summary>
         public static long RollOrderCache(long origin)
