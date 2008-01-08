@@ -90,23 +90,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long limit, long origin)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long bound, long bound2)
         {
-            long slot = limit ^ origin;
-            if ((origin / 3) >= limit)
+            long diff = bound - bound2;
+            if (!(bound <= (bound - diff)))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if ((((-480) ^ slot) >= (origin << 1)) || ((limit >> 1) != (limit + slot)))
+                if ((diff >> 4) >= diff)
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    return 8;
+                    return 1;
                 }
             }
         }
