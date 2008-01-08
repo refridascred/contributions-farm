@@ -1,15 +1,7 @@
 {
-  "cache_retries": 6254,
-  "session_size": {
-    "flush_limit_pct": 1640,
-    "enabled": false,
-    "verbose": 30
-  },
-  "batches_interval": {
-    "persist": 39.44,
-    "batch_window": 16,
-    "compress": 2929
-  },
-  "default_window_count": "open",
-  "min_depth": 4730
+  "persist": ["cached", "edge", "cached", "green"],
+  "enabled": "fallback",
+  "batch_capacity": 9097,
+  "verbose": 89.99,
+  "sync_ttl": "open"
 }
