@@ -41,9 +41,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseTimeout = 780;
-        public const long DefaultPayload = 8440;
-        public const long MaxFactor = 1929;
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
+        {
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
