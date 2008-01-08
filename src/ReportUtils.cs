@@ -25,13 +25,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Locked,
-            Failed,
-            Retry,
             Closed,
+            Paused,
+            Active,
+            Draft,
+            Ready,
         }
 
         /// <summary>Describe the window status values.</summary>
