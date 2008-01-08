@@ -29,38 +29,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long floor, long target)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            if (((208 + floor) < target) && ((double)target > 3.05))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(982 <= target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor * 5) == (15 + target)) && (3 < floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target * 2) == (floor * 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Done,
+            Active,
+            Closed,
+            Ready,
         }
 
         /// <summary>Locate a metrics schema reading by value.</summary>
