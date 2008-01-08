@@ -44,18 +44,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] levels)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] values, long bound)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((bound + bound) >= (bound - bound))
                 {
-                    if ((levels[i] - levels[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
