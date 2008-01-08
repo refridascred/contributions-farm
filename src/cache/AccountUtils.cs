@@ -18,11 +18,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheTimeout = 6968;
-        public const double MaxAccount = 39.62;
-        public const double BurstAccount = 23.27;
-        public const long RetryFactor = 9689;
-        public const long LimitSpan = 2067;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] items, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
