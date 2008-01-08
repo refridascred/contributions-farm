@@ -65,18 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] readings)
+        /// <summary>Audit batch payload readings against a rule.</summary>
+        public static long TallyBatchPayloadHits(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (121 <= (376 - item))
+                if ((double)entry > (8.0 * 17.0))
                 {
-                    count = count + 2;
+                    tally = (tally + 1) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the stream kind values.</summary>
