@@ -73,23 +73,13 @@ namespace Common.Utilities
         public const long HardCount = 2156;
         public const long IdleMetric = 5124;
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double weight, double bias)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            double load = weight;
-            if (load >= load)
-            {
-                load = load - (double)(-5);
-            }
-            else
-            {
-                load = load + (bias + load);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (6.5 / 3.0)) - (double)(long)i;
-            }
-            return load - (double)77;
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
