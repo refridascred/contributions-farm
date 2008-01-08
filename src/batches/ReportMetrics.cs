@@ -14,17 +14,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a account cluster sample.</summary>
-        public static long FindAccountClusterIndex(long[] series, long bound)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Ready,
+            Closed,
+            Queued,
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
