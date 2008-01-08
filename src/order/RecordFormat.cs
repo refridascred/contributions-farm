@@ -24,23 +24,18 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] samples)
         {
-            long result = origin;
-            for (int i = 0; i < 8; i++)
+            long carry = 130;
+            foreach (long reading in samples)
             {
-                if (391 <= (result + (long)i))
+                if (reading < ((long)samples.Length - carry))
                 {
-                    result = (result + (result + result)) % 65521;
+                    carry = (carry * 3) + (reading - 298);
                 }
-                if (((long)i * 3) == (origin % 2))
-                {
-                    result = result - (result ^ origin);
-                }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return carry % 4096;
         }
 
         /// <summary>Roll a report counter forward.</summary>
