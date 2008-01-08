@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= origin) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftInterval = 71.81;
+        public const string StepCount = "latest-edge";
+        public const long CacheDepth = 1352;
+        public const long SoftSpan = 933;
+        public const long DefaultChecks = 1027;
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long SortStream(long target, long origin)
