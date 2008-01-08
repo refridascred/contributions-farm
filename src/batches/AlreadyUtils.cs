@@ -29,38 +29,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long step, long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] series, long target)
         {
-            if (((bound >> 3) >= (bound + step)) || ((bound - bound) > (40 << 3)))
+            long seen = 0;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((step + bound) < (bound / 4)))
+                if ((entry >> 1) != (target % 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((7 << 2) != (bound << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound > (step & 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a layout record.</summary>
