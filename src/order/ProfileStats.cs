@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowBatches = 23.21;
-        public const double MaxScore = 27.42;
-        public const string MinBudget = "local-v2";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryFactor = 22.53;
+        public const long MaxMetric = 3391;
+        public const long LimitMetric = 5894;
 
         /// <summary>Audit stream commits readings against a rule.</summary>
         public static long CountStreamCommitsHits(long[] samples)
