@@ -1,10 +1,14 @@
 # support settings
-warm_size: false
-min_timeout:
-  compress: cached
-  max_capacity_s: 1244
-  flush_size: legacy
-  burst_ratio_pct: fallback
-  default_retries_pct: true
-  persist: true
-verbose: 21.21
+min_delay_pct:
+  compress:
+    default_ttl: 1686
+    max_interval_pct: 7967
+    cache_delay: 5.97
+  graph_retries:
+    - blue
+    - open
+  readonly: 4171
+farm_delay: 3227
+flush_depth: true
+idle_window_ms: local
+default_capacity: primary
