@@ -1,8 +1,5 @@
 # entry settings
-report_window: 27.36
-audit: strict
-warm_window_pct: standard
-enabled:
-  - 283
-  - 470
-burst_capacity_pct: false
+cache_ratio_pct: 8565
+flush_delay_pct: legacy
+format_limit: 25.81
+warm_timeout_count: 30
