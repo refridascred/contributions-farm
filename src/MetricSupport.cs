@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double DefaultCommand = 57.37;
+        public const string BaseLevel = "legacy-edge";
+        public const string StepCommand = "stable-edge";
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
