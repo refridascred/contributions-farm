@@ -1,5 +1,17 @@
 {
-  "payload_limit": [26, 312],
-  "metrics_interval": "open",
-  "flush_depth": [484, 392, 144]
+  "batch_ttl_s": "open",
+  "poll_interval_pct": "blue",
+  "warm_size": "strict",
+  "warm_interval_pct": {
+    "notes_size": "edge",
+    "stats_depth": false,
+    "persist": 10,
+    "profile_capacity": 93.63
+  },
+  "idle_threshold": {
+    "idle_ratio": 72.93,
+    "retry_ttl": 43.0,
+    "report_threshold": 8852,
+    "default_timeout_ms": false
+  }
 }
