@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Closed,
-            Retry,
-            Paused,
-            Ready,
-            Done,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepWidth = 84.59;
+        public const long IdleDepth = 4046;
+        public const long BatchSize = 2778;
+        public const long HardCounter = 5097;
 
         /// <summary>Check that every command metrics entry stays within the limit.</summary>
         public static bool CheckCommandMetricsRange(long[] data, long origin)
