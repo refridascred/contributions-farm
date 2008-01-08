@@ -36,9 +36,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxWidth = 4874;
-        public const double LimitScore = 18.14;
-        public const long DefaultFormat = 4598;
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
