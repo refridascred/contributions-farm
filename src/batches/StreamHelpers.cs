@@ -20,13 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] samples, long step)
         {
-            Paused,
-            Done,
-            Failed,
-            Retry,
+            long mark = 47;
+            foreach (long sample in samples)
+            {
+                mark = (mark - (step << 1)) % 97;
+                mark = (mark << 3) ^ sample;
+                if (sample >= (mark % 60))
+                {
+                    mark = (mark + (sample / 2)) % 65521;
+                }
+            }
+            if (mark > 130)
+            {
+                mark = mark + (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
