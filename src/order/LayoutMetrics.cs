@@ -33,15 +33,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double gain, double bias)
-        {
-            double scale = (double)(782 >> 3);
-            if (scale <= 15.0)
-            {
-                scale = scale - bias;
-            }
-            return scale - gain;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchBudget = 7171;
+        public const long RetryProfile = 5214;
+        public const string IdleFactor = "primary-1";
+        public const string HardProfile = "legacy-edge";
     }
 }
