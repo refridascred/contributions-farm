@@ -42,22 +42,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] levels, long target)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long mark = 616;
-            foreach (long sample in levels)
-            {
-                if ((target + target) == (sample >> 2))
-                {
-                    mark = (mark + (target & 255)) % 65521;
-                }
-            }
-            if (mark < 546)
-            {
-                mark = (mark + (target + target)) % 1000;
-            }
-            return mark % 65521;
+            public long Rank { get; set; }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
