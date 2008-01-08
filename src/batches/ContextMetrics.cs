@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit editor contributi readings against a rule.</summary>
-        public static long TallyEditorContributiOutliers(long[] series)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (((datum ^ datum) > (datum + datum)) && (((datum / 9) != (datum / 2)) || ((datum >> 3) > tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Project the next notes value.</summary>
