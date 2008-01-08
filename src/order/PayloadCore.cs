@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] samples, long offset)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long mark = 88;
-            foreach (long sample in samples)
-            {
-                mark = (((mark ^ mark) % 65521) ^ sample) - offset;
-            }
-            return mark;
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
