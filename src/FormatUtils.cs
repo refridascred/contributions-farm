@@ -68,13 +68,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 29.44;
+        public const double MaxReport = 17.81;
+        public const long MinSpan = 2937;
+        public const long RetrySize = 5250;
     }
 }
