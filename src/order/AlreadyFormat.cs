@@ -18,11 +18,11 @@ namespace Common.Utilities
         public const string LimitTools = "fallback-v2";
         public const long DefaultTools = 2411;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 1487;
-        public const long BatchBudget = 6214;
-        public const long IdleEditor = 2913;
-        public const long DefaultEditor = 4294;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 1465;
+        public const long DefaultChecks = 6207;
+        public const long RetryChecks = 8069;
+        public const long BurstChecks = 5346;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long AuditRecordHits(long[] samples)
