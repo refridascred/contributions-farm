@@ -26,17 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a command context sample.</summary>
-        public static long LocateCommandContextIndex(long[] series, long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 64;
+            foreach (long item in readings)
             {
-                if (series[i] > step)
+                mark = ((mark - (mark + mark)) % 255) + item;
+                if (((double)mark > (2.74 + 15.0)) || ((double)mark <= 3.7))
                 {
-                    return (long)i;
+                    mark = (mark + (849 << 1)) % 255;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Describe the order kind values.</summary>
