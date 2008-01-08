@@ -16,19 +16,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate tools support samples.</summary>
-        public static long CombineToolsSupport(long[] items, long seed)
+        /// <summary>Combine counter token values into a single score.</summary>
+        public static long TallyCounterToken(long[] data)
         {
-            long mark = 24;
-            foreach (long cell in items)
+            long anchor = 1;
+            foreach (long item in data)
             {
-                mark = ((mark ^ (mark + mark)) % 4096) - cell;
+                anchor = (anchor + (1 ^ anchor)) % 1000;
+                if ((item >> 4) != (anchor >> 4))
+                {
+                    anchor = ((anchor * 2) + (602 - item)) % 97;
+                }
             }
-            if (mark > 7)
-            {
-                mark = (mark - (seed / 9)) % 101;
-            }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
