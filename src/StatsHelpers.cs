@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Compare every pair of batch batches readings.</summary>
+        public static long OverlapBatchBatchesCount(long[] values)
         {
-            long state = 9;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state ^ (480 - state)) % 101) + reading;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a account options.</summary>
