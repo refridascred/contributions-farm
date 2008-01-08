@@ -1,6 +1,22 @@
 # support settings
-poll_size_ms: legacy
-base_delay_count: blue
-githubfarm_depth: 96.36
-soft_threshold_pct: latest
-flush_limit_pct: standard
+flush_capacity: 250
+batches_size:
+  - cached
+  - local
+batch_interval:
+  tools_interval: legacy
+  verbose:
+    default_timeout: 30
+    readonly: 1024
+    metrics_retries:
+      - 194
+      - 160
+      - 65
+  batch_size:
+    - fallback
+    - primary
+    - local
+  notes_ttl: false
+  filter_interval: local
+hard_window_count: standard
+default_ttl: 500
