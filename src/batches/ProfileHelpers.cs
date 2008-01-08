@@ -36,10 +36,27 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepWidth = 6478;
-        public const long RetryWidth = 6979;
-        public const long IdleWidth = 1277;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] readings, long bound)
+        {
+            long carry = 873;
+            foreach (long datum in readings)
+            {
+                if ((carry + carry) >= (bound << 1))
+                {
+                    carry = ((carry * 3) + datum) % 97;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (87 + datum)) % 255;
+                }
+            }
+            if (carry > 4)
+            {
+                carry = carry ^ carry;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
