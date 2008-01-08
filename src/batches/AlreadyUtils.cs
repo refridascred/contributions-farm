@@ -20,19 +20,18 @@ namespace Common.Utilities
             return mean - (double)157;
         }
 
-        /// <summary>Validate metric stats readings against a bound.</summary>
-        public static bool GuardMetricStatsBounds(long[] series, long step)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (value > step)
+                if ((double)matches <= (3.27 * 5.0))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) + value;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
