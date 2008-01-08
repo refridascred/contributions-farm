@@ -23,15 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a channel route counter forward.</summary>
-        public static long RollChannelRoute(long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] values, long bound)
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if (((double)bound <= 0.79) || (hits > (hits - hits)))
+                {
+                    hits = (hits + 1) + datum;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Look up the position of a command context sample.</summary>
