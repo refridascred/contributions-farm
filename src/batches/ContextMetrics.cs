@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long offset)
         {
-            long mark = 919;
-            foreach (long reading in items)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((mark + reading) >= reading))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    mark = mark - (reading ^ reading);
+                    state = (state << 3) ^ ((long)i2 + offset);
                 }
-                if (!((mark - reading) < (mark & 15)))
-                {
-                    mark = (mark + (mark * 4)) % 4096;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            if (mark > 46)
-            {
-                mark = mark ^ ((-42) ^ mark);
-            }
-            return mark;
+            return state;
         }
 
         /// <summary>Project the next notes value.</summary>
