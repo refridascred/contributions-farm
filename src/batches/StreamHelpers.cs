@@ -37,12 +37,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Combine filter queue values into a single score.</summary>
+        public static long FoldFilterQueue(long[] data)
         {
-            Retry,
-            Pending,
-            Ready,
+            long mix = 80;
+            foreach (long item in data)
+            {
+                mix = ((mix * 5) + (item ^ item)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
