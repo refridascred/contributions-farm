@@ -25,18 +25,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 5337;
+        public const long WindowTimeout = 2063;
+        public const string MaxLayout = "alpha";
+        public const long BurstLayout = 446;
+        public const long BatchLayout = 2193;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
