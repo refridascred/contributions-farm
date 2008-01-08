@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate stream cache samples.</summary>
-        public static long FoldStreamCache(long[] items, long bound)
+        /// <summary>Locate a stats graph reading by value.</summary>
+        public static long SeekStatsGraphIndex(long[] readings, long target)
         {
-            long acc = -26;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (((acc - (7 - 100)) % 1000) ^ reading) + bound;
-                acc = ((acc * 3) + (acc / 7)) % 65521;
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Project the next filter value.</summary>
