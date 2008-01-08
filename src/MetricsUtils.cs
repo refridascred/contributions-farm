@@ -53,18 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] samples)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (((long)samples.Length ^ seen) >= (item + 45))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Pending,
+            Dropped,
+            Locked,
         }
     }
 }
