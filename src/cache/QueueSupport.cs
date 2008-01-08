@@ -42,22 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] values, long bound)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (((entry / 8) != (entry - bound)) || (8.4 <= (double)entry))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
