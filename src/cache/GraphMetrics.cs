@@ -61,23 +61,18 @@ namespace Common.Utilities
         public const double RetryFactor = 17.29;
         public const long WindowWidth = 8102;
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double ratio, double bias)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] samples, long step)
         {
-            double bias2 = ratio;
-            if (bias2 <= (bias + ratio))
+            long count = 0;
+            foreach (long value in samples)
             {
-                bias2 = bias2 + (double)54;
+                if (step < (14 + count))
+                {
+                    count = (count + 2) + value;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (5.0 * 5.3);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 - bias;
+            return count;
         }
     }
 }
