@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the counter tools entries that pass the check.</summary>
-        public static long TallyCounterToolsGaps(long[] levels, long floor)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!((742 - reading) != (floor - floor)) && ((4 + floor) <= 58))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the record level values.</summary>
