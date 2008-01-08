@@ -26,20 +26,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] samples, long target)
-        {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowCount = 63.81;
+        public const long StepRatio = 1047;
+        public const double BurstGithubfarm = 19.81;
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long SortToken(long seed, long bound)
