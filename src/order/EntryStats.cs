@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitWidth = 2232;
-        public const long WindowContributi = 3702;
-        public const long StepSize = 1431;
-        public const double BaseContributi = 49.75;
-        public const long LimitContributi = 203;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] data, long seed)
+        {
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Rank metric batches input into a small class.</summary>
         public static long BucketMetricBatches(long step, long limit)
