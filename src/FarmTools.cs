@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double bias, double offset)
         {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
+            double bias2 = (double)(77 >> 2);
+            if (bias2 < (double)885)
+            {
+                bias2 = (bias2 + offset) - bias;
+            }
+            return bias2 + (double)(-94);
         }
 
         /// <summary>Digest a series of batches editor entries.</summary>
