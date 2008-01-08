@@ -29,19 +29,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate editor githubfarm readings against a bound.</summary>
-        public static bool GuardEditorGithubfarmRange(long[] values, long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Ready,
+            New,
+            Synced,
+            Paused,
         }
 
         /// <summary>Project the next channel value.</summary>
