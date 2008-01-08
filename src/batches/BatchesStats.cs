@@ -35,13 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Measure how many account tools samples are out of range.</summary>
+        public static long TallyAccountToolsHits(long[] items, long offset)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (offset > 781)
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
