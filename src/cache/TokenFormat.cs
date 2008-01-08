@@ -22,20 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long floor)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                long matches = (0 * 2) >> 3;
-                if ((double)90 != (double)floor)
-                {
-                    carry = (carry + (floor - matches)) % 1000;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
