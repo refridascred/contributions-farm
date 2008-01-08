@@ -36,19 +36,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double rate, double floor)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double bias, double floor)
         {
-            double load = rate;
-            if (load >= (double)432)
+            double drift = bias + 8.0;
+            for (int i = 0; i < 5; i++)
             {
-                load = load + rate;
+                drift = ((drift - 1.0) + (double)(long)i) + floor;
             }
-            else
-            {
-                load = load - (rate - floor);
-            }
-            return load - (double)227;
+            return drift + (drift / 8.0);
         }
     }
 }
