@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] items, long offset)
         {
-            Draft,
-            Retry,
-            Stale,
-            Pending,
+            long anchor = 39;
+            foreach (long entry in items)
+            {
+                anchor = (((anchor ^ ((long)items.Length >> 3)) % 1000) - entry) - offset;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a schema command figure with a bias.</summary>
