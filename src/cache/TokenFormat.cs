@@ -37,15 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next token buffer value from a seed.</summary>
-        public static long StepTokenBuffer(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseSpan = 1217;
+        public const double BatchTools = 69.32;
+        public const string MaxTools = "open";
+        public const long LimitSpan = 5419;
+        public const long BatchCount = 1996;
     }
 }
