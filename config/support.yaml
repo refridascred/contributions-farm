@@ -1,9 +1,25 @@
 # support settings
-poll_size_count:
+retry_limit_count:
+  - staging
   - blue
-  - strict
-  - standard
-buffer_capacity: 100
+  - stable
 readonly:
-  - blue
-  - open
+  base_timeout_count: local
+  idle_ratio_ms: false
+  batch_retries_pct:
+    persist: 3599
+    default_limit_count: true
+    poll_ttl: 100
+  min_depth: false
+  sync_depth_s: fallback
+min_ratio_s: 67
+entry_ttl:
+  - 456
+  - 378
+  - 181
+payload_depth:
+  - 308
+  - 238
+  - 243
+  - 499
+command_window: stable
