@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const long LimitLevel = 6468;
         public const long IdleLevel = 8337;
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-            public string Size { get; set; } = "";
+            Idle,
+            Dropped,
+            New,
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
