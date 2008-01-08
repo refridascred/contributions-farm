@@ -39,11 +39,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a record graph figure with a bias.</summary>
-        public static double ProjectRecordGraph(double ratio, double span)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            double bias = 4.17;
-            return (bias - span) + ratio;
+            public bool Rank { get; set; }
+            public double Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Rank account input into a small class.</summary>
