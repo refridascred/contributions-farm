@@ -34,12 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long offset)
         {
-            public bool Rank { get; set; }
-            public double Total { get; set; }
-            public long Label { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Hold a layout record.</summary>
