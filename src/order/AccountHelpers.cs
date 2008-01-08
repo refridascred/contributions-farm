@@ -57,15 +57,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double rate, double bias)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            double mean = bias;
-            if (mean < rate)
-            {
-                mean = mean - (double)375;
-            }
-            return mean + (double)873;
+            Retry,
+            Pending,
+            New,
+            Synced,
+            Active,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
