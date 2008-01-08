@@ -59,25 +59,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a window format value against two limits.</summary>
-        public static long SortWindowFormat(long target, long limit)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] series, long limit)
         {
-            long diff = target + limit;
-            if ((5 % 100) < (diff * 3))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((diff / 3) <= target)
+                if (series[i] >= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
