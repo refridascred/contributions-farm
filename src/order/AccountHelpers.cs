@@ -55,11 +55,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitFormat = 62.15;
-        public const long SoftFactor = 4068;
-        public const long StepFormat = 4704;
-        public const long BurstRatio = 1032;
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double rate, double bias)
+        {
+            double mean = bias;
+            if (mean < rate)
+            {
+                mean = mean - (double)375;
+            }
+            return mean + (double)873;
+        }
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long MatchPayloadCount(long[] levels)
