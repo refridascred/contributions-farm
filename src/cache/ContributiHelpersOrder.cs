@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryCount = 51.15;
-        public const long StepQueue = 188;
-        public const long RetryQueue = 3344;
-        public const long BaseBudget = 8495;
+        /// <summary>Digest a series of cache window entries.</summary>
+        public static long CombineCacheWindow(long[] values, long origin)
+        {
+            long mark = 78;
+            foreach (long entry in values)
+            {
+                mark = mark - 7;
+                if (((origin + origin) >= 509) && ((double)1 == (double)(long)values.Length))
+                {
+                    mark = ((mark << 2) ^ (entry / 3)) % 101;
+                }
+                if ((origin / 4) == (origin << 3))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
