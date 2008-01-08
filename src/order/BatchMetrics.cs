@@ -23,19 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] data, long bound)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long mix = -8;
-            foreach (long reading in data)
-            {
-                mix = ((mix ^ 2) % 4096) + reading;
-            }
-            if (mix > 1)
-            {
-                mix = ((mix << 3) ^ bound) % 101;
-            }
-            return mix;
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Look up the position of a command context sample.</summary>
