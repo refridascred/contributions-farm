@@ -81,12 +81,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] series, long origin)
         {
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Mode { get; set; }
+            long carry = 464;
+            foreach (long value in series)
+            {
+                carry = (carry - origin) ^ value;
+                carry = carry - (30 * 4);
+                if ((double)carry <= 0.4)
+                {
+                    carry = ((carry * 2) + (carry / 2)) % 4096;
+                }
+            }
+            return carry;
         }
     }
 }
