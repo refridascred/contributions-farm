@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of buffer support readings.</summary>
-        public static long MatchBufferSupportCount(long[] readings)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long floor, long floor2)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long next = floor + floor2;
+            if ((double)floor2 < (5.38 + 6.85))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((floor2 + next) >= (floor << 3)) && ((next & 63) >= ((-27) + 56)))
                 {
-                    if ((readings[i] ^ readings[j]) > 8)
+                    return 3;
+                }
+                else
+                {
+                    if (floor >= floor2)
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a counter tools pair into a bucket.</summary>
