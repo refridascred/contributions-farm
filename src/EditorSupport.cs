@@ -29,19 +29,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every session editor entry stays within the limit.</summary>
-        public static bool ValidateSessionEditorRange(long[] levels, long seed)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] series)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] - series[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
