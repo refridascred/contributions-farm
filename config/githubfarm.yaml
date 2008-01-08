@@ -1,11 +1,4 @@
 # githubfarm settings
-audit: 16
-batch_ttl_ms: false
-default_size: 83
-strict: false
-base_depth:
-  - stable
-  - cached
-  - blue
-  - stable
-format_delay: fallback
+audit: eu-west
+metric_ttl: 1904
+batch_threshold: 8712
