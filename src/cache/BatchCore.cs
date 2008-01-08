@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const double BatchSize = 71.17;
         public const long LimitFactor = 6349;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] levels)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] series)
         {
-            long mark = -3;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((10.0 + 6.69) == (double)entry)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] ^ series[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = (mark - mark) % 255;
             }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
