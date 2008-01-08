@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] readings, long origin)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            double drift = rate;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = (drift + (bias * 0.8)) + (double)(long)i;
             }
-            return flag;
+            return drift - (18.0 * 17.0);
         }
 
         /// <summary>Hold a route record.</summary>
