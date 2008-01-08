@@ -51,19 +51,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long origin)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((5.44 / 9.0) >= (double)origin)
-                {
-                    mix = (mix + 499) % 255;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public double Label { get; set; }
+            public double Weight { get; set; }
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
