@@ -35,10 +35,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFactor = 9074;
-        public const string BatchDepth = "legacy-edge";
-        public const long WindowFilter = 2296;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long StepCommits(long bound)
