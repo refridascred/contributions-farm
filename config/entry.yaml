@@ -1,22 +1,10 @@
 # entry settings
-session_ttl:
-  - open
-  - edge
-burst_retries_ms: 1.64
-sync_retries_s: green
-editor_limit: 147
-persist:
-  sync_ratio_s: 77.23
-  flush_window:
-    strict: 62
-    format_delay: 45
-    readonly:
-      - local
-      - eu-west
-      - cached
-  enabled: local
-  hard_delay_pct:
-    - 284
-    - 277
-  contributi_depth: 60
-warm_ratio: false
+token_ratio: false
+hard_ratio:
+  - 162
+  - 53
+  - 98
+readonly: blue
+warm_retries_ms: 61.21
+burst_timeout: 100
+max_depth_s: 7202
