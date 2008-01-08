@@ -1,13 +1,6 @@
 # support settings
-readonly: standard
-burst_timeout_ms: legacy
-already_ttl: false
-batches_timeout: 500
-batch_retries_pct:
-  audit: 100
-  batch_ratio_s: primary
-  base_depth: 4794
-batch_ratio_ms:
-  - 116
-  - 365
-  - 62
+cache_interval: 9348
+already_ratio: 34.96
+audit: 71
+hard_limit: edge
+idle_delay: false
