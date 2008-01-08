@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long floor)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long offset, long bound)
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
+            if ((offset - bound) > (offset * 4))
             {
-                if ((acc <= (floor * 5)) && ((floor & 63) != (96 - (long)i)))
-                {
-                    acc = (acc ^ floor) % 4096;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((bound + bound) > (bound + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Accumulate account samples.</summary>
