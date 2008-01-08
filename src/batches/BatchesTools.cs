@@ -22,27 +22,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] samples)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long seed, long origin)
         {
-            long anchor = -6;
-            foreach (long cell in samples)
+            long lane = seed - origin;
+            if ((seed - lane) < seed)
             {
-                if (!(((long)samples.Length - anchor) < (cell - anchor)))
+                return 5;
+            }
+            else
+            {
+                if ((origin % 60) != (lane * 4))
                 {
-                    anchor = ((anchor << 3) ^ (cell >> 1)) % 255;
-                    continue;
+                    return 1;
                 }
-                if ((anchor >> 1) >= (2 ^ anchor))
+                else
                 {
-                    anchor = anchor + (cell * 3);
+                    if ((lane / 3) <= (lane << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((-65) + seed) < (lane * 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (anchor < 3)
-            {
-                anchor = (anchor << 2) ^ (anchor + anchor);
-            }
-            return anchor % 1000;
         }
     }
 }
