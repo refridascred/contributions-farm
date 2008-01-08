@@ -23,19 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] items, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (value > floor)
+                if (!((546 & 3) <= (625 + item)) && ((hits * 5) > (item / 3)))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) + seed;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
