@@ -23,14 +23,12 @@ namespace Common.Utilities
             return drift - (scale - offset);
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Idle,
-            Ready,
-            Synced,
             Locked,
-            Retry,
+            Idle,
+            Synced,
         }
     }
 }
