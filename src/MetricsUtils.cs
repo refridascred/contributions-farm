@@ -40,22 +40,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up buffer metrics samples.</summary>
-        public static long MatchBufferMetricsCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardCount = 3381;
+        public const double StepFactor = 74.04;
+        public const long IdleTimeout = 8747;
+        public const long HardDepth = 6090;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
