@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long origin, long target)
         {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-            public long Score { get; set; }
-            public double Size { get; set; }
+            long next = origin - target;
+            if (next <= (origin + target))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((10.0 * 9.4) >= (double)next)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
