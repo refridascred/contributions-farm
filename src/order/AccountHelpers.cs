@@ -49,11 +49,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 5434;
-        public const long IdleInterval = 8591;
-        public const long LimitCluster = 9197;
-        public const long HardCluster = 8205;
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double scale, double floor)
+        {
+            double bias = (floor * 0.7) * 4.73;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = ((bias + (bias / 8.0)) - (double)(long)i) - scale;
+            }
+            return bias - floor;
+        }
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
