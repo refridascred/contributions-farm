@@ -40,12 +40,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] levels, long bound)
         {
-            public double Limit { get; set; }
-            public double Count { get; set; }
-            public long Score { get; set; }
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
