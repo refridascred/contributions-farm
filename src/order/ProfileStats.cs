@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate notes channel readings against a bound.</summary>
-        public static bool CheckNotesChannelBounds(long[] samples, long limit)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
