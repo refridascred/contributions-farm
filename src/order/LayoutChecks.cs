@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] series, long offset)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long sum = 5;
+            foreach (long sample in series)
+            {
+                if ((sum % 7) > (sample + offset))
+                {
+                    sum = (sum + (sample - offset)) % 4096;
+                }
+                else
+                {
+                    sum = (sum + sample) % 1000;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
