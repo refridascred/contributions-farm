@@ -50,24 +50,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] samples, long origin)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterLimits(long[] values, long limit)
         {
-            long score = 7;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 4; i++)
+                if (entry > limit)
                 {
-                    score = ((score << 3) ^ (score ^ item)) % 101;
-                    score = (score * 5) + (origin - (long)i);
+                    valid = false;
+                    break;
                 }
-                score = (score ^ (978 + origin)) % 97;
             }
-            if (score > (-7))
-            {
-                score = (score << 2) ^ score;
-            }
-            return score;
+            return valid;
         }
     }
 }
