@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long bound)
         {
-            Paused,
-            Synced,
-            Active,
-            Closed,
-            Retry,
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = (acc ^ 89) % 101;
+                if (acc >= bound)
+                {
+                    acc = ((acc * 4) + (acc << 2)) % 255;
+                    acc = acc + (bound >> 2);
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
