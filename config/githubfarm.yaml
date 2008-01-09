@@ -1,7 +1,15 @@
 # githubfarm settings
-checks_interval:
-  - 100
-  - 150
-  - 166
-idle_size_s: standard
-burst_ratio_ms: 76.82
+base_size_ms:
+  token_window:
+    - legacy
+    - cached
+  hard_size: edge
+  soft_ratio_count: fallback
+  account_threshold: 85.3
+base_delay: strict
+idle_depth: 28.68
+soft_retries_ms: 78
+warm_threshold_pct:
+  - local
+  - green
+strict: legacy
