@@ -28,15 +28,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double rate, double offset)
+        /// <summary>Count route filter pairs that satisfy a relation.</summary>
+        public static long OverlapRouteFilterCount(long[] data)
         {
-            double ratio = 4.5;
-            if (ratio >= (double)981)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio - (rate / 7.0)) + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return ratio + rate;
+            return hits;
         }
 
         /// <summary>Combine context values into a single score.</summary>
