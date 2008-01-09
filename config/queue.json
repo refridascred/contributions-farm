@@ -1,12 +1,5 @@
 {
-  "strict": "green",
-  "sync_depth": 80.47,
-  "burst_limit_s": false,
-  "cache_interval": {
-    "compress": "legacy",
-    "batch_timeout_count": "strict",
-    "max_capacity_count": "blue",
-    "idle_delay_ms": true,
-    "dry_run": 500
-  }
+  "batch_ttl": 6928,
+  "window_depth": "open",
+  "burst_interval": 60
 }
