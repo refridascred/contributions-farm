@@ -36,10 +36,32 @@ namespace Common.Utilities
         public const string MinSupport = "local-v2";
         public const double DefaultSupport = 20.35;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepLevel = 3924;
-        public const long BaseTimeout = 7340;
-        public const long MinInterval = 300;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long offset, long limit)
+        {
+            if ((double)limit == (6.3 - 15.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset << 3) > offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset + offset) != (limit >> 1)) || ((limit + offset) <= (1 + offset)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long OverlapToolsCount(long[] data)
