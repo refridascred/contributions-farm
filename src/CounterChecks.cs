@@ -52,16 +52,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long bound)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = (mix ^ 577) % 65521;
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public bool Size { get; set; }
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many batch record samples are out of range.</summary>
