@@ -38,19 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate contributi report samples.</summary>
-        public static long FoldContributiReport(long[] values, long step)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long anchor = 914;
-            foreach (long reading in values)
-            {
-                anchor = (anchor + (step << 2)) - reading;
-                if ((double)(long)values.Length > (double)444)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Retry,
+            Failed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Describe the payload state values.</summary>
