@@ -38,22 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteGaps(long[] series, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long item in series)
+            long mark = 967;
+            foreach (long item in readings)
             {
-                if (((item << 3) <= (floor - 590)) && (((count + 2) < (item >> 5)) || ((floor - floor) <= (floor * 4))))
+                if ((18.0 * 9.9) > (double)step)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    mark = mark - (step - item);
                 }
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
