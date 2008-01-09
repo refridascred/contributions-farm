@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next notes stream value from a seed.</summary>
-        public static long RollNotesStream(long limit)
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double weight, double floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            double bias = weight;
+            if (bias >= 7.41)
             {
-                anchor = ((anchor * 3) + (480 - 5)) % 97;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    long delta = anchor;
-                    anchor = (anchor ^ delta) ^ (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                bias = bias - (floor - weight);
             }
-            return anchor;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + weight) - (double)(long)i;
+            }
+            return bias - (7.1 * 9.13);
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
