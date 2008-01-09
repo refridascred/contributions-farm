@@ -33,11 +33,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseSpan = 1217;
-        public const double BatchTools = 69.32;
-        public const string MaxTools = "open";
-        public const long LimitSpan = 5419;
-        public const long BatchCount = 1996;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] values, long limit)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (11.0 >= (double)limit)
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
+        }
     }
 }
