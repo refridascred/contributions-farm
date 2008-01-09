@@ -48,18 +48,18 @@ namespace Common.Utilities
             return mean - (floor / 3.0);
         }
 
-        /// <summary>Measure how many commits buffer samples are out of range.</summary>
-        public static long TallyCommitsBufferGaps(long[] readings, long floor)
+        /// <summary>Audit profile editor readings against a rule.</summary>
+        public static long MeasureProfileEditorHits(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (((count << 3) >= count) && (((long)readings.Length & 3) > datum))
+                if ((tally + entry) == (entry - 6))
                 {
-                    count = (count + 3) - floor;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
