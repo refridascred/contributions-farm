@@ -26,16 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next order filter value from a seed.</summary>
-        public static long DeriveOrderFilter(long origin)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = ((sum << 3) ^ 259) % 255;
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
