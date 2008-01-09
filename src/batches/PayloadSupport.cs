@@ -20,12 +20,19 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 6395;
-        public const string MaxTimeout = "strict";
-        public const long HardSpan = 3905;
-        public const double BaseGraph = 85.51;
-        public const long MinFactor = 7862;
+        /// <summary>Audit tools metric readings against a rule.</summary>
+        public static long AuditToolsMetricOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((seen << 3) == (seen >> 4))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of queue metric entries.</summary>
         public static long WeighQueueMetric(long[] items)
