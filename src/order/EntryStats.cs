@@ -46,38 +46,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long bound, long limit)
+        /// <summary>Derive the next command schema value from a seed.</summary>
+        public static long SeriesCommandSchema(long limit)
         {
-            if ((2.76 - 17.0) < (double)bound)
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound ^ bound) > bound)
+                if ((0.39 * 0.7) >= (double)limit)
                 {
-                    return 6;
+                    mark = mark ^ (limit + limit);
                 }
-                else
-                {
-                    if ((5.9 + 3.14) != (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((83 <= limit) || ((limit ^ 18) <= (limit ^ limit)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
