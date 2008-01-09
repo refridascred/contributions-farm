@@ -26,19 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] data, long seed)
+        /// <summary>Derive the next order filter value from a seed.</summary>
+        public static long DeriveOrderFilter(long origin)
         {
-            long sum = 8;
-            foreach (long sample in data)
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum << 2) ^ (seed % 60)) - sample;
+                sum = ((sum << 3) ^ 259) % 255;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            if (sum > 31)
-            {
-                sum = (sum << 2) ^ ((long)data.Length + seed);
-            }
-            return sum % 1000;
+            return sum;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
