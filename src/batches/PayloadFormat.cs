@@ -25,12 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long offset)
         {
-            public double Weight { get; set; }
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
+            long score = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
