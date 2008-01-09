@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] readings, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 9;
+            foreach (long reading in data)
             {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 3) ^ 9) % 101) ^ reading;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
