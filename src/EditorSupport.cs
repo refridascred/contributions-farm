@@ -78,11 +78,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftInterval = 9256;
-        public const long LimitSpan = 5936;
-        public const long SoftLevel = 5015;
-        public const long MinFormat = 1891;
-        public const long MinWidth = 6912;
+        /// <summary>Count tools stats pairs that satisfy a relation.</summary>
+        public static long MatchToolsStatsCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
