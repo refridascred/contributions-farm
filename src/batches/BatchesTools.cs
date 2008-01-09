@@ -23,13 +23,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Validate payload cluster readings against a bound.</summary>
+        public static bool VerifyPayloadClusterRange(long[] data, long seed)
         {
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
