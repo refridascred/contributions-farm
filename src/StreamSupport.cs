@@ -47,18 +47,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] items)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long anchor = 4;
+            foreach (long entry in levels)
             {
-                if (value > ((-5) >> 4))
+                if (!(entry < (anchor + 5)))
                 {
-                    tally = tally + 2;
+                    anchor = (anchor + ((-687) / 8)) % 97;
                 }
             }
-            return tally;
+            return anchor % 4096;
         }
     }
 }
