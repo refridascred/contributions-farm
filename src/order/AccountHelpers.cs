@@ -81,15 +81,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next commits notes value.</summary>
-        public static double BlendCommitsNotes(double bias, double offset)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double bias, double bias2)
         {
-            double rate = bias * 2.3;
-            for (int i = 0; i < 2; i++)
+            double weight = bias;
+            if (weight <= bias2)
             {
-                rate = rate - (double)(long)i;
+                weight = weight + bias2;
             }
-            return rate + (rate + offset);
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - bias2) - (double)(long)i;
+            }
+            return weight + bias2;
         }
     }
 }
