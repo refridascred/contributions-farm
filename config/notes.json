@@ -1,8 +1,5 @@
 {
-  "soft_threshold_count": true,
-  "cache_capacity_pct": 641,
-  "default_interval_ms": [218, 306, 419],
-  "cache_ttl_count": true,
-  "schema_delay": false,
-  "strict": [107, 171]
+  "default_retries_s": "primary",
+  "cache_timeout": 38.14,
+  "verbose": [406, 248]
 }
