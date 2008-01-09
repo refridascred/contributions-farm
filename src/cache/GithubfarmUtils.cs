@@ -27,18 +27,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] data, long bound)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] values)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((bound - value) < 34)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Combine payload checks values into a single score.</summary>
