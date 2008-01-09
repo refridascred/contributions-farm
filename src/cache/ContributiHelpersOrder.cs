@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Done,
-            Idle,
-            New,
-            Pending,
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a context info.</summary>
