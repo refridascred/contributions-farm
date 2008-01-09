@@ -11,12 +11,10 @@ namespace Common.Utilities
         public const string HardInterval = "strict-1";
         public const string MaxFarm = "alpha-1";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 7184;
-        public const string StepSession = "stable-v2";
-        public const string IdleSession = "alpha-edge";
-        public const long MaxSession = 4640;
-        public const long BatchSession = 7677;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheBatch = 56.08;
+        public const long CacheFactor = 3483;
+        public const string SoftBatch = "primary-1";
 
         /// <summary>Classify a schema buffer pair into a bucket.</summary>
         public static long BucketSchemaBuffer(long floor, long origin)
