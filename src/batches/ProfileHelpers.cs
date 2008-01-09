@@ -63,18 +63,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit report support readings against a rule.</summary>
-        public static long AuditReportSupportMatches(long[] series)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!((24 ^ (long)series.Length) > count))
-                {
-                    count = (count + 1) - reading;
-                }
-            }
-            return count;
+            Done,
+            Draft,
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Validate filter cache readings against a bound.</summary>
