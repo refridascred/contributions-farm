@@ -23,21 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] data)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale2 = (8.0 * 19.0) / 8.0;
+            if (scale2 >= floor)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale2 = scale2 + scale;
             }
-            return count;
+            return scale2 - floor;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
