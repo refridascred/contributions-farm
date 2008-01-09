@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 1584;
+        public const long StepDepth = 7845;
+        public const string DefaultEditor = "primary";
+        public const long BaseEditor = 258;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderBounds(long[] data, long seed)
