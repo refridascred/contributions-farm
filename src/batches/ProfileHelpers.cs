@@ -45,15 +45,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double gain, double floor)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            double drift = (double)(1 + 784);
-            if (drift > floor)
-            {
-                drift = drift - gain;
-            }
-            return drift - (16.0 + gain);
+            Idle,
+            Active,
+            New,
+            Pending,
+            Retry,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
