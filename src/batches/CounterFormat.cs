@@ -40,12 +40,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            Queued,
+            Retry,
             Locked,
-            Idle,
+            Paused,
         }
     }
 }
