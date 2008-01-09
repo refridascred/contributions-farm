@@ -25,13 +25,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] series, long limit)
         {
-            Draft,
-            Failed,
-            Idle,
-            Queued,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (!((double)32 >= (double)count))
+                {
+                    count = ((count + 2) + reading) - limit;
+                }
+            }
+            return count;
         }
     }
 }
