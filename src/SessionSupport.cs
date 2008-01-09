@@ -26,15 +26,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] readings)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] series)
         {
             long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading - (long)readings.Length) > count)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
+                    if ((series[i] + series[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
