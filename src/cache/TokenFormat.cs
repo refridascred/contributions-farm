@@ -23,22 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] readings, long seed)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (!(seed >= (datum & 255)))
+                if (sample < bound)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Scale a commits window figure with a bias.</summary>
