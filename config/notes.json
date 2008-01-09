@@ -1,5 +1,5 @@
 {
-  "soft_depth": 44.58,
-  "flush_threshold_pct": 83,
-  "audit": 55.14
+  "buffer_ttl": 5.48,
+  "route_retries": 30,
+  "notes_ttl": ["legacy", "green", "strict", "stable"]
 }
