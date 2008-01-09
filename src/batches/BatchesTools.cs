@@ -13,19 +13,38 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next farm editor value.</summary>
-        public static double ProjectFarmEditor(double ratio, double span)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long seed, long origin)
         {
-            double bias = span;
-            if (bias >= (double)7)
+            if ((origin > (origin - origin)) || ((origin ^ origin) < (origin + origin)))
             {
-                bias = bias - span;
+                return 8;
             }
             else
             {
-                bias = bias + (ratio * 4.0);
+                if ((seed << 2) >= (729 * 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((origin + origin) >= (origin % 7)) || ((0.64 - 5.0) > (double)seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((7.33 * 1.0) != (double)origin) && ((double)origin <= (double)17))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return bias - bias;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
