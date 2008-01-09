@@ -39,14 +39,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Failed,
-            Stale,
-            Active,
-            Dropped,
-            Closed,
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
