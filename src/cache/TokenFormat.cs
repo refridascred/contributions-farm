@@ -33,18 +33,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] values, long limit)
+        /// <summary>Grade a context token value against two limits.</summary>
+        public static long SortContextToken(long step, long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            if ((step / 4) < seed)
             {
-                if (11.0 >= (double)limit)
+                return 3;
+            }
+            else
+            {
+                if ((seed <= (9 - step)) && ((5 + step) < (step % 2)))
                 {
-                    count = (count + 1) ^ value;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed << 3) <= 58)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed / 7) > step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
