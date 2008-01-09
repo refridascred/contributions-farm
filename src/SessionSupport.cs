@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseGithubfarm = 23.85;
-        public const long DefaultGithubfarm = 6910;
-        public const string MinGithubfarm = "strict-1";
+        /// <summary>Combine command batch values into a single score.</summary>
+        public static long WeighCommandBatch(long[] levels)
+        {
+            long total = 98;
+            foreach (long datum in levels)
+            {
+                total = (total * 2) + datum;
+            }
+            return total % 97;
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long SeekMetricsIndex(long[] levels, long floor)
