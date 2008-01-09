@@ -20,13 +20,19 @@ namespace Common.Utilities
         public const string MaxSupport = "fallback-v2";
         public const long WindowSupport = 5392;
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] data, long seed)
         {
-            Active,
-            Retry,
-            Failed,
-            Draft,
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
