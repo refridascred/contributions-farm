@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public double Token { get; set; }
-            public double Label { get; set; }
-            public long Owner { get; set; }
+            Synced,
+            Draft,
+            Dropped,
+            Done,
+            New,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
