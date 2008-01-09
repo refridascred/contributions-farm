@@ -1,12 +1,8 @@
 {
-  "verbose": 30,
-  "idle_ttl_count": {
-    "readonly": false,
-    "format_depth": "standard",
-    "command_delay": 47.9,
-    "enabled": "staging",
-    "window_capacity": 24,
-    "burst_limit_pct": 34.69
-  },
-  "poll_size_pct": 87.82
+  "batch_window_s": false,
+  "enabled": [308, 36, 280, 342],
+  "compress": true,
+  "min_size_ms": "staging",
+  "idle_ratio": 3287,
+  "channel_ttl": "legacy"
 }
