@@ -41,12 +41,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
             Closed,
-            Queued,
-            Locked,
+            Ready,
+            Idle,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
