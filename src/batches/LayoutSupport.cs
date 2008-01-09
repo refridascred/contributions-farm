@@ -57,38 +57,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long target, long step)
+        /// <summary>Combine metrics profile values into a single score.</summary>
+        public static long FoldMetricsProfile(long[] data)
         {
-            if ((step - target) != (3 - 94))
+            long mark = 8;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step & 63) < step)
+                if ((reading << 2) >= 165)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target >= (248 % 3)) || ((0.17 + 1.19) <= (double)target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((12.0 + 2.71) < (double)step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mark = (mark ^ (21 ^ mark)) % 4096;
                 }
             }
+            return mark % 4096;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
