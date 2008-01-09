@@ -48,12 +48,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Find the first farm batch entry that matches the target.</summary>
+        public static long LocateFarmBatchIndex(long[] samples, long origin)
         {
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit report support readings against a rule.</summary>
