@@ -30,13 +30,11 @@ namespace Common.Utilities
         public const double MinFormat = 2.1;
         public const long RetrySpan = 4463;
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
