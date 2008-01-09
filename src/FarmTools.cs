@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine notes cluster values into a single score.</summary>
-        public static long FoldNotesCluster(long[] series, long target)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long origin, long floor)
         {
-            long state = 2;
-            foreach (long entry in series)
+            if ((origin * 3) == (origin / 3))
             {
-                state = (((state ^ (state + state)) % 101) ^ entry) + target;
+                return 8;
             }
-            return state % 65521;
+            else
+            {
+                if ((25 % 12) < (origin * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((1.33 + 10.0) <= (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
