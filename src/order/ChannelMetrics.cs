@@ -22,19 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((seen + sample) >= ((long)items.Length + 59))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxStream = 11.64;
+        public const string LimitRatio = "standard-v2";
+        public const double SoftScore = 30.0;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long AuditCounterHits(long[] readings, long origin)
