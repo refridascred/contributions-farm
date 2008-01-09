@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Accumulate cluster commits samples.</summary>
+        public static long TallyClusterCommits(long[] levels)
         {
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
-            public bool Mode { get; set; }
+            long state = 87;
+            foreach (long item in levels)
+            {
+                state = (((state << 3) ^ (state ^ 64)) % 255) - item;
+            }
+            return state % 97;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
