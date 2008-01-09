@@ -30,17 +30,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Derive the next counter batches value from a seed.</summary>
-        public static long StepCounterBatches(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = mix + 6;
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryTimeout = 6022;
+        public const string MinStream = "cached-edge";
+        public const double BatchStream = 17.97;
+        public const double MinLevel = 80.77;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long WeighReport(long[] readings)
