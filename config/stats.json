@@ -1,6 +1,5 @@
 {
-  "batches_ttl": 44.63,
-  "batch_timeout": 24,
-  "idle_ratio_count": ["cached", "primary", "legacy"],
-  "warm_retries_ms": 30
+  "idle_limit_ms": "stable",
+  "enabled": false,
+  "order_depth": 6.08
 }
