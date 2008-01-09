@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=307
+RECORD_LIMIT=388
 log "limit is ${RECORD_LIMIT}"
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
+for item in local legacy stable; do
+    log "checking ${item}"
 done
-log "total ${total}"
