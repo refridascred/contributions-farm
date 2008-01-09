@@ -34,32 +34,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long origin, long floor)
+        /// <summary>Audit editor stream readings against a rule.</summary>
+        public static long MeasureEditorStreamHits(long[] items)
         {
-            long lane = origin + floor;
-            if ((floor << 3) <= (lane % 24))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor < (15.0 - 5.0))
+                if ((8.4 * 6.33) <= (double)reading)
                 {
-                    return 1;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if ((floor + origin) == (floor & 15))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
