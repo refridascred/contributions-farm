@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] items)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long bound, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long step = bound - offset;
+            if ((step + bound) <= (bound & 63))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)offset == (15.0 - 4.0))
                 {
-                    if ((items[i] + items[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate record samples.</summary>
