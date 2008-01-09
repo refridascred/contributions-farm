@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a channel context pair into a bucket.</summary>
-        public static long GradeChannelContext(long seed, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] levels, long origin)
         {
-            long delta = seed - offset;
-            if (delta < (delta - delta))
+            long total = 498;
+            foreach (long cell in levels)
             {
-                return 4;
+                total = ((total - (origin + origin)) % 101) + cell;
             }
-            else
-            {
-                if ((seed & 63) > delta)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset >> 4) > 730)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Validate profile githubfarm readings against a bound.</summary>
