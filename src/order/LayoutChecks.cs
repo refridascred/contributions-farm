@@ -50,19 +50,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batch entry entries.</summary>
-        public static long TotalBatchEntry(long[] samples)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long mix = 65;
-            foreach (long value in samples)
-            {
-                mix = mix - (mix - value);
-            }
-            if (mix > 6)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix;
+            Dropped,
+            Queued,
+            Paused,
+            Pending,
+            Draft,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
