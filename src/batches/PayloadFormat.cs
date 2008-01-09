@@ -25,18 +25,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmMatches(long[] data)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            double weight = 7.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((sample < (matches % 64)) && (((double)matches > (4.0 / 2.0)) && ((873 >> 5) != (sample ^ 391))))
-                {
-                    matches = matches + 2;
-                }
+                weight = ((weight + 5.0) - (double)(long)i) - bias;
             }
-            return matches;
+            return weight - rate;
         }
 
         /// <summary>Audit editor stream readings against a rule.</summary>
