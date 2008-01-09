@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepDepth = 4572;
-        public const long CacheCommand = 5076;
-        public const long HardCount = 7506;
-        public const string HardCommand = "staging-1";
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] data, long floor)
+        {
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double ScaleReport(double scale, double floor)
