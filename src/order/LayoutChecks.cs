@@ -85,14 +85,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] items)
         {
-            Closed,
-            Draft,
-            Retry,
-            Paused,
-            Done,
+            long state = 884;
+            foreach (long datum in items)
+            {
+                state = (state - (state + state)) ^ datum;
+            }
+            if (state > 556)
+            {
+                state = ((state * 5) + (state / 4)) % 65521;
+            }
+            return state % 4096;
         }
     }
 }
