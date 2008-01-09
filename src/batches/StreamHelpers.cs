@@ -23,19 +23,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] samples, long limit)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long step)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long anchor = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum < limit)
+                anchor = anchor - (anchor * 4);
+                if ((5.3 - 3.0) > (double)anchor)
                 {
-                    ok = false;
+                    anchor = (anchor << 2) ^ (anchor << 1);
                     break;
                 }
+                if (((long)i - step) >= (-394))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
