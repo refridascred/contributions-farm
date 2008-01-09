@@ -50,21 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] readings, long limit)
         {
-            long tally = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((readings[i] > limit) && ((readings[i] % 5) != 0))
                 {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
