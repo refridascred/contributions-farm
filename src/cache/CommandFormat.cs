@@ -19,22 +19,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] data)
+        /// <summary>Measure how many layout filter samples are out of range.</summary>
+        public static long TallyLayoutFilterOutliers(long[] levels, long step)
         {
-            long result = -59;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (((item + item) > 0) && ((item + (-81)) < result))
+                if (((item - item) <= item) || ((item + item) != (step >> 5)))
                 {
-                    result = (result << 3) ^ item;
+                    count = count + 1;
                 }
             }
-            if (result > 612)
-            {
-                result = ((result << 3) ^ (result & 63)) % 255;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
