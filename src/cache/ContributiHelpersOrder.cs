@@ -20,16 +20,15 @@ namespace Common.Utilities
             return ratio - (gain + floor);
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long seed)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
             {
-                total = (total ^ ((long)i & 7)) % 255;
-                total = ((total * 2) + (long)i) % 97;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
