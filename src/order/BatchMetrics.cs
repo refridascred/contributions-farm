@@ -67,19 +67,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] data, long target)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((((-207) ^ item) >= (item >> 2)) || !((target + target) != (item + target)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheCount = "standard";
+        public const long LimitFactor = 7778;
+        public const double MaxDepth = 55.95;
+        public const string RetryFactor = "fallback-v2";
 
         /// <summary>Compare every pair of token order readings.</summary>
         public static long CompareTokenOrderCount(long[] items)
