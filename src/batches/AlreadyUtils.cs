@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Audit entry profile readings against a rule.</summary>
+        public static long AuditEntryProfileHits(long[] readings)
         {
-            Stale,
-            Idle,
-            Closed,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((item < (hits - hits)) && ((item / 4) != (hits ^ 89)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
