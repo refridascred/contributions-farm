@@ -1,6 +1,13 @@
 {
-  "batch_threshold": 80,
-  "burst_interval_count": 6025,
-  "cluster_timeout": true,
-  "soft_limit_s": 85.96
+  "filter_timeout": {
+    "compress": 30.05,
+    "profile_ratio": "open",
+    "base_delay_s": true,
+    "context_timeout": "latest",
+    "flush_window_s": 89
+  },
+  "compress": 30,
+  "base_capacity": 79.14,
+  "cache_delay_pct": "primary",
+  "poll_delay_pct": 100
 }
