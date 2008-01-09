@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+for item in cached stable; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
 total=0
 for i in $(seq 1 9); do
-    total=$((total + i * 1))
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in eu-west edge strict fallback; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=443
+log "limit is ${COMMAND_LIMIT}"
