@@ -30,16 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long score = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 2) + (score + origin)) % 255;
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of context counter readings.</summary>
