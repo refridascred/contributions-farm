@@ -1,23 +1,4 @@
 # support settings
-soft_window_count: false
-hard_ttl_pct: 88.69
-enabled: green
-strict: 60
-base_delay_ms:
-  batch_window: staging
-  contributi_limit:
-    retry_window: 6.68
-    persist: 90.7
-    verbose:
-      - edge
-      - latest
-      - open
-      - blue
-    batch_depth:
-      - 204
-      - 318
-      - 301
-      - 368
-  retry_timeout: 97.47
-  verbose: 1352
-hard_limit_s: 51
+poll_ttl_ms: 1024
+editor_ttl: 250
+support_threshold: 30
