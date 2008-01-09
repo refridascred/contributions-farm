@@ -86,21 +86,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count tools stats pairs that satisfy a relation.</summary>
-        public static long MatchToolsStatsCount(long[] data)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            Draft,
+            Locked,
+            Done,
+            Ready,
         }
     }
 }
