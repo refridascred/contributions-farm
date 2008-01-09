@@ -20,19 +20,23 @@ namespace Common.Utilities
         public const string MaxSupport = "fallback-v2";
         public const long WindowSupport = 5392;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] data, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long step)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long result = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (item < seed)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    flag = false;
-                    break;
+                    result = ((result * 2) + (step * 2)) ^ (long)i2;
                 }
+                if ((4.62 - 2.3) == (double)step)
+                {
+                    result = (result ^ (result + step)) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
