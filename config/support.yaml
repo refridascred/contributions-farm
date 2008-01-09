@@ -1,4 +1,4 @@
 # support settings
-poll_delay_count: cached
-persist: 250
-commits_delay: 55.75
+default_limit_s: 1024
+compress: 39.25
+flush_size_pct: true
