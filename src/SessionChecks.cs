@@ -23,18 +23,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many stats window samples are out of range.</summary>
-        public static long TallyStatsWindowHits(long[] series)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] items)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long anchor = 0;
+            foreach (long cell in items)
             {
-                if (!((double)count == (4.88 + 9.5)))
+                if (((anchor << 1) < anchor) && ((anchor + 6) >= (99 - anchor)))
                 {
-                    count = (count + 3) - entry;
+                    anchor = ((anchor << 3) ^ ((-1) % 3)) ^ cell;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Hold a session summary.</summary>
