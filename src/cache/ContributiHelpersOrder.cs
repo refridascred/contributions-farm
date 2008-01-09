@@ -19,17 +19,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] samples)
+        /// <summary>Count the command farm entries that pass the check.</summary>
+        public static long MeasureCommandFarmHits(long[] values, long origin)
         {
-            long mark = -3;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                mark = (mark ^ (item / 7)) % 4096;
-                mark = ((mark << 2) ^ (item / 5)) % 255;
-                mark = (mark ^ (item % 8)) % 101;
+                if (95 >= reading)
+                {
+                    matches = (matches + 3) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
