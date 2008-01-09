@@ -42,21 +42,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] items)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 9;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((step << 1) > ((-397) + step))
                 {
-                    if ((items[i] + items[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
+                }
+                if (((step << 1) >= (step ^ value)) && ((step % 64) <= (step - 60)))
+                {
+                    anchor = anchor - 77;
+                    anchor = (anchor ^ 7) % 97;
+                }
+                if (((value << 2) >= step) || ((anchor + 684) > value))
+                {
+                    anchor = (anchor ^ value) % 97;
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
