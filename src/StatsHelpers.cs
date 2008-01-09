@@ -22,26 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine support farm values into a single score.</summary>
-        public static long CombineSupportFarm(long[] values)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long mark = 5;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    mark = (((mark << 3) ^ value) % 1000) + (long)i;
-                }
-                if (((double)value <= (8.1 / 6.0)) || ((value >> 5) != (883 * 4)))
-                {
-                    mark = (mark + (value * 3)) % 1000;
-                }
-                if (value <= (value & 31))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Done,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a schema entry.</summary>
