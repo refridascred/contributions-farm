@@ -40,11 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] values, long target)
         {
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > target) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
