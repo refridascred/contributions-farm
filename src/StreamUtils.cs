@@ -16,18 +16,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long result = 971;
-            foreach (long item in levels)
-            {
-                if (!((result + result) >= (result >> 3)))
-                {
-                    result = ((result << 3) ^ (result ^ item)) % 255;
-                }
-            }
-            return result;
+            Closed,
+            Locked,
+            Stale,
+            Pending,
         }
 
         /// <summary>Audit order session readings against a rule.</summary>
