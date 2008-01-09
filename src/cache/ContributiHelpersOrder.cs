@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] levels, long limit)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 489;
+            foreach (long item in values)
             {
-                if (levels[i] >= limit)
+                if ((bound + carry) == (carry & 15))
                 {
-                    return (long)i;
+                    carry = (carry - (bound + item)) % 65521;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
