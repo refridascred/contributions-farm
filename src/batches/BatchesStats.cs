@@ -35,11 +35,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 9388;
-        public const double WindowWidth = 91.59;
-        public const string DefaultSpan = "local-v2";
-        public const long HardWidth = 3538;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 5424;
+        public const double MaxScore = 53.11;
+        public const long StepTimeout = 1138;
+        public const long DefaultBudget = 7174;
+        public const long LimitSize = 4138;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long FoldGithubfarm(long[] series, long offset)
