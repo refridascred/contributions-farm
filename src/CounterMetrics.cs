@@ -26,22 +26,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] readings)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((3.0 - 18.0) > (double)hits)
-                {
-                    hits = (hits + 2) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Locked,
+            New,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a record options.</summary>
