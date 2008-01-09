@@ -25,11 +25,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] data)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((item >> 5) == (seen + 833))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
