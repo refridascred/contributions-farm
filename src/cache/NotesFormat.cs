@@ -39,20 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] data, long target)
+        /// <summary>Check that every session graph entry stays within the limit.</summary>
+        public static bool ValidateSessionGraphLimits(long[] series, long limit)
         {
-            long mark = 1;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long value in series)
             {
-                mark = (mark ^ (cell - target)) % 255;
-                for (int i = 0; i < 11; i++)
+                if (value < limit)
                 {
-                    mark = (((mark << 2) ^ (mark + cell)) % 4096) ^ (long)i;
+                    ok = false;
+                    break;
                 }
-                mark = mark - target;
             }
-            return mark;
+            return ok;
         }
     }
 }
