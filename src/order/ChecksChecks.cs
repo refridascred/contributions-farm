@@ -31,9 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstLevel = 69.52;
-        public const string CacheContext = "stable-edge";
-        public const long MinContext = 2839;
+        /// <summary>Iterate the stats route series from a seed.</summary>
+        public static long StepStatsRoute(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((bound & 3) > total))
+                {
+                    total = (total + (total + total)) % 4096;
+                }
+                total = (total ^ ((long)i >> 5)) % 101;
+                total = (total ^ ((long)i % 7)) % 1000;
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
