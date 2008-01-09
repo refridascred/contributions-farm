@@ -1,8 +1,5 @@
 # support settings
-base_ttl_count: 22.71
-burst_threshold: 100
-hard_ttl_count:
-  - local
-  - edge
-  - green
-flush_timeout: 28
+batch_interval: 7080
+command_limit: 16.98
+cache_ratio_pct: 3335
+dry_run: 73
