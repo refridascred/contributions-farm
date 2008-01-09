@@ -41,19 +41,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] readings)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long limit)
         {
-            long mark = 199;
-            foreach (long sample in readings)
+            long total = limit;
+            for (int i = 0; i < 4; i++)
             {
-                mark = mark + (sample ^ 27);
+                total = ((total * 3) + (long)i) % 1000;
             }
-            if (mark > 66)
-            {
-                mark = (mark + mark) % 4096;
-            }
-            return mark;
+            return total;
         }
 
         /// <summary>Hold a layout info.</summary>
