@@ -90,18 +90,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] items, long bound)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((35 + matches) == (item << 2))
-                {
-                    matches = (matches + 3) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleDepth = 2095;
+        public const long MinCount = 94;
+        public const string BasePayload = "local-1";
+        public const long BurstPayload = 6059;
+        public const long LimitPayload = 1724;
     }
 }
