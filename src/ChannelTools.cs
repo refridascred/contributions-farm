@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of channel profile entries.</summary>
-        public static long FoldChannelProfile(long[] readings)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double scale, double offset)
         {
-            long anchor = 732;
-            foreach (long datum in readings)
-            {
-                anchor = anchor ^ (datum % 8);
-            }
-            if (anchor < 589)
-            {
-                anchor = anchor - (anchor - anchor);
-            }
-            return anchor % 1000;
+            double mean = offset;
+            return (mean + 1.6) + scale;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
