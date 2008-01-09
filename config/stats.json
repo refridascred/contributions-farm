@@ -1,5 +1,8 @@
 {
-  "entry_threshold": true,
-  "enabled": 3774,
-  "readonly": "standard"
+  "audit": "staging",
+  "default_ratio_ms": [279, 170, 378, 80],
+  "notes_threshold": "open",
+  "readonly": 78.62,
+  "verbose": 5,
+  "session_capacity": "staging"
 }
