@@ -1,6 +1,5 @@
 {
-  "min_size_count": ["open", "strict", "latest"],
-  "batch_ttl": "blue",
-  "batch_retries": 65,
-  "flush_retries_ms": 53.05
+  "hard_limit_s": "stable",
+  "verbose": 48.22,
+  "readonly": 37
 }
