@@ -38,20 +38,10 @@ namespace Common.Utilities
         public const long RetryChecks = 8069;
         public const long BurstChecks = 5346;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 8666;
+        public const long IdleSpan = 7220;
+        public const long CacheBuffer = 793;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextHits(long[] series, long offset)
