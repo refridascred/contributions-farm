@@ -25,17 +25,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] levels, long limit)
+        /// <summary>Fold a list of layout buffer readings.</summary>
+        public static long DigestLayoutBuffer(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 316;
+            foreach (long item in values)
             {
-                if (levels[i] >= limit)
+                if ((double)item > 12.0)
                 {
-                    return (long)i;
+                    mark = (mark + (mark - mark)) % 4096;
+                    continue;
+                }
+                if (((7.8 - 11.0) <= (double)item) && ((mark << 2) >= (mark - mark)))
+                {
+                    mark = (mark << 3) ^ (item % 5);
+                }
+                else
+                {
+                    mark = (mark << 2) ^ item;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Compare every pair of token already readings.</summary>
