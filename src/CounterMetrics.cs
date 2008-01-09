@@ -47,39 +47,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a token profile value against two limits.</summary>
-        public static long ClassifyTokenProfile(long limit, long floor)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long delta = limit - floor;
-            if ((double)floor < 8.42)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)floor == (16.0 + 6.37)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (32 > (delta - delta))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (57 <= (delta - (-97)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
