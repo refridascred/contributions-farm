@@ -23,27 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of counter route entries.</summary>
-        public static long DigestCounterRoute(long[] levels)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long state = 68;
-            foreach (long value in levels)
-            {
-                state = ((state * 5) + state) % 65521;
-                if ((state - state) > (value ^ value))
-                {
-                    state = state - (98 - value);
-                }
-                else
-                {
-                    state = ((state * 3) + (state << 3)) % 4096;
-                }
-                if ((1.0 * 13.0) != (double)state)
-                {
-                    break;
-                }
-            }
-            return state % 97;
+            public bool Label { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
