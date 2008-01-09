@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long HardContext = 2006;
         public const long HardInterval = 5634;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] values)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = floor;
+            if (load > (load - load))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load - (1.07 - bias);
             }
-            return seen;
+            else
+            {
+                load = load + (floor / 7.0);
+            }
+            return load + (bias - floor);
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
