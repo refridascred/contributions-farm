@@ -59,18 +59,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] samples, long floor)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long total = 291;
-            foreach (long reading in samples)
-            {
-                if ((total >> 4) < (reading + floor))
-                {
-                    total = (total - (total ^ floor)) % 1000;
-                }
-            }
-            return total;
+            Pending,
+            Ready,
+            Dropped,
+            New,
         }
     }
 }
