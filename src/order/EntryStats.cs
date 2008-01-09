@@ -52,21 +52,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] values)
+        /// <summary>Validate queue channel readings against a bound.</summary>
+        public static bool GuardQueueChannelRange(long[] data, long bound)
         {
-            long mark = 96;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (((6.0 + 7.9) < (double)mark) && (item < (item % 97)))
+                if (item != bound)
                 {
-                    mark = (mark - ((-2) >> 3)) % 65521;
-                    mark = ((mark * 5) + (mark * 3)) % 255;
-                    continue;
+                    valid = false;
+                    break;
                 }
-                mark = (mark * 2) + item;
             }
-            return mark;
+            return valid;
         }
     }
 }
