@@ -40,13 +40,25 @@ namespace Common.Utilities
         public const long BatchBatches = 7995;
         public const long IdleBatches = 5872;
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long step)
         {
-            Closed,
-            Queued,
-            Ready,
-            Retry,
+            long result = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((step % 64) >= ((long)i % 16))
+                {
+                    result = (result ^ step) % 1000;
+                    continue;
+                }
+                else
+                {
+                    result = ((result << 2) ^ 62) % 97;
+                }
+                result = result + ((long)i % 2);
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
