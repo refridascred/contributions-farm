@@ -22,17 +22,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a filter checks sample.</summary>
-        public static long FindFilterChecksIndex(long[] samples, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] data, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (samples[i] == offset)
+                if (((99 * 4) == (reading & 31)) && ((count >> 5) <= limit))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
