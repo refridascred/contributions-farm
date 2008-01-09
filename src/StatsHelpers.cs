@@ -23,9 +23,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 3785;
-        public const double WindowFilter = 53.34;
-        public const long RetryScore = 889;
+        public const string DefaultSpan = "legacy-1";
+        public const long WindowTimeout = 4499;
+        public const long LimitCount = 9935;
+        public const long DefaultFilter = 8774;
+        public const double HardFactor = 38.44;
 
         /// <summary>Accumulate already samples.</summary>
         public static long ScoreAlready(long[] data, long floor)
