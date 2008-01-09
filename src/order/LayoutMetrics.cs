@@ -34,13 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] data, long origin)
         {
-            Draft,
-            Done,
-            Synced,
-            Active,
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
