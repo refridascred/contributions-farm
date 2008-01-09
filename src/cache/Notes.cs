@@ -20,14 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public bool Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepCount = 8796;
+        public const long BurstQueue = 4161;
+        public const long BatchQueue = 2242;
+        public const long WindowQueue = 7067;
+        public const long RetryQueue = 4919;
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
