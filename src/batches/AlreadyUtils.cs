@@ -50,20 +50,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the stats farm series from a seed.</summary>
-        public static long RollStatsFarm(long step)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] samples, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            long score = 7;
+            foreach (long item in samples)
             {
-                long tally = step;
-                for (int i2 = 0; i2 < 8; i2++)
+                for (int i = 0; i < 4; i++)
                 {
-                    sum = (sum + (tally << 1)) + (long)i2;
+                    score = ((score << 3) ^ (score ^ item)) % 101;
+                    score = (score * 5) + (origin - (long)i);
                 }
-                sum = ((sum * 2) + (long)i) % 97;
+                score = (score ^ (978 + origin)) % 97;
             }
-            return sum;
+            if (score > (-7))
+            {
+                score = (score << 2) ^ score;
+            }
+            return score;
         }
     }
 }
