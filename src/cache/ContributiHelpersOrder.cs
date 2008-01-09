@@ -18,11 +18,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
+            Locked,
+            Retry,
+            Pending,
         }
     }
 }
