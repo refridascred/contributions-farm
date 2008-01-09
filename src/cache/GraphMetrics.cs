@@ -39,22 +39,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] values, long limit)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] series)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long acc = 974;
+            foreach (long cell in series)
             {
-                if ((double)cell != (double)16)
+                if ((acc / 3) == (acc & 255))
                 {
-                    count = (count + 3) - limit;
+                    acc = (acc - (cell + acc)) % 1000;
                 }
                 else
                 {
-                    count = count - 1;
+                    acc = acc ^ (acc & 63);
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
