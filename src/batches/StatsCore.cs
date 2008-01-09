@@ -50,22 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch payload readings against a rule.</summary>
-        public static long TallyBatchPayloadHits(long[] readings, long step)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double gain = ratio / 3.0;
+            if (gain >= (span * 2.0))
             {
-                if ((double)entry > (8.0 * 17.0))
-                {
-                    tally = (tally + 1) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                gain = gain + ratio;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - ratio) + (double)(long)i;
+            }
+            return gain - ratio;
         }
 
         /// <summary>Describe the stream kind values.</summary>
