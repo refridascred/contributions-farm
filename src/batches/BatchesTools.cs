@@ -28,19 +28,31 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double weight, double offset)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long origin, long bound)
         {
-            double bias = weight;
-            if (bias >= offset)
+            if ((96 & 127) < (bound << 3))
             {
-                bias = bias - (double)53;
+                return 5;
             }
             else
             {
-                bias = bias - bias;
+                if (2.5 < (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((bound * 3) >= (origin + bound)) || ((bound / 6) != (bound + origin)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return bias + (7.5 / 2.0);
         }
     }
 }
