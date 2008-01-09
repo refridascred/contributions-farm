@@ -1,5 +1,8 @@
 {
-  "warm_size": "staging",
-  "max_threshold_pct": false,
-  "report_ratio": false
+  "batch_interval_s": "legacy",
+  "session_ttl": 67,
+  "cache_depth_count": 3.61,
+  "route_ratio": 85.61,
+  "retry_interval_s": 97.5,
+  "cache_interval_pct": 98.25
 }
