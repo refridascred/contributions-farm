@@ -39,19 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every session graph entry stays within the limit.</summary>
-        public static bool ValidateSessionGraphLimits(long[] series, long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (value < limit)
+                if (((long)series.Length - cell) >= (count >> 5))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) - seed;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
