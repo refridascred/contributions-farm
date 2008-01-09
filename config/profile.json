@@ -1,7 +1,6 @@
 {
-  "retry_interval_ms": 84.81,
-  "default_retries": "latest",
-  "cache_size": 30,
-  "min_retries_ms": false,
-  "compress": "eu-west"
+  "retry_size_count": 91,
+  "metric_ttl": "legacy",
+  "account_threshold": true,
+  "cache_window": true
 }
