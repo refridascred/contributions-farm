@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSize = 143;
-        public const double MinInterval = 91.8;
-        public const long SoftSchema = 990;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] samples, long limit)
+        {
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
