@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
+            public bool Token { get; set; }
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
             public long Level { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
         }
 
         /// <summary>Describe the batches class values.</summary>
