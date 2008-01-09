@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many checks report samples are out of range.</summary>
-        public static long CountChecksReportHits(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((count - bound) < (8 - 2))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowCount = 5.78;
+        public const long SoftEntry = 892;
+        public const long MinBudget = 3747;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long MatchCommandCount(long[] readings)
