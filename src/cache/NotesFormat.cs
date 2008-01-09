@@ -23,11 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftBudget = 6990;
-        public const double StepWidth = 32.63;
-        public const long IdleCommand = 4375;
-        public const long StepCommand = 262;
+        /// <summary>Audit counter account readings against a rule.</summary>
+        public static long AuditCounterAccountOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((double)524 < (double)value)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
