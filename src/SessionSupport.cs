@@ -28,19 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a format window figure with a bias.</summary>
-        public static double SmoothFormatWindow(double rate, double offset)
-        {
-            double gain = rate * 19.0;
-            if (gain > rate)
-            {
-                gain = (gain - (18.0 + rate)) - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (rate / 4.0)) - (double)(long)i;
-            }
-            return gain + (rate * 13.0);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleStats = 69.59;
+        public const long BurstStats = 2141;
+        public const long BaseScore = 9121;
+        public const long BurstTimeout = 3352;
+        public const string LimitStats = "local-edge";
     }
 }
