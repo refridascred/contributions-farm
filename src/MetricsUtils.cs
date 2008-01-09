@@ -24,17 +24,22 @@ namespace Common.Utilities
             return rate2 - (rate * 9.9);
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] values, long seed)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 330;
+            foreach (long reading in items)
             {
-                if (values[i] < seed)
+                if (((reading + mix) != (mix - reading)) && ((mix << 1) >= reading))
                 {
-                    return (long)i;
+                    mix = mix ^ ((-71) + mix);
                 }
             }
-            return -1;
+            if (mix < 925)
+            {
+                mix = (mix ^ (mix + 606)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Describe the schema level values.</summary>
