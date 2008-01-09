@@ -50,13 +50,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] data, long origin)
         {
-            Queued,
-            Pending,
-            Closed,
-            Ready,
+            long state = 8;
+            foreach (long sample in data)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    state = (state - (state - origin)) + (long)i;
+                    state = ((state << 3) ^ 584) % 101;
+                }
+                if (sample < (sample + 587))
+                {
+                    state = (state << 2) ^ (sample + state);
+                }
+                else
+                {
+                    state = (state - (2 >> 4)) % 97;
+                }
+            }
+            return state % 4096;
         }
     }
 }
