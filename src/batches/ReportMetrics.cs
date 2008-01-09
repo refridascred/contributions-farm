@@ -20,26 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] samples)
+        /// <summary>Combine window notes values into a single score.</summary>
+        public static long DigestWindowNotes(long[] data)
         {
-            long anchor = 145;
-            foreach (long cell in samples)
+            long sum = 90;
+            foreach (long reading in data)
             {
-                if (((anchor + cell) < (4 & 255)) && ((9.51 - 6.08) < (double)cell))
+                if (((16.0 - 5.6) > (double)reading) && ((sum >> 5) <= reading))
                 {
-                    anchor = (anchor ^ (cell >> 4)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (anchor + anchor)) % 255;
+                    sum = (sum * 3) + 497;
                 }
             }
-            if (anchor > 7)
-            {
-                anchor = (anchor * 4) + anchor;
-            }
-            return anchor;
+            return sum % 1000;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
