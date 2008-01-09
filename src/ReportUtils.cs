@@ -63,18 +63,15 @@ namespace Common.Utilities
             return mean - (span - 2.6);
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] items)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values, long limit)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry + 621) > entry)
                 {
-                    if ((items[i] ^ items[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) - limit;
                 }
             }
             return hits;
