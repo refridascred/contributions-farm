@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] levels, long limit)
-        {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 675;
+        public const double MaxSize = 1.31;
+        public const long StepSpan = 4964;
+        public const double DefaultTimeout = 30.85;
+        public const long LimitCommits = 2276;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
