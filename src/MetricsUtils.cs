@@ -36,10 +36,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define notes limits and defaults.</summary>
-        public const long HardCount = 3381;
-        public const double StepFactor = 74.04;
-        public const long IdleTimeout = 8747;
-        public const long HardDepth = 6090;
+        public const string DefaultInterval = "stable";
+        public const double BaseNotes = 71.0;
+        public const double BaseDepth = 46.33;
+        public const long DefaultFactor = 8518;
+        public const string LimitNotes = "stable";
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double BlendReport(double ratio, double bias)
