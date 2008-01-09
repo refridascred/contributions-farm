@@ -22,5 +22,20 @@ namespace Common.Utilities
             }
             return anchor % 1000;
         }
+
+        /// <summary>Check that every metrics queue entry stays within the limit.</summary>
+        public static bool VerifyMetricsQueueBounds(long[] samples, long floor)
+        {
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
