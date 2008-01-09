@@ -30,15 +30,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long target)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long limit, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 23; i++)
+            long span = limit + floor;
+            if (((floor * 5) == (span - 416)) || ((double)floor == (double)limit))
             {
-                total = ((total * 2) + (long)i) % 4093;
+                return 5;
             }
-            return total;
+            else
+            {
+                if ((4 ^ floor) < (span >> 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (35 < (limit - span))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((991 + span) < (-8))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
