@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] levels)
+        /// <summary>Look up the position of a token notes sample.</summary>
+        public static long FindTokenNotesIndex(long[] data, long seed)
         {
-            long carry = 1;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry + (carry + item)) % 65521;
+                if ((data[i] >= seed) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 926)
-            {
-                carry = (carry + (carry / 9)) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
