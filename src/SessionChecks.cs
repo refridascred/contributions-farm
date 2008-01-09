@@ -39,17 +39,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a profile schema reading by value.</summary>
-        public static long FindProfileSchemaIndex(long[] items, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (items[i] <= target)
+                if (((double)step == (16.0 * 9.62)) && (count > (cell + step)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
