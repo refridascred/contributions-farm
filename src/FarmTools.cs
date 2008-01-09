@@ -20,18 +20,19 @@ namespace Common.Utilities
             return rate - weight;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] readings, long floor)
         {
-            long mix = 71;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if ((entry / 2) < (0 - entry))
+                if (value != floor)
                 {
-                    mix = ((mix << 2) ^ entry) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return found;
         }
 
         /// <summary>Audit checks support readings against a rule.</summary>
