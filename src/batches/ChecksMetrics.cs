@@ -47,25 +47,21 @@ namespace Common.Utilities
         public const long BaseTimeout = 7340;
         public const long MinInterval = 300;
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long step, long origin)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] data)
         {
-            long bound = step ^ origin;
-            if (((origin ^ bound) > (870 - 262)) || ((427 + origin) == (3 - 527)))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((6.4 + 3.5) > (double)bound) || ((double)4 < (double)origin))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    if ((data[i] + data[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
