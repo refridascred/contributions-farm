@@ -26,18 +26,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit checks support readings against a rule.</summary>
-        public static long MeasureChecksSupportMatches(long[] items, long seed)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (((seed % 24) > (seed >> 5)) && ((matches * 2) != ((long)items.Length % 8)))
+                if (!((57 + datum) < (6 >> 1)))
                 {
-                    matches = (matches + 2) - datum;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
