@@ -33,13 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] items, long bound)
         {
-            Paused,
-            Ready,
-            Done,
-            Retry,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (!((double)bound > (19.0 - 1.53)) && ((item ^ hits) < (hits - bound)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
