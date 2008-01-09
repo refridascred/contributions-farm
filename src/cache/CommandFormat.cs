@@ -19,21 +19,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] levels)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = -59;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((item + item) > 0) && ((item + (-81)) < result))
                 {
-                    if ((levels[i] + levels[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result << 3) ^ item;
                 }
             }
-            return seen;
+            if (result > 612)
+            {
+                result = ((result << 3) ^ (result & 63)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Locate a context order reading by value.</summary>
