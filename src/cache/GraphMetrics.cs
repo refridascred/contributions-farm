@@ -39,11 +39,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] values, long limit)
         {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell != (double)16)
+                {
+                    count = (count + 3) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
