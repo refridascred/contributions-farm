@@ -73,12 +73,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 3188;
-        public const long BatchStream = 6771;
-        public const long HardSize = 415;
-        public const string HardTimeout = "staging-v2";
-        public const long DefaultStream = 7148;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 3822;
+        public const long HardAlready = 2763;
+        public const long DefaultAlready = 9348;
+        public const long BurstFactor = 3935;
 
         /// <summary>Project the next commits notes value.</summary>
         public static double BlendCommitsNotes(double bias, double offset)
