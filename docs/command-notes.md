@@ -1,12 +1,12 @@
 # Command notes
 
-A account that stays idle for too long is moved to the tools list.
-Use metric settings to tune how often layout data is refreshed.
-Run the buffer check before changing any editor limits.
+The report helpers are pure functions, so they are safe to call from any thread.
+Each stats is validated before it reaches the batches queue.
+Keep context and format names short and lowercase.
 
 ## Guidelines
 
-- Review already limits each release
-- Document new context fields
-- Keep account values small
-- Validate layout input early
+- Review metric limits each release
+- Keep notes values small
+- Log every support change
+- Prefer filter defaults
