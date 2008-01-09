@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] samples)
+        /// <summary>Combine counter batch values into a single score.</summary>
+        public static long TotalCounterBatch(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 186;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((value ^ value) == (value + step)) || (1.64 > (double)step))
                 {
-                    if ((samples[i] ^ samples[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result + (667 ^ result)) % 4096;
                 }
             }
-            return matches;
+            if (result > 2)
+            {
+                result = result - (step - step);
+            }
+            return result;
         }
 
         /// <summary>Check that every format context entry stays within the limit.</summary>
