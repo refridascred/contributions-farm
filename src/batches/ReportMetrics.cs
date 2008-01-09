@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double scale, double floor)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] items)
         {
-            double drift = floor;
-            if (drift > floor)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift + drift;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (18.0 - drift)) - (double)(long)i;
-            }
-            return drift - (floor + scale);
+            return seen;
         }
 
         /// <summary>Find the first payload metric entry that matches the target.</summary>
