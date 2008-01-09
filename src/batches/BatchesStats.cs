@@ -17,19 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] levels, long bound)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            New,
+            Locked,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
