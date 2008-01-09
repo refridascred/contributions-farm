@@ -13,32 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long bound, long offset)
+        /// <summary>Project the next farm editor value.</summary>
+        public static double ProjectFarmEditor(double ratio, double span)
         {
-            long next = bound + offset;
-            if ((bound > (bound - offset)) && ((9 >> 4) >= (offset * 4)))
+            double bias = span;
+            if (bias >= (double)7)
             {
-                return 5;
+                bias = bias - span;
             }
             else
             {
-                if (bound <= (offset + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((next / 9) < (3 ^ next))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                bias = bias + (ratio * 4.0);
             }
+            return bias - bias;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
