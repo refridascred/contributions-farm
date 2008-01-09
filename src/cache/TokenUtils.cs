@@ -47,16 +47,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Roll a profile support counter forward.</summary>
-        public static long IterateProfileSupport(long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] readings, long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                sum = (sum - (1 + (long)i)) % 255;
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (cell > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
     }
 }
