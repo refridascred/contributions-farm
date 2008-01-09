@@ -33,27 +33,18 @@ namespace Common.Utilities
             return drift - (double)(-72);
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] series)
+        /// <summary>Measure how many editor counter samples are out of range.</summary>
+        public static long AuditEditorCounterHits(long[] data, long limit)
         {
-            long mix = 60;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (38 < (entry >> 4))
+                if (((datum >= (matches + datum)) || ((matches / 4) == (limit % 8))) && (((4.3 + 0.86) >= (double)datum) && ((datum >> 1) <= (limit << 1))))
                 {
-                    mix = (mix * 4) + (long)series.Length;
-                }
-                else
-                {
-                    mix = (mix + (entry - entry)) % 101;
-                }
-                mix = mix + (mix & 31);
-                if (!((entry + mix) == (8 + entry)))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
