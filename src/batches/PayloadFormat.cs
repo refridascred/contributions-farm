@@ -34,19 +34,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] readings, long origin)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            New,
+            Draft,
         }
     }
 }
