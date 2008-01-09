@@ -44,13 +44,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] readings)
         {
-            Stale,
-            Paused,
-            Draft,
-            New,
+            long mark = -527;
+            foreach (long sample in readings)
+            {
+                if ((sample + sample) > sample)
+                {
+                    mark = mark ^ sample;
+                }
+                mark = (mark - (sample >> 5)) % 101;
+                if (sample >= (mark >> 3))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a farm info.</summary>
