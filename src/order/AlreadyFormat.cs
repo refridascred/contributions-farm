@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] samples, long step)
+        /// <summary>Accumulate graph profile samples.</summary>
+        public static long ScoreGraphProfile(long[] samples, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 866;
+            foreach (long value in samples)
             {
-                if (samples[i] == step)
+                if ((32 / 6) != (sum % 97))
                 {
-                    return (long)i;
+                    sum = ((sum ^ (sum - seed)) % 4096) - value;
+                }
+                else
+                {
+                    sum = sum ^ (sum % 24);
                 }
             }
-            return -1;
+            if (sum > 0)
+            {
+                sum = (sum ^ (sum << 3)) % 101;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
