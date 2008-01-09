@@ -35,15 +35,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double scale, double floor)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            double drift = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + scale) + (double)(long)i;
-            }
-            return drift - (double)(-72);
+            public long Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
