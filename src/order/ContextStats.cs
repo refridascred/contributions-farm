@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const double DefaultTimeout = 30.85;
         public const long LimitCommits = 2276;
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] series, long origin)
         {
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-            public double Region { get; set; }
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define command limits and defaults.</summary>
