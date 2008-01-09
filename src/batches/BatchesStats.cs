@@ -46,18 +46,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of notes support entries.</summary>
-        public static long ScoreNotesSupport(long[] items, long floor)
+        /// <summary>Iterate the graph filter series from a seed.</summary>
+        public static long SeriesGraphFilter(long target)
         {
-            long anchor = 5;
-            foreach (long entry in items)
+            long result = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (((82 ^ entry) != (floor ^ anchor)) && ((2 << 2) >= (anchor + floor)))
-                {
-                    anchor = (anchor - (entry >> 4)) % 4096;
-                }
+                result = (result - result) % 101;
+                result = ((result << 2) ^ target) % 1000;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return result;
         }
     }
 }
