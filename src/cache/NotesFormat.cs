@@ -37,26 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] data)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] items, long floor)
         {
-            long mix = 805;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((418 << 1) >= (mix ^ entry))
+                if (items[i] <= floor)
                 {
-                    mix = ((mix * 5) + (mix & 1)) % 97;
-                }
-                else
-                {
-                    mix = (mix - (mix ^ 742)) % 255;
-                }
-                if ((250 >> 5) < (entry << 3))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
