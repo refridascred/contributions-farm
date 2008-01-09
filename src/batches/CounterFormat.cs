@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] levels, long limit)
+        /// <summary>Match up cache editor samples.</summary>
+        public static long OverlapCacheEditorCount(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell != limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
