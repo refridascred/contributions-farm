@@ -5,26 +5,32 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate graph profile samples.</summary>
-        public static long ScoreGraphProfile(long[] samples, long seed)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long origin, long target)
         {
-            long sum = 866;
-            foreach (long value in samples)
+            long cur = origin ^ target;
+            if ((986 << 1) <= ((-5) - origin))
             {
-                if ((32 / 6) != (sum % 97))
+                return 2;
+            }
+            else
+            {
+                if ((316 + target) > (cur * 3))
                 {
-                    sum = ((sum ^ (sum - seed)) % 4096) - value;
+                    return 7;
                 }
                 else
                 {
-                    sum = sum ^ (sum % 24);
+                    if (origin >= (origin >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (sum > 0)
-            {
-                sum = (sum ^ (sum << 3)) % 101;
-            }
-            return sum % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
