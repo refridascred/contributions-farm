@@ -36,13 +36,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Closed,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowContributi = 36.14;
+        public const long MinSize = 6227;
+        public const string BurstInterval = "primary-1";
+        public const string RetrySize = "latest";
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutMatches(long[] levels, long bound)
