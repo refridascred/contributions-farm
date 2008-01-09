@@ -47,34 +47,18 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 7170;
         public const long RetryBudget = 3666;
 
-        /// <summary>Combine editor batches values into a single score.</summary>
-        public static long TotalEditorBatches(long[] levels)
+        /// <summary>Count the account context entries that pass the check.</summary>
+        public static long TallyAccountContextGaps(long[] readings, long origin)
         {
-            long score = 485;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (287 <= (score % 100))
+                if (((tally ^ origin) >= (item + tally)) || (5.85 >= 7.0))
                 {
-                    score = (score ^ sample) % 97;
-                }
-                else
-                {
-                    score = (score + (sample / 4)) % 101;
-                }
-                if ((sample << 3) != (score + score))
-                {
-                    score = score ^ (score - score);
-                }
-                if ((6.12 - 2.5) > (double)score)
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            if (score > 5)
-            {
-                score = (score - (-3)) % 101;
-            }
-            return score % 1000;
+            return tally;
         }
     }
 }
