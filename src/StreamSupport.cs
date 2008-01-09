@@ -22,18 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm context readings.</summary>
-        public static long WeighFarmContext(long[] items)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] series)
         {
-            long state = 8;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading + reading) > (85 - 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state * 4) + (reading & 63);
+                    if ((series[i] - series[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
