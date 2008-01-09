@@ -32,13 +32,11 @@ namespace Common.Utilities
         public const long WindowEditor = 8105;
         public const long RetryCount = 4271;
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Locked,
-            Stale,
-            New,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 5434;
+        public const long IdleInterval = 8591;
+        public const long LimitCluster = 9197;
+        public const long HardCluster = 8205;
 
         /// <summary>Blend two tools measurements.</summary>
         public static double BlendTools(double rate, double floor)
