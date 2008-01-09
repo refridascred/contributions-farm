@@ -25,19 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] data, long limit)
+        /// <summary>Fold a list of tools order readings.</summary>
+        public static long WeighToolsOrder(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long anchor = -1;
+            foreach (long datum in levels)
             {
-                if (datum > limit)
+                if ((datum - 7) >= (datum >> 4))
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor + (anchor * 4)) % 255;
                 }
             }
-            return ok;
+            if (anchor < 11)
+            {
+                anchor = ((anchor << 3) ^ (2 + anchor)) % 255;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
