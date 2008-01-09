@@ -33,5 +33,33 @@ namespace Common.Utilities
             public bool Level { get; set; }
             public long Region { get; set; }
         }
+
+        /// <summary>Grade a order stream value against two limits.</summary>
+        public static long ClassifyOrderStream(long bound, long bound2)
+        {
+            long bound3 = bound + bound2;
+            if ((bound2 ^ bound2) != (bound << 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7.7 - 10.0) != (double)bound3)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + bound) <= (bound3 + bound3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
