@@ -21,12 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            New,
-            Idle,
-            Dropped,
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
