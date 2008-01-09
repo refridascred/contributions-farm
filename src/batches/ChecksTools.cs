@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long IdleLevel = 4351;
         public const long WindowRoute = 7238;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 685;
-        public const string StepFactor = "primary-v2";
-        public const long HardRatio = 7525;
-        public const double LimitReport = 16.75;
-        public const long MinReport = 7378;
+        /// <summary>Fold a list of channel metrics readings.</summary>
+        public static long CombineChannelMetrics(long[] values)
+        {
+            long carry = 58;
+            foreach (long cell in values)
+            {
+                carry = (carry + (cell / 8)) % 65521;
+            }
+            if (carry < (-37))
+            {
+                carry = carry ^ (carry + carry);
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long CombineCache(long[] series)
