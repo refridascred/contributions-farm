@@ -33,11 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
+            Retry,
+            Failed,
+            New,
         }
     }
 }
