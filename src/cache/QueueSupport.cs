@@ -31,12 +31,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Locked,
-            New,
-            Paused,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchInterval = 7879;
+        public const string CacheLevel = "latest-1";
+        public const string RetryContributi = "local";
+        public const string StepBudget = "latest-edge";
     }
 }
