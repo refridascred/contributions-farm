@@ -46,17 +46,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a support layout sample.</summary>
-        public static long LocateSupportLayoutIndex(long[] data, long origin)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] >= origin) && ((data[i] % 3) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a graph summary.</summary>
