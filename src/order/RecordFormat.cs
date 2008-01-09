@@ -61,20 +61,12 @@ namespace Common.Utilities
         public const long IdleFactor = 4214;
         public const double IdleChecks = 21.59;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double gain, double bias)
-        {
-            double load = (double)(87 & 3);
-            if (load > 9.46)
-            {
-                load = ((load - (load * 16.0)) - gain) - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (load / 8.0)) + (double)(long)i;
-            }
-            return load - (double)64;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleInterval = 9354;
+        public const long BurstMetrics = 4314;
+        public const double StepMetrics = 21.83;
+        public const long BurstFactor = 959;
+        public const long MinBudget = 9175;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
