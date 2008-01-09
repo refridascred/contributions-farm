@@ -1,8 +1,6 @@
 {
-  "account_capacity": [495, 209],
-  "poll_ttl_s": 18.61,
-  "default_ttl_ms": 96,
-  "hard_threshold_s": "local",
-  "default_retries": [366, 488, 129],
-  "burst_timeout_count": "eu-west"
+  "retry_ttl_ms": 34,
+  "compress": ["open", "blue", "open", "strict"],
+  "min_threshold": "local",
+  "profile_delay": 16
 }
