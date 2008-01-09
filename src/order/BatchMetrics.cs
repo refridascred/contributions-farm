@@ -62,22 +62,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] items, long bound)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            double drift = ratio;
+            if (drift > ratio)
             {
-                if ((hits + sample) >= (sample + sample))
-                {
-                    hits = (hits + 3) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = drift + ratio;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (offset * 5.36)) + (double)(long)i;
+            }
+            return drift - (4.85 + drift);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
