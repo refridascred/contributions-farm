@@ -47,10 +47,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleReport = 62.29;
-        public const string HardReport = "staging-edge";
-        public const double DefaultCount = 9.1;
-        public const string IdleWidth = "primary-edge";
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Queued,
+            Draft,
+            Done,
+            Active,
+            Paused,
+        }
     }
 }
