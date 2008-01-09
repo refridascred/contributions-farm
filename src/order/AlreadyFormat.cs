@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] items, long bound)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long origin, long seed)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long slot = origin - seed;
+            if ((slot <= (seed - seed)) && ((origin % 64) >= slot))
             {
-                if ((entry * 4) <= (bound >> 4))
+                return 7;
+            }
+            else
+            {
+                if ((slot - slot) >= origin)
                 {
-                    hits = hits + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin * 4) <= slot)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
