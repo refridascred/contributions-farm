@@ -1,8 +1,5 @@
 {
-  "audit": "staging",
-  "default_ratio_ms": [279, 170, 378, 80],
-  "notes_threshold": "open",
-  "readonly": 78.62,
-  "verbose": 5,
-  "session_capacity": "staging"
+  "batch_size": false,
+  "dry_run": 39,
+  "default_ttl": [143, 479, 160]
 }
