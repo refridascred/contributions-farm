@@ -1,7 +1,8 @@
 {
-  "min_retries": 68.24,
-  "githubfarm_timeout": "green",
-  "editor_delay": ["standard", "primary"],
-  "cluster_interval": "edge",
-  "idle_delay_ms": 8224
+  "poll_depth_ms": true,
+  "burst_timeout_count": "staging",
+  "entry_depth": "strict",
+  "batch_threshold": [93, 443],
+  "tools_interval": "local",
+  "graph_delay": false
 }
