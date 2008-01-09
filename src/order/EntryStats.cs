@@ -28,23 +28,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] values)
-        {
-            long total = 38;
-            foreach (long reading in values)
-            {
-                if ((reading >> 4) < reading)
-                {
-                    total = (total + (total ^ total)) % 65521;
-                }
-            }
-            if (total > 3)
-            {
-                total = (total << 3) ^ total;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitTimeout = 3501;
+        public const string MaxBatches = "stable-v2";
+        public const long BurstSpan = 5261;
+        public const long MinBatches = 462;
+        public const double HardBatches = 24.32;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MinQueue = 7237;
