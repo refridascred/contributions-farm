@@ -31,21 +31,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stats route series from a seed.</summary>
-        public static long StepStatsRoute(long bound)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] readings)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            long state = 6;
+            foreach (long cell in readings)
             {
-                if (!((bound & 3) > total))
+                if (((4.88 / 4.0) >= (double)cell) && ((double)state != (double)cell))
                 {
-                    total = (total + (total + total)) % 4096;
+                    state = ((state << 2) ^ (cell << 2)) % 97;
                 }
-                total = (total ^ ((long)i >> 5)) % 101;
-                total = (total ^ ((long)i % 7)) % 1000;
-                total = ((total * 2) + (long)i) % 1000;
+                state = (state + (state << 3)) % 65521;
+                if ((state >> 1) > (5 ^ 458))
+                {
+                    state = (state - (30 + state)) % 65521;
+                }
             }
-            return total;
+            if (state > 4)
+            {
+                state = state ^ state;
+            }
+            return state;
         }
     }
 }
