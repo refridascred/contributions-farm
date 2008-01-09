@@ -29,16 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] readings)
+        /// <summary>Compare every pair of editor farm readings.</summary>
+        public static long CompareEditorFarmCount(long[] values)
         {
-            long state = 22;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state - (cell + state)) % 1000;
-                state = (state - (cell - 133)) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
