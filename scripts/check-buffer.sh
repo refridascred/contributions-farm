@@ -6,16 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-BUFFER_LIMIT=279
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-edge}"
+mode="${1:-strict}"
 case "${mode}" in
     cached)
         log "fast path"
@@ -24,3 +15,7 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+for item in edge open stable legacy; do
+    log "checking ${item}"
+done
