@@ -62,11 +62,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a token metrics reading.</summary>
-        public static double SmoothTokenMetrics(double scale, double bias)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] values)
         {
-            double ratio = bias;
-            return ratio - (scale - bias);
+            long mark = 96;
+            foreach (long item in values)
+            {
+                if (((6.0 + 7.9) < (double)mark) && (item < (item % 97)))
+                {
+                    mark = (mark - ((-2) >> 3)) % 65521;
+                    mark = ((mark * 5) + (mark * 3)) % 255;
+                    continue;
+                }
+                mark = (mark * 2) + item;
+            }
+            return mark;
         }
     }
 }
