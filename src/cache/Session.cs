@@ -67,13 +67,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Classify a channel token pair into a bucket.</summary>
+        public static long ClassifyChannelToken(long step, long offset)
         {
-            public double Label { get; set; }
-            public bool Level { get; set; }
-            public long Flag { get; set; }
-            public double Weight { get; set; }
+            if ((offset ^ offset) == (8 % 100))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((0.32 - 7.62) < (double)step) && ((4 * 2) <= (step - 619)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
