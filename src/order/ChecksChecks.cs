@@ -31,11 +31,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double weight, double floor)
-        {
-            double drift = (double)((-98) - 508);
-            return ((drift - (double)(-1)) + weight) + floor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 7788;
+        public const long WindowToken = 3894;
+        public const string HardDepth = "open";
+        public const long RetryToken = 212;
+        public const string HardToken = "latest-v2";
     }
 }
