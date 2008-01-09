@@ -60,31 +60,22 @@ namespace Common.Utilities
             return mean - (span - 2.6);
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long origin, long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] readings, long origin)
         {
-            if ((1.0 + 0.58) == (double)step)
+            long result = 8;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step - step) != (origin - step))
+                if ((origin < reading) || ((reading / 5) >= (origin << 3)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (step <= (origin + 9))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    result = ((result * 3) + (result % 8)) % 4096;
                 }
             }
+            if (result < 871)
+            {
+                result = (result ^ (result + 0)) % 101;
+            }
+            return result % 1000;
         }
     }
 }
