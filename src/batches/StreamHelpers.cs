@@ -28,21 +28,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Compare every pair of channel commits readings.</summary>
-        public static long CompareChannelCommitsCount(long[] series)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry > offset)
                 {
-                    if ((series[i] - series[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
