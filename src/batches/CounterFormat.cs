@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] readings)
+        /// <summary>Find the first format metric entry that matches the target.</summary>
+        public static long FindFormatMetricIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell - tally) >= tally)
+                if (levels[i] <= bound)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
