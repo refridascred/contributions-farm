@@ -27,18 +27,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] data, long limit)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (((99 * 4) == (reading & 31)) && ((count >> 5) <= limit))
+                if ((759 + offset) >= (long)i)
                 {
-                    count = count + 2;
+                    sum = sum ^ sum;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
     }
 }
