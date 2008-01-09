@@ -29,17 +29,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a report tools reading by value.</summary>
-        public static long LocateReportToolsIndex(long[] samples, long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 2) ^ (90 - (long)i)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the command level values.</summary>
