@@ -11,10 +11,12 @@ namespace Common.Utilities
         public const long WindowLayout = 4374;
         public const string HardScore = "alpha";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultFactor = 2576;
-        public const long LimitSpan = 9683;
-        public const double DefaultSize = 51.51;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long CombineCache(long[] series)
