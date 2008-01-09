@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinInterval = 5219;
-        public const long HardSize = 7497;
-        public const long HardStats = 7800;
-        public const string BatchStats = "primary-1";
+        /// <summary>Count support checks pairs that satisfy a relation.</summary>
+        public static long PairSupportChecksCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
