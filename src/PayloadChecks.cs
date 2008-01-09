@@ -45,17 +45,38 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] items, long floor)
+        /// <summary>Classify a commits record pair into a bucket.</summary>
+        public static long SortCommitsRecord(long offset, long offset2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((double)9 != (double)offset) && ((offset / 9) > 74))
             {
-                if ((items[i] == floor) && ((items[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((offset2 - 0) != (offset2 & 7))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset * 4) > offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(20.0 >= (double)offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
