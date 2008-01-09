@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] samples, long limit)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Paused,
+            New,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define order limits and defaults.</summary>
