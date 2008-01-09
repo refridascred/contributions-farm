@@ -64,12 +64,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Combine githubfarm filter values into a single score.</summary>
+        public static long FoldGithubfarmFilter(long[] values, long offset)
         {
-            Queued,
-            Synced,
-            Retry,
+            long mark = 16;
+            foreach (long value in values)
+            {
+                mark = (((mark + (mark << 3)) % 255) ^ value) + offset;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the record status values.</summary>
