@@ -13,11 +13,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
+            Stale,
+            Retry,
+            Draft,
+            Synced,
+            Failed,
         }
 
         /// <summary>Check that every commits report entry stays within the limit.</summary>
