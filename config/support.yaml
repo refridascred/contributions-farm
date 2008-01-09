@@ -1,4 +1,4 @@
 # support settings
-batch_threshold_ms: 250
-verbose: false
-soft_retries_count: false
+min_ttl: open
+window_delay: 82.09
+persist: legacy
