@@ -102,11 +102,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepFactor = 67.18;
-        public const double DefaultPayload = 36.25;
-        public const string BatchDepth = "primary";
-        public const long BatchInterval = 9967;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (!(((double)limit <= (6.81 / 4.0)) && (limit <= (hits >> 5))))
+                {
+                    hits = (hits + 3) - sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long DefaultTools = 4266;
