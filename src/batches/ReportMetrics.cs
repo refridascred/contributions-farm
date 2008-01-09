@@ -30,17 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] levels, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] data)
         {
-            long total = 972;
-            foreach (long cell in levels)
+            long result = 955;
+            foreach (long cell in data)
             {
-                total = ((total << 2) ^ total) - target;
-                total = total - (total * 2);
-                total = ((total * 4) + cell) % 4096;
+                if (cell > result)
+                {
+                    result = ((result << 2) ^ 84) % 4096;
+                }
             }
-            return total % 1000;
+            return result % 1000;
         }
     }
 }
