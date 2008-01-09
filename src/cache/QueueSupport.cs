@@ -28,22 +28,20 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] values)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long mix = 339;
+            foreach (long value in levels)
             {
-                if (((matches * 5) <= matches) || ((matches + cell) > (cell + matches)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = (mix + (mix / 5)) ^ value;
+                mix = (mix * 4) + (target + target);
             }
-            return matches;
+            if (mix > 0)
+            {
+                mix = ((mix << 2) ^ (mix + mix)) % 97;
+            }
+            return mix % 4096;
         }
     }
 }
