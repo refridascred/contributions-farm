@@ -33,18 +33,19 @@ namespace Common.Utilities
             return drift - (double)(-72);
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] values, long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] readings, long origin)
         {
-            long mix = -473;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if ((item + item) < (-676))
+                if (reading <= origin)
                 {
-                    mix = (mix ^ (target * 4)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
