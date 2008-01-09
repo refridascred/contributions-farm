@@ -35,20 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double ratio, double span)
-        {
-            double mean = 6.1;
-            if (mean <= 2.3)
-            {
-                mean = ((mean - (mean - mean)) - ratio) + span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (11.0 + mean)) + (double)(long)i;
-            }
-            return mean - (mean - 4.3);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardSchema = 66.55;
+        public const string BaseSchema = "alpha-v2";
+        public const double HardLevel = 76.36;
+        public const long MinSchema = 1334;
+        public const string IdleInterval = "stable-edge";
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
