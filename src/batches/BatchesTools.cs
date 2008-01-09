@@ -13,17 +13,32 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] data, long floor)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long bound, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long next = bound + offset;
+            if ((bound > (bound - offset)) && ((9 >> 4) >= (offset * 4)))
             {
-                if ((data[i] <= floor) && ((data[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if (bound <= (offset + bound))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((next / 9) < (3 ^ next))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
