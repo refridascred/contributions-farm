@@ -1,6 +1,16 @@
 {
-  "command_ratio": false,
-  "flush_threshold_count": "fallback",
-  "audit": false,
-  "sync_delay_count": true
+  "sync_capacity": 30,
+  "commits_size": {
+    "hard_timeout_pct": {
+      "warm_limit": "cached",
+      "warm_interval_s": 500,
+      "burst_ttl_ms": 782,
+      "cache_delay": 672,
+      "retry_delay_ms": "legacy",
+      "hard_interval_count": 48
+    },
+    "tools_ttl": true,
+    "order_depth": "blue"
+  },
+  "poll_retries_count": false
 }
