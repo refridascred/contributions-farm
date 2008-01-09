@@ -55,17 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstWidth = 9073;
+        public const long HardBudget = 613;
+        public const double DefaultReport = 34.37;
+        public const long BaseReport = 4750;
     }
 }
