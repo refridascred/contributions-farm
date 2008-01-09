@@ -54,22 +54,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] readings, long bound)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long mix = 0;
+            foreach (long entry in series)
             {
-                if ((value + 32) < (bound & 3))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((((mix * 3) + (mix * 2)) % 65521) - entry) - target;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
