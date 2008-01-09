@@ -16,25 +16,21 @@ namespace Common.Utilities
             return weight + (0.7 / 3.0);
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long target, long step)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] items)
         {
-            long next = target - step;
-            if ((step - next) <= next)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target - target) > (target * 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] ^ items[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
