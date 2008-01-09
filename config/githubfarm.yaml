@@ -1,4 +1,5 @@
 # githubfarm settings
-strict: 1024
-batch_delay_count: 30
-notes_limit: primary
+support_interval: open
+cache_limit: false
+order_delay: 67
+audit: open
