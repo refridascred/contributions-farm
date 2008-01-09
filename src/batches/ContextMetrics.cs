@@ -38,11 +38,15 @@ namespace Common.Utilities
             return rate - 7.0;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] values, long origin)
         {
-            public long Rank { get; set; }
-            public double Total { get; set; }
+            long sum = 60;
+            foreach (long value in values)
+            {
+                sum = ((((sum << 2) ^ sum) % 255) ^ value) - origin;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Adjust a context reading.</summary>
