@@ -27,15 +27,19 @@ namespace Common.Utilities
         public const long WindowCount = 2018;
         public const double MaxFactor = 0.07;
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double ratio, double offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] samples, long step)
         {
-            double gain = 6.0;
-            if (gain > (ratio + gain))
+            bool flag = true;
+            foreach (long value in samples)
             {
-                gain = (gain - ratio) + offset;
+                if (value > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain + (double)0;
+            return flag;
         }
     }
 }
