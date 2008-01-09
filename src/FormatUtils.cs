@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Measure how many record stats samples are out of range.</summary>
+        public static long CountRecordStatsHits(long[] readings)
         {
-            Closed,
-            Failed,
-            Idle,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (!((double)value == (17.0 + 6.59)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a context options.</summary>
