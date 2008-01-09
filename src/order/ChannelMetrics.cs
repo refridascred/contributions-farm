@@ -22,22 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] items)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] items)
         {
-            long sum = 439;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (((12.0 / 5.0) > (double)sum) || ((double)sum == (12.0 + 18.0)))
+                if ((seen + sample) >= ((long)items.Length + 59))
                 {
-                    sum = ((sum ^ (sum << 1)) % 101) - datum;
+                    seen = seen + 3;
                 }
             }
-            if (sum > 90)
-            {
-                sum = ((sum << 3) ^ (sum + sum)) % 65521;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
