@@ -1,5 +1,5 @@
 {
-  "support_timeout": 50,
-  "commits_retries": 1.21,
-  "counter_ratio": 34
+  "command_ttl": 99,
+  "entry_retries": [431, 450, 449, 176],
+  "flush_retries_s": false
 }
