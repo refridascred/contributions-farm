@@ -32,18 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes entry readings against a rule.</summary>
-        public static long CountNotesEntryHits(long[] items)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (((55 + seen) >= (cell ^ cell)) || ((5.2 + 3.3) == (double)cell))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
