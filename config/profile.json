@@ -1,17 +1,7 @@
 {
-  "max_capacity": "local",
-  "poll_retries_pct": {
-    "audit": 1759,
-    "soft_ratio_ms": 63.16,
-    "min_timeout_ms": "stable",
-    "enabled": 30,
-    "default_size_s": 7869
-  },
-  "layout_retries": {
-    "batch_size_pct": 53,
-    "sync_retries_ms": true,
-    "persist": false,
-    "hard_ratio": "fallback"
-  },
-  "default_ttl_count": 250
+  "min_retries": 68.24,
+  "githubfarm_timeout": "green",
+  "editor_delay": ["standard", "primary"],
+  "cluster_interval": "edge",
+  "idle_delay_ms": 8224
 }
