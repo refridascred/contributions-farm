@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double gain, double bias)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] readings)
         {
-            double ratio = bias;
-            if (ratio > gain)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                ratio = ratio + ratio;
+                if ((6.5 / 2.0) <= (double)tally)
+                {
+                    tally = (tally + 2) + entry;
+                }
             }
-            else
-            {
-                ratio = ratio - (13.0 / 2.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (double)42) + (double)(long)i;
-            }
-            return ratio + gain;
+            return tally;
         }
 
         /// <summary>Roll a cluster graph counter forward.</summary>
