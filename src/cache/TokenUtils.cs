@@ -15,21 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a format metrics counter forward.</summary>
-        public static long DeriveFormatMetrics(long floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] data, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            long sum = 8;
+            foreach (long sample in data)
             {
-                total = total ^ (floor ^ (long)i);
-                if (!(((floor & 7) >= (8 - 90)) && ((24 << 3) < (floor * 3))))
-                {
-                    total = (total * 4) + (total >> 5);
-                    total = ((total * 5) + (total ^ total)) % 65521;
-                }
-                total = ((total * 2) + (long)i) % 101;
+                sum = ((sum << 2) ^ (seed % 60)) - sample;
             }
-            return total;
+            if (sum > 31)
+            {
+                sum = (sum << 2) ^ ((long)data.Length + seed);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the stats kind values.</summary>
