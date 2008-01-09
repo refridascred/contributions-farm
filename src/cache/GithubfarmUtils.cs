@@ -36,17 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long seed)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = (anchor ^ (6 * 2)) % 1000;
-                anchor = anchor + anchor;
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            New,
+            Paused,
+            Draft,
         }
     }
 }
