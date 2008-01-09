@@ -40,14 +40,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Closed,
-            Active,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryBatch = "alpha-edge";
+        public const long MinBatch = 6787;
+        public const long MaxBatch = 2453;
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
