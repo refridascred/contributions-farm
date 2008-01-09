@@ -17,12 +17,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
+            Locked,
+            New,
+            Stale,
+            Retry,
+            Queued,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
