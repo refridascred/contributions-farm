@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double weight, double offset)
+        /// <summary>Match up entry graph samples.</summary>
+        public static long CompareEntryGraphCount(long[] samples)
         {
-            double drift = (double)(49 + 3);
-            if (drift <= offset)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift + (offset / 4.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift - weight;
+            return seen;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
