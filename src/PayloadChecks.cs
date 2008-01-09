@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] samples, long limit)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long step, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((step + step) <= floor)
             {
-                if ((samples[i] < limit) && ((samples[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((floor > (960 ^ floor)) || ((60 - step) == (step & 7)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
