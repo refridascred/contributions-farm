@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] data)
-        {
-            long mix = 298;
-            foreach (long reading in data)
-            {
-                mix = ((mix * 4) + (mix & 7)) - reading;
-                mix = mix - ((long)data.Length / 6);
-            }
-            if (mix < 98)
-            {
-                mix = mix ^ ((-5) ^ mix);
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstTimeout = 4213;
+        public const long RetryRecord = 8085;
+        public const long RetrySize = 2516;
+        public const double BaseRecord = 26.11;
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long SeekMetricsIndex(long[] levels, long floor)
