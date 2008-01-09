@@ -33,24 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] items)
+        /// <summary>Validate profile githubfarm readings against a bound.</summary>
+        public static bool GuardProfileGithubfarmBounds(long[] items, long origin)
         {
-            long carry = 939;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                carry = carry + (reading + reading);
-                carry = (carry ^ (reading - carry)) % 97;
-                if ((6.34 - 18.0) == (double)reading)
+                if (sample < origin)
                 {
+                    flag = false;
                     break;
                 }
             }
-            if (carry > 55)
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
