@@ -48,22 +48,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of token already readings.</summary>
-        public static long CompareTokenAlreadyCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardReport = "stable";
+        public const long IdleRatio = 5715;
+        public const string StepReport = "alpha-1";
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteMatches(long[] levels, long seed)
