@@ -26,22 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] items)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long mix = 330;
-            foreach (long reading in items)
-            {
-                if (((reading + mix) != (mix - reading)) && ((mix << 1) >= reading))
-                {
-                    mix = mix ^ ((-71) + mix);
-                }
-            }
-            if (mix < 925)
-            {
-                mix = (mix ^ (mix + 606)) % 4096;
-            }
-            return mix;
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
