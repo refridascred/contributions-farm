@@ -37,15 +37,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine window already values into a single score.</summary>
-        public static long ScoreWindowAlready(long[] series, long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long origin)
         {
-            long score = 36;
-            foreach (long datum in series)
+            long state = origin;
+            for (int i = 0; i < 16; i++)
             {
-                score = (((score + score) % 4096) + datum) + limit;
+                state = state + state;
+                state = ((state * 4) + (origin << 1)) % 101;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
