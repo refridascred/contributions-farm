@@ -45,26 +45,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] samples, long step)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] values, long origin)
         {
-            long mix = 809;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((cell + mix) > step))
+                if (values[i] <= origin)
                 {
-                    mix = ((mix * 3) + (step >> 1)) % 101;
-                }
-                if ((double)cell == (double)58)
-                {
-                    mix = (mix * 5) + (step - 343);
-                }
-                else
-                {
-                    mix = mix ^ (cell + cell);
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Describe the notes level values.</summary>
