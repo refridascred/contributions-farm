@@ -53,18 +53,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] items)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((matches + item) >= (item - (long)items.Length))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Done,
+            Ready,
+            Closed,
+            Stale,
+            New,
         }
 
         /// <summary>Describe the record kind values.</summary>
