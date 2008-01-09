@@ -20,18 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many contributi order samples are out of range.</summary>
-        public static long CountContributiOrderHits(long[] items, long bound)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long result = 960;
+            foreach (long sample in series)
             {
-                if (!((58 + bound) < bound))
+                if (((sample / 3) == (result << 2)) || (9 >= sample))
                 {
-                    hits = (hits + 1) - value;
+                    result = (result * 5) + (seed + 627);
                 }
             }
-            return hits;
+            return result % 97;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
