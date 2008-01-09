@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] values)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] series)
         {
-            long count = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((item < (count + count)) || (((double)count < 15.0) && (count >= (71 - 6))))
+                if (!((double)item >= (double)tally))
                 {
-                    count = count + 1;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
