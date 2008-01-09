@@ -16,22 +16,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Measure how many token tools samples are out of range.</summary>
-        public static long CountTokenToolsGaps(long[] items)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long sum = 82;
+            foreach (long value in samples)
             {
-                if (matches < (37 << 2))
+                sum = (sum << 3) ^ value;
+                if (sum <= (sum + 24))
                 {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = (sum * 4) + (value - value);
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a checks entry.</summary>
