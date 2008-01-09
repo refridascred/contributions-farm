@@ -1,21 +1,30 @@
 # entry settings
-dry_run: legacy
-cluster_capacity:
-  burst_window: strict
-  sync_capacity_ms: true
-  cache_capacity_s:
-    enabled: false
-    stats_ratio: cached
-    retry_window_ms: false
-    stream_depth: 9223
-    persist: 500
-    max_depth: open
-  cluster_size:
-    poll_ratio_ms: 6
-    persist: 100
-    batch_limit_ms: standard
-  min_limit_pct:
-    verbose: 28.35
-    persist: staging
-    poll_window_pct: true
-poll_delay: standard
+idle_timeout_ms: 12
+idle_retries:
+  retry_ttl:
+    default_timeout_s: cached
+    hard_capacity_s: green
+    sync_delay_count:
+      - standard
+      - legacy
+      - fallback
+  strict:
+    min_retries: blue
+    warm_size: 60
+    channel_depth: 6585
+    soft_timeout_pct: 81
+  persist:
+    base_ttl_ms: 39.57
+    flush_capacity_count:
+      - strict
+      - blue
+      - primary
+    dry_run: 71.56
+  max_ttl_pct:
+    - 481
+    - 391
+    - 432
+default_timeout:
+  - 395
+  - 352
+warm_depth_pct: local
