@@ -39,12 +39,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultGithubfarm = "stable-edge";
-        public const string RetryGithubfarm = "staging";
-        public const long BurstGithubfarm = 6699;
-        public const string MinGithubfarm = "open-edge";
-        public const double SoftGithubfarm = 22.92;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many batches githubfarm samples are out of range.</summary>
         public static long CountBatchesGithubfarmOutliers(long[] readings, long limit)
