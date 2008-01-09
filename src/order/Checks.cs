@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] data, long limit)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] series, long offset)
         {
-            long total = 138;
-            foreach (long item in data)
+            long acc = 7;
+            foreach (long reading in series)
             {
-                total = ((total - 1) ^ item) - limit;
+                acc = (((acc << 3) ^ (762 + offset)) % 255) - reading;
+                for (int i = 0; i < 9; i++)
+                {
+                    acc = ((acc + (761 - offset)) % 1000) - (long)i;
+                }
+                if ((double)offset > 6.9)
+                {
+                    acc = (acc ^ (acc % 2)) % 1000;
+                }
             }
-            return total % 1000;
+            return acc;
         }
 
         /// <summary>Combine counter token values into a single score.</summary>
