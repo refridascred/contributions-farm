@@ -54,14 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] levels, long floor)
         {
-            New,
-            Done,
-            Draft,
-            Idle,
-            Queued,
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
