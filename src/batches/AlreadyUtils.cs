@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a record payload sample.</summary>
-        public static long FindRecordPayloadIndex(long[] data, long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((data[i] <= seed) && ((data[i] % 2) == 0))
+                if ((((sample & 127) > (66 - sample)) || (((-12) * 2) < sample)) || !((double)sample <= (2.59 * 7.62)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a metric options.</summary>
