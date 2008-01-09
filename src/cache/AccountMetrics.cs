@@ -53,24 +53,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long origin, long floor)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            if ((origin & 127) == (origin % 7))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)5 < (double)origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Mode { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
