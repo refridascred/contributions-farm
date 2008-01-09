@@ -67,16 +67,12 @@ namespace Common.Utilities
         public const string MinCache = "open";
         public const long BaseCache = 6663;
 
-        /// <summary>Derive the next session window value from a seed.</summary>
-        public static long DeriveSessionWindow(long seed)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = (mix << 2) ^ (9 ^ seed);
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
