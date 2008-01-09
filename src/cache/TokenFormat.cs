@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] data)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Locked,
+            Active,
+            Retry,
         }
 
         /// <summary>Describe the counter state values.</summary>
