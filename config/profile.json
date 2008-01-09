@@ -1,11 +1,6 @@
 {
-  "retry_interval_ms": 12.18,
-  "enabled": "blue",
-  "audit": {
-    "report_size": ["open", "stable", "eu-west"],
-    "strict": 78,
-    "idle_retries_ms": ["blue", "edge", "staging", "eu-west"],
-    "enabled": 5272,
-    "min_limit_count": "legacy"
-  }
+  "flush_timeout_count": false,
+  "soft_ratio_ms": 100,
+  "commits_retries": 500,
+  "poll_window": "standard"
 }
