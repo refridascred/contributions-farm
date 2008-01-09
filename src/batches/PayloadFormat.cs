@@ -16,17 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a stream graph sample.</summary>
-        public static long LookupStreamGraphIndex(long[] levels, long target)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
