@@ -39,27 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] values, long floor)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] levels, long offset)
         {
-            long score = 83;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                for (int i = 0; i < 2; i++)
+                if (datum > offset)
                 {
-                    score = ((score - (score >> 3)) % 1000) ^ (long)i;
-                }
-                score = (score ^ (datum + datum)) % 1000;
-                if ((7.6 < (double)score) || ((floor * 2) <= (score * 5)))
-                {
-                    score = (score - (datum / 3)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            if (score > (-166))
-            {
-                score = ((score << 3) ^ score) % 101;
-            }
-            return score % 1000;
+            return ok;
         }
 
         /// <summary>Hold a format options.</summary>
