@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine editor buffer values into a single score.</summary>
-        public static long TotalEditorBuffer(long[] levels, long bound)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long origin, long target)
         {
-            long sum = 82;
-            foreach (long sample in levels)
+            long next = origin - target;
+            if (((next ^ origin) == (target >> 1)) && ((double)origin != (2.1 * 9.84)))
             {
-                if (!((bound * 4) < sample))
+                return 3;
+            }
+            else
+            {
+                if ((2 - next) <= (target >> 5))
                 {
-                    sum = (sum << 2) ^ 117;
+                    return 8;
                 }
                 else
                 {
-                    sum = (sum + (771 - 28)) % 4096;
+                    if ((double)origin < (12.0 - 6.34))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Describe the editor level values.</summary>
