@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate cluster commits samples.</summary>
-        public static long TallyClusterCommits(long[] levels)
+        /// <summary>Count the stream schema entries that pass the check.</summary>
+        public static long CountStreamSchemaOutliers(long[] data, long limit)
         {
-            long state = 87;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                state = (((state << 3) ^ (state ^ 64)) % 255) - item;
+                if (92 < (seen >> 5))
+                {
+                    seen = ((seen + 3) ^ reading) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Describe the batches mode values.</summary>
