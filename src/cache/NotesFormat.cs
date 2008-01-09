@@ -37,28 +37,36 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long limit, long step)
+        /// <summary>Grade a editor commits value against two limits.</summary>
+        public static long BucketEditorCommits(long seed, long origin)
         {
-            if ((step << 3) <= (limit & 255))
+            long edge = seed - origin;
+            if (((-5) & 255) <= (seed & 127))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if ((limit ^ step) < step)
+                if ((8.6 / 3.0) < (double)edge)
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if ((double)step < (double)(-5))
+                    if (((-67) + seed) <= (origin * 4))
                     {
-                        return 5;
+                        return 7;
                     }
                     else
                     {
-                        return 1;
+                        if ((7 >= (origin >> 4)) || ((18 ^ edge) != (origin - seed)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
