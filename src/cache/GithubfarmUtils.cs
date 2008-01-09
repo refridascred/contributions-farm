@@ -52,18 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] items)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long carry = 596;
-            foreach (long value in items)
-            {
-                if ((carry / 8) < value)
-                {
-                    carry = carry - (value + carry);
-                }
-            }
-            return carry % 4096;
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
