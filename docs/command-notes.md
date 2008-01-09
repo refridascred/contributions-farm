@@ -1,12 +1,11 @@
 # Command notes
 
-The report helpers are pure functions, so they are safe to call from any thread.
-Each stats is validated before it reaches the batches queue.
-Keep context and format names short and lowercase.
+Each window is validated before it reaches the farm queue.
+The account helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review metric limits each release
-- Keep notes values small
-- Log every support change
-- Prefer filter defaults
+- Prefer graph defaults
+- Log every context change
+- Keep editor values small
+- Document new farm fields
