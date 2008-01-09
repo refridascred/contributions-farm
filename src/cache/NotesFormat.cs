@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long SoftEntry = 892;
         public const long MinBudget = 3747;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] series, long bound)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample != bound)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    stale = false;
-                    break;
+                    mark = (mark - mark) + (long)i2;
                 }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
