@@ -13,30 +13,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] values)
+        /// <summary>Audit channel window readings against a rule.</summary>
+        public static long MeasureChannelWindowOutliers(long[] series)
         {
-            long result = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (((cell ^ cell) != (result * 2)) || (result < cell))
+                if ((double)81 > (double)reading)
                 {
-                    result = (result - (cell - 9)) % 97;
-                }
-                else
-                {
-                    result = (result ^ result) % 255;
-                }
-                if ((cell & 3) >= result)
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            if (result > 90)
-            {
-                result = (result + (result % 60)) % 65521;
-            }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
