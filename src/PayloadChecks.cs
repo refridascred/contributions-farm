@@ -32,22 +32,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] levels)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] items, long step)
         {
-            long mark = 5;
-            foreach (long sample in levels)
+            long mix = 0;
+            foreach (long entry in items)
             {
-                if (mark > (mark / 2))
+                if ((35 + entry) <= (439 ^ step))
                 {
-                    mark = (mark - sample) % 65521;
+                    mix = (mix << 3) ^ (763 + entry);
                 }
+                mix = mix - (entry << 2);
             }
-            if (mark < 28)
+            if (mix < 755)
             {
-                mark = (mark << 3) ^ mark;
+                mix = (mix + ((long)items.Length - mix)) % 255;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
