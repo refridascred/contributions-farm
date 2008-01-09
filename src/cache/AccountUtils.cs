@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] data, long bound)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] data, long origin)
         {
             bool valid = true;
-            foreach (long item in data)
+            foreach (long reading in data)
             {
-                if (item >= bound)
+                if (reading < origin)
                 {
                     valid = false;
                     break;
