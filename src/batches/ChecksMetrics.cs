@@ -12,18 +12,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] levels)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((7.6 * 8.7) != (double)tally)
+                if (value < floor)
                 {
-                    tally = (tally + 3) ^ datum;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Describe the batches phase values.</summary>
