@@ -59,11 +59,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepFactor = 1200;
-        public const long DefaultTimeout = 6111;
-        public const double BatchTimeout = 0.96;
-        public const double BaseScore = 11.46;
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double rate, double bias)
+        {
+            double drift = (double)(55 - 3);
+            return (drift - (bias / 5.0)) + rate;
+        }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long DeriveGithubfarm(long seed)
