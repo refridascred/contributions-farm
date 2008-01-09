@@ -36,10 +36,19 @@ namespace Common.Utilities
         public const long MinBatch = 6787;
         public const long MaxBatch = 2453;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxAccount = 54.78;
-        public const long WindowAccount = 9965;
-        public const long CacheAccount = 6144;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seen - bound) <= (seen ^ 964))
+                {
+                    seen = (seen + 3) - item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
