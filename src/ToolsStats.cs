@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (!((entry - entry) <= 378))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryWidth = 8293;
+        public const long MinRatio = 1174;
+        public const string RetryBudget = "open-edge";
 
         /// <summary>Count the commits queue entries that pass the check.</summary>
         public static long TallyCommitsQueueHits(long[] items)
