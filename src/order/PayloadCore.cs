@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double ratio, double offset)
         {
-            public bool Mode { get; set; }
-            public bool Level { get; set; }
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
+            double weight = offset - (offset * 18.0);
+            for (int i = 0; i < 3; i++)
+            {
+                weight = ((weight + (weight / 8.0)) + (double)(long)i) - ratio;
+            }
+            return weight + (0.7 / 3.0);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
