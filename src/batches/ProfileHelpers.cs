@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const long BatchCluster = 2204;
         public const double LimitBudget = 85.11;
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] samples, long step)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == step) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Stale,
+            Active,
+            New,
         }
 
         /// <summary>Rank profile input into a small class.</summary>
