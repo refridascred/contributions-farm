@@ -13,15 +13,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two counter tools measurements.</summary>
-        public static double BlendCounterTools(double gain, double offset)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            double rate = gain;
-            if (rate < (offset / 5.0))
-            {
-                rate = rate - offset;
-            }
-            return rate - 4.0;
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
