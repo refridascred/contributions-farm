@@ -19,19 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double scale, double span)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] levels)
         {
-            double rate = scale;
-            if (rate < (scale / 2.0))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate + scale) + span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - scale) + (double)(long)i;
-            }
-            return rate - 7.0;
+            return tally;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
