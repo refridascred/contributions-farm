@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const string HardCache = "staging";
         public const string BatchWidth = "local-v2";
 
-        /// <summary>Blend two metrics checks measurements.</summary>
-        public static double BlendMetricsChecks(double weight, double floor)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            double scale = weight;
-            if (scale < scale)
-            {
-                scale = scale - (floor / 7.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + 7.5) + (double)(long)i;
-            }
-            return scale + weight;
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the filter class values.</summary>
