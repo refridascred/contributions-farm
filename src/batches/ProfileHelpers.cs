@@ -17,28 +17,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next metric profile value from a seed.</summary>
-        public static long SeriesMetricProfile(long offset)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long origin, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
+            if (((seed / 9) >= seed) || ((double)seed > (11.0 - 6.9)))
             {
-                if (((9.4 + 11.0) < (double)offset) && (((long)i + (long)i) == (acc ^ acc)))
-                {
-                    acc = ((acc << 3) ^ (offset - acc)) % 4096;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = (acc - acc) ^ (long)i2;
-                    acc = (acc + offset) % 1000;
-                }
-                if (!(((-59) >> 2) > (offset / 7)))
-                {
-                    acc = ((acc << 2) ^ (offset % 10)) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((origin >> 3) > (origin - origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Rank profile input into a small class.</summary>
