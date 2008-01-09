@@ -73,10 +73,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftLevel = 3439;
-        public const long StepLevel = 7097;
-        public const long MaxBudget = 5251;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public string Ratio { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long WindowFilter = 6469;
