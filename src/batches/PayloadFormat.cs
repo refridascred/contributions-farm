@@ -23,19 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] values, long limit)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long anchor = 87;
-            foreach (long entry in values)
-            {
-                anchor = ((anchor * 4) + anchor) + entry;
-                if ((16.0 * 1.7) >= (double)limit)
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            public double Weight { get; set; }
+            public bool Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
