@@ -46,26 +46,22 @@ namespace Common.Utilities
         public const long BaseGraph = 494;
         public const long CacheSpan = 6007;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] values, long offset)
+        /// <summary>Measure how many graph metric samples are out of range.</summary>
+        public static long TallyGraphMetricHits(long[] values, long step)
         {
-            long total = 1;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (((9.0 / 3.0) != (double)total) && ((total << 1) >= (reading & 1)))
+                if (!((matches >> 2) > (step ^ 39)) || ((double)matches > (1.46 - 17.0)))
                 {
-                    total = (total - (792 % 2)) % 101;
+                    matches = (matches + 3) - value;
                 }
                 else
                 {
-                    total = total + (reading << 3);
+                    matches = matches - 1;
                 }
             }
-            if (total > 30)
-            {
-                total = (total << 2) ^ (offset / 3);
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
