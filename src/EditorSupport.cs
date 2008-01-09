@@ -16,12 +16,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public bool Weight { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the token status values.</summary>
