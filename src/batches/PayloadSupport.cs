@@ -39,19 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of queue metric entries.</summary>
-        public static long WeighQueueMetric(long[] items)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] readings, long origin)
         {
-            long state = 963;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                state = (state << 2) ^ cell;
+                if ((long)readings.Length != (origin - tally))
+                {
+                    tally = (tally + 1) + reading;
+                }
             }
-            if (state < 138)
-            {
-                state = (state - (state ^ state)) % 4096;
-            }
-            return state % 1000;
+            return tally;
         }
     }
 }
