@@ -22,17 +22,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first format stream entry that matches the target.</summary>
-        public static long LocateFormatStreamIndex(long[] data, long origin)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 7;
+            foreach (long sample in readings)
             {
-                if (data[i] >= origin)
+                total = (total * 3) + (total << 1);
+                if (!(((305 << 2) != (long)readings.Length) || (total >= (sample + offset))))
                 {
-                    return (long)i;
+                    total = total ^ (offset & 63);
+                }
+                if ((total % 7) != (sample - 759))
+                {
+                    total = (total * 3) + (sample >> 3);
                 }
             }
-            return -1;
+            if (total > 859)
+            {
+                total = total ^ (offset + total);
+            }
+            return total;
         }
 
         /// <summary>Audit format tools readings against a rule.</summary>
