@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long BaseSession = 2565;
         public const double DefaultSpan = 96.05;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] items)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] items, long offset)
         {
-            long state = 8;
-            foreach (long datum in items)
+            long mark = 7;
+            foreach (long sample in items)
             {
-                state = (state + (state + datum)) % 65521;
+                if ((sample ^ mark) < (sample - mark))
+                {
+                    mark = mark + offset;
+                }
             }
-            if (state < (-475))
+            if (mark < 484)
             {
-                state = (state + (state - state)) % 97;
+                mark = ((mark * 4) + (mark << 3)) % 65521;
             }
-            return state % 1000;
+            return mark;
         }
 
         /// <summary>Project the next notes value.</summary>
