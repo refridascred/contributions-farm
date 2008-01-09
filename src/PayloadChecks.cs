@@ -51,11 +51,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitDepth = "latest-v2";
-        public const string SoftRoute = "fallback-1";
-        public const double RetryBudget = 81.22;
-        public const long MinRoute = 903;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((seen ^ 9) >= (1 << 2))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double DefaultReport = 92.27;
