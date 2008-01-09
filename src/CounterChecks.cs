@@ -33,11 +33,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Digest a series of counter route entries.</summary>
+        public static long DigestCounterRoute(long[] levels)
         {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
+            long state = 68;
+            foreach (long value in levels)
+            {
+                state = ((state * 5) + state) % 65521;
+                if ((state - state) > (value ^ value))
+                {
+                    state = state - (98 - value);
+                }
+                else
+                {
+                    state = ((state * 3) + (state << 3)) % 4096;
+                }
+                if ((1.0 * 13.0) != (double)state)
+                {
+                    break;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
