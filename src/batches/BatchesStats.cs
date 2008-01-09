@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] items, long target)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Stale,
+            Closed,
+            Active,
+            Queued,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
