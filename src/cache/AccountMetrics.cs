@@ -53,11 +53,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public string Mode { get; set; } = "";
-            public double Score { get; set; }
+            Done,
+            Locked,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
