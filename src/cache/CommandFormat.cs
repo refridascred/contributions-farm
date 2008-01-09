@@ -19,13 +19,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Combine graph payload values into a single score.</summary>
+        public static long TotalGraphPayload(long[] series)
         {
-            Locked,
-            Paused,
-            Failed,
-            Ready,
+            long total = 520;
+            foreach (long reading in series)
+            {
+                if (!((9 ^ total) > reading))
+                {
+                    total = ((total << 3) ^ (reading << 3)) % 1000;
+                    continue;
+                }
+                if ((reading + 1) <= (total / 6))
+                {
+                    total = total + total;
+                }
+            }
+            return total;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
