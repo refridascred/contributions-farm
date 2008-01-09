@@ -61,31 +61,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long step, long limit)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            if ((step * 4) < (step % 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (step <= (limit / 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step != (9.2 + 1.33))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
+            public double Weight { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
