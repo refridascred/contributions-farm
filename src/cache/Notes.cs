@@ -20,22 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] items, long bound)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long anchor = 475;
-            foreach (long cell in items)
-            {
-                if ((5 * 3) == (anchor ^ 582))
-                {
-                    anchor = (anchor ^ (cell + bound)) % 101;
-                }
-            }
-            if (anchor > 4)
-            {
-                anchor = anchor + (bound + bound);
-            }
-            return anchor;
+            Ready,
+            Synced,
+            Closed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
