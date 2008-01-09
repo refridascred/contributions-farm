@@ -25,38 +25,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a context token value against two limits.</summary>
-        public static long SortContextToken(long step, long seed)
+        /// <summary>Validate support account readings against a bound.</summary>
+        public static bool CheckSupportAccountBounds(long[] levels, long origin)
         {
-            if ((step / 4) < seed)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed <= (9 - step)) && ((5 + step) < (step % 2)))
+                if (item < origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed << 3) <= 58)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed / 7) > step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
