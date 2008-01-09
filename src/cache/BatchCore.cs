@@ -30,19 +30,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double weight, double bias)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            double drift = bias + (bias - bias);
-            if (drift <= (double)9)
-            {
-                drift = drift - weight;
-            }
-            else
-            {
-                drift = drift + bias;
-            }
-            return drift - (bias - 9.0);
+            public double Offset { get; set; }
+            public double Region { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a layout info.</summary>
