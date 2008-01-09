@@ -49,15 +49,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double rate, double span)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] series, long limit)
         {
-            double drift = span;
-            if (drift < (drift * 8.7))
+            long tally = 0;
+            foreach (long item in series)
             {
-                drift = (drift + 0.47) - rate;
+                if ((tally < (tally / 9)) && (item > tally))
+                {
+                    tally = (tally + 1) - limit;
+                }
             }
-            return drift + drift;
+            return tally;
         }
     }
 }
