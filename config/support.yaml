@@ -1,22 +1,4 @@
 # support settings
-flush_threshold:
-  min_threshold: false
-  sync_size_s: 93.68
-  enabled: blue
-  hard_threshold_pct: 34
-token_delay:
-  enabled: 51.07
-  min_window:
-    dry_run: blue
-    audit: 34.6
-    compress: local
-    sync_ttl: 10.89
-    hard_limit_count: 16.31
-  poll_depth_s: 1024
-record_retries:
-  hard_ttl_ms: 41
-  burst_depth_count: 73.65
-  stats_size: 5
-  context_limit: true
-payload_depth: 7102
-command_retries: 1045
+cache_window: latest
+verbose: standard
+strict: eu-west
