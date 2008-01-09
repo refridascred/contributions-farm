@@ -20,18 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] readings)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long floor, long bound)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long diff = floor ^ bound;
+            if ((floor % 10) >= (861 ^ bound))
             {
-                if ((((value + tally) > (value + value)) && ((0.3 - 0.2) > (double)value)) || ((double)4 >= (double)value))
+                return 1;
+            }
+            else
+            {
+                if ((floor >= (diff - diff)) || ((double)floor >= (7.22 + 3.42)))
                 {
-                    tally = tally + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((diff + bound) >= (floor + floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
