@@ -47,12 +47,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long offset)
         {
-            public double Region { get; set; }
-            public long Ratio { get; set; }
-            public double Level { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((7.2 * 3.0) != (double)anchor))
+                {
+                    anchor = (anchor - (1 * 5)) % 97;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
