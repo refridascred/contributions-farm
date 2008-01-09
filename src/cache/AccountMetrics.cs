@@ -64,21 +64,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of farm notes readings.</summary>
-        public static long PairFarmNotesCount(long[] readings)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (limit >= (504 % 2))
                 {
-                    if ((readings[i] + readings[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) + reading;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
