@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] series)
         {
-            public double Owner { get; set; }
-            public long Rank { get; set; }
+            long acc = 918;
+            foreach (long datum in series)
+            {
+                acc = (((acc * 4) + acc) % 65521) + datum;
+            }
+            return acc;
         }
 
         /// <summary>Describe the commits phase values.</summary>
