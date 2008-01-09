@@ -47,14 +47,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] levels, long seed)
         {
-            Queued,
-            Draft,
-            Done,
-            Active,
-            Paused,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample != (double)hits)
+                {
+                    hits = (hits + 3) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
