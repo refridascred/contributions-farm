@@ -1,8 +1,7 @@
 {
-  "strict": ["standard", "local"],
-  "dry_run": "open",
-  "readonly": 60,
-  "poll_ratio_s": [137, 67],
-  "compress": "edge",
-  "contributi_ttl": "standard"
+  "batch_ttl_pct": 3523,
+  "cache_delay_count": 1024,
+  "soft_ratio": "cached",
+  "flush_ttl": "latest",
+  "cache_limit_count": [192, 2, 413]
 }
