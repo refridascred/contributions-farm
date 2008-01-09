@@ -37,11 +37,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] items, long limit)
         {
-            public long Rank { get; set; }
-            public double Level { get; set; }
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the payload kind values.</summary>
