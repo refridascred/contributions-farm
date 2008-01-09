@@ -22,22 +22,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] samples)
-        {
-            long anchor = 715;
-            foreach (long entry in samples)
-            {
-                if (!(anchor <= (anchor - anchor)))
-                {
-                    anchor = (anchor + entry) % 65521;
-                }
-            }
-            if (anchor < 818)
-            {
-                anchor = anchor ^ (anchor + anchor);
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepStats = "primary";
+        public const long BatchStats = 8023;
+        public const double MaxInterval = 20.62;
+        public const long WindowLevel = 9952;
+        public const long DefaultStats = 6830;
     }
 }
