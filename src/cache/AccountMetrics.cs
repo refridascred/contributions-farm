@@ -59,11 +59,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double rate, double bias)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long origin, long floor)
         {
-            double drift = (double)(55 - 3);
-            return (drift - (bias / 5.0)) + rate;
+            if ((origin & 127) == (origin % 7))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)5 < (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
