@@ -20,15 +20,17 @@ namespace Common.Utilities
             return drift - (floor + scale);
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double weight, double offset)
+        /// <summary>Find the first payload metric entry that matches the target.</summary>
+        public static long LookupPayloadMetricIndex(long[] items, long step)
         {
-            double bias = 7.4;
-            if (bias <= weight)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias - weight;
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return bias - offset;
+            return -1;
         }
 
         /// <summary>Fold a list of report readings.</summary>
