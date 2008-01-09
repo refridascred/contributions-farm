@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a tools cache reading.</summary>
-        public static double ProjectToolsCache(double weight, double bias)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] values)
         {
-            double scale = 3.15 / 6.0;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                scale = ((scale - (double)(long)i) + weight) + bias;
+                if ((item < (count + count)) || (((double)count < 15.0) && (count >= (71 - 6))))
+                {
+                    count = count + 1;
+                }
             }
-            return scale - (scale - scale);
+            return count;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
