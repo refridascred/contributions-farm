@@ -1,5 +1,6 @@
 {
-  "burst_ratio": ["edge", "local", "standard"],
-  "already_retries": "latest",
-  "format_capacity": "staging"
+  "min_size_count": ["open", "strict", "latest"],
+  "batch_ttl": "blue",
+  "batch_retries": 65,
+  "flush_retries_ms": 53.05
 }
