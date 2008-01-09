@@ -60,19 +60,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] data, long origin)
+        /// <summary>Look up the position of a entry batch sample.</summary>
+        public static long SeekEntryBatchIndex(long[] levels, long origin)
         {
-            long state = -9;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state + (entry % 60)) % 97) + origin;
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            if (state < (-53))
-            {
-                state = (state + (state >> 5)) % 1000;
-            }
-            return state;
+            return -1;
         }
     }
 }
