@@ -23,10 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRatio = 9154;
-        public const long LimitDepth = 9102;
-        public const long LimitRecord = 9809;
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool ValidateProfileRange(long[] readings, long offset)
