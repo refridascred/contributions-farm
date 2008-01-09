@@ -1,6 +1,7 @@
 {
-  "payload_limit": 3113,
-  "batch_size": true,
-  "soft_retries_pct": "primary",
-  "default_window": ["strict", "staging", "fallback", "green"]
+  "strict": false,
+  "batch_window_count": 81,
+  "already_threshold": "green",
+  "stats_timeout": false,
+  "idle_timeout": 98.7
 }
