@@ -47,12 +47,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long floor, long bound)
         {
-            New,
-            Done,
-            Active,
+            if (((15 + floor) != (floor & 3)) && ((double)950 < (double)floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((0 % 60) > bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((680 / 3) < (floor * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (434 <= (floor & 15))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
