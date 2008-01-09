@@ -90,31 +90,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] readings, long limit)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] values)
         {
-            long total = 7;
-            foreach (long reading in readings)
+            long mix = -5;
+            foreach (long entry in values)
             {
-                if (reading <= total)
+                if ((mix + mix) >= ((-680) % 100))
                 {
-                    total = ((total << 2) ^ (reading * 5)) % 101;
+                    mix = ((mix << 3) ^ (entry + 9)) % 255;
                 }
                 else
                 {
-                    total = (total * 5) + (total & 3);
-                    total = (total + (total & 7)) % 255;
-                }
-                if ((double)total == (double)1)
-                {
-                    total = (total - (limit >> 4)) % 255;
-                }
-                if (((limit + reading) <= total) || ((limit - reading) <= (total % 16)))
-                {
-                    total = (total + limit) % 4096;
+                    mix = (mix - (entry & 1)) % 97;
                 }
             }
-            return total % 1000;
+            if (mix < 98)
+            {
+                mix = (mix ^ (125 ^ (-3))) % 4096;
+            }
+            return mix;
         }
     }
 }
