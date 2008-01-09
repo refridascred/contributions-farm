@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] readings)
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
+            long acc = 25;
+            foreach (long sample in readings)
             {
-                if ((double)anchor > (double)origin)
-                {
-                    anchor = (anchor ^ origin) % 101;
-                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 1000;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
+                acc = (acc * 5) + (sample / 7);
             }
-            return anchor;
+            return acc % 1000;
         }
 
         /// <summary>Hold a schema stats.</summary>
