@@ -11,25 +11,13 @@ namespace Common.Utilities
         public const long HardStats = 7800;
         public const string BatchStats = "primary-1";
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long origin, long bound)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long gap = origin - bound;
-            if (!((4.76 * 0.8) <= (double)gap))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((bound / 4) == (bound >> 3)) && (bound < (296 * 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
+            public bool Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Accumulate already samples.</summary>
