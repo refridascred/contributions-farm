@@ -13,38 +13,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long seed, long origin)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            if ((origin > (origin - origin)) || ((origin ^ origin) < (origin + origin)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed << 2) >= (729 * 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin + origin) >= (origin % 7)) || ((0.64 - 5.0) > (double)seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((7.33 * 1.0) != (double)origin) && ((double)origin <= (double)17))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
