@@ -16,19 +16,21 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] samples)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] samples)
         {
-            long sum = 82;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum << 3) ^ value;
-                if (sum <= (sum + 24))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum * 4) + (value - value);
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a checks entry.</summary>
