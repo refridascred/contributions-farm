@@ -16,18 +16,39 @@ namespace Common.Utilities
             return ratio + (ratio / 5.0);
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] data)
+        /// <summary>Grade a session filter value against two limits.</summary>
+        public static long ClassifySessionFilter(long offset, long seed)
         {
-            long score = 414;
-            foreach (long sample in data)
+            long slot = offset ^ seed;
+            if ((slot * 3) == (slot % 100))
             {
-                if (sample >= (score ^ sample))
+                return 5;
+            }
+            else
+            {
+                if (!((offset + slot) > (offset >> 5)))
                 {
-                    score = (score ^ ((-801) << 1)) % 4096;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)seed != (7.76 * 6.1)) || (offset >= (slot >> 4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (8 < (593 + offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
