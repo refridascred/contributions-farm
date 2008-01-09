@@ -43,19 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] readings, long target)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Total { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
