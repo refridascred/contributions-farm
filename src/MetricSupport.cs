@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] readings)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long result = 992;
-            foreach (long item in readings)
-            {
-                if (!((662 * 2) >= (item - result)))
-                {
-                    result = result ^ (result >> 5);
-                }
-                else
-                {
-                    result = (result ^ (226 - item)) % 65521;
-                }
-            }
-            if (result < 379)
-            {
-                result = (result ^ (result >> 1)) % 4096;
-            }
-            return result % 4096;
+            Synced,
+            Pending,
+            Failed,
+            Retry,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
