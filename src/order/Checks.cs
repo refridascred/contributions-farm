@@ -39,13 +39,24 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long limit, long bound)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public double Region { get; set; }
+            if (!((14.0 + 1.7) > (double)limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit - bound) != (2 & 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
