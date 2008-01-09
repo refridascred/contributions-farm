@@ -48,20 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] data)
-        {
-            long total = -79;
-            foreach (long datum in data)
-            {
-                total = (((total << 3) ^ (4 << 2)) % 65521) - datum;
-            }
-            if (total > 41)
-            {
-                total = ((total * 5) + (42 + total)) % 4096;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheInterval = "alpha-edge";
+        public const long SoftCount = 2549;
+        public const long HardLevel = 4705;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long RetryLevel = 5403;
