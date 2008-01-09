@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] readings)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long bound, long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            if ((floor - floor) >= (floor % 12))
             {
-                if ((((count + value) != (count / 7)) && ((8.87 - 0.7) <= (double)value)) && (value >= (10 % 2)))
+                return 8;
+            }
+            else
+            {
+                if (((8.0 * 3.7) != (double)bound) || ((bound + bound) < (floor / 6)))
                 {
-                    count = count + 1;
+                    return 7;
+                }
+                else
+                {
+                    if (!(bound <= (floor ^ floor)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Match up buffer samples.</summary>
