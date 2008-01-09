@@ -19,20 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] samples, long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
+            long anchor = 8;
+            foreach (long sample in samples)
             {
-                if (((double)mix < (6.45 * 6.6)) || ((double)origin != (4.17 + 2.0)))
+                anchor = ((anchor * 3) + anchor) - bound;
+                if ((anchor ^ 8) >= sample)
                 {
-                    mix = (mix ^ (mix * 4)) % 101;
-                    continue;
+                    anchor = anchor - sample;
                 }
-                mix = ((mix * 2) + (long)i) % 97;
+                if (!((sample / 6) > 9))
+                {
+                    break;
+                }
             }
-            return mix;
+            return anchor % 1000;
         }
 
         /// <summary>Blend two session measurements.</summary>
