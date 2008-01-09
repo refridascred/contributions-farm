@@ -37,24 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a buffer command counter forward.</summary>
-        public static long SeriesBufferCommand(long step)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
-            {
-                long prev = (long)i;
-                if ((prev ^ 19) <= (step ^ step))
-                {
-                    prev = prev ^ (35 << 2);
-                }
-                if ((anchor & 31) > 759)
-                {
-                    anchor = anchor + ((long)i + anchor);
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            Active,
+            Idle,
+            Retry,
+            Draft,
         }
     }
 }
