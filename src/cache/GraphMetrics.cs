@@ -40,12 +40,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] values, long floor)
+        /// <summary>Look up the position of a support layout sample.</summary>
+        public static long LocateSupportLayoutIndex(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] > floor)
+                if ((data[i] >= origin) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
