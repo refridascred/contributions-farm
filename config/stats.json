@@ -1,12 +1,5 @@
 {
-  "session_timeout": 22,
-  "session_depth": false,
-  "min_capacity_count": {
-    "poll_delay": [256, 115],
-    "enabled": [182, 232, 340],
-    "entry_limit": false
-  },
-  "payload_depth": ["local", "strict", "legacy"],
-  "persist": "eu-west",
-  "idle_delay_count": "green"
+  "sync_limit_pct": [111, 97, 232, 177],
+  "batch_limit_count": 250,
+  "persist": [158, 189, 186, 114]
 }
