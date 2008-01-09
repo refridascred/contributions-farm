@@ -30,17 +30,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a filter stats reading by value.</summary>
-        public static long FindFilterStatsIndex(long[] levels, long step)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Retry,
+            Stale,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Fold a list of session readings.</summary>
