@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] values)
+        /// <summary>Measure how many checks report samples are out of range.</summary>
+        public static long CountChecksReportHits(long[] samples, long bound)
         {
-            long anchor = -19;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (datum <= (datum & 31))
+                if ((count - bound) < (8 - 2))
                 {
-                    anchor = (anchor * 4) + (datum + anchor);
+                    count = (count + 1) + value;
                 }
             }
-            if (anchor < 2)
-            {
-                anchor = (anchor * 4) + anchor;
-            }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
