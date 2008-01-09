@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] items, long step)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long floor, long step)
         {
-            long mark = 174;
-            foreach (long cell in items)
+            long offset = floor ^ step;
+            if ((1.8 - 9.7) == (double)floor)
             {
-                mark = (((mark << 3) ^ cell) % 101) - step;
+                return 8;
             }
-            if (mark < 859)
+            else
             {
-                mark = ((mark << 3) ^ (mark << 1)) % 255;
+                if ((82 + 69) < (floor % 60))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset - 5) < (2 + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset >= (offset / 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return mark;
         }
 
         /// <summary>Combine route values into a single score.</summary>
