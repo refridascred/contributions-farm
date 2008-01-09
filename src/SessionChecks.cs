@@ -39,26 +39,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] items, long target)
+        /// <summary>Locate a profile schema reading by value.</summary>
+        public static long FindProfileSchemaIndex(long[] items, long target)
         {
-            long mark = 8;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if (items[i] <= target)
                 {
-                    mark = ((mark << 2) ^ (item % 2)) + (long)i;
-                }
-                if (((double)item < (double)mark) && ((target & 1) <= target))
-                {
-                    mark = ((mark * 3) + (item + 54)) % 1000;
+                    return (long)i;
                 }
             }
-            if (mark < 4)
-            {
-                mark = (mark * 3) + (target << 2);
-            }
-            return mark;
+            return -1;
         }
     }
 }
