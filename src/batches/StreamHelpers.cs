@@ -53,12 +53,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long target, long origin)
         {
-            Retry,
-            Paused,
-            Locked,
+            if (origin > target)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target >= (2.0 / 5.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (18.0 < (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin << 2) <= origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record stats.</summary>
