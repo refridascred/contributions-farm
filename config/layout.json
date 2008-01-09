@@ -1,8 +1,8 @@
 {
-  "profile_delay": 21,
-  "idle_depth": "staging",
-  "audit": true,
-  "strict": "open",
-  "min_depth": "stable",
-  "warm_interval_ms": 13.36
+  "cache_size_count": [249, 288, 88],
+  "report_ratio": [254, 258],
+  "persist": "edge",
+  "audit": 85.04,
+  "sync_interval_pct": "local",
+  "enabled": 83.92
 }
