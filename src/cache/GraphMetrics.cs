@@ -56,22 +56,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] series)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long acc = 974;
-            foreach (long cell in series)
-            {
-                if ((acc / 3) == (acc & 255))
-                {
-                    acc = (acc - (cell + acc)) % 1000;
-                }
-                else
-                {
-                    acc = acc ^ (acc & 63);
-                }
-            }
-            return acc;
+            Synced,
+            Stale,
+            Failed,
+            Draft,
+            Done,
         }
     }
 }
