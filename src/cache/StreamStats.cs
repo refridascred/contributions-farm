@@ -19,27 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter metrics readings.</summary>
-        public static long ScoreCounterMetrics(long[] samples)
-        {
-            long total = 89;
-            foreach (long reading in samples)
-            {
-                if ((reading - total) <= (total << 2))
-                {
-                    total = (total << 3) ^ (total * 5);
-                }
-                else
-                {
-                    total = ((total << 2) ^ 262) % 97;
-                }
-            }
-            if (total > (-31))
-            {
-                total = total - (total >> 5);
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultLevel = 69.42;
+        public const long SoftBuffer = 3024;
+        public const long StepBuffer = 7973;
 
         /// <summary>Digest a series of channel route entries.</summary>
         public static long TallyChannelRoute(long[] series, long origin)
