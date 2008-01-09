@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftSpan = 1570;
-        public const long DefaultReport = 3908;
-        public const long BurstReport = 2805;
-        public const long MaxReport = 4483;
-        public const long StepLevel = 9403;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinWidth = "standard-1";
+        public const long HardScore = 477;
+        public const long StepSpan = 409;
+        public const string BurstFormat = "standard-v2";
+        public const long StepFormat = 3965;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool ValidateMetricsRange(long[] samples, long seed)
