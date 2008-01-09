@@ -1,7 +1,8 @@
-id,label,score
-1,open,25.01
-2,open,16.62
-3,51,829
-4,latest,768
-5,green,52.15
-6,44.71,stable
+id,count,active,owner,weight
+1,739,68.13,83.68,staging
+2,39.71,latest,fallback,746
+3,86.07,489,primary,local
+4,66.83,670,699,431
+5,64.49,587,89.03,241
+6,66.75,93.07,15,primary
+7,primary,859,staging,blue
