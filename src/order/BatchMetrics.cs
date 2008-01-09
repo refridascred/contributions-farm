@@ -79,13 +79,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public bool Weight { get; set; }
-            public double Region { get; set; }
-            public double Score { get; set; }
-            public double Stamp { get; set; }
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Project the next githubfarm queue value.</summary>
