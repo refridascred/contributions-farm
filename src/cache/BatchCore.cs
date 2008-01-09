@@ -41,15 +41,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long limit)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a layout info.</summary>
