@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Mode { get; set; }
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
