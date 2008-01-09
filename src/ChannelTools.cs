@@ -22,23 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the context profile series from a seed.</summary>
-        public static long DeriveContextProfile(long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] items, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((offset << 2) > (state & 127))
+                if ((double)count < (3.7 - 6.6))
                 {
-                    state = state ^ (state * 3);
+                    count = ((count + 3) + datum) + offset;
                 }
                 else
                 {
-                    state = (state << 2) ^ 5;
+                    count = count - 1;
                 }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
