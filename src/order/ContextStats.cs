@@ -18,21 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] values)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long floor, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long cur = floor + target;
+            if ((floor ^ (-3)) <= (98 << 1))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (291 < (cur + floor))
                 {
-                    if ((values[i] ^ values[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of record readings.</summary>
