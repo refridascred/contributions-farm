@@ -37,15 +37,24 @@ namespace Common.Utilities
             return scale + 7.0;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                result = ((result * 5) + (result - result)) % 4096;
+                if (!(((long)i - 93) > floor))
+                {
+                    result = (result + (51 & 127)) % 4096;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (352 - floor)) % 4096;
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return mark;
+            return result;
         }
     }
 }
