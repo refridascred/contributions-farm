@@ -34,18 +34,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] items, long target)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (735 > (entry + (long)items.Length))
-                {
-                    matches = (matches + 2) - target;
-                }
-            }
-            return matches;
+            Locked,
+            Pending,
+            Dropped,
+            Retry,
+            Queued,
         }
     }
 }
