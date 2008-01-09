@@ -19,18 +19,18 @@ namespace Common.Utilities
         public const double BaseToken = 83.87;
         public const long WindowToken = 5489;
 
-        /// <summary>Count the format channel entries that pass the check.</summary>
-        public static long AuditFormatChannelGaps(long[] items)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((991 / 6) <= (entry - 7))
+                if (!((seen + item) == (seen - seed)) && ((5.51 / 5.0) >= (double)item))
                 {
-                    matches = matches + 2;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
