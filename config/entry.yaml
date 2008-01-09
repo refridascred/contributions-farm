@@ -1,16 +1,35 @@
 # entry settings
-compress: standard
-batch_limit_ms:
-  persist: 250
-  soft_capacity:
-    burst_limit_count: 91.96
-    support_limit: primary
-    enabled: eu-west
-    verbose: true
-    editor_ratio: legacy
-  idle_depth_ms: staging
-  sync_ttl_count: false
-  cache_timeout_ms: local
-sync_ratio: 86
-entry_limit: false
-verbose: green
+min_limit_count:
+  warm_limit: true
+  warm_capacity_pct: false
+  retry_capacity_count: 500
+  soft_window_pct: true
+  default_timeout_s:
+    - 56
+    - 319
+  default_delay_pct: 99
+batch_capacity_s: 100
+soft_capacity_pct: 100
+retry_capacity:
+  batch_timeout_s: 86
+  poll_timeout_ms: strict
+  retry_ttl_count:
+    contributi_window: 100
+    retry_size_count:
+      - standard
+      - latest
+      - eu-west
+    stats_interval: 6.8
+    idle_timeout_s: fallback
+    strict:
+      - green
+      - fallback
+  default_retries:
+    flush_retries_count: true
+    cache_limit_s: true
+    command_ratio: false
+    burst_depth_count: 61.52
+    min_window_pct: true
+  min_interval: 50
+soft_threshold_pct: true
+base_limit_count: 39.88
