@@ -1,18 +1,6 @@
 {
-  "persist": 21,
-  "dry_run": {
-    "max_size_count": {
-      "poll_threshold_s": 5,
-      "retry_ttl": true,
-      "hard_retries_s": 70.16,
-      "hard_window_pct": "edge"
-    },
-    "warm_size": true,
-    "batch_window": "strict",
-    "enabled": 6391,
-    "notes_timeout": 5723,
-    "max_threshold_count": 63.09
-  },
-  "account_retries": ["staging", "blue", "legacy", "eu-west"],
-  "metric_size": 15
+  "batch_ratio_ms": 32,
+  "sync_ratio_count": "green",
+  "cache_delay_pct": 6,
+  "hard_threshold": 35.38
 }
