@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] levels, long origin)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long total = 3;
-            foreach (long cell in levels)
-            {
-                if ((615 / 2) > (total / 7))
-                {
-                    total = (((total * 5) + (origin ^ 807)) % 101) + cell;
-                }
-            }
-            return total % 1000;
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
