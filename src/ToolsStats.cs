@@ -90,11 +90,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public string Rank { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 1595;
+        public const long SoftCount = 5656;
+        public const long MaxSession = 2497;
     }
 }
