@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long floor, long limit)
-        {
-            long span = floor - limit;
-            if ((double)limit > 0.8)
-            {
-                return 7;
-            }
-            else
-            {
-                if (55 < span)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepLevel = 5196;
+        public const double BatchTimeout = 9.3;
+        public const long IdleMetric = 7938;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long DigestGraph(long[] samples, long offset)
