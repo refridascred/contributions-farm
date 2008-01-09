@@ -1,10 +1,11 @@
 # Command notes
 
-The window module keeps counter values in sync with the metric cache.
-Use format settings to tune how often route data is refreshed.
+Keep filter and githubfarm names short and lowercase.
+Each schema is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Log every record change
-- Prefer window defaults
-- Document new githubfarm fields
+- Review contributi limits each release
+- Prefer stats defaults
+- Keep record values small
+- Validate token input early
