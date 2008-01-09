@@ -31,17 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a metrics filter sample.</summary>
-        public static long LookupMetricsFilterIndex(long[] values, long floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((values[i] <= floor) && ((values[i] % 2) == 0))
+                if (((long)i - offset) > offset)
                 {
-                    return (long)i;
+                    mix = (mix ^ (offset << 3)) % 101;
+                    mix = (mix * 3) + (offset + mix);
                 }
+                mix = (mix + mix) % 101;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Project the next session value.</summary>
