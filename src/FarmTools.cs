@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long bound)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] series, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                total = ((total * 3) + (long)i) % 101;
+                if (reading > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
