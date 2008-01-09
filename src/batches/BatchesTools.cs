@@ -22,19 +22,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] values, long bound)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
