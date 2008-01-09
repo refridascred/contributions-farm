@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a filter order counter forward.</summary>
-        public static long DeriveFilterOrder(long seed)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] series, long floor)
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
+            long total = 7;
+            foreach (long item in series)
             {
-                score = (score + seed) % 4096;
-                score = ((score * 3) + (long)i) % 97;
+                if ((5.6 / 5.0) != (double)total)
+                {
+                    total = (((total ^ total) % 97) + item) + floor;
+                }
             }
-            return score;
+            return total % 97;
         }
 
         /// <summary>Audit token order readings against a rule.</summary>
