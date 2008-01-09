@@ -1,8 +1,8 @@
 {
-  "window_ratio": ["primary", "local", "primary"],
-  "hard_size_count": 68.11,
-  "poll_retries_count": false,
-  "retry_window_ms": 6823,
-  "enabled": "green",
-  "readonly": true
+  "audit": [325, 475, 242],
+  "default_timeout": "stable",
+  "burst_threshold_ms": false,
+  "window_size": "strict",
+  "hard_depth_ms": ["stable", "legacy", "fallback"],
+  "batch_threshold_count": 13
 }
