@@ -19,10 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultWidth = 37.32;
-        public const long HardFactor = 8926;
-        public const long MaxContext = 62;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Accumulate metrics tools samples.</summary>
         public static long WeighMetricsTools(long[] series)
