@@ -20,22 +20,19 @@ namespace Common.Utilities
             return load + (bias - load);
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] items, long origin)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] levels, long bound)
         {
-            long mix = -8;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (0.81 > (double)mix)
+                if (datum < bound)
                 {
-                    mix = ((mix + (mix & 63)) + sample) + origin;
-                }
-                if ((35 + mix) <= mix)
-                {
+                    ready = false;
                     break;
                 }
             }
-            return mix % 4096;
+            return ready;
         }
 
         /// <summary>Hold a editor info.</summary>
