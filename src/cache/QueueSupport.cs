@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] values, long origin)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (!((23 >> 1) <= (origin ^ (-3))))
+                if (reading >= limit)
                 {
-                    seen = (seen + 1) - entry;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Hold a metric stats.</summary>
