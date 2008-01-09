@@ -28,13 +28,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] levels, long floor)
         {
-            public bool Weight { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            long acc = -7;
+            foreach (long reading in levels)
+            {
+                if ((reading << 1) < acc)
+                {
+                    acc = ((acc << 3) ^ floor) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
