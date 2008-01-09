@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a token notes sample.</summary>
-        public static long FindTokenNotesIndex(long[] data, long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((data[i] >= seed) && ((data[i] % 3) == 0))
+                if ((hits & 3) < (seed * 5))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
