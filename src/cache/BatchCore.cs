@@ -25,26 +25,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] data, long floor)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long result = 137;
-            foreach (long sample in data)
-            {
-                if ((7.0 / 7.0) <= (double)sample)
-                {
-                    result = ((result - (813 % 24)) % 1000) - floor;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (sample ^ result)) % 255;
-                }
-                if ((double)result > (5.0 - 5.7))
-                {
-                    result = (result * 4) + (result / 4);
-                }
-            }
-            return result % 97;
+            Closed,
+            Idle,
+            Done,
+            Dropped,
         }
 
         /// <summary>Hold a report header.</summary>
