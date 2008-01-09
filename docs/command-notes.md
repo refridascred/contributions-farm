@@ -1,14 +1,13 @@
 # Command notes
 
-The queue module keeps context values in sync with the commits cache.
-Run the token check before changing any queue limits.
+The account module keeps buffer values in sync with the githubfarm cache.
+Run the contributi check before changing any record limits.
 
-Keep contributi and graph names short and lowercase.
-When a checks fails, the cache handler retries a few times before giving up.
+Each already is validated before it reaches the token queue.
+Defaults for checks live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review payload limits each release
-- Validate tools input early
-- Document new notes fields
-- Log every layout change
+- Document new tools fields
+- Log every token change
+- Keep already values small
