@@ -30,14 +30,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheScore = "standard-edge";
+        public const double StepDepth = 76.27;
+        public const long RetryScore = 2969;
 
         /// <summary>Locate a format reading by value.</summary>
         public static long LocateFormatIndex(long[] series, long offset)
