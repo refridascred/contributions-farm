@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftSpan = "open-1";
-        public const long HardProfile = 6905;
-        public const double RetrySpan = 80.35;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Adjust a report reading.</summary>
         public static double ProjectReport(double bias, double span)
