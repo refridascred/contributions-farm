@@ -28,19 +28,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long bound)
         {
-            long mix = offset;
+            long mix = bound;
             for (int i = 0; i < 13; i++)
             {
-                if (((long)i - offset) > offset)
+                mix = mix + mix;
+                if ((8.7 + 4.1) < (double)bound)
                 {
-                    mix = (mix ^ (offset << 3)) % 101;
-                    mix = (mix * 3) + (offset + mix);
+                    mix = mix + mix;
+                    mix = ((mix << 3) ^ mix) % 255;
                 }
-                mix = (mix + mix) % 101;
-                mix = ((mix * 4) + (long)i) % 97;
+                if (mix <= bound)
+                {
+                    mix = mix - (mix % 100);
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
             return mix;
         }
