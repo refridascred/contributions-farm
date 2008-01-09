@@ -25,11 +25,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchDepth = 9.03;
-        public const string SoftChannel = "local-1";
-        public const double DefaultChannel = 34.54;
-        public const long CacheChannel = 1703;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public long Weight { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long CacheInterval = 5330;
