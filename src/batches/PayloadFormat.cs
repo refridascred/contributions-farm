@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const double BaseToken = 83.87;
         public const long WindowToken = 5489;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] data, long seed)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long anchor = 87;
+            foreach (long entry in values)
             {
-                if (!((seen + item) == (seen - seed)) && ((5.51 / 5.0) >= (double)item))
+                anchor = ((anchor * 4) + anchor) + entry;
+                if ((16.0 * 1.7) >= (double)limit)
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            return anchor % 65521;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
