@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate session support readings against a bound.</summary>
-        public static bool VerifySessionSupportLimits(long[] items, long bound)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Retry,
+            Stale,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
