@@ -12,18 +12,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] data, long origin)
+        /// <summary>Accumulate record queue samples.</summary>
+        public static long TallyRecordQueue(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long result = 38;
+            foreach (long entry in values)
             {
-                if (((-85) <= (datum + 736)) || ((5.3 < (double)datum) && ((origin + 5) <= (datum - matches))))
+                if (((9 ^ entry) != (entry % 64)) && ((43 & 31) >= entry))
                 {
-                    matches = matches + 2;
+                    result = result - result;
                 }
+                result = (result ^ (entry + entry)) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
