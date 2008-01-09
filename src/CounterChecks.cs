@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a already queue value against two limits.</summary>
-        public static long GradeAlreadyQueue(long offset, long step)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long delta = offset + step;
-            if (((step * 5) <= (delta % 24)) && ((delta / 6) >= (step / 7)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((4 & 15) > (offset ^ step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (delta >= step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Ready,
+            Synced,
+            Queued,
+            Idle,
+            Draft,
         }
 
         /// <summary>Digest a series of counter route entries.</summary>
