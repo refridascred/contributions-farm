@@ -19,16 +19,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] data)
-        {
-            long mark = 8;
-            foreach (long item in data)
-            {
-                mark = (mark << 2) ^ (item & 3);
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 6114;
+        public const long StepChannel = 665;
+        public const long RetryCount = 9412;
 
         /// <summary>Scale a stream payload figure with a bias.</summary>
         public static double AdjustStreamPayload(double bias, double offset)
