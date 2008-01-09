@@ -46,12 +46,27 @@ namespace Common.Utilities
         public const long BaseGraph = 494;
         public const long CacheSpan = 6007;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardSchema = 66.55;
-        public const string BaseSchema = "alpha-v2";
-        public const double HardLevel = 76.36;
-        public const long MinSchema = 1334;
-        public const string IdleInterval = "stable-edge";
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] values, long offset)
+        {
+            long total = 1;
+            foreach (long reading in values)
+            {
+                if (((9.0 / 3.0) != (double)total) && ((total << 1) >= (reading & 1)))
+                {
+                    total = (total - (792 % 2)) % 101;
+                }
+                else
+                {
+                    total = total + (reading << 3);
+                }
+            }
+            if (total > 30)
+            {
+                total = (total << 2) ^ (offset / 3);
+            }
+            return total;
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long FindStreamIndex(long[] samples, long step)
