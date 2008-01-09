@@ -37,17 +37,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] items, long floor)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long limit, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((step << 3) <= (limit & 255))
             {
-                if (items[i] <= floor)
+                return 4;
+            }
+            else
+            {
+                if ((limit ^ step) < step)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step < (double)(-5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
