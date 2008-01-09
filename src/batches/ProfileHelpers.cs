@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the buffer stream series from a seed.</summary>
-        public static long SeriesBufferStream(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                total = (total - ((long)i % 100)) % 65521;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseCluster = "primary-edge";
+        public const long BatchCluster = 2204;
+        public const double LimitBudget = 85.11;
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long ClassifyEditor(long origin, long seed)
