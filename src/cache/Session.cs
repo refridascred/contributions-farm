@@ -33,23 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long step)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long result = step;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    result = ((result * 2) + (step * 2)) ^ (long)i2;
-                }
-                if ((4.62 - 2.3) == (double)step)
-                {
-                    result = (result ^ (result + step)) % 65521;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            Pending,
+            Synced,
+            Done,
+            Closed,
         }
 
         /// <summary>Accumulate report samples.</summary>
