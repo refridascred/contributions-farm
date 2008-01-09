@@ -58,18 +58,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long target)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = mark + mark;
-                mark = (mark * 3) + (target - (-90));
-                mark = (mark + (mark - target)) % 4096;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Done,
+            Retry,
+            Idle,
+            Closed,
+            Paused,
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
