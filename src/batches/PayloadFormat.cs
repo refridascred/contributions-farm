@@ -25,13 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] data)
         {
-            Stale,
-            Done,
-            Failed,
-            New,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((sample < (matches % 64)) && (((double)matches > (4.0 / 2.0)) && ((873 >> 5) != (sample ^ 391))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit editor stream readings against a rule.</summary>
