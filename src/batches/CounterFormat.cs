@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a metric commits value against two limits.</summary>
-        public static long GradeMetricCommits(long bound, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] readings)
         {
-            long gap = bound - seed;
-            if (!((seed + (-34)) < (gap + gap)))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (gap < 9)
+                if ((cell - tally) >= tally)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate githubfarm stream samples.</summary>
