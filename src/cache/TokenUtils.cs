@@ -45,18 +45,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the channel githubfarm entries that pass the check.</summary>
-        public static long TallyChannelGithubfarmOutliers(long[] data)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((((3.74 + 1.84) < (double)matches) && ((item / 7) >= (item >> 3))) || ((0.5 / 5.0) >= (double)matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Active,
+            Locked,
+            Stale,
         }
     }
 }
