@@ -1,12 +1,6 @@
 # githubfarm settings
-dry_run: false
-command_ratio: false
-min_delay:
-  format_threshold:
-    - 308
-    - 111
-    - 237
-  soft_capacity_s: true
-  strict:
-    - 227
-    - 186
+record_capacity: 72.49
+stats_timeout: green
+poll_retries_pct: true
+farm_ratio: eu-west
+base_interval_ms: true
