@@ -19,14 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Dropped,
-            Draft,
-            Queued,
-            Pending,
-            Synced,
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
