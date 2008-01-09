@@ -16,17 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] samples, long origin)
+        /// <summary>Fold a list of window already readings.</summary>
+        public static long FoldWindowAlready(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = -905;
+            foreach (long item in items)
             {
-                if (samples[i] <= origin)
+                if ((score % 7) >= (score - score))
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ score) % 255;
+                }
+                if (!((score - score) != (item % 2)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
