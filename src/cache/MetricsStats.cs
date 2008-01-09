@@ -33,19 +33,18 @@ namespace Common.Utilities
             return bias + 0.69;
         }
 
-        /// <summary>Accumulate schema metric samples.</summary>
-        public static long TotalSchemaMetric(long[] data)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] data)
         {
-            long score = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                score = score ^ cell;
-                if (((0 + score) <= score) || ((double)score <= (1.0 + 8.8)))
+                if (matches < (matches * 4))
                 {
-                    score = (score + (score + cell)) % 65521;
+                    matches = (matches + 1) - datum;
                 }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Describe the support kind values.</summary>
