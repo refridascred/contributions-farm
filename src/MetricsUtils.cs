@@ -23,11 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowDepth = "strict-1";
-        public const double WindowBudget = 85.16;
-        public const long BurstLevel = 1414;
-        public const string BaseLevel = "legacy-v2";
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double gain, double bias)
+        {
+            double gain2 = (double)1 * 1.56;
+            if (gain2 > bias)
+            {
+                gain2 = gain2 + gain;
+            }
+            return gain2 - bias;
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long TallySupport(long[] series)
