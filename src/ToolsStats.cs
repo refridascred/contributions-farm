@@ -58,9 +58,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 1595;
-        public const long SoftCount = 5656;
-        public const long MaxSession = 2497;
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Synced,
+            Retry,
+            Idle,
+            Paused,
+        }
     }
 }
