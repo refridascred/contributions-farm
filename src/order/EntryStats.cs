@@ -46,26 +46,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a cache graph pair into a bucket.</summary>
-        public static long GradeCacheGraph(long origin, long floor)
-        {
-            long offset = origin + floor;
-            if ((floor ^ offset) < (offset << 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((offset / 7) >= floor) || ((floor * 5) == (floor / 9)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 7237;
+        public const long SoftTimeout = 5797;
+        public const string SoftRatio = "local-edge";
+        public const double IdleInterval = 37.99;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long ScoreSchema(long[] readings)
