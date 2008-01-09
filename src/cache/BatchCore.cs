@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] readings, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((readings[i] >= step) && ((readings[i] % 5) != 0))
+                if ((bound & 127) < 7)
                 {
-                    return (long)i;
+                    count = (count + 3) + item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate channel samples.</summary>
