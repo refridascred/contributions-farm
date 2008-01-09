@@ -1,5 +1,11 @@
 # entry settings
-dry_run: true
-githubfarm_interval: 27.01
-warm_retries: 3524
-base_timeout: false
+burst_capacity_ms: 52
+poll_threshold_s:
+  hard_limit_s: latest
+  stream_delay: 1152
+  dry_run: true
+  audit: true
+  poll_size_ms: 62.68
+cache_retries_pct: 16.5
+default_limit_ms: standard
+report_ttl: latest
