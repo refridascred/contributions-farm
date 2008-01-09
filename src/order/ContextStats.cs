@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 675;
-        public const double MaxSize = 1.31;
-        public const long StepSpan = 4964;
-        public const double DefaultTimeout = 30.85;
-        public const long LimitCommits = 2276;
+        /// <summary>Measure how many graph layout samples are out of range.</summary>
+        public static long TallyGraphLayoutGaps(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (((origin ^ seen) > seen) && ((origin * 5) != (item - item)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool VerifyGithubfarmRange(long[] series, long origin)
