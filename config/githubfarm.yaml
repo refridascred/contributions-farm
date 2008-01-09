@@ -1,17 +1,4 @@
 # githubfarm settings
-format_window:
-  - strict
-  - edge
-  - staging
-warm_delay: 11
-enabled: edge
-burst_delay_pct:
-  batches_interval: 46
-  route_interval:
-    - 181
-    - 304
-  githubfarm_ttl:
-    tools_threshold: 53.24
-    record_depth: fallback
-    batch_size_pct: true
-  audit: 49
+batch_timeout: false
+batch_window: local
+record_threshold: staging
