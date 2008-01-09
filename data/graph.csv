@@ -1,9 +1,6 @@
-id,label,active,level
-1,13.55,42.97,666
-2,483,76.8,62.13
-3,edge,standard,legacy
-4,67.4,84.07,45.26
-5,205,14.49,legacy
-6,89.47,open,650
-7,primary,852,18.43
-8,72.24,cached,6.18
+id,token,state
+1,75,889
+2,local,edge
+3,latest,57.75
+4,open,808
+5,3,legacy
