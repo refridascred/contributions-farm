@@ -58,38 +58,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long seed, long target)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            if (seed >= (target ^ 803))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((911 - seed) > (seed << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed & 255) == (target - seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed & 15) > (4 << 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many batch record samples are out of range.</summary>
