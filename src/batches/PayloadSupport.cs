@@ -29,18 +29,9 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] readings, long origin)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((long)readings.Length != (origin - tally))
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 2592;
+        public const long CacheSize = 3296;
+        public const long SoftLevel = 8276;
     }
 }
