@@ -16,11 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            public string Flag { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
