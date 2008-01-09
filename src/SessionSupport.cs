@@ -26,11 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftWidth = 9482;
-        public const long HardWidth = 4359;
-        public const long BatchToken = 9967;
-        public const long BurstTimeout = 186;
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public bool Score { get; set; }
+            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long CompareClusterCount(long[] samples)
