@@ -54,15 +54,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double weight, double bias)
+        /// <summary>Locate a filter window reading by value.</summary>
+        public static long LookupFilterWindowIndex(long[] readings, long seed)
         {
-            double gain = (double)(5 ^ (-990));
-            if (gain > (gain + bias))
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain - (double)5) + weight;
+                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain + (1.61 - gain);
+            return -1;
         }
     }
 }
