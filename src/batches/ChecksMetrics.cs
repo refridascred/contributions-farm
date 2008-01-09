@@ -13,19 +13,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] values, long floor)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Pending,
+            Failed,
+            Retry,
         }
 
         /// <summary>Hold a filter header.</summary>
