@@ -45,38 +45,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Classify a commits record pair into a bucket.</summary>
-        public static long SortCommitsRecord(long offset, long offset2)
+        /// <summary>Locate a stats commits reading by value.</summary>
+        public static long FindStatsCommitsIndex(long[] levels, long offset)
         {
-            if (((double)9 != (double)offset) && ((offset / 9) > 74))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset2 - 0) != (offset2 & 7))
+                if ((levels[i] < offset) && ((levels[i] % 3) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset * 4) > offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(20.0 >= (double)offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
