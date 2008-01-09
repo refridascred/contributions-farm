@@ -26,12 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRatio = 8212;
+        public const long WindowCount = 6926;
+        public const long CacheTimeout = 9491;
+        public const long HardWidth = 921;
+        public const long BurstScore = 9075;
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
