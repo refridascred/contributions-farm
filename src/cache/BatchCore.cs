@@ -13,13 +13,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long offset)
         {
-            Closed,
-            Idle,
-            Done,
-            Dropped,
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Project the next notes value.</summary>
