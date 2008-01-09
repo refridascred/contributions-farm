@@ -19,16 +19,10 @@ namespace Common.Utilities
         public const double LimitReport = 16.75;
         public const long MinReport = 7378;
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultFactor = "fallback";
+        public const long IdleInterval = 1691;
+        public const double MaxCount = 17.27;
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
