@@ -48,17 +48,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] levels, long limit)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == limit) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Queued,
+            Dropped,
+            Done,
         }
     }
 }
