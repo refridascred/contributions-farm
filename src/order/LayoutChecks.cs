@@ -57,31 +57,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long origin, long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] levels)
         {
-            if (!((bound >> 3) > 3))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((663 + origin) > 8)
+                if ((double)item >= (double)tally)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound - bound) != (origin - 590))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
