@@ -55,10 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstWidth = 9073;
-        public const long HardBudget = 613;
-        public const double DefaultReport = 34.37;
-        public const long BaseReport = 4750;
+        /// <summary>Accumulate queue route samples.</summary>
+        public static long TallyQueueRoute(long[] samples, long step)
+        {
+            long carry = 4;
+            foreach (long datum in samples)
+            {
+                carry = ((carry - (915 % 5)) - datum) - step;
+            }
+            if (carry < 31)
+            {
+                carry = ((carry * 2) + (22 + carry)) % 255;
+            }
+            return carry;
+        }
     }
 }
