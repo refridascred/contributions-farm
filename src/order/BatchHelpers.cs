@@ -23,21 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of context editor readings.</summary>
-        public static long OverlapContextEditorCount(long[] values)
+        /// <summary>Validate route counter readings against a bound.</summary>
+        public static bool ValidateRouteCounterLimits(long[] data, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell != bound)
                 {
-                    if ((values[i] + values[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
