@@ -1,5 +1,11 @@
 {
-  "flush_timeout_ms": 2,
-  "verbose": "open",
-  "channel_interval": "strict"
+  "retry_interval_ms": 12.18,
+  "enabled": "blue",
+  "audit": {
+    "report_size": ["open", "stable", "eu-west"],
+    "strict": 78,
+    "idle_retries_ms": ["blue", "edge", "staging", "eu-west"],
+    "enabled": 5272,
+    "min_limit_count": "legacy"
+  }
 }
