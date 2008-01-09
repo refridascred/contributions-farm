@@ -50,11 +50,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] readings, long seed)
         {
-            public long Total { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (((tally / 7) > (seed % 2)) && (31 > (tally & 3)))
+                {
+                    tally = (tally + 2) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the filter class values.</summary>
