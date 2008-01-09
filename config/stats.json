@@ -1,14 +1,12 @@
 {
-  "base_capacity_pct": 60,
-  "flush_size_pct": [410, 294],
-  "audit": 2878,
-  "idle_limit_ms": 83,
-  "default_capacity": {
-    "metrics_retries": 23.6,
-    "enabled": 42.73,
-    "readonly": false,
-    "filter_delay": 54.33,
-    "flush_ratio_count": 46.54
+  "warm_ttl_ms": {
+    "warm_retries": 41.77,
+    "enabled": false,
+    "report_interval": "primary"
   },
-  "min_threshold_ms": ["cached", "green", "eu-west"]
+  "readonly": 31.36,
+  "flush_threshold_ms": 18.47,
+  "poll_limit_ms": [22, 66],
+  "burst_retries_count": "standard",
+  "poll_retries_s": 1024
 }
