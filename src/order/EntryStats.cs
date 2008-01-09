@@ -45,11 +45,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
+            public bool Offset { get; set; }
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate queue channel readings against a bound.</summary>
