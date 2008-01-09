@@ -1,4 +1,20 @@
 # entry settings
-base_depth_count: 3895
-verbose: 3.54
-readonly: fallback
+base_ratio_s:
+  - 294
+  - 10
+  - 39
+max_timeout: 4110
+poll_retries:
+  - 416
+  - 446
+format_window:
+  readonly: 421
+  editor_depth:
+    readonly: 1024
+    batch_delay_ms: legacy
+    burst_threshold_pct: cached
+  session_depth: 62.79
+warm_depth:
+  - cached
+  - local
+profile_retries: edge
