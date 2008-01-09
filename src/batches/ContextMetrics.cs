@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] items, long bound)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long score = 730;
+            foreach (long sample in values)
             {
-                if ((6.65 + 7.0) >= (double)matches)
-                {
-                    matches = ((matches + 1) + entry) + bound;
-                }
+                score = (((score * 2) + (310 ^ 7)) % 97) + sample;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
