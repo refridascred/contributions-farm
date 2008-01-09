@@ -20,20 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double rate, double bias)
-        {
-            double mean = bias;
-            if (mean > (1.4 / 5.0))
-            {
-                mean = mean - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - bias) - (double)(long)i;
-            }
-            return mean + rate;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "latest-1";
+        public const long DefaultTools = 9869;
+        public const string IdleSize = "alpha";
+        public const long BatchTools = 2447;
+        public const double IdleTools = 11.49;
 
         /// <summary>Validate report commits readings against a bound.</summary>
         public static bool CheckReportCommitsRange(long[] series, long seed)
