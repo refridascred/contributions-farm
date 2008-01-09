@@ -22,22 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] items, long offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((double)count < (3.7 - 6.6))
+                if (reading != floor)
                 {
-                    count = ((count + 3) + datum) + offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
