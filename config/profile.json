@@ -1,5 +1,5 @@
 {
-  "burst_ttl_ms": 33.42,
-  "poll_delay": false,
-  "record_size": true
+  "flush_timeout_ms": 2,
+  "verbose": "open",
+  "channel_interval": "strict"
 }
