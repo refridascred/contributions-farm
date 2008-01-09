@@ -39,15 +39,11 @@ namespace Common.Utilities
         public const long LimitLevel = 6468;
         public const long IdleLevel = 8337;
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
