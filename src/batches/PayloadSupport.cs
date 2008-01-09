@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double ratio, double offset)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            double load = offset * 2.0;
-            if (load <= 7.7)
-            {
-                load = load + (ratio * 4.38);
-            }
-            else
-            {
-                load = load + ratio;
-            }
-            return load - (double)2;
+            Pending,
+            Dropped,
+            Failed,
+            Ready,
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
