@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many command batch samples are out of range.</summary>
-        public static long MeasureCommandBatchMatches(long[] levels, long step)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum < (4.0 - 7.0))
-                {
-                    hits = (hits + 2) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinInterval = 5219;
+        public const long HardSize = 7497;
+        public const long HardStats = 7800;
+        public const string BatchStats = "primary-1";
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long RankTools(long origin, long bound)
