@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] samples)
+        /// <summary>Check that every metrics buffer entry stays within the limit.</summary>
+        public static bool ValidateMetricsBufferBounds(long[] values, long offset)
         {
-            long carry = 208;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if ((item < (carry + carry)) && ((double)item > (double)carry))
+                if (value >= offset)
                 {
-                    carry = carry ^ (item >> 5);
-                }
-                else
-                {
-                    carry = (carry ^ carry) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Hold a checks record.</summary>
