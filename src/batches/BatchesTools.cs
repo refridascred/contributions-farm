@@ -13,17 +13,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a profile metrics reading by value.</summary>
-        public static long LookupProfileMetricsIndex(long[] values, long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 0;
+            foreach (long cell in levels)
             {
-                if (values[i] >= offset)
+                total = (((total * 2) + step) % 65521) ^ cell;
+                if (step <= ((long)levels.Length & 15))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (total < 781)
+            {
+                total = total ^ ((long)levels.Length << 1);
+            }
+            return total % 97;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
