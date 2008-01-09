@@ -1,12 +1,7 @@
 {
-  "readonly": "staging",
-  "min_threshold_pct": {
-    "sync_ttl_pct": 12.93,
-    "warm_threshold": 60,
-    "retry_threshold_ms": "latest",
-    "commits_window": ["local", "stable", "eu-west"]
-  },
-  "cache_capacity_ms": 76,
-  "base_threshold_count": "latest",
-  "hard_ratio_ms": 48
+  "strict": 32,
+  "poll_ttl_ms": 64.99,
+  "enabled": 500,
+  "entry_delay": 7717,
+  "poll_threshold_s": 21
 }
