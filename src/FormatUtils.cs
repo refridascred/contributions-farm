@@ -92,21 +92,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cluster already samples.</summary>
-        public static long MatchClusterAlreadyCount(long[] data)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] series, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value > step)
                 {
-                    if ((data[i] + data[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Accumulate record samples.</summary>
