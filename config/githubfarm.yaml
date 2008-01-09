@@ -1,9 +1,10 @@
 # githubfarm settings
-cache_size_count:
-  - strict
-  - green
-  - fallback
-  - eu-west
-warm_depth: latest
-min_interval: 100
-persist: 23.02
+queue_window: 2232
+flush_capacity_pct: 6134
+batch_delay_pct: staging
+idle_ratio_ms: 1024
+poll_size_count: 49
+command_interval:
+  - 397
+  - 477
+  - 134
