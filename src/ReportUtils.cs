@@ -45,19 +45,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate window farm readings against a bound.</summary>
-        public static bool GuardWindowFarmBounds(long[] values, long step)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry > step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Derive the next context schema value from a seed.</summary>
