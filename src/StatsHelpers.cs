@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate commits filter readings against a bound.</summary>
-        public static bool GuardCommitsFilterLimits(long[] values, long floor)
+        /// <summary>Measure how many command batch samples are out of range.</summary>
+        public static long MeasureCommandBatchMatches(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (sample != floor)
+                if ((double)datum < (4.0 - 7.0))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) + step;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
