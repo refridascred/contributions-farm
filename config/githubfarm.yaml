@@ -1,7 +1,11 @@
 # githubfarm settings
-compress: 5294
-soft_capacity_pct: true
-tools_depth:
-  readonly: false
-  hard_ttl_ms: 39.57
-  retry_size_pct: 100
+record_retries: 80
+hard_window_count:
+  - 477
+  - 399
+  - 116
+  - 322
+burst_threshold: stable
+idle_timeout_pct: 71.26
+support_depth: 6055
+window_timeout: 20.07
