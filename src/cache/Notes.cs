@@ -26,13 +26,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] items, long seed)
         {
-            public double Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
