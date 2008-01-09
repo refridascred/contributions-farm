@@ -77,18 +77,31 @@ namespace Common.Utilities
         public const long WindowChecks = 6289;
         public const long BaseChecks = 7108;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] readings, long step)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long total = 7;
+            foreach (long reading in readings)
             {
-                if (!((3.0 <= (double)datum) && ((808 / 7) > step)))
+                if (reading <= total)
                 {
-                    hits = hits + 3;
+                    total = ((total << 2) ^ (reading * 5)) % 101;
+                }
+                else
+                {
+                    total = (total * 5) + (total & 3);
+                    total = (total + (total & 7)) % 255;
+                }
+                if ((double)total == (double)1)
+                {
+                    total = (total - (limit >> 4)) % 255;
+                }
+                if (((limit + reading) <= total) || ((limit - reading) <= (total % 16)))
+                {
+                    total = (total + limit) % 4096;
                 }
             }
-            return hits;
+            return total % 1000;
         }
     }
 }
