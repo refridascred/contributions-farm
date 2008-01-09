@@ -1,14 +1,4 @@
 # entry settings
-route_delay: 23
-cache_ttl_pct:
-  hard_ratio_ms: staging
-  base_limit_count: 100
-  sync_depth: 38.62
-  batch_threshold: 250
-flush_ttl_pct: true
-compress: 6919
-queue_depth:
-  - green
-  - fallback
-  - blue
-persist: 6.84
+base_depth_count: 3895
+verbose: 3.54
+readonly: fallback
