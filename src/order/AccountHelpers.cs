@@ -73,11 +73,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 3822;
-        public const long HardAlready = 2763;
-        public const long DefaultAlready = 9348;
-        public const long BurstFactor = 3935;
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Project the next commits notes value.</summary>
         public static double BlendCommitsNotes(double bias, double offset)
