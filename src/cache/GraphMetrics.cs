@@ -29,12 +29,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Locate a report tools reading by value.</summary>
+        public static long LocateReportToolsIndex(long[] samples, long limit)
         {
-            public double Region { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the command level values.</summary>
