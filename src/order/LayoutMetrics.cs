@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Draft,
             Retry,
-            Stale,
-            Queued,
-            Dropped,
+            Idle,
+            Paused,
+            Pending,
+            Locked,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
