@@ -1,17 +1,4 @@
 # support settings
-buffer_retries: primary
-report_timeout:
-  dry_run: 4830
-  idle_retries_pct:
-    - 160
-    - 11
-  base_timeout_s: 78.54
-  hard_limit_ms:
-    dry_run: standard
-    flush_timeout_s: 500
-    default_timeout_ms: strict
-  editor_delay:
-    - 180
-    - 452
-    - 423
-verbose: 97.83
+idle_limit_pct: true
+order_interval: 51.38
+soft_limit_ms: 8449
