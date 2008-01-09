@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] readings, long floor)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Idle,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the stats kind values.</summary>
