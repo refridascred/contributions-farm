@@ -68,19 +68,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] levels, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (cell < offset)
+                if (!((entry ^ (-2)) > (matches + matches)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
