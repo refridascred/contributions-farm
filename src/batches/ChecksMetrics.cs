@@ -42,31 +42,18 @@ namespace Common.Utilities
         public const string MinSupport = "local-v2";
         public const double DefaultSupport = 20.35;
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long offset, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] samples, long origin)
         {
-            if ((double)limit == (6.3 - 15.0))
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset << 3) > offset)
+                if (origin < 21)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset + offset) != (limit >> 1)) || ((limit + offset) <= (1 + offset)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = (tally + 3) + datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
