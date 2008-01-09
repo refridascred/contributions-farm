@@ -1,6 +1,7 @@
 {
-  "warm_capacity": "staging",
-  "flush_window_ms": "local",
-  "profile_size": true,
-  "token_size": 72
+  "enabled": "open",
+  "hard_threshold_count": 30,
+  "strict": "staging",
+  "base_interval": "green",
+  "default_ratio": true
 }
