@@ -45,23 +45,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit format tools readings against a rule.</summary>
-        public static long AuditFormatToolsMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (278 >= (tally / 3))
-                {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxScore = 7805;
+        public const double WindowLevel = 5.53;
+        public const long MaxQueue = 6672;
 
         /// <summary>Measure how many commits farm samples are out of range.</summary>
         public static long CountCommitsFarmOutliers(long[] values)
