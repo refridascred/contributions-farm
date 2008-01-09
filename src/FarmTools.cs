@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftScore = 3136;
-        public const long IdleSpan = 3487;
-        public const long BurstLevel = 9475;
-        public const string StepBudget = "open";
-        public const double BurstCache = 51.58;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double weight, double span)
+        {
+            double rate = weight;
+            if (rate >= (span * 1.7))
+            {
+                rate = rate + (double)8;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (2.9 - 8.7)) - (double)(long)i;
+            }
+            return rate - weight;
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long FoldContributi(long[] series)
