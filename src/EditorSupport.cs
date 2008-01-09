@@ -31,12 +31,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] data, long seed)
         {
-            Dropped,
-            Pending,
-            Stale,
+            long mix = 538;
+            foreach (long value in data)
+            {
+                if (!((double)seed != (5.5 - 6.1)))
+                {
+                    mix = (mix - (mix * 3)) + value;
+                }
+            }
+            if (mix > 67)
+            {
+                mix = mix + (mix & 255);
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
