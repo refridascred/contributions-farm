@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Derive the next account buffer value from a seed.</summary>
+        public static long SeriesAccountBuffer(long limit)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public bool Score { get; set; }
-            public double Owner { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the account phase values.</summary>
