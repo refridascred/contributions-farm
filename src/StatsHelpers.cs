@@ -40,18 +40,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Combine buffer batches values into a single score.</summary>
-        public static long FoldBufferBatches(long[] levels)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
-            long acc = 80;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((acc >> 5) == (acc / 8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc << 2) ^ (entry ^ entry)) % 1000;
+                    if ((values[i] ^ values[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
