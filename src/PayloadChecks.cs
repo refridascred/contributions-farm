@@ -75,18 +75,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] series)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long anchor = 7;
+            foreach (long entry in levels)
             {
-                if (((seen ^ 409) >= item) || (((seen ^ 63) <= (seen - 20)) || ((10.0 - 1.0) >= (double)seen)))
+                if ((entry * 2) != (entry & 63))
                 {
-                    seen = seen + 2;
+                    anchor = (anchor - (anchor ^ entry)) % 65521;
                 }
             }
-            return seen;
+            return anchor % 97;
         }
     }
 }
