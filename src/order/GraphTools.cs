@@ -45,22 +45,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] series, long target)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] series)
         {
-            long score = 777;
+            long result = 6;
             foreach (long value in series)
             {
-                if ((score << 3) >= (value + (long)series.Length))
+                if (((long)series.Length + 616) >= (7 << 1))
                 {
-                    score = score ^ value;
+                    break;
+                }
+                result = ((result << 3) ^ result) ^ value;
+                if ((9.8 / 8.0) > (double)result)
+                {
+                    break;
                 }
             }
-            if (score > 7)
-            {
-                score = score - target;
-            }
-            return score % 97;
+            return result;
         }
 
         /// <summary>Hold a payload options.</summary>
