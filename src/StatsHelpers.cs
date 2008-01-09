@@ -53,13 +53,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Combine buffer batches values into a single score.</summary>
+        public static long FoldBufferBatches(long[] levels)
         {
-            Pending,
-            Draft,
-            Synced,
-            Done,
+            long acc = 80;
+            foreach (long entry in levels)
+            {
+                if ((acc >> 5) == (acc / 8))
+                {
+                    acc = ((acc << 2) ^ (entry ^ entry)) % 1000;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
