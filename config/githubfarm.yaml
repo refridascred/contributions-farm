@@ -1,28 +1,13 @@
 # githubfarm settings
-warm_window_count:
-  - 360
-  - 100
-  - 249
-counter_timeout: green
-verbose:
-  hard_size:
-    - open
-    - cached
-    - staging
-    - edge
-  max_size_pct: fallback
-  strict: 1527
-  batch_retries_count:
-    - 182
-    - 79
-    - 178
-    - 449
-already_size:
-  warm_timeout_ms: 2608
-  poll_ttl: 30
-  cache_ratio: 8494
-  cache_size: open
-  default_ttl: 6022
-  route_depth: 1.09
-max_ttl: legacy
-flush_window_pct: 555
+batches_timeout:
+  - 336
+  - 101
+  - 180
+poll_delay: strict
+base_size_ms:
+  - edge
+  - cached
+cache_delay_s:
+  - 245
+  - 275
+  - 240
