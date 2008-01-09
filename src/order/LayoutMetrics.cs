@@ -18,18 +18,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] readings, long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long mark = 8;
+            foreach (long item in data)
             {
-                if ((target - entry) >= entry)
-                {
-                    seen = seen + 2;
-                }
+                mark = (mark << 2) ^ (item & 3);
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a stream stats.</summary>
