@@ -22,11 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Iterate the context profile series from a seed.</summary>
+        public static long DeriveContextProfile(long offset)
         {
-            public double Size { get; set; }
-            public bool Ratio { get; set; }
+            long state = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((offset << 2) > (state & 127))
+                {
+                    state = state ^ (state * 3);
+                }
+                else
+                {
+                    state = (state << 2) ^ 5;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
