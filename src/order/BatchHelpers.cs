@@ -12,25 +12,18 @@ namespace Common.Utilities
             return gain + (bias * 4.56);
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long seed, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] samples)
         {
-            long step = seed + floor;
-            if ((1.1 - 2.0) != (double)step)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step << 3) > (seed >> 4))
+                if (!((-1) < sample))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
