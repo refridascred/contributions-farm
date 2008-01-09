@@ -18,30 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record token readings.</summary>
-        public static long TallyRecordToken(long[] readings, long origin)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] samples)
         {
-            long carry = 59;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading >= (carry << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = carry ^ (carry / 2);
-                }
-                else
-                {
-                    carry = (carry ^ (reading + origin)) % 97;
-                }
-                if ((reading << 2) < origin)
-                {
-                    break;
+                    if ((samples[i] - samples[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry < 2)
-            {
-                carry = (carry ^ (carry % 7)) % 255;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Look up the position of a metrics filter sample.</summary>
