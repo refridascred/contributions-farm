@@ -19,26 +19,15 @@ namespace Common.Utilities
         public const double LimitReport = 16.75;
         public const long MinReport = 7378;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] values, long offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long target)
         {
-            long acc = 35;
-            foreach (long value in values)
+            long state = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((value >> 4) != (value * 5))
-                {
-                    acc = (acc * 4) + offset;
-                }
-                else
-                {
-                    acc = (acc ^ (2 + value)) % 255;
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            if (acc > 1)
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc;
+            return state;
         }
 
         /// <summary>Hold a metric options.</summary>
