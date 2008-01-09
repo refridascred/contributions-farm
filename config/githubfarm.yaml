@@ -1,4 +1,13 @@
 # githubfarm settings
-soft_ttl_ms: 68
-verbose: true
-readonly: 100
+batch_limit_ms:
+  warm_size: cached
+  min_threshold_count:
+    dry_run: edge
+    base_delay_ms: true
+    soft_capacity: cached
+    hard_ratio_s: 4765
+    flush_retries_pct: false
+  compress: 18.17
+cache_limit_pct: 70
+dry_run: true
+hard_size_ms: blue
