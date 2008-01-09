@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every counter metric entry stays within the limit.</summary>
-        public static bool ValidateCounterMetricRange(long[] samples, long bound)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
