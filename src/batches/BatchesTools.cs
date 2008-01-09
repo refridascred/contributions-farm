@@ -39,17 +39,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] items, long floor)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
