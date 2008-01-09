@@ -34,25 +34,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long floor, long bound)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long diff = floor - bound;
-            if ((2.0 * 16.0) <= 16.0)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((bound - diff) <= (floor / 2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Synced,
+            Idle,
+            Queued,
         }
     }
 }
