@@ -56,22 +56,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] levels)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] levels)
         {
-            long acc = 4;
-            foreach (long cell in levels)
+            long score = -43;
+            foreach (long entry in levels)
             {
-                if ((cell >> 3) != (acc >> 2))
-                {
-                    acc = (acc - cell) % 1000;
-                }
-                else
-                {
-                    acc = (acc - (cell - cell)) % 255;
-                }
+                score = (score ^ score) ^ entry;
             }
-            return acc;
+            if (score > 797)
+            {
+                score = (score + (score / 5)) % 97;
+            }
+            return score;
         }
     }
 }
