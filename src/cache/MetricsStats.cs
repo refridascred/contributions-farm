@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double weight, double floor)
+        /// <summary>Count batch entry pairs that satisfy a relation.</summary>
+        public static long PairBatchEntryCount(long[] data)
         {
-            double bias = weight;
-            if (bias >= 7.41)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias - (floor - weight);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + weight) - (double)(long)i;
-            }
-            return bias - (7.1 * 9.13);
+            return hits;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
