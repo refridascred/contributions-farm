@@ -37,22 +37,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] values)
         {
-            long acc = 709;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (!((double)cell != (4.1 / 9.0)))
+                if ((1.45 - 5.0) <= (double)seen)
                 {
-                    acc = acc ^ (acc << 2);
+                    seen = (seen + 3) + reading;
                 }
-                if (((cell + cell) > cell) || ((double)acc != (0.8 / 4.0)))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
