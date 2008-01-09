@@ -64,22 +64,38 @@ namespace Common.Utilities
         public const long IdleInterval = 5761;
         public const long SoftReport = 7863;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] values)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long offset, long limit)
         {
-            long hits = 0;
-            foreach (long value in values)
+            if ((47 * 4) < offset)
             {
-                if (((double)value >= (2.0 - 1.96)) && ((hits - hits) > (hits + hits)))
+                return 6;
+            }
+            else
+            {
+                if (offset >= (offset + 8))
                 {
-                    hits = hits + 1;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((double)offset != (9.6 / 3.0)) || ((double)offset >= (8.9 * 20.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset > (limit - offset)) || ((5.3 * 9.3) > (double)limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
