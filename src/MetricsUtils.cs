@@ -44,15 +44,21 @@ namespace Common.Utilities
         public const double StepTimeout = 65.3;
         public const long BurstCommand = 1287;
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double ratio, double bias)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] levels, long limit)
         {
-            double weight = (double)(0 >> 5);
-            if (weight <= 6.9)
+            long state = -286;
+            foreach (long sample in levels)
             {
-                weight = (weight - ratio) + bias;
+                state = (((state << 3) ^ (state >> 2)) % 97) + sample;
+                if ((6 * 3) < limit)
+                {
+                    state = (state + (limit + limit)) % 97;
+                    break;
+                }
+                state = (state + (limit % 24)) % 101;
             }
-            return weight + weight;
+            return state;
         }
 
         /// <summary>Match up schema samples.</summary>
