@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            Idle,
+            Synced,
+            Queued,
+            Draft,
         }
 
         /// <summary>Compare every pair of command readings.</summary>
