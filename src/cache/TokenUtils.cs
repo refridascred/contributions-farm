@@ -19,22 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] samples)
+        /// <summary>Accumulate account format samples.</summary>
+        public static long TallyAccountFormat(long[] samples, long step)
         {
-            long mark = -199;
-            foreach (long datum in samples)
+            long acc = 69;
+            foreach (long reading in samples)
             {
-                if (datum > (datum ^ 5))
+                if ((acc < reading) || ((reading << 3) < (acc % 3)))
                 {
-                    mark = ((mark * 5) + (mark ^ mark)) % 101;
+                    acc = acc - (step << 2);
                 }
             }
-            if (mark > 3)
-            {
-                mark = mark ^ 15;
-            }
-            return mark;
+            return acc;
         }
 
         /// <summary>Hold a account entry.</summary>
