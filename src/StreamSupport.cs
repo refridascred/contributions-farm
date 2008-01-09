@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the layout commits entries that pass the check.</summary>
-        public static long CountLayoutCommitsGaps(long[] items)
+        /// <summary>Fold a list of farm context readings.</summary>
+        public static long WeighFarmContext(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long state = 8;
+            foreach (long reading in items)
             {
-                if ((486 - tally) > (entry % 64))
+                if ((reading + reading) > (85 - 0))
                 {
-                    tally = tally + 1;
+                    state = (state * 4) + (reading & 63);
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
