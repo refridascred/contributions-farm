@@ -16,31 +16,18 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Rank order editor input into a small class.</summary>
-        public static long BucketOrderEditor(long seed, long target)
+        /// <summary>Measure how many cluster order samples are out of range.</summary>
+        public static long CountClusterOrderMatches(long[] items, long offset)
         {
-            if (((4.0 / 5.0) <= (double)target) || ((double)88 >= (double)598))
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed < 3.8)
+                if ((6 & 3) >= (19 - offset))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((277 - 90) != (seed - seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = (count + 3) + sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
