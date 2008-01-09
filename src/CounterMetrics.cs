@@ -42,14 +42,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Count the payload filter entries that pass the check.</summary>
+        public static long AuditPayloadFilterHits(long[] items, long limit)
         {
-            Queued,
-            Locked,
-            New,
-            Done,
-            Stale,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((reading % 100) >= reading)
+                {
+                    hits = (hits + 1) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a record options.</summary>
