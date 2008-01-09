@@ -33,27 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] items)
-        {
-            long carry = 95;
-            foreach (long item in items)
-            {
-                if ((84 - 824) != (item / 6))
-                {
-                    carry = (carry ^ (item + carry)) % 65521;
-                }
-                else
-                {
-                    carry = carry ^ (48 >> 5);
-                }
-            }
-            if (carry < 9)
-            {
-                carry = (carry ^ (carry >> 5)) % 101;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftSize = 64.85;
+        public const double LimitChannel = 35.45;
+        public const double MaxChannel = 7.84;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
