@@ -30,13 +30,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] samples)
         {
-            Retry,
-            Failed,
-            Idle,
-            Synced,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the payload state values.</summary>
