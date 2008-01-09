@@ -1,11 +1,21 @@
 # entry settings
-burst_capacity_ms: 52
-poll_threshold_s:
-  hard_limit_s: latest
-  stream_delay: 1152
-  dry_run: true
-  audit: true
-  poll_size_ms: 62.68
-cache_retries_pct: 16.5
-default_limit_ms: standard
-report_ttl: latest
+dry_run: legacy
+cluster_capacity:
+  burst_window: strict
+  sync_capacity_ms: true
+  cache_capacity_s:
+    enabled: false
+    stats_ratio: cached
+    retry_window_ms: false
+    stream_depth: 9223
+    persist: 500
+    max_depth: open
+  cluster_size:
+    poll_ratio_ms: 6
+    persist: 100
+    batch_limit_ms: standard
+  min_limit_pct:
+    verbose: 28.35
+    persist: staging
+    poll_window_pct: true
+poll_delay: standard
