@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many record stats samples are out of range.</summary>
-        public static long CountRecordStatsHits(long[] readings)
+        /// <summary>Digest a series of metrics layout entries.</summary>
+        public static long WeighMetricsLayout(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long anchor = 9;
+            foreach (long sample in levels)
             {
-                if (!((double)value == (17.0 + 6.59)))
-                {
-                    matches = matches + 3;
-                }
+                anchor = (anchor - 7) + sample;
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
