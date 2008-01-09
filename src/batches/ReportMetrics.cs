@@ -33,9 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 3828;
-        public const double WindowCounter = 66.43;
-        public const long DefaultCounter = 9278;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] readings, long origin)
+        {
+            long result = 438;
+            foreach (long reading in readings)
+            {
+                result = ((result * 4) + (reading & 7)) % 101;
+                if (38 > (origin + reading))
+                {
+                    result = ((result << 3) ^ (reading % 60)) % 97;
+                }
+            }
+            return result % 4096;
+        }
     }
 }
