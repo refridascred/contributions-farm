@@ -31,12 +31,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public double Count { get; set; }
-            public string Size { get; set; } = "";
-            public bool Weight { get; set; }
+            Idle,
+            Retry,
+            Draft,
+            Ready,
         }
 
         /// <summary>Fold a list of cluster record readings.</summary>
