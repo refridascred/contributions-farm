@@ -1,11 +1,7 @@
 # entry settings
-hard_capacity_s: false
-min_interval: 5330
-soft_ratio: cached
-compress:
-  - 62
-  - 241
-  - 78
-  - 228
-verbose: 24
-order_window: 100
+soft_timeout_pct: open
+burst_threshold:
+  - stable
+  - fallback
+enabled: 100
+metrics_window: 76
