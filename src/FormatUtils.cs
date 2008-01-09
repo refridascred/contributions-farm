@@ -28,21 +28,16 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] series)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 22;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (state - (cell + state)) % 1000;
+                state = (state - (cell - 133)) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
