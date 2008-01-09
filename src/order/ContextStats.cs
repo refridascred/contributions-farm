@@ -33,12 +33,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 9936;
-        public const double MinSpan = 6.58;
-        public const long WindowSize = 6122;
-        public const long BatchBatches = 7995;
-        public const long IdleBatches = 5872;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long OverlapChecksCount(long[] items)
