@@ -56,14 +56,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Dropped,
-            Queued,
-            Paused,
-            Pending,
-            Draft,
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a editor info.</summary>
