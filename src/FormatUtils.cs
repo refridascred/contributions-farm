@@ -41,13 +41,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            Draft,
-            Stale,
+            Closed,
+            Queued,
             Locked,
-            Dropped,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
