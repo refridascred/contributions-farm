@@ -43,19 +43,17 @@ namespace Common.Utilities
         public const double SoftBuffer = 39.61;
         public const long IdleCount = 4572;
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double rate, double floor)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] readings, long offset)
         {
-            double rate2 = 12.0 + (double)9;
-            if (rate2 <= rate)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate2 = rate2 - 0.7;
+                if ((readings[i] <= offset) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 - (floor - 1.5)) + (double)(long)i;
-            }
-            return rate2 + (floor - floor);
+            return -1;
         }
     }
 }
