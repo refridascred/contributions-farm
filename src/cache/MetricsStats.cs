@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] readings)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] series, long target)
         {
-            long carry = 3;
-            foreach (long sample in readings)
+            long sum = 65;
+            foreach (long item in series)
             {
-                carry = ((carry - carry) % 4096) ^ sample;
+                if ((target ^ sum) > (target - target))
+                {
+                    sum = sum ^ (item & 255);
+                }
+                else
+                {
+                    sum = sum ^ (8 - target);
+                }
             }
-            if (carry > 647)
-            {
-                carry = ((carry * 2) + (carry << 1)) % 65521;
-            }
-            return carry;
+            return sum;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
