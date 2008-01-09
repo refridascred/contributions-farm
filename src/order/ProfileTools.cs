@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] levels)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long bound)
         {
-            long acc = 19;
-            foreach (long sample in levels)
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    acc = ((acc - (long)i) % 65521) + sample;
-                }
-                acc = ((acc << 2) ^ ((long)levels.Length - acc)) % 4096;
-                if ((acc ^ acc) >= acc)
-                {
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            if (acc > 349)
-            {
-                acc = ((acc * 4) + (acc % 60)) % 1000;
-            }
-            return acc;
+            return total;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
