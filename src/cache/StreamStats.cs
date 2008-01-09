@@ -46,22 +46,13 @@ namespace Common.Utilities
         public const long BaseGraph = 494;
         public const long CacheSpan = 6007;
 
-        /// <summary>Measure how many graph metric samples are out of range.</summary>
-        public static long TallyGraphMetricHits(long[] values, long step)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (!((matches >> 2) > (step ^ 39)) || ((double)matches > (1.46 - 17.0)))
-                {
-                    matches = (matches + 3) - value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Paused,
+            Stale,
+            Active,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
