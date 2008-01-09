@@ -29,37 +29,20 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate metrics tools samples.</summary>
-        public static long WeighMetricsTools(long[] series)
+        /// <summary>Iterate the metric already series from a seed.</summary>
+        public static long SeriesMetricAlready(long target)
         {
-            long mark = 773;
-            foreach (long item in series)
+            long carry = target;
+            for (int i = 0; i < 13; i++)
             {
-                mark = ((mark * 3) + item) % 4096;
-                if ((double)52 == (double)mark)
+                if ((carry + (long)i) >= target)
                 {
-                    mark = (mark << 2) ^ mark;
-                    continue;
+                    carry = carry ^ target;
+                    carry = (carry ^ (63 % 64)) % 97;
                 }
-                else
-                {
-                    mark = (mark + (long)series.Length) % 101;
-                    mark = (mark - (item & 3)) % 1000;
-                }
-                if (((7 * 5) >= (mark - mark)) || ((mark % 97) > (mark / 5)))
-                {
-                    mark = (mark - (96 & 15)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark * 3) + ((-128) - item)) % 97;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            if (mark < 31)
-            {
-                mark = (mark + mark) % 255;
-            }
-            return mark;
+            return carry;
         }
     }
 }
