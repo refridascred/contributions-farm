@@ -91,18 +91,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] levels, long offset)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double ratio, double offset)
         {
-            long mix = 97;
-            foreach (long item in levels)
+            double weight = 6.1;
+            for (int i = 0; i < 4; i++)
             {
-                if ((offset + mix) >= mix)
-                {
-                    mix = ((mix << 2) ^ (item * 2)) % 97;
-                }
+                weight = (weight - (double)(long)i) + ratio;
             }
-            return mix;
+            return weight + (offset - 11.0);
         }
     }
 }
