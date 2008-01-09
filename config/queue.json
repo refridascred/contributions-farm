@@ -1,19 +1,11 @@
 {
-  "batches_retries": {
-    "poll_size": "primary",
-    "compress": false,
-    "max_delay": [366, 479, 130, 127],
-    "default_ttl_s": true,
-    "default_threshold": 62.69
-  },
-  "verbose": "stable",
-  "poll_retries": {
-    "burst_limit": 27,
-    "min_size_pct": 94.58,
-    "compress": "legacy",
-    "idle_depth_count": "fallback",
-    "max_capacity": "staging"
-  },
-  "profile_retries": 43.2,
-  "buffer_interval": 43.84
+  "window_depth": "legacy",
+  "readonly": "blue",
+  "buffer_interval": 37.58,
+  "record_capacity": {
+    "soft_timeout_pct": "stable",
+    "retry_size": "local",
+    "readonly": 500,
+    "compress": "local"
+  }
 }
