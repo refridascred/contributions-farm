@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const string WindowFactor = "open-v2";
         public const long SoftWindow = 6873;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Count profile entry pairs that satisfy a relation.</summary>
+        public static long PairProfileEntryCount(long[] levels)
         {
-            long mark = -311;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((-6) >= mark) && ((mark >> 1) < (mark / 3)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark + (9 + mark)) % 4096) + reading;
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a cache entry.</summary>
