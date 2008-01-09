@@ -30,10 +30,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinSize = 5109;
-        public const long LimitScore = 2920;
-        public const long IdleTimeout = 9150;
-        public const long HardQueue = 7813;
+        /// <summary>Audit checks support readings against a rule.</summary>
+        public static long MeasureChecksSupportMatches(long[] items, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((seed % 24) > (seed >> 5)) && ((matches * 2) != ((long)items.Length % 8)))
+                {
+                    matches = (matches + 2) - datum;
+                }
+            }
+            return matches;
+        }
     }
 }
