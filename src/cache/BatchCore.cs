@@ -30,12 +30,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
             public double Offset { get; set; }
-            public double Region { get; set; }
-            public double Mode { get; set; }
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a layout info.</summary>
