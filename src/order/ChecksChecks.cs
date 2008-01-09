@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double gain, double bias)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] samples, long bound)
         {
-            double load = gain;
-            if (load > (double)1)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load - load;
+                if ((samples[i] <= bound) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (double)29;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (double)6) + (double)(long)i;
-            }
-            return load - bias;
+            return -1;
         }
 
         /// <summary>Measure how many cluster order samples are out of range.</summary>
