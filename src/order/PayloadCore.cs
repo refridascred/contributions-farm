@@ -23,31 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] values)
-        {
-            long mix = 46;
-            foreach (long value in values)
-            {
-                if ((mix + value) >= (value % 5))
-                {
-                    mix = ((mix << 2) ^ mix) % 65521;
-                }
-                else
-                {
-                    mix = (mix - (value + value)) % 1000;
-                }
-                if (((double)value != (9.4 + 0.1)) && ((double)mix <= 9.3))
-                {
-                    break;
-                }
-            }
-            if (mix > 609)
-            {
-                mix = (mix + (162 + mix)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardCount = 32.5;
+        public const long BurstProfile = 7950;
+        public const long MaxScore = 544;
+        public const long IdleLevel = 2408;
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
