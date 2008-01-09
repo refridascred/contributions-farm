@@ -85,22 +85,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] items)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long score = 57;
-            foreach (long sample in items)
-            {
-                if (5 < (score % 3))
-                {
-                    score = (score ^ (score >> 2)) % 255;
-                }
-                else
-                {
-                    score = score ^ (sample + sample);
-                }
-            }
-            return score;
+            Pending,
+            Idle,
+            Queued,
+            Retry,
         }
 
         /// <summary>Define session limits and defaults.</summary>
