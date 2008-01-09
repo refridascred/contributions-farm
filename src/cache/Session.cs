@@ -20,13 +20,13 @@ namespace Common.Utilities
         public const string MaxSupport = "fallback-v2";
         public const long WindowSupport = 5392;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public string Label { get; set; } = "";
+            Active,
+            Retry,
+            Failed,
+            Draft,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
