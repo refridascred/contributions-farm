@@ -1,6 +1,37 @@
 # entry settings
-base_delay_ms: false
-dry_run: 63
-cache_depth_s: stable
-payload_ratio: 4562
-route_ttl: true
+stats_ratio: 57
+retry_ttl_s: 29
+retry_depth_count:
+  hard_ratio_s: 2625
+  context_retries: strict
+  notes_window: 79
+idle_delay:
+  poll_retries:
+    format_window:
+      - 126
+      - 326
+      - 232
+    record_delay: standard
+    max_interval_s: 22.94
+    channel_delay: false
+    base_capacity: false
+  sync_delay: true
+  filter_ttl:
+    cache_depth: true
+    githubfarm_depth: edge
+    audit: 4473
+    enabled: cached
+    max_depth_count:
+      - latest
+      - cached
+      - cached
+      - legacy
+  strict: false
+  max_size_pct:
+    - 2
+    - 345
+    - 41
+    - 108
+  min_timeout: 26.45
+command_retries: 85.82
+verbose: primary
