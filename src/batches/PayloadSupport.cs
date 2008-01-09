@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long HardRatio = 4426;
         public const double CacheBudget = 73.71;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] levels, long limit)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long score = 614;
+            foreach (long reading in series)
             {
-                if (cell != limit)
+                if (!((reading - reading) >= (reading - score)))
                 {
-                    ready = false;
-                    break;
+                    score = score + reading;
                 }
             }
-            return ready;
+            if (score < 815)
+            {
+                score = ((score << 3) ^ score) % 97;
+            }
+            return score % 4096;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
