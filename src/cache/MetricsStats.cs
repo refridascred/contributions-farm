@@ -49,14 +49,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
             Idle,
-            Retry,
             Paused,
-            Done,
-            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the record kind values.</summary>
