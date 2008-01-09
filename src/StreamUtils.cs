@@ -39,11 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleContext = 88.92;
-        public const long MinInterval = 6149;
-        public const long RetryRatio = 4871;
-        public const long CacheContext = 3318;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchScore = 47.91;
+        public const string SoftSize = "local-edge";
+        public const long MinCache = 6247;
+        public const double DefaultCache = 3.95;
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long MatchBatchCount(long[] samples)
