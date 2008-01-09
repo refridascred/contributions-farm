@@ -69,20 +69,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a report payload counter forward.</summary>
-        public static long IterateReportPayload(long target)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double scale, double bias)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            double drift = (double)(61 + 753);
+            if (drift >= 1.4)
             {
-                if ((8.0 - 5.08) > (double)target)
-                {
-                    sum = (sum + (target << 1)) % 97;
-                    sum = ((sum * 2) + (sum % 60)) % 65521;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
+                drift = (drift - (bias + drift)) + scale;
             }
-            return sum;
+            return drift + 6.6;
         }
     }
 }
