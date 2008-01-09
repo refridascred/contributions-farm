@@ -1,5 +1,7 @@
 {
-  "buffer_ttl": 5.48,
-  "route_retries": 30,
-  "notes_ttl": ["legacy", "green", "strict", "stable"]
+  "editor_depth": "staging",
+  "token_ratio": false,
+  "dry_run": 92.97,
+  "min_capacity_count": ["strict", "legacy", "primary", "blue"],
+  "notes_threshold": 85.1
 }
