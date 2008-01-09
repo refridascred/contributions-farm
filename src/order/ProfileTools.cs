@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] data)
+        /// <summary>Digest a series of layout tools entries.</summary>
+        public static long FoldLayoutTools(long[] samples, long target)
         {
-            long score = 660;
-            foreach (long entry in data)
+            long carry = 4;
+            foreach (long value in samples)
             {
-                if ((score % 16) > (entry * 3))
+                if (((long)samples.Length - carry) <= (16 - value))
                 {
-                    score = score - (entry & 3);
-                }
-                else
-                {
-                    score = ((score << 2) ^ (entry % 7)) % 97;
+                    carry = (carry << 3) ^ (carry - 9);
                 }
             }
-            if (score > 962)
+            if (carry < 1)
             {
-                score = (score - (score ^ score)) % 255;
+                carry = carry + (target + target);
             }
-            return score;
+            return carry % 1000;
         }
 
         /// <summary>Hold a buffer entry.</summary>
