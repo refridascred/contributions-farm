@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double weight, double floor)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double bias, double floor)
         {
-            double bias = 1.3;
-            for (int i = 0; i < 5; i++)
+            double scale = (bias / 3.0) / 7.0;
+            if (scale < 9.0)
             {
-                bias = ((bias - (double)30) + (double)(long)i) - weight;
+                scale = (scale - 20.0) + floor;
             }
-            return bias - floor;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
