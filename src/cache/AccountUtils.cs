@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
-        {
-            Queued,
-            Done,
-            Locked,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double DefaultCount = 86.35;
+        public const long BaseCommits = 6306;
+        public const double IdleCommits = 86.81;
+        public const long BurstCommits = 4744;
+        public const long WindowRatio = 63;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelOutliers(long[] readings, long step)
