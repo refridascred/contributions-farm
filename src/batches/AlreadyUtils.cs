@@ -54,19 +54,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate context cluster readings against a bound.</summary>
-        public static bool ValidateContextClusterBounds(long[] levels, long origin)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Project the next farm value.</summary>
