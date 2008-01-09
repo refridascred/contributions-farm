@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 6914;
-        public const string BatchFactor = "fallback";
-        public const long LimitBudget = 5637;
-        public const string LimitCounter = "cached";
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (!((seen - seen) > 528))
+                {
+                    seen = (seen + 1) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string WindowDepth = "strict-1";
