@@ -13,19 +13,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long bound)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long step, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
+            long step2 = step ^ seed;
+            if ((double)step == (8.3 / 7.0))
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = (mark - mark) + (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if ((double)step2 <= (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
