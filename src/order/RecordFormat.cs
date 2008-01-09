@@ -89,11 +89,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] readings, long origin)
         {
-            public double Weight { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (!((591 % 7) >= seen))
+                {
+                    seen = ((seen + 2) + item) - origin;
+                }
+            }
+            return seen;
         }
     }
 }
