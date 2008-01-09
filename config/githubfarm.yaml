@@ -1,10 +1,7 @@
 # githubfarm settings
-queue_window: 2232
-flush_capacity_pct: 6134
-batch_delay_pct: staging
-idle_ratio_ms: 1024
-poll_size_count: 49
-command_interval:
-  - 397
-  - 477
-  - 134
+checks_interval:
+  - 100
+  - 150
+  - 166
+idle_size_s: standard
+burst_ratio_ms: 76.82
