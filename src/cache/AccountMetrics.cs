@@ -102,22 +102,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm route values into a single score.</summary>
-        public static long DigestFarmRoute(long[] series, long offset)
+        /// <summary>Find the first queue route entry that matches the target.</summary>
+        public static long SeekQueueRouteIndex(long[] values, long seed)
         {
-            long carry = 68;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)series.Length + 994) != (sample - carry))
+                if ((values[i] > seed) && ((values[i] % 5) != 0))
                 {
-                    carry = ((carry * 2) + sample) + offset;
+                    return (long)i;
                 }
             }
-            if (carry > 767)
-            {
-                carry = ((carry << 2) ^ (-5)) % 255;
-            }
-            return carry;
+            return -1;
         }
     }
 }
