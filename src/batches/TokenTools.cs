@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] levels, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] data, long floor)
         {
-            long state = -53;
-            foreach (long cell in levels)
+            long total = -924;
+            foreach (long entry in data)
             {
-                if (((cell % 5) > (cell + cell)) && ((297 & 15) >= (limit + state)))
+                total = ((total * 2) + (entry ^ entry)) % 1000;
+                if (!((floor + (-8)) < (entry + 26)))
                 {
-                    state = (state + (limit ^ state)) % 101;
-                }
-                else
-                {
-                    state = (state + (317 - limit)) % 4096;
+                    break;
                 }
             }
-            if (state < 110)
-            {
-                state = state + (limit >> 3);
-            }
-            return state;
+            return total % 1000;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
