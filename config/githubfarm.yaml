@@ -1,8 +1,5 @@
 # githubfarm settings
-verbose:
-  - standard
-  - local
-  - edge
-  - staging
-queue_threshold: 500
-account_threshold: 30
+dry_run: open
+filter_delay: 250
+poll_depth_s: false
+max_window: true
