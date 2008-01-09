@@ -1,4 +1,13 @@
 # support settings
-poll_interval_s: true
-hard_limit_ms: 250
-flush_ttl: 75.41
+default_depth_pct: blue
+enabled:
+  - staging
+  - green
+audit: 57
+soft_retries: blue
+flush_window_ms: eu-west
+cache_capacity:
+  - 128
+  - 23
+  - 175
+  - 185
