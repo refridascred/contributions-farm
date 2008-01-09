@@ -26,23 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long offset)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if (offset >= ((long)i - state))
-                {
-                    state = (state ^ state) % 4096;
-                }
-                else
-                {
-                    state = (state ^ offset) % 97;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Ready,
+            Synced,
+            Draft,
+            Queued,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
