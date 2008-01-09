@@ -40,18 +40,13 @@ namespace Common.Utilities
         public const long BatchBatches = 7995;
         public const long IdleBatches = 5872;
 
-        /// <summary>Measure how many channel batch samples are out of range.</summary>
-        public static long TallyChannelBatchMatches(long[] levels, long seed)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (0.74 < (double)seed)
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            Closed,
+            Queued,
+            Ready,
+            Retry,
         }
     }
 }
