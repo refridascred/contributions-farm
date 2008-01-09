@@ -30,13 +30,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Validate githubfarm profile readings against a bound.</summary>
+        public static bool VerifyGithubfarmProfileLimits(long[] samples, long bound)
         {
-            public double Score { get; set; }
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of report entries.</summary>
