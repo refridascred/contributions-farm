@@ -31,9 +31,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 2671;
-        public const long BurstFilter = 2747;
-        public const long BurstInterval = 5464;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] readings, long offset)
+        {
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
