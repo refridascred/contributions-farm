@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] samples)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long sum = 310;
-            foreach (long cell in samples)
-            {
-                sum = ((sum << 2) ^ 29) + cell;
-            }
-            return sum;
+            public string Level { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Grade a support value against two limits.</summary>
