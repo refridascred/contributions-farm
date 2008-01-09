@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long MaxMetric = 3391;
         public const long LimitMetric = 5894;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] readings, long target)
+        /// <summary>Derive the next batches counter value from a seed.</summary>
+        public static long IterateBatchesCounter(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((readings[i] < target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
