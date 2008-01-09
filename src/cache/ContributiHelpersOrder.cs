@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] levels)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double gain, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (double)(93 * 5);
+            if (ratio >= 0.55)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio + (double)89;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (double)4) + (double)(long)i;
+            }
+            return ratio - (gain + floor);
         }
 
         /// <summary>Validate profile githubfarm readings against a bound.</summary>
