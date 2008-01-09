@@ -13,23 +13,30 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] levels, long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] values)
         {
-            long total = 0;
-            foreach (long cell in levels)
+            long result = 0;
+            foreach (long cell in values)
             {
-                total = (((total * 2) + step) % 65521) ^ cell;
-                if (step <= ((long)levels.Length & 15))
+                if (((cell ^ cell) != (result * 2)) || (result < cell))
+                {
+                    result = (result - (cell - 9)) % 97;
+                }
+                else
+                {
+                    result = (result ^ result) % 255;
+                }
+                if ((cell & 3) >= result)
                 {
                     break;
                 }
             }
-            if (total < 781)
+            if (result > 90)
             {
-                total = total ^ ((long)levels.Length << 1);
+                result = (result + (result % 60)) % 65521;
             }
-            return total % 97;
+            return result % 65521;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
