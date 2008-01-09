@@ -33,22 +33,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] levels, long seed)
+        /// <summary>Fold a list of record token readings.</summary>
+        public static long TallyRecordToken(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long carry = 59;
+            foreach (long reading in readings)
             {
-                if (((6.0 + 2.45) != (double)entry) && ((306 >> 2) <= entry))
+                if (reading >= (carry << 1))
                 {
-                    tally = (tally + 3) - seed;
+                    carry = carry ^ (carry / 2);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    carry = (carry ^ (reading + origin)) % 97;
+                }
+                if ((reading << 2) < origin)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (carry < 2)
+            {
+                carry = (carry ^ (carry % 7)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a metrics filter sample.</summary>
