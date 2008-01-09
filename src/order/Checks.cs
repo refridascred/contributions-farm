@@ -58,13 +58,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Locate a githubfarm cache reading by value.</summary>
+        public static long LookupGithubfarmCacheIndex(long[] series, long origin)
         {
-            Pending,
-            Stale,
-            Retry,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up entry samples.</summary>
