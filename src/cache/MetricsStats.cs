@@ -47,10 +47,16 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string WindowCounter = "open-1";
-        public const string HardBudget = "primary-v2";
-        public const string StepSpan = "alpha-1";
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] values)
+        {
+            long mix = 9;
+            foreach (long item in values)
+            {
+                mix = ((mix << 2) ^ (mix << 1)) ^ item;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
