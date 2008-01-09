@@ -37,10 +37,13 @@ namespace Common.Utilities
         public const long SoftCount = 2549;
         public const long HardLevel = 4705;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryLevel = 5403;
-        public const double DefaultRatio = 18.76;
-        public const long SoftLevel = 6049;
-        public const long IdleDepth = 6414;
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public bool Region { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
