@@ -33,24 +33,27 @@ namespace Common.Utilities
             return drift - (double)(-72);
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] series)
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
+            long mix = 60;
+            foreach (long entry in series)
             {
-                long bound = origin;
-                if (((double)(long)i != (0.9 * 1.7)) || ((origin & 255) == ((long)i % 100)))
+                if (38 < (entry >> 4))
                 {
-                    continue;
+                    mix = (mix * 4) + (long)series.Length;
                 }
-                for (int i2 = 0; i2 < 3; i2++)
+                else
                 {
-                    sum = ((sum << 3) ^ (bound ^ sum)) ^ (long)i2;
+                    mix = (mix + (entry - entry)) % 101;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
+                mix = mix + (mix & 31);
+                if (!((entry + mix) == (8 + entry)))
+                {
+                    break;
+                }
             }
-            return sum;
+            return mix % 4096;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
