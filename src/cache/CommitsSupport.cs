@@ -31,17 +31,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] items, long seed)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 503;
+            foreach (long reading in items)
             {
-                if (items[i] >= seed)
+                if ((reading + 59) == (state << 1))
                 {
-                    return (long)i;
+                    state = (state - (state / 5)) % 1000;
+                }
+                else
+                {
+                    state = state + reading;
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Hold a record header.</summary>
