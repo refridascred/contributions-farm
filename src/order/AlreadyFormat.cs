@@ -5,30 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long origin, long seed)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long step, long seed)
         {
-            long slot = origin - seed;
-            if ((slot <= (seed - seed)) && ((origin % 64) >= slot))
+            long prev = step - seed;
+            if (((seed >> 2) >= (18 + prev)) && ((step - 69) < (prev - seed)))
             {
                 return 7;
             }
             else
             {
-                if ((slot - slot) >= origin)
+                if ((seed << 2) == (prev >> 3))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if ((origin * 4) <= slot)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 2;
                 }
             }
         }
