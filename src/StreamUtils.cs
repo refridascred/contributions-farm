@@ -60,10 +60,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 7599;
-        public const long StepFactor = 1934;
-        public const string BaseTimeout = "open-1";
-        public const long WindowFormat = 8347;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 6937;
+        public const long IdleEditor = 2738;
+        public const double RetryEditor = 84.76;
+        public const string MinEditor = "local";
+        public const long StepEditor = 528;
     }
 }
