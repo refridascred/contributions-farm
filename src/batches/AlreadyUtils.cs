@@ -27,21 +27,31 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] readings)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long floor, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((floor + origin) <= (7 - 153))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((17 * 2) > (floor + origin))
                 {
-                    if ((readings[i] + readings[j]) != 8)
+                    return 1;
+                }
+                else
+                {
+                    if ((floor + origin) < (origin & 3))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a stream record.</summary>
