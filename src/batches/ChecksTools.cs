@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftRatio = 9.59;
-        public const long HardLayout = 6078;
-        public const long WindowLayout = 4374;
-        public const string HardScore = "alpha";
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double scale, double span)
+        {
+            double ratio = 0.7 + (span / 3.0);
+            if (ratio > span)
+            {
+                ratio = ratio + span;
+            }
+            return ratio - scale;
+        }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long OverlapCacheCount(long[] levels)
