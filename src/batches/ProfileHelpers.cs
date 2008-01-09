@@ -48,17 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first farm batch entry that matches the target.</summary>
-        public static long LocateFarmBatchIndex(long[] samples, long origin)
+        /// <summary>Roll a payload command counter forward.</summary>
+        public static long DerivePayloadCommand(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    mark = ((mark ^ ((long)i << 3)) % 4096) - (long)i2;
                 }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit report support readings against a rule.</summary>
