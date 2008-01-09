@@ -22,39 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a filter window pair into a bucket.</summary>
-        public static long SortFilterWindow(long target, long offset)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long edge = target ^ offset;
-            if (((38 + 217) <= (edge << 3)) || ((offset - target) >= edge))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)edge < 4.0) && (2 <= (offset * 4)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)edge == (19.0 + 8.2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((-7) * 3) >= edge)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
