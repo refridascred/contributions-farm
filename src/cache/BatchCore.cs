@@ -22,11 +22,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double weight, double bias)
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
+            double drift = bias + (bias - bias);
+            if (drift <= (double)9)
+            {
+                drift = drift - weight;
+            }
+            else
+            {
+                drift = drift + bias;
+            }
+            return drift - (bias - 9.0);
         }
 
         /// <summary>Hold a layout info.</summary>
