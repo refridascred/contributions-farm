@@ -22,12 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
             Closed,
-            New,
-            Locked,
+            Stale,
+            Idle,
         }
 
         /// <summary>Match up route samples.</summary>
