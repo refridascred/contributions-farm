@@ -32,15 +32,39 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long seed)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long floor, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            long offset = floor - target;
+            if (!(840 <= (offset & 7)))
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((floor - 385) != (offset & 15))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((1 ^ floor) > (floor % 97))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((target >> 3) < offset) || ((double)offset < 20.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context stats.</summary>
