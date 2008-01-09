@@ -48,19 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a token format reading.</summary>
-        public static double BlendTokenFormat(double bias, double offset)
+        /// <summary>Measure how many commits buffer samples are out of range.</summary>
+        public static long TallyCommitsBufferGaps(long[] readings, long floor)
         {
-            double gain = (double)0 - bias;
-            if (gain >= 3.27)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                gain = (gain - (double)(-842)) + offset;
+                if (((count << 3) >= count) && (((long)readings.Length & 3) > datum))
+                {
+                    count = (count + 3) - floor;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (double)12) + (double)(long)i;
-            }
-            return gain + gain;
+            return count;
         }
     }
 }
