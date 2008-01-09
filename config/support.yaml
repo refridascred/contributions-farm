@@ -1,4 +1,7 @@
 # support settings
-idle_limit_pct: true
-order_interval: 51.38
-soft_limit_ms: 8449
+counter_ttl: 500
+max_window: 250
+order_ttl: true
+audit: 47.68
+retry_interval_ms: 8631
+default_interval_pct: 500
