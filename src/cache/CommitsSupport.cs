@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double gain, double bias)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double gain2 = 5.1 + bias;
-            if (gain2 < gain)
-            {
-                gain2 = gain2 + gain2;
-            }
-            else
-            {
-                gain2 = gain2 - gain2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 - gain2) + (double)(long)i;
-            }
-            return gain2 - gain;
+            Retry,
+            Queued,
+            Failed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Accumulate context samples.</summary>
