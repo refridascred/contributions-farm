@@ -38,14 +38,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] series, long floor)
         {
-            Dropped,
-            Idle,
-            Failed,
-            Closed,
-            Paused,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (((item << 3) <= (floor - 590)) && (((count + 2) < (item >> 5)) || ((floor - floor) <= (floor * 4))))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
