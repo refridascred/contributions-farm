@@ -25,18 +25,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] items)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] data, long limit)
         {
-            long anchor = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (((anchor << 1) < anchor) && ((anchor + 6) >= (99 - anchor)))
+                if ((limit ^ datum) == (seen ^ limit))
                 {
-                    anchor = ((anchor << 3) ^ ((-1) % 3)) ^ cell;
+                    seen = seen + 3;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
