@@ -22,14 +22,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Idle,
-            Paused,
-            Ready,
-            Queued,
-            Closed,
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
