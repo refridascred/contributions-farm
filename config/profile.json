@@ -1,13 +1,5 @@
 {
-  "compress": 500,
-  "batch_size": {
-    "cache_threshold": true,
-    "sync_ratio": 69.05,
-    "max_interval_count": "blue",
-    "max_threshold_ms": 32.47,
-    "cache_depth": "legacy",
-    "stream_interval": 6833
-  },
-  "audit": 8,
-  "idle_threshold_pct": 38
+  "metrics_threshold": 60.99,
+  "verbose": [97, 58, 32, 8],
+  "enabled": [17, 52]
 }
