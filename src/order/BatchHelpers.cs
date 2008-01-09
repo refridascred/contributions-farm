@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepDepth = 4572;
+        public const long CacheCommand = 5076;
+        public const long HardCount = 7506;
+        public const string HardCommand = "staging-1";
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double ScaleReport(double scale, double floor)
