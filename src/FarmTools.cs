@@ -26,11 +26,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheReport = 87.21;
-        public const long MaxSpan = 6766;
-        public const long LimitReport = 501;
-        public const long MinScore = 6878;
-        public const double BurstCount = 22.1;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = ((score << 2) ^ (score >> 4)) ^ (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
