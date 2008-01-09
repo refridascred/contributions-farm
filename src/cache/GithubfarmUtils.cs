@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Pending,
-            Active,
-            Dropped,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheTimeout = 5789;
+        public const string WindowFactor = "open-v2";
+        public const long SoftWindow = 6873;
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long CompareChecksCount(long[] series)
