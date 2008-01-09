@@ -46,19 +46,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next command schema value from a seed.</summary>
-        public static long SeriesCommandSchema(long limit)
+        /// <summary>Classify a cache graph pair into a bucket.</summary>
+        public static long GradeCacheGraph(long origin, long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
+            long offset = origin + floor;
+            if ((floor ^ offset) < (offset << 1))
             {
-                if ((0.39 * 0.7) >= (double)limit)
-                {
-                    mark = mark ^ (limit + limit);
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if (((offset / 7) >= floor) || ((floor * 5) == (floor / 9)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
