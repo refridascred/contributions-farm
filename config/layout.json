@@ -1,15 +1,5 @@
 {
-  "filter_capacity": {
-    "dry_run": "cached",
-    "batch_ttl_pct": 34,
-    "notes_interval": "local",
-    "session_depth": "open",
-    "persist": 250,
-    "warm_window": [298, 335]
-  },
-  "retry_size": "latest",
-  "poll_timeout_count": [417, 262, 442, 195],
-  "batch_size": false,
-  "base_size_s": ["edge", "eu-west", "edge"],
-  "compress": 500
+  "flush_capacity_ms": "legacy",
+  "retry_delay_s": true,
+  "warm_ratio_count": "legacy"
 }
