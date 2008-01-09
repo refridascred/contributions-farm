@@ -38,10 +38,19 @@ namespace Common.Utilities
         public const long LimitLevel = 3471;
         public const long BatchTimeout = 1096;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseSize = 18.05;
-        public const string MinSupport = "local-v2";
-        public const double DefaultSupport = 20.35;
+        /// <summary>Count the cluster schema entries that pass the check.</summary>
+        public static long AuditClusterSchemaHits(long[] readings, long origin)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)count < (5.5 / 8.0))
+                {
+                    count = ((count + 3) - cell) + origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueGaps(long[] samples, long origin)
