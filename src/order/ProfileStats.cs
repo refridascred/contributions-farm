@@ -23,15 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] samples)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] data, long bound)
         {
-            long score = 5;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long item in data)
             {
-                score = ((score + (score * 3)) % 65521) ^ datum;
+                if (item > bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Describe the tools level values.</summary>
