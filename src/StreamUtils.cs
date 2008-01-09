@@ -50,18 +50,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] series)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)reading <= (19.0 / 9.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((samples[i] + samples[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
