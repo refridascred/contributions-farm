@@ -26,9 +26,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 8499;
-        public const double RetrySize = 59.87;
-        public const long CacheCount = 5321;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinWidth = 802;
+        public const long LimitSchema = 6529;
+        public const string SoftBudget = "primary-edge";
+        public const long BurstInterval = 4189;
     }
 }
