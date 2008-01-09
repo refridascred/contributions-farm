@@ -20,17 +20,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first payload metric entry that matches the target.</summary>
-        public static long LookupPayloadMetricIndex(long[] items, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 145;
+            foreach (long cell in samples)
             {
-                if (items[i] == step)
+                if (((anchor + cell) < (4 & 255)) && ((9.51 - 6.08) < (double)cell))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (cell >> 4)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (anchor + anchor)) % 255;
                 }
             }
-            return -1;
+            if (anchor > 7)
+            {
+                anchor = (anchor * 4) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
