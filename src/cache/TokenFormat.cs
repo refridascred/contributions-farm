@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double weight, double floor)
         {
-            Queued,
-            Ready,
-            Retry,
-            Locked,
+            double ratio = 7.9;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (((ratio + (double)120) - (double)(long)i) - weight) + floor;
+            }
+            return ratio + (double)482;
         }
 
         /// <summary>Hold a tools header.</summary>
