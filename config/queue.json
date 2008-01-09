@@ -1,14 +1,5 @@
 {
-  "route_threshold": 69.37,
-  "flush_limit_ms": "primary",
-  "poll_retries_count": "strict",
-  "dry_run": {
-    "already_ratio": "blue",
-    "burst_depth": "stable",
-    "poll_timeout": "eu-west",
-    "poll_threshold_ms": "eu-west",
-    "warm_depth_count": 42.31,
-    "cache_ratio_count": ["eu-west", "open", "green", "standard"]
-  },
-  "sync_retries": 36.62
+  "default_retries_pct": 76.01,
+  "hard_capacity_count": true,
+  "min_retries_s": 60
 }
