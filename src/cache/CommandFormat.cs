@@ -44,18 +44,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit profile editor readings against a rule.</summary>
-        public static long MeasureProfileEditorHits(long[] samples)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((tally + entry) == (entry - 6))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Ready,
+            Closed,
+            Paused,
+            Queued,
+            Locked,
         }
     }
 }
