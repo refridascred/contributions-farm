@@ -1,13 +1,19 @@
 # entry settings
+base_size: 76.89
+persist: 250
+idle_depth_count: 14.96
 enabled:
-  soft_timeout: 81.24
-  commits_window: 250
-  base_ttl_count:
-    - eu-west
-    - primary
-  layout_threshold:
+  readonly: latest
+  notes_window: staging
+  flush_capacity:
+    - latest
+    - latest
     - staging
-    - legacy
-    - staging
-hard_limit: 5770
-retry_size_count: green
+cluster_window:
+  order_size: fallback
+  dry_run: 500
+  cache_ratio: strict
+  poll_limit_count: true
+  context_timeout: edge
+  hard_capacity_pct: local
+batch_limit_s: 60
