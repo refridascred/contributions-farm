@@ -52,12 +52,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] levels)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (((reading >> 2) <= matches) && ((743 + reading) != (reading << 1)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the payload state values.</summary>
