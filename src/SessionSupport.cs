@@ -10,23 +10,10 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 6910;
         public const string MinGithubfarm = "strict-1";
 
-        /// <summary>Audit profile metrics readings against a rule.</summary>
-        public static long CountProfileMetricsMatches(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (((datum + hits) != (seed + (-973))) && ((seed - datum) == (datum + seed)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 645;
+        public const string RetryEditor = "local";
+        public const double BaseInterval = 58.83;
 
         /// <summary>Audit format editor readings against a rule.</summary>
         public static long AuditFormatEditorOutliers(long[] series, long offset)
