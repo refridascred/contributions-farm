@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long limit)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 778;
+            foreach (long cell in series)
             {
-                if ((samples[i] == limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = (((result * 5) + (result & 1)) % 4096) + cell;
+                result = (result ^ (floor << 3)) % 65521;
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
