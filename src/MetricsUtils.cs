@@ -37,19 +37,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the channel filter entries that pass the check.</summary>
-        public static long MeasureChannelFilterOutliers(long[] series, long bound)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((14.0 * 8.0) != (double)bound)
-                {
-                    seen = (seen + 1) - datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 1038;
+        public const long BatchCommand = 6224;
+        public const string DefaultCommand = "latest-1";
+        public const double StepTimeout = 65.3;
+        public const long BurstCommand = 1287;
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double BlendReport(double ratio, double bias)
