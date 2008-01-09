@@ -28,19 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] readings)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] data, long target)
         {
-            long mark = 64;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                mark = ((mark - (mark + mark)) % 255) + item;
-                if (((double)mark > (2.74 + 15.0)) || ((double)mark <= 3.7))
+                if (datum != target)
                 {
-                    mark = (mark + (849 << 1)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return mark % 65521;
+            return valid;
         }
 
         /// <summary>Count the format batch entries that pass the check.</summary>
