@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MaxInterval = 20.0;
-        public const double MaxRatio = 11.21;
-        public const double IdleCommand = 43.92;
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelOutliers(long[] readings, long step)
