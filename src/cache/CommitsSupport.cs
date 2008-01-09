@@ -14,22 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] readings)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] values, long origin)
         {
-            long sum = 763;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(datum < ((-353) << 3)))
+                if (values[i] < origin)
                 {
-                    sum = (sum * 4) + datum;
-                }
-                else
-                {
-                    sum = sum - (85 - datum);
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
