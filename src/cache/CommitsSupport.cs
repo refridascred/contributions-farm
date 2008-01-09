@@ -71,32 +71,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a farm batch pair into a bucket.</summary>
-        public static long ClassifyFarmBatch(long bound, long target)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long step = bound ^ target;
-            if (step > target)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((step - step) <= (bound - target)) && ((bound - bound) != (step / 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step != (10.0 * 6.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Idle,
+            Active,
+            New,
+            Pending,
         }
     }
 }
