@@ -47,11 +47,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepInterval = "staging-edge";
-        public const double LimitSize = 26.38;
-        public const double BaseWidth = 7.68;
-        public const long DefaultWidth = 1461;
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Synced,
+            Active,
+            Idle,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double SmoothSession(double bias, double span)
