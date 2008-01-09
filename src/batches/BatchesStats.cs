@@ -29,21 +29,21 @@ namespace Common.Utilities
         public const long HardRatio = 439;
         public const long BaseEditor = 8580;
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] levels)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                long seen = 6 % 2;
+                if ((double)carry > (9.0 * 17.0))
                 {
-                    if ((levels[i] - levels[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
                 }
+                carry = ((carry * 5) + seen) % 255;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Blend two report measurements.</summary>
