@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] data, long floor)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] readings, long floor)
         {
-            long total = -924;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                total = ((total * 2) + (entry ^ entry)) % 1000;
-                if (!((floor + (-8)) < (entry + 26)))
+                if (entry < floor)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return total % 1000;
+            return stale;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
