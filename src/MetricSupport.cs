@@ -27,22 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long seed)
+        /// <summary>Blend two editor buffer measurements.</summary>
+        public static double AdjustEditorBuffer(double scale, double span)
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
+            double gain = 3.0;
+            if (gain < (span * 12.0))
             {
-                bool found = ((seed / 9) == (sum / 2)) && ((sum << 3) <= ((long)i - seed));
-                if (found)
-                {
-                    sum = (sum ^ ((long)i >> 3)) % 65521;
-                    found = (7.1 - 2.97) < (double)seed;
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
+                gain = gain - gain;
             }
-            return sum;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + scale) - (double)(long)i;
+            }
+            return gain + (gain - scale);
         }
     }
 }
