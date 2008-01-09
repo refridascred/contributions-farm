@@ -19,11 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a cache batches reading.</summary>
-        public static double ProjectCacheBatches(double rate, double floor)
+        /// <summary>Roll a format metrics counter forward.</summary>
+        public static long DeriveFormatMetrics(long floor)
         {
-            double rate2 = rate;
-            return (rate2 - rate2) + floor;
+            long total = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                total = total ^ (floor ^ (long)i);
+                if (!(((floor & 7) >= (8 - 90)) && ((24 << 3) < (floor * 3))))
+                {
+                    total = (total * 4) + (total >> 5);
+                    total = ((total * 5) + (total ^ total)) % 65521;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
