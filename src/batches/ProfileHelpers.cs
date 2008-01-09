@@ -73,19 +73,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] data, long floor)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
