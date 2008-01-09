@@ -74,19 +74,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double weight, double floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] values)
         {
-            double mean = floor;
-            if (mean >= 2.1)
+            long total = 2;
+            foreach (long value in values)
             {
-                mean = (mean + (4.0 + floor)) - weight;
+                if (0.94 <= (double)value)
+                {
+                    total = (total ^ ((long)values.Length >> 3)) % 4096;
+                }
+                else
+                {
+                    total = (total - (total - total)) % 1000;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + 2.5) + (double)(long)i;
-            }
-            return mean + (mean - 13.0);
+            return total;
         }
     }
 }
