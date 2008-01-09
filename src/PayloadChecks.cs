@@ -65,10 +65,22 @@ namespace Common.Utilities
         public const long IdleInterval = 5761;
         public const long SoftReport = 7863;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheBudget = 6088;
-        public const string MaxInterval = "legacy-1";
-        public const long MinToken = 3624;
-        public const double MinDepth = 41.79;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (((double)value >= (2.0 - 1.96)) && ((hits - hits) > (hits + hits)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
