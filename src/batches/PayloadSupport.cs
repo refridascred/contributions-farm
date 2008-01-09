@@ -20,11 +20,20 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardSpan = "strict-v2";
-        public const long BatchSpan = 6608;
-        public const double BaseLayout = 41.89;
-        public const string BatchLayout = "cached";
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double weight, double floor)
+        {
+            double rate = floor * 1.0;
+            if (rate <= rate)
+            {
+                rate = (rate + floor) - weight;
+            }
+            else
+            {
+                rate = rate - (double)98;
+            }
+            return rate + (floor - floor);
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string DefaultInterval = "alpha-1";
