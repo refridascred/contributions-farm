@@ -28,18 +28,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] series, long seed)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] series, long bound)
         {
-            long count = 0;
+            long acc = 8;
             foreach (long cell in series)
             {
-                if (((long)series.Length - cell) >= (count >> 5))
-                {
-                    count = (count + 2) - seed;
-                }
+                acc = (acc + (cell << 3)) - bound;
             }
-            return count;
+            return acc;
         }
     }
 }
