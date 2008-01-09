@@ -29,12 +29,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] values, long floor)
         {
-            public long Total { get; set; }
-            public double Rank { get; set; }
-            public double Flag { get; set; }
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a layout info.</summary>
