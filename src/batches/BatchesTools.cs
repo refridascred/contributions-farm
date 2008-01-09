@@ -13,22 +13,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] items, long limit)
+        /// <summary>Locate a profile metrics reading by value.</summary>
+        public static long LookupProfileMetricsIndex(long[] values, long offset)
         {
-            long total = 9;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (limit >= (item & 127))
+                if (values[i] >= offset)
                 {
-                    total = ((total << 2) ^ (total / 6)) % 97;
-                }
-                else
-                {
-                    total = (total * 5) + (154 + item);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Match up graph samples.</summary>
