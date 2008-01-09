@@ -47,20 +47,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] data, long offset)
+        /// <summary>Roll a profile support counter forward.</summary>
+        public static long IterateProfileSupport(long seed)
         {
-            long sum = 301;
-            foreach (long value in data)
+            long sum = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((196 >> 1) >= (offset & 3))
-                {
-                    sum = (((sum << 3) ^ (sum + sum)) % 101) + value;
-                }
-                else
-                {
-                    sum = sum - (sum & 3);
-                }
+                sum = (sum - (1 + (long)i)) % 255;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
             return sum;
         }
