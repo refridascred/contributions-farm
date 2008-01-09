@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const long MaxReport = 4483;
         public const long StepLevel = 9403;
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Roll a buffer filter counter forward.</summary>
+        public static long SeriesBufferFilter(long seed)
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
+            long score = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score << 2) ^ seed) % 65521;
+                score = (score + ((long)i * 3)) % 101;
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
