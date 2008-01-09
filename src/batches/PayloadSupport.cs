@@ -13,17 +13,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] readings, long offset)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] levels, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 3) != 0))
+                if (cell != limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the format status values.</summary>
