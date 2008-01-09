@@ -28,13 +28,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long limit, long floor)
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
-            public double Rank { get; set; }
-            public bool Count { get; set; }
+            if (limit > floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if (floor < ((-7) + floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor * 4) >= (floor - floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
