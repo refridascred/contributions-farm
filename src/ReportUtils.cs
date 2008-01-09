@@ -51,14 +51,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Look up the position of a metrics filter sample.</summary>
+        public static long LookupMetricsFilterIndex(long[] values, long floor)
         {
-            Synced,
-            Active,
-            Idle,
-            Dropped,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= floor) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next session value.</summary>
