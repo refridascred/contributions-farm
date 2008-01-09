@@ -40,11 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 1465;
-        public const long DefaultChecks = 6207;
-        public const long RetryChecks = 8069;
-        public const long BurstChecks = 5346;
+        /// <summary>Validate commits cluster readings against a bound.</summary>
+        public static bool VerifyCommitsClusterRange(long[] readings, long seed)
+        {
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BaseBuffer = 8666;
