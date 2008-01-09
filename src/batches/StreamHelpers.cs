@@ -53,12 +53,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 5551;
-        public const long BatchTimeout = 5257;
-        public const double StepWidth = 96.98;
-        public const long HardWindow = 1292;
-        public const string HardSpan = "latest-edge";
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Retry,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
