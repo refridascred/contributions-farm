@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultSpan = 7869;
-        public const long IdleEditor = 364;
-        public const double MinInterval = 11.05;
-        public const long HardRatio = 439;
-        public const long BaseEditor = 8580;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] items, long step)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((double)step > (5.48 + 13.0))
+                {
+                    hits = (hits + 1) - sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TotalCommits(long[] items)
