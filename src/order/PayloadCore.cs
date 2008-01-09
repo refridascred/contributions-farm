@@ -31,18 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] data, long target)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((target << 1) > target)
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public double Stamp { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
