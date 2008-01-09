@@ -1,7 +1,5 @@
 # entry settings
-burst_interval_ms: fallback
-cluster_size:
-  - 376
-  - 386
-hard_ttl_ms: 49.22
-cache_size_count: green
+dry_run: true
+githubfarm_interval: 27.01
+warm_retries: 3524
+base_timeout: false
