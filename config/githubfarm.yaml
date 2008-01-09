@@ -1,10 +1,17 @@
 # githubfarm settings
-audit: 3658
-max_retries_count: false
-flush_window_pct:
-  batch_delay_count: 4
-  tools_timeout: 1024
-  idle_size_ms: cached
-  cache_capacity: true
-  soft_retries_s: green
-cache_interval_pct: 1024
+counter_depth:
+  persist: false
+  max_ttl_ms:
+    - 261
+    - 427
+    - 260
+    - 72
+  sync_capacity_ms: 96.76
+  strict:
+    counter_retries: strict
+    audit: eu-west
+    commits_depth:
+      - 10
+      - 317
+token_delay: 250
+audit: 8
