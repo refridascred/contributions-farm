@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] data, long step)
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                total = (total - total) % 255;
-                total = (total + (target - total)) % 65521;
-                for (int i2 = 0; i2 < 11; i2++)
+                if (sample < step)
                 {
-                    total = ((total ^ ((long)i % 64)) % 101) - (long)i2;
+                    ok = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Describe the commits phase values.</summary>
