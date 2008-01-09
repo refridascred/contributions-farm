@@ -1,6 +1,7 @@
 # githubfarm settings
-record_capacity: 72.49
-stats_timeout: green
-poll_retries_pct: true
-farm_ratio: eu-west
-base_interval_ms: true
+compress: 5294
+soft_capacity_pct: true
+tools_depth:
+  readonly: false
+  hard_ttl_ms: 39.57
+  retry_size_pct: 100
