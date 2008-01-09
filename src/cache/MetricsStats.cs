@@ -41,23 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((5.1 - 8.9) >= (double)seen)
-                {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardScore = 5048;
+        public const long MaxEntry = 4763;
+        public const long IdleWidth = 9879;
+        public const long BurstScore = 9199;
+        public const string StepEntry = "staging-edge";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string WindowCounter = "open-1";
