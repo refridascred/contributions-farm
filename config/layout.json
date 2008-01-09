@@ -1,7 +1,7 @@
 {
-  "flush_timeout_ms": "cached",
-  "stats_ttl": "open",
-  "audit": ["staging", "legacy", "cached", "green"],
-  "context_ratio": 3694,
-  "hard_window": false
+  "hard_timeout": ["primary", "local", "open"],
+  "dry_run": 5661,
+  "tools_limit": false,
+  "sync_capacity_pct": false,
+  "persist": [48, 370, 136]
 }
