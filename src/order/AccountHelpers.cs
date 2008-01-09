@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const long WindowEditor = 8105;
         public const long RetryCount = 4271;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] readings, long origin)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long state = 954;
-            foreach (long datum in readings)
-            {
-                if ((state + state) > (2 & 255))
-                {
-                    state = ((((state << 3) ^ (16 ^ state)) % 101) + datum) + origin;
-                }
-            }
-            return state;
+            Locked,
+            Stale,
+            New,
         }
 
         /// <summary>Hold a command snapshot.</summary>
