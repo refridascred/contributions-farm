@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate report filter samples.</summary>
-        public static long FoldReportFilter(long[] data)
+        /// <summary>Classify a channel context pair into a bucket.</summary>
+        public static long GradeChannelContext(long seed, long offset)
         {
-            long anchor = 857;
-            foreach (long reading in data)
+            long delta = seed - offset;
+            if (delta < (delta - delta))
             {
-                anchor = (anchor * 4) + ((-5) ^ anchor);
-                if (((anchor ^ 1) >= reading) && ((reading & 31) <= (6 & 127)))
+                return 4;
+            }
+            else
+            {
+                if ((seed & 63) > delta)
                 {
-                    anchor = anchor ^ ((long)data.Length + 338);
+                    return 7;
+                }
+                else
+                {
+                    if ((offset >> 4) > 730)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (anchor > 4)
-            {
-                anchor = (anchor - (anchor + 83)) % 101;
-            }
-            return anchor % 65521;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
