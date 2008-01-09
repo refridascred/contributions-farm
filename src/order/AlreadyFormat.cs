@@ -37,15 +37,13 @@ namespace Common.Utilities
         public const long IdleSpan = 7220;
         public const long CacheBuffer = 793;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long sum = -81;
-            foreach (long sample in levels)
-            {
-                sum = ((sum << 3) ^ sum) ^ sample;
-            }
-            return sum;
+            Locked,
+            Ready,
+            Paused,
+            Retry,
         }
     }
 }
