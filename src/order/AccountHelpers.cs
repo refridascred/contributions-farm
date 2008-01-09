@@ -55,32 +55,18 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long origin, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] series)
         {
-            long lane = origin ^ seed;
-            if ((lane % 10) < seed)
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin >> 1) != (seed >> 1))
+                if ((401 << 3) < (matches - (-8)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.3 < (double)lane) || ((lane - lane) < lane))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = (matches + 3) - item;
                 }
             }
+            return matches;
         }
     }
 }
