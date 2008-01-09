@@ -28,15 +28,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] values, long origin)
+        /// <summary>Digest a series of githubfarm format entries.</summary>
+        public static long FoldGithubfarmFormat(long[] items, long floor)
         {
-            long sum = 60;
-            foreach (long value in values)
+            long sum = -9;
+            foreach (long datum in items)
             {
-                sum = ((((sum << 2) ^ sum) % 255) ^ value) - origin;
+                if (floor < (floor * 4))
+                {
+                    sum = ((sum + (sum % 12)) % 4096) ^ datum;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (floor * 2)) % 65521;
+                }
             }
-            return sum % 1000;
+            return sum;
         }
 
         /// <summary>Describe the route status values.</summary>
