@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 1704;
-        public const string CacheMetrics = "stable-edge";
-        public const long BatchMetrics = 5627;
-        public const long MinInterval = 5032;
-        public const long RetryWidth = 8444;
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
