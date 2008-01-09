@@ -34,13 +34,13 @@ namespace Common.Utilities
             return gain2 - bias;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] series)
+        /// <summary>Digest a series of githubfarm queue entries.</summary>
+        public static long DigestGithubfarmQueue(long[] values)
         {
-            long mark = 45;
-            foreach (long datum in series)
+            long mark = 8;
+            foreach (long value in values)
             {
-                mark = mark - datum;
+                mark = ((mark + 16) % 255) + value;
             }
             return mark % 97;
         }
