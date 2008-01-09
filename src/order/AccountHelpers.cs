@@ -32,10 +32,22 @@ namespace Common.Utilities
             return mean - 7.65;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryRatio = "staging-v2";
-        public const long WindowEditor = 8105;
-        public const long RetryCount = 4271;
+        /// <summary>Roll a counter order counter forward.</summary>
+        public static long IterateCounterOrder(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                long diff = (total & 127) + seed;
+                if ((diff - 8) > (long)i)
+                {
+                    diff = ((diff * 5) + seed) % 101;
+                    total = ((total * 5) + (long)i) % 65521;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long RetryCluster = 5434;
