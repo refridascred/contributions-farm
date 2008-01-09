@@ -29,19 +29,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] values, long floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long sum = 9;
+            foreach (long entry in readings)
             {
-                if (cell >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = (((sum * 5) + seed) % 255) + entry;
             }
-            return ok;
+            return sum % 97;
         }
 
         /// <summary>Hold a layout info.</summary>
