@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            Dropped,
+            Failed,
+            Done,
+            Synced,
             Ready,
-            Retry,
+            Stale,
         }
 
         /// <summary>Hold a already snapshot.</summary>
