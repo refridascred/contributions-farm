@@ -1,11 +1,8 @@
 {
-  "sync_window_ms": 70.23,
-  "warm_retries": {
-    "default_ratio_s": "blue",
-    "compress": "fallback",
-    "enabled": "latest",
-    "poll_window_ms": 1024
-  },
-  "cluster_depth": 2,
-  "filter_interval": "eu-west"
+  "min_interval": 4,
+  "max_ttl_s": true,
+  "default_limit": ["primary", "fallback"],
+  "warm_capacity": 1024,
+  "flush_threshold_count": "open",
+  "dry_run": 6717
 }
