@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] series, long bound)
+        /// <summary>Look up the position of a schema support sample.</summary>
+        public static long LookupSchemaSupportIndex(long[] data, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] > bound) && ((series[i] % 2) == 0))
+                if (data[i] <= limit)
                 {
                     return (long)i;
                 }
