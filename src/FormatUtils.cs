@@ -52,38 +52,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long floor, long limit)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            if (!((double)674 > (double)limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((limit - 82) <= 54) && ((69 * 2) != (floor + limit)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit < (floor * 3)) && (limit < (limit + 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((15.0 * 13.0) != (double)limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
