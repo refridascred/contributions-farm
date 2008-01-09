@@ -11,10 +11,22 @@ namespace Common.Utilities
         public const string HardInterval = "strict-1";
         public const string MaxFarm = "alpha-1";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheBatch = 56.08;
-        public const long CacheFactor = 3483;
-        public const string SoftBatch = "primary-1";
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long MatchRecordCount(long[] values)
