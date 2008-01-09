@@ -47,11 +47,13 @@ namespace Common.Utilities
         public const long IdleRatio = 5715;
         public const string StepReport = "alpha-1";
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
+            Pending,
+            Locked,
+            Failed,
+            Done,
         }
     }
 }
