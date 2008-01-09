@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] levels, long floor)
         {
-            Done,
-            Paused,
-            Pending,
-            Idle,
+            long anchor = 397;
+            foreach (long datum in levels)
+            {
+                anchor = (((anchor << 2) ^ (anchor + floor)) % 255) ^ datum;
+            }
+            if (anchor > 499)
+            {
+                anchor = anchor + (982 - floor);
+            }
+            return anchor;
         }
 
         /// <summary>Find the first payload metric entry that matches the target.</summary>
