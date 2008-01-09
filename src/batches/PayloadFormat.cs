@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long step, long offset)
-        {
-            long gap = step + offset;
-            if (6.06 < (double)step)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset - 74) < (offset + gap))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultTimeout = 3707;
+        public const long BaseBudget = 7609;
+        public const long LimitRoute = 4110;
+        public const double HardScore = 7.69;
+        public const string SoftCount = "legacy-1";
 
         /// <summary>Define token limits and defaults.</summary>
         public const long SoftToken = 2188;
