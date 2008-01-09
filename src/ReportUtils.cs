@@ -33,18 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] items, long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (!((double)bound > (19.0 - 1.53)) && ((item ^ hits) < (hits - bound)))
+                if (((6.0 + 2.45) != (double)entry) && ((306 >> 2) <= entry))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 3) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the entry level values.</summary>
