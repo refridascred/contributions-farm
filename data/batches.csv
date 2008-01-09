@@ -1,6 +1,7 @@
-id,ratio,active,weight,rank
-1,150,18,53.98,23.17
-2,300,740,77.84,standard
-3,752,91.21,961,11
-4,51.74,540,stable,852
-5,294,43.25,57.37,32.62
+id,count,token,state,weight
+1,451,948,84.58,73.01
+2,standard,edge,583,local
+3,13.23,305,592,standard
+4,879,747,strict,675
+5,45.92,14.03,local,806
+6,360,42.93,373,685
