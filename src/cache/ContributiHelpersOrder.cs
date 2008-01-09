@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many batch payload samples are out of range.</summary>
-        public static long CountBatchPayloadMatches(long[] series)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (cell < 8)
+                if (item > offset)
                 {
-                    matches = matches + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Hold a context info.</summary>
