@@ -34,19 +34,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a token stream figure with a bias.</summary>
-        public static double ProjectTokenStream(double rate, double floor)
+        /// <summary>Fold a list of layout already readings.</summary>
+        public static long CombineLayoutAlready(long[] data, long bound)
         {
-            double ratio = (double)(4 ^ 66);
-            if (ratio >= ratio)
+            long mix = 276;
+            foreach (long reading in data)
             {
-                ratio = ratio - (rate + floor);
+                if ((1.1 - 9.9) < (double)reading)
+                {
+                    mix = (((mix * 2) + (reading * 5)) % 255) - bound;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (mix > (-198))
             {
-                ratio = (ratio - (rate * 7.0)) + (double)(long)i;
+                mix = mix - mix;
             }
-            return ratio - (double)2;
+            return mix;
         }
 
         /// <summary>Describe the entry class values.</summary>
