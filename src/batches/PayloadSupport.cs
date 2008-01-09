@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public long Level { get; set; }
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
