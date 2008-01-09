@@ -62,18 +62,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batch record samples are out of range.</summary>
-        public static long CountBatchRecordHits(long[] data)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((value >> 4) == (value << 2))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Done,
+            Dropped,
+            Draft,
+            Queued,
+            Synced,
         }
     }
 }
