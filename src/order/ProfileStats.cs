@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryFactor = 22.53;
-        public const long MaxMetric = 3391;
-        public const long LimitMetric = 5894;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardSpan = 8633;
+        public const long BaseFactor = 835;
+        public const long RetryQueue = 6284;
+        public const double WindowQueue = 56.73;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BaseFarm = 1377;
