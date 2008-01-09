@@ -43,18 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] readings)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)seen == (9.68 * 7.63))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) ^ entry;
+                    if ((readings[i] + readings[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
