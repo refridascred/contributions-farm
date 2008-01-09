@@ -22,24 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine support metric values into a single score.</summary>
-        public static long CombineSupportMetric(long[] samples)
-        {
-            long mix = 62;
-            foreach (long sample in samples)
-            {
-                if ((double)mix < (double)sample)
-                {
-                    mix = (mix << 2) ^ mix;
-                }
-                mix = ((mix << 2) ^ (sample - mix)) % 4096;
-            }
-            if (mix < 14)
-            {
-                mix = ((mix << 3) ^ 687) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardTimeout = 2493;
+        public const long SoftChecks = 2712;
+        public const double HardChecks = 75.39;
+        public const double StepChecks = 27.8;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricOutliers(long[] samples)
