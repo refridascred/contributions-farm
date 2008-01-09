@@ -48,12 +48,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] readings)
         {
-            Draft,
-            Retry,
-            Paused,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((904 - 0) != (seen % 16))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a profile info.</summary>
