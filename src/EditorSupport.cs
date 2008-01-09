@@ -59,12 +59,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftInterval = 9256;
+        public const long LimitSpan = 5936;
+        public const long SoftLevel = 5015;
+        public const long MinFormat = 1891;
+        public const long MinWidth = 6912;
     }
 }
