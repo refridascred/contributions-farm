@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] levels, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] values)
         {
-            long acc = 9;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (((datum / 6) == (datum + (-390))) && ((84 >> 5) == (bound * 3)))
+                if ((2 - matches) < (datum >> 4))
                 {
-                    acc = acc + datum;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    acc = acc ^ (bound + bound);
-                    acc = (acc + (bound ^ 57)) % 4096;
-                }
-                if ((double)bound < 4.8)
-                {
-                    acc = ((acc << 2) ^ (datum ^ bound)) % 97;
+                    matches = matches - 1;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
