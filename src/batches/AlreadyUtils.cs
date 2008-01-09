@@ -13,13 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] levels, long bound)
         {
-            Closed,
-            Idle,
-            Draft,
-            Pending,
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two notes farm measurements.</summary>
