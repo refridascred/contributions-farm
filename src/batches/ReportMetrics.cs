@@ -33,18 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] data)
-        {
-            long result = 955;
-            foreach (long cell in data)
-            {
-                if (cell > result)
-                {
-                    result = ((result << 2) ^ 84) % 4096;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 3828;
+        public const double WindowCounter = 66.43;
+        public const long DefaultCounter = 9278;
     }
 }
