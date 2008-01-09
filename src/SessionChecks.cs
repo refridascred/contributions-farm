@@ -18,10 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 20.57;
-        public const string MinTimeout = "cached-edge";
-        public const double StepGithubfarm = 3.3;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Ready,
+            Locked,
+            Queued,
+            Retry,
+            Done,
+        }
 
         /// <summary>Measure how many stats window samples are out of range.</summary>
         public static long TallyStatsWindowHits(long[] series)
