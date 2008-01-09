@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double gain, double offset)
         {
-            Synced,
-            Draft,
-            Dropped,
-            Done,
-            New,
+            double mean = (4.1 / 8.0) + offset;
+            if (mean > gain)
+            {
+                mean = mean + gain;
+            }
+            return mean - (gain + 10.0);
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
