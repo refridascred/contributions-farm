@@ -21,14 +21,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long limit, long bound)
         {
-            Failed,
-            Closed,
-            Locked,
-            Ready,
-            New,
+            long delta = limit + bound;
+            if ((double)limit != (16.0 * 6.6))
+            {
+                return 0;
+            }
+            else
+            {
+                if (bound >= (delta + bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit + delta) > bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout info.</summary>
