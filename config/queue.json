@@ -1,8 +1,10 @@
 {
-  "payload_limit": ["primary", "blue", "strict"],
-  "persist": "standard",
-  "enabled": 6810,
-  "base_interval": 30,
-  "min_retries_ms": false,
-  "base_limit": false
+  "flush_interval": {
+    "contributi_limit": false,
+    "sync_depth_ms": 43,
+    "githubfarm_capacity": "primary",
+    "cache_window": [478, 260]
+  },
+  "max_retries": "stable",
+  "soft_window_s": 4660
 }
