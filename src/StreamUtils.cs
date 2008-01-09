@@ -25,18 +25,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] readings)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long sum = 12;
+            foreach (long value in readings)
             {
-                if ((double)count <= (double)datum)
+                if (value >= (value - value))
                 {
-                    count = count + 2;
+                    sum = ((sum * 3) + (sum - value)) % 65521;
                 }
             }
-            return count;
+            return sum % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
