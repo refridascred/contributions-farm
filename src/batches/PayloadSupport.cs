@@ -20,16 +20,12 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double scale, double offset)
-        {
-            double drift = 7.8 * 9.0;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (((drift - drift) + (double)(long)i) - scale) - offset;
-            }
-            return drift - (9.0 * 2.4);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 6395;
+        public const string MaxTimeout = "strict";
+        public const long HardSpan = 3905;
+        public const double BaseGraph = 85.51;
+        public const long MinFactor = 7862;
 
         /// <summary>Digest a series of queue metric entries.</summary>
         public static long WeighQueueMetric(long[] items)
