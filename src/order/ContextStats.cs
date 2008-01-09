@@ -41,38 +41,18 @@ namespace Common.Utilities
         public const long BatchBatches = 7995;
         public const long IdleBatches = 5872;
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long floor, long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] values, long offset)
         {
-            if ((floor - offset) < (floor - floor))
+            long carry = 9;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset < (5.0 + 4.9))
+                if ((-5) >= (carry ^ carry))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset & 31) <= offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)5 < (double)offset)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    carry = ((carry - ((-3) % 16)) - entry) - offset;
                 }
             }
+            return carry;
         }
     }
 }
