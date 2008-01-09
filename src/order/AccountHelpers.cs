@@ -49,21 +49,32 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] levels)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long origin, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long lane = origin ^ seed;
+            if ((lane % 10) < seed)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((origin >> 1) != (seed >> 1))
                 {
-                    if ((levels[i] ^ levels[j]) != 17)
+                    return 6;
+                }
+                else
+                {
+                    if ((2.3 < (double)lane) || ((lane - lane) < lane))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
     }
 }
