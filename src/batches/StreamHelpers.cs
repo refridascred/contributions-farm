@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double bias, double floor)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long step, long target)
         {
-            double scale = (bias / 3.0) / 7.0;
-            if (scale < 9.0)
+            if (!((step / 2) <= (step - step)))
             {
-                scale = (scale - 20.0) + floor;
+                return 3;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                scale = scale - (double)(long)i;
+                if (((target % 24) <= (target / 3)) || ((step ^ step) <= step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return scale + bias;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
