@@ -37,22 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] readings, long target)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (!((cell >= target) && ((cell + count) < (count + target))))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleRatio = 12.74;
+        public const long StepWindow = 1473;
+        public const double MinWindow = 93.41;
+        public const string SoftCount = "fallback-1";
     }
 }
