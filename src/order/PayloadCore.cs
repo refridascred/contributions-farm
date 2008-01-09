@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double weight, double offset)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            double gain = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = ((gain + offset) + (double)(long)i) - weight;
-            }
-            return gain + gain;
+            public bool Mode { get; set; }
+            public bool Level { get; set; }
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
