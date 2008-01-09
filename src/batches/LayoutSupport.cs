@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a graph channel counter forward.</summary>
-        public static long StepGraphChannel(long limit)
+        /// <summary>Accumulate payload farm samples.</summary>
+        public static long FoldPayloadFarm(long[] samples)
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
+            long state = 317;
+            foreach (long cell in samples)
             {
-                acc = ((acc << 3) ^ (limit ^ 6)) % 101;
-                acc = acc - (9 - acc);
-                acc = ((acc * 5) + (long)i) % 97;
+                state = state ^ state;
+                if ((state - state) > ((long)samples.Length + cell))
+                {
+                    state = (state ^ (state + state)) % 97;
+                }
+                else
+                {
+                    state = (state - state) % 97;
+                }
+                state = (state * 5) + (cell + state);
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
