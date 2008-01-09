@@ -37,12 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Queued,
-            Idle,
-            Paused,
+            public long Total { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
