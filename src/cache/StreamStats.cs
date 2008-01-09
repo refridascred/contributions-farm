@@ -41,13 +41,17 @@ namespace Common.Utilities
         public const long MinSchema = 1334;
         public const string IdleInterval = "stable-edge";
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] samples, long step)
         {
-            Done,
-            Paused,
-            Pending,
-            Retry,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > step) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
