@@ -51,19 +51,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double weight, double offset)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] levels)
         {
-            double mean = offset;
-            if (mean > 6.0)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + (mean - weight);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - 16.0) + (double)(long)i;
-            }
-            return mean - (double)(-994);
+            return tally;
         }
     }
 }
