@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long bound, long step)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            if ((bound - bound) < (bound % 97))
             {
-                long count = (target - target) ^ 2;
-                if ((7.1 + 7.0) <= (double)count)
-                {
-                    result = (result << 2) ^ result;
-                    count = (count << 3) ^ result;
-                    break;
-                }
-                result = ((result * 5) + (long)i) % 4093;
+                return 0;
             }
-            return result;
+            else
+            {
+                if (3.6 > (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Find the first stream batches entry that matches the target.</summary>
