@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            New,
-            Closed,
-            Draft,
-            Queued,
-            Active,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepSize = 8796;
+        public const double BatchInterval = 32.67;
+        public const string HardTimeout = "fallback";
+        public const double BaseAccount = 13.64;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long ScoreEditor(long[] data, long seed)
