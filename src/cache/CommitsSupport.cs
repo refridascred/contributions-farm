@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowBudget = 9019;
-        public const long MaxDepth = 4560;
-        public const long DefaultFactor = 2876;
-        public const long LimitBudget = 8514;
-        public const string BatchSize = "legacy-v2";
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] items)
+        {
+            long anchor = 137;
+            foreach (long item in items)
+            {
+                anchor = ((anchor * 4) + item) % 101;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long TotalContext(long[] readings)
