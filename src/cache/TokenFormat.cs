@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] items, long target)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long state = 5;
-            foreach (long reading in items)
-            {
-                if (((double)state <= 3.1) || ((double)state <= (4.6 - 9.66)))
-                {
-                    state = ((state << 2) ^ (reading & 15)) % 1000;
-                    state = (state + (7 & 15)) % 255;
-                }
-                state = ((state << 3) ^ target) % 4096;
-            }
-            return state;
+            Queued,
+            Ready,
+            Retry,
+            Locked,
         }
 
         /// <summary>Hold a tools header.</summary>
