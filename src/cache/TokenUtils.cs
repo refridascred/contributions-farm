@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long origin, long target)
+        /// <summary>Validate farm cluster readings against a bound.</summary>
+        public static bool CheckFarmClusterRange(long[] data, long step)
         {
-            long next = origin - target;
-            if (next <= (origin + target))
+            bool flag = true;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((10.0 * 9.4) >= (double)next)
+                if (reading != step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
