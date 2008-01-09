@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultLevel = 69.42;
-        public const long SoftBuffer = 3024;
-        public const long StepBuffer = 7973;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((offset / 3) < (count << 2))
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of channel route entries.</summary>
         public static long TallyChannelRoute(long[] series, long origin)
