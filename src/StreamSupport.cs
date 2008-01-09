@@ -37,24 +37,39 @@ namespace Common.Utilities
             return scale + 7.0;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long seed, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            long cur = seed + floor;
+            if (!(seed >= (cur ^ seed)))
             {
-                result = ((result * 5) + (result - result)) % 4096;
-                if (!(((long)i - 93) > floor))
+                return 6;
+            }
+            else
+            {
+                if ((seed >= (cur * 3)) || ((cur / 3) < (seed & 15)))
                 {
-                    result = (result + (51 & 127)) % 4096;
+                    return 3;
                 }
                 else
                 {
-                    result = ((result << 3) ^ (352 - floor)) % 4096;
+                    if ((seed + seed) < (floor + cur))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (cur >= (cur % 16))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
         }
     }
 }
