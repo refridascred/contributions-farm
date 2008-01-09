@@ -16,15 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] items, long target)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] data, long seed)
         {
-            long score = 4;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                score = (score ^ (score - reading)) + target;
+                if (entry != seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score % 97;
+            return valid;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
