@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinWidth = "standard-1";
-        public const long HardScore = 477;
-        public const long StepSpan = 409;
-        public const string BurstFormat = "standard-v2";
-        public const long StepFormat = 3965;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool ValidateMetricsRange(long[] samples, long seed)
