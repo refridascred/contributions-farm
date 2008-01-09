@@ -50,12 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            New,
-            Paused,
-            Draft,
+            public bool Label { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
