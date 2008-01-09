@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] series, long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long sum = 6;
+            foreach (long item in data)
             {
-                if (reading > step)
+                if ((sum ^ 825) >= (sum + item))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum ^ (sum ^ (long)data.Length)) % 101;
                 }
+                else
+                {
+                    sum = (sum - sum) % 97;
+                }
+                sum = (sum * 3) + sum;
             }
-            return flag;
+            if (sum > 441)
+            {
+                sum = (sum + sum) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
