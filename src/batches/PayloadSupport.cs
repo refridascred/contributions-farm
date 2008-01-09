@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowCount = 51.33;
+        public const double DefaultSize = 55.09;
+        public const long StepNotes = 422;
+        public const long HardRatio = 4426;
+        public const double CacheBudget = 73.71;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool VerifyContextLimits(long[] levels, long limit)
