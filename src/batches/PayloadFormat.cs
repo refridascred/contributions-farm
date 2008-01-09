@@ -47,18 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks filter samples are out of range.</summary>
-        public static long MeasureChecksFilterGaps(long[] values, long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (step >= (tally * 2))
+                if (sample <= origin)
                 {
-                    tally = (tally + 1) + item;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
