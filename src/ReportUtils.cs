@@ -23,18 +23,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] items, long bound)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long total = -6;
-            foreach (long datum in items)
-            {
-                if (total >= datum)
-                {
-                    total = (((total * 5) + (12 + datum)) % 4096) + bound;
-                }
-            }
-            return total;
+            Paused,
+            Ready,
+            Done,
+            Retry,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
