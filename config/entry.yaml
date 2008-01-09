@@ -1,16 +1,6 @@
 # entry settings
-layout_ttl: true
-account_timeout: true
-max_retries_ms:
-  default_timeout:
-    context_depth: false
-    payload_timeout: true
-    enabled:
-      - 474
-      - 291
-    hard_limit_s: 52
-  account_window: 30
-  batch_capacity_pct: false
-tools_depth: 88.99
-min_interval: 5704
-min_threshold_s: open
+base_delay_ms: false
+dry_run: 63
+cache_depth_s: stable
+payload_ratio: 4562
+route_ttl: true
