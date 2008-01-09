@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const double HardScore = 7.69;
         public const string SoftCount = "legacy-1";
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] readings, long bound)
+        /// <summary>Look up the position of a stream graph sample.</summary>
+        public static long LookupStreamGraphIndex(long[] levels, long target)
         {
-            long result = 1;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (((result - 0) % 65521) - item) - bound;
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a payload header.</summary>
