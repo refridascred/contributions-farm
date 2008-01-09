@@ -20,21 +20,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] samples)
+        /// <summary>Find the first format stream entry that matches the target.</summary>
+        public static long LocateFormatStreamIndex(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (data[i] >= origin)
                 {
-                    if ((samples[i] + samples[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
