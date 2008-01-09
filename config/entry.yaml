@@ -1,9 +1,7 @@
 # entry settings
-min_depth: false
-sync_retries_ms: 30
-base_threshold_count: 95
-persist:
-  - 17
-  - 1
-  - 10
-  - 446
+hard_ttl: standard
+metrics_ttl: 78
+flush_window_s:
+  dry_run: standard
+  profile_timeout: 2379
+  poll_interval: open
