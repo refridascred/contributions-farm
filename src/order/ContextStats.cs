@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] series, long origin)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long floor)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading != origin)
+                if (!((8 << 1) == (long)i))
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc << 2) ^ (floor * 5)) % 4096;
                 }
+                else
+                {
+                    acc = acc ^ (acc * 5);
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
