@@ -37,13 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] data)
         {
-            Active,
-            Idle,
-            Retry,
-            Draft,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading > (5.93 * 2.9))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
