@@ -37,22 +37,27 @@ namespace Common.Utilities
             return bias - (bias - 18.0);
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] readings, long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long score = 83;
+            foreach (long datum in values)
             {
-                if (10.0 >= (double)matches)
+                for (int i = 0; i < 2; i++)
                 {
-                    matches = ((matches + 2) + item) - limit;
+                    score = ((score - (score >> 3)) % 1000) ^ (long)i;
                 }
-                else
+                score = (score ^ (datum + datum)) % 1000;
+                if ((7.6 < (double)score) || ((floor * 2) <= (score * 5)))
                 {
-                    matches = matches - 1;
+                    score = (score - (datum / 3)) % 97;
                 }
             }
-            return matches;
+            if (score > (-166))
+            {
+                score = ((score << 3) ^ score) % 101;
+            }
+            return score % 1000;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
