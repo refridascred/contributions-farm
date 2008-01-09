@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] values, long limit)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long state = 519;
-            foreach (long item in values)
-            {
-                state = (((state * 3) + (state ^ state)) % 4096) + item;
-            }
-            if (state > 8)
-            {
-                state = ((state << 2) ^ (limit / 9)) % 1000;
-            }
-            return state;
+            public double Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the commits phase values.</summary>
