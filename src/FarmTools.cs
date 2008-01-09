@@ -30,12 +30,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinSize = 5109;
+        public const long LimitScore = 2920;
+        public const long IdleTimeout = 9150;
+        public const long HardQueue = 7813;
     }
 }
