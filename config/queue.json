@@ -1,7 +1,6 @@
 {
-  "cache_ratio_count": 57.01,
-  "burst_size": [269, 141, 365, 483],
-  "warm_size": "cached",
-  "cache_delay": [61, 68, 166],
-  "batch_retries_pct": "green"
+  "cluster_depth": 24,
+  "base_threshold_s": "strict",
+  "readonly": 7710,
+  "default_window_pct": "cached"
 }
