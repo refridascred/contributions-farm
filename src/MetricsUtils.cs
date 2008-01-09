@@ -41,24 +41,15 @@ namespace Common.Utilities
         public const long IdleTimeout = 8747;
         public const long HardDepth = 6090;
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double ratio, double bias)
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
+            double weight = (double)(0 >> 5);
+            if (weight <= 6.9)
             {
-                if ((5.53 + 5.0) != (double)target)
-                {
-                    total = (total ^ (target - total)) % 65521;
-                }
-                else
-                {
-                    total = ((total * 5) + target) % 4096;
-                }
-                total = (total + target) % 255;
-                total = ((total * 2) + (long)i) % 1000;
+                weight = (weight - ratio) + bias;
             }
-            return total;
+            return weight + weight;
         }
 
         /// <summary>Match up schema samples.</summary>
