@@ -21,21 +21,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] items)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] readings, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((matches - (-5)) != (reading ^ matches)) && !((reading % 3) > (reading << 1)))
                 {
-                    if ((items[i] - items[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Combine account values into a single score.</summary>
