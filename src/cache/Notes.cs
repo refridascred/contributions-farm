@@ -28,12 +28,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Active,
-            Draft,
-            Retry,
+            public double Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Combine farm values into a single score.</summary>
