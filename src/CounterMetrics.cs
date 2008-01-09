@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] series)
         {
-            public bool Limit { get; set; }
-            public bool Count { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((76 % 60) > (cell + 974))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the report mode values.</summary>
