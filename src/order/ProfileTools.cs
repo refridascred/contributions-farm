@@ -29,13 +29,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Idle,
-            Retry,
-            Draft,
-            Ready,
+            public long Total { get; set; }
+            public double Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a batch info.</summary>
