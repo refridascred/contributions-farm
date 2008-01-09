@@ -63,23 +63,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double ratio, double floor)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            double drift = (double)136;
-            if (drift < drift)
-            {
-                drift = drift + (double)971;
-            }
-            else
-            {
-                drift = drift + (ratio + 16.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (ratio / 6.0)) + (double)(long)i;
-            }
-            return drift + floor;
+            Failed,
+            Done,
+            Dropped,
+            Stale,
+            Synced,
         }
     }
 }
