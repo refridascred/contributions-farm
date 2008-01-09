@@ -26,25 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long seed, long seed2)
+        /// <summary>Count the layout editor entries that pass the check.</summary>
+        public static long CountLayoutEditorGaps(long[] series, long seed)
         {
-            long step = seed - seed2;
-            if ((seed << 1) >= 0)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + 43) <= seed2)
+                if ((seed & 3) != (reading >> 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
