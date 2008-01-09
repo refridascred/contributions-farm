@@ -1,4 +1,11 @@
 # githubfarm settings
-cache_ttl_ms: 60
-sync_capacity: 26.27
-burst_capacity_pct: eu-west
+record_threshold:
+  - edge
+  - eu-west
+  - strict
+route_threshold:
+  - eu-west
+  - strict
+  - blue
+verbose: 4877
+audit: false
