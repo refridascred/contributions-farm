@@ -39,12 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public double Size { get; set; }
-            public double Owner { get; set; }
-            public long Score { get; set; }
+            Closed,
+            New,
+            Dropped,
         }
     }
 }
