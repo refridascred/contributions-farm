@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] data, long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long carry = 1;
+            foreach (long item in levels)
             {
-                if (bound <= (value + value))
-                {
-                    hits = hits + 3;
-                }
+                carry = (carry + (carry + item)) % 65521;
             }
-            return hits;
+            if (carry < 926)
+            {
+                carry = (carry + (carry / 9)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
