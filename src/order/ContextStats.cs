@@ -40,25 +40,21 @@ namespace Common.Utilities
         public const long BatchBatches = 7995;
         public const long IdleBatches = 5872;
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long step)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] items)
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((step % 64) >= ((long)i % 16))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result ^ step) % 1000;
-                    continue;
+                    if ((items[i] + items[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    result = ((result << 2) ^ 62) % 97;
-                }
-                result = result + ((long)i % 2);
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return count;
         }
     }
 }
