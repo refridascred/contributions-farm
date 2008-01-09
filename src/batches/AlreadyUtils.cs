@@ -30,17 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batches format sample.</summary>
-        public static long FindBatchesFormatIndex(long[] series, long step)
+        /// <summary>Blend two notes farm measurements.</summary>
+        public static double SmoothNotesFarm(double bias, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = floor;
+            if (gain < bias)
             {
-                if ((series[i] >= step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + (gain - 4.0);
             }
-            return -1;
+            return gain - (bias / 4.0);
         }
 
         /// <summary>Hold a stream record.</summary>
