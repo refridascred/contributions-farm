@@ -13,19 +13,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] readings, long bound)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long bound)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = (sum << 3) ^ (long)i;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Check that every commits report entry stays within the limit.</summary>
