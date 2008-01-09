@@ -1,7 +1,6 @@
 {
-  "cluster_capacity": false,
-  "audit": 66.72,
-  "tools_threshold": 1,
-  "retry_ttl": "fallback",
-  "cache_ttl": 250
+  "warm_capacity": "staging",
+  "flush_window_ms": "local",
+  "profile_size": true,
+  "token_size": 72
 }
