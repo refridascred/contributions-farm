@@ -26,13 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] data, long limit)
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public string Count { get; set; } = "";
-            public bool Offset { get; set; }
+            long mark = 46;
+            foreach (long reading in data)
+            {
+                mark = ((mark ^ (mark << 1)) ^ reading) - limit;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
