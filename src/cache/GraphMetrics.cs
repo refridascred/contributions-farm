@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const double BatchTimeout = 9.3;
         public const long IdleMetric = 7938;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] samples, long offset)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] series)
         {
-            long carry = -62;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (((carry << 2) ^ carry) ^ cell) - offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the batch mode values.</summary>
