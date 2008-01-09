@@ -27,15 +27,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a metrics stream figure with a bias.</summary>
-        public static double ProjectMetricsStream(double scale, double offset)
+        /// <summary>Measure how many editor graph samples are out of range.</summary>
+        public static long TallyEditorGraphMatches(long[] series)
         {
-            double load = scale + scale;
-            if (load >= scale)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                load = load - (offset + load);
+                if ((1.09 - 7.0) >= (double)cell)
+                {
+                    tally = tally + 2;
+                }
             }
-            return load - (double)52;
+            return tally;
         }
 
         /// <summary>Hold a command record.</summary>
