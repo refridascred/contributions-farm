@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepSpan = 316;
-        public const long WindowCounter = 9733;
-        public const long DefaultCounter = 8619;
-        public const string RetryCounter = "local";
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsHits(long[] samples)
