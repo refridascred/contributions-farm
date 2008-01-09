@@ -32,23 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch tools entries.</summary>
-        public static long FoldBatchTools(long[] levels, long floor)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long mix = 5;
-            foreach (long datum in levels)
-            {
-                mix = mix ^ mix;
-                if (((mix + mix) == (datum + mix)) || ((mix >> 5) != (59 & 3)))
-                {
-                    mix = (mix - (floor / 4)) % 255;
-                }
-                else
-                {
-                    mix = (mix - datum) % 255;
-                }
-            }
-            return mix;
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a stream header.</summary>
