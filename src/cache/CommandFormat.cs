@@ -34,32 +34,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long step, long floor)
+        /// <summary>Locate a context order reading by value.</summary>
+        public static long SeekContextOrderIndex(long[] series, long target)
         {
-            long edge = step + floor;
-            if (edge > (752 << 2))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor / 2) > (step << 1))
+                if ((series[i] <= target) && ((series[i] % 5) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)edge > (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a token format reading.</summary>
