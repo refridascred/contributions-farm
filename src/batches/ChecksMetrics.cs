@@ -47,24 +47,25 @@ namespace Common.Utilities
         public const long BaseTimeout = 7340;
         public const long MinInterval = 300;
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long floor)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long step, long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            long bound = step ^ origin;
+            if (((origin ^ bound) > (870 - 262)) || ((427 + origin) == (3 - 527)))
             {
-                if (6 > (floor - (long)i))
+                return 0;
+            }
+            else
+            {
+                if (((6.4 + 3.5) > (double)bound) || ((double)4 < (double)origin))
                 {
-                    acc = ((acc * 5) + (acc ^ floor)) % 101;
+                    return 4;
                 }
                 else
                 {
-                    acc = (acc * 2) + (long)i;
+                    return 6;
                 }
-                acc = ((acc * 5) + (floor >> 3)) % 4096;
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
         }
     }
 }
