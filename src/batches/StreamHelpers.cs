@@ -85,22 +85,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of route session readings.</summary>
-        public static long MatchRouteSessionCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepFactor = 67.18;
+        public const double DefaultPayload = 36.25;
+        public const string BatchDepth = "primary";
+        public const long BatchInterval = 9967;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long SeriesQueue(long limit)
