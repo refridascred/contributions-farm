@@ -1,16 +1,8 @@
 {
-  "sync_capacity": 30,
-  "commits_size": {
-    "hard_timeout_pct": {
-      "warm_limit": "cached",
-      "warm_interval_s": 500,
-      "burst_ttl_ms": 782,
-      "cache_delay": 672,
-      "retry_delay_ms": "legacy",
-      "hard_interval_count": 48
-    },
-    "tools_ttl": true,
-    "order_depth": "blue"
-  },
-  "poll_retries_count": false
+  "strict": ["standard", "local"],
+  "dry_run": "open",
+  "readonly": 60,
+  "poll_ratio_s": [137, 67],
+  "compress": "edge",
+  "contributi_ttl": "standard"
 }
