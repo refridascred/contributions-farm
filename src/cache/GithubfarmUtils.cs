@@ -33,21 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up window profile samples.</summary>
-        public static long MatchWindowProfileCount(long[] series)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Active,
+            Closed,
         }
 
         /// <summary>Hold a graph entry.</summary>
