@@ -27,13 +27,18 @@ namespace Common.Utilities
         public const long WindowQueue = 7067;
         public const long RetryQueue = 4919;
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] series)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((entry / 9) <= (matches * 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
