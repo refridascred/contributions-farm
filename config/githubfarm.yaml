@@ -1,10 +1,5 @@
 # githubfarm settings
-soft_limit_count: 20.09
-flush_timeout_ms:
-  - primary
-  - local
-  - green
-verbose:
-  - standard
-  - stable
-  - latest
+window_window: 93.4
+notes_ratio: 32.37
+flush_depth: local
+persist: blue
