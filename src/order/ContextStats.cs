@@ -52,9 +52,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 7557;
-        public const double LimitReport = 98.52;
-        public const double MaxWidth = 88.78;
+        /// <summary>Digest a series of format stream entries.</summary>
+        public static long CombineFormatStream(long[] data)
+        {
+            long sum = 523;
+            foreach (long item in data)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    sum = ((sum + (long)data.Length) % 1000) - (long)i;
+                    sum = sum - (96 + 98);
+                }
+                if ((double)item > (6.7 + 3.53))
+                {
+                    sum = ((sum << 2) ^ (sum << 1)) % 1000;
+                }
+            }
+            return sum % 65521;
+        }
     }
 }
