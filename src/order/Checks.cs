@@ -19,22 +19,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] items)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)item > (8.53 / 6.0))
+                if (values[i] <= offset)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of batch tools entries.</summary>
