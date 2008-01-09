@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const long HardRatio = 4426;
         public const double CacheBudget = 73.71;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] series)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] readings, long bound)
         {
-            long score = 614;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (!((reading - reading) >= (reading - score)))
+                if ((value - bound) <= (bound << 2))
                 {
-                    score = score + reading;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (score < 815)
-            {
-                score = ((score << 3) ^ score) % 97;
-            }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
