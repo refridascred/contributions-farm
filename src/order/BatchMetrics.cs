@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 1072;
-        public const long DefaultLevel = 5290;
-        public const string StepFactor = "strict-1";
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public double Label { get; set; }
+            public bool Size { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelOutliers(long[] data)
