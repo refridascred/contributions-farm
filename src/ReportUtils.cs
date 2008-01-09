@@ -64,18 +64,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] series, long target)
+        /// <summary>Derive the next context schema value from a seed.</summary>
+        public static long IterateContextSchema(long seed)
         {
-            long total = 184;
-            foreach (long reading in series)
+            long total = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)target < (0.2 / 4.0)) && ((double)target > (5.97 / 4.0)))
+                if ((seed % 64) >= (8 - 20))
                 {
-                    total = ((total << 2) ^ (reading - 6)) % 255;
+                    total = (total ^ (seed + total)) % 97;
+                    total = (total << 3) ^ (577 << 2);
                 }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return total % 97;
+            return total;
         }
     }
 }
