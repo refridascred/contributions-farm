@@ -20,12 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTools = "latest-1";
-        public const long DefaultTools = 9869;
-        public const string IdleSize = "alpha";
-        public const long BatchTools = 2447;
-        public const double IdleTools = 11.49;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long step, long floor)
+        {
+            if (((floor / 9) >= (floor & 1)) && (floor < 6))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((716 + 110) > (floor / 6))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((floor + step) < floor) || ((step - floor) == (step ^ floor)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate report commits readings against a bound.</summary>
         public static bool CheckReportCommitsRange(long[] series, long seed)
