@@ -1,7 +1,12 @@
 # githubfarm settings
-stats_interval: eu-west
-batch_timeout_s: local
-enabled: 41.55
-flush_interval: 70.77
-poll_ratio: 7520
-dry_run: true
+dry_run: false
+command_ratio: false
+min_delay:
+  format_threshold:
+    - 308
+    - 111
+    - 237
+  soft_capacity_s: true
+  strict:
+    - 227
+    - 186
