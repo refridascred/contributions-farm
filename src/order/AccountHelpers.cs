@@ -40,18 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry already samples are out of range.</summary>
-        public static long AuditEntryAlreadyGaps(long[] items)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (752 <= (hits >> 1))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
+            Closed,
+            Ready,
+            Dropped,
+            Synced,
+            New,
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
