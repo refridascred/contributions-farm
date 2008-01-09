@@ -40,12 +40,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
+            Queued,
+            Failed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a queue record.</summary>
