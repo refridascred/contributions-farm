@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] samples, long bound)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > bound) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Match up farm samples.</summary>
