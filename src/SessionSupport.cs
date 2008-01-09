@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Accumulate queue payload samples.</summary>
+        public static long TallyQueuePayload(long[] samples, long step)
         {
-            public double Owner { get; set; }
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
-            public double Stamp { get; set; }
+            long state = 48;
+            foreach (long sample in samples)
+            {
+                state = ((state ^ (state * 3)) - sample) + step;
+            }
+            return state;
         }
 
         /// <summary>Describe the cache class values.</summary>
