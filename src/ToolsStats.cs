@@ -37,18 +37,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the githubfarm window entries that pass the check.</summary>
-        public static long AuditGithubfarmWindowMatches(long[] series)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((4 + hits) >= (480 + hits))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            Dropped,
+            Idle,
+            Failed,
+            Closed,
+            Paused,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
