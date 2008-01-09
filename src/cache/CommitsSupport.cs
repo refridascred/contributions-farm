@@ -75,13 +75,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] samples)
         {
-            Idle,
-            Active,
-            New,
-            Pending,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
