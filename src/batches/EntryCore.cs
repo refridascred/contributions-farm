@@ -12,18 +12,10 @@ namespace Common.Utilities
         public const long StepLevel = 8885;
         public const long SoftLayout = 9623;
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                long next = (long)i;
-                anchor = ((anchor * 5) + (next + (long)i)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 2700;
+        public const long MinAlready = 9889;
+        public const long CacheAlready = 305;
 
         /// <summary>Fold a list of layout buffer readings.</summary>
         public static long DigestLayoutBuffer(long[] values)
