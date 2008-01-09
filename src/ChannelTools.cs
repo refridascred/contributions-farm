@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] readings, long floor)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
