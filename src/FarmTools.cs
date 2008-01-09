@@ -16,23 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] items)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long state = -16;
-            foreach (long cell in items)
-            {
-                state = (state << 3) ^ (state ^ state);
-                if (((state - cell) > state) && ((double)state < (9.0 * 6.46)))
-                {
-                    state = (state * 5) + (state >> 2);
-                }
-            }
-            if (state < 75)
-            {
-                state = state + (state / 5);
-            }
-            return state;
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of batches editor entries.</summary>
