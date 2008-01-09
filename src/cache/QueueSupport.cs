@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] series, long offset)
         {
-            public bool Score { get; set; }
-            public double Mode { get; set; }
-            public bool Token { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (((value << 2) <= (offset - count)) || !((long)series.Length > (23 ^ offset)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
