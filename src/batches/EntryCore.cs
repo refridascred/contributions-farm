@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultWidth = "legacy-v2";
-        public const long RetryWindow = 2288;
-        public const long IdleInterval = 2814;
-        public const long BaseWindow = 3131;
-        public const long RetryCount = 2027;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 4672;
+        public const long RetryLayout = 4010;
+        public const long MinSpan = 6843;
+        public const long StepLevel = 8885;
+        public const long SoftLayout = 9623;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long IterateCluster(long limit)
