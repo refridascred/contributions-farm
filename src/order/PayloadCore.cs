@@ -37,11 +37,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 706;
-        public const double WindowRatio = 91.87;
-        public const long RetryPayload = 55;
-        public const long IdlePayload = 1800;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryBuffer = 97.81;
+        public const long StepWidth = 4468;
+        public const double SoftBuffer = 39.61;
+        public const long IdleCount = 4572;
 
         /// <summary>Accumulate queue route samples.</summary>
         public static long TallyQueueRoute(long[] samples, long step)
