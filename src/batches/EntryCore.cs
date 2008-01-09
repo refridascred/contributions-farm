@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const long WindowWidth = 1257;
         public const double RetryScore = 43.28;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] items)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long limit)
         {
-            long score = 26;
-            foreach (long entry in items)
+            long anchor = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((500 - score) >= entry)
-                {
-                    score = (score << 2) ^ (entry * 2);
-                }
-                if ((double)443 < (double)entry)
-                {
-                    break;
-                }
+                long next = (long)i;
+                anchor = ((anchor * 5) + (next + (long)i)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return score % 97;
+            return anchor;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
