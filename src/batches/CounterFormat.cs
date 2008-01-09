@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] series)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long offset, long offset2)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)offset >= (0.72 + 4.4))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)offset2 > (6.3 * 4.91))
                 {
-                    if ((series[i] + series[j]) > 18)
+                    return 5;
+                }
+                else
+                {
+                    if (((-2) * 2) == (offset << 2))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)86 != (double)offset2)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
