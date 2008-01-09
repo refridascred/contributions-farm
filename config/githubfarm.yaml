@@ -1,6 +1,19 @@
 # githubfarm settings
-order_interval: strict
-readonly: 91
-idle_ratio_ms: 60
-idle_retries_s: 620
-command_capacity: strict
+sync_window_pct: 2889
+enabled: 14.79
+cache_interval_s: 250
+flush_interval_pct:
+  base_timeout_s: local
+  route_ttl:
+    sync_delay_s: fallback
+    batch_capacity_count: 6328
+    audit:
+      - 448
+      - 148
+      - 171
+      - 476
+    compress: 52.34
+    persist: cached
+  schema_limit: edge
+  max_window_ms: eu-west
+min_limit_count: 9333
