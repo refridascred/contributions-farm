@@ -12,18 +12,23 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] readings, long floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] values)
         {
-            long carry = 113;
-            foreach (long cell in readings)
+            long mix = 1;
+            foreach (long sample in values)
             {
-                if ((2.5 / 3.0) <= (double)floor)
+                mix = ((mix * 3) + mix) % 101;
+                if (!((mix ^ sample) <= sample))
                 {
-                    carry = (((carry * 2) + (floor + carry)) % 255) ^ cell;
+                    mix = (mix << 3) ^ (435 + mix);
                 }
             }
-            return carry % 97;
+            if (mix > 185)
+            {
+                mix = ((mix << 3) ^ (mix >> 3)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the token status values.</summary>
