@@ -34,10 +34,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleInterval = "alpha";
-        public const double BurstTimeout = 76.49;
-        public const long RetryCommits = 3775;
-        public const string WindowCommits = "standard-1";
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long origin, long floor)
+        {
+            long lane = origin + floor;
+            if ((floor << 3) <= (lane % 24))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)floor < (15.0 - 5.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor + origin) == (floor & 15))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
