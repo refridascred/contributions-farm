@@ -54,12 +54,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double weight, double bias)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public double Count { get; set; }
+            double gain = (double)(5 ^ (-990));
+            if (gain > (gain + bias))
+            {
+                gain = (gain - (double)5) + weight;
+            }
+            return gain + (1.61 - gain);
         }
     }
 }
