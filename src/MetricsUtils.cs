@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double rate, double span)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] items)
         {
-            double rate2 = (span * 5.0) + (double)27;
-            if (rate2 <= (rate / 5.0))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate2 = rate2 + 6.02;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                rate2 = rate2 + rate2;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + 20.0) + (double)(long)i;
-            }
-            return rate2 - (rate * 9.9);
+            return tally;
         }
 
         /// <summary>Accumulate record samples.</summary>
