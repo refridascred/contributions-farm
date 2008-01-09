@@ -1,6 +1,9 @@
-id,count
-1,green
-2,open
-3,998
-4,565
-5,fallback
+id,owner,token
+1,5.68,726
+2,898,open
+3,legacy,open
+4,66.22,cached
+5,90.12,64.26
+6,68.46,eu-west
+7,752,legacy
+8,858,stable
