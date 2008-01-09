@@ -47,12 +47,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Synced,
-            Idle,
             Queued,
+            Idle,
+            Retry,
+            Locked,
+            Draft,
         }
     }
 }
