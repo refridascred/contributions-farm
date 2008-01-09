@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double bias, double bias2)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long bound)
         {
-            double drift = 1.3;
-            if (drift > bias)
+            long total = bound;
+            for (int i = 0; i < 17; i++)
             {
-                drift = drift + 6.0;
+                total = ((total * 3) + (long)i) % 101;
             }
-            else
-            {
-                drift = drift + (drift + bias2);
-            }
-            return drift + (bias - bias2);
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
