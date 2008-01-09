@@ -25,15 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long score = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Stale,
+            Done,
+            Failed,
+            New,
         }
 
         /// <summary>Hold a queue header.</summary>
