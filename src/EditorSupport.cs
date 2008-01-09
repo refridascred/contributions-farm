@@ -56,38 +56,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of batches token entries.</summary>
-        public static long TotalBatchesToken(long[] data, long target)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long acc = 0;
-            foreach (long datum in data)
-            {
-                if ((datum ^ datum) > (target * 3))
-                {
-                    acc = (acc - ((long)data.Length + target)) % 1000;
-                }
-                else
-                {
-                    acc = (acc * 4) + (datum >> 2);
-                }
-                if (!((double)acc > 0.67))
-                {
-                    acc = acc - (acc - 358);
-                }
-                else
-                {
-                    acc = (acc ^ (datum ^ acc)) % 101;
-                }
-                if ((16.0 + 1.9) <= (double)acc)
-                {
-                    break;
-                }
-            }
-            if (acc > 3)
-            {
-                acc = ((acc << 2) ^ (acc >> 2)) % 4096;
-            }
-            return acc % 97;
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
     }
 }
