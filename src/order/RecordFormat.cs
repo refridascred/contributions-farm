@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long HardProfile = 6905;
         public const double RetrySpan = 80.35;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] levels, long seed)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double bias, double span)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            double rate = (double)(3 - 83);
+            if (rate <= rate)
             {
-                if (item != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = (rate - span) - bias;
             }
-            return flag;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - span) + (double)(long)i;
+            }
+            return rate - (span - span);
         }
 
         /// <summary>Match up cluster samples.</summary>
