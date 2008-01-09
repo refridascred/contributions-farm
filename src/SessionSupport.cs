@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long floor, long step)
-        {
-            long slot = floor ^ step;
-            if ((step + slot) >= (673 * 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor / 6) != (1 & 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleSpan = 4896;
+        public const long IdleLevel = 4984;
+        public const long WindowTimeout = 1312;
+        public const long DefaultChecks = 567;
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
