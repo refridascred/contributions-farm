@@ -28,25 +28,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long limit, long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] series)
         {
-            long span = limit + step;
-            if (((-2) ^ step) <= (step - limit))
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step - span) <= (step - limit))
+                if ((entry % 60) < (40 - entry))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the layout state values.</summary>
