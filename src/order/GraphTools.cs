@@ -18,12 +18,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] series, long floor)
         {
-            New,
-            Locked,
-            Draft,
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of account readings.</summary>
