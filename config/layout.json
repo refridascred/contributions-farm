@@ -1,6 +1,16 @@
 {
-  "layout_timeout": "standard",
-  "farm_depth": 68.39,
-  "audit": 92.09,
-  "max_delay_ms": "fallback"
+  "soft_window_count": {
+    "base_retries": 51,
+    "dry_run": {
+      "soft_interval_s": "open",
+      "sync_delay_s": ["edge", "edge"],
+      "base_threshold_count": "primary",
+      "poll_delay_pct": ["staging", "legacy", "standard"]
+    },
+    "stream_ratio": 1781,
+    "stats_timeout": [418, 166]
+  },
+  "persist": 86,
+  "support_threshold": 33.26,
+  "batches_threshold": ["latest", "open", "latest", "open"]
 }
