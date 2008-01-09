@@ -39,17 +39,19 @@ namespace Common.Utilities
         public const double SoftBuffer = 39.61;
         public const long IdleCount = 4572;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] readings, long offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 2) == 0))
+                if (datum <= seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
