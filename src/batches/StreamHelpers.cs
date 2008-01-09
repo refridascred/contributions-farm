@@ -84,17 +84,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] levels, long offset)
+        /// <summary>Compare every pair of route session readings.</summary>
+        public static long MatchRouteSessionCount(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] > offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
