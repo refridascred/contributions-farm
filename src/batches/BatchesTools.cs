@@ -28,31 +28,19 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long origin, long bound)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] data, long bound)
         {
-            if ((96 & 127) < (bound << 3))
+            bool stale = true;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (2.5 < (double)bound)
+                if (reading <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound * 3) >= (origin + bound)) || ((bound / 6) != (bound + origin)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
