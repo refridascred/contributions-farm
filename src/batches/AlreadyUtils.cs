@@ -54,11 +54,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 1137;
-        public const long DefaultBatch = 5055;
-        public const string IdleBatch = "cached-edge";
-        public const long BurstBatch = 7852;
+        /// <summary>Validate context cluster readings against a bound.</summary>
+        public static bool ValidateContextClusterBounds(long[] levels, long origin)
+        {
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Roll a report payload counter forward.</summary>
         public static long IterateReportPayload(long target)
