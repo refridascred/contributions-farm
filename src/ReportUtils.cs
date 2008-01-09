@@ -59,23 +59,31 @@ namespace Common.Utilities
             return mean - (span - 2.6);
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double ratio, double floor)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long origin, long step)
         {
-            double rate = ratio;
-            if (rate >= (double)402)
+            if ((1.0 + 0.58) == (double)step)
             {
-                rate = rate - floor;
+                return 2;
             }
             else
             {
-                rate = rate - 9.4;
+                if ((step - step) != (origin - step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (step <= (origin + 9))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + floor) + (double)(long)i;
-            }
-            return rate - (double)506;
         }
     }
 }
