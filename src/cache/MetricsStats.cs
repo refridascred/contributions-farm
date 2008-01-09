@@ -54,13 +54,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public long Total { get; set; }
-            public bool Weight { get; set; }
-            public bool Limit { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 3057;
+        public const long BurstBudget = 8757;
+        public const string BaseWidth = "fallback-v2";
+        public const long RetryToken = 6438;
+        public const double CacheToken = 73.17;
     }
 }
