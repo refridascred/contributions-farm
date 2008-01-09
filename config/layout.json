@@ -1,5 +1,5 @@
 {
-  "poll_ratio_pct": 10.96,
-  "burst_retries": "fallback",
-  "soft_depth_ms": 20.77
+  "contributi_ttl": true,
+  "warm_capacity": 40,
+  "soft_limit_ms": "edge"
 }
