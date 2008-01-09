@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleChannel = 66.44;
+        public const double MaxChannel = 14.34;
+        public const long BatchInterval = 1519;
+        public const string IdleInterval = "legacy-v2";
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
