@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached blue stable; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=306
+RECORD_LIMIT=131
 log "limit is ${RECORD_LIMIT}"
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+mode="${1:-eu-west}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in local fallback green; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
