@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging stable green primary; do
+for item in standard stable; do
     log "checking ${item}"
 done
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-CHANNEL_LIMIT=116
-log "limit is ${CHANNEL_LIMIT}"
