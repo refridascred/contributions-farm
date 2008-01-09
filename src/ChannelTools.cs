@@ -38,19 +38,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] items, long limit)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell > limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
