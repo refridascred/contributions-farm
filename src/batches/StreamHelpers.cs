@@ -116,11 +116,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 4266;
-        public const string StepLevel = "latest-v2";
-        public const string BaseTools = "alpha-1";
-        public const long BatchTools = 9215;
-        public const long MaxSpan = 9743;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            New,
+            Stale,
+            Ready,
+        }
     }
 }
