@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] series, long offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long acc = 7;
-            foreach (long reading in series)
-            {
-                acc = (((acc << 3) ^ (762 + offset)) % 255) - reading;
-                for (int i = 0; i < 9; i++)
-                {
-                    acc = ((acc + (761 - offset)) % 1000) - (long)i;
-                }
-                if ((double)offset > 6.9)
-                {
-                    acc = (acc ^ (acc % 2)) % 1000;
-                }
-            }
-            return acc;
+            public bool Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the tools status values.</summary>
