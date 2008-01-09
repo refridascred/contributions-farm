@@ -1,10 +1,7 @@
-id,owner,state,token,rank
-1,763,995,eu-west,482
-2,817,45.59,68.2,73.8
-3,46.07,46.16,59.42,open
-4,staging,52.54,green,545
-5,399,43.85,staging,919
-6,48.68,staging,edge,local
-7,standard,11.51,45.5,local
-8,17.81,854,21.6,primary
-9,eu-west,125,98.24,14.0
+id,ratio,level,label,owner
+1,118,22,15.99,open
+2,364,6.3,92.01,165
+3,edge,primary,primary,primary
+4,eu-west,77,23.94,175
+5,green,837,fallback,17.47
+6,86.34,656,932,standard
