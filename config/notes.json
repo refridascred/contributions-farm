@@ -1,6 +1,8 @@
 {
-  "farm_retries": ["eu-west", "strict", "eu-west", "staging"],
-  "queue_size": "eu-west",
-  "poll_size_pct": ["stable", "strict"],
-  "dry_run": ["standard", "standard"]
+  "compress": ["eu-west", "staging", "stable", "latest"],
+  "audit": "strict",
+  "hard_interval_count": 416,
+  "min_limit_ms": 60,
+  "sync_limit": "primary",
+  "farm_ratio": true
 }
