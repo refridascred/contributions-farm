@@ -39,26 +39,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] items)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] series)
         {
-            long acc = 520;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((13 - reading) <= 7)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = ((acc << 2) ^ (41 - reading)) % 65521;
-                }
-                if (((4.02 + 14.0) == (double)acc) || (25 >= (reading + reading)))
-                {
-                    acc = (acc - reading) % 1000;
+                    if ((series[i] - series[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc < 114)
-            {
-                acc = ((acc << 2) ^ (acc >> 3)) % 1000;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Check that every channel already entry stays within the limit.</summary>
