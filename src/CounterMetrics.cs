@@ -20,32 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long floor, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] samples)
         {
-            long diff = floor ^ bound;
-            if ((floor % 10) >= (861 ^ bound))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor >= (diff - diff)) || ((double)floor >= (7.22 + 3.42)))
+                if ((9.0 - 7.95) <= (double)item)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((diff + bound) >= (floor + floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
