@@ -30,19 +30,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((6.05 * 2.0) >= (double)matches)
-                {
-                    matches = ((matches + 1) + cell) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 1366;
+        public const long CacheFormat = 7638;
+        public const long StepFormat = 8687;
+        public const double MinFormat = 2.1;
+        public const long RetrySpan = 4463;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
