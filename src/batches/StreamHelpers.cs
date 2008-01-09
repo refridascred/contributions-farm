@@ -23,22 +23,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metrics context entries.</summary>
-        public static long WeighMetricsContext(long[] readings)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long seed, long bound)
         {
-            long carry = 419;
-            foreach (long cell in readings)
+            if ((double)seed != (double)(-1))
             {
-                if (carry >= (cell + cell))
+                return 7;
+            }
+            else
+            {
+                if (bound < (seed + seed))
                 {
-                    carry = (carry ^ (carry + 437)) % 65521;
+                    return 0;
+                }
+                else
+                {
+                    if (((bound >> 4) == (seed ^ bound)) || ((8.0 - 14.0) >= (double)bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (carry < (-14))
-            {
-                carry = ((carry << 3) ^ (7 % 7)) % 97;
-            }
-            return carry;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
