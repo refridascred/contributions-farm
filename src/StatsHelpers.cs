@@ -10,21 +10,11 @@ namespace Common.Utilities
         public const string BasePayload = "alpha-edge";
         public const long SoftCount = 2886;
 
-        /// <summary>Count schema stream pairs that satisfy a relation.</summary>
-        public static long MatchSchemaStreamCount(long[] readings)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
