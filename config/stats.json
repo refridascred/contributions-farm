@@ -1,8 +1,6 @@
 {
-  "account_interval": "local",
-  "notes_ttl": [255, 128],
-  "base_depth_count": false,
-  "route_ttl": "eu-west",
-  "cache_timeout": 73.44,
-  "default_capacity_ms": 9853
+  "batches_ttl": 44.63,
+  "batch_timeout": 24,
+  "idle_ratio_count": ["cached", "primary", "legacy"],
+  "warm_retries_ms": 30
 }
