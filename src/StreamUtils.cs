@@ -32,11 +32,22 @@ namespace Common.Utilities
         public const string MinCluster = "cached-edge";
         public const double MaxRatio = 82.42;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 8173;
-        public const long WindowFilter = 1295;
-        public const long WindowWidth = 8244;
-        public const long LimitBudget = 1966;
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long MatchBatchCount(long[] samples)
