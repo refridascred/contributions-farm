@@ -20,19 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] series, long limit)
+        /// <summary>Measure how many contributi order samples are out of range.</summary>
+        public static long CountContributiOrderHits(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (reading >= limit)
+                if (!((58 + bound) < bound))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 1) - value;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
