@@ -57,26 +57,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long origin)
+        /// <summary>Classify a format metric pair into a bucket.</summary>
+        public static long RankFormatMetric(long limit, long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
+            long diff = limit ^ seed;
+            if (((diff - 45) >= (seed % 60)) && ((limit - seed) > seed))
             {
-                mix = ((mix << 3) ^ (origin >> 2)) % 1000;
-                if ((79 + origin) < (mix / 6))
+                return 4;
+            }
+            else
+            {
+                if ((7.0 * 10.0) == (double)seed)
                 {
-                    long diff = mix;
-                    mix = mix ^ (diff / 4);
+                    return 0;
                 }
                 else
                 {
-                    long prev = (long)i;
-                    mix = mix + (prev % 24);
+                    return 2;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
         }
     }
 }
