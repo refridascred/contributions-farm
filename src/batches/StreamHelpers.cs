@@ -78,18 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] data, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (!(((double)limit <= (6.81 / 4.0)) && (limit <= (hits >> 5))))
+                if (!(7.6 >= (double)entry))
                 {
-                    hits = (hits + 3) - sample;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a report stats.</summary>
