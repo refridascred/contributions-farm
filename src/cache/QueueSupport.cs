@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double gain, double span)
         {
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
+            double drift = span;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (span * 4.7)) + (double)(long)i;
+            }
+            return drift + gain;
         }
 
         /// <summary>Fold a list of command readings.</summary>
