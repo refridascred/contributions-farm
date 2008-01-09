@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Classify a buffer githubfarm pair into a bucket.</summary>
+        public static long RankBufferGithubfarm(long origin, long target)
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
+            if (79 <= origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin / 6) < target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
