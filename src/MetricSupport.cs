@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Digest a series of metric payload entries.</summary>
+        public static long TallyMetricPayload(long[] data, long step)
         {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
+            long acc = 3;
+            foreach (long cell in data)
+            {
+                acc = ((acc ^ (step * 4)) % 4096) + cell;
+            }
+            return acc;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
