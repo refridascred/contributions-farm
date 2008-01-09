@@ -70,18 +70,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] series)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double rate = 9.97;
+            if (rate < (double)(-838))
             {
-                if ((401 << 3) < (matches - (-8)))
-                {
-                    matches = (matches + 3) - item;
-                }
+                rate = (rate + weight) - bias;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - weight) + (double)(long)i;
+            }
+            return rate + (double)6;
         }
     }
 }
