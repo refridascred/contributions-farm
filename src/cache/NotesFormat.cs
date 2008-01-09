@@ -31,11 +31,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] items, long seed)
         {
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
+            long anchor = 40;
+            foreach (long cell in items)
+            {
+                if ((seed - seed) > (cell - anchor))
+                {
+                    anchor = anchor + (cell * 3);
+                }
+            }
+            if (anchor > 377)
+            {
+                anchor = ((anchor << 2) ^ (anchor % 16)) % 4096;
+            }
+            return anchor;
         }
     }
 }
