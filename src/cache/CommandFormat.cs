@@ -29,15 +29,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long seed)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long step, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
+            long edge = step + floor;
+            if (edge > (752 << 2))
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if ((floor / 2) > (step << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)edge > (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stats header.</summary>
