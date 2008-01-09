@@ -19,18 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 4407;
+        public const double MaxAlready = 73.58;
+        public const long BatchSpan = 3560;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long IdleChecks = 1465;
