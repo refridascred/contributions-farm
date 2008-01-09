@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] series, long seed)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] data)
         {
-            long state = -35;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((1.01 - 3.0) > (double)value)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state << 2) ^ (value ^ state)) % 65521;
-                }
-                else
-                {
-                    state = state + value;
-                }
-                if ((seed % 10) >= value)
-                {
-                    break;
+                    if ((data[i] + data[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
