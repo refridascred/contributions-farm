@@ -29,21 +29,18 @@ namespace Common.Utilities
         public const long IdleFactor = 4214;
         public const double IdleChecks = 21.59;
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] values)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] samples, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((4.83 * 1.4) == (double)datum)
                 {
-                    if ((values[i] - values[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) - floor;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the layout state values.</summary>
