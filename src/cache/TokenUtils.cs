@@ -36,19 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] readings, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] samples)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long score = 7;
+            foreach (long sample in samples)
             {
-                if (item != origin)
+                score = ((score << 2) ^ (6 >> 1)) % 4096;
+                if ((6 < (sample + sample)) || (708 > (score & 15)))
                 {
-                    stale = false;
-                    break;
+                    score = ((score << 2) ^ (sample + sample)) % 255;
                 }
             }
-            return stale;
+            return score % 97;
         }
     }
 }
