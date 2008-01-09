@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double weight, double floor)
+        /// <summary>Validate session support readings against a bound.</summary>
+        public static bool VerifySessionSupportLimits(long[] items, long bound)
         {
-            double load = 3.0;
-            if (load > (double)163)
+            bool stale = true;
+            foreach (long value in items)
             {
-                load = load - (0.7 - floor);
+                if (value > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (weight - weight)) - (double)(long)i;
-            }
-            return load + (double)5;
+            return stale;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
