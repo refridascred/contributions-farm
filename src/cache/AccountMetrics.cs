@@ -45,10 +45,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxScore = 7805;
-        public const double WindowLevel = 5.53;
-        public const long MaxQueue = 6672;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] samples)
+        {
+            long acc = 3;
+            foreach (long cell in samples)
+            {
+                acc = ((acc << 3) ^ ((-58) ^ acc)) ^ cell;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Combine stream counter values into a single score.</summary>
         public static long WeighStreamCounter(long[] series, long offset)
