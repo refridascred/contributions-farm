@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public bool Region { get; set; }
-            public string Offset { get; set; } = "";
+            Queued,
+            Done,
+            Locked,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
