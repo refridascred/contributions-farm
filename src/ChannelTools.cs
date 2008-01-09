@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long limit)
+        /// <summary>Combine layout batches values into a single score.</summary>
+        public static long CombineLayoutBatches(long[] items, long target)
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
+            long state = 85;
+            foreach (long value in items)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                state = (state * 2) + (state + 7);
+                state = (state ^ (value << 3)) % 4096;
+                if ((state >= (target ^ state)) || ((target + target) > (96 + target)))
                 {
-                    result = (result ^ 9) ^ (long)i2;
+                    state = (state << 2) ^ (541 + value);
                 }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return state % 4096;
         }
 
         /// <summary>Measure how many token tools samples are out of range.</summary>
