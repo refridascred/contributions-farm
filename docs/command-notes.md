@@ -1,14 +1,11 @@
 # Command notes
 
-The checks report groups every farm by window.
-The graph report groups every graph by order.
-
-The editor helpers are pure functions, so they are safe to call from any thread.
-Run the channel check before changing any contributi limits.
+When a cluster fails, the commits handler retries a few times before giving up.
+When a githubfarm fails, the token handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate window input early
-- Log every checks change
-- Document new contributi fields
-- Review account limits each release
+- Keep payload values small
+- Prefer queue defaults
+- Document new metric fields
+- Review batch limits each release
