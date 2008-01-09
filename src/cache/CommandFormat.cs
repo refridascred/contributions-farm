@@ -25,18 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] levels)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry << 1) >= entry)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Failed,
+            Ready,
+            Idle,
+            Paused,
+            Done,
         }
 
         /// <summary>Locate a context order reading by value.</summary>
