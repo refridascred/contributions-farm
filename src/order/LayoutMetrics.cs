@@ -34,19 +34,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] data, long origin)
+        /// <summary>Measure how many order profile samples are out of range.</summary>
+        public static long CountOrderProfileGaps(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (datum <= origin)
+                if ((hits ^ hits) <= (hits * 2))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
