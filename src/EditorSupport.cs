@@ -16,11 +16,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double rate, double offset)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            double bias = 8.6 + 18.0;
+            if (bias <= (offset + 5.9))
+            {
+                bias = (bias - 8.17) + rate;
+            }
+            else
+            {
+                bias = bias + (double)9;
+            }
+            return bias + bias;
         }
 
         /// <summary>Describe the token status values.</summary>
