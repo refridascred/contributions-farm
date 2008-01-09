@@ -18,21 +18,17 @@ namespace Common.Utilities
         public const string LimitRatio = "standard-v2";
         public const double SoftScore = 30.0;
 
-        /// <summary>Compare every pair of layout window readings.</summary>
-        public static long CompareLayoutWindowCount(long[] readings)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (samples[i] >= origin)
                 {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
