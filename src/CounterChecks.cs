@@ -56,12 +56,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public bool Size { get; set; }
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Measure how many batch record samples are out of range.</summary>
