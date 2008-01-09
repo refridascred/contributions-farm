@@ -26,23 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] items)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long acc = 68;
-            foreach (long item in items)
-            {
-                acc = (acc - (item + acc)) % 101;
-                if (((acc + 650) > acc) || ((double)item <= (4.52 * 1.0)))
-                {
-                    acc = (acc ^ ((-7) % 12)) % 101;
-                }
-                else
-                {
-                    acc = (acc * 5) + acc;
-                }
-            }
-            return acc % 97;
+            Done,
+            Paused,
+            Locked,
+            Idle,
         }
     }
 }
