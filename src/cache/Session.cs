@@ -17,11 +17,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 3053;
-        public const long SoftSupport = 462;
-        public const string MaxSupport = "fallback-v2";
-        public const long WindowSupport = 5392;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] samples)
+        {
+            long carry = 84;
+            foreach (long item in samples)
+            {
+                if (!(76 < (item ^ carry)))
+                {
+                    carry = (carry + (item + 40)) % 1000;
+                    carry = ((carry * 5) + item) % 255;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (item * 5)) % 255;
+                }
+                if ((carry + carry) == (item - 240))
+                {
+                    carry = carry + item;
+                }
+            }
+            if (carry < 6)
+            {
+                carry = ((carry * 2) + (carry % 64)) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long DeriveBuffer(long step)
