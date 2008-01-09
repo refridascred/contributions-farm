@@ -1,8 +1,7 @@
 # support settings
-idle_delay_s: blue
-strict: 2.29
-batch_limit:
-  - fallback
-  - stable
-poll_timeout_count: legacy
-soft_window_ms: 65
+burst_ttl: 9292
+cache_limit: blue
+command_capacity:
+  - 83
+  - 138
+batch_window_s: strict
