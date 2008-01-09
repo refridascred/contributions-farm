@@ -1,12 +1,5 @@
 {
-  "warm_ttl_ms": {
-    "warm_retries": 41.77,
-    "enabled": false,
-    "report_interval": "primary"
-  },
-  "readonly": 31.36,
-  "flush_threshold_ms": 18.47,
-  "poll_limit_ms": [22, 66],
-  "burst_retries_count": "standard",
-  "poll_retries_s": 1024
+  "sync_retries": [178, 95, 104, 79],
+  "verbose": 50,
+  "compress": "primary"
 }
