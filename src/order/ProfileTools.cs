@@ -45,9 +45,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 7253;
-        public const string HardScore = "legacy";
-        public const long MinSpan = 6189;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Done,
+            New,
+            Idle,
+        }
     }
 }
