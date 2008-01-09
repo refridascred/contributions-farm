@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] readings)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double weight, double floor)
         {
-            long total = 977;
-            foreach (long reading in readings)
+            double load = 3.0;
+            if (load > (double)163)
             {
-                if ((total + total) <= (reading << 1))
-                {
-                    total = total ^ total;
-                }
+                load = load - (0.7 - floor);
             }
-            return total % 65521;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (weight - weight)) - (double)(long)i;
+            }
+            return load + (double)5;
         }
 
         /// <summary>Hold a window options.</summary>
