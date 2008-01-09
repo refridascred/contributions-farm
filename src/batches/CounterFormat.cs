@@ -33,9 +33,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 1629;
-        public const long BatchChecks = 5296;
-        public const long WindowDepth = 2862;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Locked,
+            Synced,
+            Pending,
+            Paused,
+        }
     }
 }
