@@ -38,18 +38,21 @@ namespace Common.Utilities
         public const long IdleFactor = 4214;
         public const double IdleChecks = 21.59;
 
-        /// <summary>Fold a list of account record readings.</summary>
-        public static long WeighAccountRecord(long[] samples)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] values)
         {
-            long total = 54;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (total < (datum & 31))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total - total) % 255;
+                    if ((values[i] - values[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total % 65521;
+            return seen;
         }
 
         /// <summary>Describe the layout state values.</summary>
