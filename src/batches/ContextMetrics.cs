@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many batch tools samples are out of range.</summary>
-        public static long TallyBatchToolsMatches(long[] readings)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((seen <= reading) && ((double)seen <= 7.91))
+                if ((6.65 + 7.0) >= (double)matches)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = ((matches + 1) + entry) + bound;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Project the next notes value.</summary>
