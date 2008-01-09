@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long origin, long target)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] values, long limit)
         {
-            long next = origin - target;
-            if (((next ^ origin) == (target >> 1)) && ((double)origin != (2.1 * 9.84)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((2 - next) <= (target >> 5))
+                if (values[i] > limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin < (12.0 - 6.34))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of record token readings.</summary>
