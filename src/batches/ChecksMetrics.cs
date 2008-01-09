@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            public bool Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
