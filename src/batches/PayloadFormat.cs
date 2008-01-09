@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 1584;
-        public const long StepDepth = 7845;
-        public const string DefaultEditor = "primary";
-        public const long BaseEditor = 258;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public double Weight { get; set; }
+            public double Size { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderBounds(long[] data, long seed)
