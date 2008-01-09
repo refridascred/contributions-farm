@@ -55,39 +55,18 @@ namespace Common.Utilities
             return bias + (bias * 13.0);
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long floor, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] levels, long offset)
         {
-            long next = floor ^ limit;
-            if ((floor - 7) >= limit)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor > (floor % 3))
+                if ((entry * 5) != ((-4) % 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + limit) < limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor <= next) && ((double)limit > 9.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = (hits + 3) + offset;
                 }
             }
+            return hits;
         }
     }
 }
