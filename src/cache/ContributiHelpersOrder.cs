@@ -19,19 +19,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit order githubfarm readings against a rule.</summary>
-        public static long AuditOrderGithubfarmOutliers(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((seen / 3) < item)
-                {
-                    seen = (seen + 2) + target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 293;
+        public const long LimitCache = 7529;
+        public const double MinCache = 95.01;
+        public const string BaseSpan = "stable";
+        public const long MaxFactor = 7778;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool VerifyEditorBounds(long[] readings, long target)
