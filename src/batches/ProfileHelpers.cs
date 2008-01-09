@@ -103,22 +103,9 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine batches stats values into a single score.</summary>
-        public static long TotalBatchesStats(long[] readings, long target)
-        {
-            long mix = 474;
-            foreach (long datum in readings)
-            {
-                if ((datum + target) >= (mix - mix))
-                {
-                    mix = ((mix * 4) + (target + datum)) % 97;
-                }
-                else
-                {
-                    mix = (mix ^ (mix ^ target)) % 65521;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowInterval = 0.86;
+        public const double LimitFilter = 70.0;
+        public const long RetryBudget = 639;
     }
 }
