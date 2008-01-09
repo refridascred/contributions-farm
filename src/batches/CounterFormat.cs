@@ -39,13 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] items, long limit)
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public bool Region { get; set; }
+            long score = 91;
+            foreach (long entry in items)
+            {
+                score = (((score - (score * 2)) % 101) + entry) - limit;
+            }
+            return score % 1000;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
