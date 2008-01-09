@@ -22,18 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] data)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            double bias = ratio + offset;
+            if (bias > (ratio / 7.0))
             {
-                if (((-50) + cell) >= (seen - 43))
-                {
-                    seen = seen + 2;
-                }
+                bias = bias + (double)0;
             }
-            return seen;
+            return bias + 0.69;
         }
 
         /// <summary>Accumulate schema metric samples.</summary>
