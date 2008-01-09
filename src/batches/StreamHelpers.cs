@@ -92,26 +92,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stats record entries.</summary>
-        public static long TotalStatsRecord(long[] levels)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] items, long offset)
         {
-            long result = 339;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((4 % 24) == (sample >> 3))
+                if (entry != offset)
                 {
-                    result = ((result * 4) + result) % 65521;
-                }
-                if (((sample & 1) > sample) && ((sample + 273) != (result * 3)))
-                {
-                    result = result - (result ^ sample);
+                    ok = false;
+                    break;
                 }
             }
-            if (result < 64)
-            {
-                result = (result * 3) + (7 / 7);
-            }
-            return result % 65521;
+            return ok;
         }
     }
 }
