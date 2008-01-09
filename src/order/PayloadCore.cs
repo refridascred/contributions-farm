@@ -20,17 +20,39 @@ namespace Common.Utilities
         public const long MaxScore = 544;
         public const long IdleLevel = 2408;
 
-        /// <summary>Locate a route tools reading by value.</summary>
-        public static long SeekRouteToolsIndex(long[] series, long seed)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long seed, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long cur = seed ^ offset;
+            if (((offset * 3) >= cur) && ((double)cur != (20.0 * 0.3)))
             {
-                if ((series[i] <= seed) && ((series[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((9.0 - 9.05) <= (double)cur)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((cur - cur) < (seed - 31))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((cur - 58) > (offset ^ cur))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the batch status values.</summary>
