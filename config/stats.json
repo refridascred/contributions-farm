@@ -1,5 +1,6 @@
 {
-  "poll_timeout": ["local", "fallback", "legacy", "open"],
-  "readonly": 21,
-  "idle_threshold_pct": 95
+  "command_ratio": false,
+  "flush_threshold_count": "fallback",
+  "audit": false,
+  "sync_delay_count": true
 }
