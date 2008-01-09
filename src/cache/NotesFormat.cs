@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Idle,
-            Synced,
-            Queued,
             Draft,
+            Stale,
+            Active,
+            Ready,
+            Failed,
         }
 
         /// <summary>Compare every pair of command readings.</summary>
