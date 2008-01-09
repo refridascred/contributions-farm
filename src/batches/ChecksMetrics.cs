@@ -33,18 +33,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a session notes reading by value.</summary>
-        public static long FindSessionNotesIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardRatio = 4526;
+        public const long LimitLevel = 3471;
+        public const long BatchTimeout = 1096;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double BaseSize = 18.05;
