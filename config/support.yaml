@@ -1,35 +1,5 @@
 # support settings
-cache_window:
-  editor_threshold:
-    readonly: 65.65
-    retry_limit: primary
-    buffer_ttl:
-      - 280
-      - 224
-      - 387
-    retry_ratio_s: 96
-    stats_timeout:
-      - green
-      - stable
-      - latest
-  poll_limit_s: true
-  warm_capacity: 1860
-  compress: 62.0
-  session_limit:
-    - 288
-    - 157
-  min_retries_pct: 2625
-tools_capacity: fallback
-githubfarm_interval: 500
-metric_ttl: open
-base_size_pct:
-  buffer_depth:
-    - 340
-    - 1
-  hard_delay_count: true
-  metric_retries:
-    - 145
-    - 78
-    - 245
-  hard_ratio_s: open
-max_ttl: cached
+burst_depth: eu-west
+batches_window: green
+enabled: 41
+batches_size: cached
