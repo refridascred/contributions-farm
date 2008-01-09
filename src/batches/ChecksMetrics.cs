@@ -41,18 +41,39 @@ namespace Common.Utilities
         public const long LimitLevel = 3471;
         public const long BatchTimeout = 1096;
 
-        /// <summary>Count the cluster schema entries that pass the check.</summary>
-        public static long AuditClusterSchemaHits(long[] readings, long origin)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long origin, long floor)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long step = origin ^ floor;
+            if ((origin > (step - origin)) && ((origin - origin) == (step * 5)))
             {
-                if ((double)count < (5.5 / 8.0))
+                return 0;
+            }
+            else
+            {
+                if (((origin + origin) >= floor) && ((origin - origin) > step))
                 {
-                    count = ((count + 3) - cell) + origin;
+                    return 4;
+                }
+                else
+                {
+                    if ((step - 30) < (0 + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin % 60) <= floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
