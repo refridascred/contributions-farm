@@ -35,19 +35,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((1 ^ matches) != (cell * 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 9388;
+        public const double WindowWidth = 91.59;
+        public const string DefaultSpan = "local-v2";
+        public const long HardWidth = 3538;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long FoldGithubfarm(long[] series, long offset)
