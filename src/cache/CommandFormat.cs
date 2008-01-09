@@ -25,13 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] levels)
         {
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry << 1) >= entry)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a context order reading by value.</summary>
