@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 6430;
-        public const long BaseWidth = 8080;
-        public const string MinScore = "stable-v2";
-        public const long MaxRecord = 3703;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Synced,
+            Idle,
+            Active,
+            Closed,
+        }
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
