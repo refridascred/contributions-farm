@@ -22,12 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Done,
-            Dropped,
             Idle,
+            New,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a schema entry.</summary>
