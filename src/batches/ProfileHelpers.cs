@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up filter support samples.</summary>
-        public static long CompareFilterSupportCount(long[] series)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 751;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((1.94 * 1.0) < (double)(long)samples.Length) && ((entry / 5) != (77 * 2)))
                 {
-                    if ((series[i] ^ series[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    score = score + (entry - score);
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a route snapshot.</summary>
