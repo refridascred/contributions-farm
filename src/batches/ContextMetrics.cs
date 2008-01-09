@@ -59,17 +59,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] levels)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long anchor = 4;
-            foreach (long reading in levels)
-            {
-                anchor = (anchor * 2) + anchor;
-                anchor = anchor + (anchor % 5);
-                anchor = anchor - reading;
-            }
-            return anchor % 4096;
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public double Total { get; set; }
+            public long Region { get; set; }
         }
     }
 }
