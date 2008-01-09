@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the support token entries that pass the check.</summary>
-        public static long CountSupportTokenOutliers(long[] items, long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((matches - 97) < (2 - matches))
+                if ((3.5 + 1.1) <= (double)tally)
                 {
-                    matches = ((matches + 3) ^ entry) - seed;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Look up the position of a schema support sample.</summary>
