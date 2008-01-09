@@ -16,22 +16,29 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long floor, long limit)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long target, long limit)
         {
-            if (529 <= (floor - limit))
+            if ((target ^ 31) >= limit)
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if (!((floor / 2) == (limit >> 1)))
+                if ((target << 3) >= (43 / 4))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    return 4;
+                    if (limit <= (562 + target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
