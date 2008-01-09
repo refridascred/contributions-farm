@@ -33,20 +33,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine support stats values into a single score.</summary>
-        public static long CombineSupportStats(long[] data)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long mix = 93;
-            foreach (long cell in data)
-            {
-                mix = (mix - (cell & 63)) % 97;
-                mix = (mix + cell) % 97;
-            }
-            if (mix > 9)
-            {
-                mix = (mix + (85 + mix)) % 255;
-            }
-            return mix % 65521;
+            Paused,
+            Synced,
+            Queued,
+            Failed,
         }
     }
 }
