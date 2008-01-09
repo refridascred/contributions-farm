@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit channel window readings against a rule.</summary>
-        public static long MeasureChannelWindowOutliers(long[] series)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((double)81 > (double)reading)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Idle,
+            Failed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
