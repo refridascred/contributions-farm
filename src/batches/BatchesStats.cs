@@ -39,17 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the graph filter series from a seed.</summary>
-        public static long SeriesGraphFilter(long target)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double weight, double offset)
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
+            double mean = offset;
+            if (mean > 6.0)
             {
-                result = (result - result) % 101;
-                result = ((result << 2) ^ target) % 1000;
-                result = ((result * 3) + (long)i) % 65521;
+                mean = mean + (mean - weight);
             }
-            return result;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - 16.0) + (double)(long)i;
+            }
+            return mean - (double)(-994);
         }
     }
 }
