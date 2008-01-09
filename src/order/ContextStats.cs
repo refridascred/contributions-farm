@@ -60,21 +60,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowCount = 7466;
+        public const long RetryTimeout = 8818;
+        public const long MaxProfile = 16;
+        public const string CacheInterval = "open-v2";
     }
 }
