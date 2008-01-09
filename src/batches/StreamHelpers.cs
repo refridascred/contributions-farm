@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] samples)
+        /// <summary>Adjust a tools cache reading.</summary>
+        public static double ProjectToolsCache(double weight, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = 3.15 / 6.0;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = ((scale - (double)(long)i) + weight) + bias;
             }
-            return hits;
+            return scale - (scale - scale);
         }
 
         /// <summary>Fold a list of layout readings.</summary>
