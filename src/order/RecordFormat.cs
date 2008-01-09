@@ -51,18 +51,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] data, long offset)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long anchor = 2;
-            foreach (long reading in data)
-            {
-                if ((anchor - reading) <= (85 ^ offset))
-                {
-                    anchor = (anchor + (anchor - offset)) % 4096;
-                }
-            }
-            return anchor % 1000;
+            public double Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
