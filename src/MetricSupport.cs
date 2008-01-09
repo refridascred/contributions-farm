@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a filter batch reading by value.</summary>
-        public static long SeekFilterBatchIndex(long[] items, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 1;
+            foreach (long value in values)
             {
-                if (items[i] <= origin)
+                if (!((value % 12) >= ((-530) - acc)))
                 {
-                    return (long)i;
+                    continue;
+                }
+                if ((1 % 7) > (value ^ origin))
+                {
+                    acc = ((acc << 2) ^ (origin + (long)values.Length)) % 97;
                 }
             }
-            return -1;
+            if (acc < 654)
+            {
+                acc = acc - acc;
+            }
+            return acc % 97;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
