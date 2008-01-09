@@ -44,21 +44,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define window limits and defaults.</summary>
