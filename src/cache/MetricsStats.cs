@@ -38,13 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] values, long seed)
         {
-            public long Score { get; set; }
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a session info.</summary>
