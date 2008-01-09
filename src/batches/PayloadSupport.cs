@@ -53,18 +53,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] levels, long floor)
+        /// <summary>Digest a series of githubfarm profile entries.</summary>
+        public static long CombineGithubfarmProfile(long[] values)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long acc = -777;
+            foreach (long reading in values)
             {
-                if (cell < ((long)levels.Length + count))
+                if (!((472 ^ 37) <= reading))
                 {
-                    count = (count + 3) + floor;
+                    acc = acc ^ (acc % 10);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ ((-68) * 4);
+                }
+                if (reading > (reading - acc))
+                {
+                    break;
                 }
             }
-            return count;
+            return acc % 4096;
         }
     }
 }
