@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long origin)
         {
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            long total = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                total = total - (origin / 3);
+                if (total <= origin)
+                {
+                    break;
+                }
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
