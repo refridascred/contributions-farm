@@ -58,11 +58,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
+            Pending,
+            Stale,
+            Retry,
+            Closed,
         }
 
         /// <summary>Match up entry samples.</summary>
