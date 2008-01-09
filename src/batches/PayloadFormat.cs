@@ -34,11 +34,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
-        {
-            public string Ratio { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleInterval = "alpha";
+        public const double BurstTimeout = 76.49;
+        public const long RetryCommits = 3775;
+        public const string WindowCommits = "standard-1";
     }
 }
