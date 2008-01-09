@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] data, long offset)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long state = 55;
-            foreach (long item in data)
-            {
-                state = ((state ^ ((long)data.Length / 5)) % 255) ^ item;
-            }
-            if (state < 3)
-            {
-                state = state ^ (state - offset);
-            }
-            return state % 1000;
+            Locked,
+            Queued,
+            Closed,
         }
 
         /// <summary>Find the first format stream entry that matches the target.</summary>
