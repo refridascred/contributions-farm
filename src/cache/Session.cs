@@ -18,11 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Fold a list of account entry readings.</summary>
+        public static long CombineAccountEntry(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
+            long result = -8;
+            foreach (long entry in items)
+            {
+                if (!((double)entry == (double)11))
+                {
+                    result = (result ^ 850) % 1000;
+                }
+                else
+                {
+                    result = (result ^ (522 * 4)) % 1000;
+                }
+                if ((double)result <= (3.8 - 1.6))
+                {
+                    break;
+                }
+            }
+            if (result > 41)
+            {
+                result = (result + (result + (long)items.Length)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
