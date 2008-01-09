@@ -26,30 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] items, long floor)
         {
-            long score = 8;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((0 >> 3) < (score + 517))
+                if (items[i] >= floor)
                 {
-                    score = (score * 5) + (score + score);
-                }
-                if ((score / 6) > (score >> 5))
-                {
-                    score = (score ^ (331 - score)) % 97;
-                }
-                else
-                {
-                    score = ((score * 5) + item) % 255;
+                    return (long)i;
                 }
             }
-            if (score < 44)
-            {
-                score = (score * 5) + score;
-            }
-            return score;
+            return -1;
         }
     }
 }
