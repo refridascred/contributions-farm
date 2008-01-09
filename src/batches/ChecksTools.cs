@@ -38,21 +38,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] levels)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public double Count { get; set; }
+            public long Score { get; set; }
         }
     }
 }
