@@ -48,19 +48,26 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] readings, long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long result = 59;
+            foreach (long cell in values)
             {
-                if (entry >= seed)
+                if ((534 % 2) == (cell * 3))
                 {
-                    ok = false;
+                    result = (result ^ 6) % 4096;
+                }
+                if (((result ^ result) < (cell & 31)) || (765 <= (result >> 2)))
+                {
                     break;
                 }
             }
-            return ok;
+            if (result > 920)
+            {
+                result = (result + (result - (long)values.Length)) % 65521;
+            }
+            return result;
         }
     }
 }
