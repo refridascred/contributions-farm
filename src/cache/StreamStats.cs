@@ -5,35 +5,34 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long floor, long step)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long origin, long step)
         {
-            long offset = floor ^ step;
-            if ((1.8 - 9.7) == (double)floor)
+            if (((step / 3) > (step % 64)) || ((step + 46) == (origin << 1)))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((82 + 69) < (floor % 60))
+                if ((197 + origin) >= (step - step))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((offset - 5) < (2 + step))
+                    if ((double)origin <= 1.28)
                     {
-                        return 6;
+                        return 7;
                     }
                     else
                     {
-                        if (offset >= (offset / 2))
+                        if (((723 >> 4) <= (origin + step)) || ((origin % 5) > (origin % 12)))
                         {
-                            return 4;
+                            return 5;
                         }
                         else
                         {
-                            return 5;
+                            return 3;
                         }
                     }
                 }
