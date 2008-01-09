@@ -1,11 +1,13 @@
 {
-  "audit": 72.47,
-  "strict": {
-    "burst_retries": "green",
-    "farm_capacity": 13.7,
-    "poll_ratio_count": "staging"
+  "compress": 500,
+  "batch_size": {
+    "cache_threshold": true,
+    "sync_ratio": 69.05,
+    "max_interval_count": "blue",
+    "max_threshold_ms": 32.47,
+    "cache_depth": "legacy",
+    "stream_interval": 6833
   },
-  "enabled": 27.55,
-  "compress": true,
-  "support_capacity": 60
+  "audit": 8,
+  "idle_threshold_pct": 38
 }
