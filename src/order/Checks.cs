@@ -31,19 +31,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] items, long offset)
+        /// <summary>Digest a series of batch tools entries.</summary>
+        public static long FoldBatchTools(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long mix = 5;
+            foreach (long datum in levels)
             {
-                if (datum != offset)
+                mix = mix ^ mix;
+                if (((mix + mix) == (datum + mix)) || ((mix >> 5) != (59 & 3)))
                 {
-                    valid = false;
-                    break;
+                    mix = (mix - (floor / 4)) % 255;
+                }
+                else
+                {
+                    mix = (mix - datum) % 255;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
