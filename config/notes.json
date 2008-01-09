@@ -1,6 +1,7 @@
 {
-  "retry_ttl_ms": 34,
-  "compress": ["open", "blue", "open", "strict"],
-  "min_threshold": "local",
-  "profile_delay": 16
+  "command_ttl": [84, 176, 449],
+  "enabled": 24.28,
+  "base_window_s": "green",
+  "burst_threshold_ms": 19,
+  "max_interval_count": "green"
 }
