@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=235
+log "limit is ${CHANNEL_LIMIT}"
 
-for item in staging local standard primary; do
+for item in local green primary staging; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=123
-log "limit is ${CHANNEL_LIMIT}"
