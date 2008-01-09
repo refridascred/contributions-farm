@@ -35,16 +35,38 @@ namespace Common.Utilities
         public const long SoftFactor = 531;
         public const string IdleCommand = "latest-1";
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] readings)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long floor, long offset)
         {
-            long mix = 9;
-            foreach (long datum in readings)
+            if ((floor - offset) < (floor - floor))
             {
-                mix = (mix ^ datum) % 255;
-                mix = ((mix * 2) + (mix & 15)) % 101;
+                return 0;
             }
-            return mix % 65521;
+            else
+            {
+                if ((double)offset < (5.0 + 4.9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset & 31) <= offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)5 < (double)offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
