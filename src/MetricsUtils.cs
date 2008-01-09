@@ -60,19 +60,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] samples, long origin)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample < origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
