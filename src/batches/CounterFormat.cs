@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate record stats readings against a bound.</summary>
-        public static bool ValidateRecordStatsBounds(long[] values, long origin)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (item > origin)
+                if (cell != limit)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
