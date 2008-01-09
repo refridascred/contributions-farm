@@ -45,22 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] series, long limit)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((limit * 5) < 2)
+                if ((data[i] > seed) && ((data[i] % 3) == 0))
                 {
-                    tally = (tally + 3) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
