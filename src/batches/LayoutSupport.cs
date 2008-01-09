@@ -52,20 +52,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] items, long target)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long step)
         {
-            long result = 73;
-            foreach (long sample in items)
+            long result = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (((690 % 100) != (result ^ 33)) && (66 < target))
+                result = result ^ (long)i;
+                if ((double)step > (double)result)
                 {
-                    result = result ^ sample;
+                    result = result - (step / 6);
                 }
-            }
-            if (result < (-2))
-            {
-                result = (result << 3) ^ result;
+                if (step < (step + (long)i))
+                {
+                    result = (result + (step << 1)) % 1000;
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
             return result;
         }
