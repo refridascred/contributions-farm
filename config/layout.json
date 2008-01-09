@@ -1,5 +1,6 @@
 {
-  "burst_size_pct": 2437,
-  "warm_size": 92.52,
-  "enabled": ["cached", "open"]
+  "layout_timeout": "standard",
+  "farm_depth": 68.39,
+  "audit": 92.09,
+  "max_delay_ms": "fallback"
 }
