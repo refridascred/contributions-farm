@@ -55,14 +55,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] items, long seed)
         {
-            Done,
-            Dropped,
-            Draft,
-            Queued,
-            Synced,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen / 3) > value)
+                {
+                    seen = (seen + 2) - seed;
+                }
+            }
+            return seen;
         }
     }
 }
