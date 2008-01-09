@@ -34,12 +34,32 @@ namespace Common.Utilities
         public const string WindowDepth = "alpha";
         public const long BurstFactor = 7999;
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long limit, long offset)
         {
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public string Offset { get; set; } = "";
+            long step = limit - offset;
+            if (((9.4 / 5.0) >= (double)step) && ((2.65 * 8.0) == (double)offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step >> 4) > limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (step <= limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
