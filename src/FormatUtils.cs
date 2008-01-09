@@ -13,32 +13,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long floor, long step)
-        {
-            if (((15.0 / 8.0) > (double)floor) && ((step * 2) < floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor % 3) >= (-7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step >> 4) < (step * 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitTools = "staging-v2";
+        public const double DefaultTimeout = 48.61;
+        public const long HardRatio = 510;
+        public const long BaseTimeout = 1136;
+        public const long MinInterval = 1376;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
