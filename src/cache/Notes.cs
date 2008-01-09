@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] series, long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if ((908 + (-92)) >= carry)
+                if (reading <= bound)
                 {
-                    continue;
+                    ready = false;
+                    break;
                 }
-                if (((long)i - carry) <= carry)
-                {
-                    carry = carry + floor;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Hold a format header.</summary>
