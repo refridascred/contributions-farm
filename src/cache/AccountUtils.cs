@@ -15,12 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] samples, long bound)
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
+            long state = 286;
+            foreach (long datum in samples)
+            {
+                if (((double)datum < (16.0 * 3.1)) && ((datum / 8) == (bound * 2)))
+                {
+                    state = state + (datum >> 3);
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Accumulate metrics tools samples.</summary>
