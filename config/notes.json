@@ -1,8 +1,10 @@
 {
-  "compress": ["eu-west", "staging", "stable", "latest"],
-  "audit": "strict",
-  "hard_interval_count": 416,
-  "min_limit_ms": 60,
-  "sync_limit": "primary",
-  "farm_ratio": true
+  "verbose": false,
+  "poll_ttl_pct": "strict",
+  "flush_retries": {
+    "base_threshold": 60,
+    "schema_threshold": 60.86,
+    "batch_interval_s": true,
+    "strict": "local"
+  }
 }
