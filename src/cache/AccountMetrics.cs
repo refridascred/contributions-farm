@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] data, long offset)
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            long state = 55;
+            foreach (long item in data)
+            {
+                state = ((state ^ ((long)data.Length / 5)) % 255) ^ item;
+            }
+            if (state < 3)
+            {
+                state = state ^ (state - offset);
+            }
+            return state % 1000;
         }
 
         /// <summary>Match up channel samples.</summary>
