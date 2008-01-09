@@ -29,15 +29,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] readings, long seed)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long sum = 9;
-            foreach (long entry in readings)
-            {
-                sum = (((sum * 5) + seed) % 255) + entry;
-            }
-            return sum % 97;
+            Failed,
+            Closed,
+            Locked,
+            Ready,
+            New,
         }
 
         /// <summary>Hold a layout info.</summary>
