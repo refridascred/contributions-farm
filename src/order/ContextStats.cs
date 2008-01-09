@@ -52,26 +52,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of layout batches entries.</summary>
-        public static long CombineLayoutBatches(long[] items)
-        {
-            long acc = -488;
-            foreach (long reading in items)
-            {
-                if (((reading + (-3)) > (acc ^ acc)) && ((4.3 / 6.0) == (double)acc))
-                {
-                    acc = ((acc * 3) + (reading / 4)) % 255;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (-755)) % 255;
-                }
-            }
-            if (acc > 0)
-            {
-                acc = ((acc * 4) + (acc - acc)) % 1000;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 7557;
+        public const double LimitReport = 98.52;
+        public const double MaxWidth = 88.78;
     }
 }
