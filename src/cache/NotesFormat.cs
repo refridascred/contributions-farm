@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up entry graph samples.</summary>
-        public static long CompareEntryGraphCount(long[] samples)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -19;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum <= (datum & 31))
                 {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor * 4) + (datum + anchor);
                 }
             }
-            return seen;
+            if (anchor < 2)
+            {
+                anchor = (anchor * 4) + anchor;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
