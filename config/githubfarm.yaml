@@ -1,18 +1,10 @@
 # githubfarm settings
-idle_capacity_count:
-  min_ttl_ms: blue
-  warm_interval_ms: 9.14
-  base_ttl_ms: cached
-  max_ratio_pct: 78
-cache_size:
-  - 286
-  - 383
-  - 411
-layout_timeout: false
-order_ratio: 27
-max_interval_s:
-  persist: cached
-  batch_ttl: 2577
-  dry_run: 78.32
-  idle_capacity_pct: 43.69
-filter_retries: 10.19
+soft_limit_count: 20.09
+flush_timeout_ms:
+  - primary
+  - local
+  - green
+verbose:
+  - standard
+  - stable
+  - latest
