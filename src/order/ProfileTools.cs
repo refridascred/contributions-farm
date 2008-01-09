@@ -20,31 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long limit, long floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            if (limit > floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if (floor < ((-7) + floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor * 4) >= (floor - floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Idle,
+            Pending,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a notes stats.</summary>
