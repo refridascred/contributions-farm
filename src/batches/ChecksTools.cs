@@ -11,11 +11,21 @@ namespace Common.Utilities
         public const long WindowLayout = 4374;
         public const string HardScore = "alpha";
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] values)
         {
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
