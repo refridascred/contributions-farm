@@ -1,7 +1,12 @@
 {
-  "cache_timeout_s": "legacy",
-  "githubfarm_capacity": 38.01,
-  "compress": false,
-  "max_depth": "eu-west",
-  "min_ttl": "latest"
+  "verbose": 30,
+  "idle_ttl_count": {
+    "readonly": false,
+    "format_depth": "standard",
+    "command_delay": 47.9,
+    "enabled": "staging",
+    "window_capacity": 24,
+    "burst_limit_pct": 34.69
+  },
+  "poll_size_pct": 87.82
 }
