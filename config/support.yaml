@@ -1,13 +1,10 @@
 # support settings
-default_depth_pct: blue
-enabled:
-  - staging
+sync_threshold_ms: true
+stats_ttl: latest
+burst_ttl_pct:
   - green
-audit: 57
-soft_retries: blue
-flush_window_ms: eu-west
-cache_capacity:
-  - 128
-  - 23
-  - 175
-  - 185
+  - fallback
+  - fallback
+  - blue
+warm_delay: green
+githubfarm_ttl: staging
