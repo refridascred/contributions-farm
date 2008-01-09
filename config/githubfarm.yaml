@@ -1,10 +1,7 @@
 # githubfarm settings
-batches_threshold: true
-hard_size_count: 42.76
-stream_ttl:
-  - legacy
-  - fallback
-  - open
-  - eu-west
-hard_capacity_count: 26.96
-flush_ratio: stable
+stats_interval: eu-west
+batch_timeout_s: local
+enabled: 41.55
+flush_interval: 70.77
+poll_ratio: 7520
+dry_run: true
