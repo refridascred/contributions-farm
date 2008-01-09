@@ -29,23 +29,13 @@ namespace Common.Utilities
         public const long LimitRoute = 1023;
         public const string CacheRoute = "strict-edge";
 
-        /// <summary>Blend two stream cache measurements.</summary>
-        public static double BlendStreamCache(double gain, double bias)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            double weight = 13.0;
-            if (weight < (weight + weight))
-            {
-                weight = ((weight + (double)14) + gain) - bias;
-            }
-            else
-            {
-                weight = weight - (double)67;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (double)45) + (double)(long)i;
-            }
-            return weight + 6.93;
+            public double Mode { get; set; }
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
