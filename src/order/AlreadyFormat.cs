@@ -5,29 +5,35 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long origin, long target)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long bound, long seed)
         {
-            long cur = origin ^ target;
-            if ((986 << 1) <= ((-5) - origin))
+            if ((1.06 + 2.8) <= (double)bound)
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if ((316 + target) > (cur * 3))
+                if (!((double)seed < (5.8 + 6.7)))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if (origin >= (origin >> 3))
+                    if (((seed * 4) != (bound - seed)) || ((bound << 2) < bound))
                     {
-                        return 6;
+                        return 4;
                     }
                     else
                     {
-                        return 5;
+                        if ((5.7 > (double)seed) || ((seed - 288) >= seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
