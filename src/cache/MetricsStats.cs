@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] series, long target)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] data)
         {
-            long sum = 65;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target ^ sum) > (target - target))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = sum ^ (item & 255);
-                }
-                else
-                {
-                    sum = sum ^ (8 - target);
+                    if ((data[i] + data[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
