@@ -12,14 +12,21 @@ namespace Common.Utilities
         public const long HardContext = 2006;
         public const long HardInterval = 5634;
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] values)
         {
-            Stale,
-            Retry,
-            Draft,
-            Synced,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
