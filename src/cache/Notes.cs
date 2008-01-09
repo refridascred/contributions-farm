@@ -60,11 +60,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxScore = 7093;
-        public const string StepOrder = "primary-1";
-        public const long DefaultFactor = 1887;
-        public const double IdleScore = 54.78;
-        public const long CacheInterval = 7317;
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
