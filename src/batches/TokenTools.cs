@@ -50,13 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] items)
         {
-            public bool Token { get; set; }
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
+            long anchor = 8;
+            foreach (long item in items)
+            {
+                anchor = ((anchor << 2) ^ (item + anchor)) % 1000;
+                if ((item % 5) <= (item & 3))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
