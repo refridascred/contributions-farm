@@ -1,7 +1,10 @@
-id,ratio,level,label,owner
-1,118,22,15.99,open
-2,364,6.3,92.01,165
-3,edge,primary,primary,primary
-4,eu-west,77,23.94,175
-5,green,837,fallback,17.47
-6,86.34,656,932,standard
+id,count,label,region,state
+1,legacy,71.38,local,938
+2,26.12,678,147,blue
+3,916,53.94,local,163
+4,147,14.81,fallback,34.07
+5,primary,927,green,186
+6,66,308,fallback,primary
+7,13.6,legacy,869,87.09
+8,staging,906,blue,288
+9,398,750,22.22,91
