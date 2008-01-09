@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate profile window readings against a bound.</summary>
-        public static bool GuardProfileWindowLimits(long[] levels, long offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] data, long floor)
         {
             bool flag = true;
-            foreach (long datum in levels)
+            foreach (long value in data)
             {
-                if (datum < offset)
+                if (value > floor)
                 {
                     flag = false;
                     break;
