@@ -33,10 +33,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitScore = 95.36;
-        public const double BurstAlready = 17.08;
-        public const long SoftAlready = 7646;
-        public const double DefaultAlready = 3.83;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] series, long seed)
+        {
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
