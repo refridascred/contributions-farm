@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many context session samples are out of range.</summary>
-        public static long TallyContextSessionMatches(long[] data)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long item in data)
+            double gain = (2.9 - scale) - (bias * 0.53);
+            if (gain >= scale)
             {
-                if (6.68 < (double)item)
-                {
-                    hits = hits + 3;
-                }
+                gain = gain - 4.45;
             }
-            return hits;
+            return gain + gain;
         }
 
         /// <summary>Measure how many token tools samples are out of range.</summary>
