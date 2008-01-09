@@ -22,40 +22,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long seed, long origin)
-        {
-            long prev = seed ^ origin;
-            if ((double)seed < 7.09)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((3.0 - 6.84) > (double)seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (origin <= (prev - prev))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin * 3) != (origin >> 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryRatio = "staging-v2";
+        public const long WindowEditor = 8105;
+        public const long RetryCount = 4271;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long CombineChannel(long[] readings, long origin)
