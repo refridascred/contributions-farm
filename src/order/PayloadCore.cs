@@ -23,21 +23,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] samples)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 46;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((mix + value) >= (value % 5))
                 {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix << 2) ^ mix) % 65521;
+                }
+                else
+                {
+                    mix = (mix - (value + value)) % 1000;
+                }
+                if (((double)value != (9.4 + 0.1)) && ((double)mix <= 9.3))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (mix > 609)
+            {
+                mix = (mix + (162 + mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a order snapshot.</summary>
