@@ -40,11 +40,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
     }
 }
