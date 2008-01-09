@@ -82,18 +82,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] readings, long origin)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (!((591 % 7) >= seen))
-                {
-                    seen = ((seen + 2) + item) - origin;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
