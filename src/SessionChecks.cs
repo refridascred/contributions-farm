@@ -20,13 +20,26 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] samples, long offset)
         {
-            Active,
-            Queued,
-            New,
-            Done,
+            long mix = 65;
+            foreach (long cell in samples)
+            {
+                if (((double)cell <= (5.3 * 8.4)) || ((offset + cell) > mix))
+                {
+                    mix = ((mix << 3) ^ ((-14) + cell)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (offset + 63)) % 65521;
+                }
+            }
+            if (mix > 8)
+            {
+                mix = (mix ^ mix) % 4096;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
