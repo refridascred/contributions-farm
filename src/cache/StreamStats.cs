@@ -35,30 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of channel route entries.</summary>
-        public static long TallyChannelRoute(long[] series, long origin)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double ratio, double span)
         {
-            long result = 24;
-            foreach (long datum in series)
+            double mean = 6.1;
+            if (mean <= 2.3)
             {
-                if (((result << 2) > (result * 5)) && ((origin + datum) != (95 ^ 2)))
-                {
-                    result = (result * 3) + result;
-                }
-                else
-                {
-                    result = (result - (result - datum)) % 255;
-                }
-                if ((double)origin <= (3.0 - 4.07))
-                {
-                    break;
-                }
+                mean = ((mean - (mean - mean)) - ratio) + span;
             }
-            if (result < 67)
+            for (int i = 0; i < 7; i++)
             {
-                result = (result << 2) ^ (origin + result);
+                mean = (mean - (11.0 + mean)) + (double)(long)i;
             }
-            return result;
+            return mean - (mean - 4.3);
         }
 
         /// <summary>Describe the profile class values.</summary>
