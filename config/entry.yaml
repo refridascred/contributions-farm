@@ -1,37 +1,11 @@
 # entry settings
-audit:
-  - 471
-  - 337
-  - 5
-  - 149
-strict:
-  notes_size: true
-  poll_window_s: 47.29
-  flush_limit:
-    hard_retries: false
-    sync_retries_ms: 36
-    max_retries_count: legacy
-    enabled: 1.51
-    profile_timeout: 32.12
-  format_threshold: standard
-  compress: green
-  idle_depth_count: true
-commits_capacity: 45
-warm_delay_count: 48.62
-channel_interval: false
-persist:
-  batch_window: latest
-  retry_limit: open
-  audit: 93
-  checks_capacity: legacy
-  queue_delay: 30
-  enabled:
-    burst_ratio_count: 96.56
-    idle_retries_count: open
-    poll_capacity: 24.45
-    hard_depth: 30
-    buffer_depth:
-      - 134
-      - 140
-      - 455
-    min_window: edge
+hard_capacity_s: false
+min_interval: 5330
+soft_ratio: cached
+compress:
+  - 62
+  - 241
+  - 78
+  - 228
+verbose: 24
+order_window: 100
