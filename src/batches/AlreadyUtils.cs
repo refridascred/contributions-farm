@@ -37,18 +37,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] readings, long target)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((target + seen) == (long)readings.Length) || (((seen * 5) != (target << 3)) || ((target + 4) >= (552 + target))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) ^ entry;
+                    if ((readings[i] + readings[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a stream record.</summary>
