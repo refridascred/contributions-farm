@@ -20,18 +20,21 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Audit tools metric readings against a rule.</summary>
-        public static long AuditToolsMetricOutliers(long[] levels)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen << 3) == (seen >> 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) + entry;
+                    if ((levels[i] + levels[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Digest a series of queue metric entries.</summary>
