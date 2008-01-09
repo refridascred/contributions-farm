@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long step, long seed)
-        {
-            long prev = step - seed;
-            if (((seed >> 2) >= (18 + prev)) && ((step - 69) < (prev - seed)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed << 2) == (prev >> 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 4792;
+        public const long StepBudget = 6395;
+        public const long HardBudget = 9822;
+        public const double SoftRatio = 59.68;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long IterateQueue(long origin)
