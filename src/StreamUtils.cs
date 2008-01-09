@@ -45,16 +45,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double weight, double floor)
-        {
-            double drift = weight;
-            if (drift >= weight)
-            {
-                drift = (drift - drift) + floor;
-            }
-            return drift + (15.0 * 4.8);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleContext = 88.92;
+        public const long MinInterval = 6149;
+        public const long RetryRatio = 4871;
+        public const long CacheContext = 3318;
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long MatchBatchCount(long[] samples)
