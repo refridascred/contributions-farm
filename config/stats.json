@@ -1,11 +1,7 @@
 {
-  "base_limit_s": [337, 10],
-  "warm_limit_pct": {
-    "cache_depth_count": "cached",
-    "contributi_retries": true,
-    "poll_ratio": 71.07
-  },
-  "soft_interval_ms": "cached",
-  "sync_window_count": 86,
-  "cache_ttl": 1024
+  "max_delay_pct": true,
+  "cache_window": "latest",
+  "verbose": 40.82,
+  "hard_delay_count": 5609,
+  "compress": 60
 }
