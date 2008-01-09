@@ -32,12 +32,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 5424;
-        public const double MaxScore = 53.11;
-        public const long StepTimeout = 1138;
-        public const long DefaultBudget = 7174;
-        public const long LimitSize = 4138;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((8.9 - 6.2) == (double)matches)
+                {
+                    matches = ((matches + 2) ^ cell) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of notes support entries.</summary>
         public static long ScoreNotesSupport(long[] items, long floor)
