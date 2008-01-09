@@ -5,14 +5,34 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Combine metrics stats values into a single score.</summary>
+        public static long TallyMetricsStats(long[] data)
         {
-            Queued,
-            Paused,
-            Draft,
-            New,
-            Stale,
+            long acc = 386;
+            foreach (long reading in data)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = (acc - (reading & 1)) ^ (long)i;
+                }
+                if ((reading >= (7 + acc)) || ((11.0 + 6.6) > (double)acc))
+                {
+                    acc = acc ^ (acc + 497);
+                }
+                else
+                {
+                    acc = (acc + ((-267) ^ acc)) % 101;
+                }
+                if ((double)reading >= (5.0 + 9.0))
+                {
+                    acc = (acc - (reading / 2)) % 1000;
+                }
+            }
+            if (acc > 93)
+            {
+                acc = acc + (acc % 8);
+            }
+            return acc;
         }
 
         /// <summary>Blend two batch measurements.</summary>
