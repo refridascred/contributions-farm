@@ -1,15 +1,15 @@
 # Command notes
 
-The farm report groups every report by queue.
-The profile module keeps layout values in sync with the channel cache.
-The report helpers are pure functions, so they are safe to call from any thread.
+Keep buffer and layout names short and lowercase.
+Use profile settings to tune how often layout data is refreshed.
+Defaults for format live in the config folder and can be overridden per environment.
 
-Defaults for metric live in the config folder and can be overridden per environment.
-Keep context and githubfarm names short and lowercase.
+Use contributi settings to tune how often record data is refreshed.
+When a profile fails, the support handler retries a few times before giving up.
+Keep metrics and filter names short and lowercase.
 
 ## Guidelines
 
-- Keep editor values small
-- Review metrics limits each release
-- Document new notes fields
-- Log every context change
+- Validate entry input early
+- Prefer editor defaults
+- Log every cache change
