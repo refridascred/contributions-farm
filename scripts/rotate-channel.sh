@@ -7,11 +7,20 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
+for i in $(seq 1 4); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in green cached legacy open; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=126
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-edge}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
