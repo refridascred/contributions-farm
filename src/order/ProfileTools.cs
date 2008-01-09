@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long target)
         {
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
+            long total = target;
+            for (int i = 0; i < 9; i++)
+            {
+                total = (total - total) % 255;
+                total = (total + (target - total)) % 65521;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    total = ((total ^ ((long)i % 64)) % 101) - (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Describe the commits phase values.</summary>
