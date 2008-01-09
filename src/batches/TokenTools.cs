@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] samples, long floor)
+        /// <summary>Measure how many tools batches samples are out of range.</summary>
+        public static long TallyToolsBatchesOutliers(long[] values, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((samples[i] > floor) && ((samples[i] % 3) == 0))
+                if (((seed / 9) < (seed + seed)) || (seed < (entry + entry)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
