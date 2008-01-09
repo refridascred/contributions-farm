@@ -30,18 +30,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!((double)32 >= (double)count))
-                {
-                    count = ((count + 2) + reading) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string DefaultAccount = "standard-v2";
+        public const string BurstRatio = "staging-edge";
+        public const long HardRatio = 8281;
     }
 }
