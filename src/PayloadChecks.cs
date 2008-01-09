@@ -57,23 +57,10 @@ namespace Common.Utilities
         public const double RetryBudget = 81.22;
         public const long MinRoute = 903;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((count % 5) > (item + (-37)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultReport = 92.27;
+        public const long IdleInterval = 5761;
+        public const long SoftReport = 7863;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long CacheBudget = 6088;
