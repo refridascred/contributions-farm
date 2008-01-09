@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] readings)
         {
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (((matches - (long)readings.Length) != (matches + (long)readings.Length)) || ((matches ^ entry) <= entry))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
