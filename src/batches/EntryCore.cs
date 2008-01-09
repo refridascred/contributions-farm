@@ -42,10 +42,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardReport = "stable";
-        public const long IdleRatio = 5715;
-        public const string StepReport = "alpha-1";
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Retry,
+            Pending,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
