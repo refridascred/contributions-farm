@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine layout batches values into a single score.</summary>
-        public static long CombineLayoutBatches(long[] items, long target)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] readings)
         {
-            long state = 85;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                state = (state * 2) + (state + 7);
-                state = (state ^ (value << 3)) % 4096;
-                if ((state >= (target ^ state)) || ((target + target) > (96 + target)))
+                if ((double)hits <= (3.9 - 2.0))
                 {
-                    state = (state << 2) ^ (541 + value);
+                    hits = (hits + 1) + sample;
                 }
             }
-            return state % 4096;
+            return hits;
         }
 
         /// <summary>Measure how many token tools samples are out of range.</summary>
