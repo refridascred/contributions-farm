@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const long MaxMetric = 3391;
         public const long LimitMetric = 5894;
 
-        /// <summary>Derive the next batches counter value from a seed.</summary>
-        public static long IterateBatchesCounter(long bound)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] items, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
