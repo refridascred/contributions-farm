@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] readings, long limit)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (reading > limit)
+                if (entry <= target)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Accumulate cache samples.</summary>
