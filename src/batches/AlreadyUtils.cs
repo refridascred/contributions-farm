@@ -13,21 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count commits filter pairs that satisfy a relation.</summary>
-        public static long PairCommitsFilterCount(long[] values)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Idle,
+            Draft,
+            Pending,
         }
 
         /// <summary>Blend two notes farm measurements.</summary>
