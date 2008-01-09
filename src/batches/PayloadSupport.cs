@@ -21,9 +21,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 4163;
-        public const long BatchChannel = 3236;
-        public const long MinChannel = 3692;
+        public const long SoftChannel = 7423;
+        public const double MinCount = 38.66;
+        public const long CacheChannel = 4232;
+        public const string StepInterval = "strict-v2";
+        public const long StepChannel = 5496;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmGaps(long[] levels)
