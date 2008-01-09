@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxFactor = 5526;
-        public const long RetryRecord = 2935;
-        public const long CacheRecord = 7606;
-        public const long BatchRecord = 1918;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long BucketTools(long floor, long limit)
