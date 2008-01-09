@@ -31,18 +31,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the graph queue entries that pass the check.</summary>
-        public static long MeasureGraphQueueGaps(long[] values, long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long carry = 533;
+            foreach (long cell in readings)
             {
-                if ((floor & 15) >= (value / 9))
+                carry = ((carry << 2) ^ (carry + 609)) % 65521;
+                if ((carry + cell) <= (65 << 2))
                 {
-                    tally = tally + 1;
+                    carry = (carry + cell) % 101;
+                }
+                else
+                {
+                    carry = carry - cell;
                 }
             }
-            return tally;
+            return carry % 1000;
         }
 
         /// <summary>Describe the route status values.</summary>
