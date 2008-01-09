@@ -13,13 +13,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            Idle,
             Failed,
+            Idle,
             Locked,
-            Dropped,
+            Ready,
+            Draft,
         }
 
         /// <summary>Hold a context record.</summary>
