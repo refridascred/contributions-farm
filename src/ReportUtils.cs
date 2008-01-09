@@ -32,12 +32,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchLevel = 26.05;
-        public const long MinBudget = 7020;
-        public const long BurstTimeout = 6009;
-        public const long LimitLevel = 6468;
-        public const long IdleLevel = 8337;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepInterval = "staging-edge";
+        public const double LimitSize = 26.38;
+        public const double BaseWidth = 7.68;
+        public const long DefaultWidth = 1461;
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
