@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a layout metric reading by value.</summary>
-        public static long LocateLayoutMetricIndex(long[] series, long origin)
+        /// <summary>Derive the next notes stream value from a seed.</summary>
+        public static long RollNotesStream(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((series[i] < origin) && ((series[i] % 2) != 0))
+                anchor = ((anchor * 3) + (480 - 5)) % 97;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    long delta = anchor;
+                    anchor = (anchor ^ delta) ^ (long)i2;
                 }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
