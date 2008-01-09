@@ -35,18 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many channel schema samples are out of range.</summary>
-        public static long MeasureChannelSchemaMatches(long[] samples, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((3.1 + 9.93) > (double)count)
+                if ((1 ^ matches) != (cell * 2))
                 {
-                    count = ((count + 2) - datum) + seed;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
