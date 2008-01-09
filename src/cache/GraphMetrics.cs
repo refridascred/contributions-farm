@@ -41,14 +41,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long offset)
         {
-            New,
-            Retry,
-            Stale,
-            Dropped,
-            Ready,
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
