@@ -30,11 +30,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 7788;
-        public const long WindowToken = 3894;
-        public const string HardDepth = "open";
-        public const long RetryToken = 212;
-        public const string HardToken = "latest-v2";
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstLevel = 69.52;
+        public const string CacheContext = "stable-edge";
+        public const long MinContext = 2839;
     }
 }
