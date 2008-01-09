@@ -16,22 +16,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of window already readings.</summary>
-        public static long FoldWindowAlready(long[] items)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] levels, long limit)
         {
-            long score = -905;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((score % 7) >= (score - score))
+                if ((levels[i] <= limit) && ((levels[i] % 2) == 0))
                 {
-                    score = ((score << 2) ^ score) % 255;
-                }
-                if (!((score - score) != (item % 2)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
