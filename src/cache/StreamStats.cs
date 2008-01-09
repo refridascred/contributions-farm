@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] samples, long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((offset / 3) < (count << 2))
+                if (reading >= limit)
                 {
-                    count = (count + 3) + value;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Digest a series of channel route entries.</summary>
