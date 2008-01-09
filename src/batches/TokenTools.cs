@@ -33,24 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank notes layout input into a small class.</summary>
-        public static long BucketNotesLayout(long limit, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] readings, long target)
         {
-            if ((limit % 64) == (seed - 19))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((seed & 15) != (20 + seed)) && (3.2 > (double)seed))
+                if (!((cell >= target) && ((cell + count) < (count + target))))
                 {
-                    return 6;
+                    count = count + 1;
                 }
                 else
                 {
-                    return 2;
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
