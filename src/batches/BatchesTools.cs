@@ -26,18 +26,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] items, long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long score = 8;
+            foreach (long item in samples)
             {
-                if (((count & 127) == (bound / 2)) && ((entry & 15) >= (-86)))
+                if ((0 >> 3) < (score + 517))
                 {
-                    count = count + 1;
+                    score = (score * 5) + (score + score);
+                }
+                if ((score / 6) > (score >> 5))
+                {
+                    score = (score ^ (331 - score)) % 97;
+                }
+                else
+                {
+                    score = ((score * 5) + item) % 255;
                 }
             }
-            return count;
+            if (score < 44)
+            {
+                score = (score * 5) + score;
+            }
+            return score;
         }
     }
 }
