@@ -16,26 +16,22 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] series)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] data)
         {
-            long acc = 52;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((sample & 31) == (sample / 5))
+                if ((cell * 2) <= cell)
                 {
-                    acc = (acc + (sample ^ acc)) % 65521;
+                    count = count + 3;
                 }
                 else
                 {
-                    acc = ((acc << 2) ^ (1 - acc)) % 1000;
+                    count = count - 1;
                 }
             }
-            if (acc < 6)
-            {
-                acc = (acc << 3) ^ (acc - acc);
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the tools level values.</summary>
