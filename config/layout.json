@@ -1,16 +1,7 @@
 {
-  "min_interval_ms": [351, 284, 436, 180],
-  "githubfarm_delay": 72,
-  "queue_threshold": {
-    "dry_run": "open",
-    "compress": "primary",
-    "stats_window": false,
-    "enabled": {
-      "readonly": true,
-      "verbose": false,
-      "cache_depth_ms": 9506
-    },
-    "soft_depth_pct": "fallback",
-    "strict": 633
-  }
+  "hard_window": 90.26,
+  "batch_timeout_pct": "fallback",
+  "persist": true,
+  "soft_window_s": 46.8,
+  "format_limit": false
 }
