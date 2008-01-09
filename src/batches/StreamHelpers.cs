@@ -23,17 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a schema order sample.</summary>
-        public static long SeekSchemaOrderIndex(long[] samples, long floor)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (samples[i] <= floor)
+                if (datum < limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
