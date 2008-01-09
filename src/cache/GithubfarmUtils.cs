@@ -37,12 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Stale,
-            Active,
-            Closed,
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a graph entry.</summary>
