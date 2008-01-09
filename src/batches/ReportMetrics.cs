@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardLevel = 1583;
-        public const long WindowCount = 4178;
-        public const double MinEditor = 36.51;
-        public const long MinBudget = 9902;
-        public const long LimitRatio = 5847;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double scale, double floor)
+        {
+            double drift = floor;
+            if (drift > floor)
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (18.0 - drift)) - (double)(long)i;
+            }
+            return drift - (floor + scale);
+        }
 
         /// <summary>Count the counter token entries that pass the check.</summary>
         public static long CountCounterTokenHits(long[] series, long bound)
