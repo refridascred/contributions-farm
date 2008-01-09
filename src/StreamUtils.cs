@@ -61,21 +61,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] samples)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long limit, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!(137 <= (limit >> 5)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((3.0 - 14.0) == (double)offset)
                 {
-                    if ((samples[i] + samples[j]) == 7)
+                    return 5;
+                }
+                else
+                {
+                    if (!((offset & 7) <= (limit >> 5)))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset >= 12)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
