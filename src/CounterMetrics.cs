@@ -24,18 +24,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] data, long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (!(48 <= (bound + entry)) && (bound < (55 + bound)))
+                if ((((value + tally) > (value + value)) && ((0.3 - 0.2) > (double)value)) || ((double)4 >= (double)value))
                 {
-                    hits = hits + 1;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
