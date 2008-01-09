@@ -37,31 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long step, long floor)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            if (((0.2 * 8.06) >= (double)step) && (((-278) - 794) < (495 + floor)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step & 15) <= step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((460 + 530) > step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Closed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
