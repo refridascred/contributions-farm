@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine command batch values into a single score.</summary>
-        public static long WeighCommandBatch(long[] levels)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] data)
         {
-            long total = 98;
-            foreach (long datum in levels)
+            long mix = 298;
+            foreach (long reading in data)
             {
-                total = (total * 2) + datum;
+                mix = ((mix * 4) + (mix & 7)) - reading;
+                mix = mix - ((long)data.Length / 6);
             }
-            return total % 97;
+            if (mix < 98)
+            {
+                mix = mix ^ ((-5) ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
