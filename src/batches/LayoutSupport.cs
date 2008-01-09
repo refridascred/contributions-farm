@@ -33,19 +33,18 @@ namespace Common.Utilities
             return drift - (double)(-72);
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] samples, long floor)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long acc = 403;
+            foreach (long value in samples)
             {
-                if (reading > floor)
+                if (((7.6 + 2.54) > (double)origin) || (origin >= (value * 3)))
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc << 2) ^ (value / 4)) % 101;
                 }
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
