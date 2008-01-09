@@ -19,38 +19,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long step, long bound)
+        /// <summary>Match up window profile samples.</summary>
+        public static long MatchWindowProfileCount(long[] series)
         {
-            if (((bound ^ step) > bound) && ((double)bound >= (9.5 - 5.97)))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step > (bound % 7)) || ((7 * 3) <= (bound - bound)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound >= (step + bound)) && (step >= (step / 5)))
+                    if ((series[i] + series[j]) > 0)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound << 1) == (7 + bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
