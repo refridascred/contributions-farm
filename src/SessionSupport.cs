@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 6910;
         public const string MinGithubfarm = "strict-1";
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Audit profile metrics readings against a rule.</summary>
+        public static long CountProfileMetricsMatches(long[] readings, long seed)
         {
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (((datum + hits) != (seed + (-973))) && ((seed - datum) == (datum + seed)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a format window figure with a bias.</summary>
