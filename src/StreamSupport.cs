@@ -22,21 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] series)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)8 - bias;
+            if (scale > (bias * 0.5))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale + (scale - scale);
             }
-            return hits;
+            else
+            {
+                scale = scale + floor;
+            }
+            return scale + 7.0;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
