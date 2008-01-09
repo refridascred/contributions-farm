@@ -14,14 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Digest a series of stats filter entries.</summary>
+        public static long CombineStatsFilter(long[] readings)
         {
-            Stale,
-            Locked,
-            Failed,
-            Synced,
-            Dropped,
+            long result = 44;
+            foreach (long entry in readings)
+            {
+                if ((10 >> 3) < (result - result))
+                {
+                    result = (result - (result + entry)) % 255;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Compare every pair of channel commits readings.</summary>
