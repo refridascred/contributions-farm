@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long origin)
         {
-            Failed,
-            Idle,
-            New,
-            Done,
+            long total = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                long hits = origin << 3;
+                if ((hits + total) == (hits ^ total))
+                {
+                    total = (total + (hits + origin)) % 4096;
+                    hits = (hits * 5) + ((long)i >> 3);
+                    break;
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
