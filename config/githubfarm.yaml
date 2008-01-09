@@ -1,19 +1,4 @@
 # githubfarm settings
-sync_window_pct: 2889
-enabled: 14.79
-cache_interval_s: 250
-flush_interval_pct:
-  base_timeout_s: local
-  route_ttl:
-    sync_delay_s: fallback
-    batch_capacity_count: 6328
-    audit:
-      - 448
-      - 148
-      - 171
-      - 476
-    compress: 52.34
-    persist: cached
-  schema_limit: edge
-  max_window_ms: eu-west
-min_limit_count: 9333
+strict: 1024
+batch_delay_count: 30
+notes_limit: primary
