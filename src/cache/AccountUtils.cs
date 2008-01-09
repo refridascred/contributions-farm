@@ -16,14 +16,12 @@ namespace Common.Utilities
             return drift - (floor - 5.21);
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Pending,
-            Retry,
-            Queued,
-            Active,
-            Failed,
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
