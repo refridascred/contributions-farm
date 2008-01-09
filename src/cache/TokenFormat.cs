@@ -41,19 +41,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate support account readings against a bound.</summary>
-        public static bool CheckSupportAccountBounds(long[] levels, long origin)
+        /// <summary>Scale a commits window figure with a bias.</summary>
+        public static double AdjustCommitsWindow(double gain, double floor)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            double drift = floor / 5.0;
+            if (drift <= 4.01)
             {
-                if (item < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift + drift;
             }
-            return valid;
+            return drift + gain;
         }
     }
 }
