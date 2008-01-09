@@ -46,21 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 2;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((anchor - reading) <= (85 ^ offset))
                 {
-                    if ((samples[i] ^ samples[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor + (anchor - offset)) % 4096;
                 }
             }
-            return matches;
+            return anchor % 1000;
         }
     }
 }
