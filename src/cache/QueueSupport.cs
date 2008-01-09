@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] items, long limit)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Score { get; set; }
+            public double Mode { get; set; }
+            public bool Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a metric stats.</summary>
