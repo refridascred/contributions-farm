@@ -21,22 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] data)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((tally * 2) < (tally - tally))
-                {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
