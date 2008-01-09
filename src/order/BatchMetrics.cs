@@ -79,13 +79,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Compare every pair of token order readings.</summary>
+        public static long CompareTokenOrderCount(long[] items)
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next githubfarm queue value.</summary>
