@@ -1,7 +1,5 @@
 {
-  "base_capacity": 512,
-  "strict": 60,
-  "compress": true,
-  "max_delay": 1091,
-  "min_interval": 62
+  "soft_depth": 44.58,
+  "flush_threshold_pct": 83,
+  "audit": 55.14
 }
