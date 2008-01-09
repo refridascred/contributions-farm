@@ -48,18 +48,11 @@ namespace Common.Utilities
         public const long StepCount = 7329;
         public const long RetryScore = 1766;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] levels)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long mark = 4;
-            foreach (long cell in levels)
-            {
-                if (((-88) * 4) > mark)
-                {
-                    mark = ((mark ^ (16 + mark)) % 65521) + cell;
-                }
-            }
-            return mark;
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the layout status values.</summary>
