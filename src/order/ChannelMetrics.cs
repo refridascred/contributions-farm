@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] samples)
+        /// <summary>Compare every pair of profile session readings.</summary>
+        public static long PairProfileSessionCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits - hits) >= (70 << 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 2) + reading;
+                    if ((samples[i] ^ samples[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate tools samples.</summary>
