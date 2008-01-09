@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many route support samples are out of range.</summary>
-        public static long CountRouteSupportOutliers(long[] samples, long bound)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (!((double)bound != (15.0 / 7.0)) || !((80 + bound) != (count + bound)))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public bool Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the account phase values.</summary>
