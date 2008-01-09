@@ -58,14 +58,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long origin)
         {
-            Failed,
-            Done,
-            Dropped,
-            Stale,
-            Synced,
+            long score = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
