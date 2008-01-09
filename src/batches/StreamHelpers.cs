@@ -77,22 +77,24 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] data, long target)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long limit)
         {
-            long mark = 6;
-            foreach (long item in data)
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (item >= 506)
+                acc = ((acc << 3) ^ 4) % 65521;
+                if (limit < ((long)i + (long)i))
                 {
-                    mark = (mark + (19 % 60)) % 101;
+                    acc = ((acc << 3) ^ (72 >> 5)) % 1000;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ (target / 4)) % 4096;
+                    acc = (acc - (limit >> 3)) % 255;
                 }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return mark % 4096;
+            return acc;
         }
     }
 }
