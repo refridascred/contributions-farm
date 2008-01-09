@@ -33,22 +33,20 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] levels, long origin)
+        /// <summary>Combine support stats values into a single score.</summary>
+        public static long CombineSupportStats(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long mix = 93;
+            foreach (long cell in data)
             {
-                if ((14.0 - 2.6) > (double)seen)
-                {
-                    seen = ((seen + 3) ^ cell) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = (mix - (cell & 63)) % 97;
+                mix = (mix + cell) % 97;
             }
-            return seen;
+            if (mix > 9)
+            {
+                mix = (mix + (85 + mix)) % 255;
+            }
+            return mix % 65521;
         }
     }
 }
