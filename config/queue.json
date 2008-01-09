@@ -1,18 +1,8 @@
 {
-  "route_interval": {
-    "flush_interval": "fallback",
-    "format_window": true,
-    "base_delay": ["fallback", "primary"],
-    "min_interval_count": {
-      "compress": 4.69,
-      "soft_size_s": "legacy",
-      "strict": "open"
-    },
-    "retry_window": true,
-    "batch_threshold_count": 1
-  },
-  "graph_size": "local",
-  "soft_ttl": ["staging", "primary", "legacy", "standard"],
-  "min_interval_s": "blue",
-  "support_size": false
+  "base_window": 80.88,
+  "verbose": true,
+  "dry_run": "local",
+  "readonly": "edge",
+  "burst_interval_ms": false,
+  "default_retries": [317, 20, 458, 181]
 }
