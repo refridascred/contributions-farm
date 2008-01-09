@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] values)
+        /// <summary>Locate a layout metric reading by value.</summary>
+        public static long LocateLayoutMetricIndex(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((2 - matches) < (datum >> 4))
+                if ((series[i] < origin) && ((series[i] % 2) != 0))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
