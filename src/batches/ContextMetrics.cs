@@ -36,22 +36,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of githubfarm format entries.</summary>
-        public static long FoldGithubfarmFormat(long[] items, long floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] values)
         {
-            long sum = -9;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (floor < (floor * 4))
+                if ((hits - hits) == (hits + hits))
                 {
-                    sum = ((sum + (sum % 12)) % 4096) ^ datum;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (floor * 2)) % 65521;
+                    hits = (hits + 3) + entry;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Describe the route status values.</summary>
