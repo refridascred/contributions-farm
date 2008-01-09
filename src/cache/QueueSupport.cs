@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Check that every counter metric entry stays within the limit.</summary>
+        public static bool ValidateCounterMetricRange(long[] samples, long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if ((limit <= ((-233) ^ (long)i)) && (62 >= (limit + limit)))
+                if (value <= bound)
                 {
-                    sum = (sum - (sum - sum)) % 1000;
+                    ready = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
