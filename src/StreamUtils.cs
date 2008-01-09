@@ -41,27 +41,17 @@ namespace Common.Utilities
             return load - (double)52;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] levels)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] items, long floor)
         {
-            long score = 285;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = score + (score + score);
-                for (int i = 0; i < 2; i++)
+                if (items[i] < floor)
                 {
-                    score = (((score << 3) ^ (score * 5)) % 1000) - (long)i;
-                }
-                if ((score % 2) < reading)
-                {
-                    score = (score + (189 / 6)) % 97;
-                }
-                else
-                {
-                    score = (score << 2) ^ (score & 31);
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
