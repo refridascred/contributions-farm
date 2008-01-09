@@ -63,18 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] values)
+        /// <summary>Validate layout counter readings against a bound.</summary>
+        public static bool VerifyLayoutCounterLimits(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (!((entry ^ (-2)) > (matches + matches)))
+                if (datum > limit)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Define format limits and defaults.</summary>
