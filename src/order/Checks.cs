@@ -58,20 +58,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long step)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = (((state << 2) ^ (long)i) % 65521) ^ (long)i2;
-                    state = ((state << 3) ^ 613) % 1000;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Active,
+            Failed,
+            Closed,
+            Stale,
+            Pending,
         }
 
         /// <summary>Match up entry samples.</summary>
