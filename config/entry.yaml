@@ -1,30 +1,7 @@
 # entry settings
-idle_timeout_ms: 12
-idle_retries:
-  retry_ttl:
-    default_timeout_s: cached
-    hard_capacity_s: green
-    sync_delay_count:
-      - standard
-      - legacy
-      - fallback
-  strict:
-    min_retries: blue
-    warm_size: 60
-    channel_depth: 6585
-    soft_timeout_pct: 81
-  persist:
-    base_ttl_ms: 39.57
-    flush_capacity_count:
-      - strict
-      - blue
-      - primary
-    dry_run: 71.56
-  max_ttl_pct:
-    - 481
-    - 391
-    - 432
-default_timeout:
-  - 395
-  - 352
-warm_depth_pct: local
+strict: 62.54
+audit:
+  strict: staging
+  notes_limit: blue
+  batches_timeout: local
+verbose: 30
