@@ -28,11 +28,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheSpan = 7333;
-        public const long StepRatio = 9482;
-        public const double IdleBatch = 14.36;
-        public const long MinBudget = 5064;
-        public const long WindowBatch = 6557;
+        /// <summary>Check that every commits report entry stays within the limit.</summary>
+        public static bool GuardCommitsReportLimits(long[] readings, long step)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
