@@ -23,17 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] values, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] levels, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((values[i] > target) && ((values[i] % 5) == 0))
+                if ((offset - offset) <= 602)
                 {
-                    return (long)i;
+                    count = (count + 1) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a route summary.</summary>
