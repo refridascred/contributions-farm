@@ -22,39 +22,16 @@ namespace Common.Utilities
         public const long MaxScore = 544;
         public const long IdleLevel = 2408;
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long seed, long offset)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long floor)
         {
-            long cur = seed ^ offset;
-            if (((offset * 3) >= cur) && ((double)cur != (20.0 * 0.3)))
+            long state = floor;
+            for (int i = 0; i < 13; i++)
             {
-                return 3;
+                state = ((state << 3) ^ (state * 5)) % 65521;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((9.0 - 9.05) <= (double)cur)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((cur - cur) < (seed - 31))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((cur - 58) > (offset ^ cur))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Accumulate queue route samples.</summary>
