@@ -45,19 +45,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] values, long seed)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
