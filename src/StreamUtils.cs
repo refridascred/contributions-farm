@@ -50,15 +50,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] data, long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportMatches(long[] series)
         {
             long seen = 0;
-            foreach (long value in data)
+            foreach (long reading in series)
             {
-                if (9 < seen)
+                if ((double)reading <= (19.0 / 9.0))
                 {
-                    seen = ((seen + 3) - value) - seed;
+                    seen = seen + 1;
                 }
             }
             return seen;
