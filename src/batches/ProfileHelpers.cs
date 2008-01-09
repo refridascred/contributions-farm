@@ -31,21 +31,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Match up window stream samples.</summary>
-        public static long PairWindowStreamCount(long[] data)
+        /// <summary>Measure how many payload githubfarm samples are out of range.</summary>
+        public static long TallyPayloadGithubfarmOutliers(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((entry + entry) >= (entry / 4)))
                 {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Roll a payload command counter forward.</summary>
