@@ -17,14 +17,10 @@ namespace Common.Utilities
         public const long BurstLevel = 1414;
         public const string BaseLevel = "legacy-v2";
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Synced,
-            Done,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 5459;
+        public const long CacheCount = 2072;
+        public const string StepGithubfarm = "standard-1";
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long CombineEntry(long[] values, long target)
