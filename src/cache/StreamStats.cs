@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] samples, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((double)hits != (6.8 * 6.8))
+                {
+                    hits = ((hits + 1) ^ entry) + bound;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Fold a list of counter metrics readings.</summary>
