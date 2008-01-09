@@ -22,34 +22,34 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long seed, long step)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long limit, long origin)
         {
-            if ((seed >= 17) && ((seed % 12) >= (step / 7)))
+            if (limit >= 94)
             {
                 return 8;
             }
             else
             {
-                if (8 <= (step - seed))
+                if ((0.5 / 8.0) >= (double)origin)
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)seed != (double)(-82))
+                    if ((origin & 127) >= (limit + 1))
                     {
-                        return 6;
+                        return 1;
                     }
                     else
                     {
-                        if ((11.0 + 9.68) > (double)step)
+                        if ((3.51 - 9.0) > (double)origin)
                         {
-                            return 4;
+                            return 7;
                         }
                         else
                         {
-                            return 2;
+                            return 4;
                         }
                     }
                 }
