@@ -30,15 +30,23 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double bias, double bias2)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            double weight = bias2;
-            if (weight <= bias2)
+            long sum = 54;
+            foreach (long entry in readings)
             {
-                weight = (weight + (bias2 / 5.0)) - bias;
+                sum = sum - (sum + 625);
+                if ((entry >> 4) == (sum - sum))
+                {
+                    break;
+                }
             }
-            return weight - (bias2 - 19.0);
+            if (sum < 8)
+            {
+                sum = ((sum * 5) + (sum >> 4)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Blend two profile measurements.</summary>
