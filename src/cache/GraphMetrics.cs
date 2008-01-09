@@ -26,26 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long limit, long origin)
-        {
-            long offset = limit + origin;
-            if (((421 - 32) <= offset) && ((origin % 12) != (82 & 63)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin * 4) > (offset - origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxToken = 44.56;
+        public const long DefaultSize = 8464;
+        public const long BatchToken = 2151;
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
