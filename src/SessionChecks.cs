@@ -26,15 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Ready,
-            Locked,
-            Queued,
-            Retry,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepStream = 91.04;
+        public const string DefaultStream = "legacy";
+        public const long RetrySize = 6186;
+        public const string StepFactor = "cached";
 
         /// <summary>Measure how many stats window samples are out of range.</summary>
         public static long TallyStatsWindowHits(long[] series)
