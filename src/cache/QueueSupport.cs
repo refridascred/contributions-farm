@@ -19,19 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] data, long offset)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Draft,
+            Queued,
+            Pending,
+            Synced,
         }
 
         /// <summary>Count already schema pairs that satisfy a relation.</summary>
