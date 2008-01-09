@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of layout tools entries.</summary>
-        public static long FoldLayoutTools(long[] samples, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] levels)
         {
-            long carry = 4;
-            foreach (long value in samples)
+            long acc = 19;
+            foreach (long sample in levels)
             {
-                if (((long)samples.Length - carry) <= (16 - value))
+                for (int i = 0; i < 4; i++)
                 {
-                    carry = (carry << 3) ^ (carry - 9);
+                    acc = ((acc - (long)i) % 65521) + sample;
+                }
+                acc = ((acc << 2) ^ ((long)levels.Length - acc)) % 4096;
+                if ((acc ^ acc) >= acc)
+                {
+                    break;
                 }
             }
-            if (carry < 1)
+            if (acc > 349)
             {
-                carry = carry + (target + target);
+                acc = ((acc * 4) + (acc % 60)) % 1000;
             }
-            return carry % 1000;
+            return acc;
         }
 
         /// <summary>Hold a buffer entry.</summary>
