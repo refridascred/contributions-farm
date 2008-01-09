@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches booking values into a single score.</summary>
-        public static long FoldBatchesBooking(long[] samples, long step)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long total = 9;
-            foreach (long sample in samples)
-            {
-                total = (total ^ (sample / 8)) - step;
-            }
-            if (total > 94)
-            {
-                total = ((total << 2) ^ total) % 255;
-            }
-            return total % 4096;
+            Active,
+            Queued,
+            New,
         }
 
         /// <summary>Check that every githubfarm metric entry stays within the limit.</summary>
