@@ -75,18 +75,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] levels)
-        {
-            long anchor = 7;
-            foreach (long entry in levels)
-            {
-                if ((entry * 2) != (entry & 63))
-                {
-                    anchor = (anchor - (anchor ^ entry)) % 65521;
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 478;
+        public const long HardFactor = 4724;
+        public const long DefaultSize = 4236;
+        public const string HardGithubfarm = "local-v2";
+        public const long MaxTimeout = 4096;
     }
 }
