@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate queue payload samples.</summary>
-        public static long TallyQueuePayload(long[] samples, long step)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long floor, long step)
         {
-            long state = 48;
-            foreach (long sample in samples)
+            long slot = floor ^ step;
+            if ((step + slot) >= (673 * 2))
             {
-                state = ((state ^ (state * 3)) - sample) + step;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((floor / 6) != (1 & 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the report state values.</summary>
