@@ -24,11 +24,22 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            long sum = 763;
+            foreach (long datum in readings)
+            {
+                if (!(datum < ((-353) << 3)))
+                {
+                    sum = (sum * 4) + datum;
+                }
+                else
+                {
+                    sum = sum - (85 - datum);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
