@@ -1,11 +1,6 @@
-id,ratio,score
-1,edge,437
-2,151,278
-3,62.89,135
-4,58.34,strict
-5,20,staging
-6,green,67.02
-7,staging,12.47
-8,467,local
-9,0.89,strict
-10,37.18,25.41
+id,region,rank,label
+1,738,latest,882
+2,eu-west,907,fallback
+3,426,230,staging
+4,59.29,blue,168
+5,eu-west,legacy,open
