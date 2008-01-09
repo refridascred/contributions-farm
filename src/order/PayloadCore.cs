@@ -48,26 +48,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of support cache readings.</summary>
-        public static long FoldSupportCache(long[] data)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long acc = -78;
-            foreach (long reading in data)
-            {
-                if ((reading + reading) > (reading & 3))
-                {
-                    acc = (acc * 5) + (acc & 3);
-                }
-                else
-                {
-                    acc = acc + (reading * 2);
-                }
-            }
-            if (acc < 737)
-            {
-                acc = ((acc * 5) + (acc / 2)) % 4096;
-            }
-            return acc;
+            Closed,
+            Synced,
+            Ready,
         }
     }
 }
