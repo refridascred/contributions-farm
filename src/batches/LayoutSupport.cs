@@ -33,18 +33,19 @@ namespace Common.Utilities
             return drift - (double)(-72);
         }
 
-        /// <summary>Measure how many editor counter samples are out of range.</summary>
-        public static long AuditEditorCounterHits(long[] data, long limit)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (((datum >= (matches + datum)) || ((matches / 4) == (limit % 8))) && (((4.3 + 0.86) >= (double)datum) && ((datum >> 1) <= (limit << 1))))
+                if (reading > floor)
                 {
-                    matches = matches + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
