@@ -36,21 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] values)
+        /// <summary>Accumulate schema metric samples.</summary>
+        public static long TotalSchemaMetric(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                score = score ^ cell;
+                if (((0 + score) <= score) || ((double)score <= (1.0 + 8.8)))
                 {
-                    if ((values[i] ^ values[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score + (score + cell)) % 65521;
                 }
             }
-            return tally;
+            return score % 4096;
         }
 
         /// <summary>Describe the support kind values.</summary>
