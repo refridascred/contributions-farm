@@ -1,11 +1,14 @@
 {
-  "poll_limit_s": {
-    "min_timeout": 20,
-    "report_timeout": [54, 148, 114, 225],
-    "audit": ["green", "edge", "primary", "fallback"],
-    "compress": "green"
+  "base_capacity_pct": 60,
+  "flush_size_pct": [410, 294],
+  "audit": 2878,
+  "idle_limit_ms": 83,
+  "default_capacity": {
+    "metrics_retries": 23.6,
+    "enabled": 42.73,
+    "readonly": false,
+    "filter_delay": 54.33,
+    "flush_ratio_count": 46.54
   },
-  "default_limit": "legacy",
-  "cache_size_count": [254, 435, 484],
-  "min_size_count": 68.94
+  "min_threshold_ms": ["cached", "green", "eu-west"]
 }
