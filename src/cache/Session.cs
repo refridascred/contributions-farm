@@ -49,23 +49,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double ratio, double bias)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] items, long target)
         {
-            double rate = (4.92 / 7.0) + bias;
-            if (rate <= (6.12 + 7.9))
+            long count = 0;
+            foreach (long value in items)
             {
-                rate = rate - (double)2;
+                if ((value + target) < value)
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                rate = rate + 2.8;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (ratio * 5.7)) + (double)(long)i;
-            }
-            return rate - rate;
+            return count;
         }
     }
 }
