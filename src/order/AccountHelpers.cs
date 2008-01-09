@@ -73,13 +73,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Locked,
-            New,
-            Closed,
             Idle,
+            Retry,
+            Pending,
+            New,
+            Active,
         }
 
         /// <summary>Project the next commits notes value.</summary>
