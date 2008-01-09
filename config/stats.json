@@ -1,7 +1,5 @@
 {
-  "strict": 32,
-  "poll_ttl_ms": 64.99,
-  "enabled": 500,
-  "entry_delay": 7717,
-  "poll_threshold_s": 21
+  "poll_timeout": ["local", "fallback", "legacy", "open"],
+  "readonly": 21,
+  "idle_threshold_pct": 95
 }
