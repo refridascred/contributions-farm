@@ -28,14 +28,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] readings, long origin)
         {
-            Retry,
-            Ready,
-            Paused,
-            Done,
-            Draft,
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (((double)origin == (1.6 + 1.0)) && ((double)value > (16.0 / 7.0)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
