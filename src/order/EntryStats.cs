@@ -39,22 +39,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit commits token readings against a rule.</summary>
-        public static long CountCommitsTokenOutliers(long[] items)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long step)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long mark = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((seen - datum) == (datum - datum))
+                if ((8.9 * 6.7) <= (double)mark)
                 {
-                    seen = seen + 3;
+                    mark = mark ^ (mark - 235);
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark << 2) ^ (step + step)) % 101;
+                mark = (mark - (mark * 5)) % 255;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
