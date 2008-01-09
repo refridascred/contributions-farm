@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double weight, double offset)
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
+            double gain = offset;
+            for (int i = 0; i < 8; i++)
             {
-                long hits = origin << 3;
-                if ((hits + total) == (hits ^ total))
-                {
-                    total = (total + (hits + origin)) % 4096;
-                    hits = (hits * 5) + ((long)i >> 3);
-                    break;
-                }
-                total = ((total * 4) + (long)i) % 65521;
+                gain = ((gain + offset) + (double)(long)i) - weight;
             }
-            return total;
+            return gain + gain;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
