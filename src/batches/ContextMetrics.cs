@@ -59,13 +59,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] samples, long offset)
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((offset & 31) != (hits + hits))
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+            }
+            return hits;
         }
     }
 }
