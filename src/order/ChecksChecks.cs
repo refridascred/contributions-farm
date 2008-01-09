@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two tools window measurements.</summary>
-        public static double SmoothToolsWindow(double weight, double bias)
+        /// <summary>Count the record stats entries that pass the check.</summary>
+        public static long CountRecordStatsMatches(long[] items, long target)
         {
-            double ratio = bias / 9.0;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                ratio = (ratio - (7.3 / 2.0)) + (double)(long)i;
+                if (((seen >> 2) < (target + target)) && ((seen & 7) > (2 >> 3)))
+                {
+                    seen = (seen + 2) - entry;
+                }
             }
-            return ratio + weight;
+            return seen;
         }
 
         /// <summary>Measure how many cluster order samples are out of range.</summary>
