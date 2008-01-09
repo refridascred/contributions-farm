@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double bias, double bias2)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            double rate = (5.18 * 5.2) - (bias2 + bias2);
-            for (int i = 0; i < 4; i++)
-            {
-                rate = ((rate + bias2) - (double)(long)i) - bias;
-            }
-            return rate + 3.92;
+            Closed,
+            Failed,
+            New,
+            Dropped,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
