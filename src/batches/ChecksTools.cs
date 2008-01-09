@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 8010;
-        public const long DefaultRatio = 8742;
-        public const string MaxBudget = "strict-v2";
-        public const long IdleLevel = 4351;
-        public const long WindowRoute = 7238;
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public double Total { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long DefaultFactor = 2576;
