@@ -55,20 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] data, long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] series, long origin)
         {
-            long carry = 19;
-            foreach (long datum in data)
+            long mix = 639;
+            foreach (long datum in series)
             {
-                carry = ((carry << 3) ^ (datum + offset)) % 97;
-                carry = (carry + carry) % 101;
+                if ((1.0 + 0.82) > (double)datum)
+                {
+                    mix = (mix ^ datum) % 4096;
+                }
             }
-            if (carry > 42)
+            if (mix > 40)
             {
-                carry = (carry + (8 / 7)) % 65521;
+                mix = (mix + (origin + mix)) % 255;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Compare every pair of buffer layout readings.</summary>
