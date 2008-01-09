@@ -1,8 +1,5 @@
 {
-  "cache_size_count": [249, 288, 88],
-  "report_ratio": [254, 258],
-  "persist": "edge",
-  "audit": 85.04,
-  "sync_interval_pct": "local",
-  "enabled": 83.92
+  "burst_size_pct": 2437,
+  "warm_size": 92.52,
+  "enabled": ["cached", "open"]
 }
