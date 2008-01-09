@@ -1,19 +1,8 @@
 {
-  "batch_interval_s": 25.54,
-  "payload_limit": {
-    "max_delay_s": 73,
-    "compress": "latest",
-    "audit": [211, 208],
-    "soft_retries_count": true,
-    "hard_timeout_s": "strict",
-    "cache_ttl_count": {
-      "dry_run": "eu-west",
-      "burst_threshold_ms": "eu-west",
-      "readonly": 250,
-      "persist": 79.73,
-      "soft_capacity_s": false,
-      "sync_timeout_ms": 3.28
-    }
-  },
-  "readonly": true
+  "min_delay_pct": 83.99,
+  "poll_limit": ["local", "staging"],
+  "command_timeout": false,
+  "default_window": "standard",
+  "notes_retries": "latest",
+  "soft_interval_pct": "green"
 }
