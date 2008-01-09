@@ -52,12 +52,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Scale a record support figure with a bias.</summary>
+        public static double SmoothRecordSupport(double weight, double span)
         {
-            Done,
-            New,
-            Idle,
+            double mean = 9.4 / 4.0;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = ((mean + span) + (double)(long)i) + weight;
+            }
+            return mean + span;
         }
     }
 }
