@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Ready,
-            Failed,
-            Dropped,
-            Idle,
-            Closed,
+            public double Offset { get; set; }
+            public bool Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a buffer info.</summary>
