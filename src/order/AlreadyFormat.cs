@@ -38,22 +38,19 @@ namespace Common.Utilities
         public const long RetryChecks = 8069;
         public const long BurstChecks = 5346;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] samples)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((tally / 2) != (entry + entry))
+                if (value > limit)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
