@@ -1,5 +1,8 @@
 {
-  "sync_limit_pct": [111, 97, 232, 177],
-  "batch_limit_count": 250,
-  "persist": [158, 189, 186, 114]
+  "min_retries_pct": "staging",
+  "max_depth": [126, 228],
+  "base_depth_s": "staging",
+  "editor_threshold": 93,
+  "queue_timeout": true,
+  "flush_limit": 87
 }
