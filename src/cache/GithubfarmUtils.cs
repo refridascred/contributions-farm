@@ -36,13 +36,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public bool Label { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
+            public long Token { get; set; }
             public long Mode { get; set; }
+            public bool Count { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
