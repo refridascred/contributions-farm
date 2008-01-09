@@ -37,31 +37,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long step, long step2)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] readings, long limit)
         {
-            if (((6.9 + 5.57) != (double)step) || (step2 <= (66 & 127)))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (step2 <= (step2 + step))
+                if (10.0 >= (double)matches)
                 {
-                    return 0;
+                    matches = ((matches + 2) + item) - limit;
                 }
                 else
                 {
-                    if ((double)(-8) > (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
