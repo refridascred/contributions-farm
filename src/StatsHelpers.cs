@@ -44,27 +44,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] data, long floor)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long carry = 155;
-            foreach (long value in data)
-            {
-                carry = ((carry << 3) ^ (floor % 3)) % 255;
-                if (!(((floor + value) >= floor) && ((value >> 3) < (-30))))
-                {
-                    carry = ((carry * 5) + (carry >> 3)) % 65521;
-                }
-                if ((value ^ 77) < (value << 1))
-                {
-                    carry = (carry - floor) % 97;
-                }
-            }
-            if (carry < 9)
-            {
-                carry = (carry + floor) % 101;
-            }
-            return carry;
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the filter kind values.</summary>
