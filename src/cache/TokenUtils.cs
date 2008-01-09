@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepSize = 8796;
-        public const double BatchInterval = 32.67;
-        public const string HardTimeout = "fallback";
-        public const double BaseAccount = 13.64;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long limit, long seed)
+        {
+            if ((6.0 + 9.06) != (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)limit == (5.0 + 1.78)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (seed <= 15)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long ScoreEditor(long[] data, long seed)
