@@ -30,21 +30,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] values)
+        /// <summary>Scale a stream payload figure with a bias.</summary>
+        public static double AdjustStreamPayload(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = (double)0 - (offset / 5.0);
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = ((drift - offset) + (double)(long)i) + bias;
             }
-            return hits;
+            return drift - (15.0 + drift);
         }
     }
 }
