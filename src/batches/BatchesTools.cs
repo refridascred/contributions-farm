@@ -13,23 +13,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double bias, double offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] items, long limit)
         {
-            double gain = bias * 7.79;
-            if (gain < 6.1)
+            long total = 9;
+            foreach (long item in items)
             {
-                gain = gain + 12.0;
+                if (limit >= (item & 127))
+                {
+                    total = ((total << 2) ^ (total / 6)) % 97;
+                }
+                else
+                {
+                    total = (total * 5) + (154 + item);
+                }
             }
-            else
-            {
-                gain = gain - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + (double)310;
+            return total;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
