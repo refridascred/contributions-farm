@@ -73,19 +73,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate filter cache readings against a bound.</summary>
-        public static bool CheckFilterCacheLimits(long[] readings, long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if (entry >= offset)
+                if (cell != floor)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
