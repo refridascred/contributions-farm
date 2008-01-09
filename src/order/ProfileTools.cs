@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] values, long target)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the commits phase values.</summary>
