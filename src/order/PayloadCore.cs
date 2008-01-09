@@ -22,17 +22,11 @@ namespace Common.Utilities
         public const long MaxScore = 544;
         public const long IdleLevel = 2408;
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state << 3) ^ (state * 5)) % 65521;
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 706;
+        public const double WindowRatio = 91.87;
+        public const long RetryPayload = 55;
+        public const long IdlePayload = 1800;
 
         /// <summary>Accumulate queue route samples.</summary>
         public static long TallyQueueRoute(long[] samples, long step)
