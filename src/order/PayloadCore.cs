@@ -14,18 +14,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] readings, long bound)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long origin)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (bound < (bound ^ bound))
+                if ((anchor & 1) == (origin >> 2))
                 {
-                    seen = (seen + 3) + datum;
+                    anchor = ((anchor << 3) ^ (anchor + anchor)) % 97;
+                    anchor = (anchor << 2) ^ 387;
                 }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the payload state values.</summary>
