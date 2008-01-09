@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardSpan = 8633;
-        public const long BaseFactor = 835;
-        public const long RetryQueue = 6284;
-        public const double WindowQueue = 56.73;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BaseFarm = 1377;
