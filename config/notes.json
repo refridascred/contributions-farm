@@ -1,7 +1,5 @@
 {
-  "command_ttl": [84, 176, 449],
-  "enabled": 24.28,
-  "base_window_s": "green",
-  "burst_threshold_ms": 19,
-  "max_interval_count": "green"
+  "min_interval_count": 1024,
+  "retry_window_s": "latest",
+  "idle_limit_pct": [267, 354, 372]
 }
