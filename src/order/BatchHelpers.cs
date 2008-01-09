@@ -23,19 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate route counter readings against a bound.</summary>
-        public static bool ValidateRouteCounterLimits(long[] data, long bound)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell != bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] + data[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
