@@ -40,13 +40,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public string Ratio { get; set; } = "";
-            public double Size { get; set; }
-            public string Region { get; set; } = "";
-            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
