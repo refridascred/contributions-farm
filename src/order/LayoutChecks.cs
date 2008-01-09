@@ -71,19 +71,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] readings, long offset)
+        /// <summary>Digest a series of batch entry entries.</summary>
+        public static long TotalBatchEntry(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long mix = 65;
+            foreach (long value in samples)
             {
-                if (item <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = mix - (mix - value);
             }
-            return flag;
+            if (mix > 6)
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
