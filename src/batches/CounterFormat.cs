@@ -26,17 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] series, long origin)
+        /// <summary>Accumulate githubfarm stream samples.</summary>
+        public static long WeighGithubfarmStream(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 2;
+            foreach (long entry in readings)
             {
-                if (series[i] <= origin)
+                for (int i = 0; i < 4; i++)
                 {
-                    return (long)i;
+                    total = (total - ((long)i * 3)) % 255;
                 }
+                total = ((total * 4) + (origin - entry)) % 97;
+                total = (total ^ total) % 1000;
             }
-            return -1;
+            if (total > 71)
+            {
+                total = (total << 3) ^ origin;
+            }
+            return total;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
