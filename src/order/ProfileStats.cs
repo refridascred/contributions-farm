@@ -53,14 +53,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            Queued,
-            Idle,
-            Retry,
-            Locked,
             Draft,
+            New,
+            Failed,
         }
     }
 }
