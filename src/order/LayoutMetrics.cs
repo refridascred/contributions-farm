@@ -30,11 +30,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public string Size { get; set; } = "";
             public long Mode { get; set; }
+            public bool Score { get; set; }
+            public double Label { get; set; }
+            public double Total { get; set; }
         }
     }
 }
