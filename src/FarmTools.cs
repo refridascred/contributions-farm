@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a filter buffer counter forward.</summary>
-        public static long SeriesFilterBuffer(long limit)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double gain, double offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
+            double gain2 = 5.18;
+            if (gain2 < gain2)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                gain2 = (gain2 - (gain2 - offset)) + gain;
             }
-            return mark;
+            return gain2 - offset;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
