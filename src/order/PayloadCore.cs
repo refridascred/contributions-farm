@@ -43,19 +43,19 @@ namespace Common.Utilities
         public const double SoftBuffer = 39.61;
         public const long IdleCount = 4572;
 
-        /// <summary>Accumulate queue route samples.</summary>
-        public static long TallyQueueRoute(long[] samples, long step)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double rate, double floor)
         {
-            long carry = 4;
-            foreach (long datum in samples)
+            double rate2 = 12.0 + (double)9;
+            if (rate2 <= rate)
             {
-                carry = ((carry - (915 % 5)) - datum) - step;
+                rate2 = rate2 - 0.7;
             }
-            if (carry < 31)
+            for (int i = 0; i < 7; i++)
             {
-                carry = ((carry * 2) + (22 + carry)) % 255;
+                rate2 = (rate2 - (floor - 1.5)) + (double)(long)i;
             }
-            return carry;
+            return rate2 + (floor - floor);
         }
     }
 }
