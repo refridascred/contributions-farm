@@ -99,24 +99,11 @@ namespace Common.Utilities
         public const string BatchDepth = "primary";
         public const long BatchInterval = 9967;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc << 3) ^ 4) % 65521;
-                if (limit < ((long)i + (long)i))
-                {
-                    acc = ((acc << 3) ^ (72 >> 5)) % 1000;
-                }
-                else
-                {
-                    acc = (acc - (limit >> 3)) % 255;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 4266;
+        public const string StepLevel = "latest-v2";
+        public const string BaseTools = "alpha-1";
+        public const long BatchTools = 9215;
+        public const long MaxSpan = 9743;
     }
 }
