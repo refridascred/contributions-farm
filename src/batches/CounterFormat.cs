@@ -36,19 +36,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] series, long seed)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Locked,
+            Idle,
         }
     }
 }
