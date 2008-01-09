@@ -1,6 +1,6 @@
 {
-  "retry_size_count": 91,
-  "metric_ttl": "legacy",
-  "account_threshold": true,
-  "cache_window": true
+  "default_depth_count": 4266,
+  "cache_depth_pct": false,
+  "editor_window": 4381,
+  "max_delay_ms": 65.58
 }
