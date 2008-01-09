@@ -16,17 +16,21 @@ namespace Common.Utilities
             return ratio + (ratio / 5.0);
         }
 
-        /// <summary>Find the first buffer entry entry that matches the target.</summary>
-        public static long LocateBufferEntryIndex(long[] readings, long limit)
+        /// <summary>Match up checks commits samples.</summary>
+        public static long PairChecksCommitsCount(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 3) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
