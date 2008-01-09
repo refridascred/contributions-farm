@@ -26,12 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 6644;
+        public const long WindowScore = 5771;
+        public const string CacheSize = "alpha-v2";
+        public const long DefaultInterval = 3617;
+        public const long BaseBudget = 3651;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool GuardQueueRange(long[] readings, long target)
