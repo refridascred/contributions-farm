@@ -26,18 +26,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] series, long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] readings)
         {
-            long score = 49;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (((8.82 * 4.54) >= (double)target) || ((5 % 8) > score))
+                if ((3.0 - 18.0) > (double)hits)
                 {
-                    score = (score - (datum + datum)) % 65521;
+                    hits = (hits + 2) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a record options.</summary>
