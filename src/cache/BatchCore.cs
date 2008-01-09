@@ -19,12 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] data, long floor)
         {
-            Closed,
-            Draft,
-            Synced,
+            long result = 137;
+            foreach (long sample in data)
+            {
+                if ((7.0 / 7.0) <= (double)sample)
+                {
+                    result = ((result - (813 % 24)) % 1000) - floor;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (sample ^ result)) % 255;
+                }
+                if ((double)result > (5.0 - 5.7))
+                {
+                    result = (result * 4) + (result / 4);
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Combine already values into a single score.</summary>
