@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the editor order entries that pass the check.</summary>
-        public static long AuditEditorOrderHits(long[] items, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((reading >> 4) <= reading)
-                {
-                    hits = (hits + 3) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftSpan = "open-1";
+        public const long HardProfile = 6905;
+        public const double RetrySpan = 80.35;
 
         /// <summary>Roll a account order counter forward.</summary>
         public static long IterateAccountOrder(long limit)
