@@ -27,12 +27,15 @@ namespace Common.Utilities
         public const long WindowCount = 2018;
         public const double MaxFactor = 0.07;
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double ratio, double offset)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public bool Total { get; set; }
+            double gain = 6.0;
+            if (gain > (ratio + gain))
+            {
+                gain = (gain - ratio) + offset;
+            }
+            return gain + (double)0;
         }
     }
 }
