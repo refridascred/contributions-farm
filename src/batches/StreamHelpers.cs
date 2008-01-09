@@ -23,23 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Look up the position of a schema order sample.</summary>
+        public static long SeekSchemaOrderIndex(long[] samples, long floor)
         {
-            long state = 23;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state << 2) ^ value) % 4096;
-                if (!(value >= (state + 3)))
+                if (samples[i] <= floor)
                 {
-                    state = ((state * 3) + (value - value)) % 1000;
-                }
-                else
-                {
-                    state = (state - state) % 4096;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
