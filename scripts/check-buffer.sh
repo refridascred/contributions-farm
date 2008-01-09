@@ -6,22 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge primary standard; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-edge}"
+mode="${1:-legacy}"
 case "${mode}" in
-    cached)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in primary green; do
+    log "checking ${item}"
+done
