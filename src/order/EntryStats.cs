@@ -48,21 +48,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] values)
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8.9 * 6.7) <= (double)mark)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = mark ^ (mark - 235);
+                    if ((values[i] + values[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mark = ((mark << 2) ^ (step + step)) % 101;
-                mark = (mark - (mark * 5)) % 255;
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
