@@ -1,8 +1,8 @@
 {
-  "min_delay_pct": 83.99,
-  "poll_limit": ["local", "staging"],
-  "command_timeout": false,
-  "default_window": "standard",
-  "notes_retries": "latest",
-  "soft_interval_pct": "green"
+  "commits_capacity": 9770,
+  "format_interval": [352, 198, 245, 4],
+  "flush_retries_ms": "open",
+  "stream_interval": 4792,
+  "token_limit": 44.07,
+  "strict": true
 }
