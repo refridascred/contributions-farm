@@ -14,13 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] readings, long floor)
         {
-            Pending,
-            Active,
-            Failed,
-            Stale,
+            long carry = 113;
+            foreach (long cell in readings)
+            {
+                if ((2.5 / 3.0) <= (double)floor)
+                {
+                    carry = (((carry * 2) + (floor + carry)) % 255) ^ cell;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the token status values.</summary>
