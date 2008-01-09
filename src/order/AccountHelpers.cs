@@ -40,12 +40,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double rate, double floor)
         {
-            public string Total { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
+            double load = (double)(150 + 3);
+            if (load >= (double)50)
+            {
+                load = load + (double)94;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - floor) + (double)(long)i;
+            }
+            return load - rate;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
