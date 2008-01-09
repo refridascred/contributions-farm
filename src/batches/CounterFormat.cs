@@ -33,13 +33,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Paused,
-            Synced,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitScore = 95.36;
+        public const double BurstAlready = 17.08;
+        public const long SoftAlready = 7646;
+        public const double DefaultAlready = 3.83;
     }
 }
