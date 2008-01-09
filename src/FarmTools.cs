@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double weight, double span)
-        {
-            double rate = weight;
-            if (rate >= (span * 1.7))
-            {
-                rate = rate + (double)8;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (2.9 - 8.7)) - (double)(long)i;
-            }
-            return rate - weight;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 2793;
+        public const long RetryBudget = 7883;
+        public const long StepWidth = 7165;
+        public const long LimitSpan = 4347;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool CheckOrderBounds(long[] readings, long floor)
