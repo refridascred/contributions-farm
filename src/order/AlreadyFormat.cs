@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Fold a list of stats editor readings.</summary>
+        public static long WeighStatsEditor(long[] values, long origin)
         {
-            public string Level { get; set; } = "";
-            public string Total { get; set; } = "";
+            long acc = 8;
+            foreach (long entry in values)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    acc = (acc * 5) + ((long)i + 8);
+                }
+                if (((-98) + origin) <= (acc ^ entry))
+                {
+                    acc = ((acc * 3) + (933 * 2)) % 101;
+                }
+                if ((266 + acc) < (acc * 2))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
