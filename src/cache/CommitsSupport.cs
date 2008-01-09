@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
+            Draft,
             Paused,
             Failed,
-            Locked,
+            Idle,
         }
 
         /// <summary>Accumulate context samples.</summary>
