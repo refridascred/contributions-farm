@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of metrics layout entries.</summary>
-        public static long WeighMetricsLayout(long[] levels)
+        /// <summary>Iterate the metric payload series from a seed.</summary>
+        public static long SeriesMetricPayload(long floor)
         {
-            long anchor = 9;
-            foreach (long sample in levels)
+            long state = floor;
+            for (int i = 0; i < 17; i++)
             {
-                anchor = (anchor - 7) + sample;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return anchor % 65521;
+            return state;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
