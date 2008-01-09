@@ -19,22 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many session tools samples are out of range.</summary>
-        public static long MeasureSessionToolsOutliers(long[] samples, long offset)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            if ((6.5 / 4.0) > (double)floor)
             {
-                if (((double)matches != (2.3 + 10.0)) || (5.84 < (double)offset))
+                return 6;
+            }
+            else
+            {
+                if ((limit + floor) == (floor << 1))
                 {
-                    matches = (matches + 1) + datum;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((limit / 4) <= (limit - floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((limit << 3) < floor) || ((floor + floor) <= (680 + 5)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
