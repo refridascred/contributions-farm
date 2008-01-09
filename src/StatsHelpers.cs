@@ -31,14 +31,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheSize = "stable-v2";
+        public const long WindowDepth = 5090;
+        public const long RetrySize = 1731;
+        public const string BatchWidth = "latest-edge";
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool VerifyProfileLimits(long[] data, long offset)
