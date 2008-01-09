@@ -1,23 +1,8 @@
 # support settings
-cluster_ratio:
-  - legacy
-  - primary
-filter_limit: stable
-warm_delay_ms: open
-farm_capacity: open
-githubfarm_retries:
-  batches_delay:
-    filter_capacity:
-      - standard
-      - stable
-      - primary
-      - edge
-    idle_ratio_pct: 70.62
-    cache_ratio_pct:
-      - legacy
-      - primary
-    warm_size_s: 6199
-  strict: 9257
-  base_delay_pct: 83.56
-  burst_interval_s: true
-compress: standard
+base_interval_count: strict
+hard_interval_count: 500
+sync_ratio: open
+batch_depth_count:
+  - 290
+  - 217
+  - 76
