@@ -42,22 +42,18 @@ namespace Common.Utilities
         public const long DefaultBudget = 7174;
         public const long LimitSize = 4138;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] series, long offset)
+        /// <summary>Digest a series of notes support entries.</summary>
+        public static long ScoreNotesSupport(long[] items, long floor)
         {
-            long score = 205;
-            foreach (long entry in series)
+            long anchor = 5;
+            foreach (long entry in items)
             {
-                if ((double)offset == (double)entry)
+                if (((82 ^ entry) != (floor ^ anchor)) && ((2 << 2) >= (anchor + floor)))
                 {
-                    score = score ^ (entry * 3);
+                    anchor = (anchor - (entry >> 4)) % 4096;
                 }
             }
-            if (score < 65)
-            {
-                score = score - (offset + offset);
-            }
-            return score;
+            return anchor;
         }
     }
 }
