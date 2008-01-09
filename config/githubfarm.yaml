@@ -1,4 +1,4 @@
 # githubfarm settings
-min_depth_count: 4680
-sync_delay_s: blue
-idle_retries_pct: standard
+soft_ttl_ms: 68
+verbose: true
+readonly: 100
