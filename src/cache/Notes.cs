@@ -59,17 +59,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Look up the position of a entry batch sample.</summary>
-        public static long SeekEntryBatchIndex(long[] levels, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (levels[i] > origin)
+                if ((seen >> 3) > (-2))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + reading) - limit;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
