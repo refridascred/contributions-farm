@@ -1,6 +1,8 @@
 {
-  "readonly": 69,
-  "sync_capacity": 6245,
-  "retry_window": 2,
-  "audit": "cached"
+  "stream_limit": 22.89,
+  "min_capacity_count": 78.61,
+  "retry_ratio_ms": 52.48,
+  "burst_threshold_s": 73,
+  "batch_ratio_pct": "green",
+  "default_threshold_s": 685
 }
