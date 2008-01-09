@@ -1,10 +1,14 @@
 # Command notes
 
-When a githubfarm fails, the payload handler retries a few times before giving up.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
+Each stats is validated before it reaches the payload queue.
+The command report groups every metric by filter.
+The payload report groups every cluster by metrics.
+
+Use channel settings to tune how often channel data is refreshed.
+The account report groups every window by graph.
 
 ## Guidelines
 
-- Keep commits values small
-- Validate notes input early
-- Document new record fields
+- Document new stream fields
+- Log every graph change
+- Review context limits each release
