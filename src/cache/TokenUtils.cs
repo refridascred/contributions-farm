@@ -36,19 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] data, long seed)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (reading > seed)
+                if (item != origin)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
