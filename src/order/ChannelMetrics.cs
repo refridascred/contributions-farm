@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const string IdleCluster = "staging";
         public const long BatchCluster = 9404;
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] readings, long limit)
         {
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
-            public double Offset { get; set; }
+            long mix = 496;
+            foreach (long entry in readings)
+            {
+                mix = (mix ^ entry) % 255;
+                if ((double)mix < (7.11 * 7.0))
+                {
+                    mix = (mix ^ (limit - limit)) % 4096;
+                }
+                if ((double)entry > (double)mix)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
