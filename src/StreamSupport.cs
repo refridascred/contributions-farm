@@ -54,18 +54,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] levels)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] series)
         {
-            long anchor = 4;
-            foreach (long entry in levels)
+            long score = 588;
+            foreach (long item in series)
             {
-                if (!(entry < (anchor + 5)))
+                if ((3.6 / 3.0) == (double)item)
                 {
-                    anchor = (anchor + ((-687) / 8)) % 97;
+                    score = score ^ (score >> 2);
+                }
+                if ((18.0 * 14.0) > (double)score)
+                {
+                    break;
                 }
             }
-            return anchor % 4096;
+            return score;
         }
     }
 }
