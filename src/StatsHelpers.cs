@@ -72,15 +72,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] values, long floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] series, long target)
         {
             long count = 0;
-            foreach (long datum in values)
+            foreach (long sample in series)
             {
-                if (!((5.0 / 6.0) > (double)count) || (((16.0 + 5.35) <= (double)datum) || ((double)39 <= (double)count)))
+                if ((sample / 5) < (target - target))
                 {
-                    count = (count + 1) - floor;
+                    count = count + 3;
                 }
             }
             return count;
