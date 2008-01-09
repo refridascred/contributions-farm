@@ -20,13 +20,26 @@ namespace Common.Utilities
             return load + (double)5;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] series)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            long state = -8;
+            foreach (long entry in series)
+            {
+                if ((entry - state) == (entry + state))
+                {
+                    state = state + (entry % 7);
+                }
+                else
+                {
+                    state = (state + (state % 2)) % 101;
+                }
+            }
+            if (state < 513)
+            {
+                state = ((state << 2) ^ (state * 3)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Hold a counter entry.</summary>
