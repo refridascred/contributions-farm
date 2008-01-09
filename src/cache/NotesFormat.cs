@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Active,
-            Retry,
-            Done,
-            Failed,
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the cache phase values.</summary>
