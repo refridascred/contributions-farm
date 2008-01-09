@@ -32,17 +32,37 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] data, long seed)
+        /// <summary>Accumulate metrics tools samples.</summary>
+        public static long WeighMetricsTools(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 773;
+            foreach (long item in series)
             {
-                if ((data[i] > seed) && ((data[i] % 3) == 0))
+                mark = ((mark * 3) + item) % 4096;
+                if ((double)52 == (double)mark)
                 {
-                    return (long)i;
+                    mark = (mark << 2) ^ mark;
+                    continue;
+                }
+                else
+                {
+                    mark = (mark + (long)series.Length) % 101;
+                    mark = (mark - (item & 3)) % 1000;
+                }
+                if (((7 * 5) >= (mark - mark)) || ((mark % 97) > (mark / 5)))
+                {
+                    mark = (mark - (96 & 15)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark * 3) + ((-128) - item)) % 97;
                 }
             }
-            return -1;
+            if (mark < 31)
+            {
+                mark = (mark + mark) % 255;
+            }
+            return mark;
         }
     }
 }
