@@ -27,19 +27,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] items)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] values)
         {
-            long anchor = 8;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                anchor = ((anchor << 2) ^ (item + anchor)) % 1000;
-                if ((item % 5) <= (item & 3))
+                if ((sample & 127) > (count + count))
                 {
-                    break;
+                    count = count + 3;
                 }
             }
-            return anchor % 65521;
+            return count;
         }
     }
 }
