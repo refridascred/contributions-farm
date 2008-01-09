@@ -30,28 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long target)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] samples, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((acc - acc) >= (acc * 4))
+                if (samples[i] == offset)
                 {
-                    acc = (acc - (948 - acc)) % 101;
+                    return (long)i;
                 }
-                else
-                {
-                    acc = ((acc << 2) ^ (23 * 2)) % 255;
-                }
-                acc = (acc - (0 / 2)) % 65521;
-                if (!!((target + (long)i) < (acc << 1)))
-                {
-                    acc = (acc + (acc >> 1)) % 1000;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a stream record.</summary>
