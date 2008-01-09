@@ -1,6 +1,5 @@
 {
-  "soft_ttl": 678,
-  "enabled": 9206,
-  "flush_depth": 85.0,
-  "min_capacity_ms": 878
+  "idle_ratio": ["staging", "edge"],
+  "soft_window_s": "open",
+  "idle_threshold_s": 36.67
 }
