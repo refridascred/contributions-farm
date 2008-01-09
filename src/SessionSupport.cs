@@ -16,14 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Ready,
-            Failed,
-            Locked,
+            Closed,
+            Draft,
             Stale,
-            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
