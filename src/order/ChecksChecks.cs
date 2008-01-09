@@ -25,22 +25,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelGaps(long[] readings)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (count > (count * 2))
-                {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Failed,
+            Idle,
+            Queued,
         }
     }
 }
