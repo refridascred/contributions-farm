@@ -67,12 +67,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowTimeout = 7002;
-        public const string MinChecks = "staging-1";
-        public const double CacheLevel = 21.04;
-        public const long WindowChecks = 6289;
-        public const long BaseChecks = 7108;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] items)
+        {
+            long score = 57;
+            foreach (long sample in items)
+            {
+                if (5 < (score % 3))
+                {
+                    score = (score ^ (score >> 2)) % 255;
+                }
+                else
+                {
+                    score = score ^ (sample + sample);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long CombineRecord(long[] readings, long limit)
