@@ -25,22 +25,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit order session readings against a rule.</summary>
-        public static long MeasureOrderSessionGaps(long[] readings, long bound)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (((matches ^ (long)readings.Length) <= (420 - item)) || ((double)matches < (5.53 / 3.0)))
-                {
-                    matches = (matches + 2) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
