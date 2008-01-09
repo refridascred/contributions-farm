@@ -19,5 +19,19 @@ namespace Common.Utilities
             }
             return found;
         }
+
+        /// <summary>Count the payload batch entries that pass the check.</summary>
+        public static long AuditPayloadBatchMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((datum % 64) >= seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
