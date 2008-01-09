@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double bias, double offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] series, long target)
         {
-            double load = (double)358;
-            if (load > offset)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                load = load + (double)8;
+                if ((reading + reading) > (reading * 4))
+                {
+                    seen = (seen + 3) - target;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load + (bias - load);
+            return seen;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
