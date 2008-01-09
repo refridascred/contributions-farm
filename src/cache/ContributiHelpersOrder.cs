@@ -33,20 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] levels, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] items)
         {
-            long carry = 57;
-            foreach (long sample in levels)
+            long carry = 939;
+            foreach (long reading in items)
             {
-                if (((double)carry < (9.4 - 4.8)) && ((limit << 2) > (long)levels.Length))
+                carry = carry + (reading + reading);
+                carry = (carry ^ (reading - carry)) % 97;
+                if ((6.34 - 18.0) == (double)reading)
                 {
-                    carry = (carry ^ 126) ^ sample;
+                    break;
                 }
             }
-            if (carry < 9)
+            if (carry > 55)
             {
-                carry = (carry * 4) + (carry ^ 7);
+                carry = carry ^ carry;
             }
             return carry;
         }
