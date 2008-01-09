@@ -1,4 +1,4 @@
 # entry settings
-hard_threshold_pct: 250
-context_timeout: green
-stream_retries: local
+githubfarm_threshold: 250
+dry_run: 56
+verbose: false
