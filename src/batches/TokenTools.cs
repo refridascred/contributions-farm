@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double gain, double bias)
         {
-            Closed,
-            Failed,
-            New,
-            Dropped,
+            double ratio = bias;
+            if (ratio > gain)
+            {
+                ratio = ratio + ratio;
+            }
+            else
+            {
+                ratio = ratio - (13.0 / 2.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (double)42) + (double)(long)i;
+            }
+            return ratio + gain;
         }
 
         /// <summary>Roll a cluster graph counter forward.</summary>
