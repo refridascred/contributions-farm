@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultCount = 86.35;
-        public const long BaseCommits = 6306;
-        public const double IdleCommits = 86.81;
-        public const long BurstCommits = 4744;
-        public const long WindowRatio = 63;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelOutliers(long[] readings, long step)
