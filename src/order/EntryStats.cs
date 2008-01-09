@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const string CacheWidth = "primary-v2";
         public const long MaxInterval = 6920;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] readings, long bound)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double bias, double bias2)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            double ratio = (double)365;
+            for (int i = 0; i < 3; i++)
             {
-                if (cell != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = (((ratio + (double)90) + (double)(long)i) - bias) - bias2;
             }
-            return ok;
+            return ratio + 3.53;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
