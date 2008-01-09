@@ -1,12 +1,10 @@
 {
-  "idle_size_ms": [487, 112, 317],
-  "poll_window": "eu-west",
-  "contributi_threshold": 74,
-  "batches_threshold": "strict",
-  "soft_interval": {
-    "cache_retries_pct": "green",
-    "default_threshold_count": 9000,
-    "poll_size_pct": ["primary", "cached", "open", "strict"],
-    "sync_size_pct": 40.85
+  "min_threshold_ms": 98,
+  "cache_window_s": "fallback",
+  "channel_timeout": {
+    "hard_timeout": 7301,
+    "session_depth": [493, 170],
+    "batch_timeout_pct": true,
+    "githubfarm_limit": "legacy"
   }
 }
