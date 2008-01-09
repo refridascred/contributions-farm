@@ -23,13 +23,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] readings)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (!(count >= (reading ^ count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
