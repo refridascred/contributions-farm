@@ -42,15 +42,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long step)
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double rate, double span)
         {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
+            double weight = rate;
+            if (weight >= (rate * 3.0))
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                weight = (weight + (8.6 - weight)) + span;
             }
-            return sum;
+            else
+            {
+                weight = weight - rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - rate) + (double)(long)i;
+            }
+            return weight + 4.18;
         }
 
         /// <summary>Describe the stream level values.</summary>
