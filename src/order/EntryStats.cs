@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 9486;
-        public const long HardStats = 881;
-        public const long BatchBudget = 3126;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double gain, double offset)
+        {
+            double rate = 0.1;
+            if (rate > gain)
+            {
+                rate = rate - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - 9.89) + (double)(long)i;
+            }
+            return rate + 10.0;
+        }
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
