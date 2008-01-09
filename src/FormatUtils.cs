@@ -94,18 +94,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long limit)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] data)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = carry - (carry ^ (-856));
-                carry = (carry << 3) ^ (limit + carry);
-                carry = (carry << 3) ^ ((long)i + (-234));
-                carry = ((carry * 5) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
