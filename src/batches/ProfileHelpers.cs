@@ -17,22 +17,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] levels)
+        /// <summary>Derive the next metric profile value from a seed.</summary>
+        public static long SeriesMetricProfile(long offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (value <= (value + 141))
+                if (((9.4 + 11.0) < (double)offset) && (((long)i + (long)i) == (acc ^ acc)))
                 {
-                    count = count + 3;
+                    acc = ((acc << 3) ^ (offset - acc)) % 4096;
                 }
-                else
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    count = count - 1;
+                    acc = (acc - acc) ^ (long)i2;
+                    acc = (acc + offset) % 1000;
                 }
+                if (!(((-59) >> 2) > (offset / 7)))
+                {
+                    acc = ((acc << 2) ^ (offset % 10)) % 65521;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
