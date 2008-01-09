@@ -63,15 +63,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] series, long target)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long mix = 0;
-            foreach (long entry in series)
-            {
-                mix = ((((mix * 3) + (mix * 2)) % 65521) - entry) - target;
-            }
-            return mix;
+            Pending,
+            Draft,
+            Synced,
+            Done,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
