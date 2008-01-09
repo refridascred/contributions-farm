@@ -16,19 +16,31 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Rank order editor input into a small class.</summary>
+        public static long BucketOrderEditor(long seed, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
+            if (((4.0 / 5.0) <= (double)target) || ((double)88 >= (double)598))
             {
-                if ((seed + seed) > (long)i)
-                {
-                    continue;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((double)seed < 3.8)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((277 - 90) != (seed - seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
