@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] levels, long origin)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] levels)
         {
-            long total = 498;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total - (origin + origin)) % 101) + cell;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Validate profile githubfarm readings against a bound.</summary>
