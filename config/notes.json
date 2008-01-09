@@ -1,7 +1,8 @@
 {
-  "editor_depth": "staging",
-  "token_ratio": false,
-  "dry_run": 92.97,
-  "min_capacity_count": ["strict", "legacy", "primary", "blue"],
-  "notes_threshold": 85.1
+  "window_ratio": ["primary", "local", "primary"],
+  "hard_size_count": 68.11,
+  "poll_retries_count": false,
+  "retry_window_ms": 6823,
+  "enabled": "green",
+  "readonly": true
 }
