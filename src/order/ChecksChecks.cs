@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster order samples are out of range.</summary>
-        public static long CountClusterOrderMatches(long[] items, long offset)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((6 & 3) >= (19 - offset))
+                if ((series[i] > seed) && ((series[i] % 3) == 0))
                 {
-                    count = (count + 3) + sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
