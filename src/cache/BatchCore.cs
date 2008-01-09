@@ -42,13 +42,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public bool Total { get; set; }
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
