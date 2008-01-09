@@ -19,19 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] levels, long bound)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long origin)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample < bound)
+                if (((double)mix < (6.45 * 6.6)) || ((double)origin != (4.17 + 2.0)))
                 {
-                    found = false;
-                    break;
+                    mix = (mix ^ (mix * 4)) % 101;
+                    continue;
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Blend two session measurements.</summary>
