@@ -68,19 +68,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double weight, double bias)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            double rate = 9.97;
-            if (rate < (double)(-838))
-            {
-                rate = (rate + weight) - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - weight) + (double)(long)i;
-            }
-            return rate + (double)6;
+            Done,
+            Failed,
+            Closed,
         }
     }
 }
