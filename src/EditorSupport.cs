@@ -57,12 +57,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            Dropped,
+            Stale,
+            Synced,
+            Queued,
         }
 
         /// <summary>Define format limits and defaults.</summary>
