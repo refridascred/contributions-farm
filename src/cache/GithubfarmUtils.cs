@@ -10,21 +10,39 @@ namespace Common.Utilities
         public const string WindowFactor = "open-v2";
         public const long SoftWindow = 6873;
 
-        /// <summary>Count profile entry pairs that satisfy a relation.</summary>
-        public static long PairProfileEntryCount(long[] levels)
+        /// <summary>Grade a session buffer value against two limits.</summary>
+        public static long ClassifySessionBuffer(long floor, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long next = floor - origin;
+            if (((double)origin > 5.4) && ((origin << 2) > (next - floor)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((947 - next) == (next << 3))
                 {
-                    if ((levels[i] - levels[j]) > 1)
+                    return 4;
+                }
+                else
+                {
+                    if ((origin >= (origin + origin)) && ((0.16 + 3.16) < (double)origin))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin / 9) >= (floor * 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine payload checks values into a single score.</summary>
