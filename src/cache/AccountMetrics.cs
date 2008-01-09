@@ -38,21 +38,18 @@ namespace Common.Utilities
         public const double LimitChannel = 35.45;
         public const double MaxChannel = 7.84;
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] readings)
+        /// <summary>Measure how many commits farm samples are out of range.</summary>
+        public static long CountCommitsFarmOutliers(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((tally - sample) < (5 - 684)) && ((9.5 / 8.0) < (double)tally))
                 {
-                    if ((readings[i] ^ readings[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
