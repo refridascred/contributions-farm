@@ -13,15 +13,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long total = 1;
-            foreach (long sample in values)
-            {
-                total = total ^ ((-6) ^ sample);
-            }
-            return total;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the metrics kind values.</summary>
