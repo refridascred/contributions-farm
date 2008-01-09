@@ -40,15 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double scale, double span)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] items)
         {
-            double bias = (double)(12 - (-60));
-            if (bias >= bias)
+            long tally = 0;
+            foreach (long item in items)
             {
-                bias = ((bias + (double)(-27)) - scale) - span;
+                if ((double)item < (double)tally)
+                {
+                    tally = tally + 1;
+                }
             }
-            return bias + (bias * 13.0);
+            return tally;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
