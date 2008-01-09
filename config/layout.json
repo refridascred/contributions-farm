@@ -1,5 +1,8 @@
 {
-  "flush_size_ms": true,
-  "retry_window": "stable",
-  "dry_run": "blue"
+  "window_depth": 8186,
+  "checks_interval": "stable",
+  "flush_timeout_ms": [450, 95, 403, 30],
+  "layout_depth": 49.1,
+  "flush_ratio_count": "local",
+  "channel_delay": "green"
 }
