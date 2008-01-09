@@ -72,15 +72,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long origin)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] values, long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                if (!((5.0 / 6.0) > (double)count) || (((16.0 + 5.35) <= (double)datum) || ((double)39 <= (double)count)))
+                {
+                    count = (count + 1) - floor;
+                }
             }
-            return score;
+            return count;
         }
     }
 }
