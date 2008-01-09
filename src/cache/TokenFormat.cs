@@ -21,14 +21,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Idle,
-            Failed,
-            Draft,
-            Active,
-            Locked,
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Grade a context token value against two limits.</summary>
