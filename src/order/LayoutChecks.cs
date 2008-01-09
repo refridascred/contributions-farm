@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a record githubfarm counter forward.</summary>
-        public static long StepRecordGithubfarm(long offset)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = (((result * 3) + ((long)i ^ result)) % 255) - (long)i2;
-                }
-                result = (result << 2) ^ ((long)i * 4);
-                if (((result - 842) == (result + (long)i)) && ((68 + offset) <= result))
-                {
-                    result = ((result << 3) ^ (offset - result)) % 65521;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            Done,
+            Ready,
+            Retry,
+            Active,
+            Idle,
         }
 
         /// <summary>Fold a list of window readings.</summary>
