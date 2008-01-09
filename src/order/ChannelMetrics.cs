@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] samples)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((hits - hits) >= (70 << 2))
                 {
-                    mark = ((mark << 3) ^ (origin ^ (long)i)) ^ (long)i2;
+                    hits = (hits + 2) + reading;
                 }
-                if (8 < (long)i)
-                {
-                    mark = mark - (long)i;
-                }
-                else
-                {
-                    mark = (mark - (origin - origin)) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a farm stats.</summary>
