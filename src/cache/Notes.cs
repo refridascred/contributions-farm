@@ -43,19 +43,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] values)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] series)
         {
             long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((4.1 + 19.0) <= (3.08 + 6.9))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] - series[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
