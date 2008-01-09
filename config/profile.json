@@ -1,17 +1,5 @@
 {
-  "compress": "blue",
-  "idle_ttl_pct": "green",
-  "hard_ttl_pct": {
-    "compress": {
-      "counter_threshold": "green",
-      "retry_ratio_count": 48.96,
-      "contributi_window": 11,
-      "readonly": ["local", "cached", "green", "strict"],
-      "hard_size_pct": [97, 138],
-      "metrics_timeout": [446, 385]
-    },
-    "batch_interval_pct": "open",
-    "stats_capacity": "primary",
-    "min_threshold": "local"
-  }
+  "sync_size_ms": "legacy",
+  "sync_delay_ms": 60,
+  "readonly": "strict"
 }
