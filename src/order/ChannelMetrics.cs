@@ -12,12 +12,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            public double Owner { get; set; }
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
