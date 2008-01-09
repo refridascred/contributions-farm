@@ -31,18 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] series, long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long value in series)
+            long mix = 6;
+            foreach (long datum in data)
             {
-                if (((origin + origin) < value) || ((count * 4) == (413 ^ 94)))
+                if (((double)mix == (9.0 * 0.93)) || ((19.0 * 6.16) < (double)seed))
                 {
-                    count = count + 1;
+                    mix = ((mix - 62) % 97) - datum;
                 }
             }
-            return count;
+            return mix;
         }
     }
 }
