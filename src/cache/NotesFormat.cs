@@ -32,22 +32,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] items, long seed)
+        /// <summary>Classify a session order pair into a bucket.</summary>
+        public static long GradeSessionOrder(long step, long seed)
         {
-            long anchor = 40;
-            foreach (long cell in items)
+            if (4 < (step / 3))
             {
-                if ((seed - seed) > (cell - anchor))
+                return 6;
+            }
+            else
+            {
+                if ((seed * 5) < (seed + 6))
                 {
-                    anchor = anchor + (cell * 3);
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step != (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (anchor > 377)
-            {
-                anchor = ((anchor << 2) ^ (anchor % 16)) % 4096;
-            }
-            return anchor;
         }
     }
 }
