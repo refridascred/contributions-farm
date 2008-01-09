@@ -13,16 +13,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long bound)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = (sum << 3) ^ (long)i;
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Check that every commits report entry stays within the limit.</summary>
