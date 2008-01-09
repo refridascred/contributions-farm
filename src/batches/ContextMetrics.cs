@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long floor)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double ratio, double floor)
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
+            double weight = (double)9 / 2.0;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = (result ^ (91 - floor)) - (long)i2;
-                    result = (result + (floor + result)) % 65521;
-                }
-                result = ((result * 5) + (long)i) % 97;
+                weight = (weight + (floor + 3.0)) + (double)(long)i;
             }
-            return result;
+            return weight - ratio;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
