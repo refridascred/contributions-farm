@@ -22,13 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Draft,
-            Stale,
-            Active,
-            New,
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Match up window stream samples.</summary>
