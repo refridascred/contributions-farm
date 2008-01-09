@@ -1,18 +1,4 @@
 # support settings
-batch_capacity_pct: fallback
-base_threshold_count: blue
-queue_timeout:
-  - legacy
-  - latest
-  - strict
-  - staging
-idle_limit_s: standard
-idle_interval: true
-batch_retries:
-  default_ttl_count: 53
-  stream_capacity: 82.66
-  metric_interval:
-    batch_window_s: 54.58
-    soft_limit_ms: 63
-    compress: 51
-    base_retries: 70
+warm_threshold: legacy
+retry_depth_ms: true
+profile_ratio: false
