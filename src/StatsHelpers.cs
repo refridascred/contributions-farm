@@ -27,15 +27,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] series, long bound)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] items, long bound)
         {
-            long score = 863;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in items)
             {
-                score = ((score * 2) + reading) - bound;
+                if ((bound % 2) == (60 << 1))
+                {
+                    count = (count + 2) + cell;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the channel status values.</summary>
