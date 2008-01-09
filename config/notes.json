@@ -1,5 +1,7 @@
 {
-  "command_ttl": 99,
-  "entry_retries": [431, 450, 449, 176],
-  "flush_retries_s": false
+  "base_capacity": 512,
+  "strict": 60,
+  "compress": true,
+  "max_delay": 1091,
+  "min_interval": 62
 }
