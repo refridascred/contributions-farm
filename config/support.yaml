@@ -1,4 +1,4 @@
 # support settings
-min_ttl: open
-window_delay: 82.09
-persist: legacy
+poll_interval_s: true
+hard_limit_ms: 250
+flush_ttl: 75.41
