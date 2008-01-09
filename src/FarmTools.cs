@@ -26,18 +26,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (!((57 + datum) < (6 >> 1)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheReport = 87.21;
+        public const long MaxSpan = 6766;
+        public const long LimitReport = 501;
+        public const long MinScore = 6878;
+        public const double BurstCount = 22.1;
     }
 }
