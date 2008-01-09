@@ -20,26 +20,18 @@ namespace Common.Utilities
             return load + (double)5;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] series)
+        /// <summary>Audit report order readings against a rule.</summary>
+        public static long MeasureReportOrderMatches(long[] levels)
         {
-            long state = -8;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((entry - state) == (entry + state))
+                if (seen > (seen * 3))
                 {
-                    state = state + (entry % 7);
-                }
-                else
-                {
-                    state = (state + (state % 2)) % 101;
+                    seen = (seen + 2) + cell;
                 }
             }
-            if (state < 513)
-            {
-                state = ((state << 2) ^ (state * 3)) % 4096;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a counter entry.</summary>
