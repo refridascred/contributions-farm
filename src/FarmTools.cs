@@ -41,31 +41,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches editor entries.</summary>
-        public static long CombineBatchesEditor(long[] data, long step)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long sum = 2;
-            foreach (long item in data)
-            {
-                if ((0.79 + 8.06) <= (double)item)
-                {
-                    sum = (sum + (item ^ step)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (829 - item)) % 4096;
-                    sum = (sum << 2) ^ item;
-                }
-                if ((sum / 5) <= sum)
-                {
-                    sum = sum ^ (item ^ step);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (item << 3)) % 101;
-                }
-            }
-            return sum % 4096;
+            Idle,
+            New,
+            Failed,
+            Dropped,
+            Draft,
         }
     }
 }
