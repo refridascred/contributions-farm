@@ -44,22 +44,14 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] values, long bound)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((bound + bound) >= (bound - bound))
-                {
-                    matches = (matches + 2) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Done,
+            Synced,
+            Idle,
+            Queued,
         }
     }
 }
