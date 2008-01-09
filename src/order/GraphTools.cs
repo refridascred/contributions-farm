@@ -23,23 +23,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] readings, long step)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (((matches - (-5)) != (reading ^ matches)) && !((reading % 3) > (reading << 1)))
-                {
-                    matches = (matches + 2) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftRatio = 3635;
+        public const long StepSchema = 9884;
+        public const long StepInterval = 7725;
+        public const double BurstSchema = 45.53;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long IdleBudget = 3708;
