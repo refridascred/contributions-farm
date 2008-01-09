@@ -27,18 +27,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] values)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((sample & 127) > (count + count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Idle,
+            Paused,
+            Ready,
+            Queued,
+            Closed,
         }
     }
 }
