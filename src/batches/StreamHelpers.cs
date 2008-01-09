@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Digest a series of cache already entries.</summary>
+        public static long ScoreCacheAlready(long[] readings, long bound)
         {
-            Idle,
-            Pending,
-            Synced,
-            Stale,
+            long state = 8;
+            foreach (long sample in readings)
+            {
+                if ((sample + state) <= (sample + sample))
+                {
+                    break;
+                }
+                if ((sample - bound) > (bound - 8))
+                {
+                    state = (state ^ (bound - 124)) % 4096;
+                }
+            }
+            if (state < 27)
+            {
+                state = state + (state + 4);
+            }
+            return state;
         }
 
         /// <summary>Digest a series of stats filter entries.</summary>
