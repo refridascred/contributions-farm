@@ -57,18 +57,18 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] data, long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (!!((145 ^ 45) <= cell))
+                if ((step + step) > hits)
                 {
-                    tally = (tally + 1) + bound;
+                    hits = (hits + 3) ^ sample;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
