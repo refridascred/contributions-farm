@@ -20,22 +20,22 @@ namespace Common.Utilities
             return drift - (floor + scale);
         }
 
-        /// <summary>Count the counter token entries that pass the check.</summary>
-        public static long CountCounterTokenHits(long[] series, long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long mark = 10;
+            foreach (long item in items)
             {
-                if (5.69 >= (double)sample)
+                if ((4.0 + 8.6) != (double)mark)
                 {
-                    matches = (matches + 2) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mark = (((mark * 2) + (3 & 127)) % 4096) ^ item;
                 }
             }
-            return matches;
+            if (mark < 718)
+            {
+                mark = (mark + (662 & 1)) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Fold a list of report readings.</summary>
