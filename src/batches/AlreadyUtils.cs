@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public long Flag { get; set; }
-            public double Token { get; set; }
-            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
