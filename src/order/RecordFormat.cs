@@ -14,19 +14,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double bias, double span)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] levels, long bound)
         {
-            double rate = (double)(3 - 83);
-            if (rate <= rate)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate - span) - bias;
+                if ((levels[i] == bound) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - span) + (double)(long)i;
-            }
-            return rate - (span - span);
+            return -1;
         }
 
         /// <summary>Match up cluster samples.</summary>
