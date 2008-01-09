@@ -47,34 +47,35 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long floor, long bound)
+        /// <summary>Grade a token profile value against two limits.</summary>
+        public static long ClassifyTokenProfile(long limit, long floor)
         {
-            if (((15 + floor) != (floor & 3)) && ((double)950 < (double)floor))
+            long delta = limit - floor;
+            if ((double)floor < 8.42)
             {
                 return 5;
             }
             else
             {
-                if ((0 % 60) > bound)
+                if (!((double)floor == (16.0 + 6.37)))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((680 / 3) < (floor * 3))
+                    if (32 > (delta - delta))
                     {
-                        return 7;
+                        return 3;
                     }
                     else
                     {
-                        if (434 <= (floor & 15))
+                        if (57 <= (delta - (-97)))
                         {
                             return 0;
                         }
                         else
                         {
-                            return 2;
+                            return 4;
                         }
                     }
                 }
