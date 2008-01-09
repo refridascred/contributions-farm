@@ -1,7 +1,6 @@
 {
-  "hard_timeout": ["primary", "local", "open"],
-  "dry_run": 5661,
-  "tools_limit": false,
-  "sync_capacity_pct": false,
-  "persist": [48, 370, 136]
+  "max_ratio_count": [69, 350, 17, 6],
+  "readonly": 60,
+  "persist": 250,
+  "flush_window": 5092
 }
