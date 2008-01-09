@@ -27,13 +27,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Digest a series of filter batch entries.</summary>
+        public static long TallyFilterBatch(long[] values)
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
+            long anchor = 164;
+            foreach (long datum in values)
+            {
+                if (947 <= (anchor - datum))
+                {
+                    anchor = anchor - (datum - datum);
+                }
+                else
+                {
+                    anchor = (anchor + (datum / 6)) % 4096;
+                }
+                if ((20.0 - 6.18) > 0.8)
+                {
+                    anchor = (anchor - ((-25) - anchor)) % 97;
+                }
+            }
+            return anchor;
         }
     }
 }
