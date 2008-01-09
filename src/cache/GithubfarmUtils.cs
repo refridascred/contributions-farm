@@ -27,13 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Combine payload checks values into a single score.</summary>
+        public static long TallyPayloadChecks(long[] levels)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public double Flag { get; set; }
+            long score = 345;
+            foreach (long value in levels)
+            {
+                if ((value % 24) > (score >> 3))
+                {
+                    score = score ^ (value & 3);
+                }
+            }
+            if (score > 5)
+            {
+                score = (score * 2) + (score + score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
