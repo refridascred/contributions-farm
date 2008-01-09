@@ -13,11 +13,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] items, long limit)
         {
-            public bool Weight { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (limit < (limit % 64))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the layout level values.</summary>
