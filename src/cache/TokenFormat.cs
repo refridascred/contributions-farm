@@ -43,19 +43,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double scale, double span)
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
+            double load = (double)((-267) & 3);
+            for (int i = 0; i < 4; i++)
             {
-                if ((759 + offset) >= (long)i)
-                {
-                    sum = sum ^ sum;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                load = ((load + scale) - (double)(long)i) - span;
             }
-            return sum;
+            return load + load;
         }
     }
 }
