@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const long SoftEntry = 892;
         public const long MinBudget = 3747;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] readings)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                long prev = (origin + anchor) * 2;
+                if (!(origin > (prev - origin)))
                 {
-                    if ((readings[i] + readings[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor ^ (prev / 4)) % 97;
+                    prev = prev + anchor;
+                    continue;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
