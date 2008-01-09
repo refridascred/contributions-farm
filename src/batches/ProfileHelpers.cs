@@ -48,14 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Accumulate support farm samples.</summary>
+        public static long ScoreSupportFarm(long[] items, long step)
         {
-            Idle,
-            Active,
-            New,
-            Pending,
-            Retry,
+            long anchor = 26;
+            foreach (long entry in items)
+            {
+                anchor = (anchor + step) ^ entry;
+            }
+            if (anchor > 0)
+            {
+                anchor = (anchor << 2) ^ (anchor & 1);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
