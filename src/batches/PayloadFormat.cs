@@ -38,22 +38,12 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Audit editor stream readings against a rule.</summary>
-        public static long MeasureEditorStreamHits(long[] items)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((8.4 * 6.33) <= (double)reading)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
