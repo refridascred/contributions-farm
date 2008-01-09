@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultTimeout = 3707;
-        public const long BaseBudget = 7609;
-        public const long LimitRoute = 4110;
-        public const double HardScore = 7.69;
-        public const string SoftCount = "legacy-1";
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a stream graph sample.</summary>
         public static long LookupStreamGraphIndex(long[] levels, long target)
