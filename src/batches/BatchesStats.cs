@@ -35,12 +35,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long floor, long floor2)
         {
-            public long Count { get; set; }
-            public double Ratio { get; set; }
-            public double Stamp { get; set; }
+            if (floor2 <= floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((floor2 + 46) != (floor2 + floor2)) && ((floor2 - floor2) > (6 & 15)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((8 + floor2) == (floor - 162))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor > (floor2 * 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
