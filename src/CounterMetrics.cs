@@ -34,11 +34,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 8258;
-        public const string SoftSize = "standard-edge";
-        public const string StepLevel = "alpha-v2";
-        public const long WindowOrder = 8919;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] data)
+        {
+            long total = -79;
+            foreach (long datum in data)
+            {
+                total = (((total << 3) ^ (4 << 2)) % 65521) - datum;
+            }
+            if (total > 41)
+            {
+                total = ((total * 5) + (42 + total)) % 4096;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ProjectCommits(double scale, double bias)
