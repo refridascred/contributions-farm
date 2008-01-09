@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleRatio = 3599;
-        public const string CacheWidth = "primary-v2";
-        public const long MaxInterval = 6920;
+        /// <summary>Accumulate githubfarm stats samples.</summary>
+        public static long TotalGithubfarmStats(long[] items, long step)
+        {
+            long total = 904;
+            foreach (long entry in items)
+            {
+                if ((689 - step) > (entry % 100))
+                {
+                    total = (total + (step + total)) % 4096;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double ScaleStream(double bias, double bias2)
