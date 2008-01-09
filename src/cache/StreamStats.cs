@@ -61,18 +61,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] series, long limit)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((tally < (tally / 9)) && (item > tally))
-                {
-                    tally = (tally + 1) - limit;
-                }
-            }
-            return tally;
+            Done,
+            Paused,
+            Pending,
+            Retry,
         }
     }
 }
