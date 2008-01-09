@@ -57,21 +57,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of context counter readings.</summary>
-        public static long MatchContextCounterCount(long[] values)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long origin, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((bound >> 3) > 3))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((663 + origin) > 8)
                 {
-                    if ((values[i] + values[j]) > 9)
+                    return 1;
+                }
+                else
+                {
+                    if ((bound - bound) != (origin - 590))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
