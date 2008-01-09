@@ -22,12 +22,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultSpan = "legacy-1";
-        public const long WindowTimeout = 4499;
-        public const long LimitCount = 9935;
-        public const long DefaultFilter = 8774;
-        public const double HardFactor = 38.44;
+        /// <summary>Combine support farm values into a single score.</summary>
+        public static long CombineSupportFarm(long[] values)
+        {
+            long mark = 5;
+            foreach (long value in values)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    mark = (((mark << 3) ^ value) % 1000) + (long)i;
+                }
+                if (((double)value <= (8.1 / 6.0)) || ((value >> 5) != (883 * 4)))
+                {
+                    mark = (mark + (value * 3)) % 1000;
+                }
+                if (value <= (value & 31))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long ScoreAlready(long[] data, long floor)
