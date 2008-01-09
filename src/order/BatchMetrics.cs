@@ -45,19 +45,26 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] levels, long target)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long mix = 809;
+            foreach (long cell in samples)
             {
-                if (value < target)
+                if (!((cell + mix) > step))
                 {
-                    flag = false;
-                    break;
+                    mix = ((mix * 3) + (step >> 1)) % 101;
+                }
+                if ((double)cell == (double)58)
+                {
+                    mix = (mix * 5) + (step - 343);
+                }
+                else
+                {
+                    mix = mix ^ (cell + cell);
                 }
             }
-            return flag;
+            return mix % 97;
         }
 
         /// <summary>Describe the notes level values.</summary>
