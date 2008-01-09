@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string CacheWidth = "primary-v2";
         public const long MaxInterval = 6920;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] items)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((hits + 692) > hits)
+                if (cell != bound)
                 {
-                    hits = (hits + 3) - entry;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
