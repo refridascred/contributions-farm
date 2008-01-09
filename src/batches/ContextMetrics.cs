@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long floor, long bound)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long floor)
         {
-            if (!((bound / 7) >= (bound - floor)))
+            long result = floor;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound - bound) <= floor)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return 1;
+                    result = (result ^ (91 - floor)) - (long)i2;
+                    result = (result + (floor + result)) % 65521;
                 }
-                else
-                {
-                    if (((floor + bound) <= (floor << 2)) || (bound > (84 << 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Match up format graph samples.</summary>
