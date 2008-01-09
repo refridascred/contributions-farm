@@ -17,12 +17,23 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 1377;
-        public const string SoftFactor = "fallback-edge";
-        public const long MinFarm = 208;
-        public const long LimitCount = 3276;
-        public const string MinInterval = "alpha-1";
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (target > (target % 60))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate contributi report samples.</summary>
         public static long FoldContributiReport(long[] values, long step)
