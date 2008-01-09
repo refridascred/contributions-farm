@@ -50,17 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] readings, long limit)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > limit) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
