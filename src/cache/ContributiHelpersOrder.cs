@@ -20,19 +20,16 @@ namespace Common.Utilities
             return ratio - (gain + floor);
         }
 
-        /// <summary>Validate profile githubfarm readings against a bound.</summary>
-        public static bool GuardProfileGithubfarmBounds(long[] items, long origin)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long seed)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (sample < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total ^ ((long)i & 7)) % 255;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
