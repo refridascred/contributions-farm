@@ -1,8 +1,11 @@
 {
-  "schema_retries": "fallback",
-  "retry_depth_pct": [94, 96],
-  "persist": ["stable", "open", "latest"],
-  "metric_ratio": 9421,
-  "min_depth_s": 4935,
-  "verbose": "green"
+  "base_limit_s": [337, 10],
+  "warm_limit_pct": {
+    "cache_depth_count": "cached",
+    "contributi_retries": true,
+    "poll_ratio": 71.07
+  },
+  "soft_interval_ms": "cached",
+  "sync_window_count": 86,
+  "cache_ttl": 1024
 }
