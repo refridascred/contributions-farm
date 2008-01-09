@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] series, long offset)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Idle,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a context info.</summary>
