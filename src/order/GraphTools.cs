@@ -29,11 +29,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftRatio = 3635;
-        public const long StepSchema = 9884;
-        public const long StepInterval = 7725;
-        public const double BurstSchema = 45.53;
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double rate, double offset)
+        {
+            double ratio = 4.5;
+            if (ratio >= (double)981)
+            {
+                ratio = (ratio - (rate / 7.0)) + offset;
+            }
+            return ratio + rate;
+        }
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
