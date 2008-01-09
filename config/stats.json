@@ -1,6 +1,7 @@
 {
-  "batch_ratio_ms": 32,
-  "sync_ratio_count": "green",
-  "cache_delay_pct": 6,
-  "hard_threshold": 35.38
+  "max_size_count": 6272,
+  "readonly": 94,
+  "poll_threshold_count": "legacy",
+  "warm_interval_count": ["legacy", "stable"],
+  "retry_timeout_s": true
 }
