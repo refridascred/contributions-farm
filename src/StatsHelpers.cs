@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] levels)
-        {
-            long state = 0;
-            foreach (long datum in levels)
-            {
-                state = ((state << 3) ^ (state - state)) % 65521;
-                state = (state ^ (datum + 73)) % 1000;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardSpan = 3402;
+        public const string BasePayload = "alpha-edge";
+        public const long SoftCount = 2886;
 
         /// <summary>Count schema stream pairs that satisfy a relation.</summary>
         public static long MatchSchemaStreamCount(long[] readings)
