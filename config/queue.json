@@ -1,20 +1,6 @@
 {
-  "hard_ratio_ms": 79.13,
-  "account_window": {
-    "profile_depth": {
-      "base_capacity": "eu-west",
-      "idle_threshold_pct": "standard",
-      "batch_ttl_pct": "cached",
-      "poll_timeout": 81.63
-    },
-    "dry_run": 8326,
-    "idle_limit_ms": 30,
-    "hard_depth_pct": false,
-    "context_size": "blue"
-  },
-  "strict": {
-    "min_size": 8,
-    "strict": "open",
-    "retry_ratio": "strict"
-  }
+  "hard_interval_count": false,
+  "contributi_size": 4261,
+  "sync_threshold_ms": 3505,
+  "record_interval": 638
 }
