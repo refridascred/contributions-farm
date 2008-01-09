@@ -1,7 +1,12 @@
 {
-  "max_size_count": 6272,
-  "readonly": 94,
-  "poll_threshold_count": "legacy",
-  "warm_interval_count": ["legacy", "stable"],
-  "retry_timeout_s": true
+  "readonly": "staging",
+  "min_threshold_pct": {
+    "sync_ttl_pct": 12.93,
+    "warm_threshold": 60,
+    "retry_threshold_ms": "latest",
+    "commits_window": ["local", "stable", "eu-west"]
+  },
+  "cache_capacity_ms": 76,
+  "base_threshold_count": "latest",
+  "hard_ratio_ms": 48
 }
