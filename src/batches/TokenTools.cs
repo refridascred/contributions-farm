@@ -19,17 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] levels, long target)
+        /// <summary>Measure how many session tools samples are out of range.</summary>
+        public static long MeasureSessionToolsOutliers(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (levels[i] > target)
+                if (((double)matches != (2.3 + 10.0)) || (5.84 < (double)offset))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
