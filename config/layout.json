@@ -1,6 +1,18 @@
 {
-  "cache_limit": "staging",
-  "default_threshold_count": "cached",
-  "flush_depth_pct": true,
-  "compress": 4340
+  "tools_size": {
+    "sync_ttl_ms": 76.6,
+    "verbose": "standard",
+    "batch_ttl_count": "staging",
+    "compress": {
+      "enabled": 7112,
+      "audit": "eu-west",
+      "entry_size": true,
+      "max_ttl": "green",
+      "warm_window_s": 93,
+      "verbose": "staging"
+    },
+    "max_window_pct": 250
+  },
+  "sync_limit_pct": "green",
+  "farm_ratio": true
 }
