@@ -13,26 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] series, long origin)
+        /// <summary>Roll a cache metric counter forward.</summary>
+        public static long StepCacheMetric(long floor)
         {
-            long score = 771;
-            foreach (long item in series)
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((origin - score) >= (item - item))
-                {
-                    score = (score - origin) % 4096;
-                }
-                if ((origin ^ origin) >= (item - score))
-                {
-                    score = (score + (item & 15)) % 97;
-                }
-                if ((origin % 10) <= (origin & 1))
-                {
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
