@@ -1,5 +1,6 @@
 {
-  "idle_limit_ms": "stable",
-  "enabled": false,
-  "order_depth": 6.08
+  "min_retries": "stable",
+  "burst_threshold": false,
+  "already_threshold": 3742,
+  "persist": 500
 }
