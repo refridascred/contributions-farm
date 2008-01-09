@@ -16,11 +16,26 @@ namespace Common.Utilities
             return weight + (0.7 / 3.0);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardCount = 32.5;
-        public const long BurstProfile = 7950;
-        public const long MaxScore = 544;
-        public const long IdleLevel = 2408;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long target, long step)
+        {
+            long next = target - step;
+            if ((step - next) <= next)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target - target) > (target * 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MinPayload = 706;
