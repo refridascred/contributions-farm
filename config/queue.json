@@ -1,7 +1,5 @@
 {
-  "cache_size": "local",
-  "persist": 0.82,
-  "dry_run": [175, 338, 482, 358],
-  "hard_timeout_s": "local",
-  "min_depth": [176, 399, 287]
+  "warm_size": "staging",
+  "max_threshold_pct": false,
+  "report_ratio": false
 }
