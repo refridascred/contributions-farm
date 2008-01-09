@@ -35,14 +35,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            Ready,
-            Closed,
-            Paused,
-            Queued,
-            Locked,
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
