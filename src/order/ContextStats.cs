@@ -58,10 +58,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowCount = 7466;
-        public const long RetryTimeout = 8818;
-        public const long MaxProfile = 16;
-        public const string CacheInterval = "open-v2";
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public bool Total { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
