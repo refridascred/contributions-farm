@@ -33,13 +33,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] levels, long origin)
         {
-            Locked,
-            Synced,
-            Pending,
-            Paused,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((14.0 - 2.6) > (double)seen)
+                {
+                    seen = ((seen + 3) ^ cell) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
