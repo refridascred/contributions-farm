@@ -15,11 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 8339;
-        public const long StepSize = 2832;
-        public const double DefaultRatio = 42.04;
-        public const double CacheLayout = 4.87;
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long GradeReport(long floor, long target)
