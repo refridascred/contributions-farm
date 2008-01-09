@@ -1,15 +1,14 @@
 # Command notes
 
-Use account settings to tune how often payload data is refreshed.
-A command that stays idle for too long is moved to the githubfarm list.
-A payload that stays idle for too long is moved to the checks list.
+Keep filter and cluster names short and lowercase.
+Defaults for notes live in the config folder and can be overridden per environment.
 
-Use checks settings to tune how often cluster data is refreshed.
-The cache report groups every stats by layout.
+The route helpers are pure functions, so they are safe to call from any thread.
+Run the profile check before changing any stream limits.
+A report that stays idle for too long is moved to the layout list.
 
 ## Guidelines
 
+- Log every checks change
 - Review token limits each release
-- Keep stats values small
-- Log every entry change
-- Validate stream input early
+- Validate account input early
