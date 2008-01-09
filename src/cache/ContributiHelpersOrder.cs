@@ -18,12 +18,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] series, long step)
         {
-            Locked,
-            Retry,
-            Pending,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum <= (8.25 + 0.47))
+                {
+                    seen = (seen + 2) - step;
+                }
+            }
+            return seen;
         }
     }
 }
