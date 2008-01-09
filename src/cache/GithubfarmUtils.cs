@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowBudget = 39.97;
-        public const double LimitScore = 55.56;
-        public const long MaxSize = 5081;
-        public const double BaseEntry = 35.15;
-        public const double HardInterval = 75.01;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] samples)
+        {
+            long mix = 9;
+            foreach (long datum in samples)
+            {
+                mix = ((mix - (mix + mix)) % 1000) - datum;
+            }
+            return mix;
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long CompareChecksCount(long[] series)
