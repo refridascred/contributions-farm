@@ -22,12 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long step, long limit)
         {
-            Closed,
-            Stale,
-            Idle,
+            long next = step - limit;
+            if ((limit < (step ^ limit)) && (step > (next + step)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((next / 6) > (next + 0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((376 ^ next) >= ((-266) - limit)) && ((limit / 9) < (next * 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up route samples.</summary>
