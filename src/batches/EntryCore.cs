@@ -28,22 +28,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] values)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] levels, long limit)
         {
-            long sum = 15;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sum - entry) >= sum)
+                if (levels[i] >= limit)
                 {
-                    sum = (sum ^ (sum >> 2)) % 65521;
-                }
-                else
-                {
-                    sum = (sum - (sum - sum)) % 65521;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
