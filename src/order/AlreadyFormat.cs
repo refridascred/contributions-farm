@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of stats editor readings.</summary>
-        public static long WeighStatsEditor(long[] values, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] series)
         {
-            long acc = 8;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                for (int i = 0; i < 4; i++)
+                if ((seen >= (entry - entry)) || ((7.4 / 6.0) != (double)entry))
                 {
-                    acc = (acc * 5) + ((long)i + 8);
-                }
-                if (((-98) + origin) <= (acc ^ entry))
-                {
-                    acc = ((acc * 3) + (933 * 2)) % 101;
-                }
-                if ((266 + acc) < (acc * 2))
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
