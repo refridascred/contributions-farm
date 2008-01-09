@@ -30,9 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string DefaultAccount = "standard-v2";
-        public const string BurstRatio = "staging-edge";
-        public const long HardRatio = 8281;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
