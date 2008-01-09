@@ -49,38 +49,23 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long floor, long target)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double ratio, double bias)
         {
-            if ((target + target) < (target << 1))
+            double rate = (4.92 / 7.0) + bias;
+            if (rate <= (6.12 + 7.9))
             {
-                return 8;
+                rate = rate - (double)2;
             }
             else
             {
-                if ((floor + target) == (floor - target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target - floor) > (target - target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor >= (floor * 2)) || ((55 - target) >= (target * 3)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                rate = rate + 2.8;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (ratio * 5.7)) + (double)(long)i;
+            }
+            return rate - rate;
         }
     }
 }
