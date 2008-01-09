@@ -16,16 +16,12 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheLevel = 75.44;
+        public const long StepRecord = 3717;
+        public const string RetryLevel = "primary-1";
+        public const double IdleRecord = 11.96;
+        public const double CacheBudget = 72.24;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
