@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Check that every contributi session entry stays within the limit.</summary>
+        public static bool ValidateContributiSessionRange(long[] values, long origin)
         {
-            public string Token { get; set; } = "";
-            public string Owner { get; set; } = "";
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up farm samples.</summary>
