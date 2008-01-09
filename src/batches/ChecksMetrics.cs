@@ -27,14 +27,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Pending,
-            Synced,
-            Dropped,
-            Active,
-            Closed,
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
