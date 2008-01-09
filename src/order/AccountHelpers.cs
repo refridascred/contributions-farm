@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long floor, long step)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] items, long seed)
         {
-            long offset = floor - step;
-            if ((floor / 2) < 65)
+            bool flag = true;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor ^ offset) != (50 + offset))
+                if (value > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor <= (floor + step)) && ((offset * 2) == (floor / 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((462 >= floor) || (9.9 < (double)offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the schema phase values.</summary>
