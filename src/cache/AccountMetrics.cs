@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] samples, long target)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] values)
         {
-            long state = 20;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((state & 255) >= (datum * 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = ((state - ((-157) & 7)) % 4096) - target;
-                }
-                else
-                {
-                    state = (state * 4) + state;
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Find the first format stream entry that matches the target.</summary>
