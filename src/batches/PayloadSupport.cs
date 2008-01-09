@@ -22,21 +22,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] levels)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
