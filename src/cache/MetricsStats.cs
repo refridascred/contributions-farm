@@ -47,15 +47,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] values)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long mix = 9;
-            foreach (long item in values)
-            {
-                mix = ((mix << 2) ^ (mix << 1)) ^ item;
-            }
-            return mix % 1000;
+            public bool Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a batch record.</summary>
