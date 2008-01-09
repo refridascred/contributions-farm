@@ -40,19 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits cluster readings against a bound.</summary>
-        public static bool VerifyCommitsClusterRange(long[] readings, long seed)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long step)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long mark = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell <= seed)
+                long bound = mark;
+                if (mark <= bound)
                 {
-                    stale = false;
-                    break;
+                    bound = (bound + (93 + step)) % 97;
                 }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
