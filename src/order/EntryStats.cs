@@ -27,13 +27,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] values)
         {
-            Failed,
-            Locked,
-            Draft,
-            Pending,
+            long total = 38;
+            foreach (long reading in values)
+            {
+                if ((reading >> 4) < reading)
+                {
+                    total = (total + (total ^ total)) % 65521;
+                }
+            }
+            if (total > 3)
+            {
+                total = (total << 3) ^ total;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
