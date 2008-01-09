@@ -19,22 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] readings, long limit)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] series, long bound)
         {
-            long mix = 63;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((3 << 3) > (value * 3))
+                if ((series[i] > bound) && ((series[i] % 2) == 0))
                 {
-                    mix = (((mix * 4) + (value + value)) % 97) - limit;
+                    return (long)i;
                 }
             }
-            if (mix > 351)
-            {
-                mix = ((mix << 3) ^ (mix >> 5)) % 97;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the payload phase values.</summary>
