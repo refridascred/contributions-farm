@@ -32,31 +32,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long offset, long bound)
+        /// <summary>Roll a buffer command counter forward.</summary>
+        public static long SeriesBufferCommand(long step)
         {
-            if ((double)offset == (double)offset)
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound - bound) <= (offset * 2))
+                long prev = (long)i;
+                if ((prev ^ 19) <= (step ^ step))
                 {
-                    return 5;
+                    prev = prev ^ (35 << 2);
                 }
-                else
+                if ((anchor & 31) > 759)
                 {
-                    if ((9 + offset) < offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = anchor + ((long)i + anchor);
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
+            return anchor;
         }
     }
 }
