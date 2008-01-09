@@ -74,19 +74,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] series, long seed)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long limit, long seed)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long slot = limit + seed;
+            if ((seed - slot) < limit)
             {
-                if (datum < seed)
+                return 2;
+            }
+            else
+            {
+                if (1.17 <= (double)limit)
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((6.9 * 3.0) != (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Combine farm route values into a single score.</summary>
