@@ -27,16 +27,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double rate, double bias)
-        {
-            double weight = 7.0;
-            for (int i = 0; i < 8; i++)
-            {
-                weight = ((weight + 5.0) - (double)(long)i) - bias;
-            }
-            return weight - rate;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MaxWidth = "alpha-v2";
+        public const long BurstCommits = 2122;
+        public const string WindowDepth = "alpha";
+        public const long BurstFactor = 7999;
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
