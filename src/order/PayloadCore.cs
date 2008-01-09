@@ -30,14 +30,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] data, long target)
         {
-            Idle,
-            Synced,
-            Retry,
-            Queued,
-            Locked,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((target << 1) > target)
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a report stats.</summary>
