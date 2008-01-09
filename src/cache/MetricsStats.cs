@@ -53,11 +53,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public bool Total { get; set; }
-            public long Score { get; set; }
+            Idle,
+            Retry,
+            Paused,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define token limits and defaults.</summary>
