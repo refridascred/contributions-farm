@@ -30,17 +30,16 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] samples, long offset)
+        /// <summary>Derive the next counter batches value from a seed.</summary>
+        public static long StepCounterBatches(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
+                mix = mix + 6;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Digest a series of report entries.</summary>
