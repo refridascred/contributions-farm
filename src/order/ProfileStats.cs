@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] series, long floor)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] data, long origin)
         {
-            long result = 778;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (((result * 5) + (result & 1)) % 4096) + cell;
-                result = (result ^ (floor << 3)) % 65521;
+                if ((data[i] == origin) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
