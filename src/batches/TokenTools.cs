@@ -16,38 +16,18 @@ namespace Common.Utilities
             return rate + 3.92;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long floor, long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] levels)
         {
-            if ((6.5 / 4.0) > (double)floor)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit + floor) == (floor << 1))
+                if ((datum - matches) != (503 / 5))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit / 4) <= (limit - floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((limit << 3) < floor) || ((floor + floor) <= (680 + 5)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
