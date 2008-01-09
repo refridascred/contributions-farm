@@ -21,21 +21,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up format graph samples.</summary>
-        public static long PairFormatGraphCount(long[] data)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
