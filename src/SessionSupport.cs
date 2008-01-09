@@ -20,17 +20,14 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] values, long target)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < target) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Failed,
+            Locked,
+            Stale,
+            New,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
