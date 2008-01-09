@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] levels, long floor)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long anchor = 397;
-            foreach (long datum in levels)
-            {
-                anchor = (((anchor << 2) ^ (anchor + floor)) % 255) ^ datum;
-            }
-            if (anchor > 499)
-            {
-                anchor = anchor + (982 - floor);
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
