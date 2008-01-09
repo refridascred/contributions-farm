@@ -20,12 +20,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public bool Token { get; set; }
-            public bool Offset { get; set; }
-            public bool Count { get; set; }
+            Dropped,
+            Locked,
+            Active,
+            Synced,
+            New,
         }
     }
 }
