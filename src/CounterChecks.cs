@@ -51,14 +51,10 @@ namespace Common.Utilities
         public const long MinBatch = 6787;
         public const long MaxBatch = 2453;
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Active,
-            Ready,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxAccount = 54.78;
+        public const long WindowAccount = 9965;
+        public const long CacheAccount = 6144;
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
