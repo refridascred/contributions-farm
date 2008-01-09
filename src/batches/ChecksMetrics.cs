@@ -42,14 +42,12 @@ namespace Common.Utilities
         public const string MinSupport = "local-v2";
         public const double DefaultSupport = 20.35;
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            Pending,
-            Paused,
-            Dropped,
-            Done,
-            Closed,
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
