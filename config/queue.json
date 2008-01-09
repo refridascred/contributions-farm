@@ -1,5 +1,8 @@
 {
-  "batch_ttl": 6928,
-  "window_depth": "open",
-  "burst_interval": 60
+  "idle_interval": "fallback",
+  "strict": 82.2,
+  "cluster_ttl": false,
+  "poll_threshold": 35.21,
+  "base_size_s": ["cached", "blue", "strict", "latest"],
+  "idle_ttl_pct": 36.75
 }
