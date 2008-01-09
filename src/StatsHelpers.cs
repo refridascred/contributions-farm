@@ -22,13 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] readings)
         {
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
-            public bool Score { get; set; }
-            public string Region { get; set; } = "";
+            long mark = 6;
+            foreach (long reading in readings)
+            {
+                if (((long)readings.Length <= (-14)) && ((mark * 2) >= mark))
+                {
+                    mark = mark - (reading + reading);
+                }
+            }
+            if (mark > 199)
+            {
+                mark = (mark * 5) + (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Accumulate already samples.</summary>
