@@ -32,13 +32,22 @@ namespace Common.Utilities
         public const string MinCluster = "cached-edge";
         public const double MaxRatio = 82.42;
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] items, long offset)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public double Size { get; set; }
-            public double Mode { get; set; }
+            long sum = 9;
+            foreach (long item in items)
+            {
+                if (!(sum >= item))
+                {
+                    sum = (sum ^ (offset + sum)) % 4096;
+                }
+            }
+            if (sum < 120)
+            {
+                sum = sum - sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
