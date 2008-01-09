@@ -64,15 +64,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine githubfarm filter values into a single score.</summary>
-        public static long FoldGithubfarmFilter(long[] values, long offset)
+        /// <summary>Count context cluster pairs that satisfy a relation.</summary>
+        public static long PairContextClusterCount(long[] data)
         {
-            long mark = 16;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (((mark + (mark << 3)) % 255) ^ value) + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Match up profile samples.</summary>
