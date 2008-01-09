@@ -1,4 +1,23 @@
 # support settings
-hard_interval_count: true
-checks_size: blue
-base_ttl_pct: 30
+flush_ratio:
+  burst_limit_s: 1024
+  poll_delay_pct:
+    - legacy
+    - primary
+  flush_ttl: 36
+  report_interval: 83
+  burst_ratio:
+    githubfarm_retries: 60
+    cluster_ttl:
+      - staging
+      - latest
+      - local
+    flush_ttl_pct: false
+batch_size_count:
+  - fallback
+  - staging
+  - standard
+poll_size: local
+readonly: 4349
+enabled: green
+dry_run: false
