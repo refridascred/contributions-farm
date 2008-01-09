@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
-            public string Offset { get; set; } = "";
+            Closed,
+            Failed,
+            Idle,
         }
 
         /// <summary>Hold a context options.</summary>
