@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] readings)
+        /// <summary>Match up filter support samples.</summary>
+        public static long CompareFilterSupportCount(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum < hits) && ((5.0 / 8.0) < (double)hits))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((series[i] ^ series[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the context mode values.</summary>
