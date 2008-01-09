@@ -1,7 +1,4 @@
 # support settings
-burst_ttl: 9292
-cache_limit: blue
-command_capacity:
-  - 83
-  - 138
-batch_window_s: strict
+poll_delay_count: cached
+persist: 250
+commits_delay: 55.75
