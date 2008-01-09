@@ -1,14 +1,7 @@
 {
-  "dry_run": 1024,
-  "idle_size_ms": {
-    "readonly": ["open", "primary", "latest", "strict"],
-    "order_limit": {
-      "cache_depth": false,
-      "flush_threshold_ms": "latest",
-      "min_timeout_pct": true
-    },
-    "dry_run": "strict"
-  },
-  "burst_ttl_s": [139, 126],
-  "min_window_ms": 1024
+  "cache_ratio_count": 57.01,
+  "burst_size": [269, 141, 365, 483],
+  "warm_size": "cached",
+  "cache_delay": [61, 68, 166],
+  "batch_retries_pct": "green"
 }
