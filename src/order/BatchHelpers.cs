@@ -20,15 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double scale, double floor)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            double scale2 = (8.0 * 19.0) / 8.0;
-            if (scale2 >= floor)
-            {
-                scale2 = scale2 + scale;
-            }
-            return scale2 - floor;
+            Retry,
+            Synced,
+            Active,
+            Queued,
         }
 
         /// <summary>Match up context samples.</summary>
