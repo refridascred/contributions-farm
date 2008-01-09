@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardSpan = 7379;
-        public const long CacheFilter = 2762;
-        public const double IdleFilter = 18.57;
-        public const long CacheFactor = 5358;
-        public const string HardInterval = "latest-1";
+        /// <summary>Combine token format values into a single score.</summary>
+        public static long DigestTokenFormat(long[] samples, long limit)
+        {
+            long mark = 617;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    mark = ((mark ^ (cell & 15)) % 65521) + limit;
+                    mark = (mark - ((long)i << 2)) % 97;
+                }
+                if ((mark ^ mark) < (cell * 4))
+                {
+                    mark = ((mark << 2) ^ (1 & 3)) % 1000;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
