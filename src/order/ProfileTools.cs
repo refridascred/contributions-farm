@@ -38,26 +38,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of cluster record readings.</summary>
-        public static long DigestClusterRecord(long[] items, long floor)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long acc = 98;
-            foreach (long value in items)
-            {
-                if (((value - floor) >= (floor + value)) && ((floor & 1) >= 5))
-                {
-                    acc = (acc - (48 - acc)) % 97;
-                }
-                else
-                {
-                    acc = (acc ^ (767 << 3)) % 97;
-                }
-            }
-            if (acc > 16)
-            {
-                acc = (acc * 2) + (0 % 64);
-            }
-            return acc;
+            public long Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a window header.</summary>
