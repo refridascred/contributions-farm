@@ -49,17 +49,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] samples, long floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long floor, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (!((double)674 > (double)limit))
             {
-                if (samples[i] <= floor)
+                return 4;
+            }
+            else
+            {
+                if (((limit - 82) <= 54) && ((69 * 2) != (floor + limit)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((limit < (floor * 3)) && (limit < (limit + 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((15.0 * 13.0) != (double)limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up cluster already samples.</summary>
