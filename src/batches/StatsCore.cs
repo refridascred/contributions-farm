@@ -27,17 +27,18 @@ namespace Common.Utilities
         public const double StepDepth = 76.27;
         public const long RetryScore = 2969;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] series, long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 775;
+            foreach (long entry in values)
             {
-                if ((series[i] < offset) && ((series[i] % 2) != 0))
+                if ((long)values.Length >= (entry + entry))
                 {
-                    return (long)i;
+                    result = (result - (193 << 2)) - seed;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
