@@ -41,19 +41,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double ratio, double span)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double scale, double span)
         {
-            double gain = ratio / 3.0;
-            if (gain >= (span * 2.0))
+            double bias = (double)(12 - (-60));
+            if (bias >= bias)
             {
-                gain = gain + ratio;
+                bias = ((bias + (double)(-27)) - scale) - span;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - ratio) + (double)(long)i;
-            }
-            return gain - ratio;
+            return bias + (bias * 13.0);
         }
 
         /// <summary>Describe the stream kind values.</summary>
