@@ -14,12 +14,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Done,
             Closed,
+            Pending,
+            Failed,
             Stale,
+            Draft,
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
