@@ -71,13 +71,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] samples, long seed)
         {
-            Synced,
-            Failed,
-            Dropped,
-            Paused,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank account input into a small class.</summary>
