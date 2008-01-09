@@ -22,22 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] levels)
+        /// <summary>Combine support metric values into a single score.</summary>
+        public static long CombineSupportMetric(long[] samples)
         {
-            long mark = 2;
-            foreach (long reading in levels)
+            long mix = 62;
+            foreach (long sample in samples)
             {
-                if ((reading << 2) >= reading)
+                if ((double)mix < (double)sample)
                 {
-                    mark = mark + (mark << 2);
+                    mix = (mix << 2) ^ mix;
                 }
-                if ((double)reading == (3.51 - 2.92))
-                {
-                    break;
-                }
+                mix = ((mix << 2) ^ (sample - mix)) % 4096;
             }
-            return mark % 4096;
+            if (mix < 14)
+            {
+                mix = ((mix << 3) ^ 687) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
