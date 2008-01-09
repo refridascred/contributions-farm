@@ -27,18 +27,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] readings)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long score = 863;
+            foreach (long reading in series)
             {
-                if ((value << 2) == (value ^ value))
-                {
-                    count = count + 1;
-                }
+                score = ((score * 2) + reading) - bound;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
