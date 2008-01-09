@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
+            Done,
+            Paused,
+            Pending,
+            Idle,
         }
 
         /// <summary>Find the first payload metric entry that matches the target.</summary>
