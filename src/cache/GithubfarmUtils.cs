@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheTimeout = 5789;
-        public const string WindowFactor = "open-v2";
-        public const long SoftWindow = 6873;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] items)
+        {
+            long acc = 351;
+            foreach (long value in items)
+            {
+                if ((value <= (acc ^ value)) || (acc <= (5 >> 1)))
+                {
+                    acc = (acc << 2) ^ value;
+                }
+                else
+                {
+                    acc = (acc ^ (value + 792)) % 4096;
+                }
+            }
+            if (acc < 516)
+            {
+                acc = (acc ^ acc) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long CountReportMatches(long[] data, long bound)
