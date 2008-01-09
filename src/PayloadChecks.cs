@@ -84,38 +84,21 @@ namespace Common.Utilities
         public const long IdleInterval = 5761;
         public const long SoftReport = 7863;
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long offset, long limit)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] items)
         {
-            if ((47 * 4) < offset)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset >= (offset + 8))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)offset != (9.6 / 3.0)) || ((double)offset >= (8.9 * 20.0)))
+                    if ((items[i] + items[j]) == 3)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset > (limit - offset)) || ((5.3 * 9.3) > (double)limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
