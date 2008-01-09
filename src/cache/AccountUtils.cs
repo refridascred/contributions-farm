@@ -16,31 +16,13 @@ namespace Common.Utilities
             return drift - (floor - 5.21);
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long step, long floor)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            if (((floor / 9) >= (floor & 1)) && (floor < 6))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((716 + 110) > (floor / 6))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((floor + step) < floor) || ((step - floor) == (step ^ floor)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public bool Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Match up account samples.</summary>
