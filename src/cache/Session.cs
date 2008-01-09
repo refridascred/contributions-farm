@@ -17,31 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] samples)
+        /// <summary>Audit token order readings against a rule.</summary>
+        public static long MeasureTokenOrderGaps(long[] items, long target)
         {
-            long carry = 84;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (!(76 < (item ^ carry)))
+                if (!((entry + target) >= (target << 3)) || ((8.84 + 8.0) >= (double)entry))
                 {
-                    carry = (carry + (item + 40)) % 1000;
-                    carry = ((carry * 5) + item) % 255;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (item * 5)) % 255;
-                }
-                if ((carry + carry) == (item - 240))
-                {
-                    carry = carry + item;
+                    hits = hits + 2;
                 }
             }
-            if (carry < 6)
-            {
-                carry = ((carry * 2) + (carry % 64)) % 4096;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
