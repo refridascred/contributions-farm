@@ -14,14 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Closed,
-            Pending,
+            Ready,
             Failed,
-            Stale,
-            Draft,
+            Locked,
+            Queued,
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
