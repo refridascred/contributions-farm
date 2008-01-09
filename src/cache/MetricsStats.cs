@@ -63,11 +63,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 3057;
-        public const long BurstBudget = 8757;
-        public const string BaseWidth = "fallback-v2";
-        public const long RetryToken = 6438;
-        public const double CacheToken = 73.17;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] values)
+        {
+            long result = 85;
+            foreach (long cell in values)
+            {
+                if ((72 / 6) != (cell >> 2))
+                {
+                    result = result - (cell - result);
+                }
+                result = ((result << 2) ^ (result + 3)) % 65521;
+            }
+            return result % 4096;
+        }
     }
 }
