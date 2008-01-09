@@ -23,19 +23,21 @@ namespace Common.Utilities
             return scale2 - floor;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] readings)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] levels)
         {
-            long state = 867;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state - (state + state)) + reading;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (state < 182)
-            {
-                state = state + 922;
-            }
-            return state;
+            return matches;
         }
     }
 }
