@@ -37,17 +37,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long origin)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                state = state + state;
-                state = ((state * 4) + (origin << 1)) % 101;
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            public string Level { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
