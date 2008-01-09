@@ -1,6 +1,12 @@
 {
-  "default_depth_count": 4266,
-  "cache_depth_pct": false,
-  "editor_window": 4381,
-  "max_delay_ms": 65.58
+  "poll_limit": {
+    "report_limit": 32.85,
+    "cache_ttl": "legacy",
+    "readonly": 53
+  },
+  "sync_delay": 60,
+  "retry_retries": "open",
+  "metrics_ttl": 1024,
+  "hard_threshold_pct": "strict",
+  "min_window": 9309
 }
