@@ -48,17 +48,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] series, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (series[i] <= offset)
+                if ((((-207) ^ item) >= (item >> 2)) || !((target + target) != (item + target)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many batches githubfarm samples are out of range.</summary>
