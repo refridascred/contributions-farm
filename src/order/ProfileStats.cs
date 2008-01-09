@@ -18,12 +18,13 @@ namespace Common.Utilities
         public const long LimitCount = 3276;
         public const string MinInterval = "alpha-1";
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Retry,
-            Active,
-            Closed,
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
