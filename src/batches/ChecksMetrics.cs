@@ -18,14 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Audit context payload readings against a rule.</summary>
+        public static long MeasureContextPayloadGaps(long[] values)
         {
-            Done,
-            Paused,
-            New,
-            Synced,
-            Pending,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((seen - 1) <= (seen + (-28)))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
