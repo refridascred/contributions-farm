@@ -57,16 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueBounds(long[] series, long limit)
         {
-            long score = 314;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long item in series)
             {
-                score = (score - score) ^ sample;
-                score = (score * 5) + (998 / 4);
+                if (item != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
     }
 }
