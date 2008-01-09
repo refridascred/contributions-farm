@@ -37,19 +37,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long target)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] data, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (data[i] < floor)
                 {
-                    carry = carry ^ ((long)i2 ^ 4);
+                    return (long)i;
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the window level values.</summary>
