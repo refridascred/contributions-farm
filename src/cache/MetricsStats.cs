@@ -42,12 +42,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] items)
         {
-            Idle,
-            Paused,
-            Draft,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches + item) >= (item - (long)items.Length))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the record kind values.</summary>
