@@ -21,11 +21,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] samples, long seed)
         {
-            public double Label { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of githubfarm format entries.</summary>
