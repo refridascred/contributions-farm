@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of format cache readings.</summary>
-        public static long MatchFormatCacheCount(long[] levels)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 519;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (((state * 3) + (state ^ state)) % 4096) + item;
             }
-            return hits;
+            if (state > 8)
+            {
+                state = ((state << 2) ^ (limit / 9)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the commits phase values.</summary>
