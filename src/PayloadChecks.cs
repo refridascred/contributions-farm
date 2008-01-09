@@ -75,11 +75,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 478;
-        public const long HardFactor = 4724;
-        public const long DefaultSize = 4236;
-        public const string HardGithubfarm = "local-v2";
-        public const long MaxTimeout = 4096;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheBudget = 6088;
+        public const string MaxInterval = "legacy-1";
+        public const long MinToken = 3624;
+        public const double MinDepth = 41.79;
     }
 }
