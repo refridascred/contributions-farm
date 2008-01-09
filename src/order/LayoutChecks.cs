@@ -33,16 +33,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Iterate the stream channel series from a seed.</summary>
-        public static long RollStreamChannel(long seed)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = (acc ^ (seed >> 2)) % 1000;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Retry,
+            Draft,
+            Active,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
