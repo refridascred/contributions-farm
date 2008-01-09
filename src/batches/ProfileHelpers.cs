@@ -91,9 +91,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double WindowInterval = 0.86;
-        public const double LimitFilter = 70.0;
-        public const long RetryBudget = 639;
+        /// <summary>Validate filter cache readings against a bound.</summary>
+        public static bool CheckFilterCacheLimits(long[] readings, long offset)
+        {
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
