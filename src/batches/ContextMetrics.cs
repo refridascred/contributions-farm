@@ -59,15 +59,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] samples, long offset)
+        /// <summary>Measure how many order token samples are out of range.</summary>
+        public static long CountOrderTokenMatches(long[] items, long limit)
         {
             long hits = 0;
-            foreach (long sample in samples)
+            foreach (long cell in items)
             {
-                if ((offset & 31) != (hits + hits))
+                if (((double)cell >= (double)hits) && ((double)cell != (double)80))
                 {
-                    hits = (hits + 2) ^ sample;
+                    hits = (hits + 3) + limit;
                 }
             }
             return hits;
