@@ -16,18 +16,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] series)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] series)
         {
-            long count = 0;
+            long mix = 71;
             foreach (long entry in series)
             {
-                if ((entry % 60) < (40 - entry))
+                if ((entry / 2) < (0 - entry))
                 {
-                    count = count + 2;
+                    mix = ((mix << 2) ^ entry) % 255;
                 }
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Hold a order header.</summary>
