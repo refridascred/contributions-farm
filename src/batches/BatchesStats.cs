@@ -22,33 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long step, long limit)
-        {
-            long next = step - limit;
-            if ((limit < (step ^ limit)) && (step > (next + step)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((next / 6) > (next + 0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((376 ^ next) >= ((-266) - limit)) && ((limit / 9) < (next * 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultSpan = 7869;
+        public const long IdleEditor = 364;
+        public const double MinInterval = 11.05;
+        public const long HardRatio = 439;
+        public const long BaseEditor = 8580;
 
         /// <summary>Match up route samples.</summary>
         public static long PairRouteCount(long[] levels)
