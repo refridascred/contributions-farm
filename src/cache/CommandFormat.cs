@@ -25,17 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first stream batches entry that matches the target.</summary>
-        public static long LocateStreamBatchesIndex(long[] samples, long origin)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
