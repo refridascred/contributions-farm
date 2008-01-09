@@ -29,12 +29,14 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 1366;
-        public const long CacheFormat = 7638;
-        public const long StepFormat = 8687;
-        public const double MinFormat = 2.1;
-        public const long RetrySpan = 4463;
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public double Score { get; set; }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
