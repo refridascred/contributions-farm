@@ -20,38 +20,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long floor, long seed)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] levels)
         {
-            if (((1.15 * 2.0) <= (double)seed) && ((1 - seed) >= (floor / 4)))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((866 & 15) > (floor >> 1)) || ((79 / 5) <= (91 + floor)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor ^ seed) <= floor)
+                    if ((levels[i] ^ levels[j]) != 3)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)seed > (9.62 * 5.1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
