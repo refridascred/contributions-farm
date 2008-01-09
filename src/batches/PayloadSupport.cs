@@ -26,9 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 2592;
-        public const long CacheSize = 3296;
-        public const long SoftLevel = 8276;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Locked,
+            Active,
+            Failed,
+        }
     }
 }
