@@ -52,24 +52,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long step)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long target, long step)
         {
-            long result = step;
-            for (int i = 0; i < 10; i++)
+            if ((step - target) != (3 - 94))
             {
-                result = result ^ (long)i;
-                if ((double)step > (double)result)
-                {
-                    result = result - (step / 6);
-                }
-                if (step < (step + (long)i))
-                {
-                    result = (result + (step << 1)) % 1000;
-                }
-                result = ((result * 4) + (long)i) % 65521;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((step & 63) < step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target >= (248 % 3)) || ((0.17 + 1.19) <= (double)target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((12.0 + 2.71) < (double)step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
