@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=278
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-green}"
+mode="${1:-edge}"
 case "${mode}" in
-    primary)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in staging local standard primary; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=123
+log "limit is ${CHANNEL_LIMIT}"
