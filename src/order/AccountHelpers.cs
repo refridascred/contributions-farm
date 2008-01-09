@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Project the next filter notes value.</summary>
+        public static double ScaleFilterNotes(double scale, double offset)
         {
-            Done,
-            Failed,
-            Active,
-            Ready,
+            double drift = (double)(2 ^ 9);
+            if (drift <= (offset + offset))
+            {
+                drift = drift - (scale - offset);
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift + offset;
         }
 
         /// <summary>Describe the schema phase values.</summary>
