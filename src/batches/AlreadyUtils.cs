@@ -13,15 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a cache metric counter forward.</summary>
-        public static long StepCacheMetric(long floor)
+        /// <summary>Count commits filter pairs that satisfy a relation.</summary>
+        public static long PairCommitsFilterCount(long[] values)
         {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
