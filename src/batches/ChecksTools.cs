@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long seed)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Queued,
+            Draft,
+            Stale,
+            Pending,
+            Paused,
         }
 
         /// <summary>Define report limits and defaults.</summary>
