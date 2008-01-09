@@ -1,12 +1,8 @@
 {
-  "poll_limit": {
-    "report_limit": 32.85,
-    "cache_ttl": "legacy",
-    "readonly": 53
-  },
-  "sync_delay": 60,
-  "retry_retries": "open",
-  "metrics_ttl": 1024,
-  "hard_threshold_pct": "strict",
-  "min_window": 9309
+  "max_depth": false,
+  "audit": 67.02,
+  "window_interval": 250,
+  "hard_size_ms": 36.28,
+  "order_capacity": 30,
+  "cache_interval_count": 60
 }
