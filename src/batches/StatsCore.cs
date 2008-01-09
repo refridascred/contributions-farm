@@ -18,10 +18,10 @@ namespace Common.Utilities
         public const long MaxSession = 4640;
         public const long BatchSession = 7677;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheScore = "standard-edge";
-        public const double StepDepth = 76.27;
-        public const long RetryScore = 2969;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleFactor = 3002;
+        public const long BaseBatch = 7179;
+        public const long CacheInterval = 5515;
 
         /// <summary>Compare every pair of route format readings.</summary>
         public static long CompareRouteFormatCount(long[] values)
