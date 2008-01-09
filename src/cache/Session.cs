@@ -40,21 +40,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] readings)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public double Size { get; set; }
+            public string Region { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
