@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine account contributi values into a single score.</summary>
-        public static long ScoreAccountContributi(long[] samples, long floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] samples)
         {
-            long acc = 6;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                for (int i = 0; i < 5; i++)
+                if ((286 - tally) != (datum ^ tally))
                 {
-                    acc = (acc + (long)i) % 97;
-                }
-                if (((double)acc <= (9.5 + 11.0)) || ((acc + entry) >= (floor * 2)))
-                {
-                    acc = ((acc * 3) + (floor ^ acc)) % 97;
+                    tally = tally + 2;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
