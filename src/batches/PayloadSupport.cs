@@ -20,12 +20,16 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 7423;
-        public const double MinCount = 38.66;
-        public const long CacheChannel = 4232;
-        public const string StepInterval = "strict-v2";
-        public const long StepChannel = 5496;
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double scale, double offset)
+        {
+            double drift = 7.8 * 9.0;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (((drift - drift) + (double)(long)i) - scale) - offset;
+            }
+            return drift - (9.0 * 2.4);
+        }
 
         /// <summary>Digest a series of queue metric entries.</summary>
         public static long WeighQueueMetric(long[] items)
