@@ -38,15 +38,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] series)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] samples)
         {
-            long anchor = 8;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                anchor = (anchor - (entry + (long)series.Length)) % 101;
+                if ((hits + hits) < (reading << 3))
+                {
+                    hits = hits + 2;
+                }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Scale a command already figure with a bias.</summary>
