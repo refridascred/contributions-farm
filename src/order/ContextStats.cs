@@ -54,11 +54,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Digest a series of layout batches entries.</summary>
+        public static long CombineLayoutBatches(long[] items)
         {
-            public bool Total { get; set; }
-            public long Level { get; set; }
+            long acc = -488;
+            foreach (long reading in items)
+            {
+                if (((reading + (-3)) > (acc ^ acc)) && ((4.3 / 6.0) == (double)acc))
+                {
+                    acc = ((acc * 3) + (reading / 4)) % 255;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (-755)) % 255;
+                }
+            }
+            if (acc > 0)
+            {
+                acc = ((acc * 4) + (acc - acc)) % 1000;
+            }
+            return acc % 1000;
         }
     }
 }
