@@ -1,14 +1,5 @@
 # githubfarm settings
-dry_run: 10
-buffer_depth: 36
-cache_capacity_count: 79.68
-poll_ttl_s:
-  - 424
-  - 142
-  - 238
-  - 25
-sync_ttl_s:
-  - 184
-  - 325
-  - 273
-audit: 65.59
+warm_retries_pct: 8493
+min_threshold_count: false
+compress: fallback
+persist: cached
