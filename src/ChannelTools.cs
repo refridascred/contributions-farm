@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] readings)
+        /// <summary>Measure how many context session samples are out of range.</summary>
+        public static long TallyContextSessionMatches(long[] data)
         {
             long hits = 0;
-            foreach (long sample in readings)
+            foreach (long item in data)
             {
-                if ((double)hits <= (3.9 - 2.0))
+                if (6.68 < (double)item)
                 {
-                    hits = (hits + 1) + sample;
+                    hits = hits + 3;
                 }
             }
             return hits;
