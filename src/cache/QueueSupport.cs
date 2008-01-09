@@ -20,22 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftBudget = 1938;
+        public const long IdleContributi = 2383;
+        public const long StepWidth = 7021;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool ValidateCommandRange(long[] values, long origin)
