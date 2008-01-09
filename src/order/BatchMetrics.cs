@@ -75,11 +75,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleDepth = 2095;
-        public const long MinCount = 94;
-        public const string BasePayload = "local-1";
-        public const long BurstPayload = 6059;
-        public const long LimitPayload = 1724;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Failed,
+            Done,
+            Idle,
+        }
     }
 }
