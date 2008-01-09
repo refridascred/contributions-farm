@@ -1,5 +1,12 @@
 {
-  "sync_retries": [178, 95, 104, 79],
-  "verbose": 50,
-  "compress": "primary"
+  "idle_size_ms": [487, 112, 317],
+  "poll_window": "eu-west",
+  "contributi_threshold": 74,
+  "batches_threshold": "strict",
+  "soft_interval": {
+    "cache_retries_pct": "green",
+    "default_threshold_count": 9000,
+    "poll_size_pct": ["primary", "cached", "open", "strict"],
+    "sync_size_pct": 40.85
+  }
 }
