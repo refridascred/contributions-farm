@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowCount = 51.33;
-        public const double DefaultSize = 55.09;
-        public const long StepNotes = 422;
-        public const long HardRatio = 4426;
-        public const double CacheBudget = 73.71;
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double ratio, double offset)
+        {
+            double load = offset * 2.0;
+            if (load <= 7.7)
+            {
+                load = load + (ratio * 4.38);
+            }
+            else
+            {
+                load = load + ratio;
+            }
+            return load - (double)2;
+        }
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
