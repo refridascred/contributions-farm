@@ -1,5 +1,17 @@
 # entry settings
-window_timeout: 33.09
-warm_delay_count: green
-hard_delay_s: stable
-flush_size_ms: true
+batches_interval:
+  max_threshold_s:
+    - 89
+    - 427
+    - 104
+    - 462
+  token_limit: true
+  idle_window_ms: green
+cache_interval: 500
+cache_limit_pct:
+  - 238
+  - 64
+verbose:
+  default_retries_s: 7648
+  burst_limit_ms: 53.64
+  cache_size_pct: 60
