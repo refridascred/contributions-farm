@@ -1,5 +1,6 @@
 {
-  "batch_size": false,
-  "dry_run": 39,
-  "default_ttl": [143, 479, 160]
+  "max_size_ms": 62,
+  "queue_delay": 24.93,
+  "context_ratio": "blue",
+  "sync_ttl_count": "primary"
 }
