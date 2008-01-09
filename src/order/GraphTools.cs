@@ -16,21 +16,18 @@ namespace Common.Utilities
             return ratio + (ratio / 5.0);
         }
 
-        /// <summary>Match up checks commits samples.</summary>
-        public static long PairChecksCommitsCount(long[] levels)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 414;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample >= (score ^ sample))
                 {
-                    if ((levels[i] + levels[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score ^ ((-801) << 1)) % 4096;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
