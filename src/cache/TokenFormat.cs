@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long HardContext = 2006;
         public const long HardInterval = 5634;
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double bias, double floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] data, long limit)
         {
-            double load = floor;
-            if (load > (load - load))
+            bool ok = true;
+            foreach (long datum in data)
             {
-                load = load - (1.07 - bias);
+                if (datum > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (floor / 7.0);
-            }
-            return load + (bias - floor);
+            return ok;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
