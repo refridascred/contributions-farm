@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] data)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((9 >> 4) >= (hits + 9))
                 {
-                    if ((data[i] ^ data[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
