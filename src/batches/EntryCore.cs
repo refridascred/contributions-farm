@@ -41,15 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] series, long target)
+        /// <summary>Iterate the support format series from a seed.</summary>
+        public static long DeriveSupportFormat(long bound)
         {
-            long state = 0;
-            foreach (long cell in series)
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
             {
-                state = (((state - (0 ^ (long)series.Length)) % 101) ^ cell) - target;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Describe the format phase values.</summary>
