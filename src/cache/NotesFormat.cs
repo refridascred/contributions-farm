@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowCount = 5.78;
-        public const long SoftEntry = 892;
-        public const long MinBudget = 3747;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] items, long offset)
+        {
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long SeriesGithubfarm(long bound)
