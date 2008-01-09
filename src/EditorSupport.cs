@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Queued,
-            Idle,
-            Stale,
-            Dropped,
+            public bool Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Combine support values into a single score.</summary>
