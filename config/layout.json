@@ -1,5 +1,6 @@
 {
-  "idle_ratio": ["staging", "edge"],
-  "soft_window_s": "open",
-  "idle_threshold_s": 36.67
+  "cache_limit": "staging",
+  "default_threshold_count": "cached",
+  "flush_depth_pct": true,
+  "compress": 4340
 }
