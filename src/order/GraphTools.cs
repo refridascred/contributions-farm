@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const long StepInterval = 7725;
         public const double BurstSchema = 45.53;
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double scale, double bias)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] series, long target)
         {
-            double rate = bias;
-            if (rate <= (scale * 7.0))
+            bool stale = true;
+            foreach (long value in series)
             {
-                rate = rate + scale;
+                if (value >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + scale) + (double)(long)i;
-            }
-            return rate + (scale / 5.0);
+            return stale;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
