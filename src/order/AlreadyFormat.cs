@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long HardBudget = 9822;
         public const double SoftRatio = 59.68;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long origin)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] data, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 12; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (92 > (origin - acc))
+                if (sample < step)
                 {
-                    acc = (acc - ((long)i - origin)) % 4096;
+                    stale = false;
+                    break;
                 }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
