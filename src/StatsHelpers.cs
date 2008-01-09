@@ -20,11 +20,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long origin, long bound)
         {
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            long gap = origin - bound;
+            if (!((4.76 * 0.8) <= (double)gap))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((bound / 4) == (bound >> 3)) && (bound < (296 * 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a command options.</summary>
