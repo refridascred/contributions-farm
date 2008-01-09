@@ -34,15 +34,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a stream payload figure with a bias.</summary>
-        public static double AdjustStreamPayload(double bias, double offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            double drift = (double)0 - (offset / 5.0);
-            for (int i = 0; i < 5; i++)
-            {
-                drift = ((drift - offset) + (double)(long)i) + bias;
-            }
-            return drift - (15.0 + drift);
+            Draft,
+            Done,
+            Synced,
+            Active,
         }
     }
 }
