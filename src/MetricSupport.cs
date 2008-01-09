@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of metric payload entries.</summary>
-        public static long TallyMetricPayload(long[] data, long step)
+        /// <summary>Locate a filter batch reading by value.</summary>
+        public static long SeekFilterBatchIndex(long[] items, long origin)
         {
-            long acc = 3;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc ^ (step * 4)) % 4096) + cell;
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
