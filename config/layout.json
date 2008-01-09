@@ -1,15 +1,6 @@
 {
-  "cache_retries_count": true,
-  "hard_retries_s": false,
-  "base_delay_count": ["stable", "green", "edge"],
-  "flush_size": {
-    "token_ttl": ["strict", "strict"],
-    "route_ttl": 6366,
-    "flush_retries_ms": true,
-    "min_timeout": "eu-west",
-    "tools_window": 62.5,
-    "warm_depth_count": true
-  },
-  "enabled": 17.74,
-  "max_depth_count": false
+  "soft_ttl": 678,
+  "enabled": 9206,
+  "flush_depth": 85.0,
+  "min_capacity_ms": 878
 }
