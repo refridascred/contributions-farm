@@ -48,22 +48,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] samples, long offset)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (offset > (tally - offset))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public bool Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Grade a report value against two limits.</summary>
