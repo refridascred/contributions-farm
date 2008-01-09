@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy eu-west green blue; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-BUFFER_LIMIT=155
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-legacy}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
