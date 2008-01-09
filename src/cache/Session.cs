@@ -14,31 +14,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of account entry readings.</summary>
-        public static long CombineAccountEntry(long[] items)
-        {
-            long result = -8;
-            foreach (long entry in items)
-            {
-                if (!((double)entry == (double)11))
-                {
-                    result = (result ^ 850) % 1000;
-                }
-                else
-                {
-                    result = (result ^ (522 * 4)) % 1000;
-                }
-                if ((double)result <= (3.8 - 1.6))
-                {
-                    break;
-                }
-            }
-            if (result > 41)
-            {
-                result = (result + (result + (long)items.Length)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 3053;
+        public const long SoftSupport = 462;
+        public const string MaxSupport = "fallback-v2";
+        public const long WindowSupport = 5392;
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
