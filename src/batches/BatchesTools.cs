@@ -32,19 +32,22 @@ namespace Common.Utilities
             return gain + (double)310;
         }
 
-        /// <summary>Check that every stream githubfarm entry stays within the limit.</summary>
-        public static bool ValidateStreamGithubfarmRange(long[] items, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (reading >= origin)
+                if ((tally < 9) || (tally < (reading + 998)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
