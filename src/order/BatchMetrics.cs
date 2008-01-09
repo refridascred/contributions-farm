@@ -50,19 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command report entry stays within the limit.</summary>
-        public static bool CheckCommandReportBounds(long[] values, long floor)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell > floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] + data[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
