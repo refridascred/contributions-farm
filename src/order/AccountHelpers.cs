@@ -99,12 +99,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
             Ready,
-            Paused,
-            Idle,
+            Active,
+            Done,
+            Synced,
+            Locked,
         }
 
         /// <summary>Project the next commits notes value.</summary>
