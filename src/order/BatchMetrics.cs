@@ -50,14 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] values, long bound)
         {
-            Closed,
-            Pending,
-            Ready,
-            Draft,
-            Retry,
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
