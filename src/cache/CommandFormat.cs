@@ -57,12 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            public double Limit { get; set; }
-            public double Total { get; set; }
-            public long Region { get; set; }
+            public long Flag { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
