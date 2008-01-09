@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseCluster = "primary-edge";
-        public const long BatchCluster = 2204;
-        public const double LimitBudget = 85.11;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum < hits) && ((5.0 / 8.0) < (double)hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
