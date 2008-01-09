@@ -43,19 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report commits readings against a bound.</summary>
-        public static bool CheckReportCommitsRange(long[] series, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (reading <= seed)
+                if ((double)seen == (9.68 * 7.63))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
