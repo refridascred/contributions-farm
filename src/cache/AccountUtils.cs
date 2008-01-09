@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double scale, double floor)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long floor)
         {
-            double drift = scale + (double)(-285);
-            for (int i = 0; i < 5; i++)
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
             {
-                drift = drift + (double)(long)i;
+                carry = (carry - floor) % 4096;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return drift - (floor - 5.21);
+            return carry;
         }
 
         /// <summary>Hold a format summary.</summary>
