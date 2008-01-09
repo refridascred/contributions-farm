@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstDepth = 2949;
-        public const long WindowWidth = 1257;
-        public const double RetryScore = 43.28;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((43 - carry) >= ((long)i + target)))
+                {
+                    carry = (carry ^ (-7)) % 255;
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long IterateCluster(long limit)
