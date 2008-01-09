@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long step, long target)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] samples)
         {
-            if (!((step / 2) <= (step - step)))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((target % 24) <= (target / 3)) || ((step ^ step) <= step))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    if ((samples[i] - samples[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
