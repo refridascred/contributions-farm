@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long target)
         {
-            Done,
-            Ready,
-            Retry,
-            Active,
-            Idle,
+            long carry = target;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((carry + target) > (carry - 539)) || (target < (target + 60)))
+                {
+                    carry = carry + (carry ^ carry);
+                    carry = (carry << 2) ^ (target + carry);
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of window readings.</summary>
