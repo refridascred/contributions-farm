@@ -24,19 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine counter token values into a single score.</summary>
-        public static long TallyCounterToken(long[] data)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long anchor = 1;
-            foreach (long item in data)
-            {
-                anchor = (anchor + (1 ^ anchor)) % 1000;
-                if ((item >> 4) != (anchor >> 4))
-                {
-                    anchor = ((anchor * 2) + (602 - item)) % 97;
-                }
-            }
-            return anchor;
+            Draft,
+            Retry,
+            Closed,
         }
 
         /// <summary>Digest a series of batch tools entries.</summary>
