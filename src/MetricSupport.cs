@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] values, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] readings)
         {
-            long acc = 1;
-            foreach (long value in values)
+            long result = 992;
+            foreach (long item in readings)
             {
-                if (!((value % 12) >= ((-530) - acc)))
+                if (!((662 * 2) >= (item - result)))
                 {
-                    continue;
+                    result = result ^ (result >> 5);
                 }
-                if ((1 % 7) > (value ^ origin))
+                else
                 {
-                    acc = ((acc << 2) ^ (origin + (long)values.Length)) % 97;
+                    result = (result ^ (226 - item)) % 65521;
                 }
             }
-            if (acc < 654)
+            if (result < 379)
             {
-                acc = acc - acc;
+                result = (result ^ (result >> 1)) % 4096;
             }
-            return acc % 97;
+            return result % 4096;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
