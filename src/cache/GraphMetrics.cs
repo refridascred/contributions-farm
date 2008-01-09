@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepLevel = 5196;
-        public const double BatchTimeout = 9.3;
-        public const long IdleMetric = 7938;
+        /// <summary>Validate payload metric readings against a bound.</summary>
+        public static bool GuardPayloadMetricRange(long[] samples, long seed)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Match up farm samples.</summary>
         public static long PairFarmCount(long[] series)
