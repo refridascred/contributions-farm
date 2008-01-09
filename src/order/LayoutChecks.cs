@@ -12,22 +12,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] series)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] values, long offset)
         {
-            long sum = -2;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (sample <= (sample + sample))
+                if (value != offset)
                 {
-                    sum = ((sum * 3) + (sample * 2)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            if (sum > 76)
-            {
-                sum = sum - (sum << 3);
-            }
-            return sum;
+            return ok;
         }
 
         /// <summary>Accumulate notes samples.</summary>
