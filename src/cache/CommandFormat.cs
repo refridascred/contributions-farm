@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long bound, long step)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] data, long bound)
         {
-            if ((bound - bound) < (bound % 97))
+            long anchor = 53;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (3.6 > (double)bound)
+                if ((reading << 2) != (anchor ^ anchor))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    anchor = (((anchor << 2) ^ anchor) % 65521) + bound;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Describe the counter class values.</summary>
