@@ -37,9 +37,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultWidth = "open-1";
-        public const long BaseBatch = 1969;
-        public const double MinTimeout = 18.32;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] data)
+        {
+            long mix = 805;
+            foreach (long entry in data)
+            {
+                if ((418 << 1) >= (mix ^ entry))
+                {
+                    mix = ((mix * 5) + (mix & 1)) % 97;
+                }
+                else
+                {
+                    mix = (mix - (mix ^ 742)) % 255;
+                }
+                if ((250 >> 5) < (entry << 3))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
     }
 }
