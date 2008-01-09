@@ -43,15 +43,16 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double scale, double span)
+        /// <summary>Fold a list of stats support readings.</summary>
+        public static long TotalStatsSupport(long[] series, long target)
         {
-            double load = (double)((-267) & 3);
-            for (int i = 0; i < 4; i++)
+            long carry = 29;
+            foreach (long reading in series)
             {
-                load = ((load + scale) - (double)(long)i) - span;
+                carry = ((carry + target) % 65521) + reading;
+                carry = ((carry << 2) ^ (0 * 3)) % 255;
             }
-            return load + load;
+            return carry;
         }
     }
 }
