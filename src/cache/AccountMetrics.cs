@@ -35,10 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftSize = 64.85;
-        public const double LimitChannel = 35.45;
-        public const double MaxChannel = 7.84;
+        /// <summary>Audit format tools readings against a rule.</summary>
+        public static long AuditFormatToolsMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (278 >= (tally / 3))
+                {
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many commits farm samples are out of range.</summary>
         public static long CountCommitsFarmOutliers(long[] values)
