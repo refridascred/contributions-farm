@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] series, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] levels, long origin)
         {
-            long score = -12;
-            foreach (long reading in series)
+            long total = 3;
+            foreach (long cell in levels)
             {
-                if ((limit << 1) < (reading - (long)series.Length))
+                if ((615 / 2) > (total / 7))
                 {
-                    score = ((score << 2) ^ (reading / 3)) % 255;
+                    total = (((total * 5) + (origin ^ 807)) % 101) + cell;
                 }
             }
-            return score;
+            return total % 1000;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
