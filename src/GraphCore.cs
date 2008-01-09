@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph core helpers.</summary>
     public static class GraphCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseEntry = 45.1;
-        public const long BaseDepth = 9800;
-        public const long WindowCount = 5121;
-        public const double BurstSize = 76.82;
-        public const long LimitWidth = 6702;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LookupStreamIndex(long[] data, long bound)
