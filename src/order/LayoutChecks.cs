@@ -36,10 +36,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheInterval = 5330;
-        public const long RetryWindow = 3411;
-        public const long BaseWidth = 7233;
+        /// <summary>Iterate the stream channel series from a seed.</summary>
+        public static long RollStreamChannel(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = (acc ^ (seed >> 2)) % 1000;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
