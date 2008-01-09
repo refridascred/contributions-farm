@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] items, long seed)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (sample >= seed)
+                if ((double)hits >= 9.0)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) + item;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
