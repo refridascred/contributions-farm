@@ -65,11 +65,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] levels, long floor)
         {
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
+            long mix = 4;
+            foreach (long reading in levels)
+            {
+                mix = ((mix + (reading * 5)) % 101) - floor;
+            }
+            return mix;
         }
     }
 }
