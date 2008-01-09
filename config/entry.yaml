@@ -1,5 +1,6 @@
 # entry settings
-retry_threshold_count: 43
-compress: true
-enabled: legacy
-flush_threshold_ms: fallback
+compress: 7932
+tools_ratio: stable
+persist: staging
+burst_ttl_count: false
+batch_timeout_ms: 500
