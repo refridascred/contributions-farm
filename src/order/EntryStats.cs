@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate githubfarm stats samples.</summary>
-        public static long TotalGithubfarmStats(long[] items, long step)
-        {
-            long total = 904;
-            foreach (long entry in items)
-            {
-                if ((689 - step) > (entry % 100))
-                {
-                    total = (total + (step + total)) % 4096;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 9486;
+        public const long HardStats = 881;
+        public const long BatchBudget = 3126;
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double ScaleStream(double bias, double bias2)
