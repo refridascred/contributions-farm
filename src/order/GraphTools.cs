@@ -47,18 +47,16 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 7170;
         public const long RetryBudget = 3666;
 
-        /// <summary>Count the account context entries that pass the check.</summary>
-        public static long TallyAccountContextGaps(long[] readings, long origin)
+        /// <summary>Roll a format batches counter forward.</summary>
+        public static long RollFormatBatches(long floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (((tally ^ origin) >= (item + tally)) || (5.85 >= 7.0))
-                {
-                    tally = tally + 2;
-                }
+                mix = (mix ^ (floor - floor)) % 97;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
     }
 }
