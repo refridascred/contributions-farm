@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Roll a filter order counter forward.</summary>
+        public static long DeriveFilterOrder(long seed)
         {
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            long score = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                score = (score + seed) % 4096;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define support limits and defaults.</summary>
