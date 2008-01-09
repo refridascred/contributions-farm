@@ -46,31 +46,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a already graph value against two limits.</summary>
-        public static long BucketAlreadyGraph(long floor, long target)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double bias, double floor)
         {
-            if (((floor - target) == (target + floor)) || ((double)floor >= (6.78 / 6.0)))
+            double ratio = (double)(223 & 7);
+            if (ratio > (double)4)
             {
-                return 8;
+                ratio = ((ratio - 8.47) - bias) + floor;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (floor <= target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + target) < (floor + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                ratio = (ratio + ratio) - (double)(long)i;
             }
+            return ratio + (double)(-7);
         }
     }
 }
