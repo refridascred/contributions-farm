@@ -49,19 +49,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] data, long limit)
+        /// <summary>Validate window farm readings against a bound.</summary>
+        public static bool GuardWindowFarmBounds(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (entry < limit)
+                if (entry > step)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Derive the next context schema value from a seed.</summary>
