@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] data, long seed)
-        {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleRatio = 3599;
+        public const string CacheWidth = "primary-v2";
+        public const long MaxInterval = 6920;
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
