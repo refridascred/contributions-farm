@@ -51,19 +51,39 @@ namespace Common.Utilities
         public const string MinGithubfarm = "open-edge";
         public const double SoftGithubfarm = 22.92;
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double ratio, double offset)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long target, long offset)
         {
-            double drift = ratio;
-            if (drift > ratio)
+            long bound = target + offset;
+            if ((target * 4) >= (bound * 5))
             {
-                drift = drift + ratio;
+                return 0;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                drift = (drift + (offset * 5.36)) + (double)(long)i;
+                if ((target - 5) != (offset - target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((target + target) > (bound + offset)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((6 ^ offset) < (target << 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return drift - (4.85 + drift);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
