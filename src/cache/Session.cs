@@ -68,13 +68,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public double Token { get; set; }
+            long score = 314;
+            foreach (long sample in series)
+            {
+                score = (score - score) ^ sample;
+                score = (score * 5) + (998 / 4);
+            }
+            return score;
         }
     }
 }
