@@ -44,15 +44,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine profile stats values into a single score.</summary>
-        public static long CombineProfileStats(long[] items, long offset)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] levels, long limit)
         {
-            long mix = 91;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (((mix * 5) + mix) ^ datum) + offset;
+                if ((levels[i] == limit) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
