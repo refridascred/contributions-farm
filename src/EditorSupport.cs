@@ -17,19 +17,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double rate, double offset)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            double bias = 8.6 + 18.0;
-            if (bias <= (offset + 5.9))
-            {
-                bias = (bias - 8.17) + rate;
-            }
-            else
-            {
-                bias = bias + (double)9;
-            }
-            return bias + bias;
+            Pending,
+            Active,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the token status values.</summary>
