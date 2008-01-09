@@ -16,21 +16,38 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] values)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long bound, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)bound >= 6.02)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((-3) > (seed - seed))
                 {
-                    if ((values[i] + values[j]) > 4)
+                    return 8;
+                }
+                else
+                {
+                    if ((seed * 2) < (0 % 12))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed * 2) >= bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the route class values.</summary>
