@@ -38,19 +38,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] values, long floor)
+        /// <summary>Combine queue checks values into a single score.</summary>
+        public static long DigestQueueChecks(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long mix = 51;
+            foreach (long value in values)
             {
-                if (sample >= floor)
+                for (int i = 0; i < 2; i++)
                 {
-                    ok = false;
-                    break;
+                    mix = (((mix * 4) + (mix / 4)) % 65521) + (long)i;
+                }
+                if ((value >= mix) || (mix < (mix - value)))
+                {
+                    mix = (mix << 3) ^ (48 ^ value);
+                }
+                else
+                {
+                    mix = mix ^ (mix ^ mix);
                 }
             }
-            return ok;
+            return mix % 4096;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
