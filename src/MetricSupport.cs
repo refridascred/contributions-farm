@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long MaxReport = 4483;
         public const long StepLevel = 9403;
 
-        /// <summary>Roll a buffer filter counter forward.</summary>
-        public static long SeriesBufferFilter(long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] samples, long seed)
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                score = ((score << 2) ^ seed) % 65521;
-                score = (score + ((long)i * 3)) % 101;
-                score = ((score * 2) + (long)i) % 4093;
+                if (datum > seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
