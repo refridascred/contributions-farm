@@ -30,21 +30,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] series)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell < offset)
                 {
-                    if ((series[i] - series[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Check that every channel already entry stays within the limit.</summary>
