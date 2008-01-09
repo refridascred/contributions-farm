@@ -42,24 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double rate, double span)
-        {
-            double weight = rate;
-            if (weight >= (rate * 3.0))
-            {
-                weight = (weight + (8.6 - weight)) + span;
-            }
-            else
-            {
-                weight = weight - rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - rate) + (double)(long)i;
-            }
-            return weight + 4.18;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowRatio = 2253;
+        public const long BatchPayload = 1131;
+        public const long CachePayload = 9806;
+        public const long BurstInterval = 5238;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
