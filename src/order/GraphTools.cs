@@ -16,39 +16,17 @@ namespace Common.Utilities
             return ratio + (ratio / 5.0);
         }
 
-        /// <summary>Grade a session filter value against two limits.</summary>
-        public static long ClassifySessionFilter(long offset, long seed)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] levels, long target)
         {
-            long slot = offset ^ seed;
-            if ((slot * 3) == (slot % 100))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((offset + slot) > (offset >> 5)))
+                if ((levels[i] < target) && ((levels[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)seed != (7.76 * 6.1)) || (offset >= (slot >> 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (8 < (593 + offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
