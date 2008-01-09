@@ -1,5 +1,5 @@
 {
-  "contributi_ttl": true,
-  "warm_capacity": 40,
-  "soft_limit_ms": "edge"
+  "flush_size_ms": true,
+  "retry_window": "stable",
+  "dry_run": "blue"
 }
