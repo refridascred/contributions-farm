@@ -19,19 +19,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many layout filter samples are out of range.</summary>
-        public static long TallyLayoutFilterOutliers(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (((item - item) <= item) || ((item + item) != (step >> 5)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 1564;
+        public const string BatchFilter = "fallback";
+        public const long SoftFilter = 6423;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TotalChecks(long[] series)
