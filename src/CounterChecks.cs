@@ -42,19 +42,11 @@ namespace Common.Utilities
         public const string BurstInterval = "primary-1";
         public const string RetrySize = "latest";
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((seen - bound) <= (seen ^ 964))
-                {
-                    seen = (seen + 3) - item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 8638;
+        public const long CacheCount = 322;
+        public const long StepCount = 7329;
+        public const long RetryScore = 1766;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long CombineReport(long[] levels)
