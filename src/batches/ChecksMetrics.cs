@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] values, long offset)
         {
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= offset) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
