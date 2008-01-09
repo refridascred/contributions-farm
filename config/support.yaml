@@ -1,37 +1,8 @@
 # support settings
-flush_retries_s: 100
-retry_ttl:
-  - 277
-  - 224
-  - 494
-notes_window:
+idle_delay_s: blue
+strict: 2.29
+batch_limit:
   - fallback
-  - fallback
-  - latest
-stats_window:
-  context_ttl: 0.69
-  max_size_pct:
-    flush_size_s: true
-    hard_timeout: stable
-    context_limit:
-      - 49
-      - 34
-      - 277
-    hard_interval: false
-    warm_window_s: primary
-  hard_ttl: standard
-metric_interval:
-  flush_capacity_count: open
-  audit: blue
-  max_retries_count: 98.56
-  commits_ratio: 8746
-  readonly:
-    commits_limit: 9.34
-    cache_capacity: true
-    sync_limit: fallback
-    flush_ttl_s: 1364
-    account_ttl:
-      - 52
-      - 41
-      - 475
-  token_capacity: false
+  - stable
+poll_timeout_count: legacy
+soft_window_ms: 65
