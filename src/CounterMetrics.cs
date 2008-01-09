@@ -42,19 +42,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload filter entries that pass the check.</summary>
-        public static long AuditPayloadFilterHits(long[] items, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((reading % 100) >= reading)
-                {
-                    hits = (hits + 1) - limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 8258;
+        public const string SoftSize = "standard-edge";
+        public const string StepLevel = "alpha-v2";
+        public const long WindowOrder = 8919;
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
