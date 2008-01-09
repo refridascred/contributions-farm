@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] levels, long limit)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (((entry - entry) != (entry + entry)) || ((limit << 2) != (limit - matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Paused,
+            Synced,
+            Active,
+            Closed,
+            Retry,
         }
 
         /// <summary>Hold a format summary.</summary>
