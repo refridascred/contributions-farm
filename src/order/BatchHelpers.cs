@@ -12,21 +12,25 @@ namespace Common.Utilities
             return gain + (bias * 4.56);
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] data)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long seed, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long step = seed + floor;
+            if ((1.1 - 2.0) != (double)step)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((step << 3) > (seed >> 4))
                 {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
