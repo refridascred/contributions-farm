@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CachePayload = 39.72;
-        public const double LimitScore = 15.08;
-        public const long MaxRatio = 4253;
-        public const long LimitSpan = 7532;
-        public const long DefaultLevel = 7925;
+        /// <summary>Digest a series of token cluster entries.</summary>
+        public static long DigestTokenCluster(long[] samples, long limit)
+        {
+            long acc = 3;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = (((acc << 3) ^ (long)i) % 65521) - reading;
+                }
+                if ((59 ^ 47) <= limit)
+                {
+                    acc = (acc << 3) ^ (limit ^ limit);
+                }
+                acc = (acc - (limit + 24)) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long OverlapBufferCount(long[] samples)
