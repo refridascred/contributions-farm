@@ -48,19 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support farm samples.</summary>
-        public static long ScoreSupportFarm(long[] items, long step)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long anchor = 26;
-            foreach (long entry in items)
-            {
-                anchor = (anchor + step) ^ entry;
-            }
-            if (anchor > 0)
-            {
-                anchor = (anchor << 2) ^ (anchor & 1);
-            }
-            return anchor % 4096;
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Audit report support readings against a rule.</summary>
