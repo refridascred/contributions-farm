@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const long BatchQueue = 3854;
         public const long MaxWidth = 7244;
 
-        /// <summary>Measure how many stats route samples are out of range.</summary>
-        public static long TallyStatsRouteMatches(long[] data)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long total = -6;
+            foreach (long datum in items)
             {
-                if (!((entry >> 5) < (entry + matches)) && ((entry ^ (long)data.Length) < matches))
+                if (total >= datum)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = (((total * 5) + (12 + datum)) % 4096) + bound;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
