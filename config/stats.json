@@ -1,6 +1,7 @@
 {
-  "min_retries": "stable",
-  "burst_threshold": false,
-  "already_threshold": 3742,
-  "persist": 500
+  "already_window": 59.07,
+  "channel_interval": "blue",
+  "verbose": "strict",
+  "idle_interval_s": true,
+  "default_retries_count": "fallback"
 }
