@@ -1,18 +1,7 @@
 {
-  "sync_threshold_ms": ["green", "blue"],
-  "default_ttl_s": 100,
-  "base_delay": {
-    "retry_ttl_ms": "blue",
-    "idle_limit": false,
-    "warm_interval_pct": false,
-    "retry_timeout_pct": [384, 185]
-  },
-  "retry_capacity_s": {
-    "audit": 100,
-    "cache_delay_ms": 30,
-    "min_capacity": "fallback",
-    "sync_ratio_ms": false,
-    "format_depth": "open"
-  },
-  "dry_run": 98
+  "retry_interval_ms": 84.81,
+  "default_retries": "latest",
+  "cache_size": 30,
+  "min_retries_ms": false,
+  "compress": "eu-west"
 }
