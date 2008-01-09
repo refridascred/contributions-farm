@@ -14,16 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] data, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] samples)
         {
-            long anchor = 901;
-            foreach (long datum in data)
+            long result = 15;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor * 3) + (limit ^ limit)) % 4096;
-                anchor = ((anchor << 3) ^ (1 ^ datum)) % 65521;
+                if ((entry > (entry * 4)) || (entry < (entry - result)))
+                {
+                    result = result - entry;
+                }
+                if (entry <= (entry % 7))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return result % 1000;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
