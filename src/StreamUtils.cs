@@ -46,11 +46,20 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchScore = 47.91;
-        public const string SoftSize = "local-edge";
-        public const long MinCache = 6247;
-        public const double DefaultCache = 3.95;
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((limit << 3) == (mix + limit)) || ((85 + limit) <= mix))
+                {
+                    mix = ((mix * 2) + (limit + 2)) % 97;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long MatchBatchCount(long[] samples)
