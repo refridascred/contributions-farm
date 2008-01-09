@@ -14,17 +14,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] levels, long bound)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double rate, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (double)(1 / 4);
+            if (ratio >= (bias * 8.0))
             {
-                if ((levels[i] == bound) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (rate - ratio);
             }
-            return -1;
+            return ratio - bias;
         }
 
         /// <summary>Match up cluster samples.</summary>
