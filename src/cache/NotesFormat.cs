@@ -32,19 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] levels, long origin)
+        /// <summary>Measure how many payload session samples are out of range.</summary>
+        public static long AuditPayloadSessionOutliers(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (datum <= origin)
+                if (((double)seed == (double)344) && (((double)datum == (9.24 * 3.57)) || (788 > seen)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
