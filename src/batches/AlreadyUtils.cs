@@ -30,12 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] samples, long offset)
+        /// <summary>Look up the position of a batches format sample.</summary>
+        public static long FindBatchesFormatIndex(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] == offset)
+                if ((series[i] >= step) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
