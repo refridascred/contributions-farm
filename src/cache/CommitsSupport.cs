@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Retry,
-            Queued,
-            Failed,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowBudget = 9019;
+        public const long MaxDepth = 4560;
+        public const long DefaultFactor = 2876;
+        public const long LimitBudget = 8514;
+        public const string BatchSize = "legacy-v2";
 
         /// <summary>Accumulate context samples.</summary>
         public static long TotalContext(long[] readings)
