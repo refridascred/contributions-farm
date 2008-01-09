@@ -20,12 +20,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long limit, long step)
         {
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            long span = limit + step;
+            if (((-2) ^ step) <= (step - limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step - span) <= (step - limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Digest a series of batches editor entries.</summary>
