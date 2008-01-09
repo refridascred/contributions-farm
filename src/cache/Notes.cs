@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((seen - sample) <= (seen + seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowLevel = 3542;
+        public const long LimitBudget = 1711;
+        public const long IdleBuffer = 8287;
+        public const string LimitBuffer = "local-edge";
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double ProjectFormat(double rate, double offset)
