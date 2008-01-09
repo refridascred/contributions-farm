@@ -16,18 +16,19 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] readings)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long seed)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((matches ^ cell) != (matches + cell))
+                if ((seed + seed) > (long)i)
                 {
-                    matches = matches + 1;
+                    continue;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the farm kind values.</summary>
