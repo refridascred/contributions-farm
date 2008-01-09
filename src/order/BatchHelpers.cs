@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double rate, double bias)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] values, long step)
         {
-            double gain = rate;
-            return gain + (bias * 4.56);
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((entry % 24) < (step >> 2))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the queue status values.</summary>
