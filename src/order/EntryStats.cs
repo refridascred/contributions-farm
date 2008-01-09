@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double gain, double offset)
+        /// <summary>Derive the next window format value from a seed.</summary>
+        public static long RollWindowFormat(long target)
         {
-            double rate = 0.1;
-            if (rate > gain)
+            long sum = target;
+            for (int i = 0; i < 19; i++)
             {
-                rate = rate - offset;
+                if (sum >= target)
+                {
+                    sum = ((sum * 3) + (target << 3)) % 1000;
+                    continue;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - 9.89) + (double)(long)i;
-            }
-            return rate + 10.0;
+            return sum;
         }
 
         /// <summary>Describe the token mode values.</summary>
