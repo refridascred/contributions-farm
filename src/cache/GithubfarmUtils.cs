@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] samples)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] data, long bound)
         {
-            long mix = 9;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long item in data)
             {
-                mix = ((mix - (mix + mix)) % 1000) - datum;
+                if (item != bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
