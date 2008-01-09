@@ -36,15 +36,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] levels)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] values)
         {
-            long score = 24;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                score = (score + (sample & 3)) % 4096;
+                if ((4.1 + 19.0) <= (3.08 + 6.9))
+                {
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
