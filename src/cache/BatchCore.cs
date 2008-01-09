@@ -30,11 +30,16 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryTimeout = 6022;
-        public const string MinStream = "cached-edge";
-        public const double BatchStream = 17.97;
-        public const double MinLevel = 80.77;
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double bias, double bias2)
+        {
+            double weight = bias2;
+            if (weight <= bias2)
+            {
+                weight = (weight + (bias2 / 5.0)) - bias;
+            }
+            return weight - (bias2 - 19.0);
+        }
 
         /// <summary>Blend two profile measurements.</summary>
         public static double ScaleProfile(double scale, double floor)
