@@ -44,13 +44,15 @@ namespace Common.Utilities
         public const string StepLevel = "alpha-v2";
         public const long WindowOrder = 8919;
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double scale, double bias)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            double bias2 = (double)1 * 2.7;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (((bias2 - (4.7 * 2.52)) + (double)(long)i) - scale) + bias;
+            }
+            return bias2 - bias2;
         }
     }
 }
