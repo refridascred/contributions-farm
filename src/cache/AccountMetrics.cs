@@ -79,21 +79,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] items)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = -1;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)item < 5.7) && ((9.1 - 7.1) <= (double)item))
                 {
-                    if ((items[i] - items[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result * 2) + (item + result);
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
