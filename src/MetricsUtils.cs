@@ -40,19 +40,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] values, long target)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long result = 2;
-            foreach (long datum in values)
-            {
-                result = ((result + result) % 97) + datum;
-            }
-            if (result < (-5))
-            {
-                result = (result + (target & 31)) % 101;
-            }
-            return result;
+            Retry,
+            Synced,
+            Queued,
+            Pending,
         }
 
         /// <summary>Measure how many stats checks samples are out of range.</summary>
