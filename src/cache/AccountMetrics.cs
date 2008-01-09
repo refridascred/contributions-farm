@@ -50,19 +50,11 @@ namespace Common.Utilities
         public const double WindowLevel = 5.53;
         public const long MaxQueue = 6672;
 
-        /// <summary>Measure how many commits farm samples are out of range.</summary>
-        public static long CountCommitsFarmOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (((tally - sample) < (5 - 684)) && ((9.5 / 8.0) < (double)tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 5433;
+        public const long CacheTools = 9588;
+        public const long MinDepth = 4423;
+        public const string BaseTools = "standard-v2";
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterHits(long[] data, long limit)
