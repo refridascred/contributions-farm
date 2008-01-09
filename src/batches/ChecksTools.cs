@@ -16,19 +16,25 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] readings, long bound)
+        /// <summary>Derive the next githubfarm batch value from a seed.</summary>
+        public static long SeriesGithubfarmBatch(long step)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long total = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading <= bound)
+                if ((727 ^ 4) == ((long)i / 4))
                 {
-                    ready = false;
-                    break;
+                    total = total + (total - step);
+                    continue;
                 }
+                else
+                {
+                    total = total + (226 >> 1);
+                    total = (total << 2) ^ step;
+                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Describe the notes class values.</summary>
