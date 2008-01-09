@@ -19,18 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultWidth = 37.32;
+        public const long HardFactor = 8926;
+        public const long MaxContext = 62;
 
         /// <summary>Accumulate metrics tools samples.</summary>
         public static long WeighMetricsTools(long[] series)
