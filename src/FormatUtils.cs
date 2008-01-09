@@ -19,13 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] samples, long origin)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
