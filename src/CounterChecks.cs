@@ -54,13 +54,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long bound)
         {
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = (mix ^ 577) % 65521;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many batch record samples are out of range.</summary>
