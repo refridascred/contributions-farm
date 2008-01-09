@@ -37,15 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] samples)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] readings, long seed)
         {
-            long acc = 3;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                acc = ((acc << 3) ^ ((-58) ^ acc)) ^ cell;
+                if ((entry + entry) <= (entry ^ seed))
+                {
+                    seen = seen + 1;
+                }
             }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Hold a report summary.</summary>
