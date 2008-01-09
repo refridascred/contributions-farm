@@ -59,22 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] series, long offset)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((double)offset < (double)hits)
-                {
-                    hits = (hits + 1) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
