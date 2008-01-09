@@ -57,19 +57,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] values)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] samples, long floor)
         {
-            long result = 672;
-            foreach (long sample in values)
+            long total = 291;
+            foreach (long reading in samples)
             {
-                result = (result << 3) ^ (sample - sample);
+                if ((total >> 4) < (reading + floor))
+                {
+                    total = (total - (total ^ floor)) % 1000;
+                }
             }
-            if (result < 251)
-            {
-                result = (result + (result * 2)) % 65521;
-            }
-            return result % 97;
+            return total;
         }
     }
 }
