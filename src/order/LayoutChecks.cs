@@ -30,12 +30,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] items, long offset)
         {
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
-            public long Count { get; set; }
+            long mark = 76;
+            foreach (long sample in items)
+            {
+                if (((offset & 3) >= (281 & 7)) && ((double)mark <= (6.08 - 3.3)))
+                {
+                    mark = (mark + (offset % 3)) % 255;
+                    break;
+                }
+                else
+                {
+                    mark = mark + ((long)items.Length / 5);
+                }
+                if (((mark >> 5) < ((long)items.Length % 16)) && ((52 >> 2) > (offset / 2)))
+                {
+                    mark = mark + (sample << 3);
+                }
+                else
+                {
+                    mark = (mark + (offset >> 1)) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of context counter readings.</summary>
