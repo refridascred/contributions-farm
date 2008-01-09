@@ -15,15 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine schema account values into a single score.</summary>
-        public static long TotalSchemaAccount(long[] values)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] readings)
         {
-            long mix = 1;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                mix = ((mix * 5) + 376) + datum;
+                if ((81 << 1) < value)
+                {
+                    seen = seen + 2;
+                }
             }
-            return mix % 97;
+            return seen;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
