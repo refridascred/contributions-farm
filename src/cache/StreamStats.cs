@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] series, long seed)
-        {
-            long result = 960;
-            foreach (long sample in series)
-            {
-                if (((sample / 3) == (result << 2)) || (9 >= sample))
-                {
-                    result = (result * 5) + (seed + 627);
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitGraph = 54.8;
+        public const long IdleGraph = 15;
+        public const long IdleSize = 3112;
+        public const long BaseGraph = 494;
+        public const long CacheSpan = 6007;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double HardSchema = 66.55;
