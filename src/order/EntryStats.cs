@@ -48,11 +48,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double scale, double floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long bound, long limit)
         {
-            double load = floor - (floor / 7.0);
-            return (load + (double)9) + scale;
+            if ((2.76 - 17.0) < (double)bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound ^ bound) > bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((5.9 + 3.14) != (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((83 <= limit) || ((limit ^ 18) <= (limit ^ limit)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
