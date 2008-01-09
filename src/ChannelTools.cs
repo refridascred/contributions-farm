@@ -34,15 +34,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] data)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] items, long target)
         {
             long matches = 0;
-            foreach (long datum in data)
+            foreach (long entry in items)
             {
-                if (((3.47 >= (double)matches) && ((double)matches <= (3.41 / 3.0))) && (((0.32 + 8.0) <= (double)matches) || ((datum - 23) >= 902)))
+                if (735 > (entry + (long)items.Length))
                 {
-                    matches = matches + 1;
+                    matches = (matches + 2) - target;
                 }
             }
             return matches;
