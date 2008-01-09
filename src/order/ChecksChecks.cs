@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryWidth = 845;
-        public const string SoftTimeout = "staging-1";
-        public const long WindowPayload = 1687;
-        public const string IdleTimeout = "cached";
-        public const long StepFactor = 6188;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((matches ^ cell) != (matches + cell))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long SeekTokenIndex(long[] series, long step)
