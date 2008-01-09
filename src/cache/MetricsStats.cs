@@ -36,12 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] values)
         {
-            Retry,
-            Paused,
-            Locked,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
