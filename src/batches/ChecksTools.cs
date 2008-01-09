@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
-        {
-            public double Total { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftRatio = 9.59;
+        public const long HardLayout = 6078;
+        public const long WindowLayout = 4374;
+        public const string HardScore = "alpha";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long DefaultFactor = 2576;
