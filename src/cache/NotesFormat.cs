@@ -32,31 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a session order pair into a bucket.</summary>
-        public static long GradeSessionOrder(long step, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] levels, long origin)
         {
-            if (4 < (step / 3))
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed * 5) < (seed + 6))
+                if (datum <= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step != (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
