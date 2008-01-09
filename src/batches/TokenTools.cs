@@ -14,18 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] levels)
+        /// <summary>Roll a cluster graph counter forward.</summary>
+        public static long SeriesClusterGraph(long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long mark = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((datum - matches) != (503 / 5))
-                {
-                    matches = matches + 2;
-                }
+                mark = (mark ^ ((long)i ^ (-722))) % 4096;
+                mark = (mark + ((long)i / 4)) % 4096;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
