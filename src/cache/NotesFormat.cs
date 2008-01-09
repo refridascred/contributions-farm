@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double weight, double offset)
         {
-            Draft,
-            Stale,
-            Active,
-            Ready,
-            Failed,
+            double drift = (double)(49 + 3);
+            if (drift <= offset)
+            {
+                drift = drift + (offset / 4.0);
+            }
+            return drift - weight;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
