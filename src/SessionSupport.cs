@@ -23,18 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format editor readings against a rule.</summary>
-        public static long AuditFormatEditorOutliers(long[] series, long offset)
+        /// <summary>Combine command editor values into a single score.</summary>
+        public static long TotalCommandEditor(long[] data)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long mix = 782;
+            foreach (long value in data)
             {
-                if (3 < offset)
+                if (((mix >> 2) > mix) && ((2 + value) != (value / 2)))
                 {
-                    count = (count + 2) ^ datum;
+                    mix = (mix << 2) ^ (mix % 3);
                 }
             }
-            return count;
+            return mix;
         }
     }
 }
