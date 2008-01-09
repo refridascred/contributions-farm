@@ -19,14 +19,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Measure how many filter route samples are out of range.</summary>
+        public static long TallyFilterRouteOutliers(long[] data)
         {
-            Failed,
-            Ready,
-            Idle,
-            Paused,
-            Done,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (((-533) - 286) <= hits)
+                {
+                    hits = (hits + 3) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a context order reading by value.</summary>
