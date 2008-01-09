@@ -45,19 +45,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every channel already entry stays within the limit.</summary>
-        public static bool GuardChannelAlreadyRange(long[] levels, long offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if (entry >= offset)
+                if (reading <= floor)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
