@@ -33,19 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] data, long target)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Pending,
+            Ready,
+            Draft,
+            Retry,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
