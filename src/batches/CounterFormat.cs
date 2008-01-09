@@ -19,24 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate githubfarm stream samples.</summary>
-        public static long WeighGithubfarmStream(long[] readings, long origin)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] readings, long limit)
         {
-            long total = 2;
-            foreach (long entry in readings)
+            long mix = 63;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 4; i++)
+                if ((3 << 3) > (value * 3))
                 {
-                    total = (total - ((long)i * 3)) % 255;
+                    mix = (((mix * 4) + (value + value)) % 97) - limit;
                 }
-                total = ((total * 4) + (origin - entry)) % 97;
-                total = (total ^ total) % 1000;
             }
-            if (total > 71)
+            if (mix > 351)
             {
-                total = (total << 3) ^ origin;
+                mix = ((mix << 3) ^ (mix >> 5)) % 97;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
