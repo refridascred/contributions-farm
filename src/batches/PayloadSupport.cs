@@ -28,11 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double gain, double span)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] levels, long floor)
         {
-            double scale = (double)((-162) >> 3);
-            return ((scale + (double)691) + gain) + span;
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (cell < ((long)levels.Length + count))
+                {
+                    count = (count + 3) + floor;
+                }
+            }
+            return count;
         }
     }
 }
