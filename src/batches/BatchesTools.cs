@@ -28,9 +28,19 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 9333;
-        public const long BurstSpan = 6312;
-        public const double BurstInterval = 88.62;
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double weight, double offset)
+        {
+            double bias = weight;
+            if (bias >= offset)
+            {
+                bias = bias - (double)53;
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias + (7.5 / 2.0);
+        }
     }
 }
