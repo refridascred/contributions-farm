@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const string CacheWidth = "primary-v2";
         public const long MaxInterval = 6920;
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
