@@ -1,4 +1,13 @@
 # githubfarm settings
-githubfarm_interval: open
-format_interval: cached
-sync_depth_ms: 20
+contributi_depth: 31.99
+stream_depth:
+  - edge
+  - primary
+  - standard
+  - staging
+max_interval: 86
+persist:
+  - 405
+  - 73
+  - 450
+command_capacity: 2143
