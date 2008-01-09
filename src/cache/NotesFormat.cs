@@ -13,25 +13,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long step, long seed)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long step2 = step ^ seed;
-            if ((double)step == (8.3 / 7.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step2 <= (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Draft,
+            Dropped,
+            Ready,
+            Failed,
+            Idle,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
