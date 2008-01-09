@@ -57,21 +57,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long floor, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((target + target) < (target << 1))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((floor + target) == (floor - target))
                 {
-                    if ((series[i] ^ series[j]) != 2)
+                    return 7;
+                }
+                else
+                {
+                    if ((target - floor) > (target - target))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor >= (floor * 2)) || ((55 - target) >= (target * 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
