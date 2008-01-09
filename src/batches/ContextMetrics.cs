@@ -36,18 +36,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] values)
+        /// <summary>Count the graph queue entries that pass the check.</summary>
+        public static long MeasureGraphQueueGaps(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((hits - hits) == (hits + hits))
+                if ((floor & 15) >= (value / 9))
                 {
-                    hits = (hits + 3) + entry;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the route status values.</summary>
