@@ -23,12 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Compare every pair of context editor readings.</summary>
+        public static long OverlapContextEditorCount(long[] values)
         {
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
