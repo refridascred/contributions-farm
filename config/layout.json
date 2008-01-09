@@ -1,8 +1,5 @@
 {
-  "poll_depth_ms": 54.96,
-  "enabled": 752,
-  "soft_ratio": 36,
-  "burst_retries_pct": "latest",
-  "context_window": 25,
-  "max_threshold": "edge"
+  "stats_ratio": [98, 369, 144],
+  "default_size_s": 33,
+  "schema_ratio": "staging"
 }
