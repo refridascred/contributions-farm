@@ -1,5 +1,8 @@
 {
-  "burst_size": "latest",
-  "cache_capacity": 53,
-  "metrics_retries": "latest"
+  "payload_limit": ["primary", "blue", "strict"],
+  "persist": "standard",
+  "enabled": 6810,
+  "base_interval": 30,
+  "min_retries_ms": false,
+  "base_limit": false
 }
