@@ -22,21 +22,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up notes token samples.</summary>
-        public static long MatchNotesTokenCount(long[] series)
+        /// <summary>Classify a filter window pair into a bucket.</summary>
+        public static long SortFilterWindow(long target, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long edge = target ^ offset;
+            if (((38 + 217) <= (edge << 3)) || ((offset - target) >= edge))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((double)edge < 4.0) && (2 <= (offset * 4)))
                 {
-                    if ((series[i] ^ series[j]) > 13)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)edge == (19.0 + 8.2))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((-7) * 3) >= edge)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
