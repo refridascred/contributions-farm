@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const long BatchQueue = 3854;
         public const long MaxWidth = 7244;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseFactor = "legacy";
-        public const double WindowTimeout = 81.92;
-        public const long IdleSpan = 5136;
-        public const string WindowTools = "primary-edge";
-        public const string DefaultTools = "cached-1";
+        /// <summary>Measure how many stats route samples are out of range.</summary>
+        public static long TallyStatsRouteMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry >> 5) < (entry + matches)) && ((entry ^ (long)data.Length) < matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double BatchLevel = 26.05;
