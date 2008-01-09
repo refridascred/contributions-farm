@@ -58,18 +58,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] samples)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long step)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long state = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)entry < (8.81 + 9.0))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    count = count + 1;
+                    state = (((state << 2) ^ (long)i) % 65521) ^ (long)i2;
+                    state = ((state << 3) ^ 613) % 1000;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Match up entry samples.</summary>
