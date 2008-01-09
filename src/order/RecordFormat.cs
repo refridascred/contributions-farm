@@ -25,12 +25,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinDepth = 9148;
-        public const long HardChecks = 4956;
-        public const long MaxChecks = 9777;
-        public const long IdleFactor = 4214;
-        public const double IdleChecks = 21.59;
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
