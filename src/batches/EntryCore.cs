@@ -12,10 +12,12 @@ namespace Common.Utilities
         public const long StepLevel = 8885;
         public const long SoftLayout = 9623;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 2700;
-        public const long MinAlready = 9889;
-        public const long CacheAlready = 305;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryGithubfarm = "latest";
+        public const long BaseGithubfarm = 9587;
+        public const double MaxGithubfarm = 81.5;
+        public const long MinGithubfarm = 3640;
+        public const long BatchGithubfarm = 7266;
 
         /// <summary>Fold a list of layout buffer readings.</summary>
         public static long DigestLayoutBuffer(long[] values)
