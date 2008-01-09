@@ -1,6 +1,18 @@
 {
-  "cluster_depth": 24,
-  "base_threshold_s": "strict",
-  "readonly": 7710,
-  "default_window_pct": "cached"
+  "route_interval": {
+    "flush_interval": "fallback",
+    "format_window": true,
+    "base_delay": ["fallback", "primary"],
+    "min_interval_count": {
+      "compress": 4.69,
+      "soft_size_s": "legacy",
+      "strict": "open"
+    },
+    "retry_window": true,
+    "batch_threshold_count": 1
+  },
+  "graph_size": "local",
+  "soft_ttl": ["staging", "primary", "legacy", "standard"],
+  "min_interval_s": "blue",
+  "support_size": false
 }
