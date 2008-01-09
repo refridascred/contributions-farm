@@ -22,11 +22,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] readings, long offset)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= offset) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
