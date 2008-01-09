@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsGaps(long[] values)
         {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                carry = (carry - floor) % 4096;
-                carry = ((carry * 3) + (long)i) % 101;
+                if (!((726 % 5) <= ((long)values.Length % 97)))
+                {
+                    hits = (hits + 2) + cell;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the editor level values.</summary>
