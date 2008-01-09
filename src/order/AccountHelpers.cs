@@ -87,19 +87,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double bias, double bias2)
+        /// <summary>Count context stats pairs that satisfy a relation.</summary>
+        public static long OverlapContextStatsCount(long[] values)
         {
-            double weight = bias;
-            if (weight <= bias2)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight + bias2;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - bias2) - (double)(long)i;
-            }
-            return weight + bias2;
+            return seen;
         }
     }
 }
