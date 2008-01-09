@@ -16,13 +16,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 115;
+        public const long MinCache = 6170;
+        public const double SoftSpan = 70.96;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool ValidateSessionBounds(long[] data, long target)
