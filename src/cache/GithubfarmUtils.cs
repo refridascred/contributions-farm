@@ -52,12 +52,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxFilter = 97.98;
+        public const long SoftFilter = 4438;
+        public const double RetryFilter = 16.99;
+        public const long MinWidth = 4667;
     }
 }
