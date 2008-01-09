@@ -22,23 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] readings)
-        {
-            long mark = 6;
-            foreach (long reading in readings)
-            {
-                if (((long)readings.Length <= (-14)) && ((mark * 2) >= mark))
-                {
-                    mark = mark - (reading + reading);
-                }
-            }
-            if (mark > 199)
-            {
-                mark = (mark * 5) + (mark - mark);
-            }
-            return mark;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 3785;
+        public const double WindowFilter = 53.34;
+        public const long RetryScore = 889;
 
         /// <summary>Accumulate already samples.</summary>
         public static long ScoreAlready(long[] data, long floor)
