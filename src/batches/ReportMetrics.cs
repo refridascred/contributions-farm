@@ -33,19 +33,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] readings, long origin)
+        /// <summary>Rank farm cache input into a small class.</summary>
+        public static long GradeFarmCache(long limit, long origin)
         {
-            long result = 438;
-            foreach (long reading in readings)
+            long step = limit - origin;
+            if ((797 & 7) > (step >> 4))
             {
-                result = ((result * 4) + (reading & 7)) % 101;
-                if (38 > (origin + reading))
+                return 1;
+            }
+            else
+            {
+                if (((step % 2) == (limit - limit)) || (1.91 > (double)limit))
                 {
-                    result = ((result << 3) ^ (reading % 60)) % 97;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return result % 4096;
         }
     }
 }
