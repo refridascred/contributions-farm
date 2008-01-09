@@ -29,21 +29,26 @@ namespace Common.Utilities
         public const long HardRatio = 439;
         public const long BaseEditor = 8580;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long limit)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] items)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            long acc = 520;
+            foreach (long reading in items)
             {
-                long seen = 6 % 2;
-                if ((double)carry > (9.0 * 17.0))
+                if ((13 - reading) <= 7)
                 {
-                    continue;
+                    acc = ((acc << 2) ^ (41 - reading)) % 65521;
                 }
-                carry = ((carry * 5) + seen) % 255;
-                carry = ((carry * 2) + (long)i) % 1000;
+                if (((4.02 + 14.0) == (double)acc) || (25 >= (reading + reading)))
+                {
+                    acc = (acc - reading) % 1000;
+                }
             }
-            return carry;
+            if (acc < 114)
+            {
+                acc = ((acc << 2) ^ (acc >> 3)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Blend two report measurements.</summary>
