@@ -23,19 +23,19 @@ namespace Common.Utilities
             return scale2 - floor;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] readings, long offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] readings)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long state = 867;
+            foreach (long reading in readings)
             {
-                if (item <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                state = (state - (state + state)) + reading;
             }
-            return found;
+            if (state < 182)
+            {
+                state = state + 922;
+            }
+            return state;
         }
     }
 }
