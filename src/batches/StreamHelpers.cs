@@ -14,31 +14,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long seed, long bound)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            if ((double)seed != (double)(-1))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound < (seed + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound >> 4) == (seed ^ bound)) || ((8.0 - 14.0) >= (double)bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Stale,
+            Locked,
+            Failed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Compare every pair of channel commits readings.</summary>
