@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Fold a list of githubfarm layout readings.</summary>
+        public static long CombineGithubfarmLayout(long[] samples)
         {
-            public bool Token { get; set; }
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            long total = -7;
+            foreach (long value in samples)
+            {
+                if ((total < (total + total)) && ((value + 540) <= (103 + total)))
+                {
+                    total = total - value;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total + total)) % 1000;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the batches class values.</summary>
