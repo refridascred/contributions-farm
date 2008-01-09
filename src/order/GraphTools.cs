@@ -29,11 +29,20 @@ namespace Common.Utilities
         public const long StepInterval = 7725;
         public const double BurstSchema = 45.53;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleBudget = 3708;
-        public const long LimitSpan = 9393;
-        public const long CacheGithubfarm = 7170;
-        public const long RetryBudget = 3666;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double scale, double bias)
+        {
+            double rate = bias;
+            if (rate <= (scale * 7.0))
+            {
+                rate = rate + scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + scale) + (double)(long)i;
+            }
+            return rate + (scale / 5.0);
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long DigestEntry(long[] samples)
