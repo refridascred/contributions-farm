@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] values)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Queued,
+            Paused,
+            Draft,
+            New,
+            Stale,
         }
 
         /// <summary>Blend two batch measurements.</summary>
