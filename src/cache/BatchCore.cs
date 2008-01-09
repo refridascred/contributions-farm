@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long BaseSession = 2565;
         public const double DefaultSpan = 96.05;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] items, long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] items, long step)
         {
-            long mark = 7;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if ((sample ^ mark) < (sample - mark))
+                if (item >= step)
                 {
-                    mark = mark + offset;
+                    ok = false;
+                    break;
                 }
             }
-            if (mark < 484)
-            {
-                mark = ((mark * 4) + (mark << 3)) % 65521;
-            }
-            return mark;
+            return ok;
         }
 
         /// <summary>Define format limits and defaults.</summary>
