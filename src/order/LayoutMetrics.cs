@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long origin)
         {
-            Ready,
-            Draft,
-            Dropped,
-            Retry,
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = sum + sum;
+                sum = (sum + ((long)i - origin)) % 101;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
