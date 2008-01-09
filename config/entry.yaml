@@ -1,7 +1,14 @@
 # entry settings
-hard_ttl: standard
-metrics_ttl: 78
-flush_window_s:
-  dry_run: standard
-  profile_timeout: 2379
-  poll_interval: open
+min_interval_ms:
+  - 296
+  - 349
+  - 111
+soft_interval: primary
+warm_window_pct: true
+commits_ttl: false
+audit: stable
+retry_ratio_ms:
+  - primary
+  - green
+  - edge
+  - legacy
