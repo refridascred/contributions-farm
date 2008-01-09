@@ -50,19 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] values, long bound)
+        /// <summary>Check that every command report entry stays within the limit.</summary>
+        public static bool CheckCommandReportBounds(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if (entry != bound)
+                if (cell > floor)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
