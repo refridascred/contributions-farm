@@ -16,31 +16,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long target, long limit)
+        /// <summary>Fold a list of counter metrics readings.</summary>
+        public static long ScoreCounterMetrics(long[] samples)
         {
-            if ((target ^ 31) >= limit)
+            long total = 89;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target << 3) >= (43 / 4))
+                if ((reading - total) <= (total << 2))
                 {
-                    return 6;
+                    total = (total << 3) ^ (total * 5);
                 }
                 else
                 {
-                    if (limit <= (562 + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    total = ((total << 2) ^ 262) % 97;
                 }
             }
+            if (total > (-31))
+            {
+                total = total - (total >> 5);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of channel route entries.</summary>
