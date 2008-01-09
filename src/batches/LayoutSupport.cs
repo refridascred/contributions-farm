@@ -47,18 +47,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine metrics profile values into a single score.</summary>
-        public static long FoldMetricsProfile(long[] data)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long mark = 8;
-            foreach (long reading in data)
-            {
-                if ((reading << 2) >= 165)
-                {
-                    mark = (mark ^ (21 ^ mark)) % 4096;
-                }
-            }
-            return mark % 4096;
+            public double Region { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
