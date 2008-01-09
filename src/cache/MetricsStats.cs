@@ -41,12 +41,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardScore = 5048;
-        public const long MaxEntry = 4763;
-        public const long IdleWidth = 9879;
-        public const long BurstScore = 9199;
-        public const string StepEntry = "staging-edge";
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public long Score { get; set; }
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string WindowCounter = "open-1";
