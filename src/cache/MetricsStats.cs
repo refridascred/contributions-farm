@@ -47,14 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Done,
-            Ready,
-            Closed,
-            Stale,
-            New,
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
