@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached stable green strict; do
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+COMMAND_LIMIT=37
+log "limit is ${COMMAND_LIMIT}"
+
+for item in edge primary local standard; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=352
-log "limit is ${COMMAND_LIMIT}"
