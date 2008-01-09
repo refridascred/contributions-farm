@@ -1,8 +1,6 @@
-id,active,count
-1,554,standard
-2,blue,41.26
-3,staging,647
-4,local,96
-5,73.89,62
-6,401,strict
-7,71,184
+id,score,state,region
+1,59.29,12.5,52.4
+2,681,standard,17
+3,479,66.8,fallback
+4,local,912,legacy
+5,11.56,stable,574
