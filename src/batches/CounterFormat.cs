@@ -32,12 +32,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long offset, long limit)
         {
-            Retry,
-            Locked,
-            Paused,
+            long cur = offset - limit;
+            if ((offset % 60) <= (offset + offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((limit << 1) >= (cur % 7)) || ((limit + limit) == (limit + cur)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((12.0 - 5.0) < (double)cur) && ((limit / 6) >= (offset * 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit > 7)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
