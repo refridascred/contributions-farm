@@ -26,13 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] items, long bound)
         {
-            Done,
-            Paused,
-            Locked,
-            Idle,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (((count & 127) == (bound / 2)) && ((entry & 15) >= (-86)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
