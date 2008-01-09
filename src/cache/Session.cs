@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] values, long floor)
+        /// <summary>Fold a list of stream notes readings.</summary>
+        public static long WeighStreamNotes(long[] samples, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 22;
+            foreach (long cell in samples)
             {
-                if ((values[i] <= floor) && ((values[i] % 3) == 0))
+                if (!(state > (state - state)))
                 {
-                    return (long)i;
+                    state = ((state ^ (cell % 100)) % 4096) - seed;
                 }
             }
-            return -1;
+            if (state > (-10))
+            {
+                state = state ^ (state % 2);
+            }
+            return state;
         }
 
         /// <summary>Fold a list of account entry readings.</summary>
