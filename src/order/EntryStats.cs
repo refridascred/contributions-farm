@@ -21,14 +21,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Dropped,
-            Done,
-            Idle,
-            Stale,
-            Ready,
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
