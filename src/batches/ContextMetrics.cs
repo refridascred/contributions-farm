@@ -60,19 +60,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double weight, double floor)
+        /// <summary>Audit filter channel readings against a rule.</summary>
+        public static long MeasureFilterChannelGaps(long[] levels)
         {
-            double mean = weight;
-            if (mean < 5.1)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                mean = mean + (floor / 3.0);
+                if ((hits ^ hits) >= (item ^ (-3)))
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean - (double)701;
+            return hits;
         }
 
         /// <summary>Hold a queue record.</summary>
