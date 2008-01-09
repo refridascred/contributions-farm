@@ -18,15 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double gain, double span)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double gain, double offset)
         {
-            double mean = (double)(5 - 230);
-            for (int i = 0; i < 6; i++)
+            double bias = 8.6;
+            if (bias < (5.26 + bias))
             {
-                mean = ((mean + (span - mean)) + (double)(long)i) - gain;
+                bias = (bias + bias) - gain;
             }
-            return mean - 1.1;
+            else
+            {
+                bias = bias + 2.4;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias - (bias - 18.0);
         }
 
         /// <summary>Audit session readings against a rule.</summary>
