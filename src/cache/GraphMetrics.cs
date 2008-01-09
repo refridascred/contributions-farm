@@ -30,21 +30,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] readings)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public double Token { get; set; }
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a graph summary.</summary>
