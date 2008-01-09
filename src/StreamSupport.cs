@@ -40,11 +40,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string StepStats = "primary";
-        public const long BatchStats = 8023;
-        public const double MaxInterval = 20.62;
-        public const long WindowLevel = 9952;
-        public const long DefaultStats = 6830;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (value > ((-5) >> 4))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
