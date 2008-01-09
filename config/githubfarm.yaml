@@ -1,5 +1,14 @@
 # githubfarm settings
-window_window: 93.4
-notes_ratio: 32.37
-flush_depth: local
-persist: blue
+dry_run: 10
+buffer_depth: 36
+cache_capacity_count: 79.68
+poll_ttl_s:
+  - 424
+  - 142
+  - 238
+  - 25
+sync_ttl_s:
+  - 184
+  - 325
+  - 273
+audit: 65.59
