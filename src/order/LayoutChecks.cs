@@ -29,12 +29,10 @@ namespace Common.Utilities
         public const double DefaultChannel = 34.54;
         public const long CacheChannel = 1703;
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public bool Score { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheInterval = 5330;
+        public const long RetryWindow = 3411;
+        public const long BaseWidth = 7233;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long FindEditorIndex(long[] readings, long target)
