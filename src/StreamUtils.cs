@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the stream schema entries that pass the check.</summary>
-        public static long CountStreamSchemaOutliers(long[] data, long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (92 < (seen >> 5))
+                if (((-16) / 7) < tally)
                 {
-                    seen = ((seen + 3) ^ reading) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = ((tally + 1) ^ sample) + offset;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the batches mode values.</summary>
