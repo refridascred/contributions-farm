@@ -19,13 +19,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long step)
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
+            long acc = step;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = (((acc * 5) + (898 / 6)) % 101) - (long)i2;
+                }
+                acc = ((acc << 2) ^ (step + acc)) % 97;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many payload githubfarm samples are out of range.</summary>
