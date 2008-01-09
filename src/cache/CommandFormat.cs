@@ -19,18 +19,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many filter route samples are out of range.</summary>
-        public static long TallyFilterRouteOutliers(long[] data)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((-533) - 286) <= hits)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 3) - entry;
+                    if ((levels[i] + levels[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Locate a context order reading by value.</summary>
