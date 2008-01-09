@@ -18,23 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long floor)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double gain, double span)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            double mean = (double)(5 - 230);
+            for (int i = 0; i < 6; i++)
             {
-                if (!((8 << 1) == (long)i))
-                {
-                    acc = ((acc << 2) ^ (floor * 5)) % 4096;
-                }
-                else
-                {
-                    acc = acc ^ (acc * 5);
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
+                mean = ((mean + (span - mean)) + (double)(long)i) - gain;
             }
-            return acc;
+            return mean - 1.1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
