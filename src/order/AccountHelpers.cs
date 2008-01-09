@@ -103,21 +103,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] series)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Paused,
+            Idle,
         }
 
         /// <summary>Project the next commits notes value.</summary>
