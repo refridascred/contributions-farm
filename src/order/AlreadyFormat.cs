@@ -63,11 +63,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepCount = 2119;
-        public const long CacheEntry = 3270;
-        public const double RetryEntry = 77.8;
-        public const long HardEntry = 5173;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] readings, long seed)
+        {
+            long mix = 809;
+            foreach (long value in readings)
+            {
+                mix = ((mix ^ (78 * 4)) % 255) ^ value;
+                if ((mix / 5) >= (325 + mix))
+                {
+                    mix = ((mix * 5) + (seed - mix)) % 255;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferGaps(long[] samples)
