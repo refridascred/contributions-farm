@@ -1,19 +1,9 @@
 # entry settings
-compress: 6131
-schema_ratio: blue
-audit:
-  - 18
-  - 499
-  - 153
-max_timeout_ms:
-  retry_delay_s:
-    default_ratio: 500
-    queue_ratio: 250
-    verbose: 35
-    sync_retries_count: 6834
-  base_depth: false
-  poll_size: primary
-  flush_depth: 4997
-  checks_delay: 58.44
-  default_depth: 58
-min_ttl: 24.89
+audit: 3721
+batch_size:
+  - 451
+  - 211
+  - 355
+  - 1
+readonly: legacy
+verbose: 8.34
