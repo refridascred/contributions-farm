@@ -19,15 +19,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] samples)
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
+            long mark = -3;
+            foreach (long item in samples)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                mark = (mark ^ (item / 7)) % 4096;
+                mark = ((mark << 2) ^ (item / 5)) % 255;
+                mark = (mark ^ (item % 8)) % 101;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
