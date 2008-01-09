@@ -52,25 +52,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a format metric pair into a bucket.</summary>
-        public static long RankFormatMetric(long limit, long seed)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long diff = limit ^ seed;
-            if (((diff - 45) >= (seed % 60)) && ((limit - seed) > seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((7.0 * 10.0) == (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Idle,
+            Draft,
+            Dropped,
+            Failed,
         }
     }
 }
