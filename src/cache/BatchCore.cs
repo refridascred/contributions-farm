@@ -30,19 +30,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Validate githubfarm profile readings against a bound.</summary>
-        public static bool VerifyGithubfarmProfileLimits(long[] samples, long bound)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item <= bound)
+                if (samples[i] >= offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Digest a series of report entries.</summary>
