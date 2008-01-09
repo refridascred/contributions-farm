@@ -1,5 +1,5 @@
 {
-  "metrics_threshold": 60.99,
-  "verbose": [97, 58, 32, 8],
-  "enabled": [17, 52]
+  "burst_ttl_ms": 33.42,
+  "poll_delay": false,
+  "record_size": true
 }
