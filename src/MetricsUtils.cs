@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] values)
+        /// <summary>Audit graph checks readings against a rule.</summary>
+        public static long TallyGraphChecksMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (!((seen - seen) > 528))
+                if ((datum + 764) >= datum)
                 {
-                    seen = (seen + 1) + sample;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
