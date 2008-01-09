@@ -29,21 +29,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count already schema pairs that satisfy a relation.</summary>
-        public static long MatchAlreadySchemaCount(long[] levels)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((matches * 5) <= matches) || ((matches + cell) > (cell + matches)))
                 {
-                    if ((levels[i] - levels[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
