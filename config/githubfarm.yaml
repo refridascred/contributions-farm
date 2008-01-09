@@ -1,11 +1,4 @@
 # githubfarm settings
-record_threshold:
-  - edge
-  - eu-west
-  - strict
-route_threshold:
-  - eu-west
-  - strict
-  - blue
-verbose: 4877
-audit: false
+min_depth_count: 4680
+sync_delay_s: blue
+idle_retries_pct: standard
