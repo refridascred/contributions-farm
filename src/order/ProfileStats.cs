@@ -26,19 +26,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double rate, double span)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long floor, long bound)
         {
-            double gain = rate * 6.4;
-            if (gain > gain)
+            long diff = floor - bound;
+            if ((2.0 * 16.0) <= 16.0)
             {
-                gain = gain + (gain / 3.0);
+                return 0;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                gain = (gain - rate) - (double)(long)i;
+                if (!((bound - diff) <= (floor / 2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return gain + (span - rate);
         }
     }
 }
