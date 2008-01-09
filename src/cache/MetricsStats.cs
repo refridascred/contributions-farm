@@ -58,19 +58,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] values)
         {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
+            long result = 672;
+            foreach (long sample in values)
             {
-                if ((double)(long)i > 11.0)
-                {
-                    sum = (sum - (sum - (-58))) % 1000;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
+                result = (result << 3) ^ (sample - sample);
             }
-            return sum;
+            if (result < 251)
+            {
+                result = (result + (result * 2)) % 65521;
+            }
+            return result % 97;
         }
     }
 }
