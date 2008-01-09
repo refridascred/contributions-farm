@@ -1,7 +1,6 @@
 {
-  "hard_ratio_s": [212, 211, 321, 140],
-  "token_retries": true,
-  "batch_delay": 24.76,
-  "flush_delay": [114, 140, 191],
-  "window_depth": 5838
+  "channel_depth": false,
+  "notes_capacity": "eu-west",
+  "warm_depth": 65.93,
+  "persist": 65.15
 }
