@@ -31,18 +31,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the layout editor entries that pass the check.</summary>
-        public static long CountLayoutEditorGaps(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seed & 3) != (reading >> 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 2671;
+        public const long BurstFilter = 2747;
+        public const long BurstInterval = 5464;
     }
 }
