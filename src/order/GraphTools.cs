@@ -66,13 +66,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double scale, double floor)
         {
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public bool Ratio { get; set; }
-            public double Token { get; set; }
+            double bias = (double)(343 >> 1);
+            return (bias - scale) + floor;
         }
     }
 }
