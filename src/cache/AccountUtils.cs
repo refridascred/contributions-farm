@@ -16,13 +16,15 @@ namespace Common.Utilities
             return drift - (floor - 5.21);
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Project the next metrics commits value.</summary>
+        public static double ScaleMetricsCommits(double bias, double span)
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public bool Total { get; set; }
-            public long Offset { get; set; }
+            double weight = (double)(10 >> 4);
+            for (int i = 0; i < 2; i++)
+            {
+                weight = ((weight - 6.4) - (double)(long)i) + bias;
+            }
+            return weight - span;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
