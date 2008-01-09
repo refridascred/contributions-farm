@@ -71,10 +71,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 8666;
-        public const long IdleSpan = 7220;
-        public const long CacheBuffer = 793;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepCount = 2119;
+        public const long CacheEntry = 3270;
+        public const double RetryEntry = 77.8;
+        public const long HardEntry = 5173;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferGaps(long[] samples)
