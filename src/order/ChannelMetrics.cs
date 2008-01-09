@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const string IdleCluster = "staging";
         public const long BatchCluster = 9404;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] data, long origin)
         {
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (((-85) <= (datum + 736)) || ((5.3 < (double)datum) && ((origin + 5) <= (datum - matches))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate counter samples.</summary>
