@@ -1,20 +1,24 @@
 # entry settings
-base_ratio_s:
-  - 294
-  - 10
-  - 39
-max_timeout: 4110
-poll_retries:
-  - 416
-  - 446
-format_window:
-  readonly: 421
-  editor_depth:
-    readonly: 1024
-    batch_delay_ms: legacy
-    burst_threshold_pct: cached
-  session_depth: 62.79
-warm_depth:
-  - cached
+min_ratio_pct: 17
+base_limit_count:
+  min_retries_count: strict
+  flush_threshold_s:
+    hard_threshold: 7845
+    idle_ratio: true
+    default_depth_pct: strict
+    graph_ratio:
+      - 475
+      - 22
+      - 272
+      - 209
+  readonly: true
+  base_limit_s: 69.98
+  layout_delay: strict
+  cluster_size: 78
+warm_retries: stable
+layout_size: 2461
+readonly:
   - local
-profile_retries: edge
+  - stable
+  - blue
+  - blue
