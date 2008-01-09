@@ -16,11 +16,17 @@ namespace Common.Utilities
             return ratio + (ratio / 5.0);
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Find the first buffer entry entry that matches the target.</summary>
+        public static long LocateBufferEntryIndex(long[] readings, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public string Score { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
