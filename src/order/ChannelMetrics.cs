@@ -32,18 +32,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] data, long seed)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long offset, long bound)
         {
-            long mix = 6;
-            foreach (long datum in data)
+            if ((double)offset == (double)offset)
             {
-                if (((double)mix == (9.0 * 0.93)) || ((19.0 * 6.16) < (double)seed))
+                return 3;
+            }
+            else
+            {
+                if ((bound - bound) <= (offset * 2))
                 {
-                    mix = ((mix - 62) % 97) - datum;
+                    return 5;
+                }
+                else
+                {
+                    if ((9 + offset) < offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return mix;
         }
     }
 }
