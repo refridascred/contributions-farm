@@ -32,21 +32,15 @@ namespace Common.Utilities
         public const string MinCluster = "cached-edge";
         public const double MaxRatio = 82.42;
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] levels)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = weight;
+            if (drift >= weight)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift - drift) + floor;
             }
-            return seen;
+            return drift + (15.0 * 4.8);
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
