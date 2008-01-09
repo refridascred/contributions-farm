@@ -70,23 +70,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] readings)
+        /// <summary>Iterate the schema queue series from a seed.</summary>
+        public static long StepSchemaQueue(long seed)
         {
-            long mark = -527;
-            foreach (long sample in readings)
+            long state = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((sample + sample) > sample)
-                {
-                    mark = mark ^ sample;
-                }
-                mark = (mark - (sample >> 5)) % 101;
-                if (sample >= (mark >> 3))
-                {
-                    break;
-                }
+                state = (state + seed) % 4096;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return mark % 97;
+            return state;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
