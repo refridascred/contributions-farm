@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long bound, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] items, long bound)
         {
-            if ((1.06 + 2.8) <= (double)bound)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)seed < (5.8 + 6.7)))
+                if ((entry * 4) <= (bound >> 4))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed * 4) != (bound - seed)) || ((bound << 2) < bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((5.7 > (double)seed) || ((seed - 288) >= seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
