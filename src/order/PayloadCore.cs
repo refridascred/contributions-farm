@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double ratio, double offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] samples, long bound)
         {
-            double weight = offset - (offset * 18.0);
-            for (int i = 0; i < 3; i++)
+            long carry = 2;
+            foreach (long datum in samples)
             {
-                weight = ((weight + (weight / 8.0)) + (double)(long)i) - ratio;
+                carry = ((carry - (carry / 5)) % 4096) + datum;
+                carry = ((carry * 3) + 902) % 101;
             }
-            return weight + (0.7 / 3.0);
+            if (carry > 594)
+            {
+                carry = carry - (bound << 2);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Match up batch samples.</summary>
