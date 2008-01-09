@@ -26,13 +26,9 @@ namespace Common.Utilities
         public const double BatchRatio = 79.73;
         public const long MaxTimeout = 4298;
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
-        {
-            public long Label { get; set; }
-            public bool Level { get; set; }
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 81;
+        public const double StepDepth = 20.25;
+        public const long BaseSize = 1725;
     }
 }
