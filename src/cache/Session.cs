@@ -63,18 +63,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsOutliers(long[] items, long target)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((value + target) < value)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            Pending,
+            Closed,
+            Ready,
         }
     }
 }
