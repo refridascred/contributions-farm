@@ -37,12 +37,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultInterval = "stable";
-        public const double BaseNotes = 71.0;
-        public const double BaseDepth = 46.33;
-        public const long DefaultFactor = 8518;
-        public const string LimitNotes = "stable";
+        /// <summary>Count the channel filter entries that pass the check.</summary>
+        public static long MeasureChannelFilterOutliers(long[] series, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((14.0 * 8.0) != (double)bound)
+                {
+                    seen = (seen + 1) - datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double BlendReport(double ratio, double bias)
