@@ -37,17 +37,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a context order reading by value.</summary>
-        public static long SeekContextOrderIndex(long[] series, long target)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double weight, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = floor / 2.0;
+            if (mean < floor)
             {
-                if ((series[i] <= target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + (floor - floor)) + weight;
             }
-            return -1;
+            return mean - (floor / 3.0);
         }
 
         /// <summary>Measure how many commits buffer samples are out of range.</summary>
