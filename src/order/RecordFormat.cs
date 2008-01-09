@@ -32,18 +32,13 @@ namespace Common.Utilities
         public const long IdleFactor = 4214;
         public const double IdleChecks = 21.59;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] samples, long floor)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((4.83 * 1.4) == (double)datum)
-                {
-                    count = (count + 1) - floor;
-                }
-            }
-            return count;
+            Stale,
+            Paused,
+            Draft,
+            New,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
