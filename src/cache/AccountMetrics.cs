@@ -70,18 +70,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] values, long floor)
+        /// <summary>Combine farm route values into a single score.</summary>
+        public static long DigestFarmRoute(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long carry = 68;
+            foreach (long sample in series)
             {
-                if (((value - floor) >= (floor + value)) || (floor <= 61))
+                if (((long)series.Length + 994) != (sample - carry))
                 {
-                    tally = tally + 1;
+                    carry = ((carry * 2) + sample) + offset;
                 }
             }
-            return tally;
+            if (carry > 767)
+            {
+                carry = ((carry << 2) ^ (-5)) % 255;
+            }
+            return carry;
         }
     }
 }
