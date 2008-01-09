@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long bound, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] levels, long limit)
         {
-            if ((floor - floor) >= (floor % 12))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((8.0 * 3.7) != (double)bound) || ((bound + bound) < (floor / 6)))
+                if (((entry - entry) != (entry + entry)) || ((limit << 2) != (limit - matches)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(bound <= (floor ^ floor)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
