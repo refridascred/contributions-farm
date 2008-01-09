@@ -56,11 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
+            Ready,
+            Pending,
+            Active,
         }
     }
 }
