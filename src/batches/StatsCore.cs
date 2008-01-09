@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Locate a stream layout reading by value.</summary>
+        public static long SeekStreamLayoutIndex(long[] levels, long floor)
         {
-            public double Owner { get; set; }
-            public bool Score { get; set; }
-            public bool Size { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the context level values.</summary>
