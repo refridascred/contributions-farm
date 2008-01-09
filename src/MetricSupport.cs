@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double DefaultCommand = 57.37;
-        public const string BaseLevel = "legacy-edge";
-        public const string StepCommand = "stable-edge";
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long seed, long offset)
+        {
+            if (seed <= (seed << 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed >> 1) < (seed - offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset >= 8.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
