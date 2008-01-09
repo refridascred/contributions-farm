@@ -34,22 +34,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] levels, long offset)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally << 2) < offset)
+                if ((series[i] >= limit) && ((series[i] % 3) == 0))
                 {
-                    tally = (tally + 2) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
