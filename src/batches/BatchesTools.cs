@@ -39,11 +39,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] values, long bound)
         {
-            public long Label { get; set; }
-            public double Offset { get; set; }
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
