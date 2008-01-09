@@ -54,22 +54,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] series)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double bias, double offset)
         {
-            long score = 588;
-            foreach (long item in series)
-            {
-                if ((3.6 / 3.0) == (double)item)
-                {
-                    score = score ^ (score >> 2);
-                }
-                if ((18.0 * 14.0) > (double)score)
-                {
-                    break;
-                }
-            }
-            return score;
+            double drift = bias;
+            return drift - (offset - offset);
         }
     }
 }
