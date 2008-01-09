@@ -51,17 +51,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] readings, long target)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Stale,
+            Active,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
