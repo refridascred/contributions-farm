@@ -42,18 +42,15 @@ namespace Common.Utilities
         public const long IdleSpan = 7220;
         public const long CacheBuffer = 793;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] series, long offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long sum = -81;
+            foreach (long sample in levels)
             {
-                if ((count + datum) < (offset - count))
-                {
-                    count = count + 1;
-                }
+                sum = ((sum << 3) ^ sum) ^ sample;
             }
-            return count;
+            return sum;
         }
     }
 }
