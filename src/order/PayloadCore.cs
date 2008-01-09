@@ -44,12 +44,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Combine profile stats values into a single score.</summary>
+        public static long CombineProfileStats(long[] items, long offset)
         {
-            public long Rank { get; set; }
-            public double Level { get; set; }
-            public long Ratio { get; set; }
+            long mix = 91;
+            foreach (long datum in items)
+            {
+                mix = (((mix * 5) + mix) ^ datum) + offset;
+            }
+            return mix;
         }
     }
 }
