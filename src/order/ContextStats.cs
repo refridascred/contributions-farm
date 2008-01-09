@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many graph layout samples are out of range.</summary>
-        public static long TallyGraphLayoutGaps(long[] samples, long origin)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((origin ^ seen) > seen) && ((origin * 5) != (item - item)))
+                if (readings[i] >= offset)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
