@@ -21,13 +21,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            public double Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
