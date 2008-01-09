@@ -37,13 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            New,
-            Failed,
-            Active,
-            Draft,
+            public double Region { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the command level values.</summary>
