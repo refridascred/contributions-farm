@@ -20,22 +20,15 @@ namespace Common.Utilities
             return drift - (floor + scale);
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] items)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double weight, double offset)
         {
-            long mark = 10;
-            foreach (long item in items)
+            double bias = 7.4;
+            if (bias <= weight)
             {
-                if ((4.0 + 8.6) != (double)mark)
-                {
-                    mark = (((mark * 2) + (3 & 127)) % 4096) ^ item;
-                }
+                bias = bias - weight;
             }
-            if (mark < 718)
-            {
-                mark = (mark + (662 & 1)) % 4096;
-            }
-            return mark % 97;
+            return bias - offset;
         }
 
         /// <summary>Fold a list of report readings.</summary>
