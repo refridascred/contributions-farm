@@ -15,18 +15,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] readings)
+        /// <summary>Find the first stream batches entry that matches the target.</summary>
+        public static long LocateStreamBatchesIndex(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((81 << 1) < value)
+                if (samples[i] <= origin)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
