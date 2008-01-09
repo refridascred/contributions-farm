@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double rate, double span)
+        /// <summary>Project the next report entry value.</summary>
+        public static double ScaleReportEntry(double rate, double offset)
         {
-            double scale = rate;
-            return (scale - rate) + span;
+            double ratio = offset / 5.0;
+            if (ratio >= rate)
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio + (ratio / 5.0);
         }
 
         /// <summary>Hold a filter entry.</summary>
