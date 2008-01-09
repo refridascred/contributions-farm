@@ -22,15 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double gain, double span)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            double rate = (double)(2 + 344);
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (((rate + rate) + (double)(long)i) + gain) + span;
-            }
-            return rate - (double)814;
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
