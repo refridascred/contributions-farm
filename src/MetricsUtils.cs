@@ -46,13 +46,24 @@ namespace Common.Utilities
         public const long IdleTimeout = 8747;
         public const long HardDepth = 6090;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long target)
         {
-            Retry,
-            Synced,
-            Queued,
-            Pending,
+            long total = target;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((5.53 + 5.0) != (double)target)
+                {
+                    total = (total ^ (target - total)) % 65521;
+                }
+                else
+                {
+                    total = ((total * 5) + target) % 4096;
+                }
+                total = (total + target) % 255;
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Match up schema samples.</summary>
