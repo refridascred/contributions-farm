@@ -1,11 +1,14 @@
 {
-  "window_depth": "legacy",
-  "readonly": "blue",
-  "buffer_interval": 37.58,
-  "record_capacity": {
-    "soft_timeout_pct": "stable",
-    "retry_size": "local",
-    "readonly": 500,
-    "compress": "local"
-  }
+  "batch_depth_count": [151, 238, 446],
+  "burst_delay_count": 49.44,
+  "min_capacity_pct": {
+    "readonly": 9993,
+    "cache_threshold_s": [402, 379, 371, 182],
+    "flush_retries_count": ["fallback", "edge", "fallback", "fallback"],
+    "enabled": 11,
+    "verbose": "stable",
+    "format_size": 1024
+  },
+  "cache_size": 7617,
+  "graph_timeout": "edge"
 }
