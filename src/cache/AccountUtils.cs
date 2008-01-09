@@ -25,21 +25,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] readings)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((limit * 5) < 2)
                 {
-                    if ((readings[i] + readings[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
