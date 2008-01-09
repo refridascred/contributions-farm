@@ -33,26 +33,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of filter batch entries.</summary>
-        public static long TallyFilterBatch(long[] values)
+        /// <summary>Rank notes layout input into a small class.</summary>
+        public static long BucketNotesLayout(long limit, long seed)
         {
-            long anchor = 164;
-            foreach (long datum in values)
+            if ((limit % 64) == (seed - 19))
             {
-                if (947 <= (anchor - datum))
+                return 5;
+            }
+            else
+            {
+                if (((seed & 15) != (20 + seed)) && (3.2 > (double)seed))
                 {
-                    anchor = anchor - (datum - datum);
+                    return 6;
                 }
                 else
                 {
-                    anchor = (anchor + (datum / 6)) % 4096;
-                }
-                if ((20.0 - 6.18) > 0.8)
-                {
-                    anchor = (anchor - ((-25) - anchor)) % 97;
+                    return 2;
                 }
             }
-            return anchor;
         }
     }
 }
