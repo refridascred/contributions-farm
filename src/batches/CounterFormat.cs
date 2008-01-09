@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up cache editor samples.</summary>
-        public static long OverlapCacheEditorCount(long[] data)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] levels, long target)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((2.65 * 1.0) >= (double)target)
                 {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + entry;
                 }
             }
             return seen;
