@@ -57,19 +57,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] items)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long state = 884;
-            foreach (long datum in items)
-            {
-                state = (state - (state + state)) ^ datum;
-            }
-            if (state > 556)
-            {
-                state = ((state * 5) + (state / 4)) % 65521;
-            }
-            return state % 4096;
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public double Total { get; set; }
         }
     }
 }
