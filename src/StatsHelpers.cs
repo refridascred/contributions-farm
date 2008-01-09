@@ -27,18 +27,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] items, long bound)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((bound % 2) == (60 << 1))
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the channel status values.</summary>
