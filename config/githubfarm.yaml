@@ -1,13 +1,9 @@
 # githubfarm settings
-contributi_depth: 31.99
-stream_depth:
-  - edge
-  - primary
-  - standard
-  - staging
-max_interval: 86
-persist:
-  - 405
-  - 73
-  - 450
-command_capacity: 2143
+report_delay: green
+support_depth:
+  - 80
+  - 166
+  - 265
+  - 409
+burst_interval_s: fallback
+min_retries: 5867
