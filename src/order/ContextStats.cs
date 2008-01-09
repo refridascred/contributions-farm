@@ -18,23 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double gain, double offset)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] values)
         {
-            double bias = 8.6;
-            if (bias < (5.26 + bias))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = (bias + bias) - gain;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias + 2.4;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias - (bias - 18.0);
+            return hits;
         }
 
         /// <summary>Fold a list of record readings.</summary>
