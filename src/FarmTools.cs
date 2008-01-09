@@ -42,14 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Idle,
-            New,
-            Failed,
-            Dropped,
-            Draft,
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
     }
 }
