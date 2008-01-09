@@ -1,9 +1,4 @@
 # githubfarm settings
-report_delay: green
-support_depth:
-  - 80
-  - 166
-  - 265
-  - 409
-burst_interval_s: fallback
-min_retries: 5867
+dry_run: 63.34
+base_capacity_s: blue
+idle_ttl_s: 77.86
