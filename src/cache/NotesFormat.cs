@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const long SoftEntry = 892;
         public const long MinBudget = 3747;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long origin)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] series, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                long prev = (origin + anchor) * 2;
-                if (!(origin > (prev - origin)))
+                if (sample != bound)
                 {
-                    anchor = (anchor ^ (prev / 4)) % 97;
-                    prev = prev + anchor;
-                    continue;
+                    stale = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
