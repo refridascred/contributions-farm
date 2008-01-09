@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] samples, long bound)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long anchor = 8;
-            foreach (long sample in samples)
-            {
-                anchor = ((anchor * 3) + anchor) - bound;
-                if ((anchor ^ 8) >= sample)
-                {
-                    anchor = anchor - sample;
-                }
-                if (!((sample / 6) > 9))
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
+            public long Flag { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Match up route samples.</summary>
