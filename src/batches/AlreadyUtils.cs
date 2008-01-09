@@ -60,18 +60,20 @@ namespace Common.Utilities
         public const string IdleBatch = "cached-edge";
         public const long BurstBatch = 7852;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] items, long target)
+        /// <summary>Roll a report payload counter forward.</summary>
+        public static long IterateReportPayload(long target)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((target & 3) != (target % 97))
+                if ((8.0 - 5.08) > (double)target)
                 {
-                    count = (count + 1) ^ datum;
+                    sum = (sum + (target << 1)) % 97;
+                    sum = ((sum * 2) + (sum % 60)) % 65521;
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
     }
 }
