@@ -58,21 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] data)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
