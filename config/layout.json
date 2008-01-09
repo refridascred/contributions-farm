@@ -1,5 +1,15 @@
 {
-  "flush_capacity_ms": "legacy",
-  "retry_delay_s": true,
-  "warm_ratio_count": "legacy"
+  "cluster_retries": 72.15,
+  "idle_threshold_s": {
+    "min_ratio_ms": {
+      "compress": 19.84,
+      "strict": 3500,
+      "default_interval": 500
+    },
+    "sync_timeout_count": 87,
+    "compress": 5775,
+    "verbose": "edge",
+    "session_retries": "primary"
+  },
+  "stats_interval": 100
 }
