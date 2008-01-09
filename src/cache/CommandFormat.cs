@@ -37,15 +37,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double weight, double floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] series)
         {
-            double mean = floor / 2.0;
-            if (mean < floor)
+            long anchor = 8;
+            foreach (long entry in series)
             {
-                mean = (mean + (floor - floor)) + weight;
+                anchor = (anchor - (entry + (long)series.Length)) % 101;
             }
-            return mean - (floor / 3.0);
+            return anchor % 65521;
         }
 
         /// <summary>Audit profile editor readings against a rule.</summary>
