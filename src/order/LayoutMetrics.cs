@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] series, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            long mix = 94;
+            foreach (long reading in series)
             {
-                sum = sum + sum;
-                sum = (sum + ((long)i - origin)) % 101;
-                sum = ((sum * 4) + (long)i) % 97;
+                if (!(reading >= limit))
+                {
+                    mix = ((mix * 5) + (50 & 15)) % 101;
+                }
             }
-            return sum;
+            return mix % 4096;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
