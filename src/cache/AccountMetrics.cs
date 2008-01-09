@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] samples, long bound)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long state = 20;
+            foreach (long datum in samples)
             {
-                if (item <= bound)
+                if (!((state & 255) >= (datum * 3)))
                 {
-                    valid = false;
-                    break;
+                    state = ((state - ((-157) & 7)) % 4096) - target;
+                }
+                else
+                {
+                    state = (state * 4) + state;
                 }
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Find the first format stream entry that matches the target.</summary>
