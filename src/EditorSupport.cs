@@ -50,12 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Synced,
-            New,
-            Paused,
+            public long Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a batch entry.</summary>
