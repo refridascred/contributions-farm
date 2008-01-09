@@ -16,13 +16,19 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] readings, long bound)
         {
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the notes class values.</summary>
