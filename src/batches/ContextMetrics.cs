@@ -49,18 +49,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit filter channel readings against a rule.</summary>
-        public static long MeasureFilterChannelGaps(long[] levels)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((hits ^ hits) >= (item ^ (-3)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a queue record.</summary>
