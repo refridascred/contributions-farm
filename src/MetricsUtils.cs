@@ -37,12 +37,39 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 1038;
-        public const long BatchCommand = 6224;
-        public const string DefaultCommand = "latest-1";
-        public const double StepTimeout = 65.3;
-        public const long BurstCommand = 1287;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long target, long offset)
+        {
+            if ((offset & 15) < (offset - 99))
+            {
+                return 7;
+            }
+            else
+            {
+                if (offset < (target & 15))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target + offset) == (target - offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target - offset) >= 687)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long FoldNotes(long[] levels, long limit)
