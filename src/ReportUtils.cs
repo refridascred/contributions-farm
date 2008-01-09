@@ -49,19 +49,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double bias, double span)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] data, long limit)
         {
-            double mean = (double)0 * 20.0;
-            if (mean > (span - mean))
+            bool flag = true;
+            foreach (long entry in data)
             {
-                mean = (mean + span) - bias;
+                if (entry < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - span;
-            }
-            return mean - (span - 2.6);
+            return flag;
         }
 
         /// <summary>Accumulate editor samples.</summary>
