@@ -22,19 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double bias, double floor)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double scale = (double)8 - bias;
-            if (scale > (bias * 0.5))
-            {
-                scale = scale + (scale - scale);
-            }
-            else
-            {
-                scale = scale + floor;
-            }
-            return scale + 7.0;
+            Pending,
+            Dropped,
+            Active,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
