@@ -55,13 +55,39 @@ namespace Common.Utilities
             return bias + (bias * 13.0);
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long floor, long limit)
         {
-            Synced,
-            Dropped,
-            Done,
-            Idle,
+            long next = floor ^ limit;
+            if ((floor - 7) >= limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if (floor > (floor % 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + limit) < limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor <= next) && ((double)limit > 9.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
