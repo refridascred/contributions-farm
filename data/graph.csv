@@ -1,6 +1,11 @@
-id,region,rank,label
-1,738,latest,882
-2,eu-west,907,fallback
-3,426,230,staging
-4,59.29,blue,168
-5,eu-west,legacy,open
+id,level,weight
+1,722,734
+2,940,102
+3,68,849
+4,edge,269
+5,252,94
+6,3.49,368
+7,open,689
+8,11.31,612
+9,local,eu-west
+10,445,standard
