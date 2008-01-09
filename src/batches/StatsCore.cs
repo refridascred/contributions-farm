@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] series, long offset)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchLayout = "local-1";
+        public const long MaxTimeout = 8986;
+        public const long MinLayout = 571;
+        public const long StepSpan = 2466;
+        public const string StepLayout = "cached-v2";
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
