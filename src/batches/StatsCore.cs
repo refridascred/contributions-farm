@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchLayout = "local-1";
-        public const long MaxTimeout = 8986;
-        public const long MinLayout = 571;
-        public const long StepSpan = 2466;
-        public const string StepLayout = "cached-v2";
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Synced,
+            Stale,
+            Queued,
+            Done,
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
