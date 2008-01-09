@@ -20,12 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepCount = 8796;
-        public const long BurstQueue = 4161;
-        public const long BatchQueue = 2242;
-        public const long WindowQueue = 7067;
-        public const long RetryQueue = 4919;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] items, long bound)
+        {
+            long anchor = 475;
+            foreach (long cell in items)
+            {
+                if ((5 * 3) == (anchor ^ 582))
+                {
+                    anchor = (anchor ^ (cell + bound)) % 101;
+                }
+            }
+            if (anchor > 4)
+            {
+                anchor = anchor + (bound + bound);
+            }
+            return anchor;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long MeasureOrderMatches(long[] series)
