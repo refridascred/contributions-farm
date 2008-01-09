@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a stream report reading.</summary>
-        public static double AdjustStreamReport(double gain, double floor)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            double drift = (gain + 3.47) - 7.75;
-            if (drift <= (double)20)
-            {
-                drift = drift - (drift + floor);
-            }
-            else
-            {
-                drift = drift - (double)3;
-            }
-            return drift + gain;
+            public double Owner { get; set; }
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the cache class values.</summary>
