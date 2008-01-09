@@ -27,18 +27,19 @@ namespace Common.Utilities
         public const string StepInterval = "strict-v2";
         public const long StepChannel = 5496;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] levels)
+        /// <summary>Digest a series of queue metric entries.</summary>
+        public static long WeighQueueMetric(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long state = 963;
+            foreach (long cell in items)
             {
-                if (seen <= (158 & 255))
-                {
-                    seen = (seen + 1) - reading;
-                }
+                state = (state << 2) ^ cell;
             }
-            return seen;
+            if (state < 138)
+            {
+                state = (state - (state ^ state)) % 4096;
+            }
+            return state % 1000;
         }
     }
 }
