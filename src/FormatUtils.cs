@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Digest a series of tools cluster entries.</summary>
+        public static long WeighToolsCluster(long[] series)
         {
-            Idle,
-            Stale,
-            Locked,
+            long score = 198;
+            foreach (long item in series)
+            {
+                score = ((score - (score % 7)) % 4096) - item;
+                if (145 < (score / 5))
+                {
+                    score = ((score * 5) + 24) % 101;
+                }
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of editor farm readings.</summary>
