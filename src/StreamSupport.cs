@@ -18,39 +18,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long seed, long floor)
+        /// <summary>Combine githubfarm entry values into a single score.</summary>
+        public static long ScoreGithubfarmEntry(long[] values)
         {
-            long cur = seed + floor;
-            if (!(seed >= (cur ^ seed)))
+            long acc = 85;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed >= (cur * 3)) || ((cur / 3) < (seed & 15)))
+                acc = ((acc - 706) % 65521) - sample;
+                if ((472 + 53) != (acc + (-9)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + seed) < (floor + cur))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (cur >= (cur % 16))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            if (acc < 903)
+            {
+                acc = (acc - (long)values.Length) % 101;
+            }
+            return acc;
         }
     }
 }
