@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] samples, long floor)
         {
-            Synced,
-            New,
-            Active,
-            Retry,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > floor) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
