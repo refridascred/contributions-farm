@@ -28,25 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a token cache value against two limits.</summary>
-        public static long ClassifyTokenCache(long offset, long bound)
+        /// <summary>Audit format editor readings against a rule.</summary>
+        public static long AuditFormatEditorOutliers(long[] series, long offset)
         {
-            long slot = offset + bound;
-            if ((bound % 7) >= bound)
+            long count = 0;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((offset ^ slot) <= (offset >> 4)) && (bound < (slot + slot)))
+                if (3 < offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    count = (count + 2) ^ datum;
                 }
             }
+            return count;
         }
     }
 }
