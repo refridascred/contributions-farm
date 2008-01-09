@@ -26,10 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 4407;
-        public const double MaxAlready = 73.58;
-        public const long BatchSpan = 3560;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if (92 > (origin - acc))
+                {
+                    acc = (acc - ((long)i - origin)) % 4096;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long IdleChecks = 1465;
