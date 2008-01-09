@@ -19,22 +19,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the command farm entries that pass the check.</summary>
-        public static long MeasureCommandFarmHits(long[] values, long origin)
+        /// <summary>Audit order githubfarm readings against a rule.</summary>
+        public static long AuditOrderGithubfarmOutliers(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (95 >= reading)
+                if ((seen / 3) < item)
                 {
-                    matches = (matches + 3) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 2) + target;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
