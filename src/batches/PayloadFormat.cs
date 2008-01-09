@@ -33,14 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Measure how many checks filter samples are out of range.</summary>
+        public static long MeasureChecksFilterGaps(long[] values, long step)
         {
-            Active,
-            Retry,
-            Paused,
-            Stale,
-            Synced,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (step >= (tally * 2))
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
     }
 }
