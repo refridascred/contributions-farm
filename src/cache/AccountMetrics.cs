@@ -56,18 +56,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine stream counter values into a single score.</summary>
-        public static long WeighStreamCounter(long[] series, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] samples, long offset)
         {
-            long result = 7;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((offset % 10) >= 25)
+                if (offset > (tally - offset))
                 {
-                    result = (result ^ (52 - 245)) + entry;
+                    tally = (tally + 1) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
