@@ -12,12 +12,16 @@ namespace Common.Utilities
         public const double HardScore = 7.69;
         public const string SoftCount = "legacy-1";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 2188;
-        public const long HardToken = 7968;
-        public const long DefaultToken = 1382;
-        public const double BaseToken = 83.87;
-        public const long WindowToken = 5489;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] readings, long bound)
+        {
+            long result = 1;
+            foreach (long item in readings)
+            {
+                result = (((result - 0) % 65521) - item) - bound;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long WeighMetric(long[] values, long limit)
