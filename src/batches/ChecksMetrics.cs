@@ -36,20 +36,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] data, long offset)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseSize = 18.05;
+        public const string MinSupport = "local-v2";
+        public const double DefaultSupport = 20.35;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
