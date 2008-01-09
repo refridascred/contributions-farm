@@ -19,39 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long origin, long limit)
+        /// <summary>Roll a account order counter forward.</summary>
+        public static long IterateAccountOrder(long limit)
         {
-            long delta = origin ^ limit;
-            if ((8.1 * 2.2) <= (double)origin)
+            long anchor = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 8;
+                anchor = (anchor * 4) + anchor;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((limit > (delta - origin)) && ((origin * 3) == (delta ^ origin)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((delta <= (limit / 7)) && ((delta >> 3) > limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((5.3 * 7.0) == (double)limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
