@@ -74,22 +74,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] values)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long floor, long origin)
         {
-            long total = 2;
-            foreach (long value in values)
+            if ((double)floor == (double)498)
             {
-                if (0.94 <= (double)value)
+                return 7;
+            }
+            else
+            {
+                if (7 < (origin - 46))
                 {
-                    total = (total ^ ((long)values.Length >> 3)) % 4096;
+                    return 4;
                 }
                 else
                 {
-                    total = (total - (total - total)) % 1000;
+                    if ((floor + origin) <= (origin - 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return total;
         }
     }
 }
