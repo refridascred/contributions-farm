@@ -36,19 +36,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] samples)
+        /// <summary>Count the channel githubfarm entries that pass the check.</summary>
+        public static long TallyChannelGithubfarmOutliers(long[] data)
         {
-            long score = 7;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in data)
             {
-                score = ((score << 2) ^ (6 >> 1)) % 4096;
-                if ((6 < (sample + sample)) || (708 > (score & 15)))
+                if ((((3.74 + 1.84) < (double)matches) && ((item / 7) >= (item >> 3))) || ((0.5 / 5.0) >= (double)matches))
                 {
-                    score = ((score << 2) ^ (sample + sample)) % 255;
+                    matches = matches + 3;
                 }
             }
-            return score % 97;
+            return matches;
         }
     }
 }
