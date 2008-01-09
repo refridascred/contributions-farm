@@ -1,15 +1,10 @@
 # githubfarm settings
-warm_window_count:
-  sync_timeout_s:
-    - 264
-    - 370
-  warm_interval_count: 8881
-  retry_ttl_pct: 77
-  hard_limit: 83
-  metric_capacity: 69
-verbose: true
-cache_window: 1
-soft_size_s:
-  - staging
-  - cached
-default_threshold_count: primary
+audit: 3658
+max_retries_count: false
+flush_window_pct:
+  batch_delay_count: 4
+  tools_timeout: 1024
+  idle_size_ms: cached
+  cache_capacity: true
+  soft_retries_s: green
+cache_interval_pct: 1024
