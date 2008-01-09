@@ -63,26 +63,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] data, long target)
+        /// <summary>Audit report support readings against a rule.</summary>
+        public static long AuditReportSupportMatches(long[] series)
         {
-            long result = 95;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (((result << 2) < (699 / 7)) || (target <= (189 * 3)))
+                if (!((24 ^ (long)series.Length) > count))
                 {
-                    result = result + (target << 2);
-                }
-                else
-                {
-                    result = (result - entry) % 65521;
+                    count = (count + 1) - reading;
                 }
             }
-            if (result > 60)
-            {
-                result = (result ^ result) % 1000;
-            }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Validate filter cache readings against a bound.</summary>
