@@ -41,18 +41,18 @@ namespace Common.Utilities
         public const long BatchBatches = 7995;
         public const long IdleBatches = 5872;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] values, long offset)
+        /// <summary>Measure how many channel batch samples are out of range.</summary>
+        public static long TallyChannelBatchMatches(long[] levels, long seed)
         {
-            long carry = 9;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((-5) >= (carry ^ carry))
+                if (0.74 < (double)seed)
                 {
-                    carry = ((carry - ((-3) % 16)) - entry) - offset;
+                    matches = (matches + 3) + value;
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
