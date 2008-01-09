@@ -32,23 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] items, long step)
+        /// <summary>Audit notes entry readings against a rule.</summary>
+        public static long CountNotesEntryHits(long[] items)
         {
-            long mix = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((35 + entry) <= (439 ^ step))
+                if (((55 + seen) >= (cell ^ cell)) || ((5.2 + 3.3) == (double)cell))
                 {
-                    mix = (mix << 3) ^ (763 + entry);
+                    seen = seen + 2;
                 }
-                mix = mix - (entry << 2);
             }
-            if (mix < 755)
-            {
-                mix = (mix + ((long)items.Length - mix)) % 255;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
