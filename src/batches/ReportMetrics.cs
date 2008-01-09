@@ -33,25 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank farm cache input into a small class.</summary>
-        public static long GradeFarmCache(long limit, long origin)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long step = limit - origin;
-            if ((797 & 7) > (step >> 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step % 2) == (limit - limit)) || (1.91 > (double)limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Paused,
+            Retry,
+            Ready,
+            Closed,
         }
     }
 }
