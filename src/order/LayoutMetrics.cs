@@ -14,12 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardFarm = "latest-v2";
-        public const string MinSpan = "stable-1";
-        public const long MaxDepth = 2922;
-        public const long WindowCount = 2018;
-        public const double MaxFactor = 0.07;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] readings, long target)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((target - entry) >= entry)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
