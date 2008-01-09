@@ -92,12 +92,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            New,
-            Stale,
-            Ready,
+            public bool Owner { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
