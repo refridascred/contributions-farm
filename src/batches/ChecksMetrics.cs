@@ -42,13 +42,10 @@ namespace Common.Utilities
         public const string MinSupport = "local-v2";
         public const double DefaultSupport = 20.35;
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public bool Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepLevel = 3924;
+        public const long BaseTimeout = 7340;
+        public const long MinInterval = 300;
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long StepGithubfarm(long floor)
