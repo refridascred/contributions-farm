@@ -53,18 +53,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((((9.0 / 2.0) <= (double)sample) && ((target + tally) > (46 & 63))) || ((double)sample <= (7.4 * 8.0)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseScore = 7266;
+        public const long RetryEntry = 4675;
+        public const string MaxEntry = "cached-v2";
+        public const string SoftEntry = "alpha-v2";
     }
 }
