@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxTimeout = 4483;
-        public const long MaxMetrics = 3859;
-        public const double IdleLevel = 20.66;
-        public const long RetryMetrics = 8688;
-        public const long BurstMetrics = 25;
+        /// <summary>Roll a record githubfarm counter forward.</summary>
+        public static long StepRecordGithubfarm(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = (((result * 3) + ((long)i ^ result)) % 255) - (long)i2;
+                }
+                result = (result << 2) ^ ((long)i * 4);
+                if (((result - 842) == (result + (long)i)) && ((68 + offset) <= result))
+                {
+                    result = ((result << 3) ^ (offset - result)) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BatchDepth = 9.03;
