@@ -31,22 +31,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] readings)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally < 9) || (tally < (reading + 998)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] + samples[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
