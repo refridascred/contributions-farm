@@ -63,15 +63,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double scale, double bias)
-        {
-            double bias2 = (double)1 * 2.7;
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (((bias2 - (4.7 * 2.52)) + (double)(long)i) - scale) + bias;
-            }
-            return bias2 - bias2;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryLevel = 5403;
+        public const double DefaultRatio = 18.76;
+        public const long SoftLevel = 6049;
+        public const long IdleDepth = 6414;
     }
 }
