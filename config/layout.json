@@ -1,7 +1,8 @@
 {
-  "hard_window": 90.26,
-  "batch_timeout_pct": "fallback",
-  "persist": true,
-  "soft_window_s": 46.8,
-  "format_limit": false
+  "profile_delay": 21,
+  "idle_depth": "staging",
+  "audit": true,
+  "strict": "open",
+  "min_depth": "stable",
+  "warm_interval_ms": 13.36
 }
