@@ -26,9 +26,19 @@ namespace Common.Utilities
         public const double BatchRatio = 79.73;
         public const long MaxTimeout = 4298;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 81;
-        public const double StepDepth = 20.25;
-        public const long BaseSize = 1725;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] data, long seed)
+        {
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
