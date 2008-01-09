@@ -22,27 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] readings, long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] levels, long target)
         {
-            long total = 7;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                total = (total * 3) + (total << 1);
-                if (!(((305 << 2) != (long)readings.Length) || (total >= (sample + offset))))
+                if (reading < target)
                 {
-                    total = total ^ (offset & 63);
-                }
-                if ((total % 7) != (sample - 759))
-                {
-                    total = (total * 3) + (sample >> 3);
+                    valid = false;
+                    break;
                 }
             }
-            if (total > 859)
-            {
-                total = total ^ (offset + total);
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
