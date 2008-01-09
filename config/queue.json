@@ -1,6 +1,5 @@
 {
-  "hard_threshold": "primary",
-  "account_threshold": "fallback",
-  "sync_retries_count": "blue",
-  "hard_threshold_s": 66.14
+  "profile_retries": ["latest", "cached", "edge", "primary"],
+  "poll_delay_count": ["open", "legacy", "standard"],
+  "hard_retries_s": 500
 }
