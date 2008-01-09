@@ -36,11 +36,20 @@ namespace Common.Utilities
         public const string BurstInterval = "primary-1";
         public const string RetrySize = "latest";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 8638;
-        public const long CacheCount = 322;
-        public const long StepCount = 7329;
-        public const long RetryScore = 1766;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] levels, long floor)
+        {
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
