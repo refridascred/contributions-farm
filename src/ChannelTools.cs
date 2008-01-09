@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double scale, double bias)
-        {
-            double gain = (2.9 - scale) - (bias * 0.53);
-            if (gain >= scale)
-            {
-                gain = gain - 4.45;
-            }
-            return gain + gain;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 255;
+        public const long DefaultWidth = 1978;
+        public const string HardCache = "staging";
+        public const string BatchWidth = "local-v2";
 
         /// <summary>Blend two metrics checks measurements.</summary>
         public static double BlendMetricsChecks(double weight, double floor)
