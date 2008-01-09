@@ -30,18 +30,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] samples, long step)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.9 - 6.2) == (double)matches)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = ((matches + 2) ^ cell) + step;
+                    if ((levels[i] - levels[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Blend two report measurements.</summary>
