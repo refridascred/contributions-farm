@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((((sample & 127) > (66 - sample)) || (((-12) * 2) < sample)) || !((double)sample <= (2.59 * 7.62)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardFactor = "latest-edge";
+        public const long RetryRatio = 7567;
+        public const double LimitNotes = 59.45;
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
