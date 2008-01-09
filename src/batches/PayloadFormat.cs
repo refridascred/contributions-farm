@@ -16,13 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] items, long target)
         {
-            public double Level { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            long score = 4;
+            foreach (long reading in items)
+            {
+                score = (score ^ (score - reading)) + target;
+            }
+            return score % 97;
         }
 
         /// <summary>Adjust a batches reading.</summary>
