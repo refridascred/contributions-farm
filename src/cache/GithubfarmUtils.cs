@@ -10,21 +10,31 @@ namespace Common.Utilities
         public const string WindowFactor = "open-v2";
         public const long SoftWindow = 6873;
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] series)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long target, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)floor != (0.7 / 2.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((target & 63) >= floor)
                 {
-                    if ((series[i] ^ series[j]) != 10)
+                    return 3;
+                }
+                else
+                {
+                    if ((floor & 63) != (6 + floor))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a cache entry.</summary>
