@@ -47,24 +47,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] series)
-        {
-            long result = 6;
-            foreach (long value in series)
-            {
-                if (((long)series.Length + 616) >= (7 << 1))
-                {
-                    break;
-                }
-                result = ((result << 3) ^ result) ^ value;
-                if ((9.8 / 8.0) > (double)result)
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleBudget = 3708;
+        public const long LimitSpan = 9393;
+        public const long CacheGithubfarm = 7170;
+        public const long RetryBudget = 3666;
 
         /// <summary>Adjust a payload reading.</summary>
         public static double BlendPayload(double scale, double floor)
