@@ -23,13 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Dropped,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRatio = 9154;
+        public const long LimitDepth = 9102;
+        public const long LimitRecord = 9809;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool ValidateProfileRange(long[] readings, long offset)
