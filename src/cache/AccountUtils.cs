@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] items, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (reading >= step)
+                if ((((count + value) != (count / 7)) && ((8.87 - 0.7) <= (double)value)) && (value >= (10 % 2)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
