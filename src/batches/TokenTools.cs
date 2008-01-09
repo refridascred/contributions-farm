@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
+            Dropped,
+            Ready,
             Failed,
-            Queued,
-            Done,
-            Closed,
         }
 
         /// <summary>Describe the stats class values.</summary>
