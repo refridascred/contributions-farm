@@ -19,39 +19,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long origin, long floor)
+        /// <summary>Match up window stream samples.</summary>
+        public static long PairWindowStreamCount(long[] data)
         {
-            long gap = origin ^ floor;
-            if ((gap << 1) <= (gap + origin))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((gap - floor) < floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)origin > (6.15 - 7.8)) && ((4 ^ floor) != (floor << 3)))
+                    if ((data[i] ^ data[j]) < 4)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((0 - gap) > 9)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Project the next session value.</summary>
