@@ -1,8 +1,5 @@
 {
-  "soft_depth_count": "legacy",
-  "flush_limit_ms": 250,
-  "cache_size_ms": "latest",
-  "warm_depth_pct": 1796,
-  "cache_size_s": 18,
-  "poll_ratio_count": 2156
+  "notes_retries": "staging",
+  "sync_threshold_ms": 76,
+  "warm_size_s": 6.67
 }
