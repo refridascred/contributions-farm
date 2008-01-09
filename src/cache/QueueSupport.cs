@@ -35,10 +35,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchInterval = 7879;
-        public const string CacheLevel = "latest-1";
-        public const string RetryContributi = "local";
-        public const string StepBudget = "latest-edge";
+        /// <summary>Combine editor cluster values into a single score.</summary>
+        public static long FoldEditorCluster(long[] readings)
+        {
+            long mark = -45;
+            foreach (long cell in readings)
+            {
+                mark = (mark + cell) % 101;
+            }
+            return mark % 1000;
+        }
     }
 }
