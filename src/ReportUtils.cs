@@ -72,9 +72,23 @@ namespace Common.Utilities
             return mean - (span - 2.6);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinFactor = 490;
-        public const long RetryGithubfarm = 4089;
-        public const long LimitDepth = 1336;
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double ratio, double floor)
+        {
+            double rate = ratio;
+            if (rate >= (double)402)
+            {
+                rate = rate - floor;
+            }
+            else
+            {
+                rate = rate - 9.4;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + floor) + (double)(long)i;
+            }
+            return rate - (double)506;
+        }
     }
 }
