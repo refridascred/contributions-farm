@@ -12,16 +12,12 @@ namespace Common.Utilities
         public const string WindowBatches = "strict-v2";
         public const string DefaultWidth = "stable-1";
 
-        /// <summary>Roll a session report counter forward.</summary>
-        public static long StepSessionReport(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 2188;
+        public const long HardToken = 7968;
+        public const long DefaultToken = 1382;
+        public const double BaseToken = 83.87;
+        public const long WindowToken = 5489;
 
         /// <summary>Count the format channel entries that pass the check.</summary>
         public static long AuditFormatChannelGaps(long[] items)
