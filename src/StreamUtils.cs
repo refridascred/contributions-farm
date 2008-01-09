@@ -38,17 +38,13 @@ namespace Common.Utilities
             return load - (double)52;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] items, long floor)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public double Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
