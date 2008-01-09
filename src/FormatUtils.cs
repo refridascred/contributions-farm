@@ -54,12 +54,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long limit)
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public bool Owner { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 2) + (mark << 3)) % 255;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
