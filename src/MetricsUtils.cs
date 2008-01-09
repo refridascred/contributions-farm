@@ -54,22 +54,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many stats checks samples are out of range.</summary>
-        public static long MeasureStatsChecksOutliers(long[] data)
+        /// <summary>Find the first cache already entry that matches the target.</summary>
+        public static long LookupCacheAlreadyIndex(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seen >= (seen + seen))
+                if ((series[i] == step) && ((series[i] % 2) == 0))
                 {
-                    seen = (seen + 2) - datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
