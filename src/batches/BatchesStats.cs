@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] series, long bound)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] samples)
         {
-            long result = 81;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result - result) + bound;
-                result = (result - item) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the context phase values.</summary>
