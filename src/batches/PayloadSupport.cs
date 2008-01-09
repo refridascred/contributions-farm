@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double gain, double span)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double scale, double offset)
         {
-            double weight = (double)(5 / 7);
-            if (weight <= (double)86)
+            double bias = scale;
+            if (bias < (offset / 5.0))
             {
-                weight = (weight - gain) - span;
+                bias = bias + (3.67 - scale);
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                weight = (weight - weight) + (double)(long)i;
+                bias = bias + (bias + bias);
             }
-            return weight + weight;
+            return bias + bias;
         }
 
         /// <summary>Match up cache samples.</summary>
