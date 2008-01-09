@@ -39,12 +39,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] items, long target)
         {
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public string Count { get; set; } = "";
+            long mark = 8;
+            foreach (long item in items)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    mark = ((mark << 2) ^ (item % 2)) + (long)i;
+                }
+                if (((double)item < (double)mark) && ((target & 1) <= target))
+                {
+                    mark = ((mark * 3) + (item + 54)) % 1000;
+                }
+            }
+            if (mark < 4)
+            {
+                mark = (mark * 3) + (target << 2);
+            }
+            return mark;
         }
     }
 }
