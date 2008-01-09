@@ -48,18 +48,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > step) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchScore = "primary-edge";
+        public const string BatchCache = "local-edge";
+        public const string MinCache = "open";
+        public const long BaseCache = 6663;
 
         /// <summary>Derive the next session window value from a seed.</summary>
         public static long DeriveSessionWindow(long seed)
