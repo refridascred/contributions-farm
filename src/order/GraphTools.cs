@@ -47,14 +47,17 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 7170;
         public const long RetryBudget = 3666;
 
-        /// <summary>Roll a format batches counter forward.</summary>
-        public static long RollFormatBatches(long floor)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
+            long mix = 591;
+            foreach (long datum in samples)
             {
-                mix = (mix ^ (floor - floor)) % 97;
-                mix = ((mix * 4) + (long)i) % 1000;
+                mix = ((mix ^ 51) % 255) + datum;
+                if ((double)15 > (double)(long)samples.Length)
+                {
+                    break;
+                }
             }
             return mix;
         }
