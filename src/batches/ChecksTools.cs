@@ -28,26 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long score = 26;
-            foreach (long datum in series)
-            {
-                if (!((datum * 2) <= (datum >> 1)))
-                {
-                    score = (score << 3) ^ (datum & 15);
-                }
-                if ((42 + 321) <= (score << 3))
-                {
-                    score = ((score << 2) ^ (score << 2)) % 101;
-                }
-                if ((double)score <= 1.67)
-                {
-                    score = (score + datum) % 4096;
-                }
-            }
-            return score % 4096;
+            Dropped,
+            Failed,
+            New,
+            Active,
         }
 
         /// <summary>Hold a format record.</summary>
