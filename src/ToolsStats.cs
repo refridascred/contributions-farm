@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleScore = 8035;
-        public const string BaseBuffer = "latest";
-        public const double MaxBuffer = 37.17;
-        public const double MinDepth = 26.63;
+        /// <summary>Compare every pair of batch support readings.</summary>
+        public static long OverlapBatchSupportCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every format context entry stays within the limit.</summary>
         public static bool GuardFormatContextLimits(long[] items, long floor)
