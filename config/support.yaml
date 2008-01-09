@@ -1,23 +1,23 @@
 # support settings
-flush_ratio:
-  burst_limit_s: 1024
-  poll_delay_pct:
-    - legacy
-    - primary
-  flush_ttl: 36
-  report_interval: 83
-  burst_ratio:
-    githubfarm_retries: 60
-    cluster_ttl:
-      - staging
-      - latest
-      - local
-    flush_ttl_pct: false
-batch_size_count:
-  - fallback
-  - staging
-  - standard
-poll_size: local
-readonly: 4349
+soft_window_count: false
+hard_ttl_pct: 88.69
 enabled: green
-dry_run: false
+strict: 60
+base_delay_ms:
+  batch_window: staging
+  contributi_limit:
+    retry_window: 6.68
+    persist: 90.7
+    verbose:
+      - edge
+      - latest
+      - open
+      - blue
+    batch_depth:
+      - 204
+      - 318
+      - 301
+      - 368
+  retry_timeout: 97.47
+  verbose: 1352
+hard_limit_s: 51
