@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long target)
         {
-            Done,
-            Dropped,
-            Locked,
-            Ready,
-            Active,
+            long result = target;
+            for (int i = 0; i < 17; i++)
+            {
+                long count = (target - target) ^ 2;
+                if ((7.1 + 7.0) <= (double)count)
+                {
+                    result = (result << 2) ^ result;
+                    count = (count << 3) ^ result;
+                    break;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Find the first stream batches entry that matches the target.</summary>
