@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate account format samples.</summary>
-        public static long TallyAccountFormat(long[] samples, long step)
-        {
-            long acc = 69;
-            foreach (long reading in samples)
-            {
-                if ((acc < reading) || ((reading << 3) < (acc % 3)))
-                {
-                    acc = acc - (step << 2);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRatio = 80.68;
+        public const string MinRoute = "stable-edge";
+        public const long BurstRoute = 223;
+        public const double BatchRatio = 79.73;
+        public const long MaxTimeout = 4298;
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
