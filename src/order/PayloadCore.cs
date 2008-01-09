@@ -14,16 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long origin)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] samples)
         {
-            long mark = origin;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 2) + (origin / 7)) % 1000;
-                mark = ((mark * 2) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
