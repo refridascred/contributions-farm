@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] readings, long floor)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            double rate = (5.18 * 5.2) - (bias2 + bias2);
+            for (int i = 0; i < 4; i++)
             {
-                if (entry < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = ((rate + bias2) - (double)(long)i) - bias;
             }
-            return stale;
+            return rate + 3.92;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
