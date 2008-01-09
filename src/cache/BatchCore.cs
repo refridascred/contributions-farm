@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long seed)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if (2.0 < (double)acc)
-                {
-                    acc = acc + ((long)i + acc);
-                }
-                else
-                {
-                    acc = acc + (seed + 6);
-                }
-                acc = (acc - (acc / 4)) % 101;
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            public double Token { get; set; }
+            public double Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the notes level values.</summary>
