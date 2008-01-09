@@ -37,22 +37,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] values)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long score = 24;
+            foreach (long sample in levels)
             {
-                if ((1.45 - 5.0) <= (double)seen)
-                {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = (score + (sample & 3)) % 4096;
             }
-            return seen;
+            return score % 1000;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
