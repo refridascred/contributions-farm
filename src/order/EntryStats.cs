@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const string CacheWidth = "primary-v2";
         public const long MaxInterval = 6920;
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] levels)
         {
-            public bool Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public double Limit { get; set; }
+            long mark = 55;
+            foreach (long cell in levels)
+            {
+                mark = ((mark ^ (296 & 127)) % 4096) + cell;
+            }
+            return mark;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
