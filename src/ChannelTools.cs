@@ -16,21 +16,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Blend two metrics checks measurements.</summary>
+        public static double BlendMetricsChecks(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = weight;
+            if (scale < scale)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale - (floor / 7.0);
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + 7.5) + (double)(long)i;
+            }
+            return scale + weight;
         }
 
         /// <summary>Describe the filter class values.</summary>
