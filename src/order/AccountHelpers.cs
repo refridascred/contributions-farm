@@ -73,15 +73,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Idle,
-            Retry,
-            Pending,
-            New,
-            Active,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 3188;
+        public const long BatchStream = 6771;
+        public const long HardSize = 415;
+        public const string HardTimeout = "staging-v2";
+        public const long DefaultStream = 7148;
 
         /// <summary>Project the next commits notes value.</summary>
         public static double BlendCommitsNotes(double bias, double offset)
