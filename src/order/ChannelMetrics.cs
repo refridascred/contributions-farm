@@ -12,12 +12,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepOrder = "stable-1";
-        public const long MinDepth = 6443;
-        public const string StepDepth = "cached-v2";
-        public const long RetryOrder = 5873;
-        public const long SoftOrder = 7056;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public double Owner { get; set; }
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long CountCounterGaps(long[] data)
