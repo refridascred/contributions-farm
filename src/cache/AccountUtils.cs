@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const double MaxRatio = 11.21;
         public const double IdleCommand = 43.92;
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] readings, long step)
         {
-            Locked,
-            New,
-            Stale,
-            Retry,
-            Queued,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((5 ^ step) > (8 + 1))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
