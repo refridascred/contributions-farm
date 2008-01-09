@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double weight, double floor)
+        /// <summary>Measure how many cache counter samples are out of range.</summary>
+        public static long AuditCacheCounterOutliers(long[] levels, long bound)
         {
-            double ratio = 7.9;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                ratio = (((ratio + (double)120) - (double)(long)i) - weight) + floor;
+                if ((sample % 64) < hits)
+                {
+                    hits = (hits + 1) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio + (double)482;
+            return hits;
         }
 
         /// <summary>Describe the tools state values.</summary>
