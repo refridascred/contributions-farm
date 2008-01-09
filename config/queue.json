@@ -1,5 +1,15 @@
 {
-  "default_retries_pct": 76.01,
-  "hard_capacity_count": true,
-  "min_retries_s": 60
+  "schema_ratio": 50.37,
+  "poll_ttl_pct": {
+    "batch_interval_ms": [389, 442, 385, 31],
+    "strict": "latest",
+    "idle_depth": 60,
+    "hard_threshold_ms": "edge",
+    "default_timeout_s": {
+      "counter_threshold": "edge",
+      "sync_interval_count": 80.76,
+      "entry_delay": ["legacy", "open"]
+    }
+  },
+  "readonly": 6532
 }
