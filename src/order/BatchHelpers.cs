@@ -32,19 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] readings, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long state = 214;
+            foreach (long item in samples)
             {
-                if (sample < origin)
+                if ((double)state > 2.8)
                 {
-                    stale = false;
-                    break;
+                    state = (state - (item + 42)) - origin;
                 }
             }
-            return stale;
+            return state;
         }
     }
 }
