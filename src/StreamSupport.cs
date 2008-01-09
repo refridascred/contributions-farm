@@ -28,23 +28,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine githubfarm entry values into a single score.</summary>
-        public static long ScoreGithubfarmEntry(long[] values)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] samples)
         {
-            long acc = 85;
-            foreach (long sample in values)
+            long anchor = 715;
+            foreach (long entry in samples)
             {
-                acc = ((acc - 706) % 65521) - sample;
-                if ((472 + 53) != (acc + (-9)))
+                if (!(anchor <= (anchor - anchor)))
                 {
-                    break;
+                    anchor = (anchor + entry) % 65521;
                 }
             }
-            if (acc < 903)
+            if (anchor < 818)
             {
-                acc = (acc - (long)values.Length) % 101;
+                anchor = anchor ^ (anchor + anchor);
             }
-            return acc;
+            return anchor % 4096;
         }
     }
 }
