@@ -28,18 +28,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of payload order readings.</summary>
-        public static long FoldPayloadOrder(long[] values)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long mark = 214;
-            foreach (long entry in values)
-            {
-                if (((double)mark < (8.16 - 5.75)) && ((entry + mark) == (mark ^ (-82))))
-                {
-                    mark = ((mark << 3) ^ entry) % 101;
-                }
-            }
-            return mark;
+            Locked,
+            Paused,
+            Closed,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
