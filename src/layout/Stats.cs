@@ -33,5 +33,25 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((double)sum > (5.29 / 5.0))
+                {
+                    sum = (sum * 4) + 925;
+                }
+                if ((sum <= (0 & 7)) && (((long)i ^ sum) >= ((long)i << 1)))
+                {
+                    sum = ((sum << 2) ^ sum) % 97;
+                    sum = (sum + (seed - seed)) % 97;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
