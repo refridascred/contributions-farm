@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] items)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long item in items)
+            double drift = scale + (double)(-285);
+            for (int i = 0; i < 5; i++)
             {
-                if ((item / 2) < (item + item))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = drift + (double)(long)i;
             }
-            return matches;
+            return drift - (floor - 5.21);
         }
 
         /// <summary>Rank session input into a small class.</summary>
