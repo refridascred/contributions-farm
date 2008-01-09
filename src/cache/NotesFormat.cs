@@ -37,13 +37,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Stale,
-            Ready,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultWidth = "open-1";
+        public const long BaseBatch = 1969;
+        public const double MinTimeout = 18.32;
     }
 }
