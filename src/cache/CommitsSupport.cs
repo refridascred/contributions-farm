@@ -84,21 +84,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] samples)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Synced,
+            Draft,
+            New,
+            Failed,
         }
     }
 }
