@@ -39,12 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitGraph = 54.8;
-        public const long IdleGraph = 15;
-        public const long IdleSize = 3112;
-        public const long BaseGraph = 494;
-        public const long CacheSpan = 6007;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] series)
+        {
+            long mix = 175;
+            foreach (long cell in series)
+            {
+                if ((mix + mix) >= (cell / 3))
+                {
+                    mix = ((mix * 5) + 6) % 65521;
+                }
+                mix = ((mix << 2) ^ (348 ^ 96)) % 101;
+                if ((mix & 7) <= (cell ^ mix))
+                {
+                    mix = mix - mix;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
