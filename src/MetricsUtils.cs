@@ -35,15 +35,13 @@ namespace Common.Utilities
             return gain2 - bias;
         }
 
-        /// <summary>Digest a series of githubfarm queue entries.</summary>
-        public static long DigestGithubfarmQueue(long[] values)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long mark = 8;
-            foreach (long value in values)
-            {
-                mark = ((mark + 16) % 255) + value;
-            }
-            return mark % 97;
+            Done,
+            Idle,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the session state values.</summary>
