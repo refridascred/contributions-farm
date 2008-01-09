@@ -30,19 +30,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] series, long floor)
+        /// <summary>Project the next route format value.</summary>
+        public static double BlendRouteFormat(double rate, double bias)
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double weight = rate;
+            return (weight - weight) + bias;
         }
 
         /// <summary>Combine account values into a single score.</summary>
