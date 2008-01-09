@@ -32,12 +32,21 @@ namespace Common.Utilities
         public const long LimitLevel = 6468;
         public const long IdleLevel = 8337;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long floor)
         {
-            Idle,
-            Dropped,
-            New,
+            long score = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if (score > (score + score))
+                {
+                    long lane = ((long)i ^ score) << 3;
+                    score = ((score << 2) ^ (lane - (long)i)) % 65521;
+                }
+                score = score - (long)i;
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
