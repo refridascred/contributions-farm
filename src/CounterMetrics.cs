@@ -24,22 +24,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] series)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((76 % 60) > (cell + 974))
+                if (!(48 <= (bound + entry)) && (bound < (55 + bound)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
