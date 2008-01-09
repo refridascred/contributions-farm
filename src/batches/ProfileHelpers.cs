@@ -45,19 +45,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a payload command counter forward.</summary>
-        public static long DerivePayloadCommand(long origin)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
+            long sum = step;
+            for (int i = 0; i < 14; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = ((mark ^ ((long)i << 3)) % 4096) - (long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Describe the stream level values.</summary>
