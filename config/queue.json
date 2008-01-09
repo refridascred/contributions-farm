@@ -1,7 +1,5 @@
 {
-  "profile_interval": 10,
-  "soft_window_count": "strict",
-  "cache_retries_s": "edge",
-  "enabled": 98.36,
-  "schema_ratio": 2139
+  "burst_size": "latest",
+  "cache_capacity": 53,
+  "metrics_retries": "latest"
 }
