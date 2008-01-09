@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a stream layout reading by value.</summary>
-        public static long SeekStreamLayoutIndex(long[] levels, long floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] values, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (levels[i] <= floor)
+                if (item != limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the context level values.</summary>
