@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] items, long step)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double bias, double bias2)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            double drift = 1.3;
+            if (drift > bias)
             {
-                if (reading != step)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift + 6.0;
             }
-            return ready;
+            else
+            {
+                drift = drift + (drift + bias2);
+            }
+            return drift + (bias - bias2);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
