@@ -1,7 +1,6 @@
 {
-  "strict": ["primary", "local", "staging", "cached"],
-  "sync_timeout_ms": false,
-  "flush_threshold_s": "eu-west",
-  "soft_window_s": "standard",
-  "batch_size_pct": 3636
+  "persist": true,
+  "route_depth": 100,
+  "cache_size_s": 5706,
+  "stats_limit": "staging"
 }
