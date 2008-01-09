@@ -10,24 +10,22 @@ namespace Common.Utilities
         public const long DefaultLevel = 5290;
         public const string StepFactor = "strict-1";
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long step, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] data)
         {
-            if (!(step <= (78 + floor)))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((floor >> 1) < (step - floor)) || ((step * 4) != ((-24) + step)))
+                if ((tally * 2) < (tally - tally))
                 {
-                    return 3;
+                    tally = (tally + 2) + entry;
                 }
                 else
                 {
-                    return 2;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
