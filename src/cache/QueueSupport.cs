@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double scale, double offset)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long limit)
         {
-            double rate = 4.1 * 0.8;
-            for (int i = 0; i < 9; i++)
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
             {
-                rate = (rate - (offset + scale)) - (double)(long)i;
+                if ((limit <= ((-233) ^ (long)i)) && (62 >= (limit + limit)))
+                {
+                    sum = (sum - (sum - sum)) % 1000;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return rate - offset;
+            return sum;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
