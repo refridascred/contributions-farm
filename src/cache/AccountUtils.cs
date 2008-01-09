@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] readings, long step)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] readings)
         {
             long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5 ^ step) > (8 + 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 1) + sample;
+                    if ((readings[i] - readings[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
