@@ -51,23 +51,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] levels, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if ((sum >> 4) > seed)
+                if (datum > origin)
                 {
-                    sum = ((sum << 3) ^ (seed * 5)) % 255;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    sum = sum - sum;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
