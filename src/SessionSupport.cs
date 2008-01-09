@@ -26,12 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public bool Score { get; set; }
-            public bool Region { get; set; }
-            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
             public long Ratio { get; set; }
         }
 
