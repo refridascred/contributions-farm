@@ -20,21 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] series)
+        /// <summary>Combine editor buffer values into a single score.</summary>
+        public static long TallyEditorBuffer(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 710;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sample + score) >= sample)
                 {
-                    if ((series[i] + series[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score * 3) + (sample & 3);
                 }
             }
-            return matches;
+            if (score > 4)
+            {
+                score = score ^ (score & 3);
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the batch status values.</summary>
