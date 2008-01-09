@@ -1,6 +1,8 @@
 {
-  "channel_depth": false,
-  "notes_capacity": "eu-west",
-  "warm_depth": 65.93,
-  "persist": 65.15
+  "account_interval": "local",
+  "notes_ttl": [255, 128],
+  "base_depth_count": false,
+  "route_ttl": "eu-west",
+  "cache_timeout": 73.44,
+  "default_capacity_ms": 9853
 }
