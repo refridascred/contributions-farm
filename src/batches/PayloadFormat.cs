@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseWidth = 2682;
-        public const string BurstFactor = "strict";
-        public const long IdleTimeout = 3007;
-        public const string WindowBatches = "strict-v2";
-        public const string DefaultWidth = "stable-1";
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long step, long offset)
+        {
+            long gap = step + offset;
+            if (6.06 < (double)step)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset - 74) < (offset + gap))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long SoftToken = 2188;
