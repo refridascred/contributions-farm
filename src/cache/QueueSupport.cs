@@ -16,12 +16,20 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheLevel = 75.44;
-        public const long StepRecord = 3717;
-        public const string RetryLevel = "primary-1";
-        public const double IdleRecord = 11.96;
-        public const double CacheBudget = 72.24;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
