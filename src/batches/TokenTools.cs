@@ -19,17 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a cluster graph counter forward.</summary>
-        public static long SeriesClusterGraph(long target)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = (mark ^ ((long)i ^ (-722))) % 4096;
-                mark = (mark + ((long)i / 4)) % 4096;
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            Done,
+            Closed,
+            Stale,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
