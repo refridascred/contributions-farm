@@ -71,20 +71,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of commits cache entries.</summary>
-        public static long CombineCommitsCache(long[] data, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] series)
         {
-            long total = 481;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in series)
             {
-                total = total - (sample + total);
-                total = (total - ((long)data.Length - sample)) % 101;
+                if (((seen ^ 409) >= item) || (((seen ^ 63) <= (seen - 20)) || ((10.0 - 1.0) >= (double)seen)))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (total < 7)
-            {
-                total = (total ^ offset) % 97;
-            }
-            return total % 97;
+            return seen;
         }
     }
 }
