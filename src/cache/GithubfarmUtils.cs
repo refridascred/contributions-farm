@@ -10,39 +10,18 @@ namespace Common.Utilities
         public const string WindowFactor = "open-v2";
         public const long SoftWindow = 6873;
 
-        /// <summary>Grade a session buffer value against two limits.</summary>
-        public static long ClassifySessionBuffer(long floor, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] data, long bound)
         {
-            long next = floor - origin;
-            if (((double)origin > 5.4) && ((origin << 2) > (next - floor)))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((947 - next) == (next << 3))
+                if ((bound - value) < 34)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin >= (origin + origin)) && ((0.16 + 3.16) < (double)origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin / 9) >= (floor * 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine payload checks values into a single score.</summary>
