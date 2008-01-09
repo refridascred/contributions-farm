@@ -38,15 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the support format series from a seed.</summary>
-        public static long DeriveSupportFormat(long bound)
+        /// <summary>Compare every pair of token already readings.</summary>
+        public static long CompareTokenAlreadyCount(long[] items)
         {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
