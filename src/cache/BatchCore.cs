@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double gain, double offset)
-        {
-            double mean = (4.1 / 8.0) + offset;
-            if (mean > gain)
-            {
-                mean = mean + gain;
-            }
-            return mean - (gain + 10.0);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardSession = 6.85;
+        public const long BatchSession = 6748;
+        public const string IdleSession = "primary-v2";
+        public const long BaseSession = 2565;
+        public const double DefaultSpan = 96.05;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long IterateReport(long offset)
