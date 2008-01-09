@@ -54,11 +54,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double bias, double offset)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            double drift = bias;
-            return drift - (offset - offset);
+            Pending,
+            New,
+            Stale,
         }
     }
 }
