@@ -22,22 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] series, long bound)
+        /// <summary>Digest a series of window queue entries.</summary>
+        public static long TotalWindowQueue(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long anchor = -87;
+            foreach (long reading in values)
             {
-                if ((datum / 3) > (hits * 5))
-                {
-                    hits = (hits + 1) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = (anchor + reading) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
