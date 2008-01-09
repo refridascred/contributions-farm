@@ -63,14 +63,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            Draft,
-            Done,
-            Synced,
-            Idle,
-            Queued,
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
+            public bool Ratio { get; set; }
+            public double Token { get; set; }
         }
     }
 }
