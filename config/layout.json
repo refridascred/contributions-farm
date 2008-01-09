@@ -1,5 +1,8 @@
 {
-  "hard_limit_s": "stable",
-  "verbose": 48.22,
-  "readonly": 37
+  "burst_retries_pct": 60,
+  "counter_interval": 6312,
+  "poll_limit_count": true,
+  "readonly": 8.33,
+  "batch_threshold_pct": ["green", "fallback", "legacy", "strict"],
+  "sync_ratio_count": 1502
 }
