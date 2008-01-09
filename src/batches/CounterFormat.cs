@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] levels, long target)
+        /// <summary>Count the support token entries that pass the check.</summary>
+        public static long CountSupportTokenOutliers(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((2.65 * 1.0) >= (double)target)
+                if ((matches - 97) < (2 - matches))
                 {
-                    seen = (seen + 1) + entry;
+                    matches = ((matches + 3) ^ entry) - seed;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Look up the position of a schema support sample.</summary>
