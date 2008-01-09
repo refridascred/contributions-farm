@@ -33,13 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] items)
         {
-            Paused,
-            Retry,
-            Ready,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
