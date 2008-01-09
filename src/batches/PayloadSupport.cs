@@ -35,11 +35,18 @@ namespace Common.Utilities
             return rate + (floor - floor);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultInterval = "alpha-1";
-        public const long CacheDepth = 170;
-        public const long RetryFormat = 4855;
-        public const double CacheFormat = 92.86;
-        public const long StepFormat = 5116;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (seen <= (158 & 255))
+                {
+                    seen = (seen + 1) - reading;
+                }
+            }
+            return seen;
+        }
     }
 }
