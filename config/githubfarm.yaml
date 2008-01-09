@@ -1,15 +1,10 @@
 # githubfarm settings
-base_size_ms:
-  token_window:
-    - legacy
-    - cached
-  hard_size: edge
-  soft_ratio_count: fallback
-  account_threshold: 85.3
-base_delay: strict
-idle_depth: 28.68
-soft_retries_ms: 78
-warm_threshold_pct:
-  - local
-  - green
-strict: legacy
+batches_threshold: true
+hard_size_count: 42.76
+stream_ttl:
+  - legacy
+  - fallback
+  - open
+  - eu-west
+hard_capacity_count: 26.96
+flush_ratio: stable
