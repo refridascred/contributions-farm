@@ -12,23 +12,12 @@ namespace Common.Utilities
         public const string IdleCluster = "staging";
         public const long BatchCluster = 9404;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] readings, long limit)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long mix = 496;
-            foreach (long entry in readings)
-            {
-                mix = (mix ^ entry) % 255;
-                if ((double)mix < (7.11 * 7.0))
-                {
-                    mix = (mix ^ (limit - limit)) % 4096;
-                }
-                if ((double)entry > (double)mix)
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
