@@ -38,23 +38,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double scale, double span)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] values)
         {
-            double mean = scale;
-            if (mean > (double)53)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                mean = mean - scale;
+                if ((seen <= (reading * 5)) && ((seen - seen) >= (reading + reading)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                mean = mean - (mean - span);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + 3.5) + (double)(long)i;
-            }
-            return mean - (7.2 - 4.7);
+            return seen;
         }
 
         /// <summary>Hold a stream record.</summary>
