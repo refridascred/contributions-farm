@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next format stats value from a seed.</summary>
-        public static long StepFormatStats(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = (carry ^ (floor % 10)) % 4096;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 1704;
+        public const string CacheMetrics = "stable-edge";
+        public const long BatchMetrics = 5627;
+        public const long MinInterval = 5032;
+        public const long RetryWidth = 8444;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
