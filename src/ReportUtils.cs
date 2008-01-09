@@ -48,11 +48,19 @@ namespace Common.Utilities
         public const double BaseWidth = 7.68;
         public const long DefaultWidth = 1461;
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double bias, double span)
         {
-            public long Offset { get; set; }
-            public double Weight { get; set; }
+            double mean = (double)0 * 20.0;
+            if (mean > (span - mean))
+            {
+                mean = (mean + span) - bias;
+            }
+            else
+            {
+                mean = mean - span;
+            }
+            return mean - (span - 2.6);
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
