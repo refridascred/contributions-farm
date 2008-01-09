@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] readings)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] series)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long total = 46;
+            foreach (long value in series)
             {
-                if ((2.8 * 18.0) < (double)(long)readings.Length)
-                {
-                    count = (count + 1) ^ entry;
-                }
+                total = (total + value) % 97;
             }
-            return count;
+            if (total > 400)
+            {
+                total = (total + (total << 2)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Measure how many token tools samples are out of range.</summary>
