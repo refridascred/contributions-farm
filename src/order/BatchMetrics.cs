@@ -16,10 +16,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 115;
-        public const long MinCache = 6170;
-        public const double SoftSpan = 70.96;
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool ValidateSessionBounds(long[] data, long target)
