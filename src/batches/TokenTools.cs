@@ -13,13 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] readings)
         {
-            public string Offset { get; set; } = "";
-            public bool Label { get; set; }
-            public double Total { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)count == (8.7 - 9.24))
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a report snapshot.</summary>
