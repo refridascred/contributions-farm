@@ -1,8 +1,7 @@
-id,active,token
-1,105,strict
-2,837,66.88
-3,eu-west,853
-4,42.95,7.98
-5,602,842
-6,89,fallback
-7,95.47,edge
+id,count,token
+1,491,541
+2,859,27.45
+3,784,2.32
+4,57.49,primary
+5,cached,open
+6,547,90.18
