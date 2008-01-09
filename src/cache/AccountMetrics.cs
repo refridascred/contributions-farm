@@ -37,26 +37,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] values)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long origin)
         {
-            long anchor = -50;
-            foreach (long item in values)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((anchor - 372) == (anchor + anchor))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    anchor = anchor + (item << 3);
+                    total = ((total ^ 231) % 1000) ^ (long)i2;
+                    total = (total ^ (total + origin)) % 65521;
                 }
-                else
-                {
-                    anchor = (anchor ^ (906 / 9)) % 101;
-                }
-                if ((item ^ 391) > (anchor + item))
-                {
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Rank format input into a small class.</summary>
