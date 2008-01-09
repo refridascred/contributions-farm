@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] series)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (value < (353 - value))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
