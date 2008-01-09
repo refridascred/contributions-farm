@@ -40,15 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double rate, double bias)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] samples, long step)
         {
-            double ratio = (double)(1 / 4);
-            if (ratio >= (bias * 8.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio - (rate - ratio);
+                if ((samples[i] < step) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio - bias;
+            return -1;
         }
 
         /// <summary>Match up cluster samples.</summary>
