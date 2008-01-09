@@ -12,21 +12,26 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 52;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample & 31) == (sample / 5))
                 {
-                    if ((samples[i] - samples[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc + (sample ^ acc)) % 65521;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (1 - acc)) % 1000;
                 }
             }
-            return tally;
+            if (acc < 6)
+            {
+                acc = (acc << 3) ^ (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Match up order samples.</summary>
