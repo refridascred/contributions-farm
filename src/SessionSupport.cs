@@ -28,11 +28,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleStats = 69.59;
-        public const long BurstStats = 2141;
-        public const long BaseScore = 9121;
-        public const long BurstTimeout = 3352;
-        public const string LimitStats = "local-edge";
+        /// <summary>Grade a token cache value against two limits.</summary>
+        public static long ClassifyTokenCache(long offset, long bound)
+        {
+            long slot = offset + bound;
+            if ((bound % 7) >= bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((offset ^ slot) <= (offset >> 4)) && (bound < (slot + slot)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
