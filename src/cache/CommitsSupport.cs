@@ -63,12 +63,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            Done,
-            Paused,
-            Idle,
+            Queued,
+            Synced,
+            Retry,
         }
 
         /// <summary>Describe the record status values.</summary>
