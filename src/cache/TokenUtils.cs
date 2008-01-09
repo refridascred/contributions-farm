@@ -37,15 +37,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double ratio, double bias)
+        /// <summary>Count the already stream entries that pass the check.</summary>
+        public static long TallyAlreadyStreamHits(long[] samples)
         {
-            double bias2 = (bias / 5.0) + (2.69 + 0.87);
-            if (bias2 <= bias)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                bias2 = (bias2 - (double)522) - ratio;
+                if ((16 * 4) == (datum + seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return bias2 - bias;
+            return seen;
         }
     }
 }
