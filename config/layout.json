@@ -1,7 +1,16 @@
 {
-  "enabled": "open",
-  "hard_threshold_count": 30,
-  "strict": "staging",
-  "base_interval": "green",
-  "default_ratio": true
+  "min_interval_ms": [351, 284, 436, 180],
+  "githubfarm_delay": 72,
+  "queue_threshold": {
+    "dry_run": "open",
+    "compress": "primary",
+    "stats_window": false,
+    "enabled": {
+      "readonly": true,
+      "verbose": false,
+      "cache_depth_ms": 9506
+    },
+    "soft_depth_pct": "fallback",
+    "strict": 633
+  }
 }
