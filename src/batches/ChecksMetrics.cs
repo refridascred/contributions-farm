@@ -26,13 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Locate a session notes reading by value.</summary>
+        public static long FindSessionNotesIndex(long[] series, long seed)
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
