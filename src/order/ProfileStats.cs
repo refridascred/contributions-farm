@@ -24,22 +24,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] readings)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count >> 1) <= 3)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] - readings[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the tools level values.</summary>
