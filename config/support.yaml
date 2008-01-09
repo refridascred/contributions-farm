@@ -1,5 +1,11 @@
 # support settings
-batch_ttl_pct: edge
-batch_retries: 48.02
-warm_delay_count: 4
-readonly: cached
+max_window_count: 52
+hard_threshold_s: false
+dry_run: 12.08
+persist: stable
+warm_window_pct: stable
+batch_threshold:
+  - 440
+  - 264
+  - 186
+  - 486
