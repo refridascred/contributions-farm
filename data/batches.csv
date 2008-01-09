@@ -1,6 +1,11 @@
-id,label,region,level
-1,171,eu-west,stable
-2,blue,999,11.15
-3,258,8.65,0.85
-4,staging,375,fallback
-5,457,fallback,55.55
+id,count,token,score,weight
+1,61.71,blue,57.1,stable
+2,565,34.82,98.53,632
+3,97.15,local,25.9,473
+4,eu-west,907,50.05,25.38
+5,31.82,508,496,local
+6,880,strict,10.27,213
+7,37,868,47.47,staging
+8,536,60.21,249,standard
+9,legacy,204,legacy,815
+10,844,583,cached,173
