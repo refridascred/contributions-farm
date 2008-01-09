@@ -23,26 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = anchor - (anchor * 4);
-                if ((5.3 - 3.0) > (double)anchor)
-                {
-                    anchor = (anchor << 2) ^ (anchor << 1);
-                    break;
-                }
-                if (((long)i - step) >= (-394))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 8200;
+        public const long BurstFormat = 1061;
+        public const long HardFormat = 3236;
+        public const long BurstScore = 3034;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
