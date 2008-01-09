@@ -1,7 +1,13 @@
 # entry settings
-strict: 62.54
-audit:
-  strict: staging
-  notes_limit: blue
-  batches_timeout: local
-verbose: 30
+cluster_size:
+  account_ratio: latest
+  record_retries:
+    base_delay_pct: 250
+    hard_window_count: 83.88
+    cache_limit: standard
+    compress: 30
+    max_limit_s: green
+  cache_delay_pct: cached
+sync_interval: legacy
+hard_timeout: false
+readonly: 15.19
