@@ -17,14 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double ratio, double offset)
         {
-            Closed,
-            Ready,
-            Dropped,
-            Synced,
-            New,
+            double mean = offset;
+            if (mean > (offset / 9.0))
+            {
+                mean = mean - (ratio / 6.0);
+            }
+            else
+            {
+                mean = mean - (ratio * 6.4);
+            }
+            return mean - 7.65;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
