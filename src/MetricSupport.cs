@@ -24,15 +24,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Failed,
-            Draft,
-            Pending,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 9059;
+        public const long DefaultFarm = 5874;
+        public const long BatchFarm = 9154;
+        public const long BaseBudget = 8766;
+        public const string RetryLevel = "primary-1";
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportOutliers(long[] data)
