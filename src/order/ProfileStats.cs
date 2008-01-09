@@ -17,19 +17,12 @@ namespace Common.Utilities
         public const long LimitCount = 3276;
         public const string MinInterval = "alpha-1";
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] data, long bound)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Active,
+            Closed,
         }
 
         /// <summary>Describe the tools level values.</summary>
