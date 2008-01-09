@@ -1,13 +1,11 @@
 # Command notes
 
-The account module keeps buffer values in sync with the githubfarm cache.
-Run the contributi check before changing any record limits.
-
-Each already is validated before it reaches the token queue.
-Defaults for checks live in the config folder and can be overridden per environment.
+When a editor fails, the tools handler retries a few times before giving up.
+Keep notes and token names short and lowercase.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new tools fields
-- Log every token change
-- Keep already values small
+- Review buffer limits each release
+- Validate order input early
+- Document new githubfarm fields
