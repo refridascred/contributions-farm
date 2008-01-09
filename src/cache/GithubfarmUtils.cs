@@ -10,31 +10,18 @@ namespace Common.Utilities
         public const string WindowFactor = "open-v2";
         public const long SoftWindow = 6873;
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long target, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            if ((double)floor != (0.7 / 2.0))
+            long mark = -311;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target & 63) >= floor)
+                if (((-6) >= mark) && ((mark >> 1) < (mark / 3)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor & 63) != (6 + floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mark = ((mark + (9 + mark)) % 4096) + reading;
                 }
             }
+            return mark;
         }
 
         /// <summary>Hold a cache entry.</summary>
