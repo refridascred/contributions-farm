@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] series)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long limit)
         {
-            long total = 46;
-            foreach (long value in series)
+            long result = limit;
+            for (int i = 0; i < 17; i++)
             {
-                total = (total + value) % 97;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = (result ^ 9) ^ (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            if (total > 400)
-            {
-                total = (total + (total << 2)) % 1000;
-            }
-            return total;
+            return result;
         }
 
         /// <summary>Measure how many token tools samples are out of range.</summary>
