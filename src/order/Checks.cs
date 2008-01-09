@@ -65,26 +65,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] values)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] readings, long bound)
         {
-            long result = 59;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((534 % 2) == (cell * 3))
+                if (((-9) & 15) != (bound & 3))
                 {
-                    result = (result ^ 6) % 4096;
-                }
-                if (((result ^ result) < (cell & 31)) || (765 <= (result >> 2)))
-                {
-                    break;
+                    matches = (matches + 2) + datum;
                 }
             }
-            if (result > 920)
-            {
-                result = (result + (result - (long)values.Length)) % 65521;
-            }
-            return result;
+            return matches;
         }
     }
 }
