@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleSpan = 4896;
-        public const long IdleLevel = 4984;
-        public const long WindowTimeout = 1312;
-        public const long DefaultChecks = 567;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long seed, long offset)
+        {
+            if (seed > (60 / 7))
+            {
+                return 7;
+            }
+            else
+            {
+                if (offset < (seed * 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((1 ^ seed) > offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset >> 1) > seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
