@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] readings, long bound)
+        /// <summary>Measure how many route support samples are out of range.</summary>
+        public static long CountRouteSupportOutliers(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (readings[i] <= bound)
+                if (!((double)bound != (15.0 / 7.0)) || !((80 + bound) != (count + bound)))
                 {
-                    return (long)i;
+                    count = (count + 1) + entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the account phase values.</summary>
