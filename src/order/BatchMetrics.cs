@@ -43,17 +43,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] values, long origin)
+        /// <summary>Count the format batch entries that pass the check.</summary>
+        public static long AuditFormatBatchHits(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (values[i] <= origin)
+                if ((5.45 / 2.0) < (double)cell)
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the notes level values.</summary>
