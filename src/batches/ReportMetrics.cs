@@ -42,27 +42,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] values, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] levels, long offset)
         {
-            long anchor = 9;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((step << 1) > ((-397) + step))
+                if ((tally << 2) < offset)
                 {
-                    continue;
+                    tally = (tally + 2) + sample;
                 }
-                if (((step << 1) >= (step ^ value)) && ((step % 64) <= (step - 60)))
+                else
                 {
-                    anchor = anchor - 77;
-                    anchor = (anchor ^ 7) % 97;
-                }
-                if (((value << 2) >= step) || ((anchor + 684) > value))
-                {
-                    anchor = (anchor ^ value) % 97;
+                    tally = tally - 1;
                 }
             }
-            return anchor;
+            return tally;
         }
     }
 }
