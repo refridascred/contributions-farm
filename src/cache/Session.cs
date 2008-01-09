@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] values, long floor)
         {
-            public double Offset { get; set; }
-            public bool Token { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a buffer info.</summary>
