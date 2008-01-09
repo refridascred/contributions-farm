@@ -43,18 +43,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] readings, long step)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (((double)step == (16.0 * 9.62)) && (count > (cell + step)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            Retry,
+            Closed,
+            Synced,
+            Queued,
         }
     }
 }
