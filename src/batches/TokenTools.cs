@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Queued,
+            Synced,
             New,
-            Stale,
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
