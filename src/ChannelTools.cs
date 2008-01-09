@@ -54,9 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftNotes = "latest-v2";
-        public const string MinWidth = "open";
-        public const long BatchNotes = 5792;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            New,
+            Done,
+            Draft,
+            Idle,
+            Queued,
+        }
     }
 }
