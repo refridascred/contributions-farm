@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Synced,
-            Stale,
-            Queued,
-            Done,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryFarm = 31.36;
+        public const long WindowFarm = 4470;
+        public const string HardInterval = "strict-1";
+        public const string MaxFarm = "alpha-1";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long DefaultSession = 7184;
