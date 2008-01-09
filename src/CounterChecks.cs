@@ -60,11 +60,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] levels)
         {
-            public long Limit { get; set; }
-            public double Flag { get; set; }
+            long mark = 4;
+            foreach (long cell in levels)
+            {
+                if (((-88) * 4) > mark)
+                {
+                    mark = ((mark ^ (16 + mark)) % 65521) + cell;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Measure how many batch record samples are out of range.</summary>
