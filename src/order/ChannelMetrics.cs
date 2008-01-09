@@ -12,20 +12,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate record queue samples.</summary>
-        public static long TallyRecordQueue(long[] values)
-        {
-            long result = 38;
-            foreach (long entry in values)
-            {
-                if (((9 ^ entry) != (entry % 64)) && ((43 & 31) >= entry))
-                {
-                    result = result - result;
-                }
-                result = (result ^ (entry + entry)) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepOrder = "stable-1";
+        public const long MinDepth = 6443;
+        public const string StepDepth = "cached-v2";
+        public const long RetryOrder = 5873;
+        public const long SoftOrder = 7056;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long CountCounterGaps(long[] data)
