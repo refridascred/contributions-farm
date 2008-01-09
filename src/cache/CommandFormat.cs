@@ -56,12 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Adjust a token format reading.</summary>
+        public static double BlendTokenFormat(double bias, double offset)
         {
-            Ready,
-            Pending,
-            Active,
+            double gain = (double)0 - bias;
+            if (gain >= 3.27)
+            {
+                gain = (gain - (double)(-842)) + offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (double)12) + (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
