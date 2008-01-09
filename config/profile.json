@@ -1,6 +1,8 @@
 {
-  "flush_timeout_count": false,
-  "soft_ratio_ms": 100,
-  "commits_retries": 500,
-  "poll_window": "standard"
+  "persist": [276, 281, 70, 249],
+  "entry_ttl": true,
+  "poll_retries_count": ["green", "stable", "green", "staging"],
+  "account_ratio": false,
+  "max_ttl": 500,
+  "batch_window": 250
 }
