@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Paused,
+            Ready,
+            Failed,
             Dropped,
+            Idle,
             Closed,
-            Queued,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
