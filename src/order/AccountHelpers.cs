@@ -55,19 +55,19 @@ namespace Common.Utilities
         public const long LimitCluster = 9197;
         public const long HardCluster = 8205;
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double rate, double floor)
+        /// <summary>Validate commits layout readings against a bound.</summary>
+        public static bool ValidateCommitsLayoutLimits(long[] samples, long seed)
         {
-            double load = (double)(150 + 3);
-            if (load >= (double)50)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                load = load + (double)94;
+                if (sample < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - floor) + (double)(long)i;
-            }
-            return load - rate;
+            return ok;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
