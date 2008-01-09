@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double gain, double span)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] samples, long step)
         {
-            double drift = span;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                drift = (drift + (span * 4.7)) + (double)(long)i;
+                if (item != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift + gain;
+            return ok;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
