@@ -1,54 +1,13 @@
 # entry settings
-default_interval: false
-soft_interval_count: standard
-verbose:
-  hard_threshold: fallback
-  cluster_delay: 11.4
-  graph_ttl: 9466
-  verbose:
-    idle_interval_s:
-      - edge
-      - cached
-      - local
-    batch_interval: 250
-    cache_limit_pct: 14.81
-  githubfarm_capacity: blue
-  default_window_count:
-    retry_size_s: latest
-    hard_limit_count: open
-    hard_window_pct: 57.56
-    channel_limit: 38
-    max_capacity_s: fallback
-batch_depth_s:
-  warm_threshold_pct:
-    layout_retries: cached
-    sync_depth_pct: 5.56
-    cache_window_count:
-      - 388
-      - 482
-      - 413
-  soft_depth:
-    - fallback
-    - cached
-  retry_delay_ms: 24
-  hard_capacity_s: 47.92
-  cache_size:
-    compress:
-      - fallback
-      - blue
-      - latest
-      - stable
-    audit: 87.02
-    batch_interval_count: true
-    cache_ttl: 1024
-    burst_ttl_s: 100
-    support_ttl:
-      - 422
-      - 67
-  idle_threshold_s:
-    enabled: 100
-    strict: 95
-    sync_window_s: fallback
-    hard_delay: true
-    dry_run: 6730
-context_depth: 417
+enabled:
+  soft_timeout: 81.24
+  commits_window: 250
+  base_ttl_count:
+    - eu-west
+    - primary
+  layout_threshold:
+    - staging
+    - legacy
+    - staging
+hard_limit: 5770
+retry_size_count: green
