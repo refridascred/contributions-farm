@@ -55,19 +55,12 @@ namespace Common.Utilities
         public const long LimitCluster = 9197;
         public const long HardCluster = 8205;
 
-        /// <summary>Validate commits layout readings against a bound.</summary>
-        public static bool ValidateCommitsLayoutLimits(long[] samples, long seed)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            New,
+            Pending,
         }
 
         /// <summary>Project the next farm value.</summary>
