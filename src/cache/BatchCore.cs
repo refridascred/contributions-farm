@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardSession = 6.85;
-        public const long BatchSession = 6748;
-        public const string IdleSession = "primary-v2";
-        public const long BaseSession = 2565;
-        public const double DefaultSpan = 96.05;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TallyChannel(long[] samples)
