@@ -49,21 +49,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] series)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Synced,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a batch entry.</summary>
