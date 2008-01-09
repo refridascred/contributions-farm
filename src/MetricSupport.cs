@@ -20,17 +20,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Locate a session metric reading by value.</summary>
-        public static long LocateSessionMetricIndex(long[] levels, long limit)
+        /// <summary>Count batches format pairs that satisfy a relation.</summary>
+        public static long CompareBatchesFormatCount(long[] levels)
         {
+            long seen = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] > limit) && ((levels[i] % 5) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
