@@ -16,13 +16,13 @@ namespace Common.Utilities
             return ratio + (double)482;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
-            public double Limit { get; set; }
+            Closed,
+            Pending,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Grade a context token value against two limits.</summary>
