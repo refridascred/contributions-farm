@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const long WindowWidth = 1257;
         public const double RetryScore = 43.28;
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] readings)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 26;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((500 - score) >= entry)
                 {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score << 2) ^ (entry * 2);
+                }
+                if ((double)443 < (double)entry)
+                {
+                    break;
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
