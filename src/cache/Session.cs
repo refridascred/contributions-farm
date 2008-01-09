@@ -37,32 +37,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long seed, long bound)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long next = seed ^ bound;
-            if (((3.2 / 5.0) > (double)next) || (bound >= (seed ^ bound)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)next >= (10.0 / 3.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((next * 3) != (2 + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public bool Level { get; set; }
+            public long Flag { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
