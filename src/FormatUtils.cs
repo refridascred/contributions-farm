@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the metric payload series from a seed.</summary>
-        public static long SeriesMetricPayload(long floor)
+        /// <summary>Compare every pair of stats token readings.</summary>
+        public static long MatchStatsTokenCount(long[] readings)
         {
-            long state = floor;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
