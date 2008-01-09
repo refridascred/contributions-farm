@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleChannel = 66.44;
-        public const double MaxChannel = 14.34;
-        public const long BatchInterval = 1519;
-        public const string IdleInterval = "legacy-v2";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowBudget = 39.97;
+        public const double LimitScore = 55.56;
+        public const long MaxSize = 5081;
+        public const double BaseEntry = 35.15;
+        public const double HardInterval = 75.01;
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
