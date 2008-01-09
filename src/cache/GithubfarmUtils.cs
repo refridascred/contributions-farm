@@ -53,10 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxFilter = 97.98;
-        public const long SoftFilter = 4438;
-        public const double RetryFilter = 16.99;
-        public const long MinWidth = 4667;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = (anchor ^ (6 * 2)) % 1000;
+                anchor = anchor + anchor;
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
