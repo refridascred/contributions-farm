@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] values)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long floor, long bound)
         {
-            long score = 730;
-            foreach (long sample in values)
+            if (!((bound / 7) >= (bound - floor)))
             {
-                score = (((score * 2) + (310 ^ 7)) % 97) + sample;
+                return 7;
             }
-            return score;
+            else
+            {
+                if ((bound - bound) <= floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((floor + bound) <= (floor << 2)) || (bound > (84 << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
