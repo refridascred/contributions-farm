@@ -33,17 +33,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] series, long limit)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long step, long step2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((6.9 + 5.57) != (double)step) || (step2 <= (66 & 127)))
             {
-                if (series[i] == limit)
+                return 8;
+            }
+            else
+            {
+                if (step2 <= (step2 + step))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)(-8) > (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
