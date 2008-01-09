@@ -46,19 +46,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double bias, double floor)
-        {
-            double ratio = (double)(223 & 7);
-            if (ratio > (double)4)
-            {
-                ratio = ((ratio - 8.47) - bias) + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + ratio) - (double)(long)i;
-            }
-            return ratio + (double)(-7);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryGraph = "open-edge";
+        public const string StepLevel = "local-1";
+        public const long LimitGraph = 4153;
+        public const string BatchGraph = "legacy-1";
     }
 }
