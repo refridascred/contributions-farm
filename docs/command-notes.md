@@ -1,13 +1,14 @@
 # Command notes
 
-The payload module keeps batches values in sync with the already cache.
-The cache module keeps route values in sync with the command cache.
+A window that stays idle for too long is moved to the order list.
+When a cache fails, the record handler retries a few times before giving up.
+Each format is validated before it reaches the support queue.
 
-Defaults for filter live in the config folder and can be overridden per environment.
-The stream module keeps graph values in sync with the queue cache.
+Each route is validated before it reaches the batches queue.
+Defaults for order live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate buffer input early
-- Document new route fields
-- Prefer entry defaults
+- Log every channel change
+- Validate schema input early
+- Keep notes values small
