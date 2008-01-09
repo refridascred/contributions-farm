@@ -26,21 +26,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] data)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Blend two stats measurements.</summary>
