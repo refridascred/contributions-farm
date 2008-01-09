@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] samples)
         {
-            Ready,
-            Synced,
-            Queued,
-            Idle,
-            Draft,
+            long carry = 208;
+            foreach (long item in samples)
+            {
+                if ((item < (carry + carry)) && ((double)item > (double)carry))
+                {
+                    carry = carry ^ (item >> 5);
+                }
+                else
+                {
+                    carry = (carry ^ carry) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of counter route entries.</summary>
