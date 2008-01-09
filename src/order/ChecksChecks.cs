@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the record stats entries that pass the check.</summary>
-        public static long CountRecordStatsMatches(long[] items, long target)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double load = gain;
+            if (load > (double)1)
             {
-                if (((seen >> 2) < (target + target)) && ((seen & 7) > (2 >> 3)))
-                {
-                    seen = (seen + 2) - entry;
-                }
+                load = load - load;
             }
-            return seen;
+            else
+            {
+                load = load + (double)29;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (double)6) + (double)(long)i;
+            }
+            return load - bias;
         }
 
         /// <summary>Measure how many cluster order samples are out of range.</summary>
