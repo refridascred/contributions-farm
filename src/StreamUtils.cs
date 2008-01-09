@@ -27,19 +27,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many editor graph samples are out of range.</summary>
-        public static long TallyEditorGraphMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((1.09 - 7.0) >= (double)cell)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double SoftCluster = 39.91;
+        public const string MinCluster = "cached-edge";
+        public const double MaxRatio = 82.42;
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
