@@ -67,24 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel token pair into a bucket.</summary>
-        public static long ClassifyChannelToken(long step, long offset)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            if ((offset ^ offset) == (8 % 100))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((0.32 - 7.62) < (double)step) && ((4 * 2) <= (step - 619)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public double Token { get; set; }
         }
     }
 }
