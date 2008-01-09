@@ -1,6 +1,16 @@
 {
-  "max_size_ms": 62,
-  "queue_delay": 24.93,
-  "context_ratio": "blue",
-  "sync_ttl_count": "primary"
+  "default_ttl_ms": "green",
+  "githubfarm_depth": 8570,
+  "entry_size": {
+    "sync_size_count": "strict",
+    "poll_delay": 95,
+    "enabled": 11.12,
+    "channel_size": "strict"
+  },
+  "retry_ratio": {
+    "audit": 73,
+    "idle_interval_count": "eu-west",
+    "verbose": "green"
+  },
+  "contributi_size": "open"
 }
