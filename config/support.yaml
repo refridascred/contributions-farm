@@ -1,5 +1,4 @@
 # support settings
-batch_interval: 7080
-command_limit: 16.98
-cache_ratio_pct: 3335
-dry_run: 73
+hard_interval_count: true
+checks_size: blue
+base_ttl_pct: 30
