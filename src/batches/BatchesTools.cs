@@ -13,18 +13,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] items, long limit)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (limit < (limit % 64))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            Locked,
+            Paused,
+            Idle,
+            Done,
+            Dropped,
         }
 
         /// <summary>Describe the layout level values.</summary>
