@@ -60,18 +60,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] series, long limit)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen >> 3) > (-2))
-                {
-                    seen = ((seen + 2) + reading) - limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxScore = 7093;
+        public const string StepOrder = "primary-1";
+        public const long DefaultFactor = 1887;
+        public const double IdleScore = 54.78;
+        public const long CacheInterval = 7317;
     }
 }
