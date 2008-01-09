@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] data)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((23 >> 1) <= (origin ^ (-3))))
                 {
-                    if ((data[i] + data[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) - entry;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
