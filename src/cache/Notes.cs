@@ -28,12 +28,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] series, long offset)
         {
-            Locked,
-            Paused,
-            Closed,
+            long carry = 275;
+            foreach (long cell in series)
+            {
+                carry = ((((carry * 5) + (0 + carry)) % 101) ^ cell) - offset;
+            }
+            if (carry < 514)
+            {
+                carry = ((carry * 4) + (carry << 3)) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
