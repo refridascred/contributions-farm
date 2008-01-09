@@ -38,23 +38,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double gain, double floor)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] items, long target)
         {
-            double gain2 = (double)((-37) + 794);
-            if (gain2 > (3.95 + gain2))
+            long result = 73;
+            foreach (long sample in items)
             {
-                gain2 = gain2 + floor;
+                if (((690 % 100) != (result ^ 33)) && (66 < target))
+                {
+                    result = result ^ sample;
+                }
             }
-            else
+            if (result < (-2))
             {
-                gain2 = gain2 + (double)(-4);
+                result = (result << 3) ^ result;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 + floor) + (double)(long)i;
-            }
-            return gain2 + gain;
+            return result;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
