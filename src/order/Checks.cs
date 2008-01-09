@@ -58,17 +58,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a githubfarm cache reading by value.</summary>
-        public static long LookupGithubfarmCacheIndex(long[] series, long origin)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
