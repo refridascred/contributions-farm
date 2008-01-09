@@ -12,20 +12,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] values, long offset)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchDepth = 9.03;
+        public const string SoftChannel = "local-1";
+        public const double DefaultChannel = 34.54;
+        public const long CacheChannel = 1703;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TallyNotes(long[] items, long offset)
