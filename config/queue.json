@@ -1,6 +1,6 @@
 {
-  "dry_run": 39,
-  "min_threshold_s": ["primary", "stable"],
-  "record_threshold": 1024,
-  "contributi_threshold": "stable"
+  "poll_timeout": 500,
+  "soft_delay": 100,
+  "entry_timeout": [480, 90],
+  "enabled": 100
 }
