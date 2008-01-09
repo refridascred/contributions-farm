@@ -45,13 +45,9 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public bool Mode { get; set; }
-            public bool Score { get; set; }
-            public double Weight { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 7253;
+        public const string HardScore = "legacy";
+        public const long MinSpan = 6189;
     }
 }
