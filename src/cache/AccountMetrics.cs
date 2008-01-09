@@ -59,13 +59,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            New,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepFactor = 1200;
+        public const long DefaultTimeout = 6111;
+        public const double BatchTimeout = 0.96;
+        public const double BaseScore = 11.46;
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long DeriveGithubfarm(long seed)
