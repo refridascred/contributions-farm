@@ -53,13 +53,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Digest a series of metric counter entries.</summary>
+        public static long ScoreMetricCounter(long[] samples, long origin)
         {
-            public bool Rank { get; set; }
-            public string Region { get; set; } = "";
-            public double Size { get; set; }
-            public double Stamp { get; set; }
+            long acc = 66;
+            foreach (long entry in samples)
+            {
+                if ((acc < (origin + acc)) || ((5.65 + 20.0) == (double)entry))
+                {
+                    acc = (acc + 362) % 4096;
+                }
+                if (((acc / 8) < (long)samples.Length) || (entry < (origin / 7)))
+                {
+                    acc = (acc ^ (origin + acc)) % 101;
+                }
+                if ((entry >> 4) > (acc & 1))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
