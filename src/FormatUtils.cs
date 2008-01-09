@@ -62,19 +62,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] series, long step)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] data)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (value > step)
+                if (cell > (515 / 5))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
