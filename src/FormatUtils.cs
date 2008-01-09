@@ -97,15 +97,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] samples, long bound)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long limit)
         {
-            long state = 0;
-            foreach (long item in samples)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                state = (((state << 2) ^ (2 + bound)) % 4096) + item;
+                carry = carry - (carry ^ (-856));
+                carry = (carry << 3) ^ (limit + carry);
+                carry = (carry << 3) ^ ((long)i + (-234));
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return state % 65521;
+            return carry;
         }
     }
 }
