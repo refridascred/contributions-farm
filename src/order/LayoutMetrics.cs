@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] levels, long bound)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == bound) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Draft,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
