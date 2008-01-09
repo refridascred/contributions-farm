@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] readings)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((matches - (long)readings.Length) != (matches + (long)readings.Length)) || ((matches ^ entry) <= entry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((levels[i] - levels[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
