@@ -51,12 +51,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] readings, long target)
         {
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
