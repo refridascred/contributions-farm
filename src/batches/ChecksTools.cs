@@ -49,13 +49,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public double Mode { get; set; }
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
-            public long Offset { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
