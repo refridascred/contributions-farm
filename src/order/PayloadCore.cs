@@ -22,12 +22,17 @@ namespace Common.Utilities
         public const long MaxScore = 544;
         public const long IdleLevel = 2408;
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Locate a route tools reading by value.</summary>
+        public static long SeekRouteToolsIndex(long[] series, long seed)
         {
-            public double Count { get; set; }
-            public double Stamp { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= seed) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batch status values.</summary>
