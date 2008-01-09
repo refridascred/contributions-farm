@@ -73,13 +73,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            Locked,
+            New,
+            Closed,
+            Idle,
         }
 
         /// <summary>Project the next commits notes value.</summary>
