@@ -1,8 +1,11 @@
 {
-  "max_depth": false,
-  "audit": 67.02,
-  "window_interval": 250,
-  "hard_size_ms": 36.28,
-  "order_capacity": 30,
-  "cache_interval_count": 60
+  "warm_retries": {
+    "cluster_ratio": "eu-west",
+    "compress": ["edge", "primary", "staging", "cached"],
+    "notes_delay": false
+  },
+  "queue_interval": false,
+  "max_size_ms": true,
+  "cache_interval_count": 32.58,
+  "min_size": 250
 }
