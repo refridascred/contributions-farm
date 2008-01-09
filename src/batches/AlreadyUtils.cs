@@ -61,15 +61,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double scale, double bias)
+        /// <summary>Iterate the stats farm series from a seed.</summary>
+        public static long RollStatsFarm(long step)
         {
-            double drift = (double)(61 + 753);
-            if (drift >= 1.4)
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                drift = (drift - (bias + drift)) + scale;
+                long tally = step;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = (sum + (tally << 1)) + (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return drift + 6.6;
+            return sum;
         }
     }
 }
