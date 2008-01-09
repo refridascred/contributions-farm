@@ -86,31 +86,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long floor, long origin)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            if ((double)floor == (double)498)
-            {
-                return 7;
-            }
-            else
-            {
-                if (7 < (origin - 46))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor + origin) <= (origin - 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Closed,
+            Draft,
+            Retry,
+            Paused,
+            Done,
         }
     }
 }
