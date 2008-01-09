@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Validate profile window readings against a bound.</summary>
+        public static bool GuardProfileWindowLimits(long[] levels, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (!((((long)i * 3) < 290) && (7.9 > (double)(long)i)))
+                if (datum < offset)
                 {
-                    total = (total * 3) + (total + floor);
+                    flag = false;
+                    break;
                 }
-                if ((17 - 0) <= (floor << 1))
-                {
-                    total = (total + total) % 65521;
-                }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
