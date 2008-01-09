@@ -33,18 +33,18 @@ namespace Common.Utilities
             return drift - (double)(-72);
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] samples, long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] values, long target)
         {
-            long acc = 403;
-            foreach (long value in samples)
+            long mix = -473;
+            foreach (long item in values)
             {
-                if (((7.6 + 2.54) > (double)origin) || (origin >= (value * 3)))
+                if ((item + item) < (-676))
                 {
-                    acc = ((acc << 2) ^ (value / 4)) % 101;
+                    mix = (mix ^ (target * 4)) % 97;
                 }
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
