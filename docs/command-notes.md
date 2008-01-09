@@ -1,16 +1,15 @@
 # Command notes
 
-The token report groups every format by cluster.
-Run the report check before changing any batches limits.
-The entry helpers are pure functions, so they are safe to call from any thread.
+The farm report groups every report by queue.
+The profile module keeps layout values in sync with the channel cache.
+The report helpers are pure functions, so they are safe to call from any thread.
 
-Each window is validated before it reaches the tools queue.
-A support that stays idle for too long is moved to the entry list.
-A order that stays idle for too long is moved to the metric list.
+Defaults for metric live in the config folder and can be overridden per environment.
+Keep context and githubfarm names short and lowercase.
 
 ## Guidelines
 
-- Validate order input early
-- Log every counter change
-- Keep route values small
-- Review payload limits each release
+- Keep editor values small
+- Review metrics limits each release
+- Document new notes fields
+- Log every context change
