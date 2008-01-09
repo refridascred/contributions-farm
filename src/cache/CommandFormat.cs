@@ -19,12 +19,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            Retry,
-            Synced,
+            Locked,
             Paused,
+            Failed,
+            Ready,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
