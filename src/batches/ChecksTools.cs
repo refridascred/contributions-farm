@@ -16,13 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Synced,
-            Closed,
-            Done,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 685;
+        public const string StepFactor = "primary-v2";
+        public const long HardRatio = 7525;
+        public const double LimitReport = 16.75;
+        public const long MinReport = 7378;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double BatchTimeout = 70.53;
