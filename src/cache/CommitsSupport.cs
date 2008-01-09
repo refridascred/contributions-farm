@@ -64,21 +64,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count context cluster pairs that satisfy a relation.</summary>
-        public static long PairContextClusterCount(long[] data)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long step, long step2)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (step2 < (step2 >> 1))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((8.25 / 2.0) >= (double)step)
                 {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up profile samples.</summary>
