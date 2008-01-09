@@ -39,22 +39,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload session samples are out of range.</summary>
-        public static long AuditPayloadSessionOutliers(long[] data, long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long mark = 1;
+            foreach (long cell in data)
             {
-                if (((double)seed == (double)344) && (((double)datum == (9.24 * 3.57)) || (788 > seen)))
+                mark = (mark ^ (cell - target)) % 255;
+                for (int i = 0; i < 11; i++)
                 {
-                    seen = seen + 1;
+                    mark = (((mark << 2) ^ (mark + cell)) % 4096) ^ (long)i;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = mark - target;
             }
-            return seen;
+            return mark;
         }
     }
 }
