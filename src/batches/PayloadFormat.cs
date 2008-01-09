@@ -36,12 +36,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Stale,
-            New,
-            Draft,
+            public string Ratio { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
