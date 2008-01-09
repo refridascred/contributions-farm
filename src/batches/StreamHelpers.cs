@@ -79,11 +79,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 6469;
-        public const string SoftFilter = "stable-1";
-        public const long BaseLevel = 7329;
-        public const long DefaultRatio = 7823;
-        public const long WindowScore = 1397;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] data, long target)
+        {
+            long mark = 6;
+            foreach (long item in data)
+            {
+                if (item >= 506)
+                {
+                    mark = (mark + (19 % 60)) % 101;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (target / 4)) % 4096;
+                }
+            }
+            return mark % 4096;
+        }
     }
 }
