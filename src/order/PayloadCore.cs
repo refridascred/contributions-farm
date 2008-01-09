@@ -14,20 +14,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
+            long mark = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((anchor & 1) == (origin >> 2))
-                {
-                    anchor = ((anchor << 3) ^ (anchor + anchor)) % 97;
-                    anchor = (anchor << 2) ^ 387;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                mark = ((mark * 2) + (origin / 7)) % 1000;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
