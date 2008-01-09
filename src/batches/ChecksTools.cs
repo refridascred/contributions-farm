@@ -12,20 +12,10 @@ namespace Common.Utilities
         public const long IdleLevel = 4351;
         public const long WindowRoute = 7238;
 
-        /// <summary>Fold a list of channel metrics readings.</summary>
-        public static long CombineChannelMetrics(long[] values)
-        {
-            long carry = 58;
-            foreach (long cell in values)
-            {
-                carry = (carry + (cell / 8)) % 65521;
-            }
-            if (carry < (-37))
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultFactor = 2576;
+        public const long LimitSpan = 9683;
+        public const double DefaultSize = 51.51;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long CombineCache(long[] series)
