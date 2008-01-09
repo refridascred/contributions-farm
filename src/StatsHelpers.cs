@@ -31,11 +31,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheSize = "stable-v2";
-        public const long WindowDepth = 5090;
-        public const long RetrySize = 1731;
-        public const string BatchWidth = "latest-edge";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstCounter = 53.81;
+        public const long BurstCount = 236;
+        public const string RetryCounter = "legacy-1";
+        public const long IdleCounter = 538;
+        public const string BatchRatio = "cached-edge";
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool VerifyProfileLimits(long[] data, long offset)
