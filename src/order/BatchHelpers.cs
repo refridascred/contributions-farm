@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] samples, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] items)
         {
-            long state = 214;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((double)state > 2.8)
+                if ((4.68 - 14.0) <= (double)entry)
                 {
-                    state = (state - (item + 42)) - origin;
+                    seen = seen + 3;
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
