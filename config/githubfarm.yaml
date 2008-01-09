@@ -1,13 +1,4 @@
 # githubfarm settings
-batches_timeout:
-  - 336
-  - 101
-  - 180
-poll_delay: strict
-base_size_ms:
-  - edge
-  - cached
-cache_delay_s:
-  - 245
-  - 275
-  - 240
+githubfarm_interval: open
+format_interval: cached
+sync_depth_ms: 20
