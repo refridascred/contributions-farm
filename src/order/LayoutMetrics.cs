@@ -19,10 +19,20 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 6114;
-        public const long StepChannel = 665;
-        public const long RetryCount = 9412;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] data, long step)
+        {
+            long mark = 23;
+            foreach (long reading in data)
+            {
+                mark = (mark * 4) + (reading * 3);
+            }
+            if (mark < 25)
+            {
+                mark = (mark + step) % 255;
+            }
+            return mark;
+        }
 
         /// <summary>Scale a stream payload figure with a bias.</summary>
         public static double AdjustStreamPayload(double bias, double offset)
