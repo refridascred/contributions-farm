@@ -19,17 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a schema support sample.</summary>
-        public static long LookupSchemaSupportIndex(long[] data, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 2;
+            foreach (long reading in levels)
             {
-                if (data[i] <= limit)
+                if ((reading << 2) >= reading)
                 {
-                    return (long)i;
+                    mark = mark + (mark << 2);
+                }
+                if ((double)reading == (3.51 - 2.92))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark % 4096;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
