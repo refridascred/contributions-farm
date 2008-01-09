@@ -60,17 +60,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first cache already entry that matches the target.</summary>
-        public static long LookupCacheAlreadyIndex(long[] series, long step)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if ((series[i] == step) && ((series[i] % 2) == 0))
+                if (sample < origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
