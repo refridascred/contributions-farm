@@ -32,21 +32,19 @@ namespace Common.Utilities
         public const long LimitLevel = 6468;
         public const long IdleLevel = 8337;
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] data, long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (score > (score + score))
+                if (value > floor)
                 {
-                    long lane = ((long)i ^ score) << 3;
-                    score = ((score << 2) ^ (lane - (long)i)) % 65521;
+                    found = false;
+                    break;
                 }
-                score = score - (long)i;
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return found;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
