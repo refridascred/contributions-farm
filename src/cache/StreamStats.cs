@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long step, long step2)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            if (!(step > step2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((473 % 8) > step2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((step2 % 3) > step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step2 / 6) == (4 + step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Draft,
+            New,
+            Done,
+            Active,
         }
 
         /// <summary>Accumulate graph samples.</summary>
