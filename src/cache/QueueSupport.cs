@@ -16,22 +16,15 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] data)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long bound)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((cell * 2) <= cell)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the tools level values.</summary>
