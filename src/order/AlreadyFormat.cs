@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] levels, long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long sum = 310;
+            foreach (long cell in samples)
             {
-                if (cell > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum << 2) ^ 29) + cell;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
