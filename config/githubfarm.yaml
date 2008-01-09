@@ -1,14 +1,4 @@
 # githubfarm settings
-persist: true
-poll_limit_count: false
-min_delay_ms: 45.52
-audit:
-  - edge
-  - fallback
-  - fallback
-  - edge
-batch_size_s:
-  - standard
-  - standard
-  - staging
-  - local
+dry_run: 70
+batch_retries_count: 19
+channel_retries: primary
