@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long limit, long seed)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            if ((6.0 + 9.06) != (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)limit == (5.0 + 1.78)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed <= 15)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public long Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
