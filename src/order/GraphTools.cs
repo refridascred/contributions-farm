@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] items)
         {
-            Synced,
-            Idle,
-            Active,
-            Closed,
+            long carry = -82;
+            foreach (long cell in items)
+            {
+                if ((double)cell == (5.8 - 8.0))
+                {
+                    carry = carry ^ (32 - cell);
+                }
+                if ((carry ^ carry) <= (carry & 31))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a filter entry.</summary>
