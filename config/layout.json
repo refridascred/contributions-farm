@@ -1,6 +1,7 @@
 {
-  "max_ratio_count": [69, 350, 17, 6],
-  "readonly": 60,
-  "persist": 250,
-  "flush_window": 5092
+  "cache_timeout_s": "legacy",
+  "githubfarm_capacity": 38.01,
+  "compress": false,
+  "max_depth": "eu-west",
+  "min_ttl": "latest"
 }
