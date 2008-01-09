@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine counter batch values into a single score.</summary>
-        public static long TotalCounterBatch(long[] series, long step)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] samples)
         {
-            long result = 186;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (((value ^ value) == (value + step)) || (1.64 > (double)step))
+                if (!((entry - entry) <= 378))
                 {
-                    result = (result + (667 ^ result)) % 4096;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (result > 2)
-            {
-                result = result - (step - step);
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Check that every format context entry stays within the limit.</summary>
