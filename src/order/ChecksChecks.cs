@@ -30,39 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long limit, long floor)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long span = limit + floor;
-            if (((floor * 5) == (span - 416)) || ((double)floor == (double)limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((4 ^ floor) < (span >> 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (35 < (limit - span))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((991 + span) < (-8))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Active,
+            Failed,
+            Synced,
         }
     }
 }
