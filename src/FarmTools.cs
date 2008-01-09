@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long origin, long floor)
-        {
-            if ((origin * 3) == (origin / 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((25 % 12) < (origin * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((1.33 + 10.0) <= (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftScore = 3136;
+        public const long IdleSpan = 3487;
+        public const long BurstLevel = 9475;
+        public const string StepBudget = "open";
+        public const double BurstCache = 51.58;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long FoldContributi(long[] series)
