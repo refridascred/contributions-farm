@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const string IdleCluster = "staging";
         public const long BatchCluster = 9404;
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
             public long Ratio { get; set; }
         }
 
