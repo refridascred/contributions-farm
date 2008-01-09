@@ -60,10 +60,22 @@ namespace Common.Utilities
         public const long IdleSpan = 7220;
         public const long CacheBuffer = 793;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftStream = 93.62;
-        public const double DefaultStream = 86.74;
-        public const long HardScore = 9964;
-        public const long LimitStream = 4183;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((hits * 3) == (6 >> 2))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
