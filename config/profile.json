@@ -1,6 +1,6 @@
 {
-  "warm_limit": "standard",
-  "warm_depth": "fallback",
-  "burst_delay": "latest",
-  "poll_retries": 95.83
+  "payload_limit": 3113,
+  "batch_size": true,
+  "soft_retries_pct": "primary",
+  "default_window": ["strict", "staging", "fallback", "green"]
 }
