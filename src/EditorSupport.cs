@@ -86,14 +86,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] series)
         {
-            Queued,
-            Draft,
-            Locked,
-            Done,
-            Ready,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((count * 2) <= (datum % 10))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
