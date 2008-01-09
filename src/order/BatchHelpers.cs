@@ -26,10 +26,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinWidth = 802;
-        public const long LimitSchema = 6529;
-        public const string SoftBudget = "primary-edge";
-        public const long BurstInterval = 4189;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long seed, long seed2)
+        {
+            long step = seed - seed2;
+            if ((seed << 1) >= 0)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + 43) <= seed2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
