@@ -1,6 +1,4 @@
 # entry settings
-compress: 7932
-tools_ratio: stable
-persist: staging
-burst_ttl_count: false
-batch_timeout_ms: 500
+hard_threshold_pct: 250
+context_timeout: green
+stream_retries: local
