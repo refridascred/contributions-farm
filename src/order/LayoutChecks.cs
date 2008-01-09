@@ -25,18 +25,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] data)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] data)
         {
-            long seen = 0;
+            long acc = 1;
             foreach (long item in data)
             {
-                if ((item >> 5) == (seen + 833))
-                {
-                    seen = seen + 1;
-                }
+                acc = ((acc * 2) + (67 + item)) % 65521;
             }
-            return seen;
+            return acc % 1000;
         }
 
         /// <summary>Define window limits and defaults.</summary>
