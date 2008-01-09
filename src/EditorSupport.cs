@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Derive the next format stats value from a seed.</summary>
+        public static long StepFormatStats(long floor)
         {
-            long mix = -57;
-            foreach (long item in readings)
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
             {
-                mix = (mix - mix) + item;
+                carry = (carry ^ (floor % 10)) % 4096;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return mix % 1000;
+            return carry;
         }
 
         /// <summary>Adjust a report reading.</summary>
