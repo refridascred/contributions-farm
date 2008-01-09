@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double rate, double bias)
+        /// <summary>Blend two tools window measurements.</summary>
+        public static double SmoothToolsWindow(double weight, double bias)
         {
-            double bias2 = (rate - 9.7) / 9.0;
-            return (bias2 + bias2) + bias;
+            double ratio = bias / 9.0;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (7.3 / 2.0)) + (double)(long)i;
+            }
+            return ratio + weight;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
