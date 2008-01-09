@@ -49,17 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a account batches reading by value.</summary>
-        public static long LocateAccountBatchesIndex(long[] readings, long step)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
