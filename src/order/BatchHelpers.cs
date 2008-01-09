@@ -19,17 +19,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] series, long floor)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] == floor) && ((series[i] % 3) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
