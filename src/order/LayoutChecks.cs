@@ -44,17 +44,12 @@ namespace Common.Utilities
         public const long RetryWindow = 3411;
         public const long BaseWidth = 7233;
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] readings, long target)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < target) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Retry,
+            Paused,
         }
 
         /// <summary>Describe the notes status values.</summary>
