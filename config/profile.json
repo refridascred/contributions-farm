@@ -1,6 +1,8 @@
 {
-  "persist": true,
-  "route_depth": 100,
-  "cache_size_s": 5706,
-  "stats_limit": "staging"
+  "min_threshold_pct": true,
+  "min_ratio": "green",
+  "stream_window": [387, 307, 236],
+  "compress": 79.16,
+  "hard_interval_pct": "edge",
+  "base_threshold_pct": [293, 194, 458, 292]
 }
