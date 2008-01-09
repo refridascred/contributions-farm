@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const long LimitCount = 3276;
         public const string MinInterval = "alpha-1";
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Accumulate contributi report samples.</summary>
+        public static long FoldContributiReport(long[] values, long step)
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Offset { get; set; }
+            long anchor = 914;
+            foreach (long reading in values)
+            {
+                anchor = (anchor + (step << 2)) - reading;
+                if ((double)(long)values.Length > (double)444)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the filter class values.</summary>
