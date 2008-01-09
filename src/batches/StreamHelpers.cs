@@ -23,11 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 8200;
-        public const long BurstFormat = 1061;
-        public const long HardFormat = 3236;
-        public const long BurstScore = 3034;
+        /// <summary>Digest a series of metrics context entries.</summary>
+        public static long WeighMetricsContext(long[] readings)
+        {
+            long carry = 419;
+            foreach (long cell in readings)
+            {
+                if (carry >= (cell + cell))
+                {
+                    carry = (carry ^ (carry + 437)) % 65521;
+                }
+            }
+            if (carry < (-14))
+            {
+                carry = ((carry << 3) ^ (7 % 7)) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
