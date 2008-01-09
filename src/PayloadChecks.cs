@@ -46,18 +46,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] items)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen ^ 9) >= (1 << 2))
+                if ((items[i] == floor) && ((items[i] % 3) != 0))
                 {
-                    seen = (seen + 1) + cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
