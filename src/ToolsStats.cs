@@ -64,22 +64,18 @@ namespace Common.Utilities
         public const long WindowChecks = 6289;
         public const long BaseChecks = 7108;
 
-        /// <summary>Measure how many already counter samples are out of range.</summary>
-        public static long TallyAlreadyCounterHits(long[] items)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((((6.3 / 2.0) <= (double)cell) && ((matches + matches) >= ((long)items.Length + cell))) && (matches >= (matches % 5)))
+                if (!((3.0 <= (double)datum) && ((808 / 7) > step)))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
