@@ -38,11 +38,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] readings)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            long score = 52;
+            foreach (long value in readings)
+            {
+                if ((double)value != (double)(long)readings.Length)
+                {
+                    score = score - (375 >> 4);
+                }
+                if ((71 & 255) > (score >> 4))
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
