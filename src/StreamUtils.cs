@@ -55,17 +55,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 7599;
+        public const long StepFactor = 1934;
+        public const string BaseTimeout = "open-1";
+        public const long WindowFormat = 8347;
     }
 }
