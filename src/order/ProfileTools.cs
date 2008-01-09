@@ -39,21 +39,26 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of buffer layout readings.</summary>
-        public static long PairBufferLayoutCount(long[] levels)
+        /// <summary>Fold a list of cluster record readings.</summary>
+        public static long DigestClusterRecord(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 98;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((value - floor) >= (floor + value)) && ((floor & 1) >= 5))
                 {
-                    if ((levels[i] ^ levels[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc - (48 - acc)) % 97;
+                }
+                else
+                {
+                    acc = (acc ^ (767 << 3)) % 97;
                 }
             }
-            return seen;
+            if (acc > 16)
+            {
+                acc = (acc * 2) + (0 % 64);
+            }
+            return acc;
         }
 
         /// <summary>Rank account input into a small class.</summary>
