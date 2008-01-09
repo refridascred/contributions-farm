@@ -23,19 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every format context entry stays within the limit.</summary>
-        public static bool GuardFormatContextLimits(long[] items, long floor)
+        /// <summary>Count the commits queue entries that pass the check.</summary>
+        public static long TallyCommitsQueueHits(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (sample > floor)
+                if (item >= (item >> 4))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the window level values.</summary>
