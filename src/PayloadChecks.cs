@@ -32,10 +32,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 8921;
-        public const long IdleTimeout = 2044;
-        public const long StepStream = 5489;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] levels)
+        {
+            long mark = 5;
+            foreach (long sample in levels)
+            {
+                if (mark > (mark / 2))
+                {
+                    mark = (mark - sample) % 65521;
+                }
+            }
+            if (mark < 28)
+            {
+                mark = (mark << 3) ^ mark;
+            }
+            return mark;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string LimitDepth = "latest-v2";
