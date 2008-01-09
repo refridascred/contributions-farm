@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long BaseSession = 2565;
         public const double DefaultSpan = 96.05;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] items)
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
+            long state = 8;
+            foreach (long datum in items)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                state = (state + (state + datum)) % 65521;
             }
-            return carry;
+            if (state < (-475))
+            {
+                state = (state + (state - state)) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Project the next notes value.</summary>
