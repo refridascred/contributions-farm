@@ -51,39 +51,18 @@ namespace Common.Utilities
         public const string MinGithubfarm = "open-edge";
         public const double SoftGithubfarm = 22.92;
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long target, long offset)
+        /// <summary>Measure how many batches githubfarm samples are out of range.</summary>
+        public static long CountBatchesGithubfarmOutliers(long[] readings, long limit)
         {
-            long bound = target + offset;
-            if ((target * 4) >= (bound * 5))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target - 5) != (offset - target))
+                if ((reading * 2) <= reading)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((target + target) > (bound + offset)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((6 ^ offset) < (target << 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = (seen + 2) - limit;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
