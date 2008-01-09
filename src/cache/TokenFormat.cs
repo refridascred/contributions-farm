@@ -23,13 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] readings, long seed)
         {
-            Closed,
-            Pending,
-            Dropped,
-            Locked,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (!(seed >= (datum & 255)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate support account readings against a bound.</summary>
