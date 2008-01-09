@@ -23,19 +23,21 @@ namespace Common.Utilities
         public const double StepDepth = 76.27;
         public const long RetryScore = 2969;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] data, long limit)
+        /// <summary>Compare every pair of route format readings.</summary>
+        public static long CompareRouteFormatCount(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] ^ values[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Adjust a counter reading.</summary>
