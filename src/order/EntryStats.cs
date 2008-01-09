@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const string CacheWidth = "primary-v2";
         public const long MaxInterval = 6920;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] levels)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] items)
         {
-            long mark = 55;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                mark = ((mark ^ (296 & 127)) % 4096) + cell;
+                if ((hits + 692) > hits)
+                {
+                    hits = (hits + 3) - entry;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
