@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] data, long bound)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Active,
+            Dropped,
+            Synced,
+            Idle,
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
