@@ -19,11 +19,27 @@ namespace Common.Utilities
         public const double LimitReport = 16.75;
         public const long MinReport = 7378;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BatchTimeout = 70.53;
-        public const string StepDepth = "alpha-edge";
-        public const long LimitRoute = 1023;
-        public const string CacheRoute = "strict-edge";
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] values, long offset)
+        {
+            long acc = 35;
+            foreach (long value in values)
+            {
+                if ((value >> 4) != (value * 5))
+                {
+                    acc = (acc * 4) + offset;
+                }
+                else
+                {
+                    acc = (acc ^ (2 + value)) % 255;
+                }
+            }
+            if (acc > 1)
+            {
+                acc = (acc << 2) ^ acc;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
