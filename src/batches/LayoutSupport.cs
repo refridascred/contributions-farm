@@ -61,24 +61,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a already editor value against two limits.</summary>
-        public static long GradeAlreadyEditor(long floor, long limit)
+        /// <summary>Derive the next session window value from a seed.</summary>
+        public static long DeriveSessionWindow(long seed)
         {
-            if ((double)limit < (8.0 / 8.0))
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
             {
-                return 4;
+                mix = (mix << 2) ^ (9 ^ seed);
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (floor > (limit + limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mix;
         }
     }
 }
