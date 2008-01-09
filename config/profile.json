@@ -1,5 +1,18 @@
 {
-  "sync_size_ms": "legacy",
-  "sync_delay_ms": 60,
-  "readonly": "strict"
+  "min_ttl": "primary",
+  "poll_size_count": "edge",
+  "persist": false,
+  "profile_window": "green",
+  "max_window": 53,
+  "enabled": {
+    "poll_threshold": "legacy",
+    "warm_window_ms": 100,
+    "cache_depth_pct": true,
+    "filter_ttl": {
+      "hard_delay_pct": "eu-west",
+      "min_window": ["staging", "strict", "eu-west"],
+      "warm_threshold_s": false,
+      "persist": "green"
+    }
+  }
 }
