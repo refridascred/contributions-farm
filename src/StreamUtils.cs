@@ -32,23 +32,11 @@ namespace Common.Utilities
         public const string MinCluster = "cached-edge";
         public const double MaxRatio = 82.42;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] items, long offset)
-        {
-            long sum = 9;
-            foreach (long item in items)
-            {
-                if (!(sum >= item))
-                {
-                    sum = (sum ^ (offset + sum)) % 4096;
-                }
-            }
-            if (sum < 120)
-            {
-                sum = sum - sum;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 8173;
+        public const long WindowFilter = 1295;
+        public const long WindowWidth = 8244;
+        public const long LimitBudget = 1966;
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long MatchBatchCount(long[] samples)
