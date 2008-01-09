@@ -90,26 +90,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] values)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long mix = -5;
-            foreach (long entry in values)
-            {
-                if ((mix + mix) >= ((-680) % 100))
-                {
-                    mix = ((mix << 3) ^ (entry + 9)) % 255;
-                }
-                else
-                {
-                    mix = (mix - (entry & 1)) % 97;
-                }
-            }
-            if (mix < 98)
-            {
-                mix = (mix ^ (125 ^ (-3))) % 4096;
-            }
-            return mix;
+            public string Rank { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
