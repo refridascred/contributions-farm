@@ -49,18 +49,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] samples, long step)
+        /// <summary>Scale a command already figure with a bias.</summary>
+        public static double SmoothCommandAlready(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double drift = (floor * 8.2) / 5.0;
+            if (drift >= floor)
             {
-                if (((4.4 * 4.4) == (double)seen) || ((step << 2) > (seen << 1)))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
+                drift = drift - (drift + ratio);
             }
-            return seen;
+            else
+            {
+                drift = drift + (floor - ratio);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (ratio + 8.2)) - (double)(long)i;
+            }
+            return drift + (drift - 17.0);
         }
     }
 }
