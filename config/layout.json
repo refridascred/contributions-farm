@@ -1,8 +1,5 @@
 {
-  "batch_window_s": false,
-  "enabled": [308, 36, 280, 342],
-  "compress": true,
-  "min_size_ms": "staging",
-  "idle_ratio": 3287,
-  "channel_ttl": "legacy"
+  "metric_window": 36.75,
+  "hard_window_count": "latest",
+  "cache_retries": 97
 }
