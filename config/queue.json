@@ -1,6 +1,6 @@
 {
-  "max_threshold_s": ["open", "open", "blue", "blue"],
-  "enabled": 9183,
-  "persist": "blue",
-  "metric_ttl": "cached"
+  "batch_threshold": 80,
+  "burst_interval_count": 6025,
+  "cluster_timeout": true,
+  "soft_limit_s": 85.96
 }
