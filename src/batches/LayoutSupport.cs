@@ -91,18 +91,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] series, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long mix = 97;
+            foreach (long item in levels)
             {
-                if ((step + step) > hits)
+                if ((offset + mix) >= mix)
                 {
-                    hits = (hits + 3) ^ sample;
+                    mix = ((mix << 2) ^ (item * 2)) % 97;
                 }
             }
-            return hits;
+            return mix;
         }
     }
 }
