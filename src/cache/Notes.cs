@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long IdleBuffer = 8287;
         public const string LimitBuffer = "local-edge";
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double rate, double offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] samples, long target)
         {
-            double drift = (double)(6 << 1);
-            if (drift < drift)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift + 8.0) + rate;
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (offset / 8.0);
-            }
-            return drift - drift;
+            return -1;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
