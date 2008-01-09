@@ -26,12 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRatio = 8212;
-        public const long WindowCount = 6926;
-        public const long CacheTimeout = 9491;
-        public const long HardWidth = 921;
-        public const long BurstScore = 9075;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Retry,
+            Ready,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long CompareClusterCount(long[] samples)
