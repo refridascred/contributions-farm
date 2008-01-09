@@ -74,18 +74,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] data, long limit)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (limit >= (504 % 2))
+                if (datum < seed)
                 {
-                    seen = (seen + 3) + reading;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Combine farm route values into a single score.</summary>
