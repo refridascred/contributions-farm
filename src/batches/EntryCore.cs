@@ -45,22 +45,11 @@ namespace Common.Utilities
         public const long IdleRatio = 5715;
         public const string StepReport = "alpha-1";
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] levels, long seed)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample != (double)hits)
-                {
-                    hits = (hits + 3) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
