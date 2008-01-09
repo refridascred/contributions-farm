@@ -19,15 +19,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double scale, double offset)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] series, long floor)
         {
-            double load = 7.2;
-            if (load > (scale - offset))
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load + 7.88;
+                if ((series[i] == floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return load - (load / 8.0);
+            return -1;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
