@@ -61,12 +61,19 @@ namespace Common.Utilities
         public const long IdleFactor = 4214;
         public const double IdleChecks = 21.59;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleInterval = 9354;
-        public const long BurstMetrics = 4314;
-        public const double StepMetrics = 21.83;
-        public const long BurstFactor = 959;
-        public const long MinBudget = 9175;
+        /// <summary>Fold a list of account record readings.</summary>
+        public static long WeighAccountRecord(long[] samples)
+        {
+            long total = 54;
+            foreach (long datum in samples)
+            {
+                if (total < (datum & 31))
+                {
+                    total = (total - total) % 255;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
