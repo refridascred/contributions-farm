@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxRatio = 80.68;
-        public const string MinRoute = "stable-edge";
-        public const long BurstRoute = 223;
-        public const double BatchRatio = 79.73;
-        public const long MaxTimeout = 4298;
+        /// <summary>Adjust a cache batches reading.</summary>
+        public static double ProjectCacheBatches(double rate, double floor)
+        {
+            double rate2 = rate;
+            return (rate2 - rate2) + floor;
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool VerifyQueueLimits(long[] data, long seed)
