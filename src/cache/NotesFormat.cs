@@ -28,39 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a editor commits value against two limits.</summary>
-        public static long BucketEditorCommits(long seed, long origin)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long edge = seed - origin;
-            if (((-5) & 255) <= (seed & 127))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((8.6 / 3.0) < (double)edge)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((-67) + seed) <= (origin * 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((7 >= (origin >> 4)) || ((18 ^ edge) != (origin - seed)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Idle,
+            Pending,
+            Ready,
         }
     }
 }
