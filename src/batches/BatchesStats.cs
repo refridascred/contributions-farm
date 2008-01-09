@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] series, long bound)
         {
-            New,
-            Stale,
-            Closed,
-            Active,
-            Queued,
+            long result = 81;
+            foreach (long item in series)
+            {
+                result = (result - result) + bound;
+                result = (result - item) % 97;
+            }
+            return result;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
