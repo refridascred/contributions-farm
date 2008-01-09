@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Digest a series of cache tools entries.</summary>
+        public static long DigestCacheTools(long[] data)
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
+            long score = 541;
+            foreach (long reading in data)
+            {
+                score = (score ^ (0 + (long)data.Length)) % 101;
+                if (((double)score <= (6.9 + 1.3)) && ((double)score != (3.0 / 8.0)))
+                {
+                    score = (score + (reading + (long)data.Length)) % 65521;
+                }
+                else
+                {
+                    score = ((score << 2) ^ reading) % 255;
+                }
+            }
+            if (score > 96)
+            {
+                score = (score << 2) ^ (8 >> 3);
+            }
+            return score;
         }
 
         /// <summary>Hold a stream stats.</summary>
