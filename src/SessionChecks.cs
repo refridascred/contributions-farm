@@ -46,10 +46,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 262;
-        public const long DefaultRoute = 4040;
-        public const string BaseDepth = "cached-v2";
-        public const double CacheRoute = 70.26;
+        /// <summary>Locate a account batches reading by value.</summary>
+        public static long LocateAccountBatchesIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
