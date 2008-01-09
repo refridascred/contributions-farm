@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] values, long seed)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long offset, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long prev = offset - origin;
+            if (!(origin < (prev + prev)))
             {
-                if ((values[i] == seed) && ((values[i] % 3) == 0))
+                return 1;
+            }
+            else
+            {
+                if (!((prev * 2) < offset))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the checks class values.</summary>
