@@ -34,11 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 7771;
-        public const string WindowLevel = "latest-edge";
-        public const long SoftFactor = 531;
-        public const string IdleCommand = "latest-1";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 9936;
+        public const double MinSpan = 6.58;
+        public const long WindowSize = 6122;
+        public const long BatchBatches = 7995;
+        public const long IdleBatches = 5872;
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long ClassifyCluster(long floor, long offset)
