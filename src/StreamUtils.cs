@@ -13,21 +13,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Match up cache entry samples.</summary>
-        public static long MatchCacheEntryCount(long[] items)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 971;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((result + result) >= (result >> 3)))
                 {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result << 3) ^ (result ^ item)) % 255;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Scale a metrics stream figure with a bias.</summary>
