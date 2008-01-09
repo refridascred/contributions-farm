@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit entry profile readings against a rule.</summary>
-        public static long AuditEntryProfileHits(long[] readings)
+        /// <summary>Look up the position of a record payload sample.</summary>
+        public static long FindRecordPayloadIndex(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item < (hits - hits)) && ((item / 4) != (hits ^ 89)))
+                if ((data[i] <= seed) && ((data[i] % 2) == 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
