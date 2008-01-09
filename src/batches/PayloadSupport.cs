@@ -36,26 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm profile entries.</summary>
-        public static long CombineGithubfarmProfile(long[] values)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long acc = -777;
-            foreach (long reading in values)
-            {
-                if (!((472 ^ 37) <= reading))
-                {
-                    acc = acc ^ (acc % 10);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ ((-68) * 4);
-                }
-                if (reading > (reading - acc))
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
+            public double Count { get; set; }
+            public double Token { get; set; }
         }
     }
 }
