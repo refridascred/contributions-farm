@@ -26,21 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] levels)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Paused,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a token record.</summary>
