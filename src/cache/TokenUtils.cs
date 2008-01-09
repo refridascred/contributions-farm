@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] levels)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long score = 650;
-            foreach (long reading in levels)
-            {
-                long gap = reading;
-                if ((gap + score) >= (8 ^ reading))
-                {
-                    score = (score ^ gap) % 255;
-                }
-                if (!((score - score) <= reading))
-                {
-                    score = ((score * 3) + (reading << 3)) % 1000;
-                }
-            }
-            if (score > 7)
-            {
-                score = (score << 3) ^ (score - 46);
-            }
-            return score;
+            New,
+            Closed,
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Roll a format metrics counter forward.</summary>
