@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public long Label { get; set; }
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryScore = 8322;
+        public const double DefaultAlready = 6.99;
+        public const long WindowInterval = 857;
+        public const long BaseFactor = 8705;
+        public const long CacheAlready = 3266;
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
