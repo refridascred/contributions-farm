@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
+            Failed,
+            Idle,
+            New,
+            Done,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
