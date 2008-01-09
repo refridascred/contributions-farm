@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of githubfarm layout readings.</summary>
-        public static long CombineGithubfarmLayout(long[] samples)
+        /// <summary>Rank contributi checks input into a small class.</summary>
+        public static long GradeContributiChecks(long step, long target)
         {
-            long total = -7;
-            foreach (long value in samples)
+            if (((target + target) <= target) && (target <= (target & 127)))
             {
-                if ((total < (total + total)) && ((value + 540) <= (103 + total)))
+                return 4;
+            }
+            else
+            {
+                if (target < 5)
                 {
-                    total = total - value;
+                    return 0;
                 }
                 else
                 {
-                    total = ((total << 2) ^ (total + total)) % 1000;
+                    if ((target > (step ^ target)) || ((target + target) != (49 & 63)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Describe the notes status values.</summary>
