@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Measure how many token tools samples are out of range.</summary>
+        public static long CountTokenToolsGaps(long[] items)
         {
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
-            public string Size { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (matches < (37 << 2))
+                {
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
