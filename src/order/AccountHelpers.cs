@@ -79,21 +79,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count context stats pairs that satisfy a relation.</summary>
-        public static long OverlapContextStatsCount(long[] values)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) < 14)
+                    if ((levels[i] ^ levels[j]) != 17)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
