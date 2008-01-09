@@ -1,7 +1,13 @@
 {
-  "strict": false,
-  "batch_window_count": 81,
-  "already_threshold": "green",
-  "stats_timeout": false,
-  "idle_timeout": 98.7
+  "hard_retries": {
+    "poll_limit_count": "stable",
+    "base_limit_count": [36, 382, 167],
+    "retry_ratio": 34,
+    "burst_interval_pct": "standard",
+    "max_capacity": 26.52,
+    "flush_ttl_ms": false
+  },
+  "cluster_threshold": false,
+  "editor_ratio": 89,
+  "flush_ttl_count": false
 }
