@@ -16,31 +16,21 @@ namespace Common.Utilities
         public const long CacheFactor = 3483;
         public const string SoftBatch = "primary-1";
 
-        /// <summary>Classify a schema buffer pair into a bucket.</summary>
-        public static long BucketSchemaBuffer(long floor, long origin)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] values)
         {
-            if (floor <= origin)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (41 <= (floor >> 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (floor > origin)
+                    if ((values[i] - values[j]) != 14)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
