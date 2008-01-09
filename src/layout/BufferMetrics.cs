@@ -19,5 +19,19 @@ namespace Common.Utilities
             }
             return total;
         }
+
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((tally >> 3) < (sample - tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
