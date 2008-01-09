@@ -29,18 +29,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] series, long step)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)datum <= (8.25 + 0.47))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) - step;
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
