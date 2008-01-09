@@ -39,23 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double bias, double span)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long floor)
         {
-            double drift = (double)((-5) ^ 5);
-            if (drift < (double)472)
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
             {
-                drift = (drift - (drift / 7.0)) - bias;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            else
-            {
-                drift = drift + (drift - span);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (span + drift)) - (double)(long)i;
-            }
-            return drift + 19.0;
+            return mark;
         }
     }
 }
