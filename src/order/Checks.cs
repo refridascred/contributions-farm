@@ -58,14 +58,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            Active,
-            Failed,
-            Closed,
-            Stale,
-            Pending,
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Match up entry samples.</summary>
