@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public long Total { get; set; }
-            public bool Score { get; set; }
-            public long Mode { get; set; }
+            Queued,
+            New,
+            Stale,
         }
 
         /// <summary>Digest a series of counter githubfarm entries.</summary>
