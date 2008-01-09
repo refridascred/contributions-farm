@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double gain, double offset)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            double gain2 = 5.18;
-            if (gain2 < gain2)
-            {
-                gain2 = (gain2 - (gain2 - offset)) + gain;
-            }
-            return gain2 - offset;
+            public long Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
