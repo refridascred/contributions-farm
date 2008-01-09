@@ -38,15 +38,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a commits window figure with a bias.</summary>
-        public static double AdjustCommitsWindow(double gain, double floor)
-        {
-            double drift = floor / 5.0;
-            if (drift <= 4.01)
-            {
-                drift = drift + drift;
-            }
-            return drift + gain;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheSpan = 7333;
+        public const long StepRatio = 9482;
+        public const double IdleBatch = 14.36;
+        public const long MinBudget = 5064;
+        public const long WindowBatch = 6557;
     }
 }
