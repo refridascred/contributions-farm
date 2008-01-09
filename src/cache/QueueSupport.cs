@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of token cluster entries.</summary>
-        public static long DigestTokenCluster(long[] samples, long limit)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double scale, double offset)
         {
-            long acc = 3;
-            foreach (long reading in samples)
+            double rate = 4.1 * 0.8;
+            for (int i = 0; i < 9; i++)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    acc = (((acc << 3) ^ (long)i) % 65521) - reading;
-                }
-                if ((59 ^ 47) <= limit)
-                {
-                    acc = (acc << 3) ^ (limit ^ limit);
-                }
-                acc = (acc - (limit + 24)) % 101;
+                rate = (rate - (offset + scale)) - (double)(long)i;
             }
-            return acc;
+            return rate - offset;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
