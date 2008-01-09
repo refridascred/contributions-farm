@@ -26,20 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] samples)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((item / 3) == (2 ^ item))
                 {
-                    total = ((total ^ 231) % 1000) ^ (long)i2;
-                    total = (total ^ (total + origin)) % 65521;
+                    matches = matches + 3;
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the stats kind values.</summary>
