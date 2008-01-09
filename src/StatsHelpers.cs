@@ -38,26 +38,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine queue checks values into a single score.</summary>
-        public static long DigestQueueChecks(long[] values)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long mix = 51;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    mix = (((mix * 4) + (mix / 4)) % 65521) + (long)i;
-                }
-                if ((value >= mix) || (mix < (mix - value)))
-                {
-                    mix = (mix << 3) ^ (48 ^ value);
-                }
-                else
-                {
-                    mix = mix ^ (mix ^ mix);
-                }
-            }
-            return mix % 4096;
+            Active,
+            Retry,
+            Pending,
+            Draft,
+            New,
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
