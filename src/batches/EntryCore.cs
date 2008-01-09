@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((43 - carry) >= ((long)i + target)))
-                {
-                    carry = (carry ^ (-7)) % 255;
-                    continue;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultWidth = "legacy-v2";
+        public const long RetryWindow = 2288;
+        public const long IdleInterval = 2814;
+        public const long BaseWindow = 3131;
+        public const long RetryCount = 2027;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long IterateCluster(long limit)
