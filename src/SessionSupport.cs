@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 6910;
         public const string MinGithubfarm = "strict-1";
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] data, long step)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] levels, long floor)
         {
-            long mix = 2;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step < (6 / 6)) || (step >= mix))
+                if (levels[i] == floor)
                 {
-                    mix = (((mix << 2) ^ (step + step)) % 1000) + cell;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit format editor readings against a rule.</summary>
