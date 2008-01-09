@@ -23,12 +23,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Pending,
-            Dropped,
-            Active,
+            Draft,
+            Done,
+            Stale,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
