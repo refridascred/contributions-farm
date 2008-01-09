@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] series, long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 174;
+            foreach (long cell in items)
             {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
+                mark = (((mark << 3) ^ cell) % 101) - step;
             }
-            return -1;
+            if (mark < 859)
+            {
+                mark = ((mark << 3) ^ (mark << 1)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
