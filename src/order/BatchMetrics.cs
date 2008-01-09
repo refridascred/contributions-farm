@@ -48,12 +48,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long seed)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] series, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] < seed)
+                if (series[i] <= offset)
                 {
                     return (long)i;
                 }
