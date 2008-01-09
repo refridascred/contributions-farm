@@ -1,8 +1,6 @@
 {
-  "min_threshold_pct": true,
-  "min_ratio": "green",
-  "stream_window": [387, 307, 236],
-  "compress": 79.16,
-  "hard_interval_pct": "edge",
-  "base_threshold_pct": [293, 194, 458, 292]
+  "warm_limit": "standard",
+  "warm_depth": "fallback",
+  "burst_delay": "latest",
+  "poll_retries": 95.83
 }
