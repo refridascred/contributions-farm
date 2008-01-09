@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] samples)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((286 - tally) != (datum ^ tally))
+                if ((series[i] == origin) && ((series[i] % 5) != 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
