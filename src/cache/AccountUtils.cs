@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] items)
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((item / 2) < (item + item))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank session input into a small class.</summary>
