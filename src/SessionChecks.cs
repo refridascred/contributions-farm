@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next account buffer value from a seed.</summary>
-        public static long SeriesAccountBuffer(long limit)
+        /// <summary>Project the next checks filter value.</summary>
+        public static double SmoothChecksFilter(double gain, double offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
+            double ratio = offset;
+            if (ratio < 7.9)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                ratio = ratio - (gain - 7.2);
             }
-            return anchor;
+            else
+            {
+                ratio = ratio + (double)46;
+            }
+            return ratio + gain;
         }
 
         /// <summary>Describe the account phase values.</summary>
