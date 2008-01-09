@@ -26,19 +26,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate payload cluster readings against a bound.</summary>
-        public static bool VerifyPayloadClusterRange(long[] data, long seed)
-        {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 9333;
+        public const long BurstSpan = 6312;
+        public const double BurstInterval = 88.62;
     }
 }
