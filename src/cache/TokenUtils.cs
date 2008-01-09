@@ -37,22 +37,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the already stream entries that pass the check.</summary>
-        public static long TallyAlreadyStreamHits(long[] samples)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((16 * 4) == (datum + seen))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public bool Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
