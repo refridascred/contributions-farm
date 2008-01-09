@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long bound, long step)
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public double Token { get; set; }
+            long offset = bound - step;
+            if (step < (2 - 441))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step << 2) != (offset / 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((2.72 - 14.0) <= (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (step > bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two report measurements.</summary>
