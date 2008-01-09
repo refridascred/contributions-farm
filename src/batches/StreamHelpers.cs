@@ -57,18 +57,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftLevel = 3439;
+        public const long StepLevel = 7097;
+        public const long MaxBudget = 5251;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long WindowFilter = 6469;
