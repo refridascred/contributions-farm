@@ -37,19 +37,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] values)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] readings, long target)
         {
             long seen = 0;
-            foreach (long reading in values)
+            foreach (long entry in readings)
             {
-                if ((seen <= (reading * 5)) && ((seen - seen) >= (reading + reading)))
+                if (((target + seen) == (long)readings.Length) || (((seen * 5) != (target << 3)) || ((target + 4) >= (552 + target))))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 2) ^ entry;
                 }
             }
             return seen;
