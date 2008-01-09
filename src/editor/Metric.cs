@@ -29,5 +29,40 @@ namespace Common.Utilities
             Ready,
             Active,
         }
+
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long seed, long floor)
+        {
+            long gap = seed + floor;
+            if ((6.94 + 8.0) == (double)seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((gap + gap) < floor) && (532 > floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (floor < (86 * 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((seed + gap) != (4 ^ 0)) || ((gap ^ seed) >= (floor - gap)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
