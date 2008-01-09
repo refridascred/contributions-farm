@@ -46,31 +46,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long target, long limit)
-        {
-            if (target < (limit << 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (target > (target + 13))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((2 >> 4) > target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 262;
+        public const long DefaultRoute = 4040;
+        public const string BaseDepth = "cached-v2";
+        public const double CacheRoute = 70.26;
     }
 }
