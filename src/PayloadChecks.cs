@@ -58,10 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultReport = 92.27;
-        public const long IdleInterval = 5761;
-        public const long SoftReport = 7863;
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = mark + mark;
+                mark = (mark * 3) + (target - (-90));
+                mark = (mark + (mark - target)) % 4096;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long CompareRecordCount(long[] items)
