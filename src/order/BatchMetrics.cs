@@ -69,21 +69,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] samples)
+        /// <summary>Count the entry contributi entries that pass the check.</summary>
+        public static long MeasureEntryContributiHits(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (77 < (seed % 60))
                 {
-                    if ((samples[i] + samples[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) - value;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
