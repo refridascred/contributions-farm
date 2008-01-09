@@ -37,17 +37,20 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] data, long floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] data, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 19;
+            foreach (long datum in data)
             {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 3) ^ (datum + offset)) % 97;
+                carry = (carry + carry) % 101;
             }
-            return -1;
+            if (carry > 42)
+            {
+                carry = (carry + (8 / 7)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the window level values.</summary>
