@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Failed,
-            Done,
-            Synced,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftSpan = 1570;
+        public const long DefaultReport = 3908;
+        public const long BurstReport = 2805;
+        public const long MaxReport = 4483;
+        public const long StepLevel = 9403;
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
