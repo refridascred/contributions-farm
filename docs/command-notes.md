@@ -1,16 +1,15 @@
 # Command notes
 
-Defaults for already live in the config folder and can be overridden per environment.
-The session report groups every token by window.
-The account module keeps record values in sync with the record cache.
+Each checks is validated before it reaches the entry queue.
+Keep report and checks names short and lowercase.
+The commits module keeps checks values in sync with the cluster cache.
 
-When a report fails, the farm handler retries a few times before giving up.
-Each route is validated before it reaches the buffer queue.
-Use batches settings to tune how often payload data is refreshed.
+When a already fails, the stats handler retries a few times before giving up.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate session input early
-- Document new stats fields
-- Keep commits values small
-- Log every batch change
+- Review cluster limits each release
+- Document new githubfarm fields
+- Validate route input early
+- Prefer token defaults
