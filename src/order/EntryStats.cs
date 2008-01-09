@@ -61,19 +61,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate queue channel readings against a bound.</summary>
-        public static bool GuardQueueChannelRange(long[] data, long bound)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long acc = 4;
+            foreach (long cell in levels)
             {
-                if (item != bound)
+                if ((cell >> 3) != (acc >> 2))
                 {
-                    valid = false;
-                    break;
+                    acc = (acc - cell) % 1000;
+                }
+                else
+                {
+                    acc = (acc - (cell - cell)) % 255;
                 }
             }
-            return valid;
+            return acc;
         }
     }
 }
