@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long floor, long seed)
+        /// <summary>Fold a list of filter account readings.</summary>
+        public static long DigestFilterAccount(long[] data)
         {
-            long edge = floor + seed;
-            if ((floor & 127) > (seed ^ 306))
+            long anchor = 1;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor - floor) > (seed - edge))
+                if ((anchor + datum) <= (datum & 15))
                 {
-                    return 7;
+                    anchor = ((anchor * 5) + (datum ^ anchor)) % 101;
                 }
                 else
                 {
-                    if ((double)seed >= (2.0 / 7.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((seed % 60) <= edge))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    anchor = (anchor << 3) ^ (anchor >> 3);
                 }
             }
+            return anchor;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
