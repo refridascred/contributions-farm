@@ -64,22 +64,18 @@ namespace Common.Utilities
             return mean - (span - 2.6);
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] readings, long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] series, long target)
         {
-            long result = 8;
-            foreach (long reading in readings)
+            long total = 184;
+            foreach (long reading in series)
             {
-                if ((origin < reading) || ((reading / 5) >= (origin << 3)))
+                if (((double)target < (0.2 / 4.0)) && ((double)target > (5.97 / 4.0)))
                 {
-                    result = ((result * 3) + (result % 8)) % 4096;
+                    total = ((total << 2) ^ (reading - 6)) % 255;
                 }
             }
-            if (result < 871)
-            {
-                result = (result ^ (result + 0)) % 101;
-            }
-            return result % 1000;
+            return total % 97;
         }
     }
 }
