@@ -51,13 +51,10 @@ namespace Common.Utilities
         public const long IdleSpan = 7220;
         public const long CacheBuffer = 793;
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Locked,
-            Ready,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftStream = 93.62;
+        public const double DefaultStream = 86.74;
+        public const long HardScore = 9964;
+        public const long LimitStream = 4183;
     }
 }
