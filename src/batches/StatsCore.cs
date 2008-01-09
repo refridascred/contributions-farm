@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const double StepDepth = 76.27;
         public const long RetryScore = 2969;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] values, long seed)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] data, long limit)
         {
-            long result = 775;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((long)values.Length >= (entry + entry))
+                if (reading < limit)
                 {
-                    result = (result - (193 << 2)) - seed;
+                    valid = false;
+                    break;
                 }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Adjust a counter reading.</summary>
