@@ -14,17 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] values, long origin)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
