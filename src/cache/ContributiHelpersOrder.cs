@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long LimitToken = 4413;
         public const double HardRatio = 17.74;
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public double Token { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchMetrics = "cached";
+        public const long LimitWidth = 9609;
+        public const double HardMetrics = 90.91;
+        public const long HardSize = 3106;
+        public const string SoftBudget = "standard-v2";
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaOutliers(long[] series, long step)
