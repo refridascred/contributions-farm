@@ -34,15 +34,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two notes farm measurements.</summary>
-        public static double SmoothNotesFarm(double bias, double floor)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double scale, double span)
         {
-            double gain = floor;
-            if (gain < bias)
+            double mean = scale;
+            if (mean > (double)53)
             {
-                gain = gain + (gain - 4.0);
+                mean = mean - scale;
             }
-            return gain - (bias / 4.0);
+            else
+            {
+                mean = mean - (mean - span);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + 3.5) + (double)(long)i;
+            }
+            return mean - (7.2 - 4.7);
         }
 
         /// <summary>Hold a stream record.</summary>
