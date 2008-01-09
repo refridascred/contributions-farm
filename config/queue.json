@@ -1,17 +1,14 @@
 {
-  "flush_retries_pct": 1024,
-  "checks_ratio": {
-    "persist": false,
-    "readonly": 1024,
-    "audit": "eu-west",
-    "compress": "staging",
-    "sync_ratio": "open"
+  "dry_run": 1024,
+  "idle_size_ms": {
+    "readonly": ["open", "primary", "latest", "strict"],
+    "order_limit": {
+      "cache_depth": false,
+      "flush_threshold_ms": "latest",
+      "min_timeout_pct": true
+    },
+    "dry_run": "strict"
   },
-  "batch_interval": {
-    "githubfarm_window": [410, 490],
-    "context_timeout": "primary",
-    "stats_ttl": 689,
-    "default_interval_s": ["cached", "standard"],
-    "burst_ttl_ms": [291, 407]
-  }
+  "burst_ttl_s": [139, 126],
+  "min_window_ms": 1024
 }
