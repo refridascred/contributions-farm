@@ -1,8 +1,6 @@
 {
-  "base_window": 80.88,
-  "verbose": true,
-  "dry_run": "local",
-  "readonly": "edge",
-  "burst_interval_ms": false,
-  "default_retries": [317, 20, 458, 181]
+  "dry_run": 39,
+  "min_threshold_s": ["primary", "stable"],
+  "record_threshold": 1024,
+  "contributi_threshold": "stable"
 }
