@@ -94,18 +94,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] data)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] values, long floor)
         {
-            long result = -1;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (((double)item < 5.7) && ((9.1 - 7.1) <= (double)item))
+                if (((value - floor) >= (floor + value)) || (floor <= 61))
                 {
-                    result = (result * 2) + (item + result);
+                    tally = tally + 1;
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
