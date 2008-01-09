@@ -1,5 +1,9 @@
 # githubfarm settings
-support_interval: open
-cache_limit: false
-order_delay: 67
-audit: open
+cache_size_count:
+  - strict
+  - green
+  - fallback
+  - eu-west
+warm_depth: latest
+min_interval: 100
+persist: 23.02
