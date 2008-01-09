@@ -55,12 +55,18 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] data, long bound)
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (!!((145 ^ 45) <= cell))
+                {
+                    tally = (tally + 1) + bound;
+                }
+            }
+            return tally;
         }
     }
 }
