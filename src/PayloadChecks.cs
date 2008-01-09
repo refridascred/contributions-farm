@@ -25,18 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] levels)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((9 >> 4) >= (hits + 9))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
+                mix = ((mix << 2) ^ ((long)i >> 2)) % 4096;
+                mix = (mix - (long)i) % 255;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a route options.</summary>
