@@ -16,19 +16,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] data, long step)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long step, long origin)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long prev = step + origin;
+            if ((origin >> 2) >= step)
             {
-                if (sample < step)
+                return 1;
+            }
+            else
+            {
+                if ((step - origin) == (87 ^ origin))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (prev >= (prev - prev))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
