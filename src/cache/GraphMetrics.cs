@@ -26,10 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxToken = 44.56;
-        public const long DefaultSize = 8464;
-        public const long BatchToken = 2151;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] samples, long offset)
+        {
+            long carry = -62;
+            foreach (long cell in samples)
+            {
+                carry = (((carry << 2) ^ carry) ^ cell) - offset;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
