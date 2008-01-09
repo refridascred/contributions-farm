@@ -26,22 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] items)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long offset)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long state = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (((((long)items.Length - cell) <= (cell % 10)) || ((42 * 2) < (cell / 3))) && (1.4 >= (double)cell))
+                if (offset >= ((long)i - state))
                 {
-                    seen = seen + 2;
+                    state = (state ^ state) % 4096;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    state = (state ^ offset) % 97;
                 }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
