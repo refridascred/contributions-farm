@@ -1,5 +1,5 @@
 {
-  "flush_interval_s": "legacy",
-  "enabled": "edge",
-  "hard_size_ms": "eu-west"
+  "entry_threshold": true,
+  "enabled": 3774,
+  "readonly": "standard"
 }
