@@ -59,21 +59,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] items)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Paused,
+            Idle,
         }
 
         /// <summary>Classify a farm batch pair into a bucket.</summary>
