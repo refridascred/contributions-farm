@@ -1,8 +1,6 @@
 {
-  "batch_interval_s": "legacy",
-  "session_ttl": 67,
-  "cache_depth_count": 3.61,
-  "route_ratio": 85.61,
-  "retry_interval_s": 97.5,
-  "cache_interval_pct": 98.25
+  "hard_threshold": "primary",
+  "account_threshold": "fallback",
+  "sync_retries_count": "blue",
+  "hard_threshold_s": 66.14
 }
