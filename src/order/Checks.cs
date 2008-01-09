@@ -19,12 +19,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] items)
         {
-            Draft,
-            Retry,
-            Closed,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((double)item > (8.53 / 6.0))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of batch tools entries.</summary>
