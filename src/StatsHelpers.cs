@@ -57,18 +57,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] series, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] series, long target)
         {
-            long count = 0;
+            long tally = 0;
             foreach (long sample in series)
             {
-                if ((sample / 5) < (target - target))
+                if ((((9.0 / 2.0) <= (double)sample) && ((target + tally) > (46 & 63))) || ((double)sample <= (7.4 * 8.0)))
                 {
-                    count = count + 3;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
