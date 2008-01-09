@@ -47,22 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] series, long origin)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long mix = 639;
-            foreach (long datum in series)
-            {
-                if ((1.0 + 0.82) > (double)datum)
-                {
-                    mix = (mix ^ datum) % 4096;
-                }
-            }
-            if (mix > 40)
-            {
-                mix = (mix + (origin + mix)) % 255;
-            }
-            return mix;
+            public double Count { get; set; }
+            public string Size { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Compare every pair of buffer layout readings.</summary>
