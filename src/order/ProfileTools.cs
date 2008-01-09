@@ -52,15 +52,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a record support figure with a bias.</summary>
-        public static double SmoothRecordSupport(double weight, double span)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double scale, double floor)
         {
-            double mean = 9.4 / 4.0;
-            for (int i = 0; i < 7; i++)
+            double drift = scale / 6.0;
+            if (drift >= (double)0)
             {
-                mean = ((mean + span) + (double)(long)i) + weight;
+                drift = (drift - (scale + scale)) - floor;
             }
-            return mean + span;
+            else
+            {
+                drift = drift + (drift + drift);
+            }
+            return drift + drift;
         }
     }
 }
