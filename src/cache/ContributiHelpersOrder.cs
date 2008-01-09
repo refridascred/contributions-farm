@@ -33,21 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] values)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading > target)
                 {
-                    if ((values[i] ^ values[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
