@@ -41,18 +41,17 @@ namespace Common.Utilities
         public const string SoftRatio = "local-edge";
         public const double IdleInterval = 37.99;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] readings)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] readings, long bound)
         {
-            long mark = 54;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample + mark) > (mark * 4))
+                if (readings[i] > bound)
                 {
-                    mark = (mark - mark) % 4096;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
