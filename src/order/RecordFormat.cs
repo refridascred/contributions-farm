@@ -19,19 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double bias, double floor)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long origin, long limit)
         {
-            double scale = 5.22 + (bias + floor);
-            if (scale < 10.0)
+            long delta = origin ^ limit;
+            if ((8.1 * 2.2) <= (double)origin)
             {
-                scale = scale + (scale + scale);
+                return 8;
             }
             else
             {
-                scale = scale + (floor - 8.1);
+                if ((limit > (delta - origin)) && ((origin * 3) == (delta ^ origin)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((delta <= (limit / 7)) && ((delta >> 3) > limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((5.3 * 7.0) == (double)limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return scale + (scale * 8.0);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
