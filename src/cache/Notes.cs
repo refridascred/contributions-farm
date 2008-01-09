@@ -19,21 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] data)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double rate, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)(6 << 1);
+            if (drift < drift)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = (drift + 8.0) + rate;
             }
-            return tally;
+            else
+            {
+                drift = drift - (offset / 8.0);
+            }
+            return drift - drift;
         }
 
         /// <summary>Hold a batch record.</summary>
