@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next filter notes value.</summary>
-        public static double ScaleFilterNotes(double scale, double offset)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            double drift = (double)(2 ^ 9);
-            if (drift <= (offset + offset))
-            {
-                drift = drift - (scale - offset);
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift + offset;
+            public bool Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the schema phase values.</summary>
