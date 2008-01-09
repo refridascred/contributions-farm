@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long HardRatio = 4426;
         public const double CacheBudget = 73.71;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] readings, long bound)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value - bound) <= (bound << 2))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
