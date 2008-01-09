@@ -1,5 +1,6 @@
 {
-  "profile_retries": ["latest", "cached", "edge", "primary"],
-  "poll_delay_count": ["open", "legacy", "standard"],
-  "hard_retries_s": 500
+  "max_threshold_s": ["open", "open", "blue", "blue"],
+  "enabled": 9183,
+  "persist": "blue",
+  "metric_ttl": "cached"
 }
