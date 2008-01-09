@@ -33,18 +33,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] samples)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] items)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long carry = 95;
+            foreach (long item in items)
             {
-                if ((item / 3) == (2 ^ item))
+                if ((84 - 824) != (item / 6))
                 {
-                    matches = matches + 3;
+                    carry = (carry ^ (item + carry)) % 65521;
+                }
+                else
+                {
+                    carry = carry ^ (48 >> 5);
                 }
             }
-            return matches;
+            if (carry < 9)
+            {
+                carry = (carry ^ (carry >> 5)) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the stats kind values.</summary>
