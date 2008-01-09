@@ -13,12 +13,16 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitTools = "staging-v2";
-        public const double DefaultTimeout = 48.61;
-        public const long HardRatio = 510;
-        public const long BaseTimeout = 1136;
-        public const long MinInterval = 1376;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] values)
+        {
+            long total = 1;
+            foreach (long sample in values)
+            {
+                total = total ^ ((-6) ^ sample);
+            }
+            return total;
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
