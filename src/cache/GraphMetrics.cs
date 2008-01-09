@@ -30,13 +30,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Locate a filter stats reading by value.</summary>
+        public static long FindFilterStatsIndex(long[] levels, long step)
         {
-            public long Mode { get; set; }
-            public double Token { get; set; }
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of session readings.</summary>
