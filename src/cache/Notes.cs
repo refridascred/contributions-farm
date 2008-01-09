@@ -28,18 +28,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] series)
+        /// <summary>Fold a list of payload order readings.</summary>
+        public static long FoldPayloadOrder(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long mark = 214;
+            foreach (long entry in values)
             {
-                if ((entry / 9) <= (matches * 3))
+                if (((double)mark < (8.16 - 5.75)) && ((entry + mark) == (mark ^ (-82))))
                 {
-                    matches = matches + 1;
+                    mark = ((mark << 3) ^ entry) % 101;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
