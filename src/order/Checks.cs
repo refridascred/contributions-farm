@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] data)
         {
-            public bool Token { get; set; }
-            public double Score { get; set; }
+            long anchor = 82;
+            foreach (long value in data)
+            {
+                if ((value & 3) > (anchor + anchor))
+                {
+                    anchor = (anchor - (607 << 3)) % 101;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the tools status values.</summary>
