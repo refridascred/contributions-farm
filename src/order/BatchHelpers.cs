@@ -12,18 +12,12 @@ namespace Common.Utilities
             return gain + (bias * 4.56);
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] samples)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (!((-1) < sample))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Pending,
+            Failed,
         }
 
         /// <summary>Count the layout editor entries that pass the check.</summary>
