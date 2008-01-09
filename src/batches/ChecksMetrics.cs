@@ -13,13 +13,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] data, long step)
         {
-            Closed,
-            Pending,
-            Failed,
-            Retry,
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a filter header.</summary>
