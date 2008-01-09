@@ -26,14 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Closed,
-            Draft,
-            Stale,
-            Pending,
-            Paused,
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the batches kind values.</summary>
