@@ -1,7 +1,11 @@
 {
-  "burst_depth_ms": "legacy",
-  "cache_limit_ms": false,
-  "audit": "eu-west",
-  "verbose": "fallback",
-  "buffer_depth": 43
+  "audit": 72.47,
+  "strict": {
+    "burst_retries": "green",
+    "farm_capacity": 13.7,
+    "poll_ratio_count": "staging"
+  },
+  "enabled": 27.55,
+  "compress": true,
+  "support_capacity": 60
 }
