@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] values, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((values[i] <= offset) && ((values[i] % 3) == 0))
+                if ((double)limit >= 2.4)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit context payload readings against a rule.</summary>
