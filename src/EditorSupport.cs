@@ -68,13 +68,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Count cluster counter pairs that satisfy a relation.</summary>
+        public static long CompareClusterCounterCount(long[] items)
         {
-            Dropped,
-            Stale,
-            Synced,
-            Queued,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
