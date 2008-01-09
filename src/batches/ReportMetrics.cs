@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftCommits = 35.14;
-        public const long SoftRatio = 7042;
-        public const long WindowCommits = 8503;
-        public const string LimitWidth = "open-v2";
+        /// <summary>Match up order queue samples.</summary>
+        public static long OverlapOrderQueueCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long GradeFormat(long seed, long step)
