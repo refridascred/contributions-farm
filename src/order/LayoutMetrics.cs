@@ -20,19 +20,12 @@ namespace Common.Utilities
             return load + (double)5;
         }
 
-        /// <summary>Audit report order readings against a rule.</summary>
-        public static long MeasureReportOrderMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (seen > (seen * 3))
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardFarm = "latest-v2";
+        public const string MinSpan = "stable-1";
+        public const long MaxDepth = 2922;
+        public const long WindowCount = 2018;
+        public const double MaxFactor = 0.07;
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
