@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            public bool Size { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            long mix = -57;
+            foreach (long item in readings)
+            {
+                mix = (mix - mix) + item;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a support snapshot.</summary>
