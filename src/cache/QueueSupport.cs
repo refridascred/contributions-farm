@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] series, long offset)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (((value << 2) <= (offset - count)) || !((long)series.Length > (23 ^ offset)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CachePayload = 39.72;
+        public const double LimitScore = 15.08;
+        public const long MaxRatio = 4253;
+        public const long LimitSpan = 7532;
+        public const long DefaultLevel = 7925;
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long OverlapBufferCount(long[] samples)
