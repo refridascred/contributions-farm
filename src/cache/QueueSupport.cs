@@ -37,15 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine editor cluster values into a single score.</summary>
-        public static long FoldEditorCluster(long[] readings)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] values, long origin)
         {
-            long mark = -45;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                mark = (mark + cell) % 101;
+                if (entry > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark % 1000;
+            return ok;
         }
     }
 }
