@@ -39,13 +39,22 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] values, long bound)
         {
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
+            long anchor = 0;
+            foreach (long item in values)
+            {
+                if ((bound / 9) >= (anchor & 127))
+                {
+                    anchor = (anchor + (anchor + 716)) % 1000;
+                }
+                if ((7.1 - 8.08) >= (double)item)
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Find the first window tools entry that matches the target.</summary>
