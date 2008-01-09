@@ -55,12 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] levels, long origin)
         {
-            Closed,
-            Synced,
-            Ready,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
