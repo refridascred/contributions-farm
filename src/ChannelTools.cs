@@ -34,14 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] items, long limit)
         {
-            Locked,
-            Pending,
-            Dropped,
-            Retry,
-            Queued,
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
