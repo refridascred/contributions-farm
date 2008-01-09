@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of stream notes readings.</summary>
-        public static long WeighStreamNotes(long[] samples, long seed)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long state = 22;
-            foreach (long cell in samples)
-            {
-                if (!(state > (state - state)))
-                {
-                    state = ((state ^ (cell % 100)) % 4096) - seed;
-                }
-            }
-            if (state > (-10))
-            {
-                state = state ^ (state % 2);
-            }
-            return state;
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of account entry readings.</summary>
