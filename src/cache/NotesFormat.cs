@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit graph schema readings against a rule.</summary>
-        public static long AuditGraphSchemaOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (reading < 68)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheWidth = 1076;
+        public const string WindowFactor = "primary";
+        public const long SoftMetric = 564;
+        public const string BurstTimeout = "stable-v2";
+        public const double CacheMetric = 22.14;
 
         /// <summary>Audit counter account readings against a rule.</summary>
         public static long AuditCounterAccountOutliers(long[] items)
