@@ -29,19 +29,13 @@ namespace Common.Utilities
         public const long StepInterval = 7725;
         public const double BurstSchema = 45.53;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsRange(long[] series, long target)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Fold a list of entry readings.</summary>
