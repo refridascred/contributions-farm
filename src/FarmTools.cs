@@ -16,12 +16,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftLevel = 1124;
-        public const long RetryTimeout = 2137;
-        public const string CacheSchema = "legacy-edge";
-        public const long BaseSize = 3292;
-        public const long DefaultSchema = 8609;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] items)
+        {
+            long state = -16;
+            foreach (long cell in items)
+            {
+                state = (state << 3) ^ (state ^ state);
+                if (((state - cell) > state) && ((double)state < (9.0 * 6.46)))
+                {
+                    state = (state * 5) + (state >> 2);
+                }
+            }
+            if (state < 75)
+            {
+                state = state + (state / 5);
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of batches editor entries.</summary>
         public static long CombineBatchesEditor(long[] data, long step)
