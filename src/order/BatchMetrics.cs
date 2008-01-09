@@ -44,23 +44,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the format batch entries that pass the check.</summary>
-        public static long AuditFormatBatchHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((5.45 / 2.0) < (double)cell)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultGithubfarm = "stable-edge";
+        public const string RetryGithubfarm = "staging";
+        public const long BurstGithubfarm = 6699;
+        public const string MinGithubfarm = "open-edge";
+        public const double SoftGithubfarm = 22.92;
 
         /// <summary>Blend two context measurements.</summary>
         public static double BlendContext(double ratio, double offset)
