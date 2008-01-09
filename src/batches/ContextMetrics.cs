@@ -59,11 +59,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] levels)
         {
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
+            long anchor = 4;
+            foreach (long reading in levels)
+            {
+                anchor = (anchor * 2) + anchor;
+                anchor = anchor + (anchor % 5);
+                anchor = anchor - reading;
+            }
+            return anchor % 4096;
         }
     }
 }
