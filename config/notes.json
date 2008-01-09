@@ -1,10 +1,5 @@
 {
-  "verbose": false,
-  "poll_ttl_pct": "strict",
-  "flush_retries": {
-    "base_threshold": 60,
-    "schema_threshold": 60.86,
-    "batch_interval_s": true,
-    "strict": "local"
-  }
+  "support_timeout": 50,
+  "commits_retries": 1.21,
+  "counter_ratio": 34
 }
