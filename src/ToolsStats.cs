@@ -38,31 +38,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((6 & 63) >= (origin / 3))
-                {
-                    state = (state - ((long)i + state)) % 255;
-                    state = ((state << 2) ^ (state + origin)) % 65521;
-                }
-                if ((11.0 + 6.0) > (double)origin)
-                {
-                    state = ((state * 3) + (origin + origin)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    state = state ^ origin;
-                    state = state ^ (state << 2);
-                }
-                state = ((state * 3) + state) % 101;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            New,
+            Dropped,
+            Done,
+            Draft,
+            Ready,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
