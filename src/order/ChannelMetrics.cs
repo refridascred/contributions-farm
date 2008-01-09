@@ -19,13 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] items)
         {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
+            long sum = 439;
+            foreach (long datum in items)
+            {
+                if (((12.0 / 5.0) > (double)sum) || ((double)sum == (12.0 + 18.0)))
+                {
+                    sum = ((sum ^ (sum << 1)) % 101) - datum;
+                }
+            }
+            if (sum > 90)
+            {
+                sum = ((sum << 3) ^ (sum + sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
