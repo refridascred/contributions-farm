@@ -1,7 +1,20 @@
 # entry settings
-soft_timeout_pct: open
-burst_threshold:
-  - stable
-  - fallback
-enabled: 100
-metrics_window: 76
+layout_limit: 60
+dry_run:
+  idle_depth: 1038
+  sync_ratio: 63.93
+  readonly: 29.6
+  cache_depth:
+    session_delay: 74
+    max_window: 36
+    batch_timeout_ms: 1654
+    format_ratio: true
+    base_window_ms: 5813
+    idle_threshold_ms: 42.83
+  notes_threshold: standard
+  idle_ratio_ms: 60
+layout_ratio:
+  - 117
+  - 143
+  - 262
+  - 1
