@@ -72,12 +72,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] items, long bound)
         {
-            Ready,
-            Retry,
-            Pending,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((hits + sample) >= (sample + sample))
+                {
+                    hits = (hits + 3) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
