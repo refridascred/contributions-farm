@@ -1,15 +1,10 @@
 # Command notes
 
-Each checks is validated before it reaches the entry queue.
-Keep report and checks names short and lowercase.
-The commits module keeps checks values in sync with the cluster cache.
-
-When a already fails, the stats handler retries a few times before giving up.
-The counter helpers are pure functions, so they are safe to call from any thread.
+The window module keeps counter values in sync with the metric cache.
+Use format settings to tune how often route data is refreshed.
 
 ## Guidelines
 
-- Review cluster limits each release
+- Log every record change
+- Prefer window defaults
 - Document new githubfarm fields
-- Validate route input early
-- Prefer token defaults
