@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long offset, long origin)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] readings, long bound)
         {
-            long prev = offset - origin;
-            if (!(origin < (prev + prev)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((prev * 2) < offset))
+                if (readings[i] <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the account phase values.</summary>
