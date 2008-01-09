@@ -23,21 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] readings)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 5;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score + (score * 3)) % 65521) ^ datum;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the tools level values.</summary>
