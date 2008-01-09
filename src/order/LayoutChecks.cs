@@ -59,11 +59,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Total { get; set; }
+            public bool Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a editor info.</summary>
