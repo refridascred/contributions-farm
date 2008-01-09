@@ -56,19 +56,22 @@ namespace Common.Utilities
         public const double RetryBudget = 81.22;
         public const long MinRoute = 903;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] values, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (sample != seed)
+                if ((count % 5) > (item + (-37)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
