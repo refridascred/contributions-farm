@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long MaxMetric = 3391;
         public const long LimitMetric = 5894;
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 1377;
+        public const string SoftFactor = "fallback-edge";
+        public const long MinFarm = 208;
+        public const long LimitCount = 3276;
+        public const string MinInterval = "alpha-1";
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool ValidateCommitsBounds(long[] data, long bound)
