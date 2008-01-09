@@ -47,24 +47,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long offset, long floor)
+        /// <summary>Scale a token stream figure with a bias.</summary>
+        public static double ProjectTokenStream(double rate, double floor)
         {
-            if (((offset + 5) <= offset) || ((double)offset >= (8.97 + 18.0)))
+            double ratio = (double)(4 ^ 66);
+            if (ratio >= ratio)
             {
-                return 0;
+                ratio = ratio - (rate + floor);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((offset / 4) > (14 + offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
+                ratio = (ratio - (rate * 7.0)) + (double)(long)i;
             }
+            return ratio - (double)2;
         }
 
         /// <summary>Describe the entry class values.</summary>
