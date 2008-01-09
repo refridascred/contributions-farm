@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyOutliers(long[] series)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((double)hits >= 9.0)
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
