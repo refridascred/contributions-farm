@@ -31,19 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two editor buffer measurements.</summary>
-        public static double AdjustEditorBuffer(double scale, double span)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] data)
         {
-            double gain = 3.0;
-            if (gain < (span * 12.0))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                gain = gain - gain;
+                if ((double)sample > (13.0 / 4.0))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + scale) - (double)(long)i;
-            }
-            return gain + (gain - scale);
+            return matches;
         }
     }
 }
