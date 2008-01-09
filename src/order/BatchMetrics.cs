@@ -74,18 +74,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches githubfarm samples are out of range.</summary>
-        public static long CountBatchesGithubfarmOutliers(long[] readings, long limit)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading * 2) <= reading)
-                {
-                    seen = (seen + 2) - limit;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public double Region { get; set; }
+            public double Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the cache state values.</summary>
