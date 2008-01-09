@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] data)
+        /// <summary>Roll a filter buffer counter forward.</summary>
+        public static long SeriesFilterBuffer(long limit)
         {
-            long sum = 6;
-            foreach (long item in data)
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((sum ^ 825) >= (sum + item))
-                {
-                    sum = (sum ^ (sum ^ (long)data.Length)) % 101;
-                }
-                else
-                {
-                    sum = (sum - sum) % 97;
-                }
-                sum = (sum * 3) + sum;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            if (sum > 441)
-            {
-                sum = (sum + sum) % 4096;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
