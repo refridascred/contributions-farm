@@ -22,15 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of window queue entries.</summary>
-        public static long TotalWindowQueue(long[] values)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long anchor = -87;
-            foreach (long reading in values)
-            {
-                anchor = (anchor + reading) % 101;
-            }
-            return anchor;
+            Idle,
+            Failed,
+            Draft,
+            Active,
+            Locked,
         }
 
         /// <summary>Grade a context token value against two limits.</summary>
