@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double gain, double floor)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] levels, long limit)
         {
-            double ratio = (double)(93 * 5);
-            if (ratio >= 0.55)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio + (double)89;
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (double)4) + (double)(long)i;
-            }
-            return ratio - (gain + floor);
+            return -1;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
