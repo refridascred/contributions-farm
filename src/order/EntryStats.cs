@@ -45,12 +45,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Audit commits token readings against a rule.</summary>
+        public static long CountCommitsTokenOutliers(long[] items)
         {
-            public bool Offset { get; set; }
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((seen - datum) == (datum - datum))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate queue channel readings against a bound.</summary>
