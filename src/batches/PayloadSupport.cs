@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long floor, long seed)
         {
-            Pending,
-            Dropped,
-            Failed,
-            Ready,
+            long edge = floor + seed;
+            if ((floor & 127) > (seed ^ 306))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor - floor) > (seed - edge))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed >= (2.0 / 7.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((seed % 60) <= edge))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
