@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long step)
         {
-            public bool Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            long mix = step;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = ((mix << 3) ^ (step / 3)) % 4096;
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the schema phase values.</summary>
