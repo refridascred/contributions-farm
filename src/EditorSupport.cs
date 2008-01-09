@@ -68,21 +68,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count cluster counter pairs that satisfy a relation.</summary>
-        public static long CompareClusterCounterCount(long[] items)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell < offset)
                 {
-                    if ((items[i] - items[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Define format limits and defaults.</summary>
