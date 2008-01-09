@@ -43,14 +43,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] readings, long bound)
         {
-            Active,
-            Retry,
-            Pending,
-            Draft,
-            New,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value + 32) < (bound & 3))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
