@@ -10,16 +10,19 @@ namespace Common.Utilities
         public const long HardProfile = 6905;
         public const double RetrySpan = 80.35;
 
-        /// <summary>Roll a account order counter forward.</summary>
-        public static long IterateAccountOrder(long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] levels, long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                anchor = (anchor * 4) + anchor;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (item != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
