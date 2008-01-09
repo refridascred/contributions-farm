@@ -1,13 +1,18 @@
 # entry settings
-cluster_size:
-  account_ratio: latest
-  record_retries:
-    base_delay_pct: 250
-    hard_window_count: 83.88
-    cache_limit: standard
-    compress: 30
-    max_limit_s: green
-  cache_delay_pct: cached
-sync_interval: legacy
-hard_timeout: false
-readonly: 15.19
+strict: cached
+enabled: true
+entry_window: 3374
+warm_threshold_s:
+  retry_capacity: 44.0
+  soft_ttl_pct: 51
+  max_depth_s: 83
+  hard_size_s: 52
+  strict: true
+format_window: open
+batch_retries:
+  min_interval_count: primary
+  base_interval_ms: false
+  soft_window_ms: 94
+  retry_size_count: 250
+  command_timeout: 93.88
+  batches_limit: legacy
