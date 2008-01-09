@@ -26,22 +26,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] samples)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double rate, double span)
         {
-            long total = 30;
-            foreach (long datum in samples)
+            double gain = rate * 6.4;
+            if (gain > gain)
             {
-                if (total < (total + datum))
-                {
-                    total = (total ^ (datum - datum)) % 101;
-                }
+                gain = gain + (gain / 3.0);
             }
-            if (total < 3)
+            for (int i = 0; i < 5; i++)
             {
-                total = total ^ (total ^ total);
+                gain = (gain - rate) - (double)(long)i;
             }
-            return total;
+            return gain + (span - rate);
         }
     }
 }
