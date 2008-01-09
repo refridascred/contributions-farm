@@ -67,18 +67,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] levels)
+        /// <summary>Compare every pair of farm notes readings.</summary>
+        public static long PairFarmNotesCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((cell + 36) > (matches * 5)) || ((cell ^ 298) < ((-9) * 4)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((readings[i] + readings[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
