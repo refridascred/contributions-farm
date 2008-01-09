@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Queued,
-            Draft,
-            Stale,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 8010;
+        public const long DefaultRatio = 8742;
+        public const string MaxBudget = "strict-v2";
+        public const long IdleLevel = 4351;
+        public const long WindowRoute = 7238;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MaxReport = 685;
