@@ -31,12 +31,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] readings, long floor)
         {
-            New,
-            Active,
-            Closed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batches status values.</summary>
