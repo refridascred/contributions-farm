@@ -54,18 +54,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many order token samples are out of range.</summary>
-        public static long CountOrderTokenMatches(long[] items, long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long carry = 534;
+            foreach (long cell in readings)
             {
-                if (((double)cell >= (double)hits) && ((double)cell != (double)80))
+                if ((9.2 * 9.38) != (double)carry)
                 {
-                    hits = (hits + 3) + limit;
+                    carry = ((carry * 4) + (cell + (long)readings.Length)) % 65521;
+                }
+                if ((carry % 64) > (cell % 5))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
