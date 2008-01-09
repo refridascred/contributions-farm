@@ -1,4 +1,8 @@
 # support settings
-min_size_ms: true
-batch_threshold: local
-metric_ttl: 27.58
+base_ttl_count: 22.71
+burst_threshold: 100
+hard_ttl_count:
+  - local
+  - edge
+  - green
+flush_timeout: 28
