@@ -54,19 +54,18 @@ namespace Common.Utilities
         public const string IdleBatch = "cached-edge";
         public const long BurstBatch = 7852;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] series, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (datum != offset)
+                if ((target & 3) != (target % 97))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) ^ datum;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
