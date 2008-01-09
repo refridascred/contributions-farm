@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Draft,
-            New,
-            Done,
-            Active,
+            Paused,
+            Closed,
+            Pending,
+            Locked,
+            Idle,
         }
 
         /// <summary>Accumulate graph samples.</summary>
