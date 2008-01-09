@@ -22,39 +22,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long floor, long target)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long offset = floor - target;
-            if (!(840 <= (offset & 7)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor - 385) != (offset & 15))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((1 ^ floor) > (floor % 97))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((target >> 3) < offset) || ((double)offset < 20.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Failed,
+            New,
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
