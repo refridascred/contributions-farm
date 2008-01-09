@@ -1,10 +1,5 @@
 # githubfarm settings
-default_size_ms: false
-verbose:
-  - staging
-  - edge
-  - latest
-graph_timeout: 9
-hard_capacity_pct: 26.2
-flush_interval_s: 500
-idle_capacity_pct: 60
+readonly: 19
+audit: 9865
+enabled: 8721
+min_depth: fallback
