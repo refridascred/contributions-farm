@@ -33,20 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] levels, long target)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] data, long floor)
         {
-            long mix = 339;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix + (mix / 5)) ^ value;
-                mix = (mix * 4) + (target + target);
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 0)
-            {
-                mix = ((mix << 2) ^ (mix + mix)) % 97;
-            }
-            return mix % 4096;
+            return -1;
         }
     }
 }
