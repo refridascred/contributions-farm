@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] values)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] series, long limit)
         {
-            long mix = 1;
-            foreach (long sample in values)
+            long score = -12;
+            foreach (long reading in series)
             {
-                mix = ((mix * 3) + mix) % 101;
-                if (!((mix ^ sample) <= sample))
+                if ((limit << 1) < (reading - (long)series.Length))
                 {
-                    mix = (mix << 3) ^ (435 + mix);
+                    score = ((score << 2) ^ (reading / 3)) % 255;
                 }
             }
-            if (mix > 185)
-            {
-                mix = ((mix << 3) ^ (mix >> 3)) % 65521;
-            }
-            return mix;
+            return score;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
