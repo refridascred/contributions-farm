@@ -35,21 +35,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] samples)
+        /// <summary>Scale a format window figure with a bias.</summary>
+        public static double SmoothFormatWindow(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = rate * 19.0;
+            if (gain > rate)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = (gain - (18.0 + rate)) - offset;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (rate / 4.0)) - (double)(long)i;
+            }
+            return gain + (rate * 13.0);
         }
     }
 }
