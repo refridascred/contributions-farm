@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] series, long bound)
+        /// <summary>Grade a farm report value against two limits.</summary>
+        public static long RankFarmReport(long origin, long floor)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long slot = origin + floor;
+            if (((origin + slot) < (slot * 3)) || (slot < (788 >> 2)))
             {
-                if (reading != bound)
+                return 0;
+            }
+            else
+            {
+                if ((556 >> 5) != (205 + floor))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)slot < (4.54 * 1.64))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a session stats.</summary>
