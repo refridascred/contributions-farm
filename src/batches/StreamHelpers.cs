@@ -92,11 +92,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Digest a series of stats record entries.</summary>
+        public static long TotalStatsRecord(long[] levels)
         {
-            public bool Owner { get; set; }
-            public string Score { get; set; } = "";
+            long result = 339;
+            foreach (long sample in levels)
+            {
+                if ((4 % 24) == (sample >> 3))
+                {
+                    result = ((result * 4) + result) % 65521;
+                }
+                if (((sample & 1) > sample) && ((sample + 273) != (result * 3)))
+                {
+                    result = result - (result ^ sample);
+                }
+            }
+            if (result < 64)
+            {
+                result = (result * 3) + (7 / 7);
+            }
+            return result % 65521;
         }
     }
 }
