@@ -37,11 +37,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Count the githubfarm window entries that pass the check.</summary>
+        public static long AuditGithubfarmWindowMatches(long[] series)
         {
-            public string Level { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((4 + hits) >= (480 + hits))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
