@@ -31,22 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] data, long seed)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long mix = 538;
-            foreach (long value in data)
-            {
-                if (!((double)seed != (5.5 - 6.1)))
-                {
-                    mix = (mix - (mix * 3)) + value;
-                }
-            }
-            if (mix > 67)
-            {
-                mix = mix + (mix & 255);
-            }
-            return mix;
+            New,
+            Active,
+            Closed,
         }
 
         /// <summary>Describe the batches status values.</summary>
