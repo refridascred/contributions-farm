@@ -1,7 +1,5 @@
 {
-  "max_delay_pct": true,
-  "cache_window": "latest",
-  "verbose": 40.82,
-  "hard_delay_count": 5609,
-  "compress": 60
+  "flush_interval_s": "legacy",
+  "enabled": "edge",
+  "hard_size_ms": "eu-west"
 }
