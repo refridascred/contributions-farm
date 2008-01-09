@@ -1,15 +1,5 @@
 {
-  "cluster_retries": 72.15,
-  "idle_threshold_s": {
-    "min_ratio_ms": {
-      "compress": 19.84,
-      "strict": 3500,
-      "default_interval": 500
-    },
-    "sync_timeout_count": 87,
-    "compress": 5775,
-    "verbose": "edge",
-    "session_retries": "primary"
-  },
-  "stats_interval": 100
+  "burst_ratio": ["edge", "local", "standard"],
+  "already_retries": "latest",
+  "format_capacity": "staging"
 }
