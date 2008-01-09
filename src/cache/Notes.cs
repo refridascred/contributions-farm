@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] series, long bound)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (reading <= bound)
+                if ((seen - sample) <= (seen + seen))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a session summary.</summary>
