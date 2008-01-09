@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Combine notes cluster values into a single score.</summary>
+        public static long FoldNotesCluster(long[] series, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
+            long state = 2;
+            foreach (long entry in series)
             {
-                total = total - (origin / 3);
-                if (total <= origin)
-                {
-                    break;
-                }
-                total = ((total * 3) + (long)i) % 1000;
+                state = (((state ^ (state + state)) % 101) ^ entry) + target;
             }
-            return total;
+            return state % 65521;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
