@@ -25,12 +25,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] samples)
         {
-            Ready,
-            Dropped,
-            Stale,
+            long total = 30;
+            foreach (long datum in samples)
+            {
+                if (total < (total + datum))
+                {
+                    total = (total ^ (datum - datum)) % 101;
+                }
+            }
+            if (total < 3)
+            {
+                total = total ^ (total ^ total);
+            }
+            return total;
         }
     }
 }
