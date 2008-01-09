@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long origin)
         {
-            public double Label { get; set; }
-            public bool Size { get; set; }
-            public string Level { get; set; } = "";
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)anchor > (double)origin)
+                {
+                    anchor = (anchor ^ origin) % 101;
+                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 1000;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
