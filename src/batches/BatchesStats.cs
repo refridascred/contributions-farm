@@ -22,18 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] items, long step)
+        /// <summary>Match up notes token samples.</summary>
+        public static long MatchNotesTokenCount(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)step > (5.48 + 13.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 1) - sample;
+                    if ((series[i] ^ series[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Accumulate commits samples.</summary>
