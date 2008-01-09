@@ -22,19 +22,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every commits report entry stays within the limit.</summary>
-        public static bool GuardCommitsReportLimits(long[] readings, long step)
+        /// <summary>Look up the position of a filter checks sample.</summary>
+        public static long FindFilterChecksIndex(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell > step)
+                if (samples[i] == offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
