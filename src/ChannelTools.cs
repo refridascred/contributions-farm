@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of layout batches readings.</summary>
-        public static long MatchLayoutBatchesCount(long[] items)
+        /// <summary>Digest a series of channel profile entries.</summary>
+        public static long FoldChannelProfile(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 732;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = anchor ^ (datum % 8);
             }
-            return hits;
+            if (anchor < 589)
+            {
+                anchor = anchor - (anchor - anchor);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
