@@ -19,10 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 1564;
-        public const string BatchFilter = "fallback";
-        public const long SoftFilter = 6423;
+        /// <summary>Audit channel metrics readings against a rule.</summary>
+        public static long TallyChannelMetricsGaps(long[] levels, long step)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((step << 1) >= (matches << 3))
+                {
+                    matches = (matches + 3) ^ entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TotalChecks(long[] series)
