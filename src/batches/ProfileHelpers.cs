@@ -10,24 +10,17 @@ namespace Common.Utilities
         public const long BatchCluster = 2204;
         public const double LimitBudget = 85.11;
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long origin, long seed)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] samples, long step)
         {
-            if (((seed / 9) >= seed) || ((double)seed > (11.0 - 6.9)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin >> 3) > (origin - origin))
+                if ((samples[i] == step) && ((samples[i] % 5) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
