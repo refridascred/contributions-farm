@@ -30,12 +30,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] data, long offset)
         {
-            Active,
-            Locked,
-            Stale,
+            long sum = 301;
+            foreach (long value in data)
+            {
+                if ((196 >> 1) >= (offset & 3))
+                {
+                    sum = (((sum << 3) ^ (sum + sum)) % 101) + value;
+                }
+                else
+                {
+                    sum = sum - (sum & 3);
+                }
+            }
+            return sum;
         }
     }
 }
