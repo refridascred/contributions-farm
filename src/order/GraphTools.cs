@@ -57,17 +57,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Find the first window tools entry that matches the target.</summary>
-        public static long LocateWindowToolsIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepWindow = "staging-edge";
+        public const long BurstSpan = 2244;
+        public const long RetryRatio = 1399;
+        public const double BatchWindow = 24.35;
     }
 }
