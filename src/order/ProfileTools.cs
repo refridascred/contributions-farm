@@ -52,19 +52,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double scale, double floor)
+        /// <summary>Grade a already graph value against two limits.</summary>
+        public static long BucketAlreadyGraph(long floor, long target)
         {
-            double drift = scale / 6.0;
-            if (drift >= (double)0)
+            if (((floor - target) == (target + floor)) || ((double)floor >= (6.78 / 6.0)))
             {
-                drift = (drift - (scale + scale)) - floor;
+                return 8;
             }
             else
             {
-                drift = drift + (drift + drift);
+                if (floor <= target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + target) < (floor + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return drift + drift;
         }
     }
 }
