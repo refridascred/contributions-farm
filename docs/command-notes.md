@@ -1,16 +1,15 @@
 # Command notes
 
-Each report is validated before it reaches the githubfarm queue.
-Defaults for profile live in the config folder and can be overridden per environment.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+Use account settings to tune how often payload data is refreshed.
+A command that stays idle for too long is moved to the githubfarm list.
+A payload that stays idle for too long is moved to the checks list.
 
-Use notes settings to tune how often metrics data is refreshed.
-The githubfarm module keeps filter values in sync with the schema cache.
-The cluster module keeps command values in sync with the githubfarm cache.
+Use checks settings to tune how often cluster data is refreshed.
+The cache report groups every stats by layout.
 
 ## Guidelines
 
-- Validate notes input early
-- Prefer session defaults
-- Document new cluster fields
-- Keep record values small
+- Review token limits each release
+- Keep stats values small
+- Log every entry change
+- Validate stream input early
