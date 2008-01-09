@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many tools batches samples are out of range.</summary>
-        public static long TallyToolsBatchesOutliers(long[] values, long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long state = -53;
+            foreach (long cell in levels)
             {
-                if (((seed / 9) < (seed + seed)) || (seed < (entry + entry)))
+                if (((cell % 5) > (cell + cell)) && ((297 & 15) >= (limit + state)))
                 {
-                    matches = matches + 3;
+                    state = (state + (limit ^ state)) % 101;
+                }
+                else
+                {
+                    state = (state + (317 - limit)) % 4096;
                 }
             }
-            return matches;
+            if (state < 110)
+            {
+                state = state + (limit >> 3);
+            }
+            return state;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
