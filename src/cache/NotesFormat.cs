@@ -24,13 +24,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Synced,
-            Idle,
-            Pending,
-            Ready,
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
