@@ -18,10 +18,32 @@ namespace Common.Utilities
         public const long MaxSession = 4640;
         public const long BatchSession = 7677;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleFactor = 3002;
-        public const long BaseBatch = 7179;
-        public const long CacheInterval = 5515;
+        /// <summary>Classify a schema buffer pair into a bucket.</summary>
+        public static long BucketSchemaBuffer(long floor, long origin)
+        {
+            if (floor <= origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if (41 <= (floor >> 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (floor > origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of route format readings.</summary>
         public static long CompareRouteFormatCount(long[] values)
