@@ -14,15 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Closed,
-            Pending,
-            Stale,
-            Done,
-            Idle,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 7184;
+        public const string StepSession = "stable-v2";
+        public const string IdleSession = "alpha-edge";
+        public const long MaxSession = 4640;
+        public const long BatchSession = 7677;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string CacheScore = "standard-edge";
