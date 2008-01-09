@@ -64,19 +64,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] levels, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (datum > origin)
+                if (((cell + 36) > (matches * 5)) || ((cell ^ 298) < ((-9) * 4)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
