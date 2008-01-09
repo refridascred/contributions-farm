@@ -57,11 +57,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchScore = "primary-edge";
-        public const string BatchCache = "local-edge";
-        public const string MinCache = "open";
-        public const long BaseCache = 6663;
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double gain, double floor)
+        {
+            double gain2 = (double)((-37) + 794);
+            if (gain2 > (3.95 + gain2))
+            {
+                gain2 = gain2 + floor;
+            }
+            else
+            {
+                gain2 = gain2 + (double)(-4);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 + floor) + (double)(long)i;
+            }
+            return gain2 + gain;
+        }
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
