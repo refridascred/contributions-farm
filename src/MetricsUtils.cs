@@ -24,15 +24,17 @@ namespace Common.Utilities
             return rate2 - (rate * 9.9);
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double gain, double bias)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] values, long seed)
         {
-            double gain2 = (double)1 * 1.56;
-            if (gain2 > bias)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain2 = gain2 + gain;
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return gain2 - bias;
+            return -1;
         }
 
         /// <summary>Describe the schema level values.</summary>
