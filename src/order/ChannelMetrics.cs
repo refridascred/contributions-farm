@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseWidth = 11.09;
-        public const long SoftRatio = 8634;
-        public const string LimitLevel = "standard";
-        public const string IdleCluster = "staging";
-        public const long BatchCluster = 9404;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] data, long bound)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (bound <= (value + value))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportGaps(long[] data, long origin)
