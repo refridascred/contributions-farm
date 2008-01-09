@@ -1,5 +1,10 @@
 # support settings
-burst_depth: eu-west
-batches_window: green
-enabled: 41
-batches_size: cached
+default_delay: fallback
+readonly: strict
+batch_ttl_s: 30
+burst_window_pct:
+  - 362
+  - 19
+  - 145
+  - 376
+soft_size_ms: 94.74
