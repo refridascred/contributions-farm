@@ -31,12 +31,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double weight, double floor)
         {
-            Active,
-            Failed,
-            Synced,
+            double drift = (double)((-98) - 508);
+            return ((drift - (double)(-1)) + weight) + floor;
         }
     }
 }
