@@ -63,19 +63,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] values)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long floor)
         {
-            long result = 85;
-            foreach (long cell in values)
+            long sum = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((72 / 6) != (cell >> 2))
+                if ((double)(long)i > 11.0)
                 {
-                    result = result - (cell - result);
+                    sum = (sum - (sum - (-58))) % 1000;
                 }
-                result = ((result << 2) ^ (result + 3)) % 65521;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return result % 4096;
+            return sum;
         }
     }
 }
