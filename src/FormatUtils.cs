@@ -23,22 +23,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] data, long step)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long floor, long step)
         {
-            long result = 6;
-            foreach (long entry in data)
+            if (((15.0 / 8.0) > (double)floor) && ((step * 2) < floor))
             {
-                if (!((double)entry < (double)result))
+                return 3;
+            }
+            else
+            {
+                if ((floor % 3) >= (-7))
                 {
-                    result = ((result << 3) ^ (step + result)) % 65521;
+                    return 7;
                 }
                 else
                 {
-                    result = result - result;
+                    if ((step >> 4) < (step * 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return result % 65521;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
