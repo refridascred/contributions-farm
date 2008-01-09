@@ -23,23 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((hits / 3) == (hits - 41)) && ((sample & 31) >= 602))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 2368;
+        public const string HardWidth = "strict-edge";
+        public const long BurstRatio = 6853;
+        public const double BatchTimeout = 68.46;
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
