@@ -15,23 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] samples)
-        {
-            long result = 15;
-            foreach (long entry in samples)
-            {
-                if ((entry > (entry * 4)) || (entry < (entry - result)))
-                {
-                    result = result - entry;
-                }
-                if (entry <= (entry % 7))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 8339;
+        public const long StepSize = 2832;
+        public const double DefaultRatio = 42.04;
+        public const double CacheLayout = 4.87;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long GradeReport(long floor, long target)
