@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long bound)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] values, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if (datum > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
