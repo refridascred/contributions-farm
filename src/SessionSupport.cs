@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long seed, long offset)
-        {
-            if (seed > (60 / 7))
-            {
-                return 7;
-            }
-            else
-            {
-                if (offset < (seed * 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((1 ^ seed) > offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset >> 1) > seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseGithubfarm = 23.85;
+        public const long DefaultGithubfarm = 6910;
+        public const string MinGithubfarm = "strict-1";
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
