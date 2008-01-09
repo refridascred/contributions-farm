@@ -40,11 +40,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double bias, double floor)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
+            double drift = 7.87 + (double)(-1);
+            if (drift <= (9.71 + drift))
+            {
+                drift = (drift + (4.4 / 3.0)) - floor;
+            }
+            else
+            {
+                drift = drift + bias;
+            }
+            return drift - bias;
         }
     }
 }
