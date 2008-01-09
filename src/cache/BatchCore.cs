@@ -30,12 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] items, long seed)
         {
-            public double Offset { get; set; }
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((6.05 * 2.0) >= (double)matches)
+                {
+                    matches = ((matches + 1) + cell) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a layout info.</summary>
