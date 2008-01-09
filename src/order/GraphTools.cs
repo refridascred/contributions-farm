@@ -48,19 +48,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] samples)
+        /// <summary>Find the first window tools entry that matches the target.</summary>
+        public static long LocateWindowToolsIndex(long[] series, long offset)
         {
-            long mix = 591;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix ^ 51) % 255) + datum;
-                if ((double)15 > (double)(long)samples.Length)
+                if ((series[i] == offset) && ((series[i] % 5) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
