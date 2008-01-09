@@ -34,38 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long floor, long floor2)
+        /// <summary>Measure how many channel schema samples are out of range.</summary>
+        public static long MeasureChannelSchemaMatches(long[] samples, long seed)
         {
-            if (floor2 <= floor)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((floor2 + 46) != (floor2 + floor2)) && ((floor2 - floor2) > (6 & 15)))
+                if ((3.1 + 9.93) > (double)count)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((8 + floor2) == (floor - 162))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor > (floor2 * 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = ((count + 2) - datum) + seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
