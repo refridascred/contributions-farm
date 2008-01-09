@@ -13,12 +13,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Blend two counter tools measurements.</summary>
+        public static double BlendCounterTools(double gain, double offset)
         {
-            public string Offset { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
+            double rate = gain;
+            if (rate < (offset / 5.0))
+            {
+                rate = rate - offset;
+            }
+            return rate - 4.0;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
