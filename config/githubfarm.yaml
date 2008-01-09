@@ -1,4 +1,6 @@
 # githubfarm settings
-dry_run: 63.34
-base_capacity_s: blue
-idle_ttl_s: 77.86
+order_interval: strict
+readonly: 91
+idle_ratio_ms: 60
+idle_retries_s: 620
+command_capacity: strict
