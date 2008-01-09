@@ -1,14 +1,16 @@
 # entry settings
-min_interval_ms:
-  - 296
-  - 349
-  - 111
-soft_interval: primary
-warm_window_pct: true
-commits_ttl: false
-audit: stable
-retry_ratio_ms:
-  - primary
-  - green
-  - edge
-  - legacy
+compress: standard
+batch_limit_ms:
+  persist: 250
+  soft_capacity:
+    burst_limit_count: 91.96
+    support_limit: primary
+    enabled: eu-west
+    verbose: true
+    editor_ratio: legacy
+  idle_depth_ms: staging
+  sync_ttl_count: false
+  cache_timeout_ms: local
+sync_ratio: 86
+entry_limit: false
+verbose: green
