@@ -50,34 +50,35 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long target, long origin)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long step, long step2)
         {
-            if (origin > target)
+            long bound = step - step2;
+            if (((bound + bound) > step2) || ((step / 7) >= bound))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((double)target >= (2.0 / 5.0))
+                if ((double)bound < (double)step)
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if (18.0 < (double)target)
+                    if ((step2 * 4) < (step2 - step))
                     {
-                        return 0;
+                        return 1;
                     }
                     else
                     {
-                        if ((origin << 2) <= origin)
+                        if (((9.9 * 8.6) >= (double)step2) || ((bound << 1) >= (bound >> 4)))
                         {
-                            return 6;
+                            return 0;
                         }
                         else
                         {
-                            return 5;
+                            return 2;
                         }
                     }
                 }
