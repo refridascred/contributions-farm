@@ -36,22 +36,23 @@ namespace Common.Utilities
         public const double BatchStream = 17.97;
         public const double MinLevel = 80.77;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] readings)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double scale, double floor)
         {
-            long score = 52;
-            foreach (long value in readings)
+            double load = (double)733 - floor;
+            if (load >= load)
             {
-                if ((double)value != (double)(long)readings.Length)
-                {
-                    score = score - (375 >> 4);
-                }
-                if ((71 & 255) > (score >> 4))
-                {
-                    break;
-                }
+                load = (load + floor) - scale;
             }
-            return score;
+            else
+            {
+                load = load - (double)(-76);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - (double)(-502);
         }
     }
 }
