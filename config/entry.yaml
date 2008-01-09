@@ -1,9 +1,9 @@
 # entry settings
-audit: 3721
-batch_size:
-  - 451
-  - 211
-  - 355
-  - 1
-readonly: legacy
-verbose: 8.34
+contributi_capacity: 46
+min_ratio_ms:
+  - 338
+  - 277
+  - 371
+  - 169
+min_timeout_s: staging
+soft_timeout: 250
