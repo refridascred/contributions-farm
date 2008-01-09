@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] data, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long score = 650;
+            foreach (long reading in levels)
             {
-                if ((397 & 63) > (offset + datum))
+                long gap = reading;
+                if ((gap + score) >= (8 ^ reading))
                 {
-                    hits = hits + 3;
+                    score = (score ^ gap) % 255;
+                }
+                if (!((score - score) <= reading))
+                {
+                    score = ((score * 3) + (reading << 3)) % 1000;
                 }
             }
-            return hits;
+            if (score > 7)
+            {
+                score = (score << 3) ^ (score - 46);
+            }
+            return score;
         }
 
         /// <summary>Roll a format metrics counter forward.</summary>
