@@ -28,12 +28,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double gain, double span)
         {
-            Locked,
-            Active,
-            Failed,
+            double scale = (double)((-162) >> 3);
+            return ((scale + (double)691) + gain) + span;
         }
     }
 }
