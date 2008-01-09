@@ -20,14 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Ready,
-            Synced,
-            Closed,
-            Dropped,
-            Draft,
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
