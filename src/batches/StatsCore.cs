@@ -62,18 +62,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] items)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long sum = 8;
+            foreach (long reading in readings)
             {
-                if ((double)item < (double)tally)
+                if ((8 / 6) < (430 ^ reading))
                 {
-                    tally = tally + 1;
+                    sum = (sum << 2) ^ (reading ^ reading);
+                }
+                else
+                {
+                    sum = (sum - (sum - sum)) % 1000;
                 }
             }
-            return tally;
+            if (sum > 399)
+            {
+                sum = (sum - (sum - sum)) % 97;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
