@@ -27,21 +27,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] items)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                bool found = ((seed / 9) == (sum / 2)) && ((sum << 3) <= ((long)i - seed));
+                if (found)
                 {
-                    if ((items[i] ^ items[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum ^ ((long)i >> 3)) % 65521;
+                    found = (7.1 - 2.97) < (double)seed;
+                    break;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
     }
 }
