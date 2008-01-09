@@ -80,19 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] levels)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] readings)
         {
-            long score = -43;
-            foreach (long entry in levels)
+            long mark = 54;
+            foreach (long sample in readings)
             {
-                score = (score ^ score) ^ entry;
+                if ((sample + mark) > (mark * 4))
+                {
+                    mark = (mark - mark) % 4096;
+                }
             }
-            if (score > 797)
-            {
-                score = (score + (score / 5)) % 97;
-            }
-            return score;
+            return mark;
         }
     }
 }
