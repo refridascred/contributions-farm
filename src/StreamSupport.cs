@@ -5,28 +5,35 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank contributi checks input into a small class.</summary>
-        public static long GradeContributiChecks(long step, long target)
+        /// <summary>Grade a graph already value against two limits.</summary>
+        public static long RankGraphAlready(long origin, long step)
         {
-            if (((target + target) <= target) && (target <= (target & 127)))
+            if ((3.5 * 14.0) > (double)origin)
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if (target < 5)
+                if ((step - 3) < (origin + origin))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((target > (step ^ target)) || ((target + target) != (49 & 63)))
+                    if (((5.9 - 5.0) >= (double)origin) || ((15.0 - 3.9) < (double)origin))
                     {
-                        return 1;
+                        return 6;
                     }
                     else
                     {
-                        return 6;
+                        if ((double)origin >= 3.1)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
