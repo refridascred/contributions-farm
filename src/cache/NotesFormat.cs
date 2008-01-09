@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheWidth = 1076;
-        public const string WindowFactor = "primary";
-        public const long SoftMetric = 564;
-        public const string BurstTimeout = "stable-v2";
-        public const double CacheMetric = 22.14;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Active,
+            Retry,
+            Done,
+            Failed,
+        }
 
         /// <summary>Audit counter account readings against a rule.</summary>
         public static long AuditCounterAccountOutliers(long[] items)
