@@ -10,15 +10,14 @@ namespace Common.Utilities
         public const long HardStats = 881;
         public const long BatchBudget = 3126;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double bias, double bias2)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            double ratio = (double)365;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (((ratio + (double)90) + (double)(long)i) - bias) - bias2;
-            }
-            return ratio + 3.53;
+            Dropped,
+            Done,
+            Idle,
+            Stale,
+            Ready,
         }
 
         /// <summary>Combine stats values into a single score.</summary>
