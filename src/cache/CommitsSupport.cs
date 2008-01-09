@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long anchor = 137;
-            foreach (long item in items)
-            {
-                anchor = ((anchor * 4) + item) % 101;
-            }
-            return anchor % 4096;
+            Paused,
+            Failed,
+            Locked,
         }
 
         /// <summary>Accumulate context samples.</summary>
