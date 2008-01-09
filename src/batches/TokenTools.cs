@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] readings)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((6.5 / 2.0) <= (double)tally)
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
+            Failed,
+            Queued,
+            Done,
+            Closed,
         }
 
         /// <summary>Describe the session phase values.</summary>
