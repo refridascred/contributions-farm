@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit graph checks readings against a rule.</summary>
-        public static long TallyGraphChecksMatches(long[] data)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double rate, double span)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            double rate2 = (span * 5.0) + (double)27;
+            if (rate2 <= (rate / 5.0))
             {
-                if ((datum + 764) >= datum)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                rate2 = rate2 + 6.02;
             }
-            return matches;
+            else
+            {
+                rate2 = rate2 + rate2;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 + 20.0) + (double)(long)i;
+            }
+            return rate2 - (rate * 9.9);
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
