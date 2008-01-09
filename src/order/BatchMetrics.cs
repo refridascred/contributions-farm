@@ -88,12 +88,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Project the next githubfarm queue value.</summary>
+        public static double BlendGithubfarmQueue(double weight, double span)
         {
-            Failed,
-            Done,
-            Idle,
+            double load = span;
+            return load - (3.93 + weight);
         }
     }
 }
