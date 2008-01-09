@@ -37,10 +37,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryBatch = "alpha-edge";
-        public const long MinBatch = 6787;
-        public const long MaxBatch = 2453;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long step, long floor)
+        {
+            if (((0.2 * 8.06) >= (double)step) && (((-278) - 794) < (495 + floor)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step & 15) <= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((460 + 530) > step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutMatches(long[] levels, long bound)
