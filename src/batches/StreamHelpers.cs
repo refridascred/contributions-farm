@@ -27,18 +27,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of stats filter entries.</summary>
-        public static long CombineStatsFilter(long[] readings)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long result = 44;
-            foreach (long entry in readings)
-            {
-                if ((10 >> 3) < (result - result))
-                {
-                    result = (result - (result + entry)) % 255;
-                }
-            }
-            return result % 65521;
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public double Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
