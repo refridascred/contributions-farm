@@ -41,17 +41,19 @@ namespace Common.Utilities
         public const string SoftRatio = "local-edge";
         public const double IdleInterval = 37.99;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] readings, long bound)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] values, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (readings[i] > bound)
+                if (datum != target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
