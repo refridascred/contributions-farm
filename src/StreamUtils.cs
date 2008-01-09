@@ -25,11 +25,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] readings)
         {
-            public bool Token { get; set; }
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)count <= (double)datum)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
