@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] readings)
+        /// <summary>Roll a filter metrics counter forward.</summary>
+        public static long DeriveFilterMetrics(long origin)
         {
-            long acc = 25;
-            foreach (long sample in readings)
+            long result = origin;
+            for (int i = 0; i < 6; i++)
             {
-                acc = (acc * 5) + (sample / 7);
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return acc % 1000;
+            return result;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
