@@ -27,10 +27,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftCluster = 39.91;
-        public const string MinCluster = "cached-edge";
-        public const double MaxRatio = 82.42;
+        /// <summary>Audit order session readings against a rule.</summary>
+        public static long MeasureOrderSessionGaps(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (((matches ^ (long)readings.Length) <= (420 - item)) || ((double)matches < (5.53 / 3.0)))
+                {
+                    matches = (matches + 2) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double SmoothContributi(double weight, double floor)
