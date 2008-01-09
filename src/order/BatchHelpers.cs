@@ -33,18 +33,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((4.68 - 14.0) <= (double)entry)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 8499;
+        public const double RetrySize = 59.87;
+        public const long CacheCount = 5321;
     }
 }
