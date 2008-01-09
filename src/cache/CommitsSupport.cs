@@ -24,17 +24,11 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] readings, long bound)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
