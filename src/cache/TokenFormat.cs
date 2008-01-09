@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many cache counter samples are out of range.</summary>
-        public static long AuditCacheCounterOutliers(long[] levels, long bound)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample % 64) < hits)
-                {
-                    hits = (hits + 1) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
