@@ -32,19 +32,15 @@ namespace Common.Utilities
         public const long LimitLevel = 6468;
         public const long IdleLevel = 8337;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] data, long floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long target)
         {
-            bool found = true;
-            foreach (long value in data)
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (value > floor)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
