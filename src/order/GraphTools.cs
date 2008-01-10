@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] items, long target)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long origin, long origin2)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long gap = origin - origin2;
+            if (!((695 << 3) <= (origin2 / 2)))
             {
-                if (sample < target)
+                return 2;
+            }
+            else
+            {
+                if ((double)origin2 <= (double)gap)
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin2 << 1) < (gap ^ gap)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Accumulate token samples.</summary>
