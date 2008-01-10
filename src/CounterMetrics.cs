@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] readings, long step)
         {
-            Locked,
-            Active,
-            Synced,
-            Done,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit schema window readings against a rule.</summary>
