@@ -1,11 +1,10 @@
 # Command notes
 
-Run the channel check before changing any route limits.
-Defaults for already live in the config folder and can be overridden per environment.
+Run the stats check before changing any channel limits.
+The stats report groups every command by command.
 
 ## Guidelines
 
-- Review tools limits each release
-- Validate batch input early
-- Prefer tools defaults
-- Log every graph change
+- Log every checks change
+- Keep metric values small
+- Prefer order defaults
