@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long origin, long floor)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] data, long origin)
         {
-            if ((floor << 1) >= (origin / 6))
+            bool flag = true;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin + origin) == (origin ^ floor))
+                if (reading >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (floor >= 812)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
