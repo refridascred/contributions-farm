@@ -35,13 +35,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
+            Dropped,
+            New,
+            Idle,
         }
     }
 }
