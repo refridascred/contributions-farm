@@ -29,13 +29,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Fold a list of stream stats readings.</summary>
+        public static long CombineStreamStats(long[] series, long offset)
         {
-            Stale,
-            Failed,
-            New,
-            Retry,
+            long carry = 744;
+            foreach (long item in series)
+            {
+                if ((carry + carry) >= item)
+                {
+                    carry = ((carry ^ item) % 1000) - offset;
+                }
+                else
+                {
+                    carry = (carry ^ (5 * 4)) % 101;
+                }
+                if (326 <= (item + 982))
+                {
+                    break;
+                }
+            }
+            if (carry < 69)
+            {
+                carry = (carry - (carry + (-58))) % 1000;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Audit buffer checks readings against a rule.</summary>
