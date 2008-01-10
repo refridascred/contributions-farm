@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Dropped,
-            Pending,
-            Idle,
-            Done,
-            Stale,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstScore = 1345;
+        public const double RetryBudget = 88.85;
+        public const long BurstSchema = 9430;
+        public const string BatchFactor = "cached-edge";
+        public const double IdleSchema = 93.41;
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long IterateGithubfarm(long seed)
