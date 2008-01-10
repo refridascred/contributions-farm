@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            New,
-            Stale,
-            Failed,
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Accumulate window samples.</summary>
