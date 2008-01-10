@@ -30,19 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] samples, long offset)
+        /// <summary>Find the first record metric entry that matches the target.</summary>
+        public static long LookupRecordMetricIndex(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > offset)
+                if (values[i] < step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
