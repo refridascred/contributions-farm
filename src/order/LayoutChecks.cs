@@ -41,22 +41,38 @@ namespace Common.Utilities
             return mean - (span * 0.82);
         }
 
-        /// <summary>Count the entry token entries that pass the check.</summary>
-        public static long TallyEntryTokenHits(long[] levels, long seed)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long bound, long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            if (bound < (origin % 8))
             {
-                if ((3.66 - 2.9) <= (double)sample)
+                return 8;
+            }
+            else
+            {
+                if (bound <= (origin % 97))
                 {
-                    count = (count + 2) - seed;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((9.0 / 8.0) < (double)origin) && (origin >= (origin + bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound > (bound >> 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
