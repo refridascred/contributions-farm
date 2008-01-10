@@ -18,13 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long bound, long bound2)
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            if (4.83 < (double)bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound <= (bound2 + bound2)) && ((7 + bound2) <= bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound > (6 - bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (bound2 < (bound - bound2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metrics summary.</summary>
