@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double DefaultFactor = 70.91;
         public const long BurstWidth = 6658;
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] levels, long floor)
         {
-            Retry,
-            Synced,
-            Active,
-            Queued,
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up context samples.</summary>
