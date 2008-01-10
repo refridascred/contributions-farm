@@ -38,18 +38,39 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] data, long limit)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long origin, long step)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long slot = origin - step;
+            if ((7.62 - 5.9) < (double)slot)
             {
-                if ((limit ^ datum) == (seen ^ limit))
+                return 1;
+            }
+            else
+            {
+                if (((7.1 + 2.1) < (double)step) && ((9.2 + 2.4) != (double)slot))
                 {
-                    seen = seen + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((2.72 / 3.0) != (double)slot)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin >= (9 * 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the farm state values.</summary>
