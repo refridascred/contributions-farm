@@ -49,24 +49,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] samples)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long result = 43;
-            foreach (long item in samples)
-            {
-                if (((double)item != (8.17 - 8.5)) || (69 <= (item + 3)))
-                {
-                    result = ((result * 5) + (result - result)) % 1000;
-                    result = (result + (item + 4)) % 101;
-                    continue;
-                }
-                if ((1.1 < (double)item) && ((13.0 / 6.0) != (double)item))
-                {
-                    result = (result + (item >> 5)) % 97;
-                }
-            }
-            return result;
+            public double Flag { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
