@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const long RetrySize = 2516;
         public const double BaseRecord = 26.11;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] levels, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = -74;
+            foreach (long sample in samples)
             {
-                if (levels[i] == floor)
+                if ((6 >> 3) < (sample / 7))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ origin) % 65521;
                 }
             }
-            return -1;
+            if (mix < 52)
+            {
+                mix = ((mix * 3) + (mix + mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Combine command editor values into a single score.</summary>
