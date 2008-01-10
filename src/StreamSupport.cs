@@ -26,11 +26,19 @@ namespace Common.Utilities
         public const string SoftScore = "fallback-edge";
         public const double BaseTimeout = 14.3;
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double weight, double bias)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] levels, long floor)
         {
-            double bias2 = weight;
-            return (bias2 + (double)98) + bias;
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
