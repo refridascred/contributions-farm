@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the already window entries that pass the check.</summary>
-        public static long AuditAlreadyWindowHits(long[] items, long floor)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((((tally >> 3) > (floor + 6)) || ((double)72 >= (double)item)) && (((floor ^ floor) > (floor & 3)) && ((tally / 6) >= (floor + tally))))
+                if (reading != offset)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
