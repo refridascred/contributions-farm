@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit route payload readings against a rule.</summary>
-        public static long AuditRoutePayloadMatches(long[] data)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)hits > (5.0 + 6.1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] ^ data[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the format level values.</summary>
