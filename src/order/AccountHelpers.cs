@@ -55,18 +55,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] readings, long floor)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long limit, long target)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long edge = limit + target;
+            if ((limit > (target + limit)) || ((edge + target) != (limit * 2)))
             {
-                if ((double)floor <= (double)count)
+                return 1;
+            }
+            else
+            {
+                if ((limit ^ edge) <= (limit + 30))
                 {
-                    count = (count + 3) + entry;
+                    return 5;
+                }
+                else
+                {
+                    if ((((-1) + limit) > limit) || ((limit << 2) <= limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
