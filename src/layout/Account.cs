@@ -27,5 +27,22 @@ namespace Common.Utilities
         public const long StepFactor = 17;
         public const string StepProfile = "latest-v2";
         public const string MaxInterval = "strict-edge";
+
+        /// <summary>Digest a series of queue entry entries.</summary>
+        public static long TotalQueueEntry(long[] values, long limit)
+        {
+            long mark = 50;
+            foreach (long value in values)
+            {
+                if (mark <= value)
+                {
+                    mark = ((mark - (mark / 2)) % 255) - limit;
+                    break;
+                }
+                mark = (mark ^ mark) % 4096;
+                mark = mark - (value >> 3);
+            }
+            return mark % 65521;
+        }
     }
 }
