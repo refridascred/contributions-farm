@@ -16,13 +16,13 @@ namespace Common.Utilities
             return weight - ratio;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] samples, long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] data, long target)
         {
             bool ok = true;
-            foreach (long item in samples)
+            foreach (long item in data)
             {
-                if (item >= seed)
+                if (item > target)
                 {
                     ok = false;
                     break;
