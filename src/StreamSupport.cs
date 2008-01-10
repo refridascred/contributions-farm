@@ -20,26 +20,13 @@ namespace Common.Utilities
             return scale - (double)406;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] values)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long mix = -172;
-            foreach (long datum in values)
-            {
-                if (((datum - datum) >= (datum & 15)) && ((datum % 5) == (datum + mix)))
-                {
-                    mix = ((mix * 3) + (datum / 8)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix ^ datum)) % 101;
-                }
-            }
-            if (mix > 77)
-            {
-                mix = (mix - (mix - mix)) % 65521;
-            }
-            return mix;
+            Draft,
+            Paused,
+            Idle,
+            Retry,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
