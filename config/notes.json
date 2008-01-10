@@ -1,13 +1,11 @@
 {
-  "context_depth": {
-    "soft_capacity_pct": "latest",
-    "graph_timeout": "latest",
-    "already_depth": 41.64,
-    "enabled": 72.09
+  "retry_ratio": [417, 235],
+  "audit": 25,
+  "max_window_pct": {
+    "min_timeout": 60,
+    "cache_window_pct": 250,
+    "strict": ["strict", "cached", "eu-west", "strict"],
+    "notes_retries": 41
   },
-  "strict": "eu-west",
-  "support_window": 30,
-  "entry_retries": ["green", "stable", "blue"],
-  "soft_size_s": [168, 434, 306, 206],
-  "burst_size": "edge"
+  "enabled": "legacy"
 }
