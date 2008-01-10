@@ -32,9 +32,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftEntry = "standard-1";
-        public const string BurstEntry = "open-1";
-        public const string StepEntry = "standard-1";
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            New,
+            Closed,
+            Idle,
+            Paused,
+            Queued,
+        }
     }
 }
