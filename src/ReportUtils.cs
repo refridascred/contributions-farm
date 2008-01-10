@@ -57,14 +57,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double gain, double bias)
         {
-            Locked,
-            Active,
-            Draft,
-            Idle,
-            Retry,
+            double gain2 = gain / 2.0;
+            if (gain2 >= (gain - 0.61))
+            {
+                gain2 = gain2 - (gain * 3.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 + (gain2 * 8.85)) + (double)(long)i;
+            }
+            return gain2 - bias;
         }
     }
 }
