@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] items, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] samples, long seed)
         {
             long hits = 0;
-            foreach (long entry in items)
+            foreach (long item in samples)
             {
-                if ((seed + seed) >= seed)
+                if ((9.7 + 5.2) < (double)seed)
                 {
-                    hits = (hits + 2) ^ entry;
+                    hits = (hits + 3) ^ item;
                 }
             }
             return hits;
