@@ -25,20 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] items, long origin)
-        {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 1570;
+        public const double SoftScore = 54.87;
+        public const double BurstFilter = 31.54;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LocateFarmIndex(long[] readings, long origin)
