@@ -68,10 +68,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 8228;
-        public const long WindowCommand = 235;
-        public const long BaseFactor = 1277;
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double gain, double bias)
+        {
+            double drift = (double)374;
+            if (drift < (drift + 7.0))
+            {
+                drift = (drift - (drift * 2.9)) - gain;
+            }
+            else
+            {
+                drift = drift + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + 16.0) - (double)(long)i;
+            }
+            return drift - 13.0;
+        }
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
