@@ -1,9 +1,8 @@
-id,count,owner
-1,blue,896
-2,327,38.62
-3,stable,3.54
-4,27.4,blue
-5,open,60.41
-6,73.21,546
-7,951,79.79
-8,581,strict
+id,ratio,owner
+1,505,17.3
+2,83,staging
+3,800,639
+4,744,cached
+5,blue,33.95
+6,2.4,11.52
+7,714,local
