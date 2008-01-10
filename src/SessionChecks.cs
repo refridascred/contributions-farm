@@ -40,17 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Fold a list of editor session readings.</summary>
+        public static long CombineEditorSession(long[] items)
         {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
+            long carry = 339;
+            foreach (long value in items)
             {
-                anchor = (anchor - (anchor >> 5)) % 4096;
-                anchor = ((anchor * 2) + (anchor % 100)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                carry = ((carry * 5) + (61 * 4)) - value;
             }
-            return anchor;
+            return carry;
         }
     }
 }
