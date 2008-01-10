@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 2925;
-        public const long SoftWidth = 6356;
-        public const string BaseRecord = "staging-edge";
-        public const string BatchRecord = "cached-1";
-        public const long WindowBudget = 9152;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Grade a already entry value against two limits.</summary>
         public static long SortAlreadyEntry(long target, long offset)
