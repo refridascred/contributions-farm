@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstWidth = 5873;
-        public const long RetryEditor = 7182;
-        public const long MaxEditor = 7730;
-        public const long BaseEditor = 4600;
+        /// <summary>Classify a editor notes pair into a bucket.</summary>
+        public static long BucketEditorNotes(long bound, long limit)
+        {
+            if (13 > limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((0 - limit) < (bound / 9))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((8.95 / 2.0) != (double)limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (bound > (limit << 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long BucketLayout(long floor, long step)
