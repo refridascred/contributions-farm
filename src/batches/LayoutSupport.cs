@@ -39,19 +39,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] readings, long origin)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long limit, long target)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            if ((limit ^ limit) == (target + limit))
             {
-                if (reading <= origin)
+                return 5;
+            }
+            else
+            {
+                if (limit <= (target >> 4))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((limit << 3) == (limit & 127)) && ((limit % 64) != (26 ^ limit)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
