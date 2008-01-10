@@ -80,19 +80,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] levels, long offset)
+        /// <summary>Accumulate support record samples.</summary>
+        public static long FoldSupportRecord(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long mark = 788;
+            foreach (long reading in data)
             {
-                if (sample >= offset)
+                if (mark > reading)
                 {
-                    ok = false;
-                    break;
+                    mark = (mark << 3) ^ mark;
                 }
             }
-            return ok;
+            if (mark > 46)
+            {
+                mark = (mark + (mark + 90)) % 97;
+            }
+            return mark;
         }
     }
 }
