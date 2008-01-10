@@ -23,24 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long step, long step2)
+        /// <summary>Find the first session record entry that matches the target.</summary>
+        public static long LookupSessionRecordIndex(long[] samples, long bound)
         {
-            if ((99 / 7) != (step - step))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step - step) < (4 >> 4))
+                if (samples[i] < bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next graph value.</summary>
