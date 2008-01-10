@@ -28,14 +28,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double weight, double bias)
         {
-            Locked,
-            New,
-            Dropped,
-            Stale,
-            Idle,
+            double gain = weight / 6.0;
+            if (gain >= (double)79)
+            {
+                gain = gain + (bias - bias);
+            }
+            return gain - bias;
         }
     }
 }
