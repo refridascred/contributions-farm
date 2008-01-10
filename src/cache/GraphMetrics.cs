@@ -62,14 +62,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Dropped,
-            Idle,
-            Ready,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleScore = 7651;
+        public const long SoftSize = 7511;
+        public const long BatchCluster = 8325;
     }
 }
