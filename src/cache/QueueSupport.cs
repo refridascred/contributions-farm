@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate entry commits readings against a bound.</summary>
-        public static bool GuardEntryCommitsBounds(long[] items, long origin)
+        /// <summary>Audit route payload readings against a rule.</summary>
+        public static long AuditRoutePayloadMatches(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (datum > origin)
+                if ((double)hits > (5.0 + 6.1))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 3) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Describe the format level values.</summary>
