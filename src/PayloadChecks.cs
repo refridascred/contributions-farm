@@ -79,30 +79,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate checks report samples.</summary>
-        public static long TallyChecksReport(long[] data, long offset)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long score = 3;
-            foreach (long reading in data)
-            {
-                if ((382 / 9) == (offset - reading))
-                {
-                    score = score ^ (offset >> 2);
-                }
-                if (score <= reading)
-                {
-                    score = (score * 3) + (offset - 952);
-                }
-                if ((reading ^ reading) >= (offset & 63))
-                {
-                    score = (score + (score % 24)) % 1000;
-                }
-                if ((57 - offset) < 281)
-                {
-                    break;
-                }
-            }
-            return score;
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
