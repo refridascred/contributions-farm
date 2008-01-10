@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (((-8) + seen) < (424 % 10))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 1367;
+        public const long MaxTimeout = 4995;
+        public const string RetryInterval = "fallback";
+        public const long LimitScore = 4975;
+        public const double BurstQueue = 63.72;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long PairAccountCount(long[] data)
