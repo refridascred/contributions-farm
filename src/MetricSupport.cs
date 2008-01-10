@@ -36,19 +36,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] items)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long sum = 98;
-            foreach (long value in items)
-            {
-                sum = ((sum - (2 + 129)) % 97) - value;
-            }
-            if (sum > 324)
-            {
-                sum = (sum ^ sum) % 101;
-            }
-            return sum;
+            Draft,
+            Synced,
+            Failed,
+            Active,
+            Idle,
         }
     }
 }
