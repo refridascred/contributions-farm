@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in primary edge standard stable; do
+    log "checking ${item}"
+done
 
-RECORD_LIMIT=386
+RECORD_LIMIT=310
 log "limit is ${RECORD_LIMIT}"
