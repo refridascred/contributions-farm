@@ -45,16 +45,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long limit)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long target, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 15; i++)
+            long diff = target + seed;
+            if ((target >= diff) && ((seed - diff) >= (910 + diff)))
             {
-                state = ((state * 3) + (250 - state)) % 4096;
-                state = ((state * 4) + (long)i) % 1000;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((diff * 4) < (diff + diff))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
