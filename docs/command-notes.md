@@ -1,11 +1,10 @@
 # Command notes
 
-Keep order and window names short and lowercase.
-The schema helpers are pure functions, so they are safe to call from any thread.
-Each buffer is validated before it reaches the format queue.
+Run the notes check before changing any schema limits.
+Use account settings to tune how often already data is refreshed.
 
 ## Guidelines
 
-- Prefer session defaults
-- Review cluster limits each release
-- Log every cluster change
+- Log every metrics change
+- Keep payload values small
+- Validate graph input early
