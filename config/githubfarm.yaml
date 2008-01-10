@@ -1,15 +1,22 @@
 # githubfarm settings
-base_delay_s: 22.22
-idle_depth_pct:
-  - 372
-  - 459
-  - 382
-soft_ttl_ms: false
-flush_limit_ms: green
-warm_interval_pct:
-  schema_delay: edge
-  persist: staging
-  idle_limit_ms: 4.64
-  min_ratio_ms: 45.28
-  schema_window: 86.02
-compress: 4840
+graph_capacity: 21.89
+max_limit:
+  - 335
+  - 500
+retry_capacity_pct:
+  warm_size_pct:
+    - green
+    - green
+  filter_depth: false
+  hard_capacity: 5776
+  cache_size:
+    - 437
+    - 422
+    - 499
+  enabled:
+    - open
+    - primary
+    - cached
+    - latest
+  min_depth_ms: blue
+compress: true
