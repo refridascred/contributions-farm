@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long origin)
         {
-            Ready,
-            Idle,
-            Locked,
-            Closed,
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = carry + carry;
+                carry = (carry + (20 - origin)) % 65521;
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
