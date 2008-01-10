@@ -39,15 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] items, long limit)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long target, long floor)
         {
-            long score = 91;
-            foreach (long entry in items)
+            if (!((floor - target) == (floor << 1)))
             {
-                score = (((score - (score * 2)) % 101) + entry) - limit;
+                return 0;
             }
-            return score % 1000;
+            else
+            {
+                if ((floor - 9) < (target + target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor << 2) > target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support stats.</summary>
