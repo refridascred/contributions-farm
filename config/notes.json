@@ -1,8 +1,8 @@
 {
-  "flush_interval_pct": 250,
-  "cache_ttl_count": 84.92,
-  "warm_capacity_pct": 41.29,
-  "flush_interval_count": ["stable", "latest", "staging"],
-  "cache_window_pct": 6822,
-  "flush_ttl_pct": "local"
+  "hard_timeout_ms": ["staging", "stable"],
+  "session_timeout": "stable",
+  "max_retries_ms": 82.44,
+  "readonly": 83,
+  "persist": 9091,
+  "tools_delay": "stable"
 }
