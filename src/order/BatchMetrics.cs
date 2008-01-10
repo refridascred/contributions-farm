@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] items)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count & 15) >= count)
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public double Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
