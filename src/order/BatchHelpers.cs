@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public string Stamp { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
+            Done,
+            Draft,
+            Ready,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
