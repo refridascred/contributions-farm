@@ -1,7 +1,8 @@
 {
-  "flush_delay_pct": 3947,
-  "hard_limit": 1.49,
-  "default_limit_s": 2781,
-  "soft_limit": "stable",
-  "burst_delay_count": ["staging", "local", "green"]
+  "hard_depth_s": 15.3,
+  "enabled": "green",
+  "cache_ttl_pct": ["strict", "latest"],
+  "verbose": 100,
+  "sync_delay": 32,
+  "batch_timeout_s": "edge"
 }
