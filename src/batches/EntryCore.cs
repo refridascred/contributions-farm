@@ -32,11 +32,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] data, long bound)
         {
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            long mix = 4;
+            foreach (long sample in data)
+            {
+                if (((mix ^ bound) <= (93 & 7)) || ((double)mix > (0.63 / 9.0)))
+                {
+                    mix = (mix * 3) + (mix - sample);
+                }
+                else
+                {
+                    mix = ((mix * 5) + sample) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the profile state values.</summary>
