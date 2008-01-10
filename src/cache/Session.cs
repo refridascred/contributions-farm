@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] values, long origin)
+        /// <summary>Count the channel queue entries that pass the check.</summary>
+        public static long CountChannelQueueMatches(long[] series, long limit)
         {
-            long mark = 62;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                mark = ((((mark << 3) ^ (mark / 8)) % 97) + datum) + origin;
+                if (limit <= (datum << 3))
+                {
+                    matches = matches + 2;
+                }
             }
-            if (mark < 190)
-            {
-                mark = (mark ^ (mark * 5)) % 1000;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the entry level values.</summary>
