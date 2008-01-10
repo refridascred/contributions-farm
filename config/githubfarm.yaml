@@ -1,4 +1,7 @@
 # githubfarm settings
-warm_depth_pct: 33.15
-audit: 4008
-default_capacity: 8780
+poll_size: 77.33
+max_timeout_ms: edge
+dry_run: local
+graph_ratio: primary
+batch_window: 78.55
+batch_delay_count: 59.12
