@@ -12,14 +12,20 @@ namespace Common.Utilities
         public const long RetryTimeout = 9688;
         public const long DefaultRatio = 1477;
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Roll a support stream counter forward.</summary>
+        public static long IterateSupportStream(long origin)
         {
-            Idle,
-            Synced,
-            Retry,
-            Failed,
-            New,
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    anchor = (((anchor << 2) ^ (anchor - origin)) % 4096) + (long)i2;
+                    anchor = (anchor - anchor) % 97;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate report samples.</summary>
