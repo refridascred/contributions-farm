@@ -64,21 +64,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Count stream window pairs that satisfy a relation.</summary>
-        public static long MatchStreamWindowCount(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((double)cell == (16.0 / 9.0)))
                 {
-                    if ((series[i] ^ series[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) - target;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
