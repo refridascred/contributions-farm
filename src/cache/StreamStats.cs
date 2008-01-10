@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepReport = 86.07;
-        public const long HardCount = 3731;
-        public const long BaseReport = 9591;
-        public const long HardBudget = 3567;
-        public const long LimitSpan = 1798;
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double scale, double offset)
+        {
+            double load = scale + offset;
+            if (load > (scale / 2.0))
+            {
+                load = load - (double)887;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - scale) + (double)(long)i;
+            }
+            return load + (double)423;
+        }
 
         /// <summary>Accumulate filter buffer samples.</summary>
         public static long WeighFilterBuffer(long[] items)
