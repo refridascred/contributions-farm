@@ -28,17 +28,19 @@ namespace Common.Utilities
         public const long MaxPayload = 2828;
         public const string IdleFactor = "strict-edge";
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] readings, long floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] series, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (readings[i] == floor)
+                if (sample > seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a stream record.</summary>
