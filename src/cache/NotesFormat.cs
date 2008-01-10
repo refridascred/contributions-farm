@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next buffer notes value from a seed.</summary>
-        public static long RollBufferNotes(long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long bound)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if ((double)bound <= (double)result)
+                {
+                    result = result ^ 54;
+                }
+                result = ((result * 5) + (bound ^ 723)) % 65521;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
