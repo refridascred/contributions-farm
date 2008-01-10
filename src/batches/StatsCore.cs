@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long floor, long floor2)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] levels, long seed)
         {
-            long bound = floor + floor2;
-            if (!((bound + bound) > (bound & 1)))
+            long count = 0;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((2.3 / 9.0) == (double)floor))
+                if ((item % 64) < seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor2 << 3) >= (8 / 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (bound >= (floor & 15))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the support state values.</summary>
