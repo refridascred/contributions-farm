@@ -14,17 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] series, long step)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (series[i] > step)
+                if ((8.0 + 3.94) < (double)state)
                 {
-                    return (long)i;
+                    state = (state * 5) + target;
                 }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the queue state values.</summary>
