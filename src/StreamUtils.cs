@@ -63,23 +63,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double rate, double offset)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            double gain = (rate * 5.9) * 13.0;
-            if (gain > rate)
-            {
-                gain = (gain + 19.0) - offset;
-            }
-            else
-            {
-                gain = gain - rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + 11.0) + (double)(long)i;
-            }
-            return gain + 5.6;
+            Queued,
+            New,
+            Idle,
+            Synced,
         }
     }
 }
