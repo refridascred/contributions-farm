@@ -16,19 +16,13 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long floor)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long result = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    result = (result ^ floor) - (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            Closed,
+            Locked,
+            Done,
+            Queued,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
