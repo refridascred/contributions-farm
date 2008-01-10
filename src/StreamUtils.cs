@@ -75,17 +75,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] data, long bound)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((data[i] == bound) && ((data[i] % 3) != 0))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return (long)i;
+                    carry = ((carry * 3) + seed) - (long)i2;
                 }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
     }
 }
