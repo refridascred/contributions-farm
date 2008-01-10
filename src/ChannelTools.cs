@@ -20,19 +20,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] data, long step)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double scale, double floor)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            double gain = scale;
+            if (gain <= (floor + floor))
             {
-                if (cell < step)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = gain - (double)187;
             }
-            return ready;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (scale * 0.8)) + (double)(long)i;
+            }
+            return gain - scale;
         }
 
         /// <summary>Combine notes stats values into a single score.</summary>
