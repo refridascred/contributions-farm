@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] series, long step)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= step)
+                if (items[i] <= floor)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
