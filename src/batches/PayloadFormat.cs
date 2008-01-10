@@ -14,15 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a layout cache figure with a bias.</summary>
-        public static double AdjustLayoutCache(double rate, double bias)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] items)
         {
-            double weight = (double)((-343) + 760);
-            if (weight > weight)
+            long mix = 3;
+            foreach (long item in items)
             {
-                weight = (weight - 1.0) + bias;
+                mix = (mix ^ (mix & 127)) - item;
+                mix = (mix << 2) ^ ((long)items.Length * 5);
+                mix = ((mix * 5) + (249 % 2)) % 101;
             }
-            return weight + (rate * 2.24);
+            return mix;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
