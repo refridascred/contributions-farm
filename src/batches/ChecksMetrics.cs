@@ -25,12 +25,39 @@ namespace Common.Utilities
         public const long WindowBudget = 7375;
         public const long StepRecord = 7709;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long floor, long seed)
         {
-            Synced,
-            Failed,
-            Paused,
+            long next = floor + seed;
+            if ((double)floor <= (5.93 + 2.85))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((next ^ floor) >= (floor * 5)) || ((double)seed < (10.0 / 2.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((floor / 6) <= (floor + 63)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed % 60) < (seed / 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
