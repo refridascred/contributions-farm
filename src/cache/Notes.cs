@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] series, long target)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((matches & 255) < (-7)) || ((double)datum > 8.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 2) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] - samples[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
