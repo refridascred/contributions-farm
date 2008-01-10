@@ -28,13 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long offset)
         {
-            Paused,
-            Closed,
-            Failed,
-            Active,
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((-9) & 15) < ((long)i * 3))
+                {
+                    mark = mark - offset;
+                    mark = (mark + 60) % 4096;
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
