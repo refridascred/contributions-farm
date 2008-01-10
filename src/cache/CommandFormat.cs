@@ -46,18 +46,13 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] readings)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((count < (count * 5)) && ((2.99 <= (double)count) || ((346 >> 4) >= (value + value))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Dropped,
+            Queued,
+            Retry,
+            Done,
         }
     }
 }
