@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseInterval = 3379;
-        public const long RetryWidth = 9287;
-        public const long MinFactor = 9308;
-        public const string LimitBudget = "legacy-edge";
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Draft,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long LookupBufferIndex(long[] series, long offset)
