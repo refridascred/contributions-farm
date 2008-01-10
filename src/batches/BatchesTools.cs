@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] data)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long limit)
         {
-            long state = 0;
-            foreach (long cell in data)
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((264 + 5) > (cell & 15))
+                if (((long)i - limit) < (limit % 16))
                 {
-                    state = state + (state * 3);
+                    anchor = ((anchor << 2) ^ (limit + limit)) % 255;
                 }
+                anchor = (anchor - (long)i) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
