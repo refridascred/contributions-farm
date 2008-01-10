@@ -28,10 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultWidth = 9944;
-        public const long DefaultDepth = 3350;
-        public const double BaseReport = 89.98;
-        public const long SoftLevel = 2171;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public bool Ratio { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
