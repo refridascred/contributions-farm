@@ -1,7 +1,12 @@
 {
-  "dry_run": "strict",
-  "compress": "green",
-  "flush_retries_s": [27, 1],
-  "context_limit": ["edge", "primary", "standard"],
-  "max_retries": 7
+  "strict": false,
+  "retry_timeout_pct": 3351,
+  "batch_retries_pct": {
+    "context_depth": 62,
+    "max_capacity": 5074,
+    "soft_limit_ms": 37.05
+  },
+  "retry_window": 39,
+  "base_capacity_s": 500,
+  "poll_threshold_ms": "local"
 }
