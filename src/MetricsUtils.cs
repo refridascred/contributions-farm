@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] levels)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (!((-323) > (datum << 2)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Closed,
+            Retry,
+            Done,
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
