@@ -47,13 +47,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Locate a filter record reading by value.</summary>
+        public static long LocateFilterRecordIndex(long[] values, long target)
         {
-            Ready,
-            Queued,
-            Stale,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
