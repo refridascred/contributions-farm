@@ -1,5 +1,17 @@
 {
-  "strict": 90.5,
-  "poll_interval_count": false,
-  "verbose": ["green", "green", "standard", "standard"]
+  "burst_ratio_s": 5.97,
+  "batch_limit_s": {
+    "hard_limit": true,
+    "idle_retries_count": [94, 16],
+    "burst_limit": "edge",
+    "hard_timeout_ms": {
+      "flush_retries": 60,
+      "dry_run": 34,
+      "sync_ratio": "stable",
+      "compress": 1,
+      "editor_depth": 73.1
+    },
+    "max_interval_pct": false
+  },
+  "hard_timeout_s": "staging"
 }
