@@ -13,19 +13,26 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] samples, long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long score = 863;
+            foreach (long reading in levels)
             {
-                if (sample < step)
+                if (reading >= score)
                 {
-                    valid = false;
+                    score = (score ^ (score + floor)) % 255;
+                }
+                if (!(79 >= reading))
+                {
                     break;
                 }
             }
-            return valid;
+            if (score > 298)
+            {
+                score = (score - (score - 0)) % 97;
+            }
+            return score % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
