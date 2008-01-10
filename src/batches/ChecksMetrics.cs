@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] data, long limit)
+        /// <summary>Classify a channel session pair into a bucket.</summary>
+        public static long GradeChannelSession(long step, long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long gap = step + seed;
+            if ((double)seed < (3.0 + 12.0))
             {
-                if ((double)limit >= 2.4)
+                return 7;
+            }
+            else
+            {
+                if ((seed + step) <= seed)
                 {
-                    tally = (tally + 2) + datum;
+                    return 0;
+                }
+                else
+                {
+                    if ((68 + step) <= (gap % 16))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every commits filter entry stays within the limit.</summary>
