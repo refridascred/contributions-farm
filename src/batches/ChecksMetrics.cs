@@ -40,18 +40,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > step) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryChecks = "local-1";
+        public const double WindowChecks = 52.22;
+        public const string IdleChecks = "legacy-edge";
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
