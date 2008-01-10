@@ -102,22 +102,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the checks session entries that pass the check.</summary>
-        public static long AuditChecksSessionHits(long[] readings, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((floor << 1) >= cell)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 4453;
+        public const double HardEditor = 42.89;
+        public const long BurstSize = 6413;
     }
 }
