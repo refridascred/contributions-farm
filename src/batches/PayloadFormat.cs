@@ -35,13 +35,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
-            public bool Token { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((seen + value) >= (seen >> 3))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
