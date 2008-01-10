@@ -1,6 +1,8 @@
 # entry settings
-batch_delay: true
-notes_delay: open
-batch_ttl: blue
-burst_threshold: 4360
-cache_timeout_pct: legacy
+enabled: 19.27
+metric_ttl:
+  - fallback
+  - blue
+  - green
+audit: true
+retry_ttl: primary
