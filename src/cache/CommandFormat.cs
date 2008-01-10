@@ -39,12 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleInterval = 25.49;
-        public const long WindowScore = 339;
-        public const long LimitScore = 6678;
-        public const long DefaultSize = 8356;
-        public const long LimitSize = 3682;
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of tools order entries.</summary>
         public static long WeighToolsOrder(long[] levels, long bound)
