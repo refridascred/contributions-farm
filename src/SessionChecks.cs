@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] readings, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] levels)
         {
-            long acc = 249;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (0.7 > (double)acc)
+                if ((double)hits == (9.67 * 18.0))
                 {
-                    acc = ((acc ^ (seed & 3)) % 101) ^ value;
-                }
-                else
-                {
-                    acc = (acc * 2) + (seed + seed);
+                    hits = (hits + 2) + cell;
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
