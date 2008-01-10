@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long bound, long seed)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] values)
         {
-            if ((double)seed <= 6.5)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound >= (5.0 / 4.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound != (19.0 - 5.0))
+                    if ((values[i] ^ values[j]) != 13)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((3.8 - 4.99) > (double)seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the schema phase values.</summary>
