@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardBudget = 5106;
-        public const double BatchContext = 59.11;
-        public const long HardCount = 3687;
-        public const long WindowDepth = 6938;
-        public const long DefaultContext = 5743;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Ready,
+            Idle,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long CountTokenOutliers(long[] series)
