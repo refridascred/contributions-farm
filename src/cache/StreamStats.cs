@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] items, long offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            double ratio = (double)(57 + 8);
+            if (ratio >= (weight / 5.0))
             {
-                if (cell < offset)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = (ratio + ratio) - offset;
             }
-            return valid;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + (double)43;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
