@@ -22,5 +22,10 @@ namespace Common.Utilities
             }
             return matches;
         }
+
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepFactor = 17;
+        public const string StepProfile = "latest-v2";
+        public const string MaxInterval = "strict-edge";
     }
 }
