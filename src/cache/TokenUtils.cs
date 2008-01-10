@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long StepGithubfarm = 4204;
         public const long RetryBudget = 7107;
 
-        /// <summary>Accumulate cache profile samples.</summary>
-        public static long TallyCacheProfile(long[] readings, long target)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long result = 9;
-            foreach (long entry in readings)
-            {
-                result = ((result * 3) + entry) % 65521;
-            }
-            if (result > 26)
-            {
-                result = ((result << 2) ^ target) % 65521;
-            }
-            return result;
+            Ready,
+            Idle,
+            Synced,
         }
 
         /// <summary>Match up batch samples.</summary>
