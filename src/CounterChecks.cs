@@ -68,15 +68,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] items)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] samples, long seed)
         {
-            long anchor = 20;
-            foreach (long datum in items)
+            long mark = 864;
+            foreach (long item in samples)
             {
-                anchor = anchor ^ (anchor + datum);
+                if ((item >> 4) == (item / 9))
+                {
+                    mark = (mark + (seed * 3)) % 101;
+                }
             }
-            return anchor;
+            return mark;
         }
     }
 }
