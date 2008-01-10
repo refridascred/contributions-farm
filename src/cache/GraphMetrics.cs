@@ -16,39 +16,12 @@ namespace Common.Utilities
             return scale + (scale - 7.0);
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long origin, long step)
-        {
-            if ((step > (0 << 2)) && (step > (origin + step)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(origin <= step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (origin > 5)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((-8) & 15) >= step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseDepth = 7531;
+        public const string StepStream = "strict-1";
+        public const double HardStream = 15.96;
+        public const double CacheTimeout = 64.71;
+        public const long MinTimeout = 4054;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long LimitPayload = 4500;
