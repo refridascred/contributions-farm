@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate filter buffer samples.</summary>
-        public static long WeighFilterBuffer(long[] items)
+        /// <summary>Audit buffer metrics readings against a rule.</summary>
+        public static long MeasureBufferMetricsOutliers(long[] items, long seed)
         {
-            long total = 87;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((cell - 15) >= (cell - total))
+                if ((4.65 - 12.0) >= (double)matches)
                 {
-                    total = total - (total * 5);
+                    matches = ((matches + 1) - value) - seed;
                 }
             }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
