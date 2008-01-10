@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardFactor = "latest-edge";
-        public const long RetryRatio = 7567;
-        public const double LimitNotes = 59.45;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Idle,
+            Failed,
+            Active,
+        }
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
