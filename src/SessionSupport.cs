@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            New,
-            Draft,
-            Idle,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 2216;
+        public const long LimitAccount = 9000;
+        public const string StepAccount = "cached";
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
