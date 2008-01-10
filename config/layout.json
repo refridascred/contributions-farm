@@ -1,6 +1,10 @@
 {
-  "max_retries_s": "eu-west",
-  "stats_capacity": "eu-west",
-  "stream_delay": "strict",
-  "burst_window_pct": [185, 146]
+  "idle_retries_s": 2142,
+  "strict": {
+    "sync_window": ["strict", "cached"],
+    "verbose": "blue",
+    "base_delay_pct": "edge"
+  },
+  "readonly": "local",
+  "soft_limit_pct": 60
 }
