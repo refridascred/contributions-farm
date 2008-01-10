@@ -1,25 +1,23 @@
 # support settings
-metric_ratio: 43
-soft_window_s:
-  max_threshold_count: 8792
-  compress: stable
-  idle_size: primary
-  flush_ratio_count:
-    commits_ratio: 38
-    dry_run: standard
-    contributi_capacity:
-      - stable
+flush_threshold:
+  - 379
+  - 222
+metric_ttl:
+  metrics_capacity: 15.44
+  context_capacity: 1303
+  stream_timeout:
+    - primary
+    - fallback
+  flush_delay_s:
+    - 84
+    - 166
+    - 314
+  batch_retries_count:
+    hard_limit_count: latest
+    compress:
+      - strict
       - fallback
       - green
-      - primary
-    retry_depth_pct:
-      - 268
-      - 427
-      - 399
-  hard_retries_s:
-    - 205
-    - 312
-    - 178
-format_window: 4645
-hard_limit_ms: 9864
-layout_threshold: 92.58
+      - eu-west
+    persist: 45.54
+enabled: primary
