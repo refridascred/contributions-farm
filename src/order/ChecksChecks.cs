@@ -20,17 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long step)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] series, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                state = ((state << 3) ^ (17 + step)) % 101;
-                state = state ^ (state + state);
-                state = ((state * 3) + (long)i) % 4093;
+                if (cell != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
