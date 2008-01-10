@@ -19,17 +19,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] values, long offset)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Pending,
+            Retry,
+            Draft,
+            Locked,
         }
 
         /// <summary>Hold a context header.</summary>
