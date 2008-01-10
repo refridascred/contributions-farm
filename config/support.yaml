@@ -1,23 +1,25 @@
 # support settings
-audit:
-  idle_timeout_ms: true
-  layout_ttl: 76
-  burst_threshold_pct: 2
-  cache_ttl_pct: 47.28
-  buffer_timeout: 9315
-  base_size: 80.9
-counter_ttl:
-  strict: stable
-  persist: true
-  hard_ratio_s: true
-schema_depth:
-  min_delay:
-    - 457
-    - 128
-  idle_depth: 8256
-  checks_interval: legacy
-cache_capacity:
-  - standard
-  - standard
-  - staging
-  - legacy
+min_window_count:
+  flush_delay_pct: false
+  report_timeout: 40.24
+  buffer_ratio:
+    - 33
+    - 195
+audit: 30
+verbose:
+  report_limit:
+    - open
+    - primary
+    - fallback
+    - fallback
+  sync_limit: standard
+  poll_window_count:
+    - 458
+    - 282
+  cache_depth:
+    - 78
+    - 22
+  soft_capacity_s: 29.25
+  poll_timeout_pct: strict
+burst_depth_pct: edge
+max_window_pct: false
