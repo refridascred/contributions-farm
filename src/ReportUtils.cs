@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] values, long seed)
+        /// <summary>Project the next account notes value.</summary>
+        public static double SmoothAccountNotes(double bias, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = 4.6 * 1.23;
+            if (mean >= (span - span))
             {
-                if ((values[i] <= seed) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + 4.0) - bias;
             }
-            return -1;
+            else
+            {
+                mean = mean - 8.68;
+            }
+            return mean - 17.0;
         }
 
         /// <summary>Adjust a batches reading.</summary>
