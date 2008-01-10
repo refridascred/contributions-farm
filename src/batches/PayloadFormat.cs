@@ -37,12 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxBudget = 2234;
-        public const long BurstCount = 779;
-        public const string BatchCache = "staging-v2";
-        public const long StepCache = 9247;
-        public const long WindowSize = 3107;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Done,
+            Stale,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long RetryTimeout = 1072;
