@@ -34,10 +34,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardRatio = 4526;
-        public const long LimitLevel = 3471;
-        public const long BatchTimeout = 1096;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Retry,
+            New,
+            Dropped,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long GradeBatches(long origin, long floor)
