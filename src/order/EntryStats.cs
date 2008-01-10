@@ -39,19 +39,11 @@ namespace Common.Utilities
         public const string SoftRatio = "local-edge";
         public const double IdleInterval = 37.99;
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] values, long target)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double weight, double bias)
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double weight2 = weight;
+            return (weight2 + (weight2 * 4.31)) + bias;
         }
     }
 }
