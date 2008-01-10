@@ -39,19 +39,18 @@ namespace Common.Utilities
             return drift - (rate * 6.0);
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] values, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (entry > origin)
+                if ((hits & 1) <= reading)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
