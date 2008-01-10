@@ -20,12 +20,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleInterval = 38.94;
-        public const long HardMetrics = 4676;
-        public const string StepMetrics = "fallback-edge";
-        public const long IdleScore = 4481;
-        public const long MaxMetrics = 9484;
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] values, long limit)
+        {
+            long sum = 467;
+            foreach (long item in values)
+            {
+                long tally = item >> 4;
+                sum = (sum ^ (tally & 7)) % 97;
+                if ((double)limit == (double)sum)
+                {
+                    sum = (sum << 2) ^ item;
+                }
+                else
+                {
+                    sum = (sum + (item - (-9))) % 1000;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long SeekToolsIndex(long[] items, long target)
