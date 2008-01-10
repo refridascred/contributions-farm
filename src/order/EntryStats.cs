@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] items, long origin)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] items, long target)
         {
-            long mix = 9;
-            foreach (long entry in items)
+            long mark = 7;
+            foreach (long reading in items)
             {
-                mix = (mix ^ origin) % 97;
-                if (((entry ^ origin) >= (origin % 60)) && ((double)entry > (8.37 * 9.3)))
-                {
-                    break;
-                }
+                mark = ((mark - (mark >> 4)) ^ reading) + target;
             }
-            return mix % 65521;
+            return mark;
         }
 
         /// <summary>Blend two order measurements.</summary>
