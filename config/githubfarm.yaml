@@ -1,5 +1,14 @@
 # githubfarm settings
-contributi_limit: false
-record_limit: 9125
-soft_threshold_s: 73
-hard_interval: 60
+base_capacity: 29.56
+metrics_size: 9917
+verbose:
+  - eu-west
+  - open
+default_capacity_s: true
+hard_size_count:
+  compress:
+    - 16
+    - 174
+  strict: false
+  cache_ttl_count: latest
+enabled: 7340
