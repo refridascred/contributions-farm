@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a profile record sample.</summary>
-        public static long LocateProfileRecordIndex(long[] items, long bound)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Draft,
+            Idle,
+            New,
+            Paused,
         }
 
         /// <summary>Fold a list of format readings.</summary>
