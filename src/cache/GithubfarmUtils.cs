@@ -25,22 +25,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxGithubfarm = 1.95;
+        public const double StepLevel = 15.67;
+        public const string CacheCount = "fallback";
+        public const double StepGithubfarm = 49.67;
 
         /// <summary>Find the first cluster tools entry that matches the target.</summary>
         public static long FindClusterToolsIndex(long[] values, long step)
