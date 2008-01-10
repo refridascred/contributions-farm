@@ -1,6 +1,8 @@
 {
-  "report_retries": 58.76,
-  "support_timeout": 29,
-  "filter_retries": 3012,
-  "layout_timeout": "standard"
+  "context_timeout": "blue",
+  "base_ratio_pct": "standard",
+  "order_delay": 34.4,
+  "batch_interval": 4844,
+  "audit": ["blue", "edge"],
+  "enabled": true
 }
