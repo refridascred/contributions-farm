@@ -19,22 +19,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many cache queue samples are out of range.</summary>
-        public static long TallyCacheQueueHits(long[] samples)
+        /// <summary>Find the first counter payload entry that matches the target.</summary>
+        public static long LocateCounterPayloadIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item * 4) <= ((-300) & 255))
+                if (readings[i] == offset)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a batches record.</summary>
