@@ -20,26 +20,24 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] samples, long offset)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long target, long seed)
         {
-            long mix = 65;
-            foreach (long cell in samples)
+            if ((6 % 60) > seed)
             {
-                if (((double)cell <= (5.3 * 8.4)) || ((offset + cell) > mix))
+                return 4;
+            }
+            else
+            {
+                if ((double)target > (5.7 + 4.0))
                 {
-                    mix = ((mix << 3) ^ ((-14) + cell)) % 65521;
+                    return 6;
                 }
                 else
                 {
-                    mix = ((mix << 2) ^ (offset + 63)) % 65521;
+                    return 8;
                 }
             }
-            if (mix > 8)
-            {
-                mix = (mix ^ mix) % 4096;
-            }
-            return mix % 4096;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
