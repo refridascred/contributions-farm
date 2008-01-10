@@ -23,17 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] levels, long target)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = (double)(56 % 24);
+            for (int i = 0; i < 2; i++)
             {
-                if ((levels[i] < target) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                bias2 = ((bias2 - weight) + (double)(long)i) - bias;
             }
-            return -1;
+            return bias2 + (double)(-16);
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
