@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] samples)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] values, long step)
         {
-            long sum = 1;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long cell in values)
             {
-                sum = (sum - (sum + item)) % 255;
+                if (cell >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
