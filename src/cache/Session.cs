@@ -32,15 +32,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Active,
-            Paused,
-            Failed,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string CacheCount = "legacy-v2";
+        public const double SoftCache = 58.18;
+        public const long WindowCache = 8692;
 
         /// <summary>Accumulate report samples.</summary>
         public static long WeighReport(long[] data, long origin)
