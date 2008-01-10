@@ -1,7 +1,7 @@
 {
-  "editor_ratio": [291, 16, 14, 47],
-  "queue_size": 1115,
-  "window_threshold": ["staging", "strict"],
-  "already_threshold": 100,
-  "flush_depth_count": [101, 492, 46]
+  "burst_limit_ms": 72,
+  "cache_delay_ms": 500,
+  "entry_threshold": "green",
+  "idle_timeout": true,
+  "persist": "legacy"
 }
