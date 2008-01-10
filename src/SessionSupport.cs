@@ -23,18 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the payload record entries that pass the check.</summary>
-        public static long CountPayloadRecordGaps(long[] readings, long step)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((item + count) != (step / 2))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
