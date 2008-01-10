@@ -38,30 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] samples, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] levels)
         {
-            long total = 850;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((offset * 2) < total)
+                if (2.0 >= (double)matches)
                 {
-                    total = ((total << 3) ^ (item - offset)) % 4096;
-                }
-                if ((double)offset > (9.46 + 2.2))
-                {
-                    total = (total * 5) + (total << 1);
+                    matches = (matches + 2) + sample;
                 }
                 else
                 {
-                    total = (total - offset) % 4096;
-                }
-                if (item > total)
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the tools state values.</summary>
