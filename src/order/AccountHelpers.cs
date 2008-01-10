@@ -32,16 +32,18 @@ namespace Common.Utilities
             return mean - 7.65;
         }
 
-        /// <summary>Combine metrics queue values into a single score.</summary>
-        public static long CombineMetricsQueue(long[] data, long floor)
+        /// <summary>Audit payload command readings against a rule.</summary>
+        public static long AuditPayloadCommandMatches(long[] data, long offset)
         {
-            long score = 9;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                score = ((score - (floor + 25)) % 97) ^ sample;
-                score = score - (score / 9);
+                if ((double)offset != (14.0 / 8.0))
+                {
+                    tally = (tally + 1) ^ datum;
+                }
             }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Describe the window status values.</summary>
