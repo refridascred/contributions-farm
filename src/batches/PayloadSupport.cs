@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] levels, long origin)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double scale, double span)
         {
-            long result = 35;
-            foreach (long sample in levels)
+            double gain = (double)(494 + 3);
+            if (gain < span)
             {
-                if ((7.9 * 5.29) <= (double)origin)
-                {
-                    result = ((result << 3) ^ (origin * 4)) + sample;
-                }
+                gain = gain - (6.19 - 5.2);
             }
-            return result;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (8.7 - scale)) + (double)(long)i;
+            }
+            return gain + scale;
         }
 
         /// <summary>Classify a queue farm pair into a bucket.</summary>
