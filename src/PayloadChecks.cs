@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const long DefaultCount = 9289;
         public const string BurstBudget = "primary-v2";
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long offset)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = ((mix << 2) ^ ((long)i >> 2)) % 4096;
-                mix = (mix - (long)i) % 255;
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            Closed,
+            Stale,
+            Pending,
+            New,
+            Locked,
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
