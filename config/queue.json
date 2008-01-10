@@ -1,7 +1,14 @@
 {
-  "farm_limit": "eu-west",
-  "format_timeout": 61.68,
-  "retry_ttl_s": 3734,
-  "max_size_pct": 49.53,
-  "batch_depth": "latest"
+  "context_ttl": "primary",
+  "cache_size": "local",
+  "cache_interval_count": 49.24,
+  "sync_delay": "stable",
+  "cache_delay_count": ["standard", "local"],
+  "persist": {
+    "batch_delay": 53.57,
+    "base_size_pct": 4967,
+    "default_delay_count": 98.66,
+    "checks_capacity": "staging",
+    "soft_depth_pct": 435
+  }
 }
