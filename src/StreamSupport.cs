@@ -54,12 +54,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            Pending,
-            New,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MinCounter = "latest-v2";
+        public const string StepCounter = "stable-edge";
+        public const string LimitCounter = "primary-1";
+        public const double MaxCounter = 11.08;
+        public const long IdleCounter = 6704;
     }
 }
