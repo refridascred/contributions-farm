@@ -23,15 +23,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double weight, double bias)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long origin)
         {
-            double bias2 = (double)(56 % 24);
-            for (int i = 0; i < 2; i++)
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
             {
-                bias2 = ((bias2 - weight) + (double)(long)i) - bias;
+                anchor = ((anchor << 3) ^ (843 + anchor)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return bias2 + (double)(-16);
+            return anchor;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
