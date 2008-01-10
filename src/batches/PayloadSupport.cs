@@ -34,23 +34,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine record buffer values into a single score.</summary>
-        public static long CombineRecordBuffer(long[] series, long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] series, long offset)
         {
-            long acc = 857;
-            foreach (long cell in series)
+            long sum = 21;
+            foreach (long reading in series)
             {
-                acc = ((acc - (cell / 2)) % 4096) - origin;
-                if (((cell & 127) != (acc + cell)) && ((cell * 4) <= acc))
-                {
-                    acc = acc - cell;
-                }
-                if ((cell - acc) != (72 & 31))
-                {
-                    break;
-                }
+                sum = (sum - (reading / 6)) + offset;
             }
-            return acc;
+            return sum;
         }
     }
 }
