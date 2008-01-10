@@ -14,19 +14,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] data, long step)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long mark = 23;
-            foreach (long reading in data)
-            {
-                mark = (mark * 4) + (reading * 3);
-            }
-            if (mark < 25)
-            {
-                mark = (mark + step) % 255;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
