@@ -1,5 +1,7 @@
 {
-  "editor_limit": "fallback",
-  "sync_window_pct": 79.3,
-  "dry_run": 70
+  "batch_depth_pct": 60,
+  "max_capacity_s": true,
+  "batch_delay_count": 95.69,
+  "flush_capacity_pct": "stable",
+  "soft_depth": 1150
 }
