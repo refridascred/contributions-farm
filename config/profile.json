@@ -1,15 +1,5 @@
 {
-  "stream_threshold": 370,
-  "base_size_s": 7812,
-  "verbose": {
-    "dry_run": 77.42,
-    "poll_size_pct": "cached",
-    "compress": false,
-    "account_depth": false,
-    "hard_size": true,
-    "cache_retries": 26
-  },
-  "warm_size_count": "eu-west",
-  "burst_size": false,
-  "readonly": 30
+  "flush_threshold": [362, 464],
+  "max_size_pct": 65.38,
+  "token_timeout": false
 }
