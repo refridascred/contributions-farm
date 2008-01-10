@@ -29,13 +29,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Failed,
-            New,
-            Active,
-            Closed,
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
