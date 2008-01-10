@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] items, long step)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Ready,
+            Done,
+            Synced,
+            Pending,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
