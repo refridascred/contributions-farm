@@ -32,21 +32,30 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] series)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 850;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((offset * 2) < total)
                 {
-                    if ((series[i] - series[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total << 3) ^ (item - offset)) % 4096;
+                }
+                if ((double)offset > (9.46 + 2.2))
+                {
+                    total = (total * 5) + (total << 1);
+                }
+                else
+                {
+                    total = (total - offset) % 4096;
+                }
+                if (item > total)
+                {
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the tools state values.</summary>
