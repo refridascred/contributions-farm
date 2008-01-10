@@ -38,17 +38,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] values, long offset)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Queued,
+            Stale,
+            New,
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
