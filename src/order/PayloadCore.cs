@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every batch entry entry stays within the limit.</summary>
-        public static bool ValidateBatchEntryRange(long[] samples, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (sample != offset)
+                if ((matches * 5) == (floor & 31))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the schema phase values.</summary>
