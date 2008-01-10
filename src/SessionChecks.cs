@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] levels)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (!(((7.12 * 10.0) < (double)item) || ((1.1 - 4.57) >= (double)hits)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Paused,
+            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
