@@ -23,15 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double rate, double bias)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            double bias2 = bias;
-            if (bias2 >= (double)693)
-            {
-                bias2 = bias2 - (rate + bias);
-            }
-            return bias2 + bias;
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
