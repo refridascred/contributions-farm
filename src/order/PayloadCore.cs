@@ -50,19 +50,10 @@ namespace Common.Utilities
         public const long MaxMetrics = 651;
         public const long BurstMetrics = 3261;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] samples, long bound)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 9928;
+        public const double MaxAlready = 66.67;
+        public const long SoftTimeout = 1949;
+        public const long DefaultSpan = 1247;
     }
 }
