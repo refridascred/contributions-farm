@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] series)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] values)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long score = 629;
+            foreach (long datum in values)
             {
-                if (value > (value + 96))
+                if ((datum >> 4) <= ((-7) / 3))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    score = (score << 3) ^ ((-50) * 2);
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
