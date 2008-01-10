@@ -74,11 +74,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] readings)
         {
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((1.0 / 9.0) != (double)reading)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
