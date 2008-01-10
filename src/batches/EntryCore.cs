@@ -26,11 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a commits session reading.</summary>
-        public static double ProjectCommitsSession(double scale, double offset)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            double rate = scale;
-            return (rate - (double)(-2)) + offset;
+            public long Size { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
