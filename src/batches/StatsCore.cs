@@ -73,22 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support record samples.</summary>
-        public static long FoldSupportRecord(long[] data)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] levels)
         {
-            long mark = 788;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (mark > reading)
+                if ((seen * 4) == (94 - 164))
                 {
-                    mark = (mark << 3) ^ mark;
+                    seen = (seen + 1) + cell;
                 }
             }
-            if (mark > 46)
-            {
-                mark = (mark + (mark + 90)) % 97;
-            }
-            return mark;
+            return seen;
         }
     }
 }
