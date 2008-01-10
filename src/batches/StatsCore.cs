@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryFarm = 31.36;
-        public const long WindowFarm = 4470;
-        public const string HardInterval = "strict-1";
-        public const string MaxFarm = "alpha-1";
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long origin, long target)
+        {
+            long offset = origin - target;
+            if ((double)target > 12.0)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((1.35 - 5.6) <= (double)offset) || ((offset / 3) >= (origin * 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long RollLayout(long target)
