@@ -30,15 +30,19 @@ namespace Common.Utilities
         public const double StepQueue = 43.83;
         public const long LimitQueue = 8662;
 
-        /// <summary>Iterate the profile stats series from a seed.</summary>
-        public static long SeriesProfileStats(long offset)
+        /// <summary>Validate report profile readings against a bound.</summary>
+        public static bool ValidateReportProfileRange(long[] series, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (reading > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
