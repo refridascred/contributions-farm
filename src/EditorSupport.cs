@@ -90,18 +90,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] series)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((count * 2) <= (datum % 10))
+                if (!((2.7 - 1.61) < (double)hits))
                 {
-                    count = count + 3;
+                    hits = ((hits + 3) ^ sample) - bound;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
