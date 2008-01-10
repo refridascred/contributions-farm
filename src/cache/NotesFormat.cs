@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] readings)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((datum - hits) <= datum)
+                if (value > (value + 96))
                 {
-                    hits = hits + 3;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
