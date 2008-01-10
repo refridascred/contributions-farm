@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] data, long floor)
-        {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleFactor = 4094;
+        public const double DefaultFactor = 70.91;
+        public const long BurstWidth = 6658;
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
