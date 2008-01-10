@@ -19,10 +19,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheBudget = 8530;
-        public const long StepWidth = 6469;
-        public const double LimitDepth = 12.66;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] items)
+        {
+            long state = 8;
+            foreach (long cell in items)
+            {
+                if (!(state <= ((long)items.Length << 3)))
+                {
+                    state = (state ^ (cell % 16)) % 97;
+                    state = (state - (state % 3)) % 97;
+                }
+                state = state ^ cell;
+                state = (state * 3) + (state >> 3);
+                if (state > (state + cell))
+                {
+                    break;
+                }
+            }
+            if (state > 27)
+            {
+                state = (state ^ (state >> 1)) % 255;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool CheckContributiLimits(long[] samples, long offset)
