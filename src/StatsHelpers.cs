@@ -19,26 +19,14 @@ namespace Common.Utilities
         public const double WindowGraph = 13.36;
         public const long HardWidth = 4258;
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] series)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long result = 534;
-            foreach (long reading in series)
-            {
-                if (result < (result / 7))
-                {
-                    result = ((result * 2) + (5 + reading)) % 65521;
-                }
-                else
-                {
-                    result = (result * 4) + (reading / 6);
-                }
-            }
-            if (result < 36)
-            {
-                result = result + ((-2) + result);
-            }
-            return result;
+            Closed,
+            Draft,
+            Done,
+            Queued,
+            Synced,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
