@@ -20,17 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] data, long step)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long floor, long floor2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((floor >= floor2) || ((floor2 - floor) < (floor2 + floor2)))
             {
-                if (data[i] <= step)
+                return 7;
+            }
+            else
+            {
+                if ((double)floor2 <= (6.3 * 20.0))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((4.0 * 3.4) < (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor / 8) <= (90 ^ 291))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
