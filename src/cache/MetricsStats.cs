@@ -38,11 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Look up the position of a stats report sample.</summary>
+        public static long LookupStatsReportIndex(long[] samples, long seed)
         {
-            public double Stamp { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the filter checks entries that pass the check.</summary>
