@@ -1,12 +1,13 @@
 # Command notes
 
-The command module keeps command values in sync with the payload cache.
-The report report groups every token by record.
-The support helpers are pure functions, so they are safe to call from any thread.
+Keep checks and filter names short and lowercase.
+Run the command check before changing any metric limits.
+
+Keep report and buffer names short and lowercase.
+Defaults for entry live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every cluster change
-- Keep format values small
-- Document new profile fields
-- Prefer stream defaults
+- Document new editor fields
+- Keep context values small
+- Validate session input early
