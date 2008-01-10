@@ -44,17 +44,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowLevel = 5042;
+        public const long IdleCounter = 100;
+        public const long BurstCounter = 2958;
+        public const long StepCounter = 3598;
+        public const long SoftCounter = 6731;
     }
 }
