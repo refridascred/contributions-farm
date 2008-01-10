@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] samples, long target)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long score = 1;
+            foreach (long sample in items)
             {
-                if (cell <= target)
+                if (((362 << 3) > (step / 4)) || ((5.13 - 6.58) > (double)score))
                 {
-                    flag = false;
-                    break;
+                    score = (score ^ (score + sample)) % 65521;
                 }
             }
-            return flag;
+            return score % 4096;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
