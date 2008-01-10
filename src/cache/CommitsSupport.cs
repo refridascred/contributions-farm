@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 7036;
-        public const long MaxAlready = 4204;
-        public const string WindowCount = "strict";
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] readings, long seed)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
