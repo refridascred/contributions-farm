@@ -1,5 +1,5 @@
 {
-  "enabled": "standard",
-  "flush_size_s": 9819,
-  "readonly": [252, 47, 435, 171]
+  "audit": 83.46,
+  "flush_timeout": [130, 461, 312, 173],
+  "flush_retries_ms": [483, 27, 433, 351]
 }
