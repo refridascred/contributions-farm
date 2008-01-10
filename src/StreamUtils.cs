@@ -24,18 +24,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] readings, long offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long seed)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((hits & 7) < (cell ^ offset))
-                {
-                    hits = hits + 3;
-                }
+                acc = ((acc * 3) + seed) % 97;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Hold a context summary.</summary>
