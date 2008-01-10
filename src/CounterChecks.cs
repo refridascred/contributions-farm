@@ -36,19 +36,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] samples, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] levels, long limit)
         {
-            long total = 85;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                total = (((total << 3) ^ (total + offset)) % 255) ^ item;
+                if (limit < (limit / 5))
+                {
+                    seen = (seen + 1) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (total < 9)
-            {
-                total = (total << 2) ^ (total - total);
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Measure how many order command samples are out of range.</summary>
