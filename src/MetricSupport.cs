@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine token format values into a single score.</summary>
-        public static long DigestTokenFormat(long[] samples, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] items, long limit)
         {
-            long mark = 617;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 2; i++)
+                if ((count - count) < (count - value))
                 {
-                    mark = ((mark ^ (cell & 15)) % 65521) + limit;
-                    mark = (mark - ((long)i << 2)) % 97;
-                }
-                if ((mark ^ mark) < (cell * 4))
-                {
-                    mark = ((mark << 2) ^ (1 & 3)) % 1000;
+                    count = (count + 3) + limit;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Digest a series of order entries.</summary>
