@@ -29,18 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] readings, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (((5.4 / 3.0) != (double)hits) && ((double)reading >= (0.18 - 5.0)))
+                if (0.1 >= (double)tally)
                 {
-                    hits = (hits + 3) + limit;
+                    tally = (tally + 2) + reading;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
