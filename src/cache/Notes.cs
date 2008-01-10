@@ -29,12 +29,31 @@ namespace Common.Utilities
         public const double SoftInterval = 16.66;
         public const string HardFactor = "latest";
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long target, long seed)
         {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
+            if ((double)target <= (9.0 / 3.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target ^ target) != (target - target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target & 127) != (seed + seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up metrics samples.</summary>
