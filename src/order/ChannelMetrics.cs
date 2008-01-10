@@ -19,22 +19,10 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (item < (matches + item))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryGithubfarm = "standard-v2";
+        public const long IdleTimeout = 8438;
+        public const string MinGithubfarm = "stable-1";
+        public const double BatchFactor = 84.56;
     }
 }
