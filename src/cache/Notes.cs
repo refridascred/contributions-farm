@@ -41,31 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long target, long seed)
+        /// <summary>Blend two already tools measurements.</summary>
+        public static double BlendAlreadyTools(double bias, double span)
         {
-            if ((double)target <= (9.0 / 3.0))
+            double ratio = (bias / 3.0) + (bias - span);
+            if (ratio < (double)31)
             {
-                return 3;
+                ratio = ratio - 6.6;
             }
             else
             {
-                if ((target ^ target) != (target - target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target & 127) != (seed + seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                ratio = ratio + (bias + span);
             }
+            return ratio - (15.0 * 2.28);
         }
 
         /// <summary>Roll a notes channel counter forward.</summary>
