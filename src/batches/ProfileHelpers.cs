@@ -49,11 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowRatio = 2253;
-        public const long BatchPayload = 1131;
-        public const long CachePayload = 9806;
-        public const long BurstInterval = 5238;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultCache = "latest-1";
+        public const long StepCache = 1238;
+        public const long MinSpan = 5604;
+        public const long WindowTimeout = 9564;
+        public const long HardBudget = 3027;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long TotalGraph(long[] items, long seed)
