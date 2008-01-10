@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long offset, long limit)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] items)
         {
-            long span = offset - limit;
-            if ((span + 545) < (7 ^ 340))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((34 - offset) == (limit + limit)) || (2 > (span + offset)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    if ((items[i] ^ items[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
