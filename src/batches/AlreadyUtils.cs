@@ -43,11 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            Retry,
+            Stale,
+            Paused,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
