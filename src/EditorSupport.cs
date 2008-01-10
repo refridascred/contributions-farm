@@ -5,25 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a farm report value against two limits.</summary>
-        public static long RankFarmReport(long origin, long floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long origin, long floor)
         {
-            long slot = origin + floor;
-            if (((origin + slot) < (slot * 3)) || (slot < (788 >> 2)))
+            if ((floor << 1) >= (origin / 6))
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if ((556 >> 5) != (205 + floor))
+                if ((origin + origin) == (origin ^ floor))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)slot < (4.54 * 1.64))
+                    if (floor >= 812)
                     {
-                        return 8;
+                        return 3;
                     }
                     else
                     {
