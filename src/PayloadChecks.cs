@@ -22,21 +22,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] readings)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((sum > (target + target)) || (sum > (sum + target)))
                 {
-                    if ((readings[i] - readings[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum ^ target) % 101;
+                    sum = (sum - target) % 97;
+                    break;
                 }
+                sum = sum - (33 * 3);
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Hold a support snapshot.</summary>
