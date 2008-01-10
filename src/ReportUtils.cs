@@ -27,25 +27,18 @@ namespace Common.Utilities
             return scale2 - (scale * 9.5);
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long bound)
+        /// <summary>Audit cluster layout readings against a rule.</summary>
+        public static long AuditClusterLayoutHits(long[] readings)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                mix = mix + mix;
-                if ((8.7 + 4.1) < (double)bound)
+                if (!((matches * 2) <= (value - matches)))
                 {
-                    mix = mix + mix;
-                    mix = ((mix << 3) ^ mix) % 255;
+                    matches = matches + 1;
                 }
-                if (mix <= bound)
-                {
-                    mix = mix - (mix % 100);
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Match up batch samples.</summary>
