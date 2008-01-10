@@ -23,11 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] levels, long floor)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
