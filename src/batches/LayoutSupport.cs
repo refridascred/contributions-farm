@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of support graph readings.</summary>
-        public static long FoldSupportGraph(long[] readings)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] levels)
         {
-            long anchor = 8;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((anchor - anchor) >= (entry << 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = anchor ^ (entry + 239);
+                    if ((levels[i] + levels[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
