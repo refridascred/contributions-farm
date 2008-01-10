@@ -83,15 +83,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double rate, double bias)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] items)
         {
-            double bias2 = (double)(73 * 4);
-            if (bias2 < (rate * 6.0))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = bias2 - (bias - rate);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias2 - (bias2 - bias2);
+            return matches;
         }
     }
 }
