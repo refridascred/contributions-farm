@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] samples, long floor)
+        /// <summary>Derive the next order channel value from a seed.</summary>
+        public static long DeriveOrderChannel(long seed)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((((double)tally > (2.6 * 2.6)) && ((tally / 7) != (datum / 4))) || ((tally + tally) < (tally ^ 794)))
-                {
-                    tally = (tally + 1) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = (anchor ^ (anchor % 7)) % 65521;
+                anchor = (anchor + (seed + (long)i)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a farm entry.</summary>
