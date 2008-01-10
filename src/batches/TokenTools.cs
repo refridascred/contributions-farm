@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long BatchSize = 5226;
         public const double IdleProfile = 15.3;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] samples)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (((5 & 7) < sample) && (((double)count < (double)sample) || ((3.0 + 6.0) >= (double)sample)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Closed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
