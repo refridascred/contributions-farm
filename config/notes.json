@@ -1,16 +1,5 @@
 {
-  "poll_ratio_pct": ["stable", "blue"],
-  "compress": {
-    "retry_depth_s": false,
-    "contributi_depth": 9690,
-    "batches_delay": 91.49,
-    "batch_threshold_ms": [258, 343, 227, 440],
-    "min_ratio": 78
-  },
-  "poll_limit_s": {
-    "readonly": "staging",
-    "counter_ttl": 35.36,
-    "order_size": false
-  },
-  "flush_threshold": ["local", "local"]
+  "default_delay": 30,
+  "audit": "staging",
+  "burst_timeout_ms": 22
 }
