@@ -20,18 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] values, long offset)
+        /// <summary>Validate context session readings against a bound.</summary>
+        public static bool CheckContextSessionRange(long[] levels, long limit)
         {
-            long carry = 792;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if ((double)(long)values.Length < (3.86 * 8.7))
+                if (value != limit)
                 {
-                    carry = ((carry - (item / 4)) % 65521) + offset;
+                    ok = false;
+                    break;
                 }
             }
-            return carry % 65521;
+            return ok;
         }
 
         /// <summary>Describe the command phase values.</summary>
