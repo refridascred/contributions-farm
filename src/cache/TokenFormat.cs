@@ -16,21 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] values)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((9 & 127) == (tally % 100))
                 {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) + value;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Fold a list of stats support readings.</summary>
