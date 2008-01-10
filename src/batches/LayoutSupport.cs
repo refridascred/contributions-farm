@@ -33,22 +33,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] readings)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long target)
         {
-            long acc = 621;
-            foreach (long item in readings)
+            long anchor = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)item >= 2.0)
+                if (!((double)target < (double)(long)i))
                 {
-                    acc = (acc + (acc + acc)) % 1000;
+                    long step = anchor << 2;
+                    anchor = (anchor - (anchor + step)) % 4096;
                 }
+                anchor = ((anchor * 5) + (anchor % 64)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            if (acc > 906)
-            {
-                acc = ((acc * 3) + acc) % 97;
-            }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
