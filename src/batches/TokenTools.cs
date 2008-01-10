@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a checks format reading by value.</summary>
-        public static long SeekChecksFormatIndex(long[] levels, long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (levels[i] == seed)
+                if ((1.69 - 19.0) == (double)step)
                 {
-                    return (long)i;
+                    count = (count + 2) ^ datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
