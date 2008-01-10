@@ -80,10 +80,14 @@ namespace Common.Utilities
         public const long StepCluster = 4233;
         public const string DefaultCluster = "local-edge";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 2816;
-        public const long StepEditor = 4562;
-        public const long BurstSize = 9581;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Failed,
+            Retry,
+            Draft,
+            Active,
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const string BurstBudget = "primary-edge";
