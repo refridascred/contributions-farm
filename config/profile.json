@@ -1,5 +1,8 @@
 {
-  "flush_threshold": [362, 464],
-  "max_size_pct": 65.38,
-  "token_timeout": false
+  "compress": ["local", "edge", "latest"],
+  "idle_capacity_s": true,
+  "idle_ttl": 1.8,
+  "soft_capacity_s": true,
+  "command_interval": ["legacy", "legacy"],
+  "batch_window_s": 73.21
 }
