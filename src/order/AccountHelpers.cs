@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of cache contributi readings.</summary>
-        public static long DigestCacheContributi(long[] readings)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long target, long step)
         {
-            long carry = 430;
-            foreach (long item in readings)
+            long prev = target - step;
+            if ((double)step >= (16.0 * 8.6))
             {
-                carry = (carry ^ carry) - item;
-                carry = (carry + (carry * 4)) % 255;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((prev + prev) > (8 / 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Project the next counter value.</summary>
