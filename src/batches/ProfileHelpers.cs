@@ -80,17 +80,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= seed) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxBatches = 19.67;
+        public const double DefaultCount = 1.78;
+        public const double SoftCount = 54.46;
+        public const long MinBatches = 5387;
+        public const long IdleWidth = 384;
     }
 }
