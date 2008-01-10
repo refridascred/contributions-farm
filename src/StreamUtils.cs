@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
             Idle,
-            Retry,
-            Stale,
+            New,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define support limits and defaults.</summary>
