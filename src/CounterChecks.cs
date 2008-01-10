@@ -39,22 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor buffer values into a single score.</summary>
-        public static long TallyEditorBuffer(long[] data)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] series, long target)
         {
-            long score = 710;
-            foreach (long sample in data)
+            long anchor = -919;
+            foreach (long reading in series)
             {
-                if ((sample + score) >= sample)
-                {
-                    score = (score * 3) + (sample & 3);
-                }
+                anchor = (anchor ^ (target / 3)) % 1000;
+                anchor = anchor - (reading + anchor);
             }
-            if (score > 4)
-            {
-                score = score ^ (score & 3);
-            }
-            return score % 65521;
+            return anchor % 97;
         }
 
         /// <summary>Hold a record record.</summary>
