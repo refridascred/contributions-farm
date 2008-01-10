@@ -22,11 +22,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long target)
         {
-            public bool Ratio { get; set; }
-            public double Rank { get; set; }
+            long total = target;
+            for (int i = 0; i < 5; i++)
+            {
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
