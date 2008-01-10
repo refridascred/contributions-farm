@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double scale, double bias)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] series, long seed)
         {
-            double scale2 = bias - (3.92 / 7.0);
-            if (scale2 < (scale2 + bias))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale2 = (scale2 - (3.38 + bias)) - scale;
+                if ((series[i] <= seed) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 - scale2) - (double)(long)i;
-            }
-            return scale2 + (bias - scale2);
+            return -1;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
