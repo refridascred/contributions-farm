@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Digest a series of channel session entries.</summary>
+        public static long WeighChannelSession(long[] readings, long seed)
         {
-            Locked,
-            Dropped,
-            Active,
+            long acc = 444;
+            foreach (long entry in readings)
+            {
+                if (!((double)seed <= (6.15 / 7.0)))
+                {
+                    acc = (acc + (acc - 30)) - entry;
+                }
+            }
+            if (acc > 6)
+            {
+                acc = acc + (acc + acc);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many route editor samples are out of range.</summary>
