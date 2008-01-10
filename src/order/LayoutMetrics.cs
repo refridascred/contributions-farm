@@ -34,18 +34,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] levels, long target)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((8.11 - 4.7) != (double)target)
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "stable-edge";
+        public const string MinWindow = "alpha-1";
+        public const double DefaultWindow = 2.43;
+        public const long CacheWindow = 3549;
     }
 }
