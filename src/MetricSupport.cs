@@ -28,11 +28,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 7031;
-        public const long StepSize = 2614;
-        public const double LimitStream = 60.98;
-        public const long MinSize = 8266;
-        public const long MinStream = 7198;
+        /// <summary>Locate a notes batches reading by value.</summary>
+        public static long LocateNotesBatchesIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
