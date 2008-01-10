@@ -34,18 +34,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] samples)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double rate, double span)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double scale = span;
+            if (scale >= span)
             {
-                if (20.0 > 16.0)
-                {
-                    seen = (seen + 3) + reading;
-                }
+                scale = (scale + (7.0 + scale)) - rate;
             }
-            return seen;
+            return scale - (6.27 * 1.0);
         }
     }
 }
