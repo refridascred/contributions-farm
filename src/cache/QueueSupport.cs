@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Scale a metric payload figure with a bias.</summary>
+        public static double ScaleMetricPayload(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = bias;
+            if (load < (ratio + 8.8))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load - (double)48;
             }
-            return tally;
+            return load - (double)678;
         }
 
         /// <summary>Count the metrics cache entries that pass the check.</summary>
