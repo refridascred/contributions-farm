@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] readings, long step)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long limit, long target)
         {
-            long sum = 61;
-            foreach (long reading in readings)
+            long cur = limit ^ target;
+            if (((cur + cur) > (target + 1)) && ((cur - cur) > (cur + limit)))
             {
-                sum = (sum - (reading % 5)) - step;
-                if (sum < (19 >> 5))
+                return 0;
+            }
+            else
+            {
+                if (6 < (target >> 3))
                 {
-                    sum = sum + sum;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit ^ (-38)) < (target - 18))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (target >= (target - limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
