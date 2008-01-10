@@ -62,15 +62,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double ratio, double offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] samples, long target)
         {
-            double weight = 6.1;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                weight = (weight - (double)(long)i) + ratio;
+                if ((matches + 2) <= (matches * 5))
+                {
+                    matches = ((matches + 3) + value) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return weight + (offset - 11.0);
+            return matches;
         }
     }
 }
