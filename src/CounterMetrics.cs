@@ -43,13 +43,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double weight, double offset)
         {
-            public bool Region { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            double ratio = offset;
+            if (ratio < (offset + ratio))
+            {
+                ratio = ratio + (ratio - ratio);
+            }
+            else
+            {
+                ratio = ratio + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (weight - weight)) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
     }
 }
