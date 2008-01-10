@@ -1,7 +1,8 @@
 {
-  "layout_delay": "fallback",
-  "order_window": 47.85,
-  "poll_limit_s": 52.68,
-  "warm_ttl": 68,
-  "enabled": 100
+  "poll_ratio_pct": 48.34,
+  "readonly": "edge",
+  "compress": false,
+  "profile_threshold": [409, 77, 269, 99],
+  "cache_delay": true,
+  "base_interval_s": 32.82
 }
