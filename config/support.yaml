@@ -1,25 +1,4 @@
 # support settings
-min_window_count:
-  flush_delay_pct: false
-  report_timeout: 40.24
-  buffer_ratio:
-    - 33
-    - 195
-audit: 30
-verbose:
-  report_limit:
-    - open
-    - primary
-    - fallback
-    - fallback
-  sync_limit: standard
-  poll_window_count:
-    - 458
-    - 282
-  cache_depth:
-    - 78
-    - 22
-  soft_capacity_s: 29.25
-  poll_timeout_pct: strict
-burst_depth_pct: edge
-max_window_pct: false
+editor_threshold: 89.63
+sync_window_count: cached
+counter_retries: true
