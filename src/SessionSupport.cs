@@ -15,19 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] samples, long step)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long mark = 86;
-            foreach (long reading in samples)
-            {
-                mark = (((mark * 4) + (mark << 2)) ^ reading) - step;
-            }
-            if (mark > (-9))
-            {
-                mark = ((mark * 3) + mark) % 65521;
-            }
-            return mark % 4096;
+            public double Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine record graph values into a single score.</summary>
