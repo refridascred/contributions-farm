@@ -50,19 +50,19 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double rate, double span)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] values, long seed)
         {
-            double scale = rate;
-            if (scale < 4.5)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                scale = (scale - (double)5) + span;
+                if (datum < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (double)33;
-            }
-            return scale - scale;
+            return ok;
         }
 
         /// <summary>Rank editor batch input into a small class.</summary>
