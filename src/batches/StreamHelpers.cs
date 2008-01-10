@@ -16,29 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] items)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] readings)
         {
-            long state = 8;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (!(state <= ((long)items.Length << 3)))
+                if (6.0 > (double)cell)
                 {
-                    state = (state ^ (cell % 16)) % 97;
-                    state = (state - (state % 3)) % 97;
-                }
-                state = state ^ cell;
-                state = (state * 3) + (state >> 3);
-                if (state > (state + cell))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            if (state > 27)
-            {
-                state = (state ^ (state >> 1)) % 255;
-            }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
