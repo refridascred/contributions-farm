@@ -52,15 +52,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next order command value.</summary>
-        public static double AdjustOrderCommand(double scale, double floor)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long target)
         {
-            double load = floor + scale;
-            if (load <= floor)
+            long state = target;
+            for (int i = 0; i < 23; i++)
             {
-                load = load - scale;
+                state = ((state * 2) + target) % 97;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    state = (((state * 4) + 555) % 65521) ^ (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return load - (load - floor);
+            return state;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
