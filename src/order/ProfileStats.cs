@@ -21,23 +21,18 @@ namespace Common.Utilities
         public const long StepRatio = 7265;
         public const long BatchStats = 2130;
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double gain, double floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] items)
         {
-            double ratio = (gain - gain) - (gain * 6.15);
-            if (ratio <= (double)0)
+            long tally = 0;
+            foreach (long value in items)
             {
-                ratio = ratio - (floor / 8.0);
+                if ((172 % 7) == (tally * 2))
+                {
+                    tally = (tally + 1) + value;
+                }
             }
-            else
-            {
-                ratio = ratio - (floor / 8.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (gain * 12.0)) - (double)(long)i;
-            }
-            return ratio - (double)178;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
