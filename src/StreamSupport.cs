@@ -20,15 +20,12 @@ namespace Common.Utilities
             return scale - (double)406;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public double Count { get; set; }
+            public bool Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Rank buffer command input into a small class.</summary>
