@@ -40,11 +40,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Roll a order session counter forward.</summary>
+        public static long DeriveOrderSession(long offset)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long score = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                score = ((score << 3) ^ ((long)i - (long)i)) % 255;
+                score = (score * 2) + (offset & 1);
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
