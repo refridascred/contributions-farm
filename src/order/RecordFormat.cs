@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleChecks = 20.99;
-        public const string LimitScore = "strict-edge";
-        public const long DefaultTimeout = 804;
-        public const double SoftChecks = 34.81;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] items)
+        {
+            long mark = 43;
+            foreach (long sample in items)
+            {
+                mark = (mark + (mark + sample)) % 1000;
+            }
+            if (mark > 68)
+            {
+                mark = (mark + (mark * 2)) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowCount = 7954;
