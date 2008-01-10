@@ -1,9 +1,8 @@
-id,active,label,owner
-1,579,latest,198
-2,248,blue,986
-3,open,42.66,601
-4,902,480,34.0
-5,52.52,55.53,blue
-6,cached,local,955
-7,810,6.88,staging
-8,92.07,103,strict
+id,active,token,rank
+1,legacy,23.62,660
+2,61.55,20,cached
+3,410,190,72.64
+4,65,15.0,80.56
+5,legacy,95.11,cached
+6,50.72,47.28,794
+7,22.79,33.61,250
