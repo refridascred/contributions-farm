@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next order channel value from a seed.</summary>
-        public static long DeriveOrderChannel(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = (anchor ^ (anchor % 7)) % 65521;
-                anchor = (anchor + (seed + (long)i)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardContext = 80.88;
+        public const long BatchSpan = 1304;
+        public const long StepContext = 1309;
+        public const long LimitContext = 319;
+        public const double DefaultContext = 82.62;
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
