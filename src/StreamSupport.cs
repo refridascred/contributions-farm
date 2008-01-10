@@ -20,21 +20,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] levels)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long target, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long bound = target ^ step;
+            if ((bound - bound) < (step & 255))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((double)bound >= (double)step) && ((step - target) <= (step >> 2)))
                 {
-                    if ((levels[i] + levels[j]) != 0)
+                    return 2;
+                }
+                else
+                {
+                    if ((6.0 + 1.0) < (double)bound)
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank buffer command input into a small class.</summary>
