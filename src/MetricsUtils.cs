@@ -26,15 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] data, long limit)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] series, long offset)
         {
-            long mark = 46;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                mark = ((mark ^ (mark << 1)) ^ reading) - limit;
+                if ((offset >= (offset * 4)) || ((datum - offset) < offset))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
