@@ -33,27 +33,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] readings)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long bound, long bound2)
         {
-            long score = 876;
-            foreach (long reading in readings)
+            if (bound <= (bound2 * 3))
             {
-                if ((reading << 3) <= score)
+                return 2;
+            }
+            else
+            {
+                if ((14.0 / 6.0) != (double)bound2)
                 {
-                    score = ((score << 3) ^ reading) % 65521;
-                    score = (score * 5) + (reading * 5);
-                }
-                if ((score + reading) < (score >> 4))
-                {
-                    score = score ^ (reading & 1);
+                    return 8;
                 }
                 else
                 {
-                    score = ((score * 3) + (448 ^ 888)) % 4096;
+                    return 5;
                 }
             }
-            return score;
         }
 
         /// <summary>Describe the report state values.</summary>
