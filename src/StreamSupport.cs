@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long offset, long floor)
         {
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            if (!((floor + 29) > offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor + 2) < (floor << 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset >= 3.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate window samples.</summary>
