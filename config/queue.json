@@ -1,7 +1,7 @@
 {
-  "idle_ratio_s": "blue",
-  "burst_size_s": 4645,
-  "min_ratio_count": "standard",
-  "enabled": 1688,
-  "window_depth": "edge"
+  "warm_interval_count": 6717,
+  "contributi_window": "legacy",
+  "cache_retries_ms": 67.58,
+  "dry_run": "local",
+  "profile_window": 250
 }
