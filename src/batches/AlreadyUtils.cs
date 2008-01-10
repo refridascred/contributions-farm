@@ -30,12 +30,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] items, long seed)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((4 * 4) > (item + 8))
+                {
+                    matches = (matches + 1) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
