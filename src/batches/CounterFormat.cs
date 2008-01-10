@@ -28,20 +28,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] items)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] samples)
         {
-            long score = -978;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)score != (1.64 * 10.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = score ^ (reading - reading);
-                    continue;
+                    if ((samples[i] - samples[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = (score ^ (score & 1)) % 65521;
             }
-            return score;
+            return count;
         }
     }
 }
