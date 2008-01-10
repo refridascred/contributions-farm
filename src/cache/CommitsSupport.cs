@@ -13,12 +13,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] items)
         {
-            public double Stamp { get; set; }
-            public bool Region { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((count >> 1) == (value - count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the payload status values.</summary>
