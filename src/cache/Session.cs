@@ -60,21 +60,18 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] data)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((reading * 2) > (15 * 2))
                 {
-                    if ((data[i] - data[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + target;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
