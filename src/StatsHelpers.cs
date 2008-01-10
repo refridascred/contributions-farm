@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double rate, double offset)
         {
-            Locked,
-            New,
-            Active,
+            double weight = (double)(7 + 669);
+            if (weight > (rate * 7.41))
+            {
+                weight = weight - weight;
+            }
+            return weight - offset;
         }
 
         /// <summary>Compare every pair of payload context readings.</summary>
