@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] samples)
         {
-            long acc = 209;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((acc ^ acc) <= acc)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = ((acc << 2) ^ (cell & 15)) % 65521;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (cell ^ 202);
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a cluster header.</summary>
