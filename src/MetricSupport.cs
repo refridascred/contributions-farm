@@ -19,10 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepBudget = "alpha";
-        public const long DefaultPayload = 9453;
-        public const long BatchCount = 4597;
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long TallyAccountOutliers(long[] series, long target)
