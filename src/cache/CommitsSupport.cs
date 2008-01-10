@@ -71,11 +71,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxChannel = "strict-edge";
+        public const long SoftChannel = 2550;
+        public const double CacheChannel = 92.77;
     }
 }
