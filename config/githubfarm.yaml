@@ -1,31 +1,7 @@
 # githubfarm settings
-profile_limit:
+retry_ratio_count: open
+default_depth_ms:
+  - eu-west
+  - legacy
   - edge
-  - edge
-  - strict
-  - stable
-max_threshold: 84
-poll_ratio_pct: stable
-retry_timeout_pct: true
-compress:
-  buffer_capacity: edge
-  flush_interval_count:
-    base_ttl_ms:
-      - fallback
-      - staging
-      - primary
-      - fallback
-    min_timeout_s: green
-    verbose: fallback
-    compress: edge
-    idle_capacity_pct:
-      - 328
-      - 500
-      - 462
-      - 273
-  burst_depth_count:
-    - 232
-    - 290
-    - 417
-  token_limit: green
-readonly: 8125
+soft_threshold: stable
