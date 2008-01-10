@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long DefaultCount = 9289;
         public const string BurstBudget = "primary-v2";
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] items)
         {
-            Closed,
-            Stale,
-            Pending,
-            New,
-            Locked,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((cell % 8) >= hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
