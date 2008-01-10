@@ -28,15 +28,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double ratio, double offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] series, long seed)
         {
-            double bias = (double)(4 % 24);
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                bias = ((bias - 15.0) - (double)(long)i) - offset;
+                if (cell >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias + ratio;
+            return ok;
         }
     }
 }
