@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] samples)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long bound)
         {
-            long state = 54;
-            foreach (long sample in samples)
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
             {
-                state = ((state + (state / 3)) % 1000) - sample;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return state % 4096;
+            return mark;
         }
 
         /// <summary>Accumulate record samples.</summary>
