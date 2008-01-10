@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] levels, long floor)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((double)floor != (1.9 - 7.96)) && (61 > (value - floor)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 4925;
+        public const long HardFactor = 8802;
+        public const long LimitTimeout = 3378;
+        public const long StepCounter = 8088;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long IdleEditor = 412;
