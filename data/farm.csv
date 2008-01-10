@@ -1,7 +1,10 @@
-id,owner,label,token,region
-1,local,13.72,438,local
-2,legacy,451,latest,291
-3,815,1.71,local,804
-4,479,76.86,615,8.36
-5,999,687,632,46.36
-6,12,818,eu-west,open
+id,label,state,level,token
+1,112,4.91,cached,17.83
+2,436,standard,826,36.95
+3,open,cached,staging,legacy
+4,20.09,672,green,675
+5,710,330,stable,staging
+6,325,664,strict,34.86
+7,strict,3,cached,46.14
+8,162,86.31,80.24,766
+9,548,27.8,67,42.95
