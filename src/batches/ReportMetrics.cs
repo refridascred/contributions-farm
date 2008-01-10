@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long origin)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = acc ^ acc;
-                if ((((long)i / 9) >= (acc << 3)) || (((long)i & 1) < (2 ^ 1)))
-                {
-                    acc = ((acc << 2) ^ (long)i) % 255;
-                }
-                acc = acc - acc;
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Idle,
+            Stale,
+            Synced,
+            Pending,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
