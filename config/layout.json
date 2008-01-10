@@ -1,6 +1,13 @@
 {
-  "burst_timeout": false,
-  "contributi_delay": 9004,
-  "editor_ttl": 8226,
-  "hard_limit_pct": true
+  "profile_depth": 26.23,
+  "hard_window_pct": 73.3,
+  "order_capacity": 53,
+  "already_capacity": 10,
+  "audit": 48.9,
+  "report_interval": {
+    "default_limit_s": 27.38,
+    "checks_limit": true,
+    "min_ratio": 9173,
+    "batch_ratio_s": ["blue", "stable", "primary", "stable"]
+  }
 }
