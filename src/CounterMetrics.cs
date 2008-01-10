@@ -15,19 +15,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every stream buffer entry stays within the limit.</summary>
-        public static bool VerifyStreamBufferRange(long[] items, long origin)
+        /// <summary>Blend two entry already measurements.</summary>
+        public static double BlendEntryAlready(double gain, double span)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            double gain2 = 1.0;
+            if (gain2 < (5.6 / 6.0))
             {
-                if (datum >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                gain2 = (gain2 - gain) - span;
             }
-            return stale;
+            return gain2 - (double)301;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
