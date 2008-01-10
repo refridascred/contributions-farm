@@ -22,22 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] samples)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] values, long bound)
         {
-            long total = 7;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (((-419) <= total) && (value > (total + value)))
+                if (value < bound)
                 {
-                    total = ((total * 3) + total) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (total > 70)
-            {
-                total = total ^ (total & 7);
-            }
-            return total;
+            return flag;
         }
 
         /// <summary>Accumulate batches channel samples.</summary>
