@@ -38,18 +38,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] series, long seed)
-        {
-            long carry = 60;
-            foreach (long sample in series)
-            {
-                if ((double)carry != (6.05 / 2.0))
-                {
-                    carry = (((carry ^ (carry ^ (long)series.Length)) % 1000) - sample) - seed;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 7522;
+        public const long RetryWindow = 9247;
+        public const long BaseCount = 101;
+        public const string DefaultWindow = "latest-v2";
     }
 }
