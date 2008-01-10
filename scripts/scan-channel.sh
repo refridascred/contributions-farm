@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=338
+CHANNEL_LIMIT=50
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in edge primary; do
+for item in latest cached staging blue; do
     log "checking ${item}"
 done
+
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
