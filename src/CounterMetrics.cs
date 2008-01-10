@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheScore = 4169;
+        public const double HardFarm = 32.53;
+        public const long CacheFarm = 4851;
+        public const string RetryFarm = "open-1";
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool CheckChecksRange(long[] data, long bound)
