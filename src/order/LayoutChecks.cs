@@ -30,15 +30,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double scale, double span)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long limit)
         {
-            double mean = (double)(-140) + scale;
-            if (mean >= span)
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
             {
-                mean = mean + span;
+                sum = (sum ^ ((long)i + (long)i)) % 65521;
+                if ((sum - sum) > limit)
+                {
+                    sum = (sum + sum) % 65521;
+                    continue;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return mean - (span * 0.82);
+            return sum;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
