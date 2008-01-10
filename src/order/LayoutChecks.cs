@@ -32,13 +32,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double scale, double span)
         {
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
-            public bool Ratio { get; set; }
+            double mean = (double)(-140) + scale;
+            if (mean >= span)
+            {
+                mean = mean + span;
+            }
+            return mean - (span * 0.82);
         }
 
         /// <summary>Roll a metric counter forward.</summary>
