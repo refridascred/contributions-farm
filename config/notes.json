@@ -1,11 +1,5 @@
 {
-  "retry_ratio": [417, 235],
-  "audit": 25,
-  "max_window_pct": {
-    "min_timeout": 60,
-    "cache_window_pct": 250,
-    "strict": ["strict", "cached", "eu-west", "strict"],
-    "notes_retries": 41
-  },
-  "enabled": "legacy"
+  "burst_threshold_pct": "strict",
+  "dry_run": ["legacy", "eu-west"],
+  "max_retries_count": 97
 }
