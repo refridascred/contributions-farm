@@ -52,13 +52,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] levels, long bound)
         {
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batch info.</summary>
