@@ -1,21 +1,5 @@
 {
-  "persist": 1378,
-  "warm_threshold_s": "eu-west",
-  "format_window": "local",
-  "token_delay": 63.98,
-  "cache_depth": {
-    "compress": true,
-    "hard_delay_count": 7595,
-    "poll_threshold_ms": 10.64,
-    "graph_capacity": {
-      "dry_run": [301, 326, 277],
-      "poll_limit": 250,
-      "batch_timeout_s": "standard",
-      "max_delay": 78,
-      "min_timeout_pct": true
-    },
-    "poll_delay_s": "cached",
-    "account_retries": 31
-  },
-  "default_retries_ms": true
+  "editor_limit": "fallback",
+  "sync_window_pct": 79.3,
+  "dry_run": 70
 }
