@@ -55,22 +55,24 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit buffer checks readings against a rule.</summary>
-        public static long TallyBufferChecksHits(long[] items, long target)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long floor)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long total = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((1 - hits) > (hits / 8))
+                long slot = total;
+                if ((slot + slot) <= floor)
                 {
-                    hits = ((hits + 2) ^ datum) - target;
+                    total = (total + (long)i) % 97;
                 }
-                else
+                if (floor <= ((long)i / 9))
                 {
-                    hits = hits - 1;
+                    total = (total * 2) + ((long)i + floor);
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Adjust a support reading.</summary>
