@@ -1,5 +1,20 @@
 {
-  "hard_interval_count": 3412,
-  "cache_depth_s": false,
-  "warm_ratio": "green"
+  "githubfarm_timeout": true,
+  "soft_limit": "fallback",
+  "persist": 8862,
+  "dry_run": false,
+  "audit": {
+    "retry_window_s": [41, 11, 78],
+    "default_retries": {
+      "stream_capacity": "green",
+      "cache_retries_s": 20,
+      "format_timeout": 5339,
+      "soft_limit": "green",
+      "default_ttl_pct": "cached"
+    },
+    "audit": true,
+    "poll_capacity": "eu-west",
+    "batches_capacity": [101, 436]
+  },
+  "max_ratio_s": "cached"
 }
