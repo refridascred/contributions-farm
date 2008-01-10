@@ -1,20 +1,12 @@
 # githubfarm settings
-graph_retries: 22.12
-sync_delay: strict
-counter_limit:
-  burst_size:
-    burst_ttl_count:
-      - 311
-      - 384
-    enabled: 48.28
-    max_ttl_count:
-      - latest
-      - primary
-    batch_threshold_count: 6299
-  max_limit_s: 20.52
-  readonly: 13.3
-  audit: blue
-cache_depth:
-  - eu-west
-  - open
-  - staging
+window_threshold: 30
+audit:
+  - 24
+  - 10
+persist:
+  retry_interval: 60
+  tools_size: 4515
+  flush_timeout_s: 69.91
+  format_timeout: true
+farm_window: legacy
+stats_delay: 610
