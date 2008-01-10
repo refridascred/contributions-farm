@@ -22,19 +22,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long origin)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long target, long target2)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            if ((target + target) > (258 >> 3))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = ((score << 2) ^ (score >> 4)) ^ (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 101;
+                return 1;
             }
-            return score;
+            else
+            {
+                if (((double)target2 != (7.0 / 8.0)) && ((target2 + target) <= (91 / 8)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
