@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] values)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] levels, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 5;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((cell / 2) <= (cell & 15))
                 {
-                    if ((values[i] - values[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry * 3) + (target / 8)) % 4096;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the tools class values.</summary>
