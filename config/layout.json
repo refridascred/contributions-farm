@@ -1,9 +1,6 @@
 {
-  "min_ratio_pct": {
-    "idle_limit_ms": false,
-    "route_window": "latest",
-    "default_retries_pct": false
-  },
-  "githubfarm_ratio": "fallback",
-  "strict": 2393
+  "max_retries_s": "eu-west",
+  "stats_capacity": "eu-west",
+  "stream_delay": "strict",
+  "burst_window_pct": [185, 146]
 }
