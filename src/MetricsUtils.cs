@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
-        {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitTimeout = 2124;
+        public const double BurstProfile = 10.81;
+        public const string BaseProfile = "strict-1";
 
         /// <summary>Locate a githubfarm order reading by value.</summary>
         public static long LocateGithubfarmOrderIndex(long[] levels, long origin)
