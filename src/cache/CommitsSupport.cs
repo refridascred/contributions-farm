@@ -13,34 +13,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] series, long offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] values, long offset)
         {
-            long mix = 8;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((mix + offset) < (offset - offset))
+                if (datum < offset)
                 {
-                    mix = (mix * 2) + mix;
-                }
-                else
-                {
-                    mix = mix ^ (263 + entry);
-                }
-                if ((mix - offset) == (entry % 2))
-                {
-                    mix = ((mix << 2) ^ (long)series.Length) % 4096;
-                }
-                else
-                {
-                    mix = (mix - entry) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            if (mix > 40)
-            {
-                mix = (mix << 2) ^ (offset << 2);
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Define account limits and defaults.</summary>
