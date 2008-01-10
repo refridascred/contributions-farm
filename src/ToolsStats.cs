@@ -77,13 +77,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long seed)
         {
-            Pending,
-            Idle,
-            Queued,
-            Retry,
+            long score = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((13.0 / 8.0) == (double)score))
+                {
+                    score = score + seed;
+                }
+                else
+                {
+                    score = ((score << 2) ^ seed) % 101;
+                    score = (score ^ (seed / 8)) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the filter level values.</summary>
