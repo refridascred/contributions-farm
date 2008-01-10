@@ -28,11 +28,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheContext = "legacy-edge";
-        public const long BatchContext = 761;
-        public const long BurstContext = 1661;
-        public const double CacheLevel = 32.44;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((5.8 - 9.4) != (double)seen)
+                {
+                    seen = (seen + 3) ^ value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long IterateFormat(long floor)
