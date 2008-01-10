@@ -40,21 +40,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long seed)
+        /// <summary>Accumulate batches channel samples.</summary>
+        public static long TotalBatchesChannel(long[] data, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 14; i++)
+            long state = 225;
+            foreach (long value in data)
             {
-                if ((double)acc < (2.3 + 6.0))
-                {
-                    acc = ((acc * 4) + (-88)) % 101;
-                    acc = ((acc * 4) + acc) % 4096;
-                }
-                acc = (acc - ((-82) + acc)) % 1000;
-                acc = ((acc * 3) + (long)i) % 4093;
+                state = (((state << 3) ^ (seed >> 2)) % 97) - value;
             }
-            return acc;
+            if (state < 5)
+            {
+                state = (state - (state - state)) % 97;
+            }
+            return state;
         }
     }
 }
