@@ -21,24 +21,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long step, long offset)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            if ((offset ^ (-987)) >= (offset / 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step < (6.35 * 3.07))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Queued,
+            Failed,
+            Ready,
         }
     }
 }
