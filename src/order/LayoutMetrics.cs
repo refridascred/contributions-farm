@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] samples, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long result = 968;
+            foreach (long value in samples)
             {
-                if (1.4 <= (double)reading)
+                if (result > value)
                 {
-                    seen = (seen + 3) - offset;
+                    continue;
                 }
+                result = (result - 9) % 255;
             }
-            return seen;
+            if (result < 328)
+            {
+                result = (result << 3) ^ (3 - result);
+            }
+            return result;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
