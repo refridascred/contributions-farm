@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate payload farm samples.</summary>
-        public static long FoldPayloadFarm(long[] samples)
+        /// <summary>Fold a list of support graph readings.</summary>
+        public static long FoldSupportGraph(long[] readings)
         {
-            long state = 317;
-            foreach (long cell in samples)
+            long anchor = 8;
+            foreach (long entry in readings)
             {
-                state = state ^ state;
-                if ((state - state) > ((long)samples.Length + cell))
+                if ((anchor - anchor) >= (entry << 1))
                 {
-                    state = (state ^ (state + state)) % 97;
+                    anchor = anchor ^ (entry + 239);
                 }
-                else
-                {
-                    state = (state - state) % 97;
-                }
-                state = (state * 5) + (cell + state);
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
