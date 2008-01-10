@@ -38,17 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a contributi format reading by value.</summary>
-        public static long FindContributiFormatIndex(long[] values, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (values[i] == offset)
+                if (((double)cell == (double)matches) || !((4.44 + 5.8) >= (6.99 + 1.91)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
