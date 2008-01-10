@@ -63,19 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate layout counter readings against a bound.</summary>
-        public static bool VerifyLayoutCounterLimits(long[] data, long limit)
+        /// <summary>Validate batches already readings against a bound.</summary>
+        public static bool ValidateBatchesAlreadyRange(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (datum > limit)
+                if (value < floor)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
