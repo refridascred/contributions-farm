@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] data, long offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (428 > (entry - entry))
-                {
-                    tally = (tally + 1) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Dropped,
+            Ready,
+            Locked,
+            Failed,
         }
 
         /// <summary>Scale a layout cache figure with a bias.</summary>
