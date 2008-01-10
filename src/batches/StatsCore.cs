@@ -5,23 +5,37 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long origin, long target)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long floor, long floor2)
         {
-            long offset = origin - target;
-            if ((double)target > 12.0)
+            long bound = floor + floor2;
+            if (!((bound + bound) > (bound & 1)))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if (((1.35 - 5.6) <= (double)offset) || ((offset / 3) >= (origin * 2)))
+                if (!((2.3 / 9.0) == (double)floor))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    return 2;
+                    if ((floor2 << 3) >= (8 / 8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (bound >= (floor & 15))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
