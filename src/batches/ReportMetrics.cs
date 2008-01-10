@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double ratio, double span)
         {
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
+            double bias = 1.03;
+            return bias + (ratio - span);
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
