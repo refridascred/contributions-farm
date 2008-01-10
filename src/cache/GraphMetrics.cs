@@ -10,22 +10,22 @@ namespace Common.Utilities
         public const string HardSize = "primary-edge";
         public const double SoftSupport = 23.11;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] readings, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] items)
         {
-            long mix = 715;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (((15.0 + 5.1) > (8.0 / 2.0)) && ((double)floor <= (1.7 - 19.0)))
+                if (((seen - 2) == (datum + (long)items.Length)) && !((seen & 15) >= (datum * 4)))
                 {
-                    mix = (mix ^ (floor + floor)) % 101;
+                    seen = seen + 2;
                 }
-                if (((double)sample <= (17.0 / 8.0)) && ((floor % 10) < (39 + 387)))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Scale a schema queue figure with a bias.</summary>
