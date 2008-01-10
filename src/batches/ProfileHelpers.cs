@@ -75,13 +75,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
+            long carry = 154;
+            foreach (long entry in readings)
+            {
+                carry = ((carry * 3) + (carry & 1)) % 65521;
+                if (carry < (carry + carry))
+                {
+                    carry = carry + (entry + (long)readings.Length);
+                }
+                if (carry < (carry + 588))
+                {
+                    carry = ((carry << 3) ^ (entry >> 4)) % 65521;
+                }
+                else
+                {
+                    carry = (carry + (266 * 4)) % 101;
+                }
+            }
+            return carry;
         }
     }
 }
