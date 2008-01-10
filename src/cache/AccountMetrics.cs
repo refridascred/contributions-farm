@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] values)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value > seed)
                 {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define token limits and defaults.</summary>
