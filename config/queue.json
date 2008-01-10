@@ -1,12 +1,7 @@
 {
-  "strict": false,
-  "retry_timeout_pct": 3351,
-  "batch_retries_pct": {
-    "context_depth": 62,
-    "max_capacity": 5074,
-    "soft_limit_ms": 37.05
-  },
-  "retry_window": 39,
-  "base_capacity_s": 500,
-  "poll_threshold_ms": "local"
+  "channel_capacity": true,
+  "soft_timeout_s": 2797,
+  "retry_size_count": 78.33,
+  "idle_ratio_count": "strict",
+  "warm_ttl": false
 }
