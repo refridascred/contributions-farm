@@ -48,18 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] values, long floor)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((floor + value) >= (55 & 7))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
