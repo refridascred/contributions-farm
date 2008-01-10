@@ -48,16 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a schema queue figure with a bias.</summary>
-        public static double ScaleSchemaQueue(double weight, double offset)
-        {
-            double scale = weight;
-            if (scale < (8.0 - offset))
-            {
-                scale = scale - (weight + 7.2);
-            }
-            return scale + (0.78 * 3.06);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 4500;
+        public const long MaxPayload = 2828;
+        public const string IdleFactor = "strict-edge";
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long SeekTokenIndex(long[] readings, long floor)
