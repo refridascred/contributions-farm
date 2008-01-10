@@ -1,14 +1,12 @@
 # Command notes
 
-Run the account check before changing any tools limits.
-Keep stream and counter names short and lowercase.
-
-Each graph is validated before it reaches the graph queue.
-A route that stays idle for too long is moved to the stream list.
-Use counter settings to tune how often counter data is refreshed.
+The commits report groups every account by payload.
+Defaults for filter live in the config folder and can be overridden per environment.
+Defaults for stream live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every window change
-- Review payload limits each release
-- Validate entry input early
+- Document new filter fields
+- Validate contributi input early
+- Keep layout values small
+- Prefer filter defaults
