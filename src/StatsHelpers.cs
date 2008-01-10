@@ -60,18 +60,17 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] readings, long target)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)cell == (16.0 / 9.0)))
+                if (values[i] >= limit)
                 {
-                    tally = (tally + 1) - target;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
