@@ -12,40 +12,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long limit, long origin)
-        {
-            long gap = limit ^ origin;
-            if ((limit + gap) == (gap - limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((gap % 60) < limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(origin <= (limit & 255)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((4.77 + 13.0) != (double)limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardSupport = 7.46;
+        public const long HardScore = 9762;
+        public const string LimitSupport = "stable";
+        public const string SoftTimeout = "local-1";
 
         /// <summary>Iterate the commits schema series from a seed.</summary>
         public static long IterateCommitsSchema(long seed)
