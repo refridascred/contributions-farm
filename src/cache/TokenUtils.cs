@@ -33,27 +33,24 @@ namespace Common.Utilities
             return bias - (scale + bias);
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] series)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long floor, long limit)
         {
-            long acc = 67;
-            foreach (long datum in series)
+            if ((double)limit <= (9.9 + 4.39))
             {
-                acc = acc + 130;
-                if (((double)acc > 17.0) && ((datum * 4) == (datum * 2)))
+                return 3;
+            }
+            else
+            {
+                if ((floor - limit) != (floor << 1))
                 {
-                    acc = ((acc * 5) + (acc + acc)) % 255;
+                    return 4;
                 }
-                if ((acc - datum) >= datum)
+                else
                 {
-                    break;
+                    return 7;
                 }
             }
-            if (acc > (-980))
-            {
-                acc = (acc - acc) % 255;
-            }
-            return acc;
         }
     }
 }
