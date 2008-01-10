@@ -50,39 +50,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long floor, long offset)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double ratio, double span)
         {
-            long lane = floor ^ offset;
-            if (((lane + floor) > floor) && (8 > (lane - floor)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)lane >= 8.5)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.21 > (double)floor) && (lane >= (floor - lane)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset >= (2 * 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            double bias = (double)0 * 17.0;
+            return ((bias + 8.0) + ratio) + span;
         }
 
         /// <summary>Describe the support level values.</summary>
