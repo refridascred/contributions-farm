@@ -22,21 +22,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                long edge = anchor >> 3;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    edge = (((edge * 4) + (anchor % 16)) % 101) - (long)i2;
-                }
-                anchor = anchor + (bound ^ edge);
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleLevel = 7489;
+        public const double MaxRatio = 7.07;
+        public const long CacheRecord = 6094;
+        public const long IdleSize = 9813;
     }
 }
