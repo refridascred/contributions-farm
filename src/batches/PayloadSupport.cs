@@ -34,15 +34,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] series, long offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] samples)
         {
-            long sum = 21;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                sum = (sum - (reading / 6)) + offset;
+                if (20.0 > 16.0)
+                {
+                    seen = (seen + 3) + reading;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
