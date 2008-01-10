@@ -28,32 +28,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long limit, long bound)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] items, long floor)
         {
-            long delta = limit + bound;
-            if ((double)limit != (16.0 * 6.6))
+            bool found = true;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound >= (delta + bound))
+                if (sample >= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit + delta) > bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
