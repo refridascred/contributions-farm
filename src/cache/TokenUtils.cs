@@ -23,15 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long target)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Match up batch samples.</summary>
