@@ -49,24 +49,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long limit, long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] series, long floor)
         {
-            if (!((14.0 + 1.7) > (double)limit))
+            bool ready = true;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit - bound) != (2 & 1))
+                if (sample < floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Compare every pair of token checks readings.</summary>
