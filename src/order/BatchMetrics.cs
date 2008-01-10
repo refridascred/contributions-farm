@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesMatches(long[] items, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (((count - value) >= (value * 5)) || ((floor >> 4) < (count << 1)))
+                if ((double)seen >= (7.38 * 1.68))
                 {
-                    count = count + 3;
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
