@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 190;
-        public const long RetryWidth = 9907;
-        public const string SoftScore = "local-v2";
-        public const long BurstTools = 4435;
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public double Token { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryGaps(long[] data)
