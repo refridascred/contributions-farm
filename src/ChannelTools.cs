@@ -35,22 +35,12 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] data)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long result = 4;
-            foreach (long reading in data)
-            {
-                if ((double)reading >= (7.5 / 7.0))
-                {
-                    result = (result * 2) + (194 & 1);
-                }
-                if (((reading >> 5) >= (-3)) || ((reading - reading) < reading))
-                {
-                    result = (result << 2) ^ (result * 3);
-                }
-            }
-            return result;
+            Synced,
+            Failed,
+            Stale,
         }
     }
 }
