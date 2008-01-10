@@ -19,12 +19,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitFarm = "open-1";
-        public const long BaseBudget = 5819;
-        public const string SoftFarm = "cached-v2";
-        public const double CacheSize = 54.9;
-        public const double MinTimeout = 6.47;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long origin, long origin2)
+        {
+            if ((2 + origin) > (origin % 97))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((origin2 / 5) <= (origin2 & 7)) && (((-170) + origin) > (61 % 60)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (origin2 > (origin * 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (origin2 < (origin2 - origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
