@@ -35,13 +35,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstStats = 88.93;
+        public const long HardStats = 7690;
+        public const long IdleStats = 2755;
+        public const string IdleBudget = "local-v2";
+        public const long CacheBudget = 366;
     }
 }
