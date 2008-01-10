@@ -1,16 +1,6 @@
 {
-  "account_ratio": 1024,
-  "default_limit_s": "stable",
-  "hard_retries": true,
-  "poll_threshold_ms": {
-    "record_timeout": true,
-    "editor_size": ["cached", "edge", "green"],
-    "soft_window_pct": {
-      "cache_ttl": true,
-      "burst_ratio": 2718,
-      "verbose": ["strict", "cached", "open"],
-      "flush_depth_count": "legacy"
-    }
-  },
-  "burst_delay_pct": ["primary", "strict", "local"]
+  "dry_run": true,
+  "max_threshold": false,
+  "soft_ttl": ["green", "staging", "green", "fallback"],
+  "max_delay_ms": true
 }
