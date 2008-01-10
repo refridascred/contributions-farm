@@ -59,22 +59,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] levels, long step)
         {
-            long carry = 534;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if ((9.2 * 9.38) != (double)carry)
+                if (item <= step)
                 {
-                    carry = ((carry * 4) + (cell + (long)readings.Length)) % 65521;
-                }
-                if ((carry % 64) > (cell % 5))
-                {
+                    found = false;
                     break;
                 }
             }
-            return carry;
+            return found;
         }
     }
 }
