@@ -29,18 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] series)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (0.1 >= (double)tally)
+                if (readings[i] > origin)
                 {
-                    tally = (tally + 2) + reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
