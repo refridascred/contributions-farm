@@ -20,10 +20,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepCount = 94.52;
-        public const long BaseSession = 5952;
-        public const string RetrySession = "legacy-v2";
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string CacheContext = "legacy-edge";
