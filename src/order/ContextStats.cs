@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRatio = 8994;
-        public const long HardRecord = 6111;
-        public const long BaseRecord = 4591;
-        public const long BatchRecord = 3086;
+        /// <summary>Roll a token farm counter forward.</summary>
+        public static long IterateTokenFarm(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = (mark ^ (bound - bound)) % 4096;
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate report profile samples.</summary>
         public static long WeighReportProfile(long[] values, long target)
