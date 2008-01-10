@@ -35,13 +35,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] values)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public string Total { get; set; } = "";
+            long anchor = 370;
+            foreach (long item in values)
+            {
+                anchor = ((anchor + (anchor + anchor)) % 1000) + item;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Find the first profile entry entry that matches the target.</summary>
