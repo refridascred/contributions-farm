@@ -19,15 +19,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a commits channel counter forward.</summary>
-        public static long StepCommitsChannel(long offset)
+        /// <summary>Classify a queue farm pair into a bucket.</summary>
+        public static long RankQueueFarm(long floor, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            long bound = floor + step;
+            if (step <= (bound - floor))
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((double)floor > (2.2 - 9.7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (step < (bound ^ bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (2 < (step + step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first cluster channel entry that matches the target.</summary>
