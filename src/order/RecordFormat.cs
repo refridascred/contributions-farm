@@ -44,14 +44,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Retry,
-            New,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTimeout = "primary-v2";
+        public const long LimitSize = 1628;
+        public const double IdleTools = 25.99;
+        public const double DefaultSpan = 52.02;
+        public const long StepDepth = 9620;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long CombineFarm(long[] items)
