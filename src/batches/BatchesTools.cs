@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a profile format counter forward.</summary>
-        public static long DeriveProfileFormat(long floor)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double bias, double bias2)
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                state = (state ^ state) % 255;
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            double weight = (bias2 / 8.0) / 8.0;
+            return (weight - (bias2 - weight)) + bias;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
