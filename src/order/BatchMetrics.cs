@@ -34,12 +34,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 35;
-        public const long IdleBudget = 4827;
-        public const string LimitPayload = "fallback-edge";
-        public const long MaxRatio = 1107;
-        public const long CacheInterval = 3661;
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportHits(long[] items)
