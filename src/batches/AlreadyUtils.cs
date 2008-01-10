@@ -52,32 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long floor, long target)
-        {
-            if ((target <= (843 % 5)) && (3.7 > (0.94 / 8.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor > (floor + target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target - target) > (floor + floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBudget = 4944;
+        public const string BatchBuffer = "primary-v2";
+        public const string IdleRatio = "open-1";
+        public const long HardBuffer = 4505;
+        public const string WindowLevel = "latest";
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileGaps(long[] values)
