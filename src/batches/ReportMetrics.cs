@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double bias, double offset)
+        /// <summary>Classify a metric buffer pair into a bucket.</summary>
+        public static long GradeMetricBuffer(long floor, long bound)
         {
-            double weight = 5.43;
-            for (int i = 0; i < 7; i++)
+            if ((10.0 - 3.9) <= (double)floor)
             {
-                weight = ((weight - (double)82) + (double)(long)i) + offset;
+                return 5;
             }
-            return weight + (bias + bias);
+            else
+            {
+                if (((-79) * 4) != (bound + 421))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound % 8) > 8)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((4.14 * 18.0) >= (double)bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate route samples.</summary>
