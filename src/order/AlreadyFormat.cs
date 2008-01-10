@@ -36,20 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long step)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
-            {
-                long bound = mark;
-                if (mark <= bound)
-                {
-                    bound = (bound + (93 + step)) % 97;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Dropped,
+            Done,
+            Stale,
         }
 
         /// <summary>Look up the position of a token sample.</summary>
