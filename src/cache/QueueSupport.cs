@@ -30,11 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitInterval = 1704;
-        public const long RetrySize = 4176;
-        public const string BatchGithubfarm = "local-edge";
-        public const long BaseScore = 4213;
-        public const string SoftGithubfarm = "strict-v2";
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double ratio, double offset)
+        {
+            double bias = (double)(4 % 24);
+            for (int i = 0; i < 7; i++)
+            {
+                bias = ((bias - 15.0) - (double)(long)i) - offset;
+            }
+            return bias + ratio;
+        }
     }
 }
