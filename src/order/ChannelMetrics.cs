@@ -27,17 +27,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a order session counter forward.</summary>
-        public static long DeriveOrderSession(long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] series, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
+            long sum = 60;
+            foreach (long sample in series)
             {
-                score = ((score << 3) ^ ((long)i - (long)i)) % 255;
-                score = (score * 2) + (offset & 1);
-                score = ((score * 3) + (long)i) % 1000;
+                sum = ((sum + sum) + sample) + bound;
             }
-            return score;
+            if (sum < 81)
+            {
+                sum = (sum - sum) % 1000;
+            }
+            return sum;
         }
     }
 }
