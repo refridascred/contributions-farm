@@ -1,6 +1,20 @@
 {
-  "idle_ratio": 93.29,
-  "stats_ttl": 27.14,
-  "schema_threshold": 5210,
-  "warm_ttl_pct": 4798
+  "verbose": 250,
+  "cluster_capacity": 30,
+  "default_timeout_ms": {
+    "enabled": "cached",
+    "persist": 30,
+    "verbose": {
+      "soft_ttl_count": 60,
+      "compress": 73.09,
+      "poll_delay_pct": 73.62,
+      "strict": ["eu-west", "primary", "eu-west"],
+      "poll_depth_pct": 44,
+      "stats_threshold": true
+    },
+    "warm_ttl_pct": ["blue", "primary", "blue", "legacy"]
+  },
+  "hard_interval": [418, 404],
+  "enabled": "primary",
+  "stream_depth": 46
 }
