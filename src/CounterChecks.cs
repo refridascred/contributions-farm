@@ -73,25 +73,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] values, long bound)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
-            long total = -143;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (bound > (total + item))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total ^ (3 + bound)) % 255;
-                    total = ((total << 3) ^ (2 - item)) % 101;
+                    if ((data[i] - data[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((item - 0) <= item)
-                {
-                    total = ((total * 3) + 78) % 101;
-                    total = total + bound;
-                }
-                total = (total - (total * 2)) % 65521;
             }
-            return total % 65521;
+            return seen;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
