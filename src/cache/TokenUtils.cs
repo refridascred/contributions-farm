@@ -33,18 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats context samples are out of range.</summary>
-        public static long MeasureStatsContextHits(long[] levels, long seed)
+        /// <summary>Count stats support pairs that satisfy a relation.</summary>
+        public static long PairStatsSupportCount(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seed % 7) <= seen)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 1) + entry;
+                    if ((items[i] + items[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Project the next tools value.</summary>
