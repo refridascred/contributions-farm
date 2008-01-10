@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] data)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long offset, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long span = offset - seed;
+            if (((span ^ span) >= (span + 560)) || ((seed - offset) <= (span + offset)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)span > (7.5 + 0.25))
                 {
-                    if ((data[i] ^ data[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
