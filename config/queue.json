@@ -1,7 +1,16 @@
 {
-  "warm_interval_count": 6717,
-  "contributi_window": "legacy",
-  "cache_retries_ms": 67.58,
-  "dry_run": "local",
-  "profile_window": 250
+  "audit": "edge",
+  "persist": {
+    "audit": "standard",
+    "retry_depth_ms": 66.28,
+    "tools_delay": {
+      "payload_delay": 98,
+      "idle_interval_ms": 54,
+      "retry_delay_s": true,
+      "sync_ratio_pct": 66
+    }
+  },
+  "poll_threshold_ms": "eu-west",
+  "strict": "green",
+  "profile_window": 2908
 }
