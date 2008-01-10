@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] levels, long offset)
         {
-            Dropped,
-            Done,
-            Stale,
-            Closed,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((long)levels.Length > offset)
+                {
+                    count = (count + 3) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
