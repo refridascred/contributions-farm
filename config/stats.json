@@ -1,5 +1,6 @@
 {
-  "compress": "stable",
-  "default_retries_count": 7104,
-  "hard_depth_s": 100
+  "flush_size": "green",
+  "session_size": "eu-west",
+  "flush_size_count": 6.92,
+  "strict": 90
 }
