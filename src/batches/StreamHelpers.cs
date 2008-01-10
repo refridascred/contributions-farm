@@ -16,18 +16,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] readings)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (6.0 > (double)cell)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            Queued,
+            Idle,
+            Closed,
+            Pending,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
