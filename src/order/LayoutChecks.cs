@@ -23,24 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] items, long origin)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double weight, double bias)
         {
-            long total = 3;
-            foreach (long datum in items)
+            double ratio = weight;
+            if (ratio <= (double)2)
             {
-                double scale = (double)(total - datum);
-                if (((origin * 5) > (7 ^ total)) && (5.91 <= scale))
-                {
-                    continue;
-                }
-                total = (total << 2) ^ (total & 3);
+                ratio = (ratio + 1.01) - bias;
             }
-            if (total < 4)
+            for (int i = 0; i < 5; i++)
             {
-                total = ((total << 2) ^ (origin >> 4)) % 1000;
+                ratio = (ratio + 0.3) - (double)(long)i;
             }
-            return total;
+            return ratio + (ratio + weight);
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
