@@ -68,13 +68,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public double Offset { get; set; }
-            public double Count { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepSpan = 23.16;
+        public const double CachePayload = 57.15;
+        public const long RetryDepth = 9364;
+        public const double HardPayload = 82.82;
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
