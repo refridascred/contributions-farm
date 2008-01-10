@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowOrder = "alpha-v2";
-        public const long IdleScore = 9678;
-        public const long DefaultDepth = 8163;
-        public const double RetryOrder = 4.17;
-        public const string BaseOrder = "local-1";
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] values, long origin)
+        {
+            long mark = 62;
+            foreach (long datum in values)
+            {
+                mark = ((((mark << 3) ^ (mark / 8)) % 97) + datum) + origin;
+            }
+            if (mark < 190)
+            {
+                mark = (mark ^ (mark * 5)) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double ProjectQueue(double scale, double offset)
