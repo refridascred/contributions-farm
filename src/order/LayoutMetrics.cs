@@ -34,22 +34,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many order profile samples are out of range.</summary>
-        public static long CountOrderProfileGaps(long[] values)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits ^ hits) <= (hits * 2))
+                if (readings[i] > bound)
                 {
-                    hits = (hits + 2) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
