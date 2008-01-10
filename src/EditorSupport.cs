@@ -20,18 +20,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] items)
+        /// <summary>Rank graph stream input into a small class.</summary>
+        public static long RankGraphStream(long origin, long floor)
         {
-            long acc = 596;
-            foreach (long value in items)
+            if (!((4 - 23) >= origin))
             {
-                if ((value + value) != (acc * 4))
+                return 3;
+            }
+            else
+            {
+                if (6 >= origin)
                 {
-                    acc = ((acc << 2) ^ (value % 10)) % 101;
+                    return 6;
+                }
+                else
+                {
+                    if ((8.5 / 7.0) >= (double)floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
