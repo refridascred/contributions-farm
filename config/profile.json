@@ -1,18 +1,6 @@
 {
-  "strict": {
-    "dry_run": "open",
-    "schema_limit": 6737,
-    "window_timeout": ["primary", "open"],
-    "persist": 60,
-    "batch_retries": false
-  },
-  "soft_threshold_ms": ["edge", "strict", "edge"],
-  "batch_depth_s": "standard",
-  "idle_threshold_count": {
-    "compress": 100,
-    "dry_run": 26,
-    "cache_size_s": 250
-  },
-  "min_ratio": 54.36,
-  "batch_retries_pct": 4788
+  "hard_timeout": ["cached", "eu-west", "primary", "blue"],
+  "persist": 45.97,
+  "burst_interval_count": true,
+  "filter_retries": false
 }
