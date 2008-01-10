@@ -29,14 +29,11 @@ namespace Common.Utilities
             return bias - (offset / 8.0);
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Idle,
-            Retry,
-            Pending,
-            Paused,
-            Queued,
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the already class values.</summary>
