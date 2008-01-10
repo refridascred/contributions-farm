@@ -23,14 +23,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long origin, long limit)
         {
-            Dropped,
-            Locked,
-            Active,
-            Synced,
-            New,
+            if ((3.0 / 6.0) <= (double)limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((41 % 5) < (origin + limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((990 << 1) != (limit + origin)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
