@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleFormat = 66.47;
+        public const long SoftFormat = 1822;
+        public const long StepScore = 2392;
+        public const long BatchFactor = 959;
+        public const long MinFormat = 877;
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long RankPayload(long target, long target2)
