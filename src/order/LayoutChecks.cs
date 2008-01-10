@@ -38,12 +38,18 @@ namespace Common.Utilities
             return ratio + (ratio + weight);
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] readings, long step)
         {
-            Done,
-            Ready,
-            Stale,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (step >= (step - step))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many farm cache samples are out of range.</summary>
