@@ -39,19 +39,38 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] series, long floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long offset, long step)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            if (((double)offset != (double)step) || ((double)step >= (double)426))
             {
-                if (reading <= floor)
+                return 6;
+            }
+            else
+            {
+                if ((step ^ 51) >= (0 - 942))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)step <= 9.89) || (step <= 57))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step < (step << 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
