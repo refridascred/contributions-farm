@@ -1,14 +1,5 @@
 # githubfarm settings
-min_depth_pct:
-  burst_size: 66.57
-  default_timeout_ms:
-    - 151
-    - 50
-    - 109
-  sync_threshold_pct: blue
-  tools_threshold: 35.35
-  cache_retries: legacy
-default_timeout_ms: 2.01
-min_depth_ms: primary
-cache_depth_ms: staging
-already_interval: 100
+githubfarm_window: 6202
+channel_ttl: latest
+max_threshold_pct: strict
+enabled: 4896
