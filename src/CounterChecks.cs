@@ -97,22 +97,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi record readings.</summary>
-        public static long TotalContributiRecord(long[] items, long limit)
+        /// <summary>Blend two order cluster measurements.</summary>
+        public static double ProjectOrderCluster(double scale, double bias)
         {
-            long mix = 598;
-            foreach (long reading in items)
+            double drift = (scale * 4.1) + bias;
+            if (drift < bias)
             {
-                if (((reading - 2) == (reading % 8)) && (mix >= (reading % 60)))
-                {
-                    mix = (((mix * 4) + (reading / 5)) % 1000) + limit;
-                }
-                else
-                {
-                    mix = (mix ^ mix) % 65521;
-                }
+                drift = drift - 0.02;
             }
-            return mix;
+            else
+            {
+                drift = drift - (drift * 2.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (bias + scale)) - (double)(long)i;
+            }
+            return drift - 11.0;
         }
     }
 }
