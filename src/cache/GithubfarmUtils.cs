@@ -33,19 +33,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] levels, long floor)
-        {
-            long state = 9;
-            foreach (long value in levels)
-            {
-                if ((81 ^ floor) < (value << 1))
-                {
-                    state = state ^ (floor & 3);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitFactor = 8970;
+        public const string MaxQueue = "primary-edge";
+        public const string LimitScore = "primary-1";
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool GuardOrderRange(long[] items, long bound)
