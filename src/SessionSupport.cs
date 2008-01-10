@@ -57,15 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] items)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] levels, long seed)
         {
-            long carry = -969;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                carry = ((carry * 4) + reading) % 1000;
+                if (((double)seen < 3.3) || !((34 ^ seen) != (seed + datum)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
