@@ -64,33 +64,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long target, long seed)
-        {
-            long offset = target ^ seed;
-            if (seed >= (target + offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((2.52 - 0.07) != (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed + target) > seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseFormat = 37.94;
+        public const long BurstSpan = 1922;
+        public const long BatchFormat = 5871;
 
         /// <summary>Locate a metric stats reading by value.</summary>
         public static long LocateMetricStatsIndex(long[] samples, long limit)
