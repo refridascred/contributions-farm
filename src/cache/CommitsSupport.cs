@@ -41,9 +41,14 @@ namespace Common.Utilities
         public const string BurstCount = "primary-edge";
         public const double HardProfile = 92.94;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxChannel = "strict-edge";
-        public const long SoftChannel = 2550;
-        public const double CacheChannel = 92.77;
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Synced,
+            Idle,
+            Retry,
+            Locked,
+            Active,
+        }
     }
 }
