@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of buffer context readings.</summary>
-        public static long CombineBufferContext(long[] samples, long seed)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long floor, long origin)
         {
-            long anchor = 37;
-            foreach (long datum in samples)
+            if (origin < floor)
             {
-                anchor = (((anchor * 2) + (datum << 3)) % 101) - seed;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((floor + floor) < origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
