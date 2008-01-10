@@ -77,18 +77,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many token commits samples are out of range.</summary>
-        public static long MeasureTokenCommitsMatches(long[] samples)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((4.1 > (double)count) || (count >= (reading - reading)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
