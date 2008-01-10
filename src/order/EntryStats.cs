@@ -47,32 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long target, long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] data, long floor)
         {
-            long gap = target ^ bound;
-            if (gap <= (bound - bound))
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((550 & 31) >= (bound + 443))
+                if ((reading + count) < reading)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (gap < bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = (count + 2) - floor;
                 }
             }
+            return count;
         }
     }
 }
