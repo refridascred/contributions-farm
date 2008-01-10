@@ -1,4 +1,16 @@
 # support settings
-context_retries: local
-dry_run: open
-min_ratio_count: staging
+warm_threshold_pct:
+  - stable
+  - eu-west
+  - open
+  - legacy
+batch_retries:
+  retry_ttl_ms: true
+  notes_ttl: strict
+  counter_interval: 53
+strict: stable
+soft_ratio_count: true
+checks_ttl:
+  - 407
+  - 120
+  - 221
