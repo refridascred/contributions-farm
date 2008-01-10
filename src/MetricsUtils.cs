@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string CacheFilter = "alpha";
-        public const long BatchFilter = 1276;
-        public const string BaseLevel = "legacy-1";
-        public const double StepFilter = 63.49;
-        public const string BurstFilter = "primary-1";
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] data, long seed)
+        {
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long IterateRecord(long offset)
