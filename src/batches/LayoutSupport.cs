@@ -39,12 +39,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Token { get; set; }
+            public double Mode { get; set; }
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
