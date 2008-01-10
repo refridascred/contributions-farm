@@ -1,16 +1,7 @@
 # support settings
-verbose: false
-poll_ratio_count: primary
-commits_depth: 59
-flush_capacity:
-  verbose:
-    max_delay_count: false
-    flush_retries: true
-    readonly: 30
-    sync_capacity_ms:
-      - open
-      - primary
-    cache_threshold_s: fallback
-    batch_ttl_pct: 250
-  burst_ttl_count: 71
-  max_size: 2969
+strict: true
+poll_timeout_pct: 250
+base_delay_ms:
+  - 458
+  - 3
+  - 247
