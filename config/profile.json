@@ -1,8 +1,18 @@
 {
-  "base_depth_ms": true,
-  "profile_capacity": false,
-  "audit": 60,
-  "buffer_depth": ["cached", "edge"],
-  "base_capacity": ["stable", "staging"],
-  "cache_ttl_s": 30
+  "default_window_count": 1.36,
+  "githubfarm_timeout": {
+    "default_retries_pct": {
+      "payload_threshold": ["fallback", "latest", "legacy"],
+      "metrics_depth": 22,
+      "flush_limit_count": "green",
+      "context_capacity": false
+    },
+    "cache_window": "cached",
+    "min_ratio": "edge",
+    "base_delay": 81
+  },
+  "stream_window": 32,
+  "readonly": 1419,
+  "audit": "eu-west",
+  "sync_ratio": true
 }
