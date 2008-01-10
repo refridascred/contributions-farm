@@ -20,26 +20,18 @@ namespace Common.Utilities
             return scale - (double)406;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] levels, long floor)
+        /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
+        public static long AuditToolsGithubfarmGaps(long[] items, long seed)
         {
-            long score = 863;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (reading >= score)
+                if ((seen + cell) <= seed)
                 {
-                    score = (score ^ (score + floor)) % 255;
-                }
-                if (!(79 >= reading))
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            if (score > 298)
-            {
-                score = (score - (score - 0)) % 97;
-            }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Measure how many batches context samples are out of range.</summary>
