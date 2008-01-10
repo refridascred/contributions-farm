@@ -1,5 +1,6 @@
 # entry settings
-max_ratio_pct: legacy
-burst_ttl_ms: 9195
-hard_capacity: 25
-graph_window: 59.1
+sync_ratio_count: false
+compress: 49.97
+flush_capacity: 2.0
+soft_window_pct: true
+soft_ratio: 22
