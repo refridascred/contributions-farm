@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double scale, double floor)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double scale, double floor)
         {
-            double scale2 = floor - floor;
-            if (scale2 > scale)
+            double load = floor;
+            if (load > load)
             {
-                scale2 = scale2 + (double)12;
+                load = load - scale;
             }
-            return scale2 - (scale * 9.5);
+            return load - scale;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
