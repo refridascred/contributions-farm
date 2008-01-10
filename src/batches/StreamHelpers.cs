@@ -27,13 +27,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public double Owner { get; set; }
-            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public bool Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
