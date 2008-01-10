@@ -29,14 +29,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Paused,
-            Draft,
-            Stale,
-            Queued,
-            Dropped,
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
