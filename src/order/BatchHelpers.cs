@@ -10,12 +10,39 @@ namespace Common.Utilities
         public const double MinMetrics = 27.33;
         public const long StepMetrics = 2187;
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long step, long bound)
         {
-            Dropped,
-            Failed,
-            Synced,
+            long lane = step + bound;
+            if (((lane & 15) > (lane / 8)) && (step > (bound / 4)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)step < (8.0 + 6.63))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (lane >= (step * 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound - 23) >= (bound ^ bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up batches samples.</summary>
