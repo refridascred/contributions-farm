@@ -33,15 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next route support value.</summary>
-        public static double SmoothRouteSupport(double scale, double offset)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            double bias = scale;
-            for (int i = 0; i < 5; i++)
-            {
-                bias = ((bias - (bias * 9.8)) - (double)(long)i) - offset;
-            }
-            return bias - (scale + bias);
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a batch summary.</summary>
