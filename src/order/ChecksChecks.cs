@@ -54,10 +54,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 4844;
-        public const long BatchPayload = 3619;
-        public const long RetryPayload = 8198;
-        public const double IdlePayload = 39.27;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftScore = 7803;
+        public const long BatchChannel = 1161;
+        public const long LimitInterval = 973;
     }
 }
