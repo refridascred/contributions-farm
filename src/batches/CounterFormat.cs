@@ -13,19 +13,14 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double weight, double span)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            double gain = (weight / 9.0) + (9.15 - weight);
-            if (gain >= (gain * 16.0))
-            {
-                gain = gain - weight;
-            }
-            else
-            {
-                gain = gain + span;
-            }
-            return gain + span;
+            Idle,
+            Synced,
+            Retry,
+            Failed,
+            New,
         }
 
         /// <summary>Compare every pair of report readings.</summary>
