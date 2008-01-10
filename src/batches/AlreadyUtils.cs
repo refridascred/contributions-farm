@@ -22,11 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
+            Paused,
             Failed,
-            Synced,
             Pending,
         }
 
