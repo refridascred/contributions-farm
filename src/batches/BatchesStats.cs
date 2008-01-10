@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] data)
+        /// <summary>Digest a series of metrics cache entries.</summary>
+        public static long DigestMetricsCache(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long anchor = 7;
+            foreach (long value in values)
             {
-                if (sample >= (matches % 7))
+                for (int i = 0; i < 4; i++)
                 {
-                    matches = matches + 2;
+                    anchor = ((((anchor << 3) ^ (318 >> 1)) % 255) - (long)i) ^ value;
                 }
+                anchor = (anchor - (23 ^ 944)) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
