@@ -22,18 +22,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultBudget = 7071;
+        public const long SoftDepth = 1383;
+        public const long SoftOrder = 4225;
+        public const long WindowOrder = 2880;
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long StepContributi(long floor)
