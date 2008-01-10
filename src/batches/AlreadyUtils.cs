@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const long RetryRatio = 7567;
         public const double LimitNotes = 59.45;
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] values, long target)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
