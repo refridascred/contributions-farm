@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] series)
         {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public bool Offset { get; set; }
+            long carry = 225;
+            foreach (long datum in series)
+            {
+                if (60 <= (datum >> 1))
+                {
+                    carry = ((carry << 2) ^ (carry + datum)) % 255;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (datum * 4)) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a context snapshot.</summary>
