@@ -71,13 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Idle,
-            Paused,
-            Dropped,
-            Closed,
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
