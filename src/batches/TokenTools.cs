@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Ready,
-            Failed,
-            Locked,
-            Queued,
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
