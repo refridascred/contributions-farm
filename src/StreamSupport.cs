@@ -31,19 +31,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] levels, long floor)
+        /// <summary>Rank buffer command input into a small class.</summary>
+        public static long BucketBufferCommand(long origin, long seed)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long prev = origin ^ seed;
+            if ((double)prev == (double)origin)
             {
-                if (cell >= floor)
+                return 8;
+            }
+            else
+            {
+                if ((0 >> 2) >= (seed & 15))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((origin << 1) > origin) && (prev <= origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)4 < (double)prev)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
