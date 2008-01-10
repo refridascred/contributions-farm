@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] items, long step)
         {
-            Draft,
-            Done,
-            Stale,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine account filter values into a single score.</summary>
