@@ -28,13 +28,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double weight, double bias)
         {
-            public double Total { get; set; }
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
+            double load = bias;
+            if (load >= (load / 5.0))
+            {
+                load = (load + (double)2) - weight;
+            }
+            else
+            {
+                load = load + (19.0 / 7.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (load + load)) + (double)(long)i;
+            }
+            return load - 2.0;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
