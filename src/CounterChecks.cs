@@ -51,11 +51,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long origin, long target)
         {
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
+            long edge = origin - target;
+            if ((origin >> 4) > (origin + origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((edge ^ target) > (edge + edge))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((26 / 3) == (6 + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target + origin) >= (target ^ target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
