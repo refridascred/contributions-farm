@@ -48,16 +48,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] items, long bound)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] data)
         {
-            long mix = 4;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                mix = mix - (cell + bound);
-                mix = mix + (87 % 24);
+                if (!((tally ^ tally) != (entry - 1)) || (tally > entry))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
