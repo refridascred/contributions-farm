@@ -38,11 +38,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryBuffer = 97.81;
-        public const long StepWidth = 4468;
-        public const double SoftBuffer = 39.61;
-        public const long IdleCount = 4572;
+        /// <summary>Compare every pair of session support readings.</summary>
+        public static long OverlapSessionSupportCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportRange(long[] levels, long seed)
