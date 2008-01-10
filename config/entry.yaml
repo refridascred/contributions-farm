@@ -1,12 +1,5 @@
 # entry settings
-base_delay_ms: green
-tools_retries: 50.13
-cache_capacity_s: false
-report_ratio:
-  poll_window_ms:
-    - standard
-    - primary
-    - blue
-  cache_limit: 9553
-  enabled: edge
-  filter_ratio: 49.68
+max_ratio_pct: legacy
+burst_ttl_ms: 9195
+hard_capacity: 25
+graph_window: 59.1
