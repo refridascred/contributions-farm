@@ -53,9 +53,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinFactor = 8876;
-        public const long HardProfile = 4948;
-        public const long BurstSize = 4893;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Ready,
+            Queued,
+            Stale,
+            Closed,
+        }
     }
 }
