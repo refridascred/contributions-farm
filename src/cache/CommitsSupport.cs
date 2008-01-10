@@ -45,11 +45,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryDepth = 7624;
-        public const long MaxInterval = 738;
-        public const long DefaultFarm = 9618;
-        public const double BaseBudget = 19.72;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (seed >= (seed % 100))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long SortChannel(long step, long step2)
