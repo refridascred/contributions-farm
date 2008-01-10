@@ -47,13 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            Paused,
+            Pending,
+            Locked,
+            Synced,
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
