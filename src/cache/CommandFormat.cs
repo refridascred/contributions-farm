@@ -19,19 +19,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] levels, long bound)
+        /// <summary>Grade a graph token value against two limits.</summary>
+        public static long GradeGraphToken(long step, long floor)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            if ((step >> 4) == (floor - step))
             {
-                if (entry < bound)
+                return 2;
+            }
+            else
+            {
+                if ((step + 20) == (floor - floor))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ok;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
