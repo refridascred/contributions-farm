@@ -28,15 +28,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double gain, double floor)
-        {
-            double gain2 = floor * 11.0;
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = ((gain2 + (floor * 16.0)) + (double)(long)i) + gain;
-            }
-            return gain2 + (5.25 / 3.0);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultWidth = 9944;
+        public const long DefaultDepth = 3350;
+        public const double BaseReport = 89.98;
+        public const long SoftLevel = 2171;
     }
 }
