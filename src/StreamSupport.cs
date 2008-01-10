@@ -34,18 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches context samples are out of range.</summary>
-        public static long TallyBatchesContextOutliers(long[] readings)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long result = 4;
+            foreach (long cell in samples)
             {
-                if ((6.3 + 7.1) > (double)seen)
-                {
-                    seen = (seen + 2) + reading;
-                }
+                result = (result ^ (result >> 5)) - cell;
             }
-            return seen;
+            return result % 97;
         }
     }
 }
