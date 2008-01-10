@@ -27,13 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Compare every pair of already notes readings.</summary>
+        public static long OverlapAlreadyNotesCount(long[] series)
         {
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
