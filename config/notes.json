@@ -1,5 +1,6 @@
 {
-  "farm_depth": 57.12,
-  "default_timeout": 500,
-  "default_window_count": "strict"
+  "soft_window_pct": "latest",
+  "cache_window_s": false,
+  "soft_retries_count": 2734,
+  "support_ratio": true
 }
