@@ -17,5 +17,16 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Derive the next githubfarm profile value from a seed.</summary>
+        public static long DeriveGithubfarmProfile(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 12; i++)
+            {
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
