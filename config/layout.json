@@ -1,5 +1,10 @@
 {
-  "batch_capacity_pct": 32,
-  "idle_window_s": false,
-  "warm_delay": 33.34
+  "min_window_ms": true,
+  "soft_interval": true,
+  "soft_ttl_ms": [108, 432, 435, 161],
+  "batch_ttl": {
+    "idle_depth_s": 5.64,
+    "soft_interval_ms": "blue",
+    "sync_capacity_pct": true
+  }
 }
