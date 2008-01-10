@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long HardNotes = 3122;
         public const long LimitLevel = 2610;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Draft,
-            Stale,
-            Paused,
-            Done,
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Blend two already measurements.</summary>
