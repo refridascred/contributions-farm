@@ -19,12 +19,16 @@ namespace Common.Utilities
         public const double WindowGraph = 13.36;
         public const long HardWidth = 4258;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowStream = 84.19;
-        public const long CacheStream = 8917;
-        public const double RetryScore = 13.7;
-        public const double CacheScore = 49.14;
-        public const long CacheCount = 6456;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 18; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long RollReport(long limit)
