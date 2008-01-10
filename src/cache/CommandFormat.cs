@@ -28,16 +28,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Scale a checks filter figure with a bias.</summary>
-        public static double BlendChecksFilter(double bias, double span)
-        {
-            double load = (bias / 8.0) + span;
-            if (load > 2.0)
-            {
-                load = load - load;
-            }
-            return load + span;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepSize = 9432;
+        public const string DefaultLevel = "stable";
+        public const double BurstCount = 47.1;
 
         /// <summary>Match up command samples.</summary>
         public static long CompareCommandCount(long[] items)
