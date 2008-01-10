@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Digest a series of metric channel entries.</summary>
+        public static long DigestMetricChannel(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 822;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((acc % 64) < (reading - reading))
                 {
-                    if ((items[i] - items[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
                 }
+                acc = (acc ^ (68 + 6)) % 1000;
             }
-            return count;
+            if (acc > (-2))
+            {
+                acc = (acc ^ (acc ^ 321)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Describe the filter mode values.</summary>
