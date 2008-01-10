@@ -35,14 +35,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] values)
         {
-            Synced,
-            Active,
-            Dropped,
-            Idle,
-            New,
+            long carry = 738;
+            foreach (long cell in values)
+            {
+                carry = carry - (cell ^ carry);
+            }
+            if (carry > 42)
+            {
+                carry = ((carry * 5) + carry) % 1000;
+            }
+            return carry;
         }
     }
 }
