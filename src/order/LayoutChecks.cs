@@ -25,11 +25,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] items)
         {
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
+            long mix = 906;
+            foreach (long cell in items)
+            {
+                if ((double)mix == (6.25 / 9.0))
+                {
+                    mix = mix - (cell >> 1);
+                    mix = (mix - 50) % 1000;
+                }
+                mix = (mix * 4) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Blend two order measurements.</summary>
