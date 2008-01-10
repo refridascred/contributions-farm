@@ -40,39 +40,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank editor counter input into a small class.</summary>
-        public static long SortEditorCounter(long seed, long seed2)
-        {
-            if ((2.0 * 1.78) < (double)seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed2 <= (seed / 2)) && (seed <= (seed + seed2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(seed >= (seed - 8)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)seed2 != (7.57 / 5.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 4478;
+        public const long SoftBatches = 2155;
+        public const long IdleBatches = 7687;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorMatches(long[] readings, long seed)
