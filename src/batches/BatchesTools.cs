@@ -10,23 +10,13 @@ namespace Common.Utilities
         public const string HardPayload = "latest";
         public const long HardDepth = 4949;
 
-        /// <summary>Adjust a metrics profile reading.</summary>
-        public static double BlendMetricsProfile(double scale, double bias)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            double load = bias;
-            if (load < (bias + 8.78))
-            {
-                load = load - scale;
-            }
-            else
-            {
-                load = load + (bias + 6.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (load - load)) - (double)(long)i;
-            }
-            return load + load;
+            Done,
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Locate a route profile reading by value.</summary>
