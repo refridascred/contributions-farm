@@ -53,12 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 545;
-        public const long MinDepth = 8916;
-        public const long MaxFarm = 1549;
-        public const double BatchFarm = 70.1;
-        public const long IdleFarm = 4207;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MinDepth = "alpha-1";
+        public const long DefaultCluster = 3910;
+        public const long RetryCluster = 9622;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double BlendAlready(double scale, double bias)
