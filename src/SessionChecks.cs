@@ -37,40 +37,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long origin, long step)
-        {
-            long slot = origin - step;
-            if ((7.62 - 5.9) < (double)slot)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((7.1 + 2.1) < (double)step) && ((9.2 + 2.4) != (double)slot))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((2.72 / 3.0) != (double)slot)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (origin >= (9 * 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultScore = "standard";
+        public const long BaseCache = 1042;
+        public const string DefaultTimeout = "staging-v2";
 
         /// <summary>Accumulate filter samples.</summary>
         public static long TallyFilter(long[] items)
