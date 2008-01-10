@@ -100,19 +100,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double ratio, double floor)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double rate, double bias)
         {
-            double rate = floor;
-            if (rate > (double)979)
+            double scale = bias - (double)23;
+            if (scale >= scale)
             {
-                rate = (rate - floor) + ratio;
+                scale = (scale + 13.0) - rate;
             }
-            else
-            {
-                rate = rate + (double)(-8);
-            }
-            return rate + (rate / 5.0);
+            return scale + (bias * 6.64);
         }
 
         /// <summary>Roll a payload report counter forward.</summary>
