@@ -39,11 +39,25 @@ namespace Common.Utilities
         public const string SoftRatio = "local-edge";
         public const double IdleInterval = 37.99;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double weight, double bias)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long target)
         {
-            double weight2 = weight;
-            return (weight2 + (weight2 * 4.31)) + bias;
+            long result = target;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!(((target ^ 25) >= target) && ((2 % 3) >= result)))
+                {
+                    result = result + (target + target);
+                }
+                if (target <= (long)i)
+                {
+                    result = ((result * 4) + result) % 101;
+                    result = (result << 2) ^ result;
+                    continue;
+                }
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
