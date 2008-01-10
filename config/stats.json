@@ -1,5 +1,20 @@
 {
-  "burst_delay_s": "latest",
-  "channel_ttl": 77,
-  "burst_ratio_ms": [415, 376, 316, 94]
+  "commits_limit": 4,
+  "min_size_s": {
+    "enabled": 7037,
+    "tools_ratio": "legacy",
+    "verbose": 500,
+    "editor_capacity": true,
+    "idle_threshold": 100,
+    "retry_threshold": ["stable", "blue", "green"]
+  },
+  "poll_interval": "staging",
+  "enabled": 36,
+  "cache_timeout_ms": 76,
+  "soft_window": {
+    "report_timeout": 60,
+    "enabled": [61, 87, 453, 349],
+    "poll_timeout_count": "standard",
+    "warm_threshold_pct": "green"
+  }
 }
