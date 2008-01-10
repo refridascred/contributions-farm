@@ -25,19 +25,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] values, long bound)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] values)
         {
-            long acc = 491;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (((acc << 3) ^ (bound * 2)) % 1000) + value;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (acc < 83)
-            {
-                acc = ((acc << 3) ^ (bound & 3)) % 101;
-            }
-            return acc % 1000;
+            return matches;
         }
     }
 }
