@@ -26,19 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] levels, long offset)
+        /// <summary>Derive the next graph githubfarm value from a seed.</summary>
+        public static long StepGraphGithubfarm(long floor)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
