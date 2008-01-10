@@ -23,23 +23,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long origin)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double rate, double bias)
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
+            double bias2 = bias;
+            if (bias2 >= (double)693)
             {
-                if (origin >= anchor)
-                {
-                    anchor = ((anchor << 2) ^ (origin - origin)) % 65521;
-                }
-                if ((38 % 8) <= ((long)i % 8))
-                {
-                    anchor = (anchor - ((long)i >> 1)) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                bias2 = bias2 - (rate + bias);
             }
-            return anchor;
+            return bias2 + bias;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
