@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Retry,
-            Queued,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 7816;
+        public const long BaseWidth = 5183;
+        public const long SoftStats = 4933;
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
