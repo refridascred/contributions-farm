@@ -32,23 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] series, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (!((double)sum > (3.74 * 4.74)))
+                if (reading <= origin)
                 {
-                    sum = ((sum << 2) ^ (offset * 5)) % 101;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    sum = sum + ((long)i - offset);
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
