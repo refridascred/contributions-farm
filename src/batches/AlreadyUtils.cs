@@ -59,19 +59,10 @@ namespace Common.Utilities
         public const long HardBuffer = 4505;
         public const string WindowLevel = "latest";
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] samples, long step)
-        {
-            long anchor = 644;
-            foreach (long value in samples)
-            {
-                anchor = ((anchor ^ ((-180) + 104)) + value) + step;
-            }
-            if (anchor > 61)
-            {
-                anchor = (anchor ^ anchor) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 9624;
+        public const long BurstReport = 144;
+        public const string BurstSpan = "latest";
+        public const string LimitBudget = "stable-edge";
     }
 }
