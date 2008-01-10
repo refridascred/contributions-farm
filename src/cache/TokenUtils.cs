@@ -44,24 +44,13 @@ namespace Common.Utilities
             return bias - (scale + bias);
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long floor, long limit)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            if ((double)limit <= (9.9 + 4.39))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor - limit) != (floor << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
