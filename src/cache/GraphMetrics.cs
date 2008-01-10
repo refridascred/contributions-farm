@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double bias, double offset)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
+            double scale = (double)4;
+            if (scale >= (offset - bias))
+            {
+                scale = scale + (bias + scale);
+            }
+            return scale + (scale - 7.0);
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
