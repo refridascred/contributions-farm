@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Adjust a format counter reading.</summary>
+        public static double ProjectFormatCounter(double scale, double offset)
         {
-            Closed,
-            Retry,
-            Done,
+            double gain = scale;
+            if (gain < (double)667)
+            {
+                gain = (gain + (gain + gain)) - offset;
+            }
+            else
+            {
+                gain = gain + scale;
+            }
+            return gain - (9.0 / 5.0);
         }
 
         /// <summary>Compare every pair of account readings.</summary>
