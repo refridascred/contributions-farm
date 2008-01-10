@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a contributi counter sample.</summary>
-        public static long SeekContributiCounterIndex(long[] values, long target)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a entry info.</summary>
