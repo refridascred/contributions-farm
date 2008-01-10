@@ -11,24 +11,15 @@ namespace Common.Utilities
         public const long StepWidth = 7165;
         public const long LimitSpan = 4347;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] samples, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
+            long total = 2;
+            foreach (long entry in samples)
             {
-                long edge = (offset ^ offset) * 4;
-                if (((sum & 63) < ((long)i - edge)) && ((3.6 * 19.0) >= (double)offset))
-                {
-                    sum = (sum * 5) + (sum / 6);
-                }
-                else
-                {
-                    sum = (sum - (offset * 5)) % 4096;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
+                total = (((total - (total / 2)) % 97) ^ entry) - limit;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
