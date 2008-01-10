@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next counter route value.</summary>
-        public static double BlendCounterRoute(double scale, double floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] levels)
         {
-            double scale2 = (scale - scale) * 8.0;
-            if (scale2 > (scale2 / 2.0))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                scale2 = scale2 - (scale + floor);
+                if (!(((7.12 * 10.0) < (double)item) || ((1.1 - 4.57) >= (double)hits)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return scale2 + scale2;
+            return hits;
         }
 
         /// <summary>Accumulate token samples.</summary>
