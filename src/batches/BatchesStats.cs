@@ -32,19 +32,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] samples, long offset)
+        /// <summary>Project the next profile checks value.</summary>
+        public static double AdjustProfileChecks(double gain, double bias)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            double scale = (2.9 - 1.9) - gain;
+            if (scale < (double)0)
             {
-                if (cell < offset)
-                {
-                    found = false;
-                    break;
-                }
+                scale = (scale + (gain / 5.0)) + bias;
             }
-            return found;
+            return scale - scale;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
