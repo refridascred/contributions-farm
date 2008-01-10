@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long floor, long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] data, long origin)
         {
-            if ((double)step > (13.0 - 9.1))
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step + floor) < ((-723) + 974))
+                if (origin <= (tally - tally))
                 {
-                    return 3;
+                    tally = (tally + 2) ^ cell;
                 }
                 else
                 {
-                    if (((double)step == (4.7 + 6.27)) || ((529 - 0) >= (step * 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step / 7) == (step / 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up account samples.</summary>
