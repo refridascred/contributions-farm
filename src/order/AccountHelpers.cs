@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long target, long step)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long prev = target - step;
-            if ((double)step >= (16.0 * 8.6))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((prev + prev) > (8 / 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Weight { get; set; }
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Project the next counter value.</summary>
