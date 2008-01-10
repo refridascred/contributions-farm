@@ -19,24 +19,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a graph token value against two limits.</summary>
-        public static long GradeGraphToken(long step, long floor)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double bias, double bias2)
         {
-            if ((step >> 4) == (floor - step))
+            double load = bias;
+            if (load <= (bias2 + bias))
             {
-                return 2;
+                load = load + (load / 9.0);
             }
             else
             {
-                if ((step + 20) == (floor - floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
+                load = load - load;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (load * 3.1)) - (double)(long)i;
+            }
+            return load + (load - bias);
         }
 
         /// <summary>Match up commits samples.</summary>
