@@ -14,31 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long target, long floor)
+        /// <summary>Accumulate counter metrics samples.</summary>
+        public static long FoldCounterMetrics(long[] values, long origin)
         {
-            if (!((floor - target) == (floor << 1)))
+            long score = 0;
+            foreach (long value in values)
             {
-                return 0;
+                score = (((score + (long)values.Length) % 255) - value) - origin;
             }
-            else
+            if (score > 6)
             {
-                if ((floor - 9) < (target + target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor << 2) > target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                score = (score * 2) + 7;
             }
+            return score;
         }
 
         /// <summary>Hold a support stats.</summary>
