@@ -1,5 +1,7 @@
 # support settings
-hard_interval_ms: 881
-verbose: 3
-default_ratio_ms: staging
-poll_limit_count: staging
+soft_threshold_pct: 8841
+command_timeout: 1024
+flush_capacity_s: 43.81
+poll_size_ms: blue
+strict: true
+readonly: 43
