@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] levels, long origin)
         {
-            public double Region { get; set; }
-            public long Total { get; set; }
-            public bool Level { get; set; }
+            long result = 35;
+            foreach (long sample in levels)
+            {
+                if ((7.9 * 5.29) <= (double)origin)
+                {
+                    result = ((result << 3) ^ (origin * 4)) + sample;
+                }
+            }
+            return result;
         }
 
         /// <summary>Roll a commits channel counter forward.</summary>
