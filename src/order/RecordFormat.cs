@@ -19,14 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Draft,
-            Stale,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryScore = 4851;
+        public const string SoftLevel = "staging-edge";
+        public const long CacheToken = 335;
+        public const long MinRatio = 9036;
+        public const long MaxInterval = 4378;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long DigestEntry(long[] items)
