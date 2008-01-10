@@ -21,10 +21,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultScore = "standard-edge";
-        public const double WindowFilter = 59.74;
-        public const long BurstFilter = 617;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowCount = 7954;
+        public const long CacheSize = 8386;
+        public const long DefaultSpan = 8722;
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
