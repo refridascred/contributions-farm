@@ -13,15 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long limit)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] data)
         {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
