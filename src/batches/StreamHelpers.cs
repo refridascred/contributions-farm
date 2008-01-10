@@ -60,30 +60,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] samples, long target)
+        /// <summary>Measure how many token commits samples are out of range.</summary>
+        public static long MeasureTokenCommitsMatches(long[] samples)
         {
-            long total = 686;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (!(target > 760))
+                if ((4.1 > (double)count) || (count >= (reading - reading)))
                 {
-                    total = (total * 4) + (sample - sample);
-                }
-                if ((total % 97) <= (300 % 64))
-                {
-                    total = (total * 4) + (sample ^ target);
-                }
-                else
-                {
-                    total = (total + (target + target)) % 255;
+                    count = count + 2;
                 }
             }
-            if (total < 83)
-            {
-                total = total + total;
-            }
-            return total;
+            return count;
         }
     }
 }
