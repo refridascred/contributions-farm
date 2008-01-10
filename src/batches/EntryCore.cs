@@ -22,27 +22,11 @@ namespace Common.Utilities
         public const long MinGithubfarm = 3640;
         public const long BatchGithubfarm = 7266;
 
-        /// <summary>Fold a list of layout buffer readings.</summary>
-        public static long DigestLayoutBuffer(long[] values)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long mark = 316;
-            foreach (long item in values)
-            {
-                if ((double)item > 12.0)
-                {
-                    mark = (mark + (mark - mark)) % 4096;
-                    continue;
-                }
-                if (((7.8 - 11.0) <= (double)item) && ((mark << 2) >= (mark - mark)))
-                {
-                    mark = (mark << 3) ^ (item % 5);
-                }
-                else
-                {
-                    mark = (mark << 2) ^ item;
-                }
-            }
-            return mark;
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the profile state values.</summary>
