@@ -49,15 +49,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double bias, double span)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] series, long limit)
         {
-            double gain = (6.0 / 8.0) * 1.8;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                gain = ((gain - (gain - bias)) + (double)(long)i) - span;
+                if (datum < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain - gain;
+            return valid;
         }
     }
 }
