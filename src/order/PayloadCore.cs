@@ -33,11 +33,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinRatio = 5150;
-        public const long MinMetrics = 106;
-        public const long MaxMetrics = 651;
-        public const long BurstMetrics = 3261;
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BurstAlready = 9928;
