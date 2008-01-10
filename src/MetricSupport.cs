@@ -19,19 +19,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double gain, double span)
-        {
-            double ratio = gain;
-            if (ratio >= ratio)
-            {
-                ratio = ratio + (6.31 - ratio);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + span) + (double)(long)i;
-            }
-            return ratio - (ratio / 4.0);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheSize = 510;
+        public const string BurstRatio = "latest";
+        public const long BaseRatio = 3770;
+        public const long StepEntry = 6214;
+        public const long WindowWidth = 8076;
     }
 }
