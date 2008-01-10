@@ -40,11 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepBatch = "alpha-edge";
-        public const long StepWidth = 6266;
-        public const string RetryBatch = "staging";
-        public const string SoftDepth = "standard-v2";
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Locked,
+            New,
+            Queued,
+            Draft,
+            Failed,
+        }
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
