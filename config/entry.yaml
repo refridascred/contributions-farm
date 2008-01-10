@@ -1,6 +1,7 @@
 # entry settings
-base_threshold_ms: false
-dry_run: edge
-payload_delay: strict
-burst_depth_pct: 244
-batch_interval_pct: strict
+warm_delay_s: blue
+graph_depth: 30
+retry_depth_s: true
+min_ttl: eu-west
+warm_capacity_s: cached
+farm_threshold: 39
