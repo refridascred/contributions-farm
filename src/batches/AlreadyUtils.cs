@@ -56,11 +56,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultTools = "legacy-edge";
-        public const long MinRatio = 8660;
-        public const string SoftTools = "stable-edge";
-        public const long MaxTools = 643;
-        public const long BurstTools = 3905;
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
