@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] data, long limit)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (datum >= limit)
+                if ((reading ^ floor) != (reading & 31))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
