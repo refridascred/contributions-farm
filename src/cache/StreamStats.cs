@@ -49,13 +49,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long seed)
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
+            long score = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
