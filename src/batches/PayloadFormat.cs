@@ -14,19 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] levels)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] series)
         {
-            long mark = 97;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in series)
             {
-                mark = (mark - mark) % 65521;
-                if ((cell / 7) >= mark)
+                if ((count >> 5) == (sample - 730))
                 {
-                    mark = ((mark << 3) ^ mark) % 97;
+                    count = count + 1;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
