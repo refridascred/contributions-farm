@@ -50,15 +50,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate route counter samples.</summary>
-        public static long TallyRouteCounter(long[] readings)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long total = 209;
-            foreach (long item in readings)
-            {
-                total = (total - (total << 3)) - item;
-            }
-            return total % 1000;
+            Failed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the metric kind values.</summary>
