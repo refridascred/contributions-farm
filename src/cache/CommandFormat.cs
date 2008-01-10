@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] data, long bound)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long anchor = 53;
-            foreach (long reading in data)
-            {
-                if ((reading << 2) != (anchor ^ anchor))
-                {
-                    anchor = (((anchor << 2) ^ anchor) % 65521) + bound;
-                }
-            }
-            return anchor;
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a cache stats.</summary>
