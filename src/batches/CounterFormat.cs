@@ -14,19 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate counter metrics samples.</summary>
-        public static long FoldCounterMetrics(long[] values, long origin)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double weight, double span)
         {
-            long score = 0;
-            foreach (long value in values)
+            double gain = (weight / 9.0) + (9.15 - weight);
+            if (gain >= (gain * 16.0))
             {
-                score = (((score + (long)values.Length) % 255) - value) - origin;
+                gain = gain - weight;
             }
-            if (score > 6)
+            else
             {
-                score = (score * 2) + 7;
+                gain = gain + span;
             }
-            return score;
+            return gain + span;
         }
 
         /// <summary>Hold a support stats.</summary>
