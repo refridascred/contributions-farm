@@ -10,22 +10,38 @@ namespace Common.Utilities
         public const string HardSize = "primary-edge";
         public const double SoftSupport = 23.11;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] items)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long origin, long step)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            if ((step > (0 << 2)) && (step > (origin + step)))
             {
-                if (((seen - 2) == (datum + (long)items.Length)) && !((seen & 15) >= (datum * 4)))
+                return 2;
+            }
+            else
+            {
+                if (!(origin <= step))
                 {
-                    seen = seen + 2;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (origin > 5)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((-8) & 15) >= step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Scale a schema queue figure with a bias.</summary>
