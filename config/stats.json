@@ -1,10 +1,7 @@
 {
-  "route_retries": 30,
-  "min_ratio": {
-    "cluster_capacity": 9.84,
-    "compress": "edge",
-    "min_interval_ms": 2001
-  },
-  "hard_ttl_pct": "legacy",
-  "soft_size_count": ["green", "legacy"]
+  "layout_delay": "fallback",
+  "order_window": 47.85,
+  "poll_limit_s": 52.68,
+  "warm_ttl": 68,
+  "enabled": 100
 }
