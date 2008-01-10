@@ -24,12 +24,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFactor = 3010;
-        public const long MinFilter = 3542;
-        public const string DefaultFilter = "cached-1";
-        public const double WindowFactor = 62.23;
-        public const double MaxFilter = 54.72;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] items, long target)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BatchStream = 9280;
