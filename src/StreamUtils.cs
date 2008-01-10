@@ -43,27 +43,32 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate channel metrics samples.</summary>
-        public static long WeighChannelMetrics(long[] samples, long step)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long seed, long step)
         {
-            long score = 1;
-            foreach (long item in samples)
+            long prev = seed + step;
+            if ((822 - step) <= (step >> 5))
             {
-                score = (score + 282) % 101;
-                if ((208 - 82) == (score & 3))
+                return 6;
+            }
+            else
+            {
+                if ((prev & 1) <= (seed + seed))
                 {
-                    score = score - (item % 7);
+                    return 8;
                 }
-                if (!(score >= (step + score)))
+                else
                 {
-                    break;
+                    if (!((559 << 1) <= (seed + step)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (score < 874)
-            {
-                score = (score + (score - score)) % 65521;
-            }
-            return score;
         }
 
         /// <summary>Describe the cluster state values.</summary>
