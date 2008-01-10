@@ -25,15 +25,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] levels, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] data, long bound)
         {
-            long state = 2;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long item in data)
             {
-                state = ((state + 85) + datum) + seed;
+                if (item != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state % 1000;
+            return ok;
         }
 
         /// <summary>Hold a metrics summary.</summary>
