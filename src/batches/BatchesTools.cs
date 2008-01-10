@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] data)
         {
-            Stale,
-            Ready,
-            Pending,
-            Dropped,
-            Retry,
+            long state = 0;
+            foreach (long cell in data)
+            {
+                if ((264 + 5) > (cell & 15))
+                {
+                    state = state + (state * 3);
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
