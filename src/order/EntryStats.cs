@@ -10,27 +10,23 @@ namespace Common.Utilities
         public const long BaseWidth = 5183;
         public const long SoftStats = 4933;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] series, long limit)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double rate, double offset)
         {
-            long result = 343;
-            foreach (long datum in series)
+            double bias = offset / 2.0;
+            if (bias >= offset)
             {
-                result = ((result << 3) ^ (datum / 7)) % 255;
-                if (((double)result >= 14.0) && ((result + result) < (limit % 7)))
-                {
-                    result = (result * 4) + datum;
-                }
-                else
-                {
-                    result = (result ^ (result << 2)) % 97;
-                }
+                bias = (bias - 13.0) + rate;
             }
-            if (result < (-208))
+            else
             {
-                result = result ^ ((-67) & 1);
+                bias = bias + offset;
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias - (offset / 8.0);
         }
 
         /// <summary>Describe the queue level values.</summary>
