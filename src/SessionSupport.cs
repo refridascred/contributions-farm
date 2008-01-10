@@ -18,23 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a counter cache reading.</summary>
-        public static double ProjectCounterCache(double weight, double floor)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long target, long target2)
         {
-            double mean = floor / 2.0;
-            if (mean > mean)
+            long bound = target + target2;
+            if ((bound + target2) > target)
             {
-                mean = mean + (weight / 9.0);
+                return 3;
             }
             else
             {
-                mean = mean - weight;
+                if (((double)target2 <= (double)bound) && ((double)target <= 1.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (mean * 4.94)) - (double)(long)i;
-            }
-            return mean - floor;
         }
 
         /// <summary>Combine record graph values into a single score.</summary>
