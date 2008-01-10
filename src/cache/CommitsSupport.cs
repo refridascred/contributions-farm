@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] values, long bound)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long score = 74;
-            foreach (long value in values)
-            {
-                if ((4.74 - 20.0) == (double)score)
-                {
-                    score = ((score * 5) + (bound + value)) % 1000;
-                }
-            }
-            return score;
+            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
