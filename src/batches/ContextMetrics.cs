@@ -50,39 +50,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long offset, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] series)
         {
-            long offset2 = offset - step;
-            if ((offset2 << 2) < (offset + 4))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (15.0 > (double)offset2)
+                if ((tally + sample) <= (sample << 2))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset2 ^ 181) <= (offset2 >> 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)offset2 == (double)offset) || ((double)offset2 >= 8.12))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
