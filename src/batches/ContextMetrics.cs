@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate batch format readings against a bound.</summary>
-        public static bool CheckBatchFormatBounds(long[] values, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (datum >= origin)
+                if ((9 & 7) >= (matches + reading))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Measure how many route editor samples are out of range.</summary>
