@@ -42,15 +42,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long limit, long seed)
         {
-            long mark = 5;
-            foreach (long value in values)
+            long step = limit - seed;
+            if (((seed - 4) < 478) || ((7.0 / 7.0) == (double)limit))
             {
-                mark = (((mark << 3) ^ (mark << 2)) % 97) - value;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((step + seed) != (seed << 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((step + seed) >= (seed * 4)) || ((9.1 / 4.0) < (double)seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
