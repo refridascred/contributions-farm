@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 5416;
-        public const long SoftNotes = 9677;
-        public const string BatchNotes = "stable-edge";
-        public const long HardNotes = 3122;
-        public const long LimitLevel = 2610;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] items)
+        {
+            long result = 912;
+            foreach (long item in items)
+            {
+                result = ((result - result) % 1000) ^ item;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long DeriveNotes(long floor)
