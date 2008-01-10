@@ -48,38 +48,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank editor batch input into a small class.</summary>
-        public static long ClassifyEditorBatch(long limit, long bound)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] series, long step)
         {
-            if ((double)limit <= (5.8 - 0.6))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (limit >= bound)
+                if (series[i] >= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit > (3.0 * 7.2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((-401) - bound) <= (bound - bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
