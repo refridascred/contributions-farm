@@ -20,12 +20,12 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
