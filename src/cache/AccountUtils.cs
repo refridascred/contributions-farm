@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const long WindowToken = 8577;
         public const long SoftToken = 2869;
 
-        /// <summary>Derive the next context window value from a seed.</summary>
-        public static long DeriveContextWindow(long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long bound)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            long result = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((result * 5) <= seed)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    continue;
+                    result = (result + (result + (long)i2)) % 255;
                 }
-                result = ((result * 2) + (long)i) % 4093;
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    result = ((result << 2) ^ (result & 15)) % 65521;
+                    result = (result ^ (long)i3) % 1000;
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
             return result;
         }
