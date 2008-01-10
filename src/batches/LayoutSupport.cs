@@ -68,11 +68,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepSpan = 23.16;
-        public const double CachePayload = 57.15;
-        public const long RetryDepth = 9364;
-        public const double HardPayload = 82.82;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 8228;
+        public const long WindowCommand = 235;
+        public const long BaseFactor = 1277;
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
