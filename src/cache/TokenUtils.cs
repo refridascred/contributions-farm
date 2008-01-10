@@ -22,13 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
