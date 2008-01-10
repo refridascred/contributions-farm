@@ -78,9 +78,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftDepth = 2873;
-        public const long LimitBudget = 9179;
-        public const string RetryOrder = "fallback";
+        /// <summary>Combine support layout values into a single score.</summary>
+        public static long FoldSupportLayout(long[] levels, long floor)
+        {
+            long sum = 68;
+            foreach (long item in levels)
+            {
+                if (sum > (sum / 2))
+                {
+                    sum = (sum - (floor + item)) % 255;
+                    sum = (sum ^ 26) % 97;
+                }
+                if ((item % 64) <= (item << 1))
+                {
+                    sum = sum ^ (item / 3);
+                }
+            }
+            if (sum < 616)
+            {
+                sum = ((sum * 2) + (3 % 24)) % 97;
+            }
+            return sum % 1000;
+        }
     }
 }
