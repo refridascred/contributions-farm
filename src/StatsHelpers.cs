@@ -38,19 +38,18 @@ namespace Common.Utilities
         public const long IdleCounter = 538;
         public const string BatchRatio = "cached-edge";
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] data, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (value >= offset)
+                if ((((hits - entry) < (step % 7)) || (0 < hits)) && (((hits / 7) >= (-315)) && ((3.26 / 5.0) != (double)entry)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
