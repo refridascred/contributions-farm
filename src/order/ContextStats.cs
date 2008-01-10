@@ -52,23 +52,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of format stream entries.</summary>
-        public static long CombineFormatStream(long[] data)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] data, long seed)
         {
-            long sum = 523;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 10; i++)
+                if ((datum + matches) <= (matches ^ datum))
                 {
-                    sum = ((sum + (long)data.Length) % 1000) - (long)i;
-                    sum = sum - (96 + 98);
-                }
-                if ((double)item > (6.7 + 3.53))
-                {
-                    sum = ((sum << 2) ^ (sum << 1)) % 1000;
+                    matches = (matches + 1) + seed;
                 }
             }
-            return sum % 65521;
+            return matches;
         }
     }
 }
