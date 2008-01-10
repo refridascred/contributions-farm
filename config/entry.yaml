@@ -1,10 +1,12 @@
 # entry settings
-cache_timeout:
-  - 194
-  - 389
-format_interval: 5155
-sync_timeout: eu-west
-min_ratio_pct:
-  - 337
-  - 399
-  - 368
+flush_interval_ms: 34.93
+profile_depth:
+  githubfarm_depth: false
+  warm_threshold:
+    - 138
+    - 431
+    - 471
+  tools_retries: 67.82
+  retry_retries_s: stable
+readonly: true
+soft_threshold_s: 8367
