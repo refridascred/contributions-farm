@@ -66,18 +66,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] data)
+        /// <summary>Accumulate cluster already samples.</summary>
+        public static long TallyClusterAlready(long[] series)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long result = 91;
+            foreach (long datum in series)
             {
-                if ((count << 1) < count)
-                {
-                    count = (count + 3) + reading;
-                }
+                result = (result - (datum - result)) % 255;
             }
-            return count;
+            return result % 1000;
         }
     }
 }
