@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 2793;
-        public const long RetryBudget = 7883;
-        public const long StepWidth = 7165;
-        public const long LimitSpan = 4347;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((7.29 / 7.0) >= (double)(long)i)
+                {
+                    state = state ^ state;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long WeighWindow(long[] samples, long limit)
