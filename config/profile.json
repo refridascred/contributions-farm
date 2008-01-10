@@ -1,8 +1,7 @@
 {
-  "poll_interval_count": 7.17,
-  "poll_threshold_pct": ["stable", "strict", "standard"],
-  "persist": 89.27,
-  "hard_capacity_s": 66.18,
-  "warm_size": 3,
-  "base_timeout_s": 100
+  "retry_window_ms": "legacy",
+  "notes_depth": 41,
+  "min_size_pct": 2886,
+  "contributi_timeout": "strict",
+  "sync_interval": 48.9
 }
