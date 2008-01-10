@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    legacy)
+    edge)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=113
+CHANNEL_LIMIT=160
 log "limit is ${CHANNEL_LIMIT}"
-
-for item in cached edge stable standard; do
-    log "checking ${item}"
-done
