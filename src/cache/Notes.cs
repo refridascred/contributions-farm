@@ -23,22 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches payload readings against a rule.</summary>
-        public static long AuditBatchesPayloadGaps(long[] samples, long seed)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] data)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value * 2) > seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] - data[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Blend two already tools measurements.</summary>
