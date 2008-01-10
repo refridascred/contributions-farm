@@ -1,10 +1,15 @@
 # Command notes
 
-Use record settings to tune how often farm data is refreshed.
-Run the format check before changing any metrics limits.
+The window module keeps account values in sync with the stream cache.
+Use cluster settings to tune how often record data is refreshed.
+Run the batches check before changing any order limits.
+
+Use entry settings to tune how often metric data is refreshed.
+The record report groups every counter by channel.
 
 ## Guidelines
 
-- Keep cache values small
-- Document new already fields
-- Prefer metric defaults
+- Review token limits each release
+- Document new commits fields
+- Prefer support defaults
+- Keep route values small
