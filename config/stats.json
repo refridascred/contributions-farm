@@ -1,7 +1,5 @@
 {
-  "poll_limit": "primary",
-  "soft_interval_s": 27,
-  "retry_size_pct": 500,
-  "soft_window": "latest",
-  "max_depth": 81
+  "burst_ratio": true,
+  "base_depth_s": false,
+  "min_timeout": 500
 }
