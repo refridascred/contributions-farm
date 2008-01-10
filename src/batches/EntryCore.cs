@@ -15,22 +15,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] samples)
+        /// <summary>Compare every pair of commits counter readings.</summary>
+        public static long OverlapCommitsCounterCount(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count + reading) <= (reading + 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] + readings[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
