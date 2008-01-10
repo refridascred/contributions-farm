@@ -1,28 +1,4 @@
 # githubfarm settings
-farm_timeout:
-  base_retries_count: true
-  min_timeout_pct:
-    base_window_ms: 45
-    warm_interval_s: 3938
-    sync_window_count: 1024
-  idle_limit: 63.32
-  persist: fallback
-  hard_ratio: true
-persist:
-  base_ratio:
-    notes_threshold: 69
-    default_size: false
-    dry_run: latest
-    max_threshold_ms:
-      - 70
-      - 211
-      - 456
-      - 32
-  burst_interval_pct: 31.67
-  channel_size: 46.23
-  batch_depth_s: 18
-  retry_ttl_count:
-    - 292
-    - 272
-    - 227
-window_depth: fallback
+commits_ttl: fallback
+hard_window: true
+warm_ttl: false
