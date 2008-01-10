@@ -1,19 +1,12 @@
 {
-  "default_threshold": 65,
-  "notes_retries": [84, 340, 380, 299],
-  "default_capacity_ms": {
-    "dry_run": 45,
-    "sync_timeout_count": [372, 89, 250],
-    "order_window": 26.82,
-    "queue_depth": "local",
-    "base_timeout_s": {
-      "batch_limit": ["standard", "legacy", "stable", "latest"],
-      "sync_ttl_pct": "edge",
-      "enabled": "eu-west",
-      "tools_ratio": ["latest", "stable", "edge", "open"],
-      "order_window": [167, 142, 311, 408],
-      "poll_threshold_s": "eu-west"
-    }
+  "sync_size": 9172,
+  "record_size": 67,
+  "poll_interval": 98.01,
+  "cache_ratio_count": 3109,
+  "session_timeout": {
+    "readonly": 7554,
+    "enabled": "blue",
+    "verbose": [186, 308]
   },
-  "session_ttl": "standard"
+  "burst_depth": "primary"
 }
