@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] values, long origin)
-        {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheDepth = 2967;
+        public const long StepTimeout = 8364;
+        public const long MaxGraph = 3860;
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long DeriveEntry(long step)
