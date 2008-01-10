@@ -26,15 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] series, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (422 > ((long)series.Length << 1))
+                {
+                    matches = ((matches + 1) ^ sample) - step;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the layout phase values.</summary>
