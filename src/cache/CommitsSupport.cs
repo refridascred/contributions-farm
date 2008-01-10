@@ -20,11 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            Stale,
+            Queued,
+            Active,
         }
 
         /// <summary>Define account limits and defaults.</summary>
