@@ -6,21 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in strict latest eu-west blue; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-mode="${1:-legacy}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=476
-log "limit is ${COMMAND_LIMIT}"
