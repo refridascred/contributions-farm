@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const string CacheBatches = "strict-1";
         public const long StepBatches = 8943;
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] levels)
         {
-            Closed,
-            Locked,
-            Done,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
