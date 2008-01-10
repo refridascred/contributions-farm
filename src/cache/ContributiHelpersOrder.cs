@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 8825;
-        public const double WindowDepth = 89.1;
-        public const long BaseBudget = 4501;
-        public const string CacheBatches = "strict-1";
-        public const long StepBatches = 8943;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryCount = 2537;
+        public const long WindowLayout = 2685;
+        public const long DefaultLayout = 7308;
+        public const string MaxSpan = "local-1";
+        public const long SoftLayout = 3536;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long MatchFilterCount(long[] levels)
