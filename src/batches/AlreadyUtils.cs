@@ -30,31 +30,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long floor, long origin)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            if ((floor + origin) <= (7 - 153))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((17 * 2) > (floor + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor + origin) < (origin & 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
