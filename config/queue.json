@@ -1,12 +1,6 @@
 {
-  "sync_size": 9172,
-  "record_size": 67,
-  "poll_interval": 98.01,
-  "cache_ratio_count": 3109,
-  "session_timeout": {
-    "readonly": 7554,
-    "enabled": "blue",
-    "verbose": [186, 308]
-  },
-  "burst_depth": "primary"
+  "audit": false,
+  "idle_limit": true,
+  "default_capacity_s": 643,
+  "batch_retries": "blue"
 }
