@@ -23,12 +23,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long step)
         {
-            public long Rank { get; set; }
-            public double Weight { get; set; }
-            public bool Level { get; set; }
+            long mix = step;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = mix ^ (step + step);
+                if (!(6 <= (long)i))
+                {
+                    mix = (mix ^ (step / 6)) % 1000;
+                }
+                if (!((double)mix < (1.7 + 18.0)))
+                {
+                    mix = ((mix << 3) ^ step) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
