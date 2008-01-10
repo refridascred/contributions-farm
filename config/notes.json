@@ -1,6 +1,19 @@
 {
-  "dry_run": true,
-  "already_interval": "edge",
-  "strict": 8025,
-  "base_window_count": "edge"
+  "session_threshold": {
+    "sync_capacity": false,
+    "readonly": "edge",
+    "enabled": ["latest", "primary", "green"],
+    "retry_size_ms": "standard",
+    "poll_timeout_pct": ["legacy", "standard"],
+    "max_retries": 60
+  },
+  "flush_interval": {
+    "strict": "staging",
+    "farm_window": "eu-west",
+    "checks_delay": ["blue", "primary"]
+  },
+  "batches_depth": 1024,
+  "soft_window": 16.65,
+  "min_depth": 77,
+  "idle_retries": 3958
 }
