@@ -29,22 +29,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] samples, long step)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry / 3) <= 724)
-                {
-                    tally = (tally + 1) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            New,
+            Active,
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
