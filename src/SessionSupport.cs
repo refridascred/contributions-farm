@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record graph values into a single score.</summary>
-        public static long ScoreRecordGraph(long[] items)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] values, long step)
         {
-            long total = 798;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if (total <= (total / 6))
+                if (cell < step)
                 {
-                    total = ((total * 2) + (cell / 3)) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return ready;
         }
     }
 }
