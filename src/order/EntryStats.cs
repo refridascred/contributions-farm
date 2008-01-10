@@ -27,12 +27,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] levels, long step)
         {
-            Pending,
-            Locked,
-            Paused,
+            long state = 191;
+            foreach (long item in levels)
+            {
+                if (((6.0 * 0.57) < (double)state) && ((item + state) > item))
+                {
+                    state = (state - (step & 1)) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the already class values.</summary>
