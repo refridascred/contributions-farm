@@ -74,21 +74,15 @@ namespace Common.Utilities
         public const long SoftContext = 496;
         public const double HardContext = 71.65;
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 345;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (mix ^ (47 + entry)) % 65521;
             }
-            return hits;
+            return mix;
         }
     }
 }
