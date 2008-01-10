@@ -31,14 +31,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Project the next stats metric value.</summary>
+        public static double ProjectStatsMetric(double gain, double span)
         {
-            Failed,
-            Queued,
-            Retry,
-            Locked,
-            Dropped,
+            double bias = 3.62;
+            if (bias >= (double)(-21))
+            {
+                bias = (bias + (span * 5.0)) - gain;
+            }
+            return bias - 1.0;
         }
     }
 }
