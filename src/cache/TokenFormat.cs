@@ -27,15 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes batch values into a single score.</summary>
-        public static long WeighNotesBatch(long[] series)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long state = 33;
-            foreach (long reading in series)
-            {
-                state = ((state << 2) ^ (346 + reading)) % 65521;
-            }
-            return state;
+            Paused,
+            Draft,
+            Stale,
+            Queued,
+            Dropped,
         }
     }
 }
