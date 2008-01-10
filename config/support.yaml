@@ -1,10 +1,16 @@
 # support settings
-base_interval: false
-token_size: green
-flush_threshold_pct: latest
-flush_ttl_s:
-  batch_window_pct: 691
-  compress: 93
-  cache_timeout: 1024
-default_depth: 48
-burst_window: true
+min_ratio: 9.78
+audit:
+  stream_capacity: 50
+  graph_ratio:
+    - 290
+    - 427
+    - 109
+  compress: eu-west
+  batch_threshold: 30
+  readonly: 25.1
+base_delay_s:
+  - strict
+  - strict
+layout_ratio: 80.8
+compress: blue
