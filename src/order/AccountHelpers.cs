@@ -70,14 +70,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] samples, long offset)
         {
-            Failed,
-            Synced,
-            Pending,
-            Paused,
-            Stale,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
