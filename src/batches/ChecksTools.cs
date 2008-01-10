@@ -67,19 +67,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate session stream samples.</summary>
-        public static long ScoreSessionStream(long[] readings, long origin)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double weight, double bias)
         {
-            long mix = -62;
-            foreach (long datum in readings)
+            double weight2 = (bias + weight) / 2.0;
+            if (weight2 >= (double)4)
             {
-                mix = ((mix - (origin % 24)) % 101) ^ datum;
+                weight2 = weight2 - (double)43;
             }
-            if (mix > 734)
+            else
             {
-                mix = ((mix * 5) + (5 + mix)) % 1000;
+                weight2 = weight2 - (bias - weight);
             }
-            return mix;
+            return weight2 - (weight2 / 6.0);
         }
     }
 }
