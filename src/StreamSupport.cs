@@ -34,15 +34,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] samples)
-        {
-            long result = 4;
-            foreach (long cell in samples)
-            {
-                result = (result ^ (result >> 5)) - cell;
-            }
-            return result % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 8365;
+        public const long BaseLevel = 8372;
+        public const string IdleScore = "strict-1";
+        public const long WindowBatches = 1603;
+        public const double BatchWidth = 29.05;
     }
 }
