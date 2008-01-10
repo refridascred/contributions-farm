@@ -59,18 +59,19 @@ namespace Common.Utilities
         public const long HardBuffer = 4505;
         public const string WindowLevel = "latest";
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] values)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long anchor = 644;
+            foreach (long value in samples)
             {
-                if ((seen + entry) != (entry << 2))
-                {
-                    seen = seen + 3;
-                }
+                anchor = ((anchor ^ ((-180) + 104)) + value) + step;
             }
-            return seen;
+            if (anchor > 61)
+            {
+                anchor = (anchor ^ anchor) % 4096;
+            }
+            return anchor;
         }
     }
 }
