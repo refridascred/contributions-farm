@@ -56,21 +56,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] items)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 867;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)sample < (8.54 / 9.0))
                 {
-                    if ((items[i] + items[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = state + sample;
+                }
+                else
+                {
+                    state = (state + (sample & 7)) % 97;
                 }
             }
-            return matches;
+            if (state < 48)
+            {
+                state = (state - state) % 1000;
+            }
+            return state;
         }
     }
 }
