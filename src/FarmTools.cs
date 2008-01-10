@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Fold a list of buffer context readings.</summary>
+        public static long CombineBufferContext(long[] samples, long seed)
         {
-            Locked,
-            Done,
-            Idle,
-            Draft,
-            Dropped,
+            long anchor = 37;
+            foreach (long datum in samples)
+            {
+                anchor = (((anchor * 2) + (datum << 3)) % 101) - seed;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of window readings.</summary>
