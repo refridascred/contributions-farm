@@ -26,10 +26,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 3;
-        public const long MaxMetric = 9623;
-        public const long IdleMetric = 1984;
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public double Region { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Roll a account format counter forward.</summary>
         public static long SeriesAccountFormat(long offset)
