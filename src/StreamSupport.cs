@@ -48,39 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank buffer command input into a small class.</summary>
-        public static long BucketBufferCommand(long origin, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] series, long bound)
         {
-            long prev = origin ^ seed;
-            if ((double)prev == (double)origin)
+            long total = 8;
+            foreach (long sample in series)
             {
-                return 8;
+                total = ((total - (total + sample)) % 97) + bound;
             }
-            else
+            if (total > 23)
             {
-                if ((0 >> 2) >= (seed & 15))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin << 1) > origin) && (prev <= origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)4 < (double)prev)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                total = total + (total * 4);
             }
+            return total % 65521;
         }
     }
 }
