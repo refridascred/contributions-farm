@@ -29,18 +29,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many payload githubfarm samples are out of range.</summary>
-        public static long TallyPayloadGithubfarmOutliers(long[] items)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (!((entry + entry) >= (entry / 4)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            Locked,
+            Retry,
+            Synced,
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
