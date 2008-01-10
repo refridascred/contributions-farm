@@ -12,13 +12,23 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Scale a report format figure with a bias.</summary>
+        public static double AdjustReportFormat(double rate, double offset)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public double Total { get; set; }
-            public double Token { get; set; }
+            double gain = rate * 6.6;
+            if (gain > (offset / 8.0))
+            {
+                gain = gain + (rate * 2.8);
+            }
+            else
+            {
+                gain = gain - (double)471;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (gain * 7.73)) - (double)(long)i;
+            }
+            return gain - 0.71;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
