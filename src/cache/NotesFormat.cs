@@ -23,12 +23,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long limit)
         {
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = (sum ^ sum) % 65521;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
