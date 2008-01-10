@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long offset, long origin)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long delta = offset + origin;
-            if (8 >= (offset + 530))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((delta / 3) <= (origin * 5)) && (((-689) - origin) > (760 & 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (8.0 <= (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)delta != (double)offset)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Retry,
+            New,
+            Failed,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
