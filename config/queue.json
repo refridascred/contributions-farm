@@ -1,6 +1,19 @@
 {
-  "sync_capacity": 88.95,
-  "commits_capacity": "stable",
-  "support_retries": false,
-  "verbose": 93.69
+  "default_threshold": 65,
+  "notes_retries": [84, 340, 380, 299],
+  "default_capacity_ms": {
+    "dry_run": 45,
+    "sync_timeout_count": [372, 89, 250],
+    "order_window": 26.82,
+    "queue_depth": "local",
+    "base_timeout_s": {
+      "batch_limit": ["standard", "legacy", "stable", "latest"],
+      "sync_ttl_pct": "edge",
+      "enabled": "eu-west",
+      "tools_ratio": ["latest", "stable", "edge", "open"],
+      "order_window": [167, 142, 311, 408],
+      "poll_threshold_s": "eu-west"
+    }
+  },
+  "session_ttl": "standard"
 }
