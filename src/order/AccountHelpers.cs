@@ -83,19 +83,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] series, long target)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Draft,
+            Locked,
+            Idle,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
