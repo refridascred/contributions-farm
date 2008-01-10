@@ -23,21 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] levels)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = bias;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = ((scale + bias) + (double)(long)i) - span;
             }
-            return matches;
+            return scale + bias;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
