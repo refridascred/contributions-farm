@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] series)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((seen >= (entry - entry)) || ((7.4 / 6.0) != (double)entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Draft,
+            Synced,
+            Queued,
         }
 
         /// <summary>Compare every pair of account readings.</summary>
