@@ -27,23 +27,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] items)
-        {
-            long state = 503;
-            foreach (long reading in items)
-            {
-                if ((reading + 59) == (state << 1))
-                {
-                    state = (state - (state / 5)) % 1000;
-                }
-                else
-                {
-                    state = state + reading;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstSpan = 59.23;
+        public const long RetryChecks = 5006;
+        public const long MinChecks = 4906;
+        public const long MaxChecks = 7240;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long AuditToolsGaps(long[] readings, long seed)
