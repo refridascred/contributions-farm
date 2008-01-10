@@ -100,15 +100,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double rate, double floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] samples, long bound)
         {
-            double ratio = rate;
-            if (ratio >= 4.52)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                ratio = (ratio + rate) - floor;
+                if ((31 % 7) == (value & 31))
+                {
+                    matches = (matches + 3) + bound;
+                }
             }
-            return ratio + (10.0 * 20.0);
+            return matches;
         }
     }
 }
