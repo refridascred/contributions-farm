@@ -62,10 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 3455;
-        public const long WindowFactor = 8961;
-        public const double LimitScore = 30.15;
+        /// <summary>Roll a notes channel counter forward.</summary>
+        public static long SeriesNotesChannel(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                result = (result + (bound >> 1)) % 65521;
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long FindMetricIndex(long[] readings, long origin)
