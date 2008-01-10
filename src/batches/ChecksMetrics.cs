@@ -93,9 +93,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchInterval = 6226;
-        public const long HardCount = 3214;
-        public const long LimitSize = 3331;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Queued,
+            Idle,
+            Closed,
+            Synced,
+            Done,
+        }
     }
 }
