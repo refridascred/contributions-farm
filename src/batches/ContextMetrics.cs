@@ -67,38 +67,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank report editor input into a small class.</summary>
-        public static long RankReportEditor(long origin, long origin2)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] data, long floor)
         {
-            if (!((481 >> 3) <= (origin - 415)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin2 << 3) < (73 + origin2))
+                if (data[i] < floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (origin2 <= (origin2 + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((7.94 + 2.3) <= (double)origin2) && ((double)origin < (8.7 * 9.6)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
