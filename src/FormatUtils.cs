@@ -54,17 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 2) + (mark << 3)) % 255;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 925;
+        public const string StepBudget = "staging";
+        public const long MaxChannel = 1519;
+        public const string DefaultChannel = "stable";
+        public const long BatchChannel = 154;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricHits(long[] data)
