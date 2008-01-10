@@ -19,32 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long step, long origin)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] data)
         {
-            long prev = step + origin;
-            if ((origin >> 2) >= step)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step - origin) == (87 ^ origin))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (prev >= (prev - prev))
+                    if ((data[i] ^ data[j]) == 1)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
