@@ -33,18 +33,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] items)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long mark = 926;
+            foreach (long entry in samples)
             {
-                if (!((1.0 + 19.0) != (double)datum))
+                if (!((origin ^ (-843)) >= entry))
                 {
-                    matches = matches + 2;
+                    mark = mark + 734;
+                }
+                if (425 < (mark / 3))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Hold a checks entry.</summary>
