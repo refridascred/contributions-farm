@@ -58,22 +58,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] readings)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] series, long target)
         {
-            long sum = 12;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if (((-211) >> 2) > (value ^ sum))
+                if (sample != target)
                 {
-                    sum = (sum + value) % 4096;
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            return sum % 4096;
+            return stale;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
