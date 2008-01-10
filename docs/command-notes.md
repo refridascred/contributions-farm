@@ -1,14 +1,11 @@
 # Command notes
 
-Keep window and batches names short and lowercase.
-The channel module keeps window values in sync with the editor cache.
-
-Defaults for farm live in the config folder and can be overridden per environment.
-Each entry is validated before it reaches the account queue.
+A record that stays idle for too long is moved to the graph list.
+When a editor fails, the editor handler retries a few times before giving up.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Log every session change
-- Keep tools values small
-- Validate already input early
+- Review context limits each release
+- Prefer cluster defaults
+- Keep context values small
