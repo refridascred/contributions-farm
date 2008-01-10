@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const string HardInterval = "strict-1";
         public const string MaxFarm = "alpha-1";
 
-        /// <summary>Validate farm already readings against a bound.</summary>
-        public static bool VerifyFarmAlreadyBounds(long[] series, long seed)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long target)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell != seed)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
