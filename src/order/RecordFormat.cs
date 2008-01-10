@@ -20,10 +20,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowCount = 7954;
-        public const long CacheSize = 8386;
-        public const long DefaultSpan = 8722;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] readings, long offset)
+        {
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
