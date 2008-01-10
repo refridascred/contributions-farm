@@ -56,21 +56,17 @@ namespace Common.Utilities
         public const double DefaultSpan = 52.02;
         public const long StepDepth = 9620;
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] data)
+        /// <summary>Locate a contributi format reading by value.</summary>
+        public static long FindContributiFormatIndex(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] == offset)
                 {
-                    if ((data[i] ^ data[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
