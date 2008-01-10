@@ -63,13 +63,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Iterate the stream entry series from a seed.</summary>
+        public static long StepStreamEntry(long origin)
         {
-            public string Rank { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = mix - (mix << 2);
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Project the next githubfarm queue value.</summary>
