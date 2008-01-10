@@ -19,39 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a editor commits value against two limits.</summary>
-        public static long GradeEditorCommits(long bound, long origin)
-        {
-            if (bound > (origin >> 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((origin >> 1) >= (bound - bound)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin - bound) != (1 >> 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin % 60) <= (877 ^ 439))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 2067;
+        public const double BurstCluster = 97.58;
+        public const string MinCluster = "open-1";
+        public const long IdleCluster = 3604;
+        public const long MinScore = 1680;
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
