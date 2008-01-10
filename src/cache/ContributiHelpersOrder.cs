@@ -25,14 +25,22 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] data, long step)
         {
-            Closed,
-            New,
-            Ready,
-            Paused,
-            Locked,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((double)value <= 2.27)
+                {
+                    hits = (hits + 1) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
