@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] series)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] values, long bound)
         {
-            long acc = 918;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long item in values)
             {
-                acc = (((acc * 4) + acc) % 65521) + datum;
+                if ((item * 2) >= (matches - item))
+                {
+                    matches = (matches + 3) + bound;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the commits phase values.</summary>
