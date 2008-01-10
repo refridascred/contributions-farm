@@ -47,25 +47,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long target)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long target, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
+            long gap = target ^ bound;
+            if (gap <= (bound - bound))
             {
-                if (!(((target ^ 25) >= target) && ((2 % 3) >= result)))
-                {
-                    result = result + (target + target);
-                }
-                if (target <= (long)i)
-                {
-                    result = ((result * 4) + result) % 101;
-                    result = (result << 2) ^ result;
-                    continue;
-                }
-                result = ((result * 4) + (long)i) % 97;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((550 & 31) >= (bound + 443))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (gap < bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
