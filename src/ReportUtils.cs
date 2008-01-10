@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long step)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = mix ^ (mix << 1);
-                mix = mix ^ (mix + step);
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            Idle,
+            Draft,
+            Ready,
+            New,
         }
 
         /// <summary>Adjust a batches reading.</summary>
