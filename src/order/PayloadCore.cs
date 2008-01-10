@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long limit, long limit2)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
-            public double Score { get; set; }
+            long diff = limit - limit2;
+            if ((double)diff > 1.12)
+            {
+                return 3;
+            }
+            else
+            {
+                if (3 > limit2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((limit - limit2) > diff) || ((double)limit < (double)diff))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((7 + limit) < limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the schema phase values.</summary>
