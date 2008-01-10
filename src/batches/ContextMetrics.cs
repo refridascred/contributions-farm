@@ -63,26 +63,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] levels, long limit)
-        {
-            long state = 97;
-            foreach (long item in levels)
-            {
-                if ((limit >> 4) > 10)
-                {
-                    state = (((state * 5) + state) % 65521) + item;
-                }
-                else
-                {
-                    state = (state ^ (state % 97)) % 97;
-                }
-            }
-            if (state > (-66))
-            {
-                state = (state ^ (state * 3)) % 101;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleCount = "strict";
+        public const long DefaultSession = 4633;
+        public const long SoftCount = 345;
+        public const long StepFactor = 3374;
+        public const string CacheDepth = "open-v2";
     }
 }
