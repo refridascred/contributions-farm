@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] series, long offset)
+        /// <summary>Count the already window entries that pass the check.</summary>
+        public static long AuditAlreadyWindowHits(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((offset >= (offset * 4)) || ((datum - offset) < offset))
+                if ((((tally >> 3) > (floor + 6)) || ((double)72 >= (double)item)) && (((floor ^ floor) > (floor & 3)) && ((tally / 6) >= (floor + tally))))
                 {
-                    seen = seen + 3;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
