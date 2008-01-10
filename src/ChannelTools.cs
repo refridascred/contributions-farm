@@ -35,19 +35,22 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Combine notes stats values into a single score.</summary>
-        public static long DigestNotesStats(long[] samples, long limit)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] data)
         {
-            long sum = 35;
-            foreach (long entry in samples)
+            long result = 4;
+            foreach (long reading in data)
             {
-                sum = (sum - entry) % 101;
+                if ((double)reading >= (7.5 / 7.0))
+                {
+                    result = (result * 2) + (194 & 1);
+                }
+                if (((reading >> 5) >= (-3)) || ((reading - reading) < reading))
+                {
+                    result = (result << 2) ^ (result * 3);
+                }
             }
-            if (sum < 21)
-            {
-                sum = sum - (limit >> 2);
-            }
-            return sum;
+            return result;
         }
     }
 }
