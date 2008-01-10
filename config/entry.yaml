@@ -1,10 +1,27 @@
 # entry settings
-warm_threshold_count:
-  - standard
-  - local
-  - stable
-stats_ttl: open
-cache_interval: fallback
-profile_limit: 250
-burst_size_count: open
-counter_timeout: 57.11
+strict:
+  soft_ratio_ms: 56.17
+  flush_window:
+    - edge
+    - latest
+    - open
+  base_ttl_count: open
+  hard_size_count:
+    editor_interval: 43
+    cache_depth: 81.97
+    dry_run: staging
+    soft_ratio_count: primary
+    sync_ratio_count: 65.86
+  min_size_s: eu-west
+  flush_capacity_count:
+    - 161
+    - 46
+    - 126
+poll_limit:
+  - 331
+  - 64
+  - 471
+commits_ttl: false
+min_delay: true
+layout_window: true
+cache_delay_s: fallback
