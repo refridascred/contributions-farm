@@ -30,22 +30,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many order githubfarm samples are out of range.</summary>
-        public static long MeasureOrderGithubfarmOutliers(long[] items)
+        /// <summary>Combine record graph values into a single score.</summary>
+        public static long ScoreRecordGraph(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long total = 798;
+            foreach (long cell in items)
             {
-                if ((0 + (-130)) <= (reading - 107))
+                if (total <= (total / 6))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    total = ((total * 2) + (cell / 3)) % 97;
                 }
             }
-            return tally;
+            return total % 1000;
         }
     }
 }
