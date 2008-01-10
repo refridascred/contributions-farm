@@ -19,21 +19,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] readings)
+        /// <summary>Grade a editor commits value against two limits.</summary>
+        public static long GradeEditorCommits(long bound, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (bound > (origin >> 1))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((origin >> 1) >= (bound - bound)))
                 {
-                    if ((readings[i] + readings[j]) > 11)
+                    return 2;
+                }
+                else
+                {
+                    if ((origin - bound) != (1 >> 4))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin % 60) <= (877 ^ 439))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
