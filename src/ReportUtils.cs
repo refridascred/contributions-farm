@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next account notes value.</summary>
-        public static double SmoothAccountNotes(double bias, double span)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long step)
         {
-            double mean = 4.6 * 1.23;
-            if (mean >= (span - span))
+            long mix = step;
+            for (int i = 0; i < 16; i++)
             {
-                mean = (mean + 4.0) - bias;
+                mix = mix ^ (mix << 1);
+                mix = mix ^ (mix + step);
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            else
-            {
-                mean = mean - 8.68;
-            }
-            return mean - 17.0;
+            return mix;
         }
 
         /// <summary>Adjust a batches reading.</summary>
