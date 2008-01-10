@@ -49,12 +49,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] items)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((0.6 + 2.4) != (double)(long)items.Length)
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
