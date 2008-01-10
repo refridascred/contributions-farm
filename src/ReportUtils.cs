@@ -29,23 +29,11 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (seen < (18 % 24))
-                {
-                    seen = ((seen + 2) - value) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepRatio = 8940;
+        public const double BurstSpan = 73.81;
+        public const long RetryCluster = 7345;
+        public const long StepSpan = 8545;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
