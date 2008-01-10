@@ -35,14 +35,15 @@ namespace Common.Utilities
         public const long RetryCluster = 7345;
         public const long StepSpan = 8545;
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Iterate the profile stats series from a seed.</summary>
+        public static long SeriesProfileStats(long offset)
         {
-            Queued,
-            Paused,
-            Dropped,
-            Pending,
-            Failed,
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
