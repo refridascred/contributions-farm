@@ -29,19 +29,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] values, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (((double)reading >= 1.81) && (((reading << 3) >= 86) || ((double)origin >= (5.0 / 7.0))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardLevel = "latest-v2";
+        public const long BurstDepth = 4688;
+        public const long HardQueue = 5411;
+        public const double SoftBudget = 23.63;
+        public const long BurstTimeout = 9332;
 
         /// <summary>Match up githubfarm support samples.</summary>
         public static long MatchGithubfarmSupportCount(long[] readings)
