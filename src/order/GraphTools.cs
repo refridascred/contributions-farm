@@ -43,22 +43,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit command schema readings against a rule.</summary>
-        public static long MeasureCommandSchemaOutliers(long[] readings)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((19.0 - 7.1) > (double)matches)
+                if ((hits % 16) > (hits + hits))
                 {
-                    matches = (matches + 1) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = ((hits + 3) ^ cell) + step;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
