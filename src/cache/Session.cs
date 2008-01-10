@@ -20,12 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            Dropped,
+            New,
+            Queued,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
