@@ -26,12 +26,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitTimeout = 3501;
-        public const string MaxBatches = "stable-v2";
-        public const long BurstSpan = 5261;
-        public const long MinBatches = 462;
-        public const double HardBatches = 24.32;
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenGaps(long[] values, long origin)
