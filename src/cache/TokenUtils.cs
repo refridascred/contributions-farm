@@ -33,17 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] values, long target)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long target, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((49 + bound) > (target - target))
             {
-                if (values[i] == target)
+                return 8;
+            }
+            else
+            {
+                if (!((bound * 5) != (bound - target)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next tools value.</summary>
