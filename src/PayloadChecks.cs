@@ -64,10 +64,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseFormat = 37.94;
-        public const long BurstSpan = 1922;
-        public const long BatchFormat = 5871;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryWindow = "alpha-edge";
+        public const long RetryFactor = 5728;
+        public const long CacheWindow = 6351;
 
         /// <summary>Locate a metric stats reading by value.</summary>
         public static long LocateMetricStatsIndex(long[] samples, long limit)
