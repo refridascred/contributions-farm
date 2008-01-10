@@ -1,6 +1,5 @@
 {
-  "max_size_count": 719,
-  "poll_ratio_count": ["eu-west", "standard"],
-  "idle_timeout": 3797,
-  "audit": 8584
+  "enabled": "standard",
+  "flush_size_s": 9819,
+  "readonly": [252, 47, 435, 171]
 }
