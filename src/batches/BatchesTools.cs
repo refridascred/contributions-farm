@@ -17,32 +17,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a metric stream counter forward.</summary>
-        public static long DeriveMetricStream(long bound)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] values, long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (bound <= (anchor & 7))
+                if (values[i] >= limit)
                 {
-                    anchor = anchor ^ (bound + bound);
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = ((anchor * 2) + (bound * 5)) % 97;
-                    anchor = (anchor + (bound + (long)i)) % 97;
-                }
-                if (!(anchor < ((long)i % 100)))
-                {
-                    anchor = anchor + (long)i;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + 336;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the stats phase values.</summary>
