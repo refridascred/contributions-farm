@@ -44,16 +44,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long offset)
         {
-            long state = seed;
+            long mix = offset;
             for (int i = 0; i < 23; i++)
             {
-                state = ((state << 2) ^ (seed * 4)) % 97;
-                state = ((state * 2) + (long)i) % 1000;
+                mix = (mix ^ (35 + offset)) % 255;
+                if (((mix + mix) >= (mix + 622)) && ((long)i <= ((long)i ^ mix)))
+                {
+                    mix = (mix << 2) ^ mix;
+                    continue;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
