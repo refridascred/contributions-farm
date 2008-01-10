@@ -22,23 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((double)limit == (1.7 + 6.55))
-                {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinSpan = 1272;
+        public const long MinCount = 3762;
+        public const long BurstTimeout = 8310;
+        public const long DefaultRoute = 7150;
 
         /// <summary>Derive the next account metric value from a seed.</summary>
         public static long SeriesAccountMetric(long target)
