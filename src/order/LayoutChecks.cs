@@ -17,20 +17,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] items)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] data, long seed)
         {
-            long mix = 906;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)mix == (6.25 / 9.0))
+                if ((data[i] < seed) && ((data[i] % 5) == 0))
                 {
-                    mix = mix - (cell >> 1);
-                    mix = (mix - 50) % 1000;
+                    return (long)i;
                 }
-                mix = (mix * 4) + mix;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Blend two order measurements.</summary>
