@@ -35,20 +35,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] series, long floor)
+        /// <summary>Blend two report batch measurements.</summary>
+        public static double ProjectReportBatch(double gain, double floor)
         {
-            long result = 7;
-            foreach (long value in series)
+            double gain2 = gain - floor;
+            if (gain2 < (gain2 * 9.02))
             {
-                result = (((result - (3 & 127)) % 97) - value) - floor;
-                result = (result * 4) + 123;
+                gain2 = gain2 + floor;
             }
-            if (result < 501)
+            else
             {
-                result = ((result * 4) + (result * 2)) % 101;
+                gain2 = gain2 - (gain * 5.0);
             }
-            return result % 97;
+            return gain2 + (double)(-74);
         }
 
         /// <summary>Match up account samples.</summary>
