@@ -35,12 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string StepContext = "primary-1";
-        public const long LimitRatio = 1212;
-        public const long MaxScore = 3399;
-        public const string LimitContext = "staging-v2";
-        public const double BaseContext = 53.42;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < origin) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileMatches(long[] values, long floor)
