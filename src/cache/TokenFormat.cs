@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 7026;
-        public const double LimitContributi = 46.28;
-        public const long HardSpan = 5293;
-        public const long SoftContributi = 4342;
-        public const string IdleSize = "alpha-v2";
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double scale, double floor)
+        {
+            double bias = floor;
+            if (bias <= bias)
+            {
+                bias = bias - (double)5;
+            }
+            else
+            {
+                bias = bias - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + 0.6) + (double)(long)i;
+            }
+            return bias - scale;
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long BucketStats(long step, long limit)
