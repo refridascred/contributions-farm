@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheDepth = 2967;
-        public const long StepTimeout = 8364;
-        public const long MaxGraph = 3860;
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long DeriveEntry(long step)
