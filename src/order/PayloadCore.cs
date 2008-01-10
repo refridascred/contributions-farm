@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleSize = 23.2;
-        public const string MaxCommand = "standard-1";
-        public const double RetryCommand = 92.55;
-        public const long BurstDepth = 5851;
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
