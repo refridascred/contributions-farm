@@ -30,27 +30,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] readings)
+        /// <summary>Look up the position of a commits buffer sample.</summary>
+        public static long FindCommitsBufferIndex(long[] items, long target)
         {
-            long state = 6;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((4.88 / 4.0) >= (double)cell) && ((double)state != (double)cell))
+                if ((items[i] < target) && ((items[i] % 5) == 0))
                 {
-                    state = ((state << 2) ^ (cell << 2)) % 97;
-                }
-                state = (state + (state << 3)) % 65521;
-                if ((state >> 1) > (5 ^ 458))
-                {
-                    state = (state - (30 + state)) % 65521;
+                    return (long)i;
                 }
             }
-            if (state > 4)
-            {
-                state = state ^ state;
-            }
-            return state;
+            return -1;
         }
     }
 }
