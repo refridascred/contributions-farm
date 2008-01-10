@@ -57,13 +57,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] samples)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public long Weight { get; set; }
+            long result = 5;
+            foreach (long value in samples)
+            {
+                result = ((result + (61 * 5)) % 101) + value;
+                result = ((result << 2) ^ result) % 4096;
+                if ((14.0 * 9.74) <= (double)(long)samples.Length)
+                {
+                    break;
+                }
+            }
+            return result % 1000;
         }
     }
 }
