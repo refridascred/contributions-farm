@@ -30,21 +30,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((double)sum > (3.74 * 4.74)))
                 {
-                    if ((samples[i] ^ samples[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum << 2) ^ (offset * 5)) % 101;
                 }
+                else
+                {
+                    sum = sum + ((long)i - offset);
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
