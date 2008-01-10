@@ -1,5 +1,7 @@
 {
-  "farm_size": 43,
-  "warm_capacity_ms": "blue",
-  "default_window": "open"
+  "warm_ratio": 7441,
+  "sync_ttl": true,
+  "warm_ttl_count": false,
+  "idle_limit_s": false,
+  "persist": 45.1
 }
