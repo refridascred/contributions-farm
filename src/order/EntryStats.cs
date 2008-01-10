@@ -56,15 +56,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] data, long floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] levels)
         {
-            long carry = 3;
-            foreach (long reading in data)
+            long result = 28;
+            foreach (long value in levels)
             {
-                carry = (((carry << 2) ^ floor) % 101) ^ reading;
+                result = (result ^ 4) ^ value;
             }
-            return carry;
+            return result;
         }
     }
 }
