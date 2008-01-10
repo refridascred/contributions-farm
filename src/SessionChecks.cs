@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 4925;
-        public const long HardFactor = 8802;
-        public const long LimitTimeout = 3378;
-        public const long StepCounter = 8088;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Stale,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long IdleEditor = 412;
