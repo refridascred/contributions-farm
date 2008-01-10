@@ -31,15 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next stats metric value.</summary>
-        public static double ProjectStatsMetric(double gain, double span)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            double bias = 3.62;
-            if (bias >= (double)(-21))
-            {
-                bias = (bias + (span * 5.0)) - gain;
-            }
-            return bias - 1.0;
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
         }
     }
 }
