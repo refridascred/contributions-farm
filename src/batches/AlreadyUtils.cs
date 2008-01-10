@@ -79,16 +79,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the payload format series from a seed.</summary>
-        public static long RollPayloadFormat(long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] values)
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                acc = (acc ^ (acc * 5)) % 4096;
-                acc = ((acc * 2) + (long)i) % 97;
+                if ((seen + entry) != (entry << 2))
+                {
+                    seen = seen + 3;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
