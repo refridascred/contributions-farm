@@ -28,21 +28,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long offset)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((-9) & 15) < ((long)i * 3))
-                {
-                    mark = mark - offset;
-                    mark = (mark + 60) % 4096;
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            Locked,
+            New,
+            Dropped,
+            Stale,
+            Idle,
         }
     }
 }
