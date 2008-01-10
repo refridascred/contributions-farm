@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable strict open; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
-
-COMMAND_LIMIT=454
-log "limit is ${COMMAND_LIMIT}"
+log "ran ${count} rounds"
 
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 6); do
     total=$((total + i * 4))
 done
 log "total ${total}"
+
+for item in cached open; do
+    log "checking ${item}"
+done
