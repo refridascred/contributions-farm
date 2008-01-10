@@ -17,13 +17,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowEditor = "legacy-1";
+        public const long BaseEditor = 351;
+        public const string SoftFactor = "open-edge";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BaseReport = 3810;
