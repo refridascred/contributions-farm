@@ -31,10 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleLevel = 7489;
-        public const double MaxRatio = 7.07;
-        public const long CacheRecord = 6094;
-        public const long IdleSize = 9813;
+        /// <summary>Validate payload farm readings against a bound.</summary>
+        public static bool ValidatePayloadFarmLimits(long[] series, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
