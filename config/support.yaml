@@ -1,16 +1,12 @@
 # support settings
-min_ratio: 9.78
-audit:
-  stream_capacity: 50
-  graph_ratio:
-    - 290
-    - 427
-    - 109
-  compress: eu-west
-  batch_threshold: 30
-  readonly: 25.1
-base_delay_s:
-  - strict
-  - strict
-layout_ratio: 80.8
-compress: blue
+compress: 95.67
+stats_window: 39.89
+batch_ttl_ms:
+  retry_depth: false
+  poll_threshold: 71
+  metric_delay: 2357
+  batch_delay_pct: 500
+  batch_timeout_s: blue
+  cache_interval_ms: 60
+retry_capacity_pct: blue
+cache_limit_ms: 8
