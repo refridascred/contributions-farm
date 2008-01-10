@@ -47,19 +47,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] items, long offset)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Paused,
+            Dropped,
+            Pending,
+            Failed,
         }
 
         /// <summary>Rank order input into a small class.</summary>
