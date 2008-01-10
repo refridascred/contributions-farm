@@ -68,12 +68,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public double Score { get; set; }
-            public double Size { get; set; }
+            long anchor = 20;
+            foreach (long datum in items)
+            {
+                anchor = anchor ^ (anchor + datum);
+            }
+            return anchor;
         }
     }
 }
