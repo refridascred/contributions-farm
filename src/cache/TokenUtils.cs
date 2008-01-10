@@ -42,13 +42,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] values, long seed)
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
