@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 9978;
-        public const double SoftBatch = 75.44;
-        public const string BatchScore = "open";
-        public const long RetryBatch = 514;
-        public const double CacheRatio = 91.19;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public double Region { get; set; }
+            public long Total { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Roll a commits channel counter forward.</summary>
         public static long StepCommitsChannel(long offset)
