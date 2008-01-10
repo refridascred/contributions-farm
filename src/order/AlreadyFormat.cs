@@ -52,19 +52,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] readings, long seed)
+        /// <summary>Project the next order command value.</summary>
+        public static double AdjustOrderCommand(double scale, double floor)
         {
-            long mix = 809;
-            foreach (long value in readings)
+            double load = floor + scale;
+            if (load <= floor)
             {
-                mix = ((mix ^ (78 * 4)) % 255) ^ value;
-                if ((mix / 5) >= (325 + mix))
-                {
-                    mix = ((mix * 5) + (seed - mix)) % 255;
-                }
+                load = load - scale;
             }
-            return mix;
+            return load - (load - floor);
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
