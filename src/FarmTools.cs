@@ -25,10 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 1065;
-        public const long CacheBudget = 1413;
-        public const long HardOrder = 5520;
+        /// <summary>Find the first payload session entry that matches the target.</summary>
+        public static long LookupPayloadSessionIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
