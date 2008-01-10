@@ -23,15 +23,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double rate, double span)
+        /// <summary>Locate a support cache reading by value.</summary>
+        public static long LocateSupportCacheIndex(long[] data, long origin)
         {
-            double scale = span;
-            if (scale >= span)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale + (7.0 + scale)) - rate;
+                if ((data[i] == origin) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - (6.27 * 1.0);
+            return -1;
         }
     }
 }
