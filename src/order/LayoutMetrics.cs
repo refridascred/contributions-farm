@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] series)
+        /// <summary>Measure how many commits entry samples are out of range.</summary>
+        public static long TallyCommitsEntryMatches(long[] readings)
         {
-            long carry = 225;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (60 <= (datum >> 1))
+                if (value <= (value + value))
                 {
-                    carry = ((carry << 2) ^ (carry + datum)) % 255;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ (datum * 4)) % 97;
+                    matches = matches - 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a context header.</summary>
