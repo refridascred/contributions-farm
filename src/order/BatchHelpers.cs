@@ -33,10 +33,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitRatio = 69.09;
-        public const long CacheCount = 4177;
-        public const long RetryCommand = 7507;
-        public const long BatchFactor = 3314;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (!((value & 127) >= 299))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
