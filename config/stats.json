@@ -1,5 +1,13 @@
 {
-  "max_delay_ms": 27.84,
-  "min_threshold_count": "local",
-  "max_capacity_ms": [396, 152, 455]
+  "hard_capacity_ms": true,
+  "hard_ratio_count": [366, 134, 7, 90],
+  "base_ttl_s": "strict",
+  "compress": {
+    "already_delay": false,
+    "flush_delay": 7873,
+    "poll_retries_s": 250,
+    "editor_depth": 11.26
+  },
+  "strict": false,
+  "sync_depth_ms": 87
 }
