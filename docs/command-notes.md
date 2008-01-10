@@ -1,14 +1,10 @@
 # Command notes
 
-Keep filter and cluster names short and lowercase.
-Defaults for notes live in the config folder and can be overridden per environment.
-
-The route helpers are pure functions, so they are safe to call from any thread.
-Run the profile check before changing any stream limits.
-A report that stays idle for too long is moved to the layout list.
+A cluster that stays idle for too long is moved to the context list.
+When a format fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every checks change
-- Review token limits each release
-- Validate account input early
+- Validate command input early
+- Log every githubfarm change
+- Keep stats values small
