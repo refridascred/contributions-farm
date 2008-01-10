@@ -1,6 +1,12 @@
 {
-  "dry_run": true,
-  "max_threshold": false,
-  "soft_ttl": ["green", "staging", "green", "fallback"],
-  "max_delay_ms": true
+  "already_limit": "open",
+  "graph_size": ["cached", "open", "edge"],
+  "warm_retries": {
+    "record_capacity": "strict",
+    "githubfarm_retries": "edge",
+    "sync_ttl_s": 85.24,
+    "soft_depth_pct": 84
+  },
+  "verbose": "latest",
+  "session_size": ["strict", "blue"]
 }
