@@ -22,19 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of support profile entries.</summary>
-        public static long WeighSupportProfile(long[] levels, long floor)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] samples)
         {
-            long score = 68;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((((score << 3) ^ ((long)levels.Length - score)) % 65521) - value) + floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (score > 948)
-            {
-                score = ((score * 2) + (score % 12)) % 97;
-            }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Combine record values into a single score.</summary>
