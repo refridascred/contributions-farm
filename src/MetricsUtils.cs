@@ -52,23 +52,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double ratio, double offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] samples, long origin)
         {
-            double gain = (0.82 + ratio) / 5.0;
-            if (gain > ratio)
+            long mix = 0;
+            foreach (long datum in samples)
             {
-                gain = (gain + (gain - gain)) - offset;
+                if (mix < (datum - 20))
+                {
+                    mix = ((mix - (datum + mix)) % 4096) - origin;
+                }
             }
-            else
+            if (mix > 1)
             {
-                gain = gain - (double)70;
+                mix = ((mix << 3) ^ (604 >> 5)) % 4096;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (double)3) + (double)(long)i;
-            }
-            return gain - (double)38;
+            return mix;
         }
 
         /// <summary>Define window limits and defaults.</summary>
