@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] values)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((item * 3) >= item)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of token entries.</summary>
