@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of channel session entries.</summary>
-        public static long WeighChannelSession(long[] readings, long seed)
+        /// <summary>Validate batch format readings against a bound.</summary>
+        public static bool CheckBatchFormatBounds(long[] values, long origin)
         {
-            long acc = 444;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (!((double)seed <= (6.15 / 7.0)))
+                if (datum >= origin)
                 {
-                    acc = (acc + (acc - 30)) - entry;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc > 6)
-            {
-                acc = acc + (acc + acc);
-            }
-            return acc % 1000;
+            return ok;
         }
 
         /// <summary>Measure how many route editor samples are out of range.</summary>
