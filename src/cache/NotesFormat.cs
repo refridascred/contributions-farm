@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long BatchBudget = 9817;
         public const double CacheEditor = 35.75;
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Ready,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
