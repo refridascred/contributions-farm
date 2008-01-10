@@ -1,6 +1,49 @@
 # support settings
-filter_interval: 15.09
-commits_depth: 857
-poll_timeout: 1024
-poll_ttl_count: false
-hard_limit: 7790
+audit:
+  metric_window: true
+  batch_limit: staging
+  hard_capacity:
+    hard_ttl_ms: true
+    default_window_pct: true
+    burst_threshold_ms: 26.43
+    cache_limit_ms: stable
+    route_capacity: 94
+    retry_timeout_count: standard
+  idle_interval_ms: true
+  flush_depth_count:
+    readonly: 7439
+    dry_run: 1024
+    default_ttl_ms:
+      - 131
+      - 238
+  hard_threshold_ms:
+    flush_threshold_count:
+      - 183
+      - 407
+    burst_ratio_count: false
+    poll_retries:
+      - 492
+      - 457
+      - 220
+      - 322
+    idle_depth_ms: 3590
+    audit:
+      - primary
+      - stable
+    poll_capacity: 32.59
+poll_retries:
+  sync_delay:
+    - fallback
+    - primary
+    - latest
+  githubfarm_retries: 28
+  context_ratio: standard
+  hard_limit_count:
+    - local
+    - cached
+idle_threshold_pct: 8343
+max_retries_pct:
+  - blue
+  - cached
+  - primary
+  - fallback
