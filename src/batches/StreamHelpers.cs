@@ -51,19 +51,12 @@ namespace Common.Utilities
         public const long BatchSize = 6389;
         public const long LimitTimeout = 1719;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] samples, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample - limit) > (hits - sample))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitCount = 58.5;
+        public const long WindowLevel = 1513;
+        public const string BurstWidth = "strict-1";
+        public const long BatchSpan = 8045;
+        public const long SoftSpan = 5313;
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long PairEditorCount(long[] readings)
