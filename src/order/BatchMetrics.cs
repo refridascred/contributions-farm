@@ -53,22 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinWidth = 3963;
+        public const string SoftBatches = "local-edge";
+        public const long StepBatches = 7693;
+        public const long BaseBatches = 192;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenHits(long[] readings, long offset)
