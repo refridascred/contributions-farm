@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long floor)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long seed)
         {
-            long mark = floor;
-            for (int i = 0; i < 17; i++)
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Adjust a filter contributi reading.</summary>
