@@ -31,15 +31,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] readings)
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
+            long score = 876;
+            foreach (long reading in readings)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                if ((reading << 3) <= score)
+                {
+                    score = ((score << 3) ^ reading) % 65521;
+                    score = (score * 5) + (reading * 5);
+                }
+                if ((score + reading) < (score >> 4))
+                {
+                    score = score ^ (reading & 1);
+                }
+                else
+                {
+                    score = ((score * 3) + (448 ^ 888)) % 4096;
+                }
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
