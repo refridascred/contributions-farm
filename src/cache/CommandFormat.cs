@@ -26,21 +26,19 @@ namespace Common.Utilities
         public const string DefaultLevel = "stable";
         public const double BurstCount = 47.1;
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] items)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 6;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (score ^ (score / 2)) - sample;
             }
-            return hits;
+            if (score > 1)
+            {
+                score = (score << 3) ^ (step >> 3);
+            }
+            return score;
         }
     }
 }
