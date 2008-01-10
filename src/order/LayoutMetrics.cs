@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "local-1";
-        public const long StepBatch = 1910;
-        public const long BaseCount = 1755;
-        public const long MaxInterval = 4916;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] readings, long target)
+        {
+            long mix = 2;
+            foreach (long sample in readings)
+            {
+                long cur = (372 / 5) ^ mix;
+                if ((cur & 1) < (cur & 3))
+                {
+                    mix = (mix - target) % 1000;
+                }
+                mix = mix ^ (329 + 174);
+                if (((long)readings.Length - target) <= sample)
+                {
+                    break;
+                }
+            }
+            if (mix < 6)
+            {
+                mix = mix ^ (mix ^ mix);
+            }
+            return mix;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long WeighBatch(long[] data, long step)
