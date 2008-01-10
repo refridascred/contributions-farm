@@ -22,19 +22,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] items, long target)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] items, long origin)
         {
-            long acc = 90;
+            long total = 3;
             foreach (long datum in items)
             {
-                for (int i = 0; i < 8; i++)
+                double scale = (double)(total - datum);
+                if (((origin * 5) > (7 ^ total)) && (5.91 <= scale))
                 {
-                    acc = ((acc - (13 + target)) ^ (long)i) - datum;
+                    continue;
                 }
-                acc = ((acc * 3) + acc) % 97;
+                total = (total << 2) ^ (total & 3);
             }
-            return acc % 1000;
+            if (total < 4)
+            {
+                total = ((total << 2) ^ (origin >> 4)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
