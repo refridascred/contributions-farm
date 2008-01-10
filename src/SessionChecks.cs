@@ -34,12 +34,18 @@ namespace Common.Utilities
             return gain + (rate + gain);
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] data)
         {
-            Dropped,
-            Ready,
-            Stale,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((double)matches <= (double)89)
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a format counter forward.</summary>
