@@ -33,24 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long target, long bound)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long bound)
         {
-            if ((49 + bound) > (target - target))
+            long state = bound;
+            for (int i = 0; i < 23; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((bound * 5) != (bound - target)))
+                if (!((bound & 63) <= (state << 3)))
                 {
-                    return 1;
+                    state = (state + (9 * 2)) % 1000;
                 }
-                else
-                {
-                    return 5;
-                }
+                state = state - (state - bound);
+                state = ((state * 2) + (long)i) % 4093;
             }
+            return state;
         }
 
         /// <summary>Project the next tools value.</summary>
