@@ -42,23 +42,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double rate, double span)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            double drift = span;
-            if (drift < (rate / 9.0))
-            {
-                drift = drift + (rate + span);
-            }
-            else
-            {
-                drift = drift - (span / 2.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + rate) + (double)(long)i;
-            }
-            return drift + 6.99;
+            public bool Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Roll a window command counter forward.</summary>
