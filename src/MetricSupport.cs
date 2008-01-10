@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long HardNotes = 3122;
         public const long LimitLevel = 2610;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 6594;
-        public const long LimitSize = 7074;
-        public const string DefaultSize = "staging-1";
-        public const long IdleOrder = 8343;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Draft,
+            Stale,
+            Paused,
+            Done,
+        }
 
         /// <summary>Blend two already measurements.</summary>
         public static double SmoothAlready(double scale, double bias)
