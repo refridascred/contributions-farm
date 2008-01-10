@@ -25,28 +25,17 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] series, long bound)
+        /// <summary>Find the first profile entry entry that matches the target.</summary>
+        public static long LookupProfileEntryIndex(long[] data, long target)
         {
-            long total = 635;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((sample / 7) < sample) || (total < (sample + sample)))
+                if ((data[i] >= target) && ((data[i] % 5) != 0))
                 {
-                    long diff = (bound + bound) ^ (total + bound);
-                    total = (total ^ diff) % 255;
-                }
-                total = (total << 2) ^ (total << 3);
-                if (sample >= (sample % 12))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total > 347)
-            {
-                total = ((total << 3) ^ (bound + total)) % 1000;
-            }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Locate a contributi format reading by value.</summary>
