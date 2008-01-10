@@ -39,10 +39,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitFactor = 8970;
-        public const string MaxQueue = "primary-edge";
-        public const string LimitScore = "primary-1";
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] samples, long target)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool GuardOrderRange(long[] items, long bound)
