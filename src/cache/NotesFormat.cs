@@ -19,23 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double scale, double bias)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            double gain = 5.58;
-            if (gain <= (double)569)
-            {
-                gain = (gain + 7.5) - scale;
-            }
-            else
-            {
-                gain = gain - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain - (3.2 / 9.0);
+            New,
+            Locked,
+            Ready,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
