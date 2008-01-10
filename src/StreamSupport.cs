@@ -20,17 +20,11 @@ namespace Common.Utilities
             return scale - (double)406;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                state = (state - (long)i) % 97;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstCommits = 33.59;
+        public const long BurstLevel = 305;
+        public const string SoftScore = "fallback-edge";
+        public const double BaseTimeout = 14.3;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MaxBatches = 8365;
