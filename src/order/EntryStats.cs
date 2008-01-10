@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long BaseWidth = 5183;
         public const long SoftStats = 4933;
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a channel reading.</summary>
