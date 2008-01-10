@@ -19,18 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route editor samples are out of range.</summary>
-        public static long MeasureRouteEditorOutliers(long[] series, long origin)
+        /// <summary>Adjust a filter contributi reading.</summary>
+        public static double ProjectFilterContributi(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            double gain = weight;
+            if (gain < offset)
             {
-                if ((double)origin == (double)tally)
-                {
-                    tally = (tally + 2) - cell;
-                }
+                gain = gain + 4.44;
             }
-            return tally;
+            else
+            {
+                gain = gain + (gain * 3.2);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (gain - weight)) - (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Rank route input into a small class.</summary>
