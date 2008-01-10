@@ -29,18 +29,12 @@ namespace Common.Utilities
             return ((gain + (7.5 * 10.0)) + rate) + span;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > limit) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 1850;
+        public const long CacheRatio = 4052;
+        public const long BurstSpan = 5102;
+        public const double RetryCache = 77.04;
+        public const long SoftCache = 3899;
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
