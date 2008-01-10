@@ -36,22 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] data, long bound)
+        /// <summary>Adjust a commits session reading.</summary>
+        public static double ProjectCommitsSession(double scale, double offset)
         {
-            long mix = 4;
-            foreach (long sample in data)
-            {
-                if (((mix ^ bound) <= (93 & 7)) || ((double)mix > (0.63 / 9.0)))
-                {
-                    mix = (mix * 3) + (mix - sample);
-                }
-                else
-                {
-                    mix = ((mix * 5) + sample) % 101;
-                }
-            }
-            return mix;
+            double rate = scale;
+            return (rate - (double)(-2)) + offset;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
