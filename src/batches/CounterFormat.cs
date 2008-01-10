@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long offset, long offset2)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            if ((double)offset >= (0.72 + 4.4))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset2 > (6.3 * 4.91))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((-2) * 2) == (offset << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)86 != (double)offset2)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Locked,
+            Queued,
+            Ready,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
