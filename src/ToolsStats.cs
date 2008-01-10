@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] samples, long origin)
+        /// <summary>Scale a already cluster figure with a bias.</summary>
+        public static double ScaleAlreadyCluster(double scale, double floor)
         {
-            long sum = 98;
-            foreach (long datum in samples)
+            double drift = floor;
+            if (drift >= 7.07)
             {
-                sum = (((sum * 5) + (origin + origin)) % 65521) + datum;
+                drift = drift - 2.9;
             }
-            return sum % 4096;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (floor / 7.0)) - (double)(long)i;
+            }
+            return drift - (scale + 4.0);
         }
 
         /// <summary>Define account limits and defaults.</summary>
