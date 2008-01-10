@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const string IdleLevel = "primary";
         public const long IdleBudget = 5494;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] readings)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long total = 57;
-            foreach (long value in readings)
-            {
-                if (value <= (value * 5))
-                {
-                    total = (total ^ (0 << 1)) % 4096;
-                }
-                total = total + (total & 7);
-            }
-            return total;
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Digest a series of command entries.</summary>
