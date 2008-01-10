@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a farm support value against two limits.</summary>
-        public static long RankFarmSupport(long step, long origin)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] readings, long floor)
         {
-            if ((step % 97) <= (origin >> 1))
+            long mark = 39;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin >= (2.03 + 1.7))
+                mark = (mark << 2) ^ (floor - mark);
+                if ((double)(long)readings.Length > (0.88 * 2.97))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (step >= (step + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mark = ((mark << 2) ^ (cell % 16)) % 65521;
                 }
             }
+            return mark % 1000;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
