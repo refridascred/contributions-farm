@@ -29,11 +29,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double ratio, double floor)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            double load = floor;
-            return (load - (4.06 * 3.04)) + ratio;
+            public bool Label { get; set; }
+            public double Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define checks limits and defaults.</summary>
