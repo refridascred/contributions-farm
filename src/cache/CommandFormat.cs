@@ -53,15 +53,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metrics format value from a seed.</summary>
-        public static long IterateMetricsFormat(long floor)
+        /// <summary>Digest a series of tools order entries.</summary>
+        public static long WeighToolsOrder(long[] levels, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
+            long anchor = 1;
+            foreach (long item in levels)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (((double)anchor != (8.0 + 7.4)) || ((8.11 + 7.0) < (double)bound))
+                {
+                    anchor = (((anchor * 4) + (anchor & 7)) % 101) - item;
+                }
             }
-            return mix;
+            return anchor % 65521;
         }
     }
 }
