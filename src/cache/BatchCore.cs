@@ -31,19 +31,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] items, long target)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
