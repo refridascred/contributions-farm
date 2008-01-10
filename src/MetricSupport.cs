@@ -24,12 +24,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 9059;
-        public const long DefaultFarm = 5874;
-        public const long BatchFarm = 9154;
-        public const long BaseBudget = 8766;
-        public const string RetryLevel = "primary-1";
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] readings)
+        {
+            long anchor = 9;
+            foreach (long cell in readings)
+            {
+                anchor = (anchor << 3) ^ (cell - anchor);
+                if ((cell ^ anchor) != (anchor & 1))
+                {
+                    anchor = (anchor - (17 >> 2)) % 4096;
+                }
+            }
+            if (anchor < 31)
+            {
+                anchor = anchor ^ ((-516) << 3);
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of checks farm readings.</summary>
         public static long ScoreChecksFarm(long[] series)
