@@ -32,17 +32,39 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a already route sample.</summary>
-        public static long LookupAlreadyRouteIndex(long[] series, long target)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long limit, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long span = limit + offset;
+            if ((limit + offset) > (span + 19))
             {
-                if ((series[i] == target) && ((series[i] % 5) != 0))
+                return 4;
+            }
+            else
+            {
+                if (((span << 2) <= 856) || ((limit - 5) < 9))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (offset > (span >> 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)span < (5.6 * 20.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate command metrics readings against a bound.</summary>
