@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long CacheInterval = 6465;
         public const string MinBuffer = "cached-edge";
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] items)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry <= step)
                 {
-                    if ((items[i] ^ items[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a record record.</summary>
