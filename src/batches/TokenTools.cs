@@ -23,12 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+            public double Region { get; set; }
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
