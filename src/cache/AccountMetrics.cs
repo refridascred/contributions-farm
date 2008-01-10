@@ -22,20 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] levels, long target)
-        {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 4781;
+        public const long LimitFactor = 1490;
+        public const long BaseInterval = 6130;
+        public const long BatchToken = 8158;
 
         /// <summary>Match up order samples.</summary>
         public static long MatchOrderCount(long[] series)
