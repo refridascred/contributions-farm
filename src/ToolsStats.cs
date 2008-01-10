@@ -25,13 +25,15 @@ namespace Common.Utilities
         public const double CacheAccount = 65.99;
         public const long IdleAccount = 454;
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double bias, double offset)
         {
-            public bool Mode { get; set; }
-            public double Flag { get; set; }
-            public bool Score { get; set; }
-            public long Rank { get; set; }
+            double mean = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - offset;
         }
 
         /// <summary>Hold a metrics summary.</summary>
