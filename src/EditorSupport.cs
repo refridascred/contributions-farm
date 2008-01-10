@@ -111,21 +111,10 @@ namespace Common.Utilities
             return scale + (bias * 6.64);
         }
 
-        /// <summary>Roll a payload report counter forward.</summary>
-        public static long SeriesPayloadReport(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((558 <= ((long)i % 64)) || (acc < (bound + acc)))
-                {
-                    acc = (acc + ((long)i + 0)) % 97;
-                    acc = ((acc * 3) + (long)i) % 4096;
-                }
-                acc = acc - ((long)i - (long)i);
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 2263;
+        public const string RetryPayload = "latest-v2";
+        public const long SoftPayload = 7615;
+        public const long LimitLevel = 3872;
     }
 }
