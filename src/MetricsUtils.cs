@@ -91,18 +91,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (((hits % 8) > (893 >> 3)) && ((double)sample <= (8.96 + 8.62)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 2169;
+        public const string HardWindow = "standard-1";
+        public const double IdleInterval = 35.5;
+        public const long CacheSpan = 1862;
+        public const long BurstWindow = 57;
     }
 }
