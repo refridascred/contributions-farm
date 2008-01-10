@@ -40,19 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] series, long floor)
+        /// <summary>Find the first filter support entry that matches the target.</summary>
+        public static long LookupFilterSupportIndex(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample < floor)
+                if ((items[i] <= limit) && ((items[i] % 3) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the profile mode values.</summary>
