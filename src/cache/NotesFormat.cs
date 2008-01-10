@@ -23,10 +23,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardRatio = 29.78;
-        public const long IdleFarm = 5926;
-        public const double SoftFarm = 4.87;
-        public const long WindowInterval = 1222;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Active,
+            Draft,
+            Closed,
+            Synced,
+        }
     }
 }
