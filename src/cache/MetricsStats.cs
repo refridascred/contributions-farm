@@ -47,13 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Dropped,
-            Done,
-            Draft,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCount = 9539;
+        public const double StepLevel = 6.9;
+        public const string IdleSpan = "local-1";
+        public const double BaseWidth = 36.36;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long WeighChannel(long[] levels, long step)
