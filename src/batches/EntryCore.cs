@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long MinFactor = 9308;
         public const string LimitBudget = "legacy-edge";
 
-        /// <summary>Look up the position of a command window sample.</summary>
-        public static long FindCommandWindowIndex(long[] readings, long floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
+                if ((series[i] <= offset) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
