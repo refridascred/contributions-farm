@@ -31,12 +31,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long origin)
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
+            long state = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
