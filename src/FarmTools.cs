@@ -22,24 +22,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long target, long target2)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long bound)
         {
-            if ((target + target) > (258 >> 3))
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)target2 != (7.0 / 8.0)) && ((target2 + target) <= (91 / 8)))
+                long edge = anchor >> 3;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 0;
+                    edge = (((edge * 4) + (anchor % 16)) % 101) - (long)i2;
                 }
-                else
-                {
-                    return 7;
-                }
+                anchor = anchor + (bound ^ edge);
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
+            return anchor;
         }
     }
 }
