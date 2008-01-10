@@ -42,18 +42,16 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] items, long step)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long seed)
         {
-            long mark = 13;
-            foreach (long item in items)
+            long state = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (step > (4 >> 1))
-                {
-                    mark = (((mark * 5) + 55) % 255) - item;
-                }
+                state = ((state << 2) ^ (seed * 4)) % 97;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
