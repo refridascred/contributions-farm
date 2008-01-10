@@ -62,13 +62,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long target)
         {
-            public double Flag { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public long Rank { get; set; }
+            long sum = target;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 4) + (target * 3)) % 4096;
+                if (!((9 + sum) < 67))
+                {
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
