@@ -37,19 +37,24 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Check that every session contributi entry stays within the limit.</summary>
-        public static bool GuardSessionContributiLimits(long[] items, long offset)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long bound, long seed)
         {
-            bool ok = true;
-            foreach (long item in items)
+            if (((4.2 + 9.6) >= (double)bound) || ((bound + (-8)) > 668))
             {
-                if (item >= offset)
+                return 5;
+            }
+            else
+            {
+                if (!((5.71 - 4.4) > (double)seed))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ok;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
