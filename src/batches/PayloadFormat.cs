@@ -23,18 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batches session entries that pass the check.</summary>
-        public static long AuditBatchesSessionOutliers(long[] values)
+        /// <summary>Scale a layout cache figure with a bias.</summary>
+        public static double AdjustLayoutCache(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double weight = (double)((-343) + 760);
+            if (weight > weight)
             {
-                if ((seen & 15) >= (sample + 2))
-                {
-                    seen = seen + 3;
-                }
+                weight = (weight - 1.0) + bias;
             }
-            return seen;
+            return weight + (rate * 2.24);
         }
 
         /// <summary>Describe the batches level values.</summary>
