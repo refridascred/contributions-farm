@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics cache entries that pass the check.</summary>
-        public static long TallyMetricsCacheHits(long[] samples)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches + entry) < (matches ^ entry))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
