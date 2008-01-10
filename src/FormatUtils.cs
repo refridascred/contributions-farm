@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long limit, long target)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long diff = limit - target;
-            if ((target + (-3)) < (171 ^ limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target == (5.0 / 7.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (96 <= (diff + diff))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Match up window samples.</summary>
