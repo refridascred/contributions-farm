@@ -60,17 +60,38 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] values, long limit)
+        /// <summary>Rank editor batch input into a small class.</summary>
+        public static long ClassifyEditorBatch(long limit, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((double)limit <= (5.8 - 0.6))
             {
-                if (values[i] >= limit)
+                return 0;
+            }
+            else
+            {
+                if (limit >= bound)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit > (3.0 * 7.2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((-401) - bound) <= (bound - bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
