@@ -43,15 +43,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor session readings.</summary>
-        public static long CombineEditorSession(long[] items)
-        {
-            long carry = 339;
-            foreach (long value in items)
-            {
-                carry = ((carry * 5) + (61 * 4)) - value;
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 5597;
+        public const long HardLevel = 9459;
+        public const long BaseInterval = 7064;
+        public const long BatchContext = 8633;
     }
 }
