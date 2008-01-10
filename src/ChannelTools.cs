@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] levels)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
