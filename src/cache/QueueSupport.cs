@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] samples)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] readings)
         {
-            long anchor = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = anchor - cell;
-                if ((anchor - cell) < (cell / 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor + (cell - cell)) % 97;
+                    if ((readings[i] ^ readings[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a batches record.</summary>
