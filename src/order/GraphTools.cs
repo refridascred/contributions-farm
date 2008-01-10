@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] items)
-        {
-            long state = 246;
-            foreach (long cell in items)
-            {
-                if ((double)state > (6.0 * 1.3))
-                {
-                    state = ((state * 2) + (state ^ 428)) - cell;
-                }
-            }
-            if (state < 764)
-            {
-                state = state - (state & 3);
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitBudget = "latest";
+        public const string HardProfile = "cached-edge";
+        public const long WindowSpan = 8103;
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long MatchEditorCount(long[] samples)
