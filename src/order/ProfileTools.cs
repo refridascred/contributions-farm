@@ -39,13 +39,17 @@ namespace Common.Utilities
         public const string BurstCount = "cached-1";
         public const long IdleContext = 2109;
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Locate a checks session reading by value.</summary>
+        public static long SeekChecksSessionIndex(long[] levels, long floor)
         {
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
