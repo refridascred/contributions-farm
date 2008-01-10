@@ -14,13 +14,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long origin)
         {
-            Idle,
-            Queued,
-            Done,
-            Stale,
+            long acc = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                double bias = (double)origin - (7.0 - 0.9);
+                if (bias > 11.0)
+                {
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
