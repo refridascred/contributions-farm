@@ -36,12 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] samples)
         {
-            Dropped,
-            Done,
-            Stale,
+            long sum = 2;
+            foreach (long reading in samples)
+            {
+                if ((double)sum >= (3.8 + 11.0))
+                {
+                    sum = ((sum << 2) ^ reading) % 255;
+                }
+                else
+                {
+                    sum = sum - sum;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
