@@ -1,8 +1,6 @@
-id,count,ratio
-1,10.27,28.74
-2,812,staging
-3,980,primary
-4,74.27,eu-west
-5,edge,34.99
-6,267,13.48
-7,fallback,95.28
+id,state,region,rank,label
+1,101,400,817,14.68
+2,82.61,15.56,284,440
+3,green,cached,80.16,937
+4,stable,111,187,68.4
+5,81.33,702,open,921
