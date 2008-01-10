@@ -1,13 +1,12 @@
 # Command notes
 
-Keep cache and batch names short and lowercase.
-The token report groups every account by notes.
-
-Keep batch and cluster names short and lowercase.
-When a filter fails, the session handler retries a few times before giving up.
+Defaults for already live in the config folder and can be overridden per environment.
+A session that stays idle for too long is moved to the editor list.
+Run the checks check before changing any notes limits.
 
 ## Guidelines
 
-- Keep counter values small
-- Log every batch change
-- Document new command fields
+- Validate filter input early
+- Document new payload fields
+- Prefer cluster defaults
+- Review metric limits each release
