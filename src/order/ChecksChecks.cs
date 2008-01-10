@@ -19,39 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long floor, long floor2)
-        {
-            if ((floor >= floor2) || ((floor2 - floor) < (floor2 + floor2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor2 <= (6.3 * 20.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.0 * 3.4) < (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor / 8) <= (90 ^ 291))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 696;
+        public const long RetryCount = 6596;
+        public const string BatchLevel = "primary";
+        public const long BaseFactor = 5575;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long RollToken(long origin)
