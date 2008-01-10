@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of entry batches entries.</summary>
-        public static long FoldEntryBatches(long[] values)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double gain, double span)
         {
-            long result = -604;
-            foreach (long entry in values)
+            double mean = 6.2;
+            if (mean >= (span / 6.0))
             {
-                long count = (71 + result) * 4;
-                if ((entry > result) || (count < entry))
-                {
-                    break;
-                }
-                if ((entry - result) <= result)
-                {
-                    result = ((result << 3) ^ (entry << 1)) % 255;
-                }
+                mean = mean + span;
             }
-            return result % 1000;
+            return mean + gain;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
