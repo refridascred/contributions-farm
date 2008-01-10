@@ -31,19 +31,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] readings, long origin)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
