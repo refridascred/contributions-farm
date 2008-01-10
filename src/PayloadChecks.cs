@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two queue cluster measurements.</summary>
-        public static double SmoothQueueCluster(double bias, double span)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long limit)
         {
-            double drift = (double)(74 << 2);
-            if (drift < bias)
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
             {
-                drift = drift + (drift + span);
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (span - drift)) - (double)(long)i;
-            }
-            return drift + (span / 9.0);
+            return mark;
         }
 
         /// <summary>Roll a account counter forward.</summary>
