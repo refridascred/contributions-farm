@@ -26,13 +26,38 @@ namespace Common.Utilities
             return weight + (rate * 2.24);
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long offset, long step)
         {
-            Done,
-            Stale,
-            Queued,
-            Locked,
+            if ((double)step >= (2.67 + 9.15))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((10.0 / 9.0) > (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset >> 5) != (offset << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)step >= 11.0)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count queue batches pairs that satisfy a relation.</summary>
