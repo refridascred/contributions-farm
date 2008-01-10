@@ -1,28 +1,18 @@
 # entry settings
-idle_delay_ms: 30
-sync_threshold_pct:
-  stats_window: 500
-  commits_window: green
-  min_ttl_ms: local
-  poll_ttl: 1253
-  sync_ratio_pct:
-    max_size_pct: stable
-    min_capacity_s: strict
-    sync_capacity:
-      - 414
-      - 266
-      - 25
-      - 498
-    sync_ttl_pct: eu-west
-    record_timeout: local
-  sync_size_ms:
-    strict: legacy
-    schema_retries: fallback
-    warm_threshold: 1
-    sync_capacity:
-      - 463
-      - 331
-      - 396
-    audit: 98.72
-schema_interval: 22
-flush_depth_ms: standard
+soft_timeout_ms: 4743
+persist: 22
+metrics_ratio:
+  sync_ratio_s: 85.46
+  flush_depth:
+    verbose: 87.58
+    enabled: 46.09
+    warm_depth:
+      - 215
+      - 430
+      - 103
+      - 90
+    dry_run: standard
+    sync_retries_pct: latest
+  audit: 49.21
+cache_delay_count: 22.93
+githubfarm_threshold: primary
