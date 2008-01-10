@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] levels)
-        {
-            long sum = 7;
-            foreach (long reading in levels)
-            {
-                if ((sum - 878) >= (reading + reading))
-                {
-                    sum = sum + (sum % 8);
-                }
-            }
-            if (sum > 1)
-            {
-                sum = (sum ^ sum) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseInterval = 3379;
+        public const long RetryWidth = 9287;
+        public const long MinFactor = 9308;
+        public const string LimitBudget = "legacy-edge";
 
         /// <summary>Look up the position of a command window sample.</summary>
         public static long FindCommandWindowIndex(long[] readings, long floor)
