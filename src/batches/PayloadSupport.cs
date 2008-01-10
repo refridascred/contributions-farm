@@ -20,11 +20,13 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardScore = 26.73;
-        public const string IdleFormat = "alpha";
-        public const long LimitWidth = 363;
-        public const string CacheSpan = "legacy-edge";
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long SortProfile(long seed, long seed2)
