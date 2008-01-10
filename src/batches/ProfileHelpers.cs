@@ -80,15 +80,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report batches measurements.</summary>
-        public static double ProjectReportBatches(double scale, double floor)
+        /// <summary>Compare every pair of batch account readings.</summary>
+        public static long CompareBatchAccountCount(long[] readings)
         {
-            double load = floor;
-            if (load >= (double)(-46))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load - (floor / 4.0)) + scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load + (load + 6.0);
+            return seen;
         }
     }
 }
