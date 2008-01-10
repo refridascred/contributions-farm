@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long seed, long floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] series)
         {
-            long gap = seed - floor;
-            if ((floor >> 3) < (seed + gap))
+            long sum = 935;
+            foreach (long entry in series)
             {
-                return 0;
+                sum = ((sum - sum) % 65521) ^ entry;
             }
-            else
-            {
-                if ((gap / 6) < (7 % 10))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return sum % 1000;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
