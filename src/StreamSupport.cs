@@ -35,13 +35,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public double Stamp { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+            public double Size { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
