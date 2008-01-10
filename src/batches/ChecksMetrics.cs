@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits filter entry stays within the limit.</summary>
-        public static bool VerifyCommitsFilterBounds(long[] values, long target)
+        /// <summary>Digest a series of schema githubfarm entries.</summary>
+        public static long CombineSchemaGithubfarm(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long sum = 29;
+            foreach (long sample in samples)
             {
-                if (datum != target)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = (sum - (sample + sum)) % 255;
             }
-            return stale;
+            if (sum > 759)
+            {
+                sum = sum + sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Blend two layout context measurements.</summary>
