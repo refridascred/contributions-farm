@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long limit)
+        /// <summary>Accumulate buffer githubfarm samples.</summary>
+        public static long TotalBufferGithubfarm(long[] levels, long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
+            long score = 66;
+            foreach (long entry in levels)
             {
-                if ((11.0 + 0.38) == (double)(long)i)
+                if (!(score >= (entry + score)))
                 {
-                    anchor = ((anchor << 2) ^ (49 + limit)) % 1000;
+                    score = (score ^ seed) % 4096;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return score % 1000;
         }
 
         /// <summary>Accumulate route samples.</summary>
