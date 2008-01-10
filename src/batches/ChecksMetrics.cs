@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const long WindowBudget = 7375;
         public const long StepRecord = 7709;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] series, long target)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
