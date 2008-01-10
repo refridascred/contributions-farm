@@ -87,17 +87,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 3447;
+        public const double MinScore = 31.14;
+        public const long MaxQueue = 1592;
+        public const long CacheQueue = 7043;
+        public const double DefaultWidth = 67.02;
     }
 }
