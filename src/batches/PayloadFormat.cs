@@ -30,22 +30,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] samples)
+        /// <summary>Classify a format record pair into a bucket.</summary>
+        public static long SortFormatRecord(long target, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            if ((target ^ target) <= target)
             {
-                if (entry <= (entry % 5))
+                return 7;
+            }
+            else
+            {
+                if ((floor & 1) < (target - floor))
                 {
-                    count = count + 3;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (7.9 >= (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
