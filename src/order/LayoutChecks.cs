@@ -80,13 +80,9 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 9651;
+        public const long BaseCounter = 3751;
+        public const long RetryCounter = 3779;
     }
 }
