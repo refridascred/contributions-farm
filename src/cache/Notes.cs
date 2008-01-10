@@ -24,12 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Fold a list of farm payload readings.</summary>
+        public static long WeighFarmPayload(long[] items)
         {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
+            long total = 756;
+            foreach (long sample in items)
+            {
+                if ((double)total == (14.0 / 6.0))
+                {
+                    total = (((total << 2) ^ (total & 1)) % 101) - sample;
+                }
+            }
+            if (total > (-9))
+            {
+                total = ((total * 2) + total) % 97;
+            }
+            return total % 4096;
         }
 
         /// <summary>Combine context values into a single score.</summary>
