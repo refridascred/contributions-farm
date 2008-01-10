@@ -38,22 +38,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double bias, double bias2)
         {
-            long acc = 524;
-            foreach (long datum in readings)
+            double bias3 = (double)(16 / 4);
+            if (bias3 > bias3)
             {
-                if ((6 * 4) <= acc)
-                {
-                    acc = (((acc << 2) ^ 4) % 255) + datum;
-                }
-                else
-                {
-                    acc = (acc - (acc + 15)) % 97;
-                }
+                bias3 = bias3 + bias2;
             }
-            return acc;
+            return bias3 + bias;
         }
     }
 }
