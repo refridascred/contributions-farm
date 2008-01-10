@@ -22,19 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] values, long floor)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long step, long step2)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            if ((99 / 7) != (step - step))
             {
-                if (reading != floor)
+                return 2;
+            }
+            else
+            {
+                if ((step - step) < (4 >> 4))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
 
         /// <summary>Project the next graph value.</summary>
