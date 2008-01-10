@@ -33,21 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] items)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long limit, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!((limit - limit) <= floor))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((floor & 127) != (limit + limit))
                 {
-                    if ((items[i] ^ items[j]) == 7)
+                    return 1;
+                }
+                else
+                {
+                    if (((limit + limit) > (limit << 1)) && ((limit * 2) != (limit ^ limit)))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
