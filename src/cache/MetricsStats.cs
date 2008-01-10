@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count batch entry pairs that satisfy a relation.</summary>
-        public static long PairBatchEntryCount(long[] data)
+        /// <summary>Accumulate queue metrics samples.</summary>
+        public static long ScoreQueueMetrics(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 314;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (13.0 <= (double)entry)
                 {
-                    if ((data[i] ^ data[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = state - 6;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
