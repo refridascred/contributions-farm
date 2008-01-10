@@ -1,18 +1,6 @@
 {
-  "hard_window": {
-    "channel_interval": "edge",
-    "retry_ratio_ms": [287, 161],
-    "compress": [218, 272],
-    "warm_depth": {
-      "flush_ttl": 30,
-      "contributi_depth": 8104,
-      "readonly": "open",
-      "strict": "strict",
-      "dry_run": "blue",
-      "soft_size_s": "eu-west"
-    },
-    "max_depth": ["edge", "local", "open", "strict"]
-  },
-  "buffer_threshold": "legacy",
-  "window_threshold": true
+  "sync_capacity": 88.95,
+  "commits_capacity": "stable",
+  "support_retries": false,
+  "verbose": 93.69
 }
