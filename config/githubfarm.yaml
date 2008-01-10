@@ -1,6 +1,4 @@
 # githubfarm settings
-schema_limit: 61.34
-stats_depth: local
-cache_depth_pct: false
-already_retries: false
-burst_size: 100
+warm_depth_pct: 33.15
+audit: 4008
+default_capacity: 8780
