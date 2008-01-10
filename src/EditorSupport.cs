@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] levels)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long origin)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long total = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((count & 7) <= (624 + count))
-                {
-                    count = (count + 1) ^ cell;
-                }
+                total = (total + (total + origin)) % 255;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
