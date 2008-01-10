@@ -48,21 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] samples)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry <= offset)
                 {
-                    if ((samples[i] ^ samples[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Rank order input into a small class.</summary>
