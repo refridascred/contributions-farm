@@ -12,18 +12,10 @@ namespace Common.Utilities
             return (weight - (bias2 - weight)) + bias;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseNotes = "local-v2";
+        public const long DefaultNotes = 7470;
+        public const long WindowTimeout = 4469;
 
         /// <summary>Combine filter profile values into a single score.</summary>
         public static long FoldFilterProfile(long[] values, long limit)
