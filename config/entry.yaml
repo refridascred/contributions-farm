@@ -1,16 +1,4 @@
 # entry settings
-poll_retries: false
-flush_delay_s: false
-cache_window:
-  flush_retries_s: staging
-  sync_delay_pct:
-    - stable
-    - eu-west
-    - fallback
-  enabled: 60
-soft_capacity_s:
-  - 98
-  - 21
-  - 81
-  - 219
-readonly: 52
+flush_ttl: green
+persist: latest
+audit: primary
