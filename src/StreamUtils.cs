@@ -42,19 +42,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long limit)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] items, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
+            long mark = 13;
+            foreach (long item in items)
             {
-                if (((limit << 3) == (mix + limit)) || ((85 + limit) <= mix))
+                if (step > (4 >> 1))
                 {
-                    mix = ((mix * 2) + (limit + 2)) % 97;
+                    mark = (((mark * 5) + 55) % 255) - item;
                 }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
