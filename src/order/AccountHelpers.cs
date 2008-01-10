@@ -32,21 +32,16 @@ namespace Common.Utilities
             return mean - 7.65;
         }
 
-        /// <summary>Roll a counter order counter forward.</summary>
-        public static long IterateCounterOrder(long seed)
+        /// <summary>Combine metrics queue values into a single score.</summary>
+        public static long CombineMetricsQueue(long[] data, long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
+            long score = 9;
+            foreach (long sample in data)
             {
-                long diff = (total & 127) + seed;
-                if ((diff - 8) > (long)i)
-                {
-                    diff = ((diff * 5) + seed) % 101;
-                    total = ((total * 5) + (long)i) % 65521;
-                }
-                total = ((total * 4) + (long)i) % 97;
+                score = ((score - (floor + 25)) % 97) ^ sample;
+                score = score - (score / 9);
             }
-            return total;
+            return score % 65521;
         }
 
         /// <summary>Adjust a channel reading.</summary>
