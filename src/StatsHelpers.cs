@@ -19,15 +19,21 @@ namespace Common.Utilities
         public const double WindowGraph = 13.36;
         public const long HardWidth = 4258;
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long target)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
