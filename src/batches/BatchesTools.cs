@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] series, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
+            long carry = 62;
+            foreach (long item in series)
             {
-                if (((long)i - limit) < (limit % 16))
+                if ((target % 3) >= (-91))
                 {
-                    anchor = ((anchor << 2) ^ (limit + limit)) % 255;
+                    carry = (((carry << 2) ^ 57) % 101) ^ item;
                 }
-                anchor = (anchor - (long)i) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return carry % 4096;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
