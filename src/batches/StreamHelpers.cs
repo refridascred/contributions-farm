@@ -69,19 +69,11 @@ namespace Common.Utilities
             return drift + 6.99;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (!(7.6 >= (double)entry))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstDepth = 7867;
+        public const string DefaultBatch = "fallback-edge";
+        public const long HardTimeout = 3552;
+        public const long HardSize = 3818;
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long SortSession(long floor, long offset)
