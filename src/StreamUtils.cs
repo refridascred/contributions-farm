@@ -90,11 +90,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 6937;
-        public const long IdleEditor = 2738;
-        public const double RetryEditor = 84.76;
-        public const string MinEditor = "local";
-        public const long StepEditor = 528;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
