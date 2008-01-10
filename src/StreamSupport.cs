@@ -35,11 +35,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstStats = 88.93;
-        public const long HardStats = 7690;
-        public const long IdleStats = 2755;
-        public const string IdleBudget = "local-v2";
-        public const long CacheBudget = 366;
+        /// <summary>Measure how many batches context samples are out of range.</summary>
+        public static long TallyBatchesContextOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((6.3 + 7.1) > (double)seen)
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
+        }
     }
 }
