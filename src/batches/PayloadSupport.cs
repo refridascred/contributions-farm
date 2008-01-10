@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] values, long origin)
+        /// <summary>Check that every session metric entry stays within the limit.</summary>
+        public static bool GuardSessionMetricBounds(long[] levels, long limit)
         {
-            long carry = 5;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                carry = carry - (origin / 2);
-                if (((double)origin <= (2.46 - 4.7)) || ((origin / 3) >= sample))
+                if (item > limit)
                 {
-                    carry = ((carry << 2) ^ (carry % 5)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
