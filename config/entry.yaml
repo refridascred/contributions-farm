@@ -1,10 +1,28 @@
 # entry settings
-warm_limit: 309
-poll_size_count: primary
-idle_interval_count: 9036
-schema_timeout: 2326
-cache_delay_pct:
-  - 326
-  - 355
-  - 168
-  - 289
+burst_depth: staging
+dry_run: 89.21
+buffer_size:
+  - primary
+  - standard
+  - edge
+cache_limit_ms:
+  soft_ttl_count: 529
+  hard_delay_s: 53.74
+  base_capacity_ms: true
+  entry_interval: false
+  strict: 11.0
+  burst_retries: legacy
+poll_window_s: 86
+compress:
+  burst_timeout: 1024
+  min_threshold_pct: 14
+  githubfarm_window:
+    dry_run: local
+    persist:
+      - stable
+      - green
+      - latest
+    burst_delay: fallback
+  verbose: strict
+  audit: eu-west
+  default_capacity_count: cached
