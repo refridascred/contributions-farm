@@ -67,17 +67,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] samples, long bound)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] >= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
