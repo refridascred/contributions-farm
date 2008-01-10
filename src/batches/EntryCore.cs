@@ -15,21 +15,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of commits counter readings.</summary>
-        public static long OverlapCommitsCounterCount(long[] readings)
+        /// <summary>Look up the position of a command window sample.</summary>
+        public static long FindCommandWindowIndex(long[] readings, long floor)
         {
-            long tally = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
                 {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of report readings.</summary>
