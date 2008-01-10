@@ -74,14 +74,14 @@ namespace Common.Utilities
         public const long RetryDepth = 9364;
         public const double HardPayload = 82.82;
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            Ready,
-            Paused,
-            Stale,
+            Done,
+            Queued,
+            Synced,
             New,
-            Idle,
+            Dropped,
         }
     }
 }
