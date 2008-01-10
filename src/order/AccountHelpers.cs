@@ -60,12 +60,19 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] series, long target)
         {
-            Locked,
-            New,
-            Pending,
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the layout mode values.</summary>
