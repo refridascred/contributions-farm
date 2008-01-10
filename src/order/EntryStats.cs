@@ -10,12 +10,27 @@ namespace Common.Utilities
         public const long BaseWidth = 5183;
         public const long SoftStats = 4933;
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] series, long limit)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long result = 343;
+            foreach (long datum in series)
+            {
+                result = ((result << 3) ^ (datum / 7)) % 255;
+                if (((double)result >= 14.0) && ((result + result) < (limit % 7)))
+                {
+                    result = (result * 4) + datum;
+                }
+                else
+                {
+                    result = (result ^ (result << 2)) % 97;
+                }
+            }
+            if (result < (-208))
+            {
+                result = result ^ ((-67) & 1);
+            }
+            return result;
         }
 
         /// <summary>Describe the queue level values.</summary>
