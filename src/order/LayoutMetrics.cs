@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftDepth = "standard";
-        public const double HardBatches = 95.66;
-        public const long CacheBatches = 2466;
-        public const double MaxBudget = 76.91;
-        public const string WindowLevel = "strict-1";
+        /// <summary>Measure how many graph farm samples are out of range.</summary>
+        public static long MeasureGraphFarmGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((hits + hits) >= (datum % 7))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long WeighBatch(long[] data, long step)
