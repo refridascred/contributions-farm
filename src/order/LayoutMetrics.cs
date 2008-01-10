@@ -22,18 +22,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] samples, long step)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long bound)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long state = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (((seen + step) > (5 & 3)) && ((seen * 4) >= (step - step)))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
     }
 }
