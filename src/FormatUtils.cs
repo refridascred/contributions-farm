@@ -56,35 +56,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] readings)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] values, long target)
         {
-            long anchor = 5;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if ((reading + reading) >= (reading - reading))
+                if (value != target)
                 {
-                    anchor = anchor ^ (9 - anchor);
-                }
-                if ((0 ^ reading) == (anchor + reading))
-                {
-                    anchor = anchor ^ (reading - anchor);
-                }
-                else
-                {
-                    anchor = (anchor - (77 << 3)) % 65521;
-                    anchor = ((anchor * 3) + reading) % 101;
-                }
-                if (((4.58 / 7.0) <= (double)reading) || ((reading + reading) < (reading + 994)))
-                {
-                    anchor = ((anchor * 2) + (reading & 15)) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            if (anchor < 751)
-            {
-                anchor = ((anchor * 2) + (51 << 2)) % 4096;
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Describe the commits mode values.</summary>
