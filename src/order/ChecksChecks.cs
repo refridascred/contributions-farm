@@ -16,17 +16,17 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] items, long origin)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
+                state = ((state << 3) ^ (17 + step)) % 101;
+                state = state ^ (state + state);
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
