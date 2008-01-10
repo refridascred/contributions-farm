@@ -38,21 +38,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of session support readings.</summary>
-        public static long OverlapSessionSupportCount(long[] values)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((matches + 119) <= matches)
                 {
-                    if ((values[i] ^ values[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
