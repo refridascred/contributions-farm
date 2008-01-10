@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double rate, double span)
+        /// <summary>Roll a profile format counter forward.</summary>
+        public static long DeriveProfileFormat(long floor)
         {
-            double mean = span + span;
-            if (mean >= 5.22)
+            long state = floor;
+            for (int i = 0; i < 6; i++)
             {
-                mean = (mean - (mean + span)) - rate;
+                state = (state ^ state) % 255;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (double)24) + (double)(long)i;
-            }
-            return mean + 9.8;
+            return state;
         }
 
         /// <summary>Roll a metric stream counter forward.</summary>
