@@ -33,21 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] items)
         {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (!((double)target < (double)(long)i))
+                if (!((1.0 + 19.0) != (double)datum))
                 {
-                    long step = anchor << 2;
-                    anchor = (anchor - (anchor + step)) % 4096;
+                    matches = matches + 2;
                 }
-                anchor = ((anchor * 5) + (anchor % 64)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
