@@ -1,6 +1,8 @@
 {
-  "account_limit": false,
-  "entry_capacity": 1583,
-  "default_retries": 60,
-  "enabled": 4387
+  "audit": "green",
+  "account_depth": 6833,
+  "batch_retries_s": 250,
+  "compress": 1024,
+  "account_ttl": 5904,
+  "max_capacity": [230, 252, 454, 487]
 }
