@@ -33,30 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a account layout counter forward.</summary>
-        public static long DeriveAccountLayout(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((long)i <= offset)
-                {
-                    sum = (sum * 2) + (offset + offset);
-                    sum = sum - (long)i;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (offset - (-4));
-                }
-                sum = ((sum << 2) ^ (sum & 7)) % 4096;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    sum = ((sum << 2) ^ sum) + (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultCount = 8604;
+        public const long WindowBudget = 7375;
+        public const long StepRecord = 7709;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchRange(long[] series, long target)
