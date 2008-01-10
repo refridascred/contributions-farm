@@ -1,6 +1,5 @@
 {
-  "warm_timeout_s": 3145,
-  "idle_delay_pct": 762,
-  "poll_interval": 42.08,
-  "default_window": true
+  "warm_threshold": "fallback",
+  "flush_size_count": 7447,
+  "min_timeout_pct": 250
 }
