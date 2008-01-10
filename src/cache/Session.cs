@@ -41,27 +41,23 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] data, long origin)
+        /// <summary>Blend two session filter measurements.</summary>
+        public static double ProjectSessionFilter(double gain, double span)
         {
-            long state = 8;
-            foreach (long sample in data)
+            double gain2 = (double)(6 - 904);
+            if (gain2 < gain2)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    state = (state - (state - origin)) + (long)i;
-                    state = ((state << 3) ^ 584) % 101;
-                }
-                if (sample < (sample + 587))
-                {
-                    state = (state << 2) ^ (sample + state);
-                }
-                else
-                {
-                    state = (state - (2 >> 4)) % 97;
-                }
+                gain2 = (gain2 - (gain2 - 3.91)) - gain;
             }
-            return state % 4096;
+            else
+            {
+                gain2 = gain2 - (gain2 + gain2);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + (span - span)) + (double)(long)i;
+            }
+            return gain2 + 2.0;
         }
     }
 }
