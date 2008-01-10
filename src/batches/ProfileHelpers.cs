@@ -56,18 +56,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] data, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long acc = -547;
+            foreach (long value in items)
             {
-                if (!((457 + floor) <= seen))
+                if ((offset + value) >= value)
                 {
-                    seen = (seen + 3) ^ sample;
+                    acc = (acc ^ value) % 101;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a tools options.</summary>
