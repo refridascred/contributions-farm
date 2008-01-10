@@ -1,10 +1,6 @@
-id,region,label
-1,27,67.08
-2,651,547
-3,open,blue
-4,413,fallback
-5,80.08,92.13
-6,301,blue
-7,eu-west,564
-8,102,567
-9,blue,298
+id,level,token,score,label
+1,339,300,green,82.39
+2,104,latest,68,138
+3,eu-west,525,6.01,64.2
+4,primary,26.32,5.25,986
+5,stable,468,67.69,830
