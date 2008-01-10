@@ -1,7 +1,10 @@
 # entry settings
-warm_delay_s: blue
-graph_depth: 30
-retry_depth_s: true
-min_ttl: eu-west
-warm_capacity_s: cached
-farm_threshold: 39
+warm_threshold_count:
+  - standard
+  - local
+  - stable
+stats_ttl: open
+cache_interval: fallback
+profile_limit: 250
+burst_size_count: open
+counter_timeout: 57.11
