@@ -51,38 +51,9 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long offset, long step)
-        {
-            if (((double)offset != (double)step) || ((double)step >= (double)426))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step ^ 51) >= (0 - 942))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)step <= 9.89) || (step <= 57))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step < (step << 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinFactor = 8876;
+        public const long HardProfile = 4948;
+        public const long BurstSize = 4893;
     }
 }
