@@ -1,32 +1,7 @@
 {
-  "graph_threshold": {
-    "counter_ratio": false,
-    "flush_depth": {
-      "warm_ratio_count": ["green", "primary"],
-      "base_ttl_pct": "green",
-      "poll_window": "open",
-      "hard_depth_ms": [4, 150, 407],
-      "readonly": false
-    },
-    "idle_capacity": 6798,
-    "graph_retries": 1.98,
-    "dry_run": 1.84,
-    "default_retries": false
-  },
-  "idle_timeout": "green",
-  "verbose": 30,
-  "readonly": "green",
-  "record_retries": {
-    "filter_size": {
-      "graph_interval": 6171,
-      "poll_ratio": 95.07,
-      "record_delay": 9766,
-      "sync_timeout_s": "standard",
-      "verbose": [255, 482],
-      "default_limit_pct": 9414
-    },
-    "account_ratio": [272, 477, 3],
-    "min_capacity_ms": 76.51
-  },
-  "profile_limit": 67
+  "editor_ratio": [291, 16, 14, 47],
+  "queue_size": 1115,
+  "window_threshold": ["staging", "strict"],
+  "already_threshold": 100,
+  "flush_depth_count": [101, 492, 46]
 }
