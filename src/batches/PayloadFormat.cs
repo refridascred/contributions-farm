@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public double Weight { get; set; }
-            public double Size { get; set; }
-            public long Score { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
