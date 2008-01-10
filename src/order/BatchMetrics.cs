@@ -48,22 +48,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinBudget = "stable-v2";
+        public const string CacheDepth = "standard-1";
+        public const long DefaultOrder = 7002;
+        public const double MinOrder = 44.0;
 
         /// <summary>Project the next githubfarm queue value.</summary>
         public static double BlendGithubfarmQueue(double weight, double span)
