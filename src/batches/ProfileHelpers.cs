@@ -70,22 +70,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] series)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (!((entry & 15) > 996))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
