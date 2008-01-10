@@ -122,24 +122,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long limit, long seed)
-        {
-            if (((1.58 + 3.0) == (double)limit) || ((3.1 + 3.94) != (double)seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((81 / 7) < seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstBudget = "primary-edge";
+        public const string CacheTimeout = "alpha";
+        public const double MinRecord = 56.53;
+        public const long WindowLevel = 3050;
     }
 }
