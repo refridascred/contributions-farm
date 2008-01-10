@@ -20,10 +20,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftBudget = 1938;
-        public const long IdleContributi = 2383;
-        public const long StepWidth = 7021;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] series, long offset)
+        {
+            long score = 4;
+            foreach (long sample in series)
+            {
+                long step = (164 + offset) - (offset / 2);
+                if (!((step + score) > offset))
+                {
+                    score = (score << 2) ^ (21 ^ sample);
+                }
+                score = ((score << 3) ^ (sample / 7)) % 1000;
+            }
+            if (score < 949)
+            {
+                score = ((score << 3) ^ (1 % 7)) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool ValidateCommandRange(long[] values, long origin)
