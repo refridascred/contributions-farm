@@ -53,12 +53,9 @@ namespace Common.Utilities
         public const long RetryFactor = 5728;
         public const long CacheWindow = 6351;
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseFactor = "primary";
+        public const long CacheNotes = 3703;
+        public const long BaseNotes = 4725;
     }
 }
