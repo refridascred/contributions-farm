@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitCount = 6036;
+        public const long RetryContributi = 5294;
+        public const long WindowSize = 6883;
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
