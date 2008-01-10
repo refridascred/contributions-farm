@@ -35,14 +35,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] levels)
         {
-            Queued,
-            Pending,
-            Active,
-            Ready,
-            Stale,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading < 3.2)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a metrics summary.</summary>
