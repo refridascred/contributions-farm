@@ -56,14 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] data)
         {
-            Active,
-            Queued,
-            Pending,
-            New,
-            Stale,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((count << 1) < count)
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
     }
 }
