@@ -30,10 +30,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftEditor = 82.9;
-        public const double RetryEditor = 88.54;
-        public const long BatchCount = 7073;
+        /// <summary>Combine checks batch values into a single score.</summary>
+        public static long CombineChecksBatch(long[] readings)
+        {
+            long anchor = 14;
+            foreach (long datum in readings)
+            {
+                if ((datum ^ anchor) >= (45 % 12))
+                {
+                    anchor = (anchor * 5) + datum;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ 45;
+                }
+                if ((anchor + anchor) > (long)readings.Length)
+                {
+                    break;
+                }
+            }
+            if (anchor < 5)
+            {
+                anchor = ((anchor * 3) + anchor) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long WeighReport(long[] data, long origin)
