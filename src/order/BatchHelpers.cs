@@ -13,18 +13,25 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit schema farm readings against a rule.</summary>
-        public static long CountSchemaFarmOutliers(long[] readings)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long floor, long seed)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long lane = floor + seed;
+            if (10 > (floor % 64))
             {
-                if ((seen >> 4) >= cell)
+                return 5;
+            }
+            else
+            {
+                if (!((lane + seed) < seed))
                 {
-                    seen = seen + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
