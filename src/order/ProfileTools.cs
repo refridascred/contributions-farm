@@ -68,10 +68,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryGraph = "open-edge";
-        public const string StepLevel = "local-1";
-        public const long LimitGraph = 4153;
-        public const string BatchGraph = "legacy-1";
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double scale, double bias)
+        {
+            double weight = 6.0 * 8.0;
+            if (weight >= 1.0)
+            {
+                weight = weight + scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - bias;
+        }
     }
 }
