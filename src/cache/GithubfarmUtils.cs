@@ -61,17 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] series, long floor)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = (double)53 * 1.07;
+            if (drift <= drift)
             {
-                if ((series[i] < floor) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + (double)54) + floor;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - rate) + (double)(long)i;
+            }
+            return drift + drift;
         }
     }
 }
