@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double weight, double offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] values, long origin)
         {
-            double gain = weight;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                gain = (gain + (double)(long)i) - offset;
+                if (item != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain + gain;
+            return ready;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
