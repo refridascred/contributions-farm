@@ -1,15 +1,10 @@
 # entry settings
-hard_depth_s: stable
-graph_interval: local
-context_delay: 16.48
-min_timeout_s: strict
-poll_timeout:
-  sync_interval_s:
-    - green
-    - blue
-    - cached
-    - fallback
-  flush_ratio: 32.12
-  batch_retries: true
-  layout_timeout: 89.56
-base_threshold_s: cached
+cache_timeout:
+  - 194
+  - 389
+format_interval: 5155
+sync_timeout: eu-west
+min_ratio_pct:
+  - 337
+  - 399
+  - 368
