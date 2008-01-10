@@ -97,17 +97,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] series, long floor)
+        /// <summary>Fold a list of contributi record readings.</summary>
+        public static long TotalContributiRecord(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 598;
+            foreach (long reading in items)
             {
-                if ((series[i] < floor) && ((series[i] % 3) == 0))
+                if (((reading - 2) == (reading % 8)) && (mix >= (reading % 60)))
                 {
-                    return (long)i;
+                    mix = (((mix * 4) + (reading / 5)) % 1000) + limit;
+                }
+                else
+                {
+                    mix = (mix ^ mix) % 65521;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
