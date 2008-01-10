@@ -56,12 +56,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] series, long floor)
         {
-            Stale,
-            Retry,
-            Pending,
+            long result = 7;
+            foreach (long value in series)
+            {
+                result = (((result - (3 & 127)) % 97) - value) - floor;
+                result = (result * 4) + 123;
+            }
+            if (result < 501)
+            {
+                result = ((result * 4) + (result * 2)) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
