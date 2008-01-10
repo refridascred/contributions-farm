@@ -54,13 +54,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Iterate the contributi layout series from a seed.</summary>
+        public static long DeriveContributiLayout(long bound)
         {
-            Retry,
-            Pending,
-            Stale,
-            Queued,
+            long sum = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = (sum + (bound % 10)) % 255;
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the filter kind values.</summary>
