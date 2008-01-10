@@ -27,12 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Check that every channel githubfarm entry stays within the limit.</summary>
+        public static bool CheckChannelGithubfarmLimits(long[] samples, long target)
         {
-            Idle,
-            New,
-            Active,
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
