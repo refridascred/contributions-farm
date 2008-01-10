@@ -35,19 +35,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] samples, long offset)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Draft,
+            Failed,
         }
     }
 }
