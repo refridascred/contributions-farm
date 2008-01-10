@@ -49,18 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] samples)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((14.0 - 11.0) == (double)value) || ((9.69 < (double)hits) || ((double)hits >= (double)11)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            Retry,
+            Done,
+            Idle,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
