@@ -24,19 +24,18 @@ namespace Common.Utilities
         public const long DefaultPayload = 9453;
         public const long BatchCount = 4597;
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double rate, double offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] series, long target)
         {
-            double ratio = (double)(0 << 2);
-            if (ratio > 7.84)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                ratio = ratio + (9.0 + rate);
+                if ((double)target >= 1.28)
+                {
+                    matches = (matches + 1) + datum;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - offset) + (double)(long)i;
-            }
-            return ratio - rate;
+            return matches;
         }
     }
 }
