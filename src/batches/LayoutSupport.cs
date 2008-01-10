@@ -51,19 +51,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long floor, long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 17; i++)
+            long lane = floor ^ offset;
+            if (((lane + floor) > floor) && (8 > (lane - floor)))
             {
-                if (!((7.2 * 3.0) != (double)anchor))
-                {
-                    anchor = (anchor - (1 * 5)) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((double)lane >= 8.5)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((6.21 > (double)floor) && (lane >= (floor - lane)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (offset >= (2 * 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support level values.</summary>
