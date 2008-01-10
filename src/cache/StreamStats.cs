@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long HardBudget = 3567;
         public const long LimitSpan = 1798;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] data, long limit)
+        /// <summary>Accumulate filter buffer samples.</summary>
+        public static long WeighFilterBuffer(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long total = 87;
+            foreach (long cell in items)
             {
-                if (reading != limit)
+                if ((cell - 15) >= (cell - total))
                 {
-                    ready = false;
-                    break;
+                    total = total - (total * 5);
                 }
             }
-            return ready;
+            return total % 97;
         }
 
         /// <summary>Hold a record header.</summary>
