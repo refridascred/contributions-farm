@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long RetryRatio = 7567;
         public const double LimitNotes = 59.45;
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstBudget = 9636;
+        public const long MinInterval = 2729;
+        public const long HardSpan = 9022;
+        public const long BurstFarm = 3624;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long BucketSchema(long floor, long origin)
