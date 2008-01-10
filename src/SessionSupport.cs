@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] data)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            if (floor < 67)
             {
-                if ((4.22 + 2.0) >= (15.0 / 5.0))
+                return 3;
+            }
+            else
+            {
+                if ((origin ^ origin) <= origin)
                 {
-                    matches = (matches + 1) + entry;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((origin >> 2) <= (floor + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((floor * 4) <= (floor - origin)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
