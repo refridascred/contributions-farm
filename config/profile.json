@@ -1,5 +1,17 @@
 {
-  "base_size": [483, 271, 239],
-  "dry_run": "local",
-  "burst_capacity_count": "legacy"
+  "cluster_ttl": ["standard", "standard", "blue"],
+  "default_depth_pct": {
+    "retry_timeout_count": "latest",
+    "default_interval_pct": "cached",
+    "batch_ttl": ["fallback", "standard"],
+    "sync_threshold_pct": ["standard", "eu-west"],
+    "farm_limit": "cached",
+    "queue_size": "stable"
+  },
+  "report_interval": {
+    "soft_ratio": 5827,
+    "audit": "legacy",
+    "soft_retries_s": 30
+  },
+  "readonly": "primary"
 }
