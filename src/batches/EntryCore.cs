@@ -66,11 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardScore = 1250;
-        public const long BaseSize = 2424;
-        public const string BaseContributi = "local-v2";
-        public const long WindowContributi = 297;
-        public const long WindowSpan = 2856;
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public bool Region { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
+        }
     }
 }
