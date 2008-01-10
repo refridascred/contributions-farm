@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] data, long seed)
+        /// <summary>Compare every pair of notes payload readings.</summary>
+        public static long MatchNotesPayloadCount(long[] values)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
