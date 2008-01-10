@@ -10,22 +10,16 @@ namespace Common.Utilities
         public const long WindowProfile = 6571;
         public const long BaseProfile = 1618;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] data)
+        /// <summary>Roll a farm buffer counter forward.</summary>
+        public static long IterateFarmBuffer(long offset)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (!(tally > (tally - 6)) || ((double)tally < (2.1 / 8.0)))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = anchor ^ offset;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a profile options.</summary>
