@@ -20,17 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] items, long bound)
+        /// <summary>Blend two account already measurements.</summary>
+        public static double AdjustAccountAlready(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = offset;
+            if (drift >= drift)
             {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
+                drift = drift - ratio;
             }
-            return -1;
+            return drift + (drift / 2.0);
         }
 
         /// <summary>Describe the command phase values.</summary>
