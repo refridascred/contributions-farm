@@ -52,14 +52,17 @@ namespace Common.Utilities
         public const long StepOrder = 5785;
         public const long StepTimeout = 328;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] series, long target)
         {
-            New,
-            Dropped,
-            Retry,
-            Closed,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
