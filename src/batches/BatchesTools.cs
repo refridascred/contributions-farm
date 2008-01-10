@@ -13,14 +13,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Synced,
-            Draft,
-            Active,
-            New,
-            Done,
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public double Ratio { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
