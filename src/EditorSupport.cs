@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long origin)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] items, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                total = (total + (total + origin)) % 255;
-                total = ((total * 3) + (long)i) % 97;
+                if (sample > step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
