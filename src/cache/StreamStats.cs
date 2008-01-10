@@ -70,15 +70,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] series, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] values, long seed)
         {
-            long mix = 3;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                mix = ((mix + (entry & 31)) % 97) + seed;
+                if (((double)seed >= (5.0 + 4.1)) || (2.5 <= (double)seen))
+                {
+                    seen = (seen + 2) ^ reading;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
