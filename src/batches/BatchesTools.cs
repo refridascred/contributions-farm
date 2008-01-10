@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long floor)
         {
-            public double Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Total { get; set; }
+            long state = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
