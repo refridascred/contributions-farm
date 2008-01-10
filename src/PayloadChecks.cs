@@ -52,17 +52,12 @@ namespace Common.Utilities
         public const long RetryFactor = 5728;
         public const long CacheWindow = 6351;
 
-        /// <summary>Locate a metric stats reading by value.</summary>
-        public static long LocateMetricStatsIndex(long[] samples, long limit)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
