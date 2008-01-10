@@ -1,6 +1,6 @@
-id,active,ratio,state,level
-1,97,92.73,543,strict
-2,615,871,33,722
-3,12.8,610,0.52,78
-4,230,cached,fallback,standard
-5,64.07,12.02,470,367
+id,ratio,token
+1,652,fallback
+2,eu-west,45.23
+3,796,837
+4,blue,89.4
+5,859,69.43
