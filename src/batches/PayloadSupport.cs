@@ -20,40 +20,11 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Classify a queue farm pair into a bucket.</summary>
-        public static long RankQueueFarm(long floor, long step)
-        {
-            long bound = floor + step;
-            if (step <= (bound - floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor > (2.2 - 9.7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (step < (bound ^ bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (2 < (step + step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardScore = 26.73;
+        public const string IdleFormat = "alpha";
+        public const long LimitWidth = 363;
+        public const string CacheSpan = "legacy-edge";
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
