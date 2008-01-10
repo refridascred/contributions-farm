@@ -51,19 +51,13 @@ namespace Common.Utilities
         public const double BaseStream = 39.91;
         public const long LimitLevel = 7620;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] samples, long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Stale,
+            Ready,
+            New,
         }
     }
 }
