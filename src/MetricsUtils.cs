@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const double StepFilter = 63.49;
         public const string BurstFilter = "primary-1";
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            New,
-            Retry,
-            Draft,
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
