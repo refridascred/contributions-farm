@@ -34,12 +34,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Look up the position of a batch order sample.</summary>
+        public static long FindBatchOrderIndex(long[] samples, long seed)
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a stats info.</summary>
