@@ -18,11 +18,15 @@ namespace Common.Utilities
         public const string DefaultSize = "staging-1";
         public const long IdleOrder = 8343;
 
-        /// <summary>Scale a notes stats figure with a bias.</summary>
-        public static double ScaleNotesStats(double weight, double bias)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double scale, double bias)
         {
-            double rate = bias;
-            return (rate - rate) + weight;
+            double gain = bias;
+            if (gain <= (gain * 7.85))
+            {
+                gain = (gain + (bias + bias)) - scale;
+            }
+            return gain + (double)4;
         }
     }
 }
