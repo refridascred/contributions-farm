@@ -27,12 +27,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Dropped,
-            New,
-            Idle,
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
