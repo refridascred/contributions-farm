@@ -1,18 +1,11 @@
 {
-  "flush_threshold_s": {
-    "counter_timeout": 75,
-    "enabled": true,
-    "cache_limit": {
-      "flush_interval_count": [198, 376],
-      "order_depth": [242, 497, 160],
-      "persist": 28.04,
-      "warm_interval": true,
-      "channel_ratio": [262, 362, 167],
-      "command_threshold": "latest"
-    },
-    "batch_interval": 25
-  },
-  "cache_timeout_s": 470,
-  "strict": "stable",
-  "compress": false
+  "layout_threshold": 60,
+  "soft_timeout": 4824,
+  "compress": {
+    "githubfarm_ttl": true,
+    "soft_ttl_pct": "staging",
+    "retry_timeout_count": "eu-west",
+    "counter_timeout": false,
+    "soft_threshold_pct": false
+  }
 }
