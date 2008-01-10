@@ -28,27 +28,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] samples)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long mark = 6;
-            foreach (long item in samples)
-            {
-                mark = ((mark << 3) ^ (mark - item)) % 255;
-                if ((item % 5) <= item)
-                {
-                    mark = ((mark * 2) + mark) % 97;
-                }
-                else
-                {
-                    mark = (mark * 2) + ((long)samples.Length >> 5);
-                }
-            }
-            if (mark > 96)
-            {
-                mark = (mark * 5) + (mark % 16);
-            }
-            return mark;
+            Paused,
+            Closed,
+            Failed,
+            Active,
         }
     }
 }
