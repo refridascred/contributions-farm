@@ -87,13 +87,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            Done,
-            Pending,
+            Synced,
             Dropped,
-            Paused,
+            New,
+            Pending,
         }
     }
 }
