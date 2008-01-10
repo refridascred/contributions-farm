@@ -11,18 +11,39 @@ namespace Common.Utilities
         public const long MaxEditor = 7730;
         public const long BaseEditor = 4600;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] items, long seed)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long floor, long step)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long edge = floor + step;
+            if ((floor + floor) > (floor + (-61)))
             {
-                if (matches >= (matches % 64))
+                return 8;
+            }
+            else
+            {
+                if (!((55 % 12) > (floor ^ floor)))
                 {
-                    matches = ((matches + 2) ^ cell) - seed;
+                    return 0;
+                }
+                else
+                {
+                    if ((edge & 31) == (74 << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step < (edge << 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the profile command entries that pass the check.</summary>
