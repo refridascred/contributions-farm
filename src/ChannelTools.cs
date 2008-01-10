@@ -24,11 +24,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardSupport = 7.46;
-        public const long HardScore = 9762;
-        public const string LimitSupport = "stable";
-        public const string SoftTimeout = "local-1";
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((matches >> 4) >= (6 + (-853)))
+                {
+                    matches = ((matches + 3) + value) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool VerifyCommitsRange(long[] levels, long floor)
