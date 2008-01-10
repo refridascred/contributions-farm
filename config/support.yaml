@@ -1,33 +1,5 @@
 # support settings
-retry_window_ms:
-  dry_run:
-    - 160
-    - 91
-    - 369
-  batch_interval_ms: 24
-  audit: fallback
-  metrics_size: false
-poll_retries_count:
-  min_threshold_s: true
-  verbose: 35.58
-  contributi_threshold: false
-  warm_depth_ms:
-    - standard
-    - primary
-    - local
-  max_ratio: legacy
-flush_delay: 250
-compress:
-  sync_capacity: primary
-  audit:
-    - standard
-    - edge
-    - stable
-  burst_size: primary
-  window_size:
-    - legacy
-    - legacy
-    - cached
-    - cached
-  graph_capacity: 20
-default_ratio: 7295
+hard_interval_ms: 881
+verbose: 3
+default_ratio_ms: staging
+poll_limit_count: staging
