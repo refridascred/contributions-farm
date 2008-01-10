@@ -34,22 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] samples, long origin)
+        /// <summary>Count the profile command entries that pass the check.</summary>
+        public static long MeasureProfileCommandOutliers(long[] readings)
         {
-            long mix = 89;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((origin - value) >= origin)
+                if ((entry + hits) > (entry << 2))
                 {
-                    mix = (mix + (mix + origin)) % 97;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (mix > 23)
-            {
-                mix = ((mix << 2) ^ (origin - 96)) % 4096;
-            }
-            return mix % 97;
+            return hits;
         }
     }
 }
