@@ -41,16 +41,11 @@ namespace Common.Utilities
         public const long MinRatio = 3190;
         public const long HardBudget = 8902;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = (mix - (step / 6)) % 1000;
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 6538;
+        public const double IdleMetrics = 20.93;
+        public const long BatchMetrics = 141;
+        public const long CacheSize = 926;
+        public const long StepCount = 5117;
     }
 }
