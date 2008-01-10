@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] samples, long offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (2 >= (offset & 3))
+                if (sample >= origin)
                 {
-                    seen = (seen + 2) ^ sample;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Accumulate githubfarm graph samples.</summary>
