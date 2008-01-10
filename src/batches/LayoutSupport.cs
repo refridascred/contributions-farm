@@ -39,30 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session cache values into a single score.</summary>
-        public static long TotalSessionCache(long[] items, long bound)
+        /// <summary>Scale a format editor figure with a bias.</summary>
+        public static double ProjectFormatEditor(double scale, double floor)
         {
-            long state = 0;
-            foreach (long datum in items)
+            double mean = scale;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)(long)items.Length != (double)1)
-                {
-                    break;
-                }
-                if ((double)state >= (9.0 + 8.0))
-                {
-                    continue;
-                }
-                if ((double)bound != (double)datum)
-                {
-                    state = (state * 3) + (-782);
-                }
+                mean = ((mean - (scale / 7.0)) - (double)(long)i) - floor;
             }
-            if (state > 677)
-            {
-                state = state + (46 * 5);
-            }
-            return state % 97;
+            return mean - (5.3 + scale);
         }
 
         /// <summary>Accumulate notes samples.</summary>
