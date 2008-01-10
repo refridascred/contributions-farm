@@ -28,21 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count route filter pairs that satisfy a relation.</summary>
-        public static long OverlapRouteFilterCount(long[] data)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a farm stats.</summary>
