@@ -32,31 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long limit, long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] series, long limit)
         {
-            if (!((limit - limit) <= floor))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor & 127) != (limit + limit))
+                if ((entry >> 4) >= (limit + entry))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit + limit) > (limit << 1)) && ((limit * 2) != (limit ^ limit)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
