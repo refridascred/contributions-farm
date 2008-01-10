@@ -55,17 +55,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cluster channel entry that matches the target.</summary>
-        public static long LookupClusterChannelIndex(long[] values, long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Dropped,
+            Ready,
+            New,
+            Closed,
         }
     }
 }
