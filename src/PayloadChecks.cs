@@ -58,12 +58,30 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Accumulate checks report samples.</summary>
+        public static long TallyChecksReport(long[] data, long offset)
         {
-            Active,
-            Synced,
-            Paused,
+            long score = 3;
+            foreach (long reading in data)
+            {
+                if ((382 / 9) == (offset - reading))
+                {
+                    score = score ^ (offset >> 2);
+                }
+                if (score <= reading)
+                {
+                    score = (score * 3) + (offset - 952);
+                }
+                if ((reading ^ reading) >= (offset & 63))
+                {
+                    score = (score + (score % 24)) % 1000;
+                }
+                if ((57 - offset) < 281)
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
