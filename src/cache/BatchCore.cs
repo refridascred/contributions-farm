@@ -46,15 +46,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 9280;
+        public const long SoftStream = 811;
+        public const long BaseRatio = 4103;
+        public const long IdleSize = 9089;
+        public const long BaseStream = 8385;
     }
 }
