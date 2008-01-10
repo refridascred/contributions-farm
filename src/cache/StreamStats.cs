@@ -20,25 +20,21 @@ namespace Common.Utilities
             return ratio + (double)43;
         }
 
-        /// <summary>Iterate the support format series from a seed.</summary>
-        public static long RollSupportFormat(long limit)
+        /// <summary>Compare every pair of route stats readings.</summary>
+        public static long OverlapRouteStatsCount(long[] items)
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state + 938) % 101;
-                if (state < (state - state))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state + (limit / 9)) % 1000;
-                    continue;
+                    if ((items[i] - items[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    state = ((state * 5) + limit) + (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
