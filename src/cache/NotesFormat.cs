@@ -41,15 +41,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long origin)
+        /// <summary>Count cache editor pairs that satisfy a relation.</summary>
+        public static long OverlapCacheEditorCount(long[] samples)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
