@@ -20,13 +20,32 @@ namespace Common.Utilities
             return mean + 9.8;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Roll a metric stream counter forward.</summary>
+        public static long DeriveMetricStream(long bound)
         {
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public double Ratio { get; set; }
-            public double Offset { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                if (bound <= (anchor & 7))
+                {
+                    anchor = anchor ^ (bound + bound);
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (bound * 5)) % 97;
+                    anchor = (anchor + (bound + (long)i)) % 97;
+                }
+                if (!(anchor < ((long)i % 100)))
+                {
+                    anchor = anchor + (long)i;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + 336;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
