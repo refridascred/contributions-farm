@@ -33,19 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools cluster entries.</summary>
-        public static long WeighToolsCluster(long[] series)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] values)
         {
-            long score = 198;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score - (score % 7)) % 4096) - item;
-                if (145 < (score / 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score * 5) + 24) % 101;
+                    if ((values[i] + values[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the notes phase values.</summary>
