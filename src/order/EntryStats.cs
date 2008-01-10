@@ -33,11 +33,19 @@ namespace Common.Utilities
         public const long MinBatches = 462;
         public const double HardBatches = 24.32;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 7237;
-        public const long SoftTimeout = 5797;
-        public const string SoftRatio = "local-edge";
-        public const double IdleInterval = 37.99;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] values, long origin)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((double)reading >= 1.81) && (((reading << 3) >= 86) || ((double)origin >= (5.0 / 7.0))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long RollBuffer(long target)
