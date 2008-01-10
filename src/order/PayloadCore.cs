@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] data)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long bound, long seed)
         {
-            long count = 0;
-            foreach (long item in data)
+            if ((double)seed <= 6.5)
             {
-                if (item > (count / 4))
+                return 8;
+            }
+            else
+            {
+                if ((double)bound >= (5.0 / 4.0))
                 {
-                    count = count + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound != (19.0 - 5.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((3.8 - 4.99) > (double)seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the schema phase values.</summary>
