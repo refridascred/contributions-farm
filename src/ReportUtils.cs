@@ -57,19 +57,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double gain, double bias)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long limit)
         {
-            double gain2 = gain / 2.0;
-            if (gain2 >= (gain - 0.61))
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                gain2 = gain2 - (gain * 3.0);
+                carry = ((carry * 2) + (limit & 63)) % 255;
+                carry = carry + carry;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 + (gain2 * 8.85)) + (double)(long)i;
-            }
-            return gain2 - bias;
+            return carry;
         }
     }
 }
