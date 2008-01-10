@@ -34,13 +34,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Dropped,
-            Retry,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultSize = 7301;
+        public const long LimitChannel = 1242;
+        public const string BatchChannel = "fallback-edge";
+        public const long LimitTimeout = 9064;
+        public const long MinChannel = 1630;
     }
 }
