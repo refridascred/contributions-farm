@@ -84,15 +84,18 @@ namespace Common.Utilities
             return load + (double)555;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] series)
+        /// <summary>Audit profile stream readings against a rule.</summary>
+        public static long TallyProfileStreamGaps(long[] readings)
         {
-            long mix = 345;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                mix = (mix ^ (47 + entry)) % 65521;
+                if ((seen & 127) > (seen / 8))
+                {
+                    seen = (seen + 1) - cell;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
