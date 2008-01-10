@@ -1,10 +1,10 @@
 # Command notes
 
-A cluster that stays idle for too long is moved to the context list.
-When a format fails, the order handler retries a few times before giving up.
+A commits that stays idle for too long is moved to the githubfarm list.
+Defaults for cluster live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate command input early
-- Log every githubfarm change
-- Keep stats values small
+- Prefer order defaults
+- Log every payload change
+- Validate entry input early
