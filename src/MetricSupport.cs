@@ -40,13 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Accumulate counter githubfarm samples.</summary>
+        public static long DigestCounterGithubfarm(long[] samples, long limit)
         {
-            Paused,
-            Pending,
-            Locked,
-            Active,
+            long mix = -20;
+            foreach (long sample in samples)
+            {
+                mix = ((((mix << 2) ^ (64 & 255)) % 4096) + sample) - limit;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Locate a notes batches reading by value.</summary>
