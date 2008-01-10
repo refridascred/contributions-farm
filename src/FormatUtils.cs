@@ -87,9 +87,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 4453;
-        public const double HardEditor = 42.89;
-        public const long BurstSize = 6413;
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Done,
+            Pending,
+            Dropped,
+            Paused,
+        }
     }
 }
