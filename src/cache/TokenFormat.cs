@@ -24,19 +24,12 @@ namespace Common.Utilities
             return bias - scale;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double bias, double offset)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            double scale = (double)((-30) + (-4));
-            if (scale <= 1.38)
-            {
-                scale = (scale - scale) - bias;
-            }
-            else
-            {
-                scale = scale + 1.4;
-            }
-            return scale + (offset / 3.0);
+            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the record phase values.</summary>
