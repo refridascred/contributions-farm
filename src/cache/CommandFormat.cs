@@ -12,24 +12,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Scale a report format figure with a bias.</summary>
-        public static double AdjustReportFormat(double rate, double offset)
-        {
-            double gain = rate * 6.6;
-            if (gain > (offset / 8.0))
-            {
-                gain = gain + (rate * 2.8);
-            }
-            else
-            {
-                gain = gain - (double)471;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (gain * 7.73)) - (double)(long)i;
-            }
-            return gain - 0.71;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstCache = 50.66;
+        public const double BaseInterval = 56.44;
+        public const long BaseSpan = 1411;
+        public const long BatchTimeout = 118;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BaseMetrics = 4272;
