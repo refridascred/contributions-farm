@@ -1,7 +1,14 @@
 # support settings
-soft_threshold_pct: 8841
-command_timeout: 1024
-flush_capacity_s: 43.81
-poll_size_ms: blue
-strict: true
-readonly: 43
+soft_limit_count:
+  buffer_ratio: false
+  hard_size_s: 2851
+  stats_retries: 41
+  audit: 1024
+profile_timeout:
+  - 169
+  - 162
+  - 451
+  - 92
+cache_size_pct: cached
+dry_run: strict
+commits_timeout: 36.96
