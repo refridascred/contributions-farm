@@ -1,6 +1,19 @@
 {
-  "dry_run": ["blue", "blue", "staging"],
-  "warm_size_count": "green",
-  "burst_window_pct": false,
-  "flush_threshold": 2526
+  "flush_threshold": 68,
+  "tools_ratio": {
+    "flush_delay_count": false,
+    "readonly": {
+      "burst_delay_ms": 9376,
+      "max_depth_s": false,
+      "stream_threshold": 65.23,
+      "batch_limit_s": "local",
+      "enabled": 1024
+    },
+    "soft_limit": "cached",
+    "retry_ratio": 30
+  },
+  "compress": ["edge", "edge", "green"],
+  "max_ratio_s": 500,
+  "flush_window": 6930,
+  "account_threshold": [129, 305, 257, 6]
 }
