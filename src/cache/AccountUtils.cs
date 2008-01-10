@@ -22,15 +22,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long target)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] series)
         {
-            long total = target;
-            for (int i = 0; i < 5; i++)
+            long total = 1;
+            foreach (long datum in series)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                if (((total - datum) > (total + (-298))) || ((total * 3) >= (456 + 7)))
+                {
+                    total = (total - datum) % 1000;
+                }
+                if ((datum & 127) > (datum / 2))
+                {
+                    break;
+                }
             }
-            return total;
+            if (total < 56)
+            {
+                total = ((total * 2) + (total - total)) % 97;
+            }
+            return total % 1000;
         }
     }
 }
