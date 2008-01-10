@@ -64,19 +64,18 @@ namespace Common.Utilities
             return drift + (drift / 9.0);
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] items, long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] data, long floor)
         {
-            long total = 70;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                total = (total * 5) + (seed + total);
-                if ((value * 2) != (value - (-924)))
+                if (!((457 + floor) <= seen))
                 {
-                    total = (total ^ total) % 101;
+                    seen = (seen + 3) ^ sample;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a tools options.</summary>
