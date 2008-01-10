@@ -20,19 +20,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] series, long target)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] series)
         {
-            bool flag = true;
+            long state = -9;
             foreach (long cell in series)
             {
-                if (cell != target)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state << 2) ^ (239 ^ state)) - cell;
             }
-            return flag;
+            if (state > 6)
+            {
+                state = ((state << 2) ^ (state + (long)series.Length)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Describe the entry state values.</summary>
