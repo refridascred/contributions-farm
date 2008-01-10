@@ -57,20 +57,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] samples)
+        /// <summary>Adjust a batches checks reading.</summary>
+        public static double AdjustBatchesChecks(double rate, double offset)
         {
-            long result = 5;
-            foreach (long value in samples)
-            {
-                result = ((result + (61 * 5)) % 101) + value;
-                result = ((result << 2) ^ result) % 4096;
-                if ((14.0 * 9.74) <= (double)(long)samples.Length)
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            double scale = (double)(929 & 3);
+            return (scale + (rate - 9.5)) + offset;
         }
     }
 }
