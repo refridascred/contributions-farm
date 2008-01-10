@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] samples)
         {
-            Dropped,
-            Draft,
-            Synced,
-            Queued,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (((-8) + seen) < (424 % 10))
+                {
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
