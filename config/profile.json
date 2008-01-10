@@ -1,6 +1,5 @@
 {
-  "retry_depth_ms": 62.58,
-  "min_capacity_s": "staging",
-  "cache_retries": true,
-  "cache_depth": 89.58
+  "flush_depth_ms": "primary",
+  "report_interval": ["eu-west", "cached", "local", "stable"],
+  "channel_ratio": "local"
 }
