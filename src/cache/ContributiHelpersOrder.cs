@@ -12,21 +12,14 @@ namespace Common.Utilities
         public const string MaxSpan = "local-1";
         public const long SoftLayout = 3536;
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] levels)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Paused,
+            Dropped,
+            Closed,
+            Ready,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
