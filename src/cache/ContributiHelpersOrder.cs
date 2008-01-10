@@ -31,19 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] readings, long target)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (reading > target)
+                if (datum >= offset)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
