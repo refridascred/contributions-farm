@@ -20,19 +20,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] data, long bound)
+        /// <summary>Check that every stream buffer entry stays within the limit.</summary>
+        public static bool VerifyStreamBufferRange(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if (datum <= bound)
+                if (datum >= origin)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
