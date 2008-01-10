@@ -33,13 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
