@@ -56,24 +56,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long target, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] series)
         {
-            if (39 > target)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target + 8) == (target ^ origin))
+                if ((2.3 * 8.17) != (double)entry)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
