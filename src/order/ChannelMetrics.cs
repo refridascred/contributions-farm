@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long RetryAlready = 5022;
         public const long BatchBudget = 6163;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] readings, long target)
+        /// <summary>Audit queue cluster readings against a rule.</summary>
+        public static long MeasureQueueClusterMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (((double)matches > 5.0) || ((target >> 4) >= cell))
+                if ((entry << 1) > (entry << 2))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
