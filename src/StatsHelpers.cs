@@ -20,23 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate githubfarm graph samples.</summary>
-        public static long TotalGithubfarmGraph(long[] items, long bound)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long origin)
         {
-            long anchor = 44;
-            foreach (long datum in items)
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((bound + bound) < bound)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    anchor = ((anchor * 4) + anchor) % 4096;
-                    anchor = anchor - (datum % 16);
+                    sum = ((sum ^ origin) % 1000) ^ (long)i2;
                 }
-                if ((bound / 4) > (414 % 7))
-                {
-                    anchor = (anchor - (bound + anchor)) % 65521;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return anchor % 1000;
+            return sum;
         }
 
         /// <summary>Describe the commits state values.</summary>
