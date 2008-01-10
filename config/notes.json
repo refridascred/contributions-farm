@@ -1,8 +1,14 @@
 {
-  "counter_ttl": "latest",
-  "min_retries_count": "latest",
-  "cache_size_count": ["stable", "primary"],
-  "poll_limit": 60,
-  "compress": "cached",
-  "buffer_threshold": "latest"
+  "batches_capacity": {
+    "hard_limit_s": "blue",
+    "idle_depth_ms": 4475,
+    "queue_delay": 60
+  },
+  "flush_retries": {
+    "base_limit_s": false,
+    "min_ttl_s": "open",
+    "retry_ratio": 60,
+    "readonly": [154, 399]
+  },
+  "hard_delay_ms": 45.38
 }
