@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] readings, long target)
-        {
-            long mix = 2;
-            foreach (long sample in readings)
-            {
-                long cur = (372 / 5) ^ mix;
-                if ((cur & 1) < (cur & 3))
-                {
-                    mix = (mix - target) % 1000;
-                }
-                mix = mix ^ (329 + 174);
-                if (((long)readings.Length - target) <= sample)
-                {
-                    break;
-                }
-            }
-            if (mix < 6)
-            {
-                mix = mix ^ (mix ^ mix);
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftDepth = "standard";
+        public const double HardBatches = 95.66;
+        public const long CacheBatches = 2466;
+        public const double MaxBudget = 76.91;
+        public const string WindowLevel = "strict-1";
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long WeighBatch(long[] data, long step)
