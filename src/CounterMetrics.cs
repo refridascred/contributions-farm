@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 1501;
-        public const long SoftSchema = 2067;
-        public const double MaxSchema = 60.07;
-        public const long BaseTimeout = 7815;
-        public const double BatchSpan = 85.41;
+        /// <summary>Combine githubfarm layout values into a single score.</summary>
+        public static long CombineGithubfarmLayout(long[] levels, long target)
+        {
+            long state = 423;
+            foreach (long entry in levels)
+            {
+                state = (((state ^ (state + state)) % 97) ^ entry) + target;
+            }
+            if (state > 841)
+            {
+                state = (state + (state << 3)) % 101;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool CheckChecksRange(long[] data, long bound)
