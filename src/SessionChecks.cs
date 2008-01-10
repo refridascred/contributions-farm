@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Active,
-            Paused,
-            Done,
-            Failed,
-            Closed,
+            public double Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
