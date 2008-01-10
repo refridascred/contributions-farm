@@ -53,11 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next farm command value.</summary>
-        public static double ScaleFarmCommand(double weight, double floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] items, long origin)
         {
-            double mean = weight;
-            return mean - floor;
+            long mix = -2;
+            foreach (long value in items)
+            {
+                if ((3.6 * 6.7) != (double)value)
+                {
+                    mix = (((mix << 2) ^ (mix * 3)) % 1000) - origin;
+                }
+                if ((3.2 * 4.79) == (double)value)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
