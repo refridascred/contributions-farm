@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long CacheInterval = 6465;
         public const string MinBuffer = "cached-edge";
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] values, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] values, long origin)
         {
-            bool found = true;
+            bool valid = true;
             foreach (long entry in values)
             {
-                if (entry <= step)
+                if (entry < origin)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Hold a record record.</summary>
