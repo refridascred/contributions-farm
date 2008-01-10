@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long offset, long floor)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            if (!((floor + 29) > offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor + 2) < (floor << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset >= 3.0)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            New,
+            Stale,
+            Failed,
         }
 
         /// <summary>Accumulate window samples.</summary>
