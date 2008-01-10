@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] samples, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] levels, long bound)
         {
-            long carry = 2;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                carry = ((carry - (carry / 5)) % 4096) + datum;
-                carry = ((carry * 3) + 902) % 101;
+                if ((bound << 3) < (item / 7))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (carry > 594)
-            {
-                carry = carry - (bound << 2);
-            }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Match up batch samples.</summary>
