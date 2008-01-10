@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double rate, double span)
+        /// <summary>Validate order window readings against a bound.</summary>
+        public static bool GuardOrderWindowRange(long[] levels, long floor)
         {
-            double scale = span;
-            if (scale >= (double)1)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                scale = scale - span;
+                if (entry <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + rate) + (double)(long)i;
-            }
-            return scale - (double)406;
+            return ready;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
