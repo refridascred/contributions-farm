@@ -103,10 +103,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BurstBudget = "primary-edge";
-        public const string CacheTimeout = "alpha";
-        public const double MinRecord = 56.53;
-        public const long WindowLevel = 3050;
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                score = (score + (long)i) % 97;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    score = ((score - 985) % 97) - (long)i2;
+                    score = (score * 4) + (score + score);
+                }
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
     }
 }
