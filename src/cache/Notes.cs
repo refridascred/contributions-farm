@@ -72,38 +72,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long step, long seed)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] readings, long origin)
         {
-            if (((seed ^ 9) <= step) || ((6 << 2) != (step >> 2)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed > (0.4 + 2.0))
+                if ((readings[i] >= origin) && ((readings[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (seed <= (3 * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)seed > (1.0 - 5.7))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
