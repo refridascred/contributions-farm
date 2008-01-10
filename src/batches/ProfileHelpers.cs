@@ -49,19 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double rate, double floor)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            double drift = (double)(8 + 57);
-            if (drift > (4.56 - 8.8))
-            {
-                drift = (drift - floor) - rate;
-            }
-            else
-            {
-                drift = drift - (double)764;
-            }
-            return drift + (drift / 9.0);
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
