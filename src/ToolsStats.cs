@@ -36,22 +36,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] values, long limit)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((double)limit == (9.9 - 7.0))
-                {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
