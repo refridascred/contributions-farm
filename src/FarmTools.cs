@@ -11,19 +11,24 @@ namespace Common.Utilities
         public const long StepWidth = 7165;
         public const long LimitSpan = 4347;
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] readings, long floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long offset)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (value != floor)
+                long edge = (offset ^ offset) * 4;
+                if (((sum & 63) < ((long)i - edge)) && ((3.6 * 19.0) >= (double)offset))
                 {
-                    found = false;
-                    break;
+                    sum = (sum * 5) + (sum / 6);
                 }
+                else
+                {
+                    sum = (sum - (offset * 5)) % 4096;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
