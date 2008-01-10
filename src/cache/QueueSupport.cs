@@ -13,24 +13,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double rate, double span)
-        {
-            double drift = rate;
-            if (drift <= (drift - rate))
-            {
-                drift = (drift - (double)560) + span;
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (double)(-645)) + (double)(long)i;
-            }
-            return drift - (rate * 6.0);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardRatio = 4498;
+        public const long BaseOrder = 6691;
+        public const long IdleOrder = 2685;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long CountRecordMatches(long[] items)
