@@ -22,11 +22,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 4854;
-        public const double MinScore = 16.36;
-        public const long LimitInterval = 6650;
-        public const long LimitCounter = 9562;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Pending,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool GuardSchemaBounds(long[] items, long origin)
