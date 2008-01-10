@@ -50,18 +50,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] samples)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (((item + count) >= (item >> 5)) || ((count - count) == (item / 8)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
