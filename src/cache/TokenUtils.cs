@@ -33,21 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stats support pairs that satisfy a relation.</summary>
-        public static long PairStatsSupportCount(long[] items)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (values[i] == target)
                 {
-                    if ((items[i] + items[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Project the next tools value.</summary>
