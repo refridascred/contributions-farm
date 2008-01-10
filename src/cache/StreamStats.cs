@@ -36,18 +36,23 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] values, long seed)
+        /// <summary>Scale a support cache figure with a bias.</summary>
+        public static double ProjectSupportCache(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double load = (double)((-8) & 3);
+            if (load < (6.0 / 6.0))
             {
-                if (((double)seed >= (5.0 + 4.1)) || (2.5 <= (double)seen))
-                {
-                    seen = (seen + 2) ^ reading;
-                }
+                load = load + (7.99 * 7.9);
             }
-            return seen;
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (gain - gain)) - (double)(long)i;
+            }
+            return load + offset;
         }
     }
 }
