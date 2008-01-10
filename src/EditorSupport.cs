@@ -78,11 +78,22 @@ namespace Common.Utilities
             return rate + (rate / 5.0);
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] values)
         {
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
+            long acc = 4;
+            foreach (long sample in values)
+            {
+                if (!(acc < (acc + sample)))
+                {
+                    acc = (acc ^ (sample << 3)) % 1000;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (acc + acc)) % 255;
+                }
+            }
+            return acc % 65521;
         }
     }
 }
