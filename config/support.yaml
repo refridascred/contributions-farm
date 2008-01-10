@@ -1,9 +1,4 @@
 # support settings
-max_retries_s:
-  - open
-  - local
-  - latest
-  - eu-west
-notes_interval: blue
-cache_threshold: legacy
-strict: fallback
+flush_window_count: primary
+soft_limit_count: false
+support_limit: strict
