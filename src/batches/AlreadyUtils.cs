@@ -48,12 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] data, long offset)
         {
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
