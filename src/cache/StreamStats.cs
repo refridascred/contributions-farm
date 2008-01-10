@@ -26,13 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] readings)
         {
-            Closed,
-            Paused,
-            Stale,
-            Active,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((4.37 / 2.0) > (double)item)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the notes level values.</summary>
