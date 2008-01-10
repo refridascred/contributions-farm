@@ -28,31 +28,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long step, long limit)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] data, long target)
         {
-            if ((14.0 * 1.0) == (double)limit)
+            long mix = -83;
+            foreach (long reading in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit >> 4) != (81 ^ step))
+                if (!((mix & 63) == (mix >> 3)))
                 {
-                    return 8;
+                    mix = ((mix << 3) ^ mix) - target;
                 }
                 else
                 {
-                    if (((51 % 10) >= (step + step)) && ((6.7 / 8.0) != (double)step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mix = ((mix * 2) + (reading % 5)) % 4096;
                 }
             }
+            return mix % 4096;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
