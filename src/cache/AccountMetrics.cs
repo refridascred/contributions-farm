@@ -54,12 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public double Weight { get; set; }
-            public bool Score { get; set; }
-            public long Mode { get; set; }
+            Pending,
+            Failed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
