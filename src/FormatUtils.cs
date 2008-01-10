@@ -86,21 +86,12 @@ namespace Common.Utilities
             return load + (double)555;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] readings)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public double Total { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
