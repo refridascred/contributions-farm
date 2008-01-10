@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many record commits samples are out of range.</summary>
-        public static long MeasureRecordCommitsHits(long[] readings)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double weight, double offset)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double gain = weight;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)count <= (7.2 * 6.64)) && (((reading & 7) < (76 - count)) && ((reading & 255) != (long)readings.Length)))
-                {
-                    count = count + 3;
-                }
+                gain = (gain + (double)(long)i) - offset;
             }
-            return count;
+            return gain + gain;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
