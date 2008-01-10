@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long RetryAlready = 5022;
         public const long BatchBudget = 6163;
 
-        /// <summary>Derive the next report cluster value from a seed.</summary>
-        public static long SeriesReportCluster(long step)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double bias, double span)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            double scale = 2.8;
+            for (int i = 0; i < 4; i++)
             {
-                result = ((result * 2) + (long)i) % 97;
+                scale = ((scale + (double)(long)i) - bias) - span;
             }
-            return result;
+            return scale + (double)16;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
