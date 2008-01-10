@@ -16,12 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double scale, double floor)
         {
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
+            double scale2 = floor - floor;
+            if (scale2 > scale)
+            {
+                scale2 = scale2 + (double)12;
+            }
+            return scale2 - (scale * 9.5);
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
