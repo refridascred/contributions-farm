@@ -18,39 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long bound, long limit)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long lane = bound ^ limit;
-            if ((limit / 9) > 873)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((19.0 + 1.0) != (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound % 64) >= (lane % 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((lane / 5) == (lane / 6)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine command values into a single score.</summary>
