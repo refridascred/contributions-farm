@@ -1,9 +1,8 @@
-id,weight,count,owner
-1,eu-west,40.4,42.12
-2,681,661,915
-3,664,616,884
-4,blue,staging,local
-5,legacy,689,staging
-6,fallback,587,922
-7,8.19,68.05,stable
-8,blue,145,stable
+id,active,weight,label
+1,37.32,820,latest
+2,77.68,643,269
+3,staging,530,562
+4,354,stable,local
+5,649,514,998
+6,30.65,63.11,66.67
+7,80.17,377,853
