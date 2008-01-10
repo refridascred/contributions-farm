@@ -22,15 +22,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] data)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] data, long origin)
         {
-            long acc = 1;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                acc = ((acc * 2) + (67 + item)) % 65521;
+                if (cell > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc % 1000;
+            return ok;
         }
 
         /// <summary>Describe the token status values.</summary>
