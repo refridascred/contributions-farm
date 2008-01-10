@@ -38,10 +38,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepRoute = "local-v2";
-        public const long RetryRoute = 4782;
-        public const string HardRoute = "primary-v2";
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long target, long origin)
+        {
+            if (39 > target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target + 8) == (target ^ origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long LookupChannelIndex(long[] samples, long bound)
