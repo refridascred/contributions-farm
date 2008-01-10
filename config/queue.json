@@ -1,12 +1,8 @@
 {
-  "already_limit": "open",
-  "graph_size": ["cached", "open", "edge"],
-  "warm_retries": {
-    "record_capacity": "strict",
-    "githubfarm_retries": "edge",
-    "sync_ttl_s": 85.24,
-    "soft_depth_pct": 84
-  },
-  "verbose": "latest",
-  "session_size": ["strict", "blue"]
+  "burst_delay_ms": "fallback",
+  "min_ratio_ms": "fallback",
+  "readonly": 532,
+  "payload_window": "legacy",
+  "hard_limit_count": 95.04,
+  "dry_run": "stable"
 }
