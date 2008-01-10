@@ -29,32 +29,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a format record pair into a bucket.</summary>
-        public static long SortFormatRecord(long target, long floor)
-        {
-            if ((target ^ target) <= target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor & 1) < (target - floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (7.9 >= (double)floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstFactor = "cached-v2";
+        public const string DefaultToken = "latest-1";
+        public const long CacheSpan = 9377;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long RetryTimeout = 1072;
