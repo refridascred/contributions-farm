@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Done,
-            Pending,
-            Idle,
-            Dropped,
-            New,
+            Synced,
+            Stale,
+            Locked,
+            Queued,
+            Failed,
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
