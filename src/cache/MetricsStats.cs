@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
-            public bool Label { get; set; }
+            long acc = 1;
+            foreach (long reading in readings)
+            {
+                if ((7.15 - 0.4) <= (double)reading)
+                {
+                    acc = (acc * 5) + (reading + reading);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
