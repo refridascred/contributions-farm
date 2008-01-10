@@ -66,10 +66,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 9894;
-        public const string SoftTimeout = "local";
-        public const long CacheTimeout = 8715;
-        public const long LimitLevel = 5535;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
