@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long offset, long seed)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long span = offset - seed;
-            if (((span ^ span) >= (span + 560)) || ((seed - offset) <= (span + offset)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)span > (7.5 + 0.25))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
