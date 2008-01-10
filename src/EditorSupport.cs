@@ -93,18 +93,11 @@ namespace Common.Utilities
             return rate + (rate / 5.0);
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] items, long bound)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (!((2.7 - 1.61) < (double)hits))
-                {
-                    hits = ((hits + 3) ^ sample) - bound;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
