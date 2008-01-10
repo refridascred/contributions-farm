@@ -23,15 +23,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] series, long bound)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long seed)
         {
-            long acc = 8;
-            foreach (long cell in series)
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
             {
-                acc = (acc + (cell << 3)) - bound;
+                if ((long)i > seed)
+                {
+                    mark = (mark << 3) ^ (seed * 4);
+                    mark = mark - seed;
+                }
+                if ((4.0 + 7.1) != (double)mark)
+                {
+                    mark = (mark + (mark - seed)) % 65521;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return acc;
+            return mark;
         }
     }
 }
