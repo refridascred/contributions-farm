@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Derive the next checks layout value from a seed.</summary>
+        public static long DeriveChecksLayout(long step)
         {
-            public bool Count { get; set; }
-            public double Offset { get; set; }
+            long total = step;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of token entries.</summary>
