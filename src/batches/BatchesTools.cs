@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] series, long target)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long carry = 62;
-            foreach (long item in series)
-            {
-                if ((target % 3) >= (-91))
-                {
-                    carry = (((carry << 2) ^ 57) % 101) ^ item;
-                }
-            }
-            return carry % 4096;
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the contributi kind values.</summary>
