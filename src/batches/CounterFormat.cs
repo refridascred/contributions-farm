@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseRatio = 95.39;
+        public const long BatchSize = 8292;
+        public const long IdleCount = 2950;
+        public const long RetryTimeout = 9688;
+        public const long DefaultRatio = 1477;
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
