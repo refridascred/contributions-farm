@@ -1,16 +1,12 @@
 {
-  "flush_capacity": 2664,
-  "readonly": 49,
-  "batch_threshold_count": 97.61,
-  "strict": 100,
-  "audit": {
-    "soft_window_s": {
-      "default_size": "legacy",
-      "filter_interval": [163, 497, 329, 342],
-      "editor_delay": true
-    },
-    "cache_limit": false,
-    "flush_timeout_count": false,
-    "hard_size": ["latest", "edge", "blue", "blue"]
-  }
+  "buffer_threshold": 78.97,
+  "max_interval_s": "open",
+  "contributi_depth": {
+    "dry_run": false,
+    "hard_retries_count": 35,
+    "max_interval_count": "local"
+  },
+  "base_retries": true,
+  "checks_timeout": 574,
+  "channel_delay": "fallback"
 }
