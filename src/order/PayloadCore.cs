@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] readings, long limit)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] data)
         {
-            long sum = 87;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((long)readings.Length == (sum + limit))
+                if (item > (count / 4))
                 {
-                    sum = (sum * 2) + (sum + limit);
-                    continue;
-                }
-                if (52 <= sum)
-                {
-                    sum = ((sum << 3) ^ datum) % 1000;
+                    count = count + 1;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the schema phase values.</summary>
