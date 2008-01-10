@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstRatio = 22.65;
-        public const long BaseSize = 6910;
-        public const string SoftWidth = "alpha-1";
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Draft,
+            Closed,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
