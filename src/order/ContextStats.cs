@@ -40,17 +40,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == seed) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 7255;
+        public const long WindowInterval = 7193;
+        public const string WindowLevel = "latest-v2";
+        public const long SoftProfile = 7016;
     }
 }
