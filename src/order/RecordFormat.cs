@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long bound, long step)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long offset = bound - step;
-            if (step < (2 - 441))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step << 2) != (offset / 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.72 - 14.0) <= (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (step > bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Done,
+            Stale,
+            Closed,
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
