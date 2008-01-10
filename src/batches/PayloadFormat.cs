@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Rank graph channel input into a small class.</summary>
+        public static long BucketGraphChannel(long offset, long limit)
         {
-            Retry,
-            Dropped,
-            Ready,
-            Locked,
-            Failed,
+            if ((46 + 18) < limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((11.0 + 9.1) <= (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset <= 8.4)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a layout cache figure with a bias.</summary>
