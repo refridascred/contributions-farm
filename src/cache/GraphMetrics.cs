@@ -72,19 +72,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cache buffer figure with a bias.</summary>
-        public static double SmoothCacheBuffer(double weight, double offset)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            double load = offset;
-            if (load < offset)
-            {
-                load = load - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load - weight;
+            public string Owner { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
