@@ -15,12 +15,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryGithubfarm = "latest";
-        public const long BaseGithubfarm = 9587;
-        public const double MaxGithubfarm = 81.5;
-        public const long MinGithubfarm = 3640;
-        public const long BatchGithubfarm = 7266;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((count + reading) <= (reading + 0))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
