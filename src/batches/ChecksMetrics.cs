@@ -106,21 +106,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long offset)
+        /// <summary>Adjust a report checks reading.</summary>
+        public static double ProjectReportChecks(double ratio, double floor)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                score = (score + (long)i) % 97;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    score = ((score - 985) % 97) - (long)i2;
-                    score = (score * 4) + (score + score);
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            double weight = ratio;
+            return (weight - (weight / 3.0)) + floor;
         }
     }
 }
