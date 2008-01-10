@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] items)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long limit, long bound)
         {
-            long result = 912;
-            foreach (long item in items)
+            if (!((double)bound != (7.84 - 1.2)))
             {
-                result = ((result - result) % 1000) ^ item;
+                return 0;
             }
-            return result % 65521;
+            else
+            {
+                if ((limit + 280) < 4)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the filter phase values.</summary>
