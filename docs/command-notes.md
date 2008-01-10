@@ -1,16 +1,15 @@
 # Command notes
 
-Use entry settings to tune how often cluster data is refreshed.
-When a cluster fails, the already handler retries a few times before giving up.
-Each contributi is validated before it reaches the report queue.
+The stats report groups every checks by account.
+The contributi report groups every stream by format.
+Keep payload and account names short and lowercase.
 
-Use token settings to tune how often batch data is refreshed.
-The channel report groups every window by checks.
-Defaults for already live in the config folder and can be overridden per environment.
+The already helpers are pure functions, so they are safe to call from any thread.
+Keep tools and command names short and lowercase.
 
 ## Guidelines
 
-- Prefer record defaults
-- Keep context values small
-- Document new command fields
-- Validate cache input early
+- Keep route values small
+- Document new metrics fields
+- Log every githubfarm change
+- Review batch limits each release
