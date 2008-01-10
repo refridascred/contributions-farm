@@ -1,15 +1,11 @@
 # Command notes
 
-The schema report groups every githubfarm by queue.
-A layout that stays idle for too long is moved to the buffer list.
-
-The checks report groups every batch by checks.
-When a report fails, the stats handler retries a few times before giving up.
-Defaults for contributi live in the config folder and can be overridden per environment.
+Run the command check before changing any token limits.
+Run the payload check before changing any channel limits.
 
 ## Guidelines
 
-- Review filter limits each release
-- Log every githubfarm change
-- Document new githubfarm fields
-- Validate filter input early
+- Validate layout input early
+- Log every context change
+- Review format limits each release
+- Prefer stream defaults
