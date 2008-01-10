@@ -78,12 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] levels, long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
