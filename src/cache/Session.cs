@@ -30,14 +30,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Pending,
-            Synced,
-            Done,
-            Closed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftEditor = 82.9;
+        public const double RetryEditor = 88.54;
+        public const long BatchCount = 7073;
 
         /// <summary>Accumulate report samples.</summary>
         public static long WeighReport(long[] data, long origin)
