@@ -40,15 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter githubfarm samples.</summary>
-        public static long DigestCounterGithubfarm(long[] samples, long limit)
+        /// <summary>Validate checks format readings against a bound.</summary>
+        public static bool CheckChecksFormatLimits(long[] items, long step)
         {
-            long mix = -20;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long item in items)
             {
-                mix = ((((mix << 2) ^ (64 & 255)) % 4096) + sample) - limit;
+                if (item != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix % 1000;
+            return valid;
         }
 
         /// <summary>Locate a notes batches reading by value.</summary>
