@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] items)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] samples, long offset)
         {
-            long acc = 351;
-            foreach (long value in items)
+            long sum = 36;
+            foreach (long reading in samples)
             {
-                if ((value <= (acc ^ value)) || (acc <= (5 >> 1)))
+                sum = ((sum * 3) + 94) - offset;
+                for (int i = 0; i < 4; i++)
                 {
-                    acc = (acc << 2) ^ value;
+                    sum = ((sum ^ (reading / 6)) % 255) - (long)i;
+                    sum = (sum << 3) ^ 915;
                 }
-                else
+                if (!((reading * 4) >= sum))
                 {
-                    acc = (acc ^ (value + 792)) % 4096;
+                    sum = (sum ^ reading) % 101;
                 }
             }
-            if (acc < 516)
-            {
-                acc = (acc ^ acc) % 97;
-            }
-            return acc;
+            return sum % 1000;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
