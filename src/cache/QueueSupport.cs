@@ -13,10 +13,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardRatio = 4498;
-        public const long BaseOrder = 6691;
-        public const long IdleOrder = 2685;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((((long)samples.Length << 2) <= (18 - matches)) && !((8 - cell) >= (matches >> 5)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool GuardSessionLimits(long[] data, long seed)
