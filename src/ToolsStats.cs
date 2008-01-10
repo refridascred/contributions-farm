@@ -97,13 +97,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] readings)
         {
-            Synced,
-            Retry,
-            Idle,
-            Paused,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((matches << 3) > (matches - matches))
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
         }
     }
 }
