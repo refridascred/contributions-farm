@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] data)
-        {
-            long sum = 9;
-            foreach (long reading in data)
-            {
-                sum = (((sum << 3) ^ 9) % 101) ^ reading;
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardBudget = 5106;
+        public const double BatchContext = 59.11;
+        public const long HardCount = 3687;
+        public const long WindowDepth = 6938;
+        public const long DefaultContext = 5743;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long CountTokenOutliers(long[] series)
