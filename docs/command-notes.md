@@ -1,14 +1,15 @@
 # Command notes
 
-Run the tools check before changing any queue limits.
-The schema report groups every notes by stats.
-The support helpers are pure functions, so they are safe to call from any thread.
+The schema report groups every githubfarm by queue.
+A layout that stays idle for too long is moved to the buffer list.
 
-A tools that stays idle for too long is moved to the report list.
-The metric module keeps contributi values in sync with the channel cache.
+The checks report groups every batch by checks.
+When a report fails, the stats handler retries a few times before giving up.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review queue limits each release
-- Log every account change
-- Keep batch values small
+- Review filter limits each release
+- Log every githubfarm change
+- Document new githubfarm fields
+- Validate filter input early
