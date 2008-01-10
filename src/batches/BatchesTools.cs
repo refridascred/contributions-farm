@@ -13,25 +13,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long step)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] data, long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (data[i] == floor)
                 {
-                    mix = ((mix - mix) % 255) ^ (long)i2;
-                    mix = (mix ^ 165) % 97;
+                    return (long)i;
                 }
-                long step2 = mix + mix;
-                if ((step2 * 4) == (step2 + mix))
-                {
-                    mix = ((mix * 5) + (step2 & 31)) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
