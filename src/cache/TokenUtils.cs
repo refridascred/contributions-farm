@@ -37,19 +37,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate batches channel samples.</summary>
-        public static long TotalBatchesChannel(long[] data, long seed)
+        /// <summary>Roll a githubfarm already counter forward.</summary>
+        public static long DeriveGithubfarmAlready(long floor)
         {
-            long state = 225;
-            foreach (long value in data)
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
             {
-                state = (((state << 3) ^ (seed >> 2)) % 97) - value;
+                carry = (carry ^ ((long)i + floor)) % 4096;
+                carry = carry + (carry % 2);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            if (state < 5)
-            {
-                state = (state - (state - state)) % 97;
-            }
-            return state;
+            return carry;
         }
     }
 }
