@@ -46,13 +46,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Accumulate route counter samples.</summary>
+        public static long TallyRouteCounter(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
+            long total = 209;
+            foreach (long item in readings)
+            {
+                total = (total - (total << 3)) - item;
+            }
+            return total % 1000;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
