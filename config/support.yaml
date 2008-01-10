@@ -1,32 +1,4 @@
 # support settings
-flush_timeout_count:
-  route_limit: 11.65
-  cache_threshold:
-    report_ratio: true
-    sync_delay:
-      - 55
-      - 499
-      - 268
-    soft_window: fallback
-    tools_threshold: 51.7
-  cache_delay_pct: 38
-  default_ratio_count: 38
-  min_capacity_count: edge
-  batch_threshold_count: open
-support_retries:
-  default_limit: primary
-  flush_window_count:
-    - legacy
-    - strict
-    - stable
-    - blue
-  verbose: 3
-retry_capacity_pct:
-  - 186
-  - 143
-  - 118
-soft_delay_count:
-  max_depth: primary
-  burst_delay_pct: 30
-  sync_ratio_count: 30
-sync_size: true
+context_retries: local
+dry_run: open
+min_ratio_count: staging
