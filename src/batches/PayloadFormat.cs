@@ -56,38 +56,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long step, long bound)
-        {
-            if (((bound - 92) < (step * 5)) || ((bound ^ 8) <= (step - 0)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound * 2) <= step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(step > (step + bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((0.55 + 0.4) > (double)step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryTimeout = 1072;
+        public const string LimitLevel = "staging-edge";
+        public const double MinFilter = 85.17;
     }
 }
