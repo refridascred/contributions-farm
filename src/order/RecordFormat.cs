@@ -33,19 +33,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] samples, long origin)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long acc = 36;
-            foreach (long value in samples)
-            {
-                acc = (acc ^ (value - value)) - origin;
-            }
-            if (acc > 0)
-            {
-                acc = acc - (5 % 12);
-            }
-            return acc % 97;
+            Queued,
+            Locked,
+            Draft,
         }
 
         /// <summary>Locate a contributi format reading by value.</summary>
