@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long offset, long target)
-        {
-            if (!((5.2 - 7.8) > (double)offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target << 3) <= offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)offset > (7.81 / 9.0)) || ((offset << 3) >= (target + target)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target - offset) >= (target / 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBuffer = "standard-1";
+        public const long HardBuffer = 6377;
+        public const long CacheBuffer = 8967;
+        public const long CacheInterval = 6465;
+        public const string MinBuffer = "cached-edge";
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long PairOrderCount(long[] items)
