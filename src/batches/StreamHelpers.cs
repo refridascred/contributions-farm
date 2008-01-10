@@ -59,11 +59,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] levels)
         {
-            public bool Offset { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a window command counter forward.</summary>
