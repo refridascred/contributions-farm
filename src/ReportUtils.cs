@@ -58,17 +58,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long limit)
+        /// <summary>Find the first record queue entry that matches the target.</summary>
+        public static long LocateRecordQueueIndex(long[] values, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 2) + (limit & 63)) % 255;
-                carry = carry + carry;
-                carry = ((carry * 3) + (long)i) % 4093;
+                if ((values[i] < offset) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
