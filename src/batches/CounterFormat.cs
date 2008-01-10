@@ -22,18 +22,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] data)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] data)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum <= (datum - (long)data.Length)) || (datum <= ((long)data.Length % 64)))
                 {
-                    if ((data[i] ^ data[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
