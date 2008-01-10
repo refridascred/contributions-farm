@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] samples, long offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] levels, long limit)
         {
-            long sum = 36;
-            foreach (long reading in samples)
+            long score = -55;
+            foreach (long value in levels)
             {
-                sum = ((sum * 3) + 94) - offset;
-                for (int i = 0; i < 4; i++)
+                if ((11.0 / 7.0) >= (double)value)
                 {
-                    sum = ((sum ^ (reading / 6)) % 255) - (long)i;
-                    sum = (sum << 3) ^ 915;
-                }
-                if (!((reading * 4) >= sum))
-                {
-                    sum = (sum ^ reading) % 101;
+                    score = ((score << 3) ^ (value - value)) + limit;
                 }
             }
-            return sum % 1000;
+            return score % 4096;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
