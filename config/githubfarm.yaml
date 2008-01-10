@@ -1,14 +1,33 @@
 # githubfarm settings
-base_capacity: 29.56
-metrics_size: 9917
-verbose:
-  - eu-west
-  - open
-default_capacity_s: true
-hard_size_count:
-  compress:
-    - 16
-    - 174
-  strict: false
-  cache_ttl_count: latest
-enabled: 7340
+warm_retries_pct:
+  retry_limit_s: false
+  cache_delay_s:
+    persist: true
+    strict: local
+    cache_depth_count: fallback
+    idle_depth:
+      - standard
+      - legacy
+      - cached
+      - latest
+    warm_interval_s: 1024
+  flush_retries_pct: 76.43
+  soft_depth:
+    - 97
+    - 275
+    - 342
+    - 419
+  audit: 250
+  farm_window:
+    idle_timeout_pct: 98.34
+    window_ratio: 63.86
+    verbose: local
+    enabled: fallback
+    layout_capacity: 8353
+    flush_size_count: 86
+flush_capacity: false
+idle_window_ms:
+  - 497
+  - 243
+batch_window_pct: true
+poll_interval: blue
