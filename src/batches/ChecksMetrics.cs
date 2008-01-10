@@ -80,13 +80,24 @@ namespace Common.Utilities
         public const long StepCluster = 4233;
         public const string DefaultCluster = "local-edge";
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long bound, long origin)
         {
-            Failed,
-            Retry,
-            Draft,
-            Active,
+            if ((bound << 3) <= (bound << 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin / 8) >= origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
