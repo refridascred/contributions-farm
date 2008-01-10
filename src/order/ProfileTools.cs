@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportLimits(long[] items, long step)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > step)
+                if (items[i] == bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Combine account filter values into a single score.</summary>
