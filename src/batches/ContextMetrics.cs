@@ -50,13 +50,39 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long offset, long step)
         {
-            Queued,
-            Failed,
-            Retry,
-            Stale,
+            long offset2 = offset - step;
+            if ((offset2 << 2) < (offset + 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if (15.0 > (double)offset2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset2 ^ 181) <= (offset2 >> 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)offset2 == (double)offset) || ((double)offset2 >= 8.12))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
