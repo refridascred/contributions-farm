@@ -1,11 +1,4 @@
 # entry settings
-cluster_capacity: 500
-strict: true
-default_limit: false
-poll_ratio: 85.56
-max_delay:
-  - legacy
-  - standard
-  - eu-west
-  - primary
-batch_retries: 78.19
+metric_ratio: local
+persist: cached
+batch_depth: eu-west
