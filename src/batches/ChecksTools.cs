@@ -24,25 +24,12 @@ namespace Common.Utilities
             return bias + (rate / 8.0);
         }
 
-        /// <summary>Derive the next githubfarm batch value from a seed.</summary>
-        public static long SeriesGithubfarmBatch(long step)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((727 ^ 4) == ((long)i / 4))
-                {
-                    total = total + (total - step);
-                    continue;
-                }
-                else
-                {
-                    total = total + (226 >> 1);
-                    total = (total << 2) ^ step;
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            public double Token { get; set; }
+            public long Level { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Look up the position of a already route sample.</summary>
