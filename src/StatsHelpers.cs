@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double rate, double offset)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] values)
         {
-            double weight = (double)(7 + 669);
-            if (weight > (rate * 7.41))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - weight;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return weight - offset;
+            return matches;
         }
 
         /// <summary>Compare every pair of payload context readings.</summary>
