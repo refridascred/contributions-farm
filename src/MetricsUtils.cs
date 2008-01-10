@@ -52,18 +52,16 @@ namespace Common.Utilities
         public const long MinRatio = 3190;
         public const long HardBudget = 8902;
 
-        /// <summary>Combine githubfarm tools values into a single score.</summary>
-        public static long WeighGithubfarmTools(long[] values, long bound)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long step)
         {
-            long acc = 309;
-            foreach (long datum in values)
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((8.33 + 1.54) >= (double)datum)
-                {
-                    acc = (acc * 2) + (bound & 15);
-                }
+                mix = (mix - (step / 6)) % 1000;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return acc;
+            return mix;
         }
     }
 }
