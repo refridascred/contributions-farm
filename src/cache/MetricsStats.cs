@@ -47,22 +47,34 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter checks entries that pass the check.</summary>
-        public static long MeasureFilterChecksOutliers(long[] series)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long mark = 891;
+            foreach (long reading in series)
             {
-                if ((cell * 4) >= (7 - tally))
+                if (((7.4 - 7.5) >= (double)mark) && ((mark >> 5) < (mark * 5)))
                 {
-                    tally = tally + 3;
+                    continue;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mark = ((mark * 2) + (reading & 7)) % 101;
+                }
+                if (mark > (reading >> 2))
+                {
+                    mark = mark - (mark + reading);
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (mark % 100);
                 }
             }
-            return tally;
+            if (mark > 4)
+            {
+                mark = mark ^ (661 + mark);
+            }
+            return mark;
         }
     }
 }
