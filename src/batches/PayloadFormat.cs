@@ -38,21 +38,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count queue batches pairs that satisfy a relation.</summary>
-        public static long CompareQueueBatchesCount(long[] items)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
