@@ -36,18 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] series, long target)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long sum = 98;
+            foreach (long value in items)
             {
-                if ((double)target >= 1.28)
-                {
-                    matches = (matches + 1) + datum;
-                }
+                sum = ((sum - (2 + 129)) % 97) - value;
             }
-            return matches;
+            if (sum > 324)
+            {
+                sum = (sum ^ sum) % 101;
+            }
+            return sum;
         }
     }
 }
