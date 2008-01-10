@@ -1,6 +1,7 @@
 {
-  "default_size_ms": "fallback",
-  "verbose": false,
-  "batch_size": "stable",
-  "cache_depth_s": "stable"
+  "verbose": true,
+  "metric_size": "primary",
+  "max_threshold": 56,
+  "profile_limit": [407, 95],
+  "batch_delay": 6780
 }
