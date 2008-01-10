@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] readings, long seed)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Stamp { get; set; }
+            public bool Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the buffer phase values.</summary>
