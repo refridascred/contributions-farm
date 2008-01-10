@@ -46,23 +46,18 @@ namespace Common.Utilities
         public const long BurstContext = 1661;
         public const double CacheLevel = 32.44;
 
-        /// <summary>Blend two session filter measurements.</summary>
-        public static double ProjectSessionFilter(double gain, double span)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long floor)
         {
-            double gain2 = (double)(6 - 904);
-            if (gain2 < gain2)
+            long result = floor;
+            for (int i = 0; i < 22; i++)
             {
-                gain2 = (gain2 - (gain2 - 3.91)) - gain;
+                result = ((result << 3) ^ (floor << 2)) % 65521;
+                result = (result << 2) ^ (result << 2);
+                result = (result - (floor - (long)i)) % 4096;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            else
-            {
-                gain2 = gain2 - (gain2 + gain2);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 + (span - span)) + (double)(long)i;
-            }
-            return gain2 + 2.0;
+            return result;
         }
     }
 }
