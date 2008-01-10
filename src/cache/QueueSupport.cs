@@ -22,14 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Retry,
-            New,
-            Active,
-            Stale,
-            Done,
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
