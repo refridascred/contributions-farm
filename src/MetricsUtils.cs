@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] samples)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample ^ sample) <= sample)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Locate a githubfarm order reading by value.</summary>
