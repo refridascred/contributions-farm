@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitTimeout = 2124;
-        public const double BurstProfile = 10.81;
-        public const string BaseProfile = "strict-1";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheFilter = "alpha";
+        public const long BatchFilter = 1276;
+        public const string BaseLevel = "legacy-1";
+        public const double StepFilter = 63.49;
+        public const string BurstFilter = "primary-1";
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long CompareRouteCount(long[] values)
