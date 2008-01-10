@@ -28,23 +28,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double weight, double bias)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            double load = bias;
-            if (load >= (load / 5.0))
-            {
-                load = (load + (double)2) - weight;
-            }
-            else
-            {
-                load = load + (19.0 / 7.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (load + load)) + (double)(long)i;
-            }
-            return load - 2.0;
+            Idle,
+            Closed,
+            Retry,
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
