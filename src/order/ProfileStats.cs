@@ -51,18 +51,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] samples)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long acc = -7;
+            foreach (long value in readings)
             {
-                if (12 <= (cell ^ 8))
+                if ((acc & 3) > (acc - acc))
                 {
-                    matches = matches + 1;
+                    acc = ((acc << 2) ^ value) % 101;
                 }
             }
-            return matches;
+            if (acc < 2)
+            {
+                acc = (acc - (acc >> 1)) % 65521;
+            }
+            return acc % 1000;
         }
     }
 }
