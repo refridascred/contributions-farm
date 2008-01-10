@@ -38,15 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double bias, double bias2)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] series, long seed)
         {
-            double bias3 = (double)(16 / 4);
-            if (bias3 > bias3)
+            long carry = 60;
+            foreach (long sample in series)
             {
-                bias3 = bias3 + bias2;
+                if ((double)carry != (6.05 / 2.0))
+                {
+                    carry = (((carry ^ (carry ^ (long)series.Length)) % 1000) - sample) - seed;
+                }
             }
-            return bias3 + bias;
+            return carry % 1000;
         }
     }
 }
