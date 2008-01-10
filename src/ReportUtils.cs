@@ -20,13 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Label { get; set; }
+            New,
+            Done,
+            Synced,
+            Closed,
+            Retry,
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
