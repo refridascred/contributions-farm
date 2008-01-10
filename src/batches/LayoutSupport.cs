@@ -63,22 +63,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] samples, long target)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double mean = (7.4 + 10.0) - (bias2 + bias2);
+            for (int i = 0; i < 3; i++)
             {
-                if ((matches + 2) <= (matches * 5))
-                {
-                    matches = ((matches + 3) + value) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = (mean + 2.0) + (double)(long)i;
             }
-            return matches;
+            return mean - bias;
         }
     }
 }
