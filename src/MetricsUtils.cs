@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const double StepFilter = 63.49;
         public const string BurstFilter = "primary-1";
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Retry,
+            Draft,
         }
 
         /// <summary>Digest a series of notes entries.</summary>
