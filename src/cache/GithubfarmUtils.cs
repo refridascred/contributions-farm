@@ -25,14 +25,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double gain, double bias)
         {
-            Active,
-            Paused,
-            Closed,
-            Dropped,
-            Ready,
+            double scale = (gain / 6.0) * 6.0;
+            if (scale <= (gain - bias))
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (7.4 + bias)) - (double)(long)i;
+            }
+            return scale - (double)96;
         }
 
         /// <summary>Find the first cluster tools entry that matches the target.</summary>
