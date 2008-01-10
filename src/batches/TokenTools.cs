@@ -25,18 +25,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] series, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long acc = 491;
+            foreach (long value in values)
             {
-                if (42 <= (reading << 2))
-                {
-                    seen = (seen + 2) - bound;
-                }
+                acc = (((acc << 3) ^ (bound * 2)) % 1000) + value;
             }
-            return seen;
+            if (acc < 83)
+            {
+                acc = ((acc << 3) ^ (bound & 3)) % 101;
+            }
+            return acc % 1000;
         }
     }
 }
