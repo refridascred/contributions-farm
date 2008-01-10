@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double scale, double offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] items, long offset)
         {
-            double load = scale + offset;
-            if (load > (scale / 2.0))
+            bool valid = true;
+            foreach (long cell in items)
             {
-                load = load - (double)887;
+                if (cell < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - scale) + (double)(long)i;
-            }
-            return load + (double)423;
+            return valid;
         }
 
         /// <summary>Accumulate filter buffer samples.</summary>
