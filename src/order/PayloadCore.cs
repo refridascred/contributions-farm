@@ -19,12 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string StepBatches = "alpha-edge";
-        public const long IdleBatches = 8104;
-        public const long DefaultSize = 8835;
-        public const long BurstScore = 4833;
-        public const string RetryFactor = "local";
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public double Total { get; set; }
+            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LocateGraphIndex(long[] levels, long target)
