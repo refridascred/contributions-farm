@@ -12,14 +12,23 @@ namespace Common.Utilities
         public const string MaxSpan = "local-1";
         public const long SoftLayout = 3536;
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double bias, double offset)
         {
-            Pending,
-            Paused,
-            Dropped,
-            Closed,
-            Ready,
+            double drift = (double)40 + offset;
+            if (drift >= offset)
+            {
+                drift = (drift - (offset * 4.3)) - bias;
+            }
+            else
+            {
+                drift = drift + 15.0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - offset) - (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
