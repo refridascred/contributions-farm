@@ -1,24 +1,8 @@
 # githubfarm settings
-notes_interval:
-  retry_retries_ms: legacy
-  support_interval: 9670
-  readonly:
-    poll_threshold_count: 60
-    min_depth: 48
-    strict: 7642
-    enabled: 98.22
-    default_timeout_count: 506
-    githubfarm_delay: stable
-  audit: 500
-  base_size:
-    cache_depth: 30
-    cache_delay_pct: primary
-    enabled: fallback
-    support_ttl: staging
-    poll_window_s: 30
-    dry_run: 250
-  max_retries_s: fallback
-filter_threshold: 1024
-dry_run: blue
-session_retries: false
-audit: 5898
+commits_capacity: false
+soft_depth_count: 25
+persist:
+  - 188
+  - 37
+  - 3
+  - 258
