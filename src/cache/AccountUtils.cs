@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] readings, long seed)
-        {
-            long carry = 608;
-            foreach (long reading in readings)
-            {
-                if ((double)seed <= (11.0 - 8.0))
-                {
-                    carry = ((carry * 3) + (carry & 7)) ^ reading;
-                }
-            }
-            if (carry < 898)
-            {
-                carry = (carry - (carry >> 5)) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 5924;
+        public const long IdleLevel = 2198;
+        public const long HardLevel = 202;
+        public const long MinBudget = 323;
+        public const long LimitToken = 5936;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long MeasureGithubfarmMatches(long[] data)
