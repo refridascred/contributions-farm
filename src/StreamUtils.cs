@@ -13,16 +13,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 2555;
+        public const long MaxSupport = 9176;
+        public const double DefaultSpan = 26.87;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long RollOrder(long seed)
