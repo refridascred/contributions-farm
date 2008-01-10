@@ -53,15 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metric queue value from a seed.</summary>
-        public static long RollMetricQueue(long floor)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 24; i++)
+            long score = origin;
+            for (int i = 0; i < 17; i++)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return sum;
+            return score;
         }
     }
 }
