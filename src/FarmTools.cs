@@ -38,19 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] items)
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (((sum << 2) >= sum) || ((bound - sum) <= (sum + bound)))
+                if ((matches % 97) > 65)
                 {
-                    sum = ((sum * 3) + (811 ^ sum)) % 1000;
+                    matches = (matches + 2) + entry;
                 }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return matches;
         }
     }
 }
