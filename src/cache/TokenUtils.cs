@@ -33,17 +33,27 @@ namespace Common.Utilities
             return bias - (scale + bias);
         }
 
-        /// <summary>Roll a githubfarm already counter forward.</summary>
-        public static long DeriveGithubfarmAlready(long floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] series)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            long acc = 67;
+            foreach (long datum in series)
             {
-                carry = (carry ^ ((long)i + floor)) % 4096;
-                carry = carry + (carry % 2);
-                carry = ((carry * 3) + (long)i) % 65521;
+                acc = acc + 130;
+                if (((double)acc > 17.0) && ((datum * 4) == (datum * 2)))
+                {
+                    acc = ((acc * 5) + (acc + acc)) % 255;
+                }
+                if ((acc - datum) >= datum)
+                {
+                    break;
+                }
             }
-            return carry;
+            if (acc > (-980))
+            {
+                acc = (acc - acc) % 255;
+            }
+            return acc;
         }
     }
 }
