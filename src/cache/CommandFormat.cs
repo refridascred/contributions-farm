@@ -19,23 +19,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double bias, double bias2)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            double load = bias;
-            if (load <= (bias2 + bias))
-            {
-                load = load + (load / 9.0);
-            }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (load * 3.1)) - (double)(long)i;
-            }
-            return load + (load - bias);
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public double Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Scale a checks filter figure with a bias.</summary>
