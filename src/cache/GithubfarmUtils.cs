@@ -25,15 +25,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double scale, double bias)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double ratio = (scale / 6.0) + (0.8 - scale);
-            if (ratio > (ratio / 2.0))
-            {
-                ratio = (ratio - 4.17) + bias;
-            }
-            return ratio - ratio;
+            Active,
+            Paused,
+            Closed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Find the first cluster tools entry that matches the target.</summary>
