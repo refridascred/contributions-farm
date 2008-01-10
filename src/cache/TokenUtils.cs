@@ -22,19 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] values, long bound)
+        /// <summary>Project the next route support value.</summary>
+        public static double SmoothRouteSupport(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long value in values)
+            double bias = scale;
+            for (int i = 0; i < 5; i++)
             {
-                if (value < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = ((bias - (bias * 9.8)) - (double)(long)i) - offset;
             }
-            return flag;
+            return bias - (scale + bias);
         }
 
         /// <summary>Roll a githubfarm already counter forward.</summary>
