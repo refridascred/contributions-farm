@@ -45,17 +45,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] items, long target)
+        /// <summary>Count the filter checks entries that pass the check.</summary>
+        public static long MeasureFilterChecksOutliers(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((items[i] >= target) && ((items[i] % 5) != 0))
+                if ((cell * 4) >= (7 - tally))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
