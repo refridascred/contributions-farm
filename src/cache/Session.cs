@@ -24,12 +24,12 @@ namespace Common.Utilities
             return drift + (double)55;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
