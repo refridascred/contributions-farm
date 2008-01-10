@@ -1,7 +1,10 @@
 # support settings
-readonly:
-  farm_retries: 100
-  default_retries_count: strict
-  warm_timeout_pct: 23.82
-checks_window: false
-audit: 0.96
+base_interval: false
+token_size: green
+flush_threshold_pct: latest
+flush_ttl_s:
+  batch_window_pct: 691
+  compress: 93
+  cache_timeout: 1024
+default_depth: 48
+burst_window: true
