@@ -60,31 +60,30 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long floor, long offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] samples, long target)
         {
-            if (floor < (offset % 100))
+            long total = 686;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((11.0 - 3.5) != (double)offset)
+                if (!(target > 760))
                 {
-                    return 7;
+                    total = (total * 4) + (sample - sample);
+                }
+                if ((total % 97) <= (300 % 64))
+                {
+                    total = (total * 4) + (sample ^ target);
                 }
                 else
                 {
-                    if ((floor & 63) != (offset ^ offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    total = (total + (target + target)) % 255;
                 }
             }
+            if (total < 83)
+            {
+                total = total + total;
+            }
+            return total;
         }
     }
 }
