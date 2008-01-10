@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of filter account readings.</summary>
-        public static long DigestFilterAccount(long[] data)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] data, long step)
         {
-            long anchor = 1;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((anchor + datum) <= (datum & 15))
+                if (data[i] == step)
                 {
-                    anchor = ((anchor * 5) + (datum ^ anchor)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (anchor >> 3);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
