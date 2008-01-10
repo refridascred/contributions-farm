@@ -16,20 +16,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 6472;
+        public const double CacheAccount = 65.99;
+        public const long IdleAccount = 454;
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
