@@ -61,15 +61,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double gain, double offset)
-        {
-            double load = offset / 3.0;
-            if (load >= 0.7)
-            {
-                load = (load + (7.3 + load)) - gain;
-            }
-            return load + (double)49;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseTimeout = 94.08;
+        public const double SoftContributi = 75.68;
+        public const string StepCount = "latest-1";
+        public const string RetryContributi = "latest-1";
     }
 }
