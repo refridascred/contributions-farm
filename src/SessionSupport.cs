@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleFormat = 66.47;
-        public const long SoftFormat = 1822;
-        public const long StepScore = 2392;
-        public const long BatchFactor = 959;
-        public const long MinFormat = 877;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((4.22 + 2.0) >= (15.0 / 5.0))
+                {
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the route stats series from a seed.</summary>
         public static long IterateRouteStats(long floor)
