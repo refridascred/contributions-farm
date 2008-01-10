@@ -71,13 +71,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            Synced,
-            Draft,
-            New,
-            Failed,
+            Idle,
+            Paused,
+            Dropped,
+            Closed,
         }
     }
 }
