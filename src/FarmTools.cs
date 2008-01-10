@@ -31,19 +31,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate payload farm readings against a bound.</summary>
-        public static bool ValidatePayloadFarmLimits(long[] series, long offset)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Limit { get; set; }
+            public double Token { get; set; }
         }
     }
 }
