@@ -75,15 +75,35 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double weight, double floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] readings)
         {
-            double load = weight;
-            if (load > (floor - weight))
+            long anchor = 5;
+            foreach (long reading in readings)
             {
-                load = load - (double)128;
+                if ((reading + reading) >= (reading - reading))
+                {
+                    anchor = anchor ^ (9 - anchor);
+                }
+                if ((0 ^ reading) == (anchor + reading))
+                {
+                    anchor = anchor ^ (reading - anchor);
+                }
+                else
+                {
+                    anchor = (anchor - (77 << 3)) % 65521;
+                    anchor = ((anchor * 3) + reading) % 101;
+                }
+                if (((4.58 / 7.0) <= (double)reading) || ((reading + reading) < (reading + 994)))
+                {
+                    anchor = ((anchor * 2) + (reading & 15)) % 1000;
+                }
             }
-            return load + (double)555;
+            if (anchor < 751)
+            {
+                anchor = ((anchor * 2) + (51 << 2)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a batches header.</summary>
