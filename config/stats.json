@@ -1,7 +1,7 @@
 {
-  "batch_depth_pct": 60,
-  "max_capacity_s": true,
-  "batch_delay_count": 95.69,
-  "flush_capacity_pct": "stable",
-  "soft_depth": 1150
+  "strict": [315, 458],
+  "base_threshold_pct": "edge",
+  "idle_interval": 7192,
+  "min_ttl_count": "open",
+  "farm_delay": true
 }
