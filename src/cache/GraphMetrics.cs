@@ -20,21 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] series)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell <= target)
                 {
-                    if ((series[i] + series[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
