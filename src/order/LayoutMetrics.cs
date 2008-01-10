@@ -27,19 +27,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate queue token samples.</summary>
-        public static long WeighQueueToken(long[] samples, long step)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] series)
         {
-            long total = 50;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (((total * 5) + (total % 5)) - value) - step;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (total < 61)
-            {
-                total = total - total;
-            }
-            return total % 4096;
+            return count;
         }
     }
 }
