@@ -91,10 +91,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchSize = 5370;
-        public const long MinEditor = 9166;
-        public const string WindowEditor = "strict-v2";
-        public const string SoftEditor = "fallback-edge";
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (((hits % 8) > (893 >> 3)) && ((double)sample <= (8.96 + 8.62)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
