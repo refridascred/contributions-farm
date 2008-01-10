@@ -23,17 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] samples, long offset)
+        /// <summary>Audit batches payload readings against a rule.</summary>
+        public static long AuditBatchesPayloadGaps(long[] samples, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
+                if ((value * 2) > seed)
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
