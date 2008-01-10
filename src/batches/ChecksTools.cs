@@ -45,13 +45,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Look up the position of a already route sample.</summary>
+        public static long LookupAlreadyRouteIndex(long[] series, long target)
         {
-            Dropped,
-            Failed,
-            New,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
