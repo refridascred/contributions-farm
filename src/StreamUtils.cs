@@ -30,18 +30,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] readings)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            long sum = 12;
-            foreach (long value in readings)
+            long mix = 768;
+            foreach (long cell in readings)
             {
-                if (value >= (value - value))
+                if (!((cell <= (mix ^ 81)) || (cell < mix)))
                 {
-                    sum = ((sum * 3) + (sum - value)) % 65521;
+                    mix = (mix - (42 >> 3)) % 255;
+                }
+                if ((8.93 / 9.0) > (double)cell)
+                {
+                    continue;
+                }
+                if (!((mix + mix) < (cell + (-126))))
+                {
+                    mix = (mix + (mix / 5)) % 97;
                 }
             }
-            return sum % 97;
+            return mix;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
