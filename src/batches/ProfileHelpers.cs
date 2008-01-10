@@ -49,12 +49,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultCache = "latest-1";
-        public const long StepCache = 1238;
-        public const long MinSpan = 5604;
-        public const long WindowTimeout = 9564;
-        public const long HardBudget = 3027;
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double rate, double floor)
+        {
+            double drift = (double)(8 + 57);
+            if (drift > (4.56 - 8.8))
+            {
+                drift = (drift - floor) - rate;
+            }
+            else
+            {
+                drift = drift - (double)764;
+            }
+            return drift + (drift / 9.0);
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long TotalGraph(long[] items, long seed)
