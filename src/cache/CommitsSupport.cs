@@ -13,19 +13,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] values, long offset)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Stamp { get; set; }
+            public bool Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the payload status values.</summary>
