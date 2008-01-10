@@ -45,11 +45,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 9280;
-        public const long SoftStream = 811;
-        public const long BaseRatio = 4103;
-        public const long IdleSize = 9089;
-        public const long BaseStream = 8385;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] data, long floor)
+        {
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
