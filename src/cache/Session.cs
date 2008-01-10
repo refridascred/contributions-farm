@@ -19,18 +19,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit token order readings against a rule.</summary>
-        public static long MeasureTokenOrderGaps(long[] items, long target)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long seed)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long result = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((entry + target) >= (target << 3)) || ((8.84 + 8.0) >= (double)entry))
-                {
-                    hits = hits + 2;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Describe the context state values.</summary>
