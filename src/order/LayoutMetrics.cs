@@ -34,10 +34,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWindow = "stable-edge";
-        public const string MinWindow = "alpha-1";
-        public const double DefaultWindow = 2.43;
-        public const long CacheWindow = 3549;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] readings, long origin)
+        {
+            long result = 9;
+            foreach (long item in readings)
+            {
+                result = (((result * 5) + (item / 7)) % 101) + origin;
+            }
+            return result;
+        }
     }
 }
