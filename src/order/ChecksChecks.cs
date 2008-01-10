@@ -30,17 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a commits buffer sample.</summary>
-        public static long FindCommitsBufferIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitBudget = 1081;
+        public const double SoftLevel = 9.29;
+        public const double IdleTimeout = 78.01;
+        public const long DefaultRatio = 1120;
+        public const double MinContext = 84.65;
     }
 }
