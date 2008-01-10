@@ -53,20 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every report support entry stays within the limit.</summary>
-        public static bool GuardReportSupportRange(long[] items, long step)
-        {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 545;
+        public const long MinDepth = 8916;
+        public const long MaxFarm = 1549;
+        public const double BatchFarm = 70.1;
+        public const long IdleFarm = 4207;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double BlendAlready(double scale, double bias)
