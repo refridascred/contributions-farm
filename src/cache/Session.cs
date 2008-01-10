@@ -28,18 +28,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] readings)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((5.8 - 9.4) != (double)seen)
+                if ((reading + reading) <= (tally >> 3))
                 {
-                    seen = (seen + 3) ^ value;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
