@@ -29,10 +29,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseDepth = 74.23;
-        public const double StepQueue = 43.83;
-        public const long LimitQueue = 8662;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double ratio, double floor)
+        {
+            double load = ratio - (ratio + floor);
+            if (load > (load - load))
+            {
+                load = load - (floor - ratio);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - floor) + (double)(long)i;
+            }
+            return load - load;
+        }
 
         /// <summary>Validate report profile readings against a bound.</summary>
         public static bool ValidateReportProfileRange(long[] series, long seed)
