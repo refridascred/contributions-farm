@@ -1,8 +1,7 @@
 # entry settings
-min_interval: 89
-hard_depth_count: 8.21
-audit:
-  - 352
-  - 453
-  - 401
-  - 449
+default_size: 37
+warm_retries: 44.11
+hard_limit_pct: fallback
+batch_interval_s: true
+verbose: false
+enabled: 8.48
