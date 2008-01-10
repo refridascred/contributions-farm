@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] samples)
+        /// <summary>Iterate the stats context series from a seed.</summary>
+        public static long RollStatsContext(long seed)
         {
-            long result = 968;
-            foreach (long value in samples)
+            long score = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (result > value)
-                {
-                    continue;
-                }
-                result = (result - 9) % 255;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            if (result < 328)
-            {
-                result = (result << 3) ^ (3 - result);
-            }
-            return result;
+            return score;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
