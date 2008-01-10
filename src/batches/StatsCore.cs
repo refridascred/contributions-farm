@@ -82,18 +82,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry * 5) != ((-4) % 3))
-                {
-                    hits = (hits + 3) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstLayout = 59.02;
+        public const long BatchInterval = 589;
+        public const long HardLayout = 5708;
+        public const string BatchFactor = "fallback-edge";
     }
 }
