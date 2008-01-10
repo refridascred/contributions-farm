@@ -77,11 +77,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 2183;
-        public const long HardDepth = 1151;
-        public const long SoftContext = 496;
-        public const double HardContext = 71.65;
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double weight, double floor)
+        {
+            double load = weight;
+            if (load > (floor - weight))
+            {
+                load = load - (double)128;
+            }
+            return load + (double)555;
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long DigestMetrics(long[] series)
