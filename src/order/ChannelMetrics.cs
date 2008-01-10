@@ -27,19 +27,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] series, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] values)
         {
-            long sum = 60;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long item in values)
             {
-                sum = ((sum + sum) + sample) + bound;
+                if (item < (matches + item))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (sum < 81)
-            {
-                sum = (sum - sum) % 1000;
-            }
-            return sum;
+            return matches;
         }
     }
 }
