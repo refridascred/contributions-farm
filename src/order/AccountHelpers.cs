@@ -13,26 +13,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] values, long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] readings, long target)
         {
-            long score = 348;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((value / 2) < score)
+                if ((count - count) >= entry)
                 {
-                    score = (score * 2) + (value - limit);
-                }
-                else
-                {
-                    score = ((score * 2) + ((long)values.Length & 7)) % 255;
-                }
-                if ((double)limit == (4.0 / 5.0))
-                {
-                    break;
+                    count = (count + 3) - target;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
