@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] levels)
-        {
-            long carry = 544;
-            foreach (long value in levels)
-            {
-                carry = carry + (value + 0);
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 190;
+        public const long RetryWidth = 9907;
+        public const string SoftScore = "local-v2";
+        public const long BurstTools = 4435;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryGaps(long[] data)
