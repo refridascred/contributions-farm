@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Draft,
-            Paused,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 7036;
+        public const long MaxAlready = 4204;
+        public const string WindowCount = "strict";
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
