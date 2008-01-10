@@ -1,7 +1,4 @@
 # githubfarm settings
-retry_ratio_count: open
-default_depth_ms:
-  - eu-west
-  - legacy
-  - edge
-soft_threshold: stable
+max_retries_pct: 45.35
+stats_timeout: 9397
+record_interval: false
