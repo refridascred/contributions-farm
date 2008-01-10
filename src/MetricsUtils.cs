@@ -37,10 +37,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 5137;
-        public const long MinRatio = 3190;
-        public const long HardBudget = 8902;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Idle,
+            Ready,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BurstMetrics = 6538;
