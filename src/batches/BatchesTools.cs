@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long floor)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] data, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 97;
+                if ((data[i] == limit) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
