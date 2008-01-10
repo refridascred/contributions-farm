@@ -23,38 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long bound, long bound2)
+        /// <summary>Roll a commits channel counter forward.</summary>
+        public static long StepCommitsChannel(long offset)
         {
-            if (4.83 < (double)bound)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((bound <= (bound2 + bound2)) && ((7 + bound2) <= bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound > (6 - bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (bound2 < (bound - bound2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Combine record buffer values into a single score.</summary>
