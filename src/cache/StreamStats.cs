@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double weight, double offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long bound)
         {
-            double ratio = (double)(57 + 8);
-            if (ratio >= (weight / 5.0))
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
             {
-                ratio = (ratio + ratio) - offset;
+                if ((mark & 63) > (bound / 7))
+                {
+                    mark = (mark + (mark + mark)) % 4096;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + (double)43;
+            return mark;
         }
 
         /// <summary>Compare every pair of route stats readings.</summary>
