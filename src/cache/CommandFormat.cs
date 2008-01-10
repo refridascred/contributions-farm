@@ -21,10 +21,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepSize = 9432;
-        public const string DefaultLevel = "stable";
-        public const double BurstCount = 47.1;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 4272;
+        public const double LimitMetrics = 23.0;
+        public const long CacheWidth = 3257;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long DigestPayload(long[] series, long step)
