@@ -26,12 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] levels, long offset)
         {
-            Active,
-            Idle,
-            New,
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
