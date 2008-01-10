@@ -1,13 +1,6 @@
 {
-  "profile_depth": 26.23,
-  "hard_window_pct": 73.3,
-  "order_capacity": 53,
-  "already_capacity": 10,
-  "audit": 48.9,
-  "report_interval": {
-    "default_limit_s": 27.38,
-    "checks_limit": true,
-    "min_ratio": 9173,
-    "batch_ratio_s": ["blue", "stable", "primary", "stable"]
-  }
+  "idle_retries_count": true,
+  "default_timeout_count": 76,
+  "soft_interval": [156, 187, 150],
+  "hard_delay_count": [416, 342, 329, 395]
 }
