@@ -30,10 +30,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftFactor = 57;
-        public const long MaxEditor = 5258;
-        public const double IdleInterval = 35.75;
-        public const string IdleTimeout = "staging";
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double bias, double span)
+        {
+            double drift = 6.0;
+            if (drift >= 5.15)
+            {
+                drift = (drift + (bias - bias)) - span;
+            }
+            else
+            {
+                drift = drift - (double)(-494);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + 9.2) + (double)(long)i;
+            }
+            return drift - (drift * 2.17);
+        }
     }
 }
