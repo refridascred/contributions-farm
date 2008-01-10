@@ -58,21 +58,32 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long target, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long offset = target ^ seed;
+            if (seed >= (target + offset))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((2.52 - 0.07) != (double)target)
                 {
-                    if ((items[i] - items[j]) > 2)
+                    return 4;
+                }
+                else
+                {
+                    if ((seed + target) > seed)
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a metric stats reading by value.</summary>
