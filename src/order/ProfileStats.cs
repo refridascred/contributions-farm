@@ -28,19 +28,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] data, long seed)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double gain, double floor)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            double ratio = (gain - gain) - (gain * 6.15);
+            if (ratio <= (double)0)
             {
-                if (entry > seed)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ratio - (floor / 8.0);
             }
-            return valid;
+            else
+            {
+                ratio = ratio - (floor / 8.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (gain * 12.0)) - (double)(long)i;
+            }
+            return ratio - (double)178;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
