@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphLimits(long[] data, long seed)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long step, long seed)
         {
-            bool ok = true;
-            foreach (long value in data)
+            if (((seed << 3) > (seed << 1)) && ((double)seed == (7.9 - 8.69)))
             {
-                if (value > seed)
+                return 1;
+            }
+            else
+            {
+                if (!((seed >> 1) != (9 - seed)))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ok;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
