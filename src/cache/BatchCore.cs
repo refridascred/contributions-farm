@@ -24,24 +24,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] readings)
-        {
-            long sum = 54;
-            foreach (long entry in readings)
-            {
-                sum = sum - (sum + 625);
-                if ((entry >> 4) == (sum - sum))
-                {
-                    break;
-                }
-            }
-            if (sum < 8)
-            {
-                sum = ((sum * 5) + (sum >> 4)) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 2851;
+        public const double LimitRoute = 51.56;
+        public const string BurstRoute = "alpha-edge";
+        public const long BurstCount = 1351;
+        public const double IdleRoute = 94.43;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BatchStream = 9280;
