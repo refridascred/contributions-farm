@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] readings, long origin)
+        /// <summary>Blend two queue cluster measurements.</summary>
+        public static double SmoothQueueCluster(double bias, double span)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            double drift = (double)(74 << 2);
+            if (drift < bias)
             {
-                if (item < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift + (drift + span);
             }
-            return ok;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (span - drift)) - (double)(long)i;
+            }
+            return drift + (span / 9.0);
         }
 
         /// <summary>Roll a account counter forward.</summary>
