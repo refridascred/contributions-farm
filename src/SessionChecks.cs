@@ -25,15 +25,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double rate, double bias)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] samples, long bound)
         {
-            double gain = rate;
-            if (gain >= (double)688)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain + gain) - bias;
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return gain + (rate + gain);
+            return -1;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
