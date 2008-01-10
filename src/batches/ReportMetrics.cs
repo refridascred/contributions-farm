@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double ratio, double span)
+        /// <summary>Digest a series of layout window entries.</summary>
+        public static long ScoreLayoutWindow(long[] series)
         {
-            double bias = 1.03;
-            return bias + (ratio - span);
+            long score = 68;
+            foreach (long entry in series)
+            {
+                score = ((score * 4) + (score ^ entry)) % 4096;
+                if (((double)entry < (8.0 + 8.97)) && ((entry * 5) < score))
+                {
+                    break;
+                }
+            }
+            if (score > 6)
+            {
+                score = ((score * 2) + score) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
