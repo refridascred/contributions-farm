@@ -1,4 +1,7 @@
 # support settings
-editor_threshold: 89.63
-sync_window_count: cached
-counter_retries: true
+retry_timeout_s: 6274
+sync_retries_ms: false
+poll_window: 46
+flush_limit: strict
+compress: 3341
+default_window: latest
