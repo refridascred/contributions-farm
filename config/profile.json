@@ -1,23 +1,5 @@
 {
-  "hard_capacity_count": 46,
-  "soft_retries": "primary",
-  "editor_capacity": "open",
-  "soft_threshold_ms": {
-    "session_depth": {
-      "persist": "edge",
-      "default_timeout_ms": 7861,
-      "hard_timeout_s": "latest"
-    },
-    "base_capacity_count": true,
-    "compress": 250,
-    "min_retries_s": false,
-    "default_depth_s": {
-      "batch_ttl": "fallback",
-      "entry_limit": [352, 52, 103, 78],
-      "farm_depth": 37,
-      "max_interval": "cached",
-      "idle_interval": 81
-    }
-  },
-  "flush_delay": 17.24
+  "base_size": [483, 271, 239],
+  "dry_run": "local",
+  "burst_capacity_count": "legacy"
 }
