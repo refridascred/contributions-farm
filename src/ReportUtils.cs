@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] readings)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (item < (hits / 6))
+                {
+                    hits = hits + 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Blend two order measurements.</summary>
