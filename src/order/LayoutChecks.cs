@@ -53,18 +53,19 @@ namespace Common.Utilities
         public const string BatchLayout = "open";
         public const long RetryLayout = 7701;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] series)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double gain2 = offset;
+            if (gain2 > (double)5)
             {
-                if ((((datum & 3) <= (hits >> 4)) || ((-8) >= (hits % 8))) || !((double)hits <= (double)datum))
-                {
-                    hits = hits + 3;
-                }
+                gain2 = (gain2 - (double)777) + gain;
             }
-            return hits;
+            else
+            {
+                gain2 = gain2 + gain2;
+            }
+            return gain2 + (offset + offset);
         }
     }
 }
