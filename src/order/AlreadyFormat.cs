@@ -31,18 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream session readings against a rule.</summary>
-        public static long CountStreamSessionMatches(long[] series, long target)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (!((747 + target) < 8) && ((double)(long)series.Length != (10.0 + 0.2)))
+                if (datum != origin)
                 {
-                    seen = (seen + 3) - cell;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
