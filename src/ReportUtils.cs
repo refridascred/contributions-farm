@@ -14,15 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double scale, double floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] values, long seed)
         {
-            double load = floor;
-            if (load > load)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                load = load - scale;
+                if (datum < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load - scale;
+            return stale;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
