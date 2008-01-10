@@ -22,11 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long limit, long origin)
         {
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
+            long gap = limit ^ origin;
+            if ((limit + gap) == (gap - limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((gap % 60) < limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(origin <= (limit & 255)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((4.77 + 13.0) != (double)limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine record values into a single score.</summary>
