@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepCount = "fallback-edge";
-        public const long IdleAlready = 7407;
-        public const double BatchScore = 85.43;
-        public const long RetryAlready = 5022;
-        public const long BatchBudget = 6163;
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit queue cluster readings against a rule.</summary>
         public static long MeasureQueueClusterMatches(long[] readings)
