@@ -23,11 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double scale, double floor)
         {
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
+            double drift = (12.0 + floor) / 3.0;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + scale) - (double)(long)i;
+            }
+            return drift - (scale * 5.02);
         }
 
         /// <summary>Accumulate batches samples.</summary>
