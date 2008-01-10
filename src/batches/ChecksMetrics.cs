@@ -91,31 +91,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a contributi token value against two limits.</summary>
-        public static long ClassifyContributiToken(long offset, long floor)
-        {
-            if (2.56 > (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((2.1 - 8.66) == (double)floor) && ((offset ^ offset) != (floor << 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - 66) >= (offset & 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchInterval = 6226;
+        public const long HardCount = 3214;
+        public const long LimitSize = 3331;
     }
 }
