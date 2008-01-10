@@ -1,7 +1,6 @@
-id,count,weight,rank,active
-1,primary,legacy,500,fallback
-2,4.6,61.91,748,staging
-3,72.57,57.06,910,310
-4,223,primary,staging,867
-5,51.16,176,legacy,stable
-6,blue,312,301,447
+id,score,region
+1,17.6,481
+2,46.58,483
+3,60.84,46
+4,blue,802
+5,927,825
