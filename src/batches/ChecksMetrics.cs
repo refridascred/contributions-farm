@@ -34,14 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Blend two layout context measurements.</summary>
+        public static double BlendLayoutContext(double weight, double span)
         {
-            Retry,
-            New,
-            Dropped,
-            Queued,
-            Idle,
+            double bias = 8.3 / 8.0;
+            if (bias >= (weight + bias))
+            {
+                bias = bias - (weight / 5.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - span) + (double)(long)i;
+            }
+            return bias + span;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
