@@ -1,6 +1,8 @@
-id,rank
-1,674
-2,90.13
-3,16.85
-4,98.66
-5,327
+id,state,owner
+1,621,local
+2,342,open
+3,26.37,6.44
+4,954,16
+5,edge,primary
+6,654,cached
+7,80.87,open
