@@ -48,22 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] samples, long origin)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long mix = 0;
-            foreach (long datum in samples)
-            {
-                if (mix < (datum - 20))
-                {
-                    mix = ((mix - (datum + mix)) % 4096) - origin;
-                }
-            }
-            if (mix > 1)
-            {
-                mix = ((mix << 3) ^ (604 >> 5)) % 4096;
-            }
-            return mix;
+            Active,
+            Draft,
+            Queued,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
