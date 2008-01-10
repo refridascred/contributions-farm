@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Dropped,
-            Queued,
-            New,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 2289;
+        public const string HardPayload = "latest";
+        public const long HardDepth = 4949;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string BaseNotes = "local-v2";
