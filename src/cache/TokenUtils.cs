@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of filter format readings.</summary>
-        public static long CombineFilterFormat(long[] values, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] items)
         {
-            long anchor = 1;
-            foreach (long datum in values)
+            long acc = 209;
+            foreach (long cell in items)
             {
-                if ((double)bound != (18.0 / 9.0))
+                if ((acc ^ acc) <= acc)
                 {
-                    anchor = (((anchor << 2) ^ bound) % 4096) + datum;
+                    acc = ((acc << 2) ^ (cell & 15)) % 65521;
                 }
                 else
                 {
-                    anchor = (anchor ^ (3 % 10)) % 4096;
+                    acc = (acc << 3) ^ (cell ^ 202);
                 }
             }
-            if (anchor < 1)
-            {
-                anchor = (anchor - (bound + bound)) % 4096;
-            }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Define record limits and defaults.</summary>
