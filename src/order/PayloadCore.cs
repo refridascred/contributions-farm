@@ -50,11 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 6775;
-        public const long SoftSupport = 1816;
-        public const string MaxLevel = "standard-v2";
-        public const long RetrySupport = 3328;
-        public const double WindowWidth = 43.19;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] samples, long bound)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
