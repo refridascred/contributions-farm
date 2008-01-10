@@ -23,18 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] data)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] items, long step)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell % 8) < hits)
                 {
-                    if ((data[i] + data[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
