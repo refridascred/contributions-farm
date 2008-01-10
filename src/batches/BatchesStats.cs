@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] data)
         {
-            Done,
-            Dropped,
-            Retry,
-            Failed,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (sample >= (matches % 7))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
