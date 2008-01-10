@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of stats token readings.</summary>
-        public static long MatchStatsTokenCount(long[] readings)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = -235;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)acc != (11.0 - 8.3)) && ((57 >> 1) > value))
                 {
-                    if ((readings[i] - readings[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc + (6 * 2)) % 97;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Digest a series of tools cluster entries.</summary>
