@@ -1,13 +1,14 @@
 # Command notes
 
-Keep checks and filter names short and lowercase.
-Run the command check before changing any metric limits.
+Run the account check before changing any tools limits.
+Keep stream and counter names short and lowercase.
 
-Keep report and buffer names short and lowercase.
-Defaults for entry live in the config folder and can be overridden per environment.
+Each graph is validated before it reaches the graph queue.
+A route that stays idle for too long is moved to the stream list.
+Use counter settings to tune how often counter data is refreshed.
 
 ## Guidelines
 
-- Document new editor fields
-- Keep context values small
-- Validate session input early
+- Log every window change
+- Review payload limits each release
+- Validate entry input early
