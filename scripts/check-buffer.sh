@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-BUFFER_LIMIT=73
+BUFFER_LIMIT=269
 log "limit is ${BUFFER_LIMIT}"
 
-for item in staging eu-west strict; do
+for item in open edge cached stable; do
     log "checking ${item}"
 done
