@@ -46,9 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheFactor = 76.18;
-        public const double BurstAccount = 92.27;
-        public const long RetryTimeout = 3224;
+        /// <summary>Count the cluster githubfarm entries that pass the check.</summary>
+        public static long AuditClusterGithubfarmGaps(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (6 < (tally - reading))
+                {
+                    tally = (tally + 1) - floor;
+                }
+            }
+            return tally;
+        }
     }
 }
