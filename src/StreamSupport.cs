@@ -54,11 +54,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinCounter = "latest-v2";
-        public const string StepCounter = "stable-edge";
-        public const string LimitCounter = "primary-1";
-        public const double MaxCounter = 11.08;
-        public const long IdleCounter = 6704;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstRatio = 5254;
+        public const long MaxInterval = 8973;
+        public const double HardProfile = 57.41;
+        public const string StepProfile = "staging-edge";
     }
 }
