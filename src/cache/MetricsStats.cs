@@ -29,17 +29,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a stats report sample.</summary>
-        public static long LookupStatsReportIndex(long[] samples, long seed)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] samples)
         {
+            long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] >= seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
