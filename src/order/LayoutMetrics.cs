@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 9256;
-        public const long DefaultBatches = 7577;
-        public const long SoftSize = 1440;
-        public const long SoftWidth = 9022;
-        public const long MinInterval = 5932;
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
+        {
+            public bool Token { get; set; }
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long WeighBatch(long[] data, long step)
