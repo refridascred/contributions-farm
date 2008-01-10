@@ -1,12 +1,12 @@
 # entry settings
-order_size: true
-account_limit:
-  - 175
-  - 153
-  - 206
-max_threshold_pct: 4875
-profile_depth:
-  - local
-  - fallback
-compress: 71.98
-cache_timeout_s: 7997
+base_delay_ms: green
+tools_retries: 50.13
+cache_capacity_s: false
+report_ratio:
+  poll_window_ms:
+    - standard
+    - primary
+    - blue
+  cache_limit: 9553
+  enabled: edge
+  filter_ratio: 49.68
