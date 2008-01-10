@@ -67,32 +67,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long limit, long seed)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] levels)
         {
-            long slot = limit + seed;
-            if ((seed - slot) < limit)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (1.17 <= (double)limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((6.9 * 3.0) != (double)limit)
+                    if ((levels[i] - levels[j]) != 11)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first queue route entry that matches the target.</summary>
