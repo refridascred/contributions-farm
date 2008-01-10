@@ -1,7 +1,7 @@
 {
-  "flush_size_ms": false,
-  "burst_ttl_s": ["strict", "primary", "open", "eu-west"],
-  "buffer_interval": 85,
-  "contributi_size": "legacy",
-  "default_ratio_ms": [298, 306]
+  "counter_ttl": 14.11,
+  "window_retries": "open",
+  "burst_interval_s": true,
+  "default_window": 26,
+  "min_window": "cached"
 }
