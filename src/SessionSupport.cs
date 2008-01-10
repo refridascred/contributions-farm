@@ -29,18 +29,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine command editor values into a single score.</summary>
-        public static long TotalCommandEditor(long[] data)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] samples, long bound)
         {
-            long mix = 782;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((mix >> 2) > mix) && ((2 + value) != (value / 2)))
+                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
                 {
-                    mix = (mix << 2) ^ (mix % 3);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
