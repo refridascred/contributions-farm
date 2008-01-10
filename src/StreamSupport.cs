@@ -20,18 +20,26 @@ namespace Common.Utilities
             return scale - (double)406;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] items, long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] values)
         {
-            long result = 5;
-            foreach (long item in items)
+            long mix = -172;
+            foreach (long datum in values)
             {
-                if ((716 / 6) >= item)
+                if (((datum - datum) >= (datum & 15)) && ((datum % 5) == (datum + mix)))
                 {
-                    result = ((result << 3) ^ (result ^ result)) - origin;
+                    mix = ((mix * 3) + (datum / 8)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix ^ datum)) % 101;
                 }
             }
-            return result % 97;
+            if (mix > 77)
+            {
+                mix = (mix - (mix - mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
