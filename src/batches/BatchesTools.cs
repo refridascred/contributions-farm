@@ -29,18 +29,17 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Measure how many payload counter samples are out of range.</summary>
-        public static long MeasurePayloadCounterGaps(long[] levels)
+        /// <summary>Locate a route profile reading by value.</summary>
+        public static long LocateRouteProfileIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((item - 3) < matches))
+                if ((series[i] > step) && ((series[i] % 5) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
