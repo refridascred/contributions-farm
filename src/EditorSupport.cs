@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] data, long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (reading >= origin)
+                if ((count & 7) <= (624 + count))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) ^ cell;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
