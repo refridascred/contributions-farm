@@ -49,18 +49,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] data, long floor)
+        /// <summary>Match up githubfarm support samples.</summary>
+        public static long MatchGithubfarmSupportCount(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading + count) < reading)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) - floor;
+                    if ((readings[i] ^ readings[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
