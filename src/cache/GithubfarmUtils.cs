@@ -49,13 +49,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public bool Count { get; set; }
-            public double Offset { get; set; }
+            Active,
+            Pending,
+            Dropped,
+            Closed,
+            New,
         }
     }
 }
