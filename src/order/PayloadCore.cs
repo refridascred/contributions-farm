@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] series, long floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long sum = 87;
+            foreach (long datum in readings)
             {
-                if ((matches * 5) == (floor & 31))
+                if ((long)readings.Length == (sum + limit))
                 {
-                    matches = (matches + 3) + entry;
+                    sum = (sum * 2) + (sum + limit);
+                    continue;
+                }
+                if (52 <= sum)
+                {
+                    sum = ((sum << 3) ^ datum) % 1000;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Describe the schema phase values.</summary>
