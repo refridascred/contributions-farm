@@ -38,40 +38,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long step, long bound)
-        {
-            long edge = step + bound;
-            if ((step % 16) >= (edge / 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((3.61 + 5.4) <= (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + bound) != (bound * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound < (edge % 8)) && ((step + edge) >= (step + 31)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepRoute = "local-v2";
+        public const long RetryRoute = 4782;
+        public const string HardRoute = "primary-v2";
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long LookupChannelIndex(long[] samples, long bound)
