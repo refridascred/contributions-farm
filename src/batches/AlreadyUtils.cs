@@ -38,15 +38,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] series, long target)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] data)
         {
-            long acc = -245;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (((acc + acc) % 4096) - datum) - target;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
