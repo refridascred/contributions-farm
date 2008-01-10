@@ -19,18 +19,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] levels, long step)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double bias, double offset)
         {
-            long state = 191;
-            foreach (long item in levels)
-            {
-                if (((6.0 * 0.57) < (double)state) && ((item + state) > item))
-                {
-                    state = (state - (step & 1)) % 1000;
-                }
-            }
-            return state;
+            double bias2 = (double)(6 + 139);
+            return (bias2 - (bias * 6.3)) + offset;
         }
 
         /// <summary>Describe the already class values.</summary>
