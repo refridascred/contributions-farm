@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] data, long bound)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long total = 14;
-            foreach (long value in data)
-            {
-                if ((total ^ bound) < (total + bound))
-                {
-                    total = ((total << 3) ^ (total ^ 14)) ^ value;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (bound + 5)) % 4096;
-                }
-            }
-            return total % 4096;
+            public double Score { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
