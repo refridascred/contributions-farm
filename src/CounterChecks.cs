@@ -44,14 +44,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] samples)
         {
-            Paused,
-            Retry,
-            Failed,
-            Ready,
-            Done,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((283 >= count) || (count > (datum & 3)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
