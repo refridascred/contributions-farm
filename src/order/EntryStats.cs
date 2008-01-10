@@ -45,13 +45,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] readings, long seed)
         {
-            Draft,
-            Idle,
-            Active,
-            Stale,
+            long state = 197;
+            foreach (long item in readings)
+            {
+                state = (state - item) - seed;
+            }
+            return state;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
