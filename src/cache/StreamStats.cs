@@ -34,17 +34,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Look up the position of a batch order sample.</summary>
-        public static long FindBatchOrderIndex(long[] samples, long seed)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (samples[i] >= seed)
+                if (item >= step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a stats info.</summary>
