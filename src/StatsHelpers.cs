@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetrySize = 7203;
+        public const long SoftSpan = 5038;
+        public const long CacheCluster = 1268;
+        public const long WindowFactor = 9353;
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long IterateSupport(long origin)
