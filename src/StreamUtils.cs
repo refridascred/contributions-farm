@@ -40,13 +40,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] data, long step)
         {
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((double)seen != (10.0 * 9.1))
+                {
+                    seen = ((seen + 3) + sample) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
