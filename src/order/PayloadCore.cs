@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long limit, long limit2)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] items, long target)
         {
-            long diff = limit - limit2;
-            if ((double)diff > 1.12)
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (3 > limit2)
+                if ((datum ^ count) < datum)
                 {
-                    return 1;
+                    count = (count + 2) - target;
                 }
                 else
                 {
-                    if (((limit - limit2) > diff) || ((double)limit < (double)diff))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((7 + limit) < limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the schema phase values.</summary>
