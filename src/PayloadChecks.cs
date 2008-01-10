@@ -52,12 +52,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] items, long target)
         {
-            public bool Offset { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((target >= (6 << 2)) || ((value - value) > (matches + (long)items.Length)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the cache mode values.</summary>
