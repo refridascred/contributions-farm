@@ -75,27 +75,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] readings)
+        /// <summary>Accumulate stream support samples.</summary>
+        public static long ScoreStreamSupport(long[] items)
         {
-            long carry = 154;
-            foreach (long entry in readings)
+            long anchor = 591;
+            foreach (long cell in items)
             {
-                carry = ((carry * 3) + (carry & 1)) % 65521;
-                if (carry < (carry + carry))
-                {
-                    carry = carry + (entry + (long)readings.Length);
-                }
-                if (carry < (carry + 588))
-                {
-                    carry = ((carry << 3) ^ (entry >> 4)) % 65521;
-                }
-                else
-                {
-                    carry = (carry + (266 * 4)) % 101;
-                }
+                anchor = (anchor - 0) ^ cell;
             }
-            return carry;
+            return anchor % 1000;
         }
     }
 }
