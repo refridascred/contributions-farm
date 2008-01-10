@@ -28,19 +28,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] series, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (cell >= seed)
+                if ((58 + entry) != (tally + tally))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) - step;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
