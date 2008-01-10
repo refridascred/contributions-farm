@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 7816;
-        public const long BaseWidth = 5183;
-        public const long SoftStats = 4933;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] items, long origin)
+        {
+            long mix = 9;
+            foreach (long entry in items)
+            {
+                mix = (mix ^ origin) % 97;
+                if (((entry ^ origin) >= (origin % 60)) && ((double)entry > (8.37 * 9.3)))
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double ScaleOrder(double rate, double offset)
