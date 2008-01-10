@@ -1,35 +1,16 @@
 # entry settings
-min_limit_count:
-  warm_limit: true
-  warm_capacity_pct: false
-  retry_capacity_count: 500
-  soft_window_pct: true
-  default_timeout_s:
-    - 56
-    - 319
-  default_delay_pct: 99
-batch_capacity_s: 100
-soft_capacity_pct: 100
-retry_capacity:
-  batch_timeout_s: 86
-  poll_timeout_ms: strict
-  retry_ttl_count:
-    contributi_window: 100
-    retry_size_count:
-      - standard
-      - latest
-      - eu-west
-    stats_interval: 6.8
-    idle_timeout_s: fallback
-    strict:
-      - green
-      - fallback
-  default_retries:
-    flush_retries_count: true
-    cache_limit_s: true
-    command_ratio: false
-    burst_depth_count: 61.52
-    min_window_pct: true
-  min_interval: 50
-soft_threshold_pct: true
-base_limit_count: 39.88
+poll_retries: false
+flush_delay_s: false
+cache_window:
+  flush_retries_s: staging
+  sync_delay_pct:
+    - stable
+    - eu-west
+    - fallback
+  enabled: 60
+soft_capacity_s:
+  - 98
+  - 21
+  - 81
+  - 219
+readonly: 52
