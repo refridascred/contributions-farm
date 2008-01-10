@@ -1,7 +1,9 @@
-id,level
-1,521
-2,76
-3,417
-4,51.51
-5,70.9
-6,826
+id,count,label,region
+1,local,blue,0.16
+2,strict,665,73.14
+3,legacy,fallback,green
+4,495,12.2,79.8
+5,582,77.57,86.33
+6,938,local,strict
+7,41.0,standard,blue
+8,73.24,blue,961
