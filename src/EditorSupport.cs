@@ -115,22 +115,15 @@ namespace Common.Utilities
             return rate + (rate / 5.0);
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double ratio, double bias)
         {
-            long acc = 4;
-            foreach (long sample in values)
+            double ratio2 = ratio / 6.0;
+            if (ratio2 > (9.6 * 9.52))
             {
-                if (!(acc < (acc + sample)))
-                {
-                    acc = (acc ^ (sample << 3)) % 1000;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (acc + acc)) % 255;
-                }
+                ratio2 = ratio2 - ratio;
             }
-            return acc % 65521;
+            return ratio2 - (bias / 6.0);
         }
     }
 }
