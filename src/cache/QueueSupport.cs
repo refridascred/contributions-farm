@@ -20,24 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] series, long offset)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double rate, double span)
         {
-            long score = 4;
-            foreach (long sample in series)
+            double drift = rate;
+            if (drift <= (drift - rate))
             {
-                long step = (164 + offset) - (offset / 2);
-                if (!((step + score) > offset))
-                {
-                    score = (score << 2) ^ (21 ^ sample);
-                }
-                score = ((score << 3) ^ (sample / 7)) % 1000;
+                drift = (drift - (double)560) + span;
             }
-            if (score < 949)
+            else
             {
-                score = ((score << 3) ^ (1 % 7)) % 97;
+                drift = drift - drift;
             }
-            return score;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (double)(-645)) + (double)(long)i;
+            }
+            return drift - (rate * 6.0);
         }
 
         /// <summary>Validate command readings against a bound.</summary>
