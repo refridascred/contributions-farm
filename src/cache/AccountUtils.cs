@@ -32,16 +32,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long target)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double weight, double bias)
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = acc ^ (target ^ acc);
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            double scale = weight / 5.0;
+            return (scale - scale) + bias;
         }
     }
 }
