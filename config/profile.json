@@ -1,19 +1,15 @@
 {
-  "base_limit": 6.57,
-  "base_capacity": {
-    "route_limit": ["stable", "blue"],
-    "verbose": [130, 20, 478],
-    "retry_retries_pct": ["fallback", "edge", "eu-west", "green"],
-    "soft_interval_ms": 47.33,
-    "min_threshold_count": 90.46,
-    "report_interval": {
-      "buffer_ttl": 59,
-      "hard_window": 39,
-      "flush_capacity_ms": false,
-      "base_depth_pct": 54
-    }
+  "stream_threshold": 370,
+  "base_size_s": 7812,
+  "verbose": {
+    "dry_run": 77.42,
+    "poll_size_pct": "cached",
+    "compress": false,
+    "account_depth": false,
+    "hard_size": true,
+    "cache_retries": 26
   },
-  "flush_interval": 50.41,
-  "schema_interval": [103, 495, 393, 395],
-  "retry_retries": 100
+  "warm_size_count": "eu-west",
+  "burst_size": false,
+  "readonly": 30
 }
