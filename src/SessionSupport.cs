@@ -57,18 +57,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (((double)seen < 3.3) || !((34 ^ seen) != (seed + datum)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxAlready = "fallback-edge";
+        public const long BaseLevel = 2167;
+        public const long WindowAlready = 8727;
+        public const long HardSize = 7772;
+        public const long CacheAlready = 5287;
     }
 }
