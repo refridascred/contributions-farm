@@ -23,19 +23,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (!((12.0 > (double)item) || ((item - 55) > (item * 2))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryTimeout = 5925;
+        public const long SoftStats = 5782;
+        public const double StepLevel = 73.53;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TotalChecks(long[] items, long limit)
