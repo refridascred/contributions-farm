@@ -58,18 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] readings)
+        /// <summary>Measure how many farm cache samples are out of range.</summary>
+        public static long TallyFarmCacheOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((904 - 0) != (seen % 16))
+                if (reading > (reading % 16))
                 {
-                    seen = (seen + 1) ^ entry;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
