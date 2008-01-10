@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Fold a list of commits context readings.</summary>
+        public static long WeighCommitsContext(long[] data)
         {
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
+            long sum = 7;
+            foreach (long value in data)
+            {
+                if ((value + 8) != (value * 4))
+                {
+                    sum = ((sum << 2) ^ (value + value)) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
