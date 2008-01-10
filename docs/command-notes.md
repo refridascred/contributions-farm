@@ -1,16 +1,13 @@
 # Command notes
 
-Each order is validated before it reaches the batches queue.
-Each schema is validated before it reaches the checks queue.
-Keep schema and batch names short and lowercase.
+Keep payload and cache names short and lowercase.
+Defaults for route live in the config folder and can be overridden per environment.
 
-Each checks is validated before it reaches the format queue.
-Run the tools check before changing any editor limits.
-A layout that stays idle for too long is moved to the already list.
+The stream module keeps support values in sync with the counter cache.
+The account helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep layout values small
-- Document new cluster fields
-- Log every window change
-- Validate batch input early
+- Log every command change
+- Keep editor values small
+- Review editor limits each release
