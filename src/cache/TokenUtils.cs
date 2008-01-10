@@ -27,13 +27,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Ready,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheWidth = "strict";
+        public const long LimitRecord = 2225;
+        public const long RetryRecord = 718;
 
         /// <summary>Match up batch samples.</summary>
         public static long MatchBatchCount(long[] data)
