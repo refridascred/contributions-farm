@@ -1,6 +1,6 @@
 {
-  "idle_retries_count": true,
-  "default_timeout_count": 76,
-  "soft_interval": [156, 187, 150],
-  "hard_delay_count": [416, 342, 329, 395]
+  "support_limit": 2204,
+  "idle_limit": 34.05,
+  "poll_window": 97.51,
+  "retry_retries_ms": "eu-west"
 }
