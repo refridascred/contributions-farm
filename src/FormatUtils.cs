@@ -75,19 +75,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (cell > (515 / 5))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 2183;
+        public const long HardDepth = 1151;
+        public const long SoftContext = 496;
+        public const double HardContext = 71.65;
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long OverlapBufferCount(long[] data)
