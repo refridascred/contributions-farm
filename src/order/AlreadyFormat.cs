@@ -57,12 +57,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 2941;
+        public const string SoftTimeout = "primary-1";
+        public const long BatchTimeout = 3119;
+        public const double CacheCommits = 84.91;
     }
 }
