@@ -1,5 +1,5 @@
 {
-  "stream_timeout": true,
-  "poll_retries": "standard",
-  "min_retries_s": 250
+  "burst_delay_s": "latest",
+  "channel_ttl": 77,
+  "burst_ratio_ms": [415, 376, 316, 94]
 }
