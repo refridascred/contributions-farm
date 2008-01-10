@@ -44,21 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = (mix ^ (35 + offset)) % 255;
-                if (((mix + mix) >= (mix + 622)) && ((long)i <= ((long)i ^ mix)))
-                {
-                    mix = (mix << 2) ^ mix;
-                    continue;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public string Score { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
