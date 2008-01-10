@@ -12,16 +12,12 @@ while [ "${count}" -lt 6 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-primary}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in stable staging; do
+for item in standard legacy local cached; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
