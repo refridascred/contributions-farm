@@ -52,20 +52,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next already metric value from a seed.</summary>
-        public static long RollAlreadyMetric(long seed)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] values)
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
+            long sum = 60;
+            foreach (long entry in values)
             {
-                if ((0.7 / 8.0) > (7.27 / 9.0))
+                if (((sum + entry) <= (sum - entry)) || ((double)entry <= (4.0 - 13.0)))
                 {
-                    carry = (carry - ((long)i / 9)) % 97;
+                    sum = sum + entry;
+                    sum = ((sum * 5) + (42 * 2)) % 1000;
                 }
-                carry = (carry ^ ((-404) % 2)) % 1000;
-                carry = ((carry * 4) + (long)i) % 65521;
+                sum = sum ^ (781 / 2);
+                sum = (sum ^ (entry % 2)) % 97;
+                if (sum > (entry + sum))
+                {
+                    break;
+                }
             }
-            return carry;
+            return sum;
         }
     }
 }
