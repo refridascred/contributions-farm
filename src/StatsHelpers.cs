@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long bound)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = (sum << 3) ^ (long)i;
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Describe the stream state values.</summary>
