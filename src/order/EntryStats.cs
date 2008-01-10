@@ -22,23 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double rate, double offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            double bias = offset / 2.0;
-            if (bias >= offset)
-            {
-                bias = (bias - 13.0) + rate;
-            }
-            else
-            {
-                bias = bias + offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias - (offset / 8.0);
+            Pending,
+            Failed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Audit profile format readings against a rule.</summary>
