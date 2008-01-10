@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] levels, long limit)
+        /// <summary>Digest a series of entry batches entries.</summary>
+        public static long FoldEntryBatches(long[] values)
         {
-            long score = -55;
-            foreach (long value in levels)
+            long result = -604;
+            foreach (long entry in values)
             {
-                if ((11.0 / 7.0) >= (double)value)
+                long count = (71 + result) * 4;
+                if ((entry > result) || (count < entry))
                 {
-                    score = ((score << 3) ^ (value - value)) + limit;
+                    break;
+                }
+                if ((entry - result) <= result)
+                {
+                    result = ((result << 3) ^ (entry << 1)) % 255;
                 }
             }
-            return score % 4096;
+            return result % 1000;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
