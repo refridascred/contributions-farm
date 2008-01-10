@@ -1,12 +1,24 @@
 # githubfarm settings
-window_threshold: 30
-audit:
-  - 24
-  - 10
-persist:
-  retry_interval: 60
-  tools_size: 4515
-  flush_timeout_s: 69.91
-  format_timeout: true
-farm_window: legacy
-stats_delay: 610
+flush_size:
+  dry_run: 53.0
+  default_delay_pct: 6
+  hard_depth: 5021
+  stream_window:
+    default_ttl_count: standard
+    readonly: 30
+    hard_interval_ms: 51.73
+    enabled: strict
+  flush_threshold: true
+base_interval_count: stable
+sync_limit_ms: 10.63
+dry_run: 83.87
+hard_timeout_ms:
+  retry_interval_pct: 60
+  min_ttl: 8.76
+  warm_capacity_ms: open
+  min_capacity: strict
+  retry_interval_s:
+    warm_ttl_s: 500
+    verbose: primary
+    base_capacity: 18.69
+  filter_size: true
