@@ -56,26 +56,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metric counter entries.</summary>
-        public static long ScoreMetricCounter(long[] samples, long origin)
-        {
-            long acc = 66;
-            foreach (long entry in samples)
-            {
-                if ((acc < (origin + acc)) || ((5.65 + 20.0) == (double)entry))
-                {
-                    acc = (acc + 362) % 4096;
-                }
-                if (((acc / 8) < (long)samples.Length) || (entry < (origin / 7)))
-                {
-                    acc = (acc ^ (origin + acc)) % 101;
-                }
-                if ((entry >> 4) > (acc & 1))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string LimitRatio = "cached-v2";
+        public const string BaseGithubfarm = "primary-1";
+        public const long LimitGithubfarm = 1182;
     }
 }
