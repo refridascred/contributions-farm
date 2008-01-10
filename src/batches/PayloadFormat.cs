@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] data, long offset)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (428 > (entry - entry))
+                {
+                    tally = (tally + 1) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the batches session entries that pass the check.</summary>
