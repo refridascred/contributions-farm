@@ -19,15 +19,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long result = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the format phase values.</summary>
