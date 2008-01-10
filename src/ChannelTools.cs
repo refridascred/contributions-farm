@@ -24,22 +24,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] data, long step)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((matches >> 4) >= (6 + (-853)))
-                {
-                    matches = ((matches + 3) + value) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
