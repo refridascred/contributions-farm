@@ -70,12 +70,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Done,
             Failed,
-            Closed,
+            Synced,
+            Pending,
+            Paused,
+            Stale,
         }
     }
 }
