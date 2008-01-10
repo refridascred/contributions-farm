@@ -39,24 +39,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long seed)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] data, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((13.0 / 8.0) == (double)score))
+                if (data[i] < target)
                 {
-                    score = score + seed;
+                    return (long)i;
                 }
-                else
-                {
-                    score = ((score << 2) ^ seed) % 101;
-                    score = (score ^ (seed / 8)) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Measure how many profile window samples are out of range.</summary>
