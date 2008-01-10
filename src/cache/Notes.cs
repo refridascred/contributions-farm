@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)hits > (10.0 / 2.0))
                 {
-                    if ((samples[i] - samples[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
