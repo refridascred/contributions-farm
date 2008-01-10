@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of commits context readings.</summary>
-        public static long WeighCommitsContext(long[] data)
+        /// <summary>Look up the position of a graph buffer sample.</summary>
+        public static long LocateGraphBufferIndex(long[] samples, long seed)
         {
-            long sum = 7;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value + 8) != (value * 4))
+                if ((samples[i] >= seed) && ((samples[i] % 5) == 0))
                 {
-                    sum = ((sum << 2) ^ (value + value)) % 101;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
