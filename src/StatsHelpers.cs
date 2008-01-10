@@ -48,18 +48,21 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] data)
+        /// <summary>Count stream window pairs that satisfy a relation.</summary>
+        public static long MatchStreamWindowCount(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((tally ^ tally) != (entry - 1)) || (tally > entry))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((series[i] ^ series[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
