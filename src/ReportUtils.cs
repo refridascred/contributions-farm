@@ -30,18 +30,22 @@ namespace Common.Utilities
             return scale2 - (scale * 9.5);
         }
 
-        /// <summary>Audit cluster layout readings against a rule.</summary>
-        public static long AuditClusterLayoutHits(long[] readings)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (!((matches * 2) <= (value - matches)))
+                if (seen < (18 % 24))
                 {
-                    matches = matches + 1;
+                    seen = ((seen + 2) - value) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Match up batch samples.</summary>
