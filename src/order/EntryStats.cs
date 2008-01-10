@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] readings, long limit)
         {
-            public double Size { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a order header.</summary>
