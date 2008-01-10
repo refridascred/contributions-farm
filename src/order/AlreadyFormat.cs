@@ -61,10 +61,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseTimeout = 94.08;
-        public const double SoftContributi = 75.68;
-        public const string StepCount = "latest-1";
-        public const string RetryContributi = "latest-1";
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
