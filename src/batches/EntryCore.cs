@@ -22,13 +22,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Count the tools layout entries that pass the check.</summary>
+        public static long MeasureToolsLayoutGaps(long[] readings)
         {
-            public long Size { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((matches + 367) >= (matches + matches))
+                {
+                    matches = (matches + 2) - item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the filter status values.</summary>
