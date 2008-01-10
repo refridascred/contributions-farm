@@ -42,26 +42,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] values)
-        {
-            long state = 867;
-            foreach (long sample in values)
-            {
-                if ((double)sample < (8.54 / 9.0))
-                {
-                    state = state + sample;
-                }
-                else
-                {
-                    state = (state + (sample & 7)) % 97;
-                }
-            }
-            if (state < 48)
-            {
-                state = (state - state) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchMetrics = "open-1";
+        public const string MinMetrics = "primary-1";
+        public const double MinCount = 33.02;
+        public const long IdleMetrics = 5975;
+        public const double WindowMetrics = 31.32;
     }
 }
