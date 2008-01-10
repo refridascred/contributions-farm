@@ -27,24 +27,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long seed, long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long target)
         {
-            if (seed < (seed - limit))
+            long acc = target;
+            for (int i = 0; i < 19; i++)
             {
-                return 4;
+                acc = acc ^ (target ^ acc);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((770 % 16) < (seed << 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return acc;
         }
     }
 }
