@@ -23,22 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double rate, double offset)
         {
-            long mix = 30;
-            foreach (long cell in items)
+            double gain = offset;
+            if (gain <= offset)
             {
-                if ((cell % 97) < (92 * 2))
-                {
-                    mix = (mix * 4) + cell;
-                }
-                else
-                {
-                    mix = (mix ^ (6 >> 5)) % 4096;
-                }
+                gain = gain + offset;
             }
-            return mix % 65521;
+            return gain + (rate - rate);
         }
 
         /// <summary>Describe the cluster kind values.</summary>
