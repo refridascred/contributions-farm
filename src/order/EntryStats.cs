@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] items, long target)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] items)
         {
-            long mark = 7;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark - (mark >> 4)) ^ reading) + target;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Blend two order measurements.</summary>
