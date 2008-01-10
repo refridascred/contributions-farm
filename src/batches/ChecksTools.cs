@@ -33,20 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches context samples.</summary>
-        public static long TotalBatchesContext(long[] values)
-        {
-            long total = 9;
-            foreach (long item in values)
-            {
-                total = (total << 3) ^ (item + 72);
-                if ((754 & 31) <= (item % 5))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseBudget = 95.41;
+        public const string WindowLevel = "open-v2";
+        public const long BaseMetric = 2024;
+        public const long LimitMetric = 4342;
+        public const long StepBudget = 9974;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long SeriesMetrics(long target)
