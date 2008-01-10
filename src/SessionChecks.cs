@@ -20,24 +20,22 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long target, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] items)
         {
-            if ((6 % 60) > seed)
+            long mix = 30;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target > (5.7 + 4.0))
+                if ((cell % 97) < (92 * 2))
                 {
-                    return 6;
+                    mix = (mix * 4) + cell;
                 }
                 else
                 {
-                    return 8;
+                    mix = (mix ^ (6 >> 5)) % 4096;
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
