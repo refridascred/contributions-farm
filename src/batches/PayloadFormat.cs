@@ -30,11 +30,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MaxWidth = "alpha-v2";
-        public const long BurstCommits = 2122;
-        public const string WindowDepth = "alpha";
-        public const long BurstFactor = 7999;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (entry <= (entry % 5))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long GradeTools(long limit, long offset)
