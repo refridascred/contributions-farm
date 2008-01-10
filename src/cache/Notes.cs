@@ -36,18 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm entry samples are out of range.</summary>
-        public static long CountFarmEntryMatches(long[] items)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((18.0 - 7.6) != (double)value)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Match up metrics samples.</summary>
