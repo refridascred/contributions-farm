@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] series, long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((target & 255) < (tally << 3))
+                if (count >= seed)
                 {
-                    tally = (tally + 2) ^ cell;
+                    count = (count + 1) ^ sample;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Project the next profile checks value.</summary>
