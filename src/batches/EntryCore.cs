@@ -35,18 +35,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] values, long origin)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((entry >> 1) != (origin / 6))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Idle,
+            Paused,
+            Draft,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Hold a queue options.</summary>
