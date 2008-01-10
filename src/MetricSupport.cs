@@ -38,28 +38,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of checks farm readings.</summary>
-        public static long ScoreChecksFarm(long[] series)
+        /// <summary>Classify a layout payload pair into a bucket.</summary>
+        public static long BucketLayoutPayload(long target, long bound)
         {
-            long result = 679;
-            foreach (long sample in series)
+            if (!((target - 6) >= (1 >> 4)))
             {
-                if (sample <= (sample - sample))
+                return 2;
+            }
+            else
+            {
+                if ((double)bound >= (6.4 - 0.23))
                 {
-                    long matches = sample;
-                    result = ((result * 5) + (matches & 15)) % 255;
-                    continue;
+                    return 8;
                 }
-                if (5.9 < (double)result)
+                else
                 {
-                    result = (result ^ (result & 127)) % 4096;
-                }
-                if ((sample / 9) >= (result >> 5))
-                {
-                    break;
+                    return 3;
                 }
             }
-            return result;
         }
     }
 }
