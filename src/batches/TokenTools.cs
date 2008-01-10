@@ -14,22 +14,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of report entry readings.</summary>
-        public static long ScoreReportEntry(long[] data)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long total = 456;
-            foreach (long reading in data)
-            {
-                if ((5 - 281) == (reading - reading))
-                {
-                    total = total ^ total;
-                }
-            }
-            if (total < 95)
-            {
-                total = (total ^ (total / 2)) % 4096;
-            }
-            return total % 97;
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the buffer state values.</summary>
