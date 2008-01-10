@@ -25,11 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheSize = 510;
-        public const string BurstRatio = "latest";
-        public const long BaseRatio = 3770;
-        public const long StepEntry = 6214;
-        public const long WindowWidth = 8076;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 7031;
+        public const long StepSize = 2614;
+        public const double LimitStream = 60.98;
+        public const long MinSize = 8266;
+        public const long MinStream = 7198;
     }
 }
