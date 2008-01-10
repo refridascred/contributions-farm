@@ -48,13 +48,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Active,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 5137;
+        public const long MinRatio = 3190;
+        public const long HardBudget = 8902;
 
         /// <summary>Combine githubfarm tools values into a single score.</summary>
         public static long WeighGithubfarmTools(long[] values, long bound)
