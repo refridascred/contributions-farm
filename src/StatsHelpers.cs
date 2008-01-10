@@ -13,13 +13,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] data, long floor)
         {
-            Idle,
-            New,
-            Queued,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next checks value.</summary>
