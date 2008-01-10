@@ -14,14 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] samples, long target)
         {
-            New,
-            Active,
-            Dropped,
-            Ready,
-            Done,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((target % 10) > (hits + entry))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next profile checks value.</summary>
