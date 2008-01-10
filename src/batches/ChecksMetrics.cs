@@ -91,15 +91,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] levels, long floor)
+        /// <summary>Grade a contributi token value against two limits.</summary>
+        public static long ClassifyContributiToken(long offset, long floor)
         {
-            long mix = 4;
-            foreach (long reading in levels)
+            if (2.56 > (double)offset)
             {
-                mix = ((mix + (reading * 5)) % 101) - floor;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if (((2.1 - 8.66) == (double)floor) && ((offset ^ offset) != (floor << 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - 66) >= (offset & 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
