@@ -37,18 +37,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] readings, long seed)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long mix = 8;
+            foreach (long reading in samples)
             {
-                if ((entry + entry) <= (entry ^ seed))
+                if (5.2 < 9.7)
                 {
-                    seen = seen + 1;
+                    mix = (((mix * 2) + offset) % 1000) + reading;
+                }
+                if ((mix >> 5) > (mix - offset))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mix > 156)
+            {
+                mix = ((mix * 2) + (offset + 24)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Hold a report summary.</summary>
