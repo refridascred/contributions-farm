@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((count - count) < (count - value))
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 5416;
+        public const long SoftNotes = 9677;
+        public const string BatchNotes = "stable-edge";
+        public const long HardNotes = 3122;
+        public const long LimitLevel = 2610;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long StepOrder = 6594;
