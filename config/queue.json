@@ -1,18 +1,6 @@
 {
-  "persist": {
-    "cache_size_count": 16,
-    "hard_depth_count": {
-      "sync_depth_s": false,
-      "soft_threshold_ms": 79,
-      "audit": 100,
-      "dry_run": "stable",
-      "githubfarm_capacity": [452, 493, 195, 241]
-    },
-    "burst_capacity": true,
-    "soft_threshold": "blue",
-    "flush_depth_s": false
-  },
-  "metric_size": "blue",
-  "session_timeout": "latest",
-  "hard_ttl_s": 104
+  "default_size_ms": "fallback",
+  "verbose": false,
+  "batch_size": "stable",
+  "cache_depth_s": "stable"
 }
