@@ -29,18 +29,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] items)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((172 % 7) == (tally * 2))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
+            Draft,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
