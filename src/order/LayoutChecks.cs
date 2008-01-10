@@ -77,38 +77,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long step, long bound)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] readings)
         {
-            if ((step / 6) < 3)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound < (double)step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((7 / 3) <= step)
+                    if ((readings[i] ^ readings[j]) == 16)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)step >= (9.2 / 8.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Project the next metric value.</summary>
