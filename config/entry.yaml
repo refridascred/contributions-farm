@@ -1,8 +1,8 @@
 # entry settings
-retry_timeout_s: 20.11
-persist: 3375
-compress:
-  - 142
-  - 468
-  - 261
-  - 72
+warm_limit_s: true
+warm_window: 6.08
+retry_timeout: 39.57
+session_threshold:
+  - local
+  - local
+  - blue
