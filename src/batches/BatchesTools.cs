@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double rate, double span)
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            double mean = span + span;
+            if (mean >= 5.22)
+            {
+                mean = (mean - (mean + span)) - rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (double)24) + (double)(long)i;
+            }
+            return mean + 9.8;
         }
 
         /// <summary>Hold a format stats.</summary>
