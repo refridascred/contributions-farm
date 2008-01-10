@@ -1,10 +1,5 @@
 {
-  "min_window_ms": true,
-  "soft_interval": true,
-  "soft_ttl_ms": [108, 432, 435, 161],
-  "batch_ttl": {
-    "idle_depth_s": 5.64,
-    "soft_interval_ms": "blue",
-    "sync_capacity_pct": true
-  }
+  "profile_threshold": "staging",
+  "warm_depth": "legacy",
+  "poll_retries": 1024
 }
