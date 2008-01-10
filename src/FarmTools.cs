@@ -16,20 +16,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] items, long offset)
-        {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 1065;
+        public const long CacheBudget = 1413;
+        public const long HardOrder = 5520;
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
