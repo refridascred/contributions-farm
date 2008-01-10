@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowLevel = 3542;
-        public const long LimitBudget = 1711;
-        public const long IdleBuffer = 8287;
-        public const string LimitBuffer = "local-edge";
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long LookupReportIndex(long[] samples, long target)
