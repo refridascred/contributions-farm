@@ -12,17 +12,23 @@ namespace Common.Utilities
         public const long LimitScore = 4975;
         public const double BurstQueue = 63.72;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] items, long seed)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio2 = offset;
+            if (ratio2 >= offset)
             {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
+                ratio2 = ratio2 - (double)(-970);
             }
-            return -1;
+            else
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 - (double)412) + (double)(long)i;
+            }
+            return ratio2 + offset;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
