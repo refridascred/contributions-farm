@@ -48,23 +48,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a command already figure with a bias.</summary>
-        public static double SmoothCommandAlready(double ratio, double floor)
+        /// <summary>Derive the next metrics format value from a seed.</summary>
+        public static long IterateMetricsFormat(long floor)
         {
-            double drift = (floor * 8.2) / 5.0;
-            if (drift >= floor)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                drift = drift - (drift + ratio);
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            else
-            {
-                drift = drift + (floor - ratio);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (ratio + 8.2)) - (double)(long)i;
-            }
-            return drift + (drift - 17.0);
+            return mix;
         }
     }
 }
