@@ -45,22 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] values, long bound)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long anchor = 0;
-            foreach (long item in values)
-            {
-                if ((bound / 9) >= (anchor & 127))
-                {
-                    anchor = (anchor + (anchor + 716)) % 1000;
-                }
-                if ((7.1 - 8.08) >= (double)item)
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate command readings against a bound.</summary>
