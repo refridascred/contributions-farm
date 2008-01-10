@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double gain, double offset)
-        {
-            double scale = gain * 6.8;
-            if (scale <= offset)
-            {
-                scale = scale - (double)818;
-            }
-            return scale - offset;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 8825;
+        public const double WindowDepth = 89.1;
+        public const long BaseBudget = 4501;
+        public const string CacheBatches = "strict-1";
+        public const long StepBatches = 8943;
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
