@@ -19,13 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public bool Ratio { get; set; }
-            public bool Count { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheBudget = 8530;
+        public const long StepWidth = 6469;
+        public const double LimitDepth = 12.66;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool CheckContributiLimits(long[] samples, long offset)
