@@ -30,15 +30,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] items)
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
+            long carry = -969;
+            foreach (long reading in items)
             {
-                score = ((score * 2) + (long)i) % 101;
+                carry = ((carry * 4) + reading) % 1000;
             }
-            return score;
+            return carry;
         }
     }
 }
