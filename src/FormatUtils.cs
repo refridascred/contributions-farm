@@ -22,18 +22,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] items, long offset)
+        /// <summary>Count the format context entries that pass the check.</summary>
+        public static long AuditFormatContextOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((2 * 2) > ((-835) + reading))
+                if ((5.23 * 2.8) == (double)tally)
                 {
-                    seen = (seen + 1) - offset;
+                    tally = (tally + 3) - sample;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
