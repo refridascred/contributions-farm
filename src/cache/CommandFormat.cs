@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] data, long seed)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 2925;
+        public const long SoftWidth = 6356;
+        public const string BaseRecord = "staging-edge";
+        public const string BatchRecord = "cached-1";
+        public const long WindowBudget = 9152;
 
         /// <summary>Grade a already entry value against two limits.</summary>
         public static long SortAlreadyEntry(long target, long offset)
