@@ -45,13 +45,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] levels, long limit)
         {
-            Dropped,
-            Queued,
-            Retry,
-            Done,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (!((double)tally < 2.8) || (limit > 94))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
         }
     }
 }
