@@ -80,17 +80,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first queue route entry that matches the target.</summary>
-        public static long SeekQueueRouteIndex(long[] values, long seed)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
