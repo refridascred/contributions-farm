@@ -59,24 +59,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long step, long step2)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] series, long offset)
         {
-            if (step2 < (step2 >> 1))
+            long state = 131;
+            foreach (long value in series)
             {
-                return 2;
+                state = ((state * 5) + value) + offset;
             }
-            else
-            {
-                if ((8.25 / 2.0) >= (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return state % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
