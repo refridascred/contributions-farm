@@ -32,18 +32,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] samples)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((283 >= count) || (count > (datum & 3)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
