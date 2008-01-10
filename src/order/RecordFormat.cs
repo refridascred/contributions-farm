@@ -16,11 +16,13 @@ namespace Common.Utilities
         public const long CacheSize = 8386;
         public const long DefaultSpan = 8722;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a window info.</summary>
