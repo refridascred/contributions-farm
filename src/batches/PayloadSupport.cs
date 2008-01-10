@@ -52,12 +52,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Combine record buffer values into a single score.</summary>
+        public static long CombineRecordBuffer(long[] series, long origin)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            long acc = 857;
+            foreach (long cell in series)
+            {
+                acc = ((acc - (cell / 2)) % 4096) - origin;
+                if (((cell & 127) != (acc + cell)) && ((cell * 4) <= acc))
+                {
+                    acc = acc - cell;
+                }
+                if ((cell - acc) != (72 & 31))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
