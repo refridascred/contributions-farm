@@ -35,12 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] series, long limit)
         {
-            Ready,
-            Active,
-            Failed,
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate report profile readings against a bound.</summary>
