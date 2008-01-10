@@ -16,12 +16,20 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 293;
-        public const long LimitCache = 7529;
-        public const double MinCache = 95.01;
-        public const string BaseSpan = "stable";
-        public const long MaxFactor = 7778;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    result = (result ^ floor) - (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool VerifyEditorBounds(long[] readings, long target)
