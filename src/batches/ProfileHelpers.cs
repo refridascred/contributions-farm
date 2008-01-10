@@ -80,21 +80,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batch account readings.</summary>
-        public static long CompareBatchAccountCount(long[] readings)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = ratio;
+            if (weight > ratio)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = (weight + ratio) - bias;
             }
-            return seen;
+            else
+            {
+                weight = weight - (8.0 - ratio);
+            }
+            return weight - (double)0;
         }
     }
 }
