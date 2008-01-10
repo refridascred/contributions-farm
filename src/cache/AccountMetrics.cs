@@ -37,26 +37,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] samples, long offset)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long mix = 8;
-            foreach (long reading in samples)
-            {
-                if (5.2 < 9.7)
-                {
-                    mix = (((mix * 2) + offset) % 1000) + reading;
-                }
-                if ((mix >> 5) > (mix - offset))
-                {
-                    break;
-                }
-            }
-            if (mix > 156)
-            {
-                mix = ((mix * 2) + (offset + 24)) % 255;
-            }
-            return mix;
+            Stale,
+            Pending,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Hold a report summary.</summary>
