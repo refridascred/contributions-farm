@@ -21,17 +21,12 @@ namespace Common.Utilities
         public const double CacheSize = 54.9;
         public const double MinTimeout = 6.47;
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] items, long offset)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Done,
+            Draft,
         }
 
         /// <summary>Look up the position of a stats report sample.</summary>
