@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 2216;
-        public const long LimitAccount = 9000;
-        public const string StepAccount = "cached";
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a counter cache reading.</summary>
         public static double ProjectCounterCache(double weight, double floor)
