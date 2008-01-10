@@ -1,21 +1,8 @@
 {
-  "batch_threshold_s": "primary",
-  "support_threshold": 7895,
-  "hard_delay": {
-    "compress": ["stable", "eu-west", "edge"],
-    "persist": [318, 380, 293, 114],
-    "min_timeout": "standard",
-    "editor_capacity": 84.35
-  },
-  "sync_ttl_pct": {
-    "warm_threshold_ms": ["latest", "cached", "standard", "fallback"],
-    "batch_ratio": {
-      "warm_capacity": [364, 342, 155, 463],
-      "queue_size": 29,
-      "flush_timeout_count": "fallback",
-      "burst_size": "open"
-    },
-    "hard_delay": "staging",
-    "editor_limit": true
-  }
+  "base_depth_ms": [327, 319, 197],
+  "warm_delay": false,
+  "hard_interval_ms": "fallback",
+  "hard_timeout_pct": "staging",
+  "commits_interval": true,
+  "idle_ratio_count": [92, 477, 15, 24]
 }
