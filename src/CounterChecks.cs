@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] readings)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long offset, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!((5.2 - 7.8) > (double)offset))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((target << 3) <= offset)
                 {
-                    if ((readings[i] - readings[j]) < 3)
+                    return 3;
+                }
+                else
+                {
+                    if (((double)offset > (7.81 / 9.0)) || ((offset << 3) >= (target + target)))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target - offset) >= (target / 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine editor buffer values into a single score.</summary>
