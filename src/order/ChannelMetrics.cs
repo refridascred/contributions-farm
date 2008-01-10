@@ -18,17 +18,11 @@ namespace Common.Utilities
         public const string LimitRatio = "standard-v2";
         public const double SoftScore = 30.0;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] samples, long origin)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
     }
 }
