@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Idle,
-            Stale,
-            Synced,
-            Pending,
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
