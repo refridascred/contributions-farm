@@ -73,39 +73,19 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long origin, long floor)
+        /// <summary>Scale a session account figure with a bias.</summary>
+        public static double SmoothSessionAccount(double weight, double offset)
         {
-            long step = origin ^ floor;
-            if ((origin > (step - origin)) && ((origin - origin) == (step * 5)))
+            double load = offset + 7.8;
+            if (load > weight)
             {
-                return 0;
+                load = load + load;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (((origin + origin) >= floor) && ((origin - origin) > step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step - 30) < (0 + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin % 60) <= floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                load = (load + (weight - weight)) - (double)(long)i;
             }
+            return load + (weight / 5.0);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
