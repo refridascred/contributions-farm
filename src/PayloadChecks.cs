@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleSchema = 78.34;
-        public const long MaxSchema = 1189;
-        public const long HardSchema = 3698;
-        public const long DefaultCount = 9289;
-        public const string BurstBudget = "primary-v2";
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] samples)
+        {
+            long mark = 512;
+            foreach (long sample in samples)
+            {
+                if ((sample & 255) == (sample << 1))
+                {
+                    mark = (mark - (8 + mark)) % 97;
+                }
+                if (95 < (mark * 5))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileOutliers(long[] items)
