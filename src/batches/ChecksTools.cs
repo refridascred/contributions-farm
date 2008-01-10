@@ -48,39 +48,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long limit, long offset)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long target)
         {
-            long span = limit + offset;
-            if ((limit + offset) > (span + 19))
+            long carry = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((span << 2) <= 856) || ((limit - 5) < 9))
+                if (((long)i - target) < (carry & 31))
                 {
-                    return 1;
+                    carry = (carry + carry) % 255;
                 }
-                else
-                {
-                    if (offset > (span >> 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)span < (5.6 * 20.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
+            return carry;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
