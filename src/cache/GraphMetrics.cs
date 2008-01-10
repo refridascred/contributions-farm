@@ -65,11 +65,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 4761;
-        public const double CacheCommits = 62.98;
-        public const long MinCommits = 5710;
-        public const long HardCommits = 3860;
-        public const long IdleCommits = 2062;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Dropped,
+            Idle,
+            Ready,
+            Closed,
+            Locked,
+        }
     }
 }
