@@ -47,19 +47,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] levels, long floor)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Idle,
+            Closed,
         }
     }
 }
