@@ -25,11 +25,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two window token measurements.</summary>
-        public static double AdjustWindowToken(double ratio, double bias)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] levels, long seed)
         {
-            double weight = ratio;
-            return (weight + weight) + bias;
+            long state = 2;
+            foreach (long datum in levels)
+            {
+                state = ((state + 85) + datum) + seed;
+            }
+            return state % 1000;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
