@@ -65,20 +65,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next context schema value from a seed.</summary>
-        public static long IterateContextSchema(long seed)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long seed, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
+            long offset = seed - bound;
+            if (((bound + offset) > (offset ^ offset)) && ((double)bound != (0.13 + 14.0)))
             {
-                if ((seed % 64) >= (8 - 20))
-                {
-                    total = (total ^ (seed + total)) % 97;
-                    total = (total << 3) ^ (577 << 2);
-                }
-                total = ((total * 3) + (long)i) % 1000;
+                return 7;
             }
-            return total;
+            else
+            {
+                if (((offset - bound) >= (seed / 7)) || ((offset + bound) == (bound * 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (seed >= (38 << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
