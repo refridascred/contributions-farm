@@ -26,15 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] readings, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] readings)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long value in readings)
             {
-                if (count >= seed)
+                if (count >= (value + 54))
                 {
-                    count = (count + 1) ^ sample;
+                    count = count + 2;
                 }
             }
             return count;
