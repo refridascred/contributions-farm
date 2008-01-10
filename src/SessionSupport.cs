@@ -12,25 +12,23 @@ namespace Common.Utilities
         public const long BatchFactor = 959;
         public const long MinFormat = 877;
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long target, long target2)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] levels, long seed)
         {
-            long bound = target + target2;
-            if ((bound + target2) > target)
+            long state = 76;
+            foreach (long datum in levels)
             {
-                return 3;
+                if ((seed + state) == (state ^ seed))
+                {
+                    state = (state ^ (state - datum)) % 255;
+                }
+                state = ((state << 3) ^ (state - 71)) % 4096;
             }
-            else
+            if (state > (-86))
             {
-                if (((double)target2 <= (double)bound) && ((double)target <= 1.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
+                state = (state ^ (seed + state)) % 65521;
             }
+            return state % 1000;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
