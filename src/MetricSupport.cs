@@ -26,14 +26,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Scale a notes stats figure with a bias.</summary>
+        public static double ScaleNotesStats(double weight, double bias)
         {
-            Draft,
-            Synced,
-            Failed,
-            Active,
-            Idle,
+            double rate = bias;
+            return (rate - rate) + weight;
         }
     }
 }
