@@ -20,19 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] series, long limit)
+        /// <summary>Measure how many session stats samples are out of range.</summary>
+        public static long TallySessionStatsMatches(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (cell != limit)
+                if ((step * 3) >= (step + value))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
