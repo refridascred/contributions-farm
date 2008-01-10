@@ -34,18 +34,11 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] levels, long seed)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)seed <= (double)matches) && ((matches >> 1) < (matches + matches)))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
