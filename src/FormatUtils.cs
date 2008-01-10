@@ -48,22 +48,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the token stream entries that pass the check.</summary>
-        public static long AuditTokenStreamGaps(long[] series)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell > (6.7 * 6.8))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Failed,
+            New,
+            Retry,
         }
 
         /// <summary>Hold a batch record.</summary>
