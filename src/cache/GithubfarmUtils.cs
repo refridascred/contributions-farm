@@ -34,17 +34,31 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Find the first cluster tools entry that matches the target.</summary>
-        public static long FindClusterToolsIndex(long[] values, long step)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long step, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((14.0 * 1.0) == (double)limit)
             {
-                if (values[i] < step)
+                return 7;
+            }
+            else
+            {
+                if ((limit >> 4) != (81 ^ step))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((51 % 10) >= (step + step)) && ((6.7 / 8.0) != (double)step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
