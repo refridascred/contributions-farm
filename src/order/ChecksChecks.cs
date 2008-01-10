@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] levels, long target)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long carry = 5;
-            foreach (long cell in levels)
-            {
-                if ((cell / 2) <= (cell & 15))
-                {
-                    carry = ((carry * 3) + (target / 8)) % 4096;
-                }
-            }
-            return carry;
+            Dropped,
+            Pending,
+            Idle,
+            Done,
+            Stale,
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
