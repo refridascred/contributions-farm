@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] samples, long step)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Project the next batch value.</summary>
