@@ -38,19 +38,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] readings, long origin)
+        /// <summary>Scale a schema queue figure with a bias.</summary>
+        public static double ScaleSchemaQueue(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            double scale = weight;
+            if (scale < (8.0 - offset))
             {
-                if (entry > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale - (weight + 7.2);
             }
-            return valid;
+            return scale + (0.78 * 3.06);
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
