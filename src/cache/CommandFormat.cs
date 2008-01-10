@@ -12,11 +12,20 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCache = 50.66;
-        public const double BaseInterval = 56.44;
-        public const long BaseSpan = 1411;
-        public const long BatchTimeout = 118;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] samples, long seed)
+        {
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double SmoothSession(double scale, double offset)
