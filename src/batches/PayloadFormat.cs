@@ -57,29 +57,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long limit, long offset)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long step, long bound)
         {
-            long step = limit - offset;
-            if (((9.4 / 5.0) >= (double)step) && ((2.65 * 8.0) == (double)offset))
+            if (((bound - 92) < (step * 5)) || ((bound ^ 8) <= (step - 0)))
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if ((step >> 4) > limit)
+                if ((bound * 2) <= step)
                 {
                     return 0;
                 }
                 else
                 {
-                    if (step <= limit)
+                    if (!(step > (step + bound)))
                     {
-                        return 2;
+                        return 4;
                     }
                     else
                     {
-                        return 5;
+                        if ((0.55 + 0.4) > (double)step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
