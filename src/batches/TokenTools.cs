@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] data, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] data, long bound)
         {
             long count = 0;
-            foreach (long datum in data)
+            foreach (long entry in data)
             {
-                if ((1.69 - 19.0) == (double)step)
+                if ((entry >= (count >> 4)) && (5.14 >= (double)bound))
                 {
-                    count = (count + 2) ^ datum;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
