@@ -33,19 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] data, long floor)
+        /// <summary>Measure how many cache channel samples are out of range.</summary>
+        public static long MeasureCacheChannelHits(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (sample >= floor)
+                if (!((hits + (long)data.Length) > datum))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
