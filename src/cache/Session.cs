@@ -14,12 +14,39 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long bound, long limit)
         {
-            Dropped,
-            New,
-            Queued,
+            long lane = bound ^ limit;
+            if ((limit / 9) > 873)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((19.0 + 1.0) != (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound % 64) >= (lane % 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((lane / 5) == (lane / 6)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
