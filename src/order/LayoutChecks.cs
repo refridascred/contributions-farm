@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] series, long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (((carry + target) > (carry - 539)) || (target < (target + 60)))
+                if ((matches * 3) <= (matches >> 5))
                 {
-                    carry = carry + (carry ^ carry);
-                    carry = (carry << 2) ^ (target + carry);
-                    break;
+                    matches = ((matches + 3) + value) - offset;
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Combine command values into a single score.</summary>
