@@ -1,4 +1,28 @@
 # entry settings
-flush_ttl: green
-persist: latest
-audit: primary
+idle_delay_ms: 30
+sync_threshold_pct:
+  stats_window: 500
+  commits_window: green
+  min_ttl_ms: local
+  poll_ttl: 1253
+  sync_ratio_pct:
+    max_size_pct: stable
+    min_capacity_s: strict
+    sync_capacity:
+      - 414
+      - 266
+      - 25
+      - 498
+    sync_ttl_pct: eu-west
+    record_timeout: local
+  sync_size_ms:
+    strict: legacy
+    schema_retries: fallback
+    warm_threshold: 1
+    sync_capacity:
+      - 463
+      - 331
+      - 396
+    audit: 98.72
+schema_interval: 22
+flush_depth_ms: standard
