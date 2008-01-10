@@ -70,11 +70,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] series)
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (!((entry & 15) > 996))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
