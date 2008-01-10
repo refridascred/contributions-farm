@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] items, long seed)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long limit)
         {
-            long mix = 3;
-            foreach (long entry in items)
+            long score = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (mix <= seed)
+                if ((19.0 / 5.0) > (double)(long)i)
                 {
-                    mix = mix ^ (934 + mix);
+                    continue;
                 }
                 else
                 {
-                    mix = (mix * 4) + (entry & 3);
+                    score = score - (397 + limit);
                 }
+                score = (score + (score << 3)) % 65521;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return mix % 1000;
+            return score;
         }
 
         /// <summary>Describe the schema phase values.</summary>
