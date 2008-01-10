@@ -1,5 +1,5 @@
 {
-  "burst_threshold_pct": "strict",
-  "dry_run": ["legacy", "eu-west"],
-  "max_retries_count": 97
+  "soft_depth_count": 2626,
+  "farm_window": [280, 67, 456, 166],
+  "soft_depth_s": 28.32
 }
