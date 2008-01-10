@@ -12,13 +12,16 @@ namespace Common.Utilities
         public const double StepFilter = 63.49;
         public const string BurstFilter = "primary-1";
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long offset)
         {
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
+            long result = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                result = (result * 3) + result;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
