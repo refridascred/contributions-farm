@@ -52,22 +52,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] items, long step)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long carry = -96;
-            foreach (long entry in items)
-            {
-                if (((-38) + entry) > step)
-                {
-                    carry = ((carry << 2) ^ (entry >> 5)) % 255;
-                }
-                else
-                {
-                    carry = carry + (4 & 15);
-                }
-            }
-            return carry;
+            Synced,
+            Dropped,
+            Active,
+            Pending,
+            Failed,
         }
     }
 }
