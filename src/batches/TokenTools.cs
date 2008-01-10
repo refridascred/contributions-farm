@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] samples)
         {
-            public long Weight { get; set; }
-            public double Flag { get; set; }
+            long total = 5;
+            foreach (long entry in samples)
+            {
+                if (((total & 63) != (entry >> 5)) || (total <= (entry + entry)))
+                {
+                    total = (total * 5) + (498 + 37);
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
