@@ -33,25 +33,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long limit, long origin)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] items, long target)
         {
-            long prev = limit ^ origin;
-            if ((double)599 > (double)limit)
+            bool found = true;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((1.75 - 1.7) < (double)499) || ((limit + prev) != (738 + prev)))
+                if (cell != target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
