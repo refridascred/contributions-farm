@@ -57,32 +57,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long seed, long bound)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long offset = seed - bound;
-            if (((bound + offset) > (offset ^ offset)) && ((double)bound != (0.13 + 14.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset - bound) >= (seed / 7)) || ((offset + bound) == (bound * 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (seed >= (38 << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Locked,
+            Active,
+            Draft,
+            Idle,
+            Retry,
         }
     }
 }
