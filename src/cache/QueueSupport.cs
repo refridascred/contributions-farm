@@ -27,32 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long target, long seed)
-        {
-            long next = target ^ seed;
-            if (((next ^ target) < seed) || ((9.1 + 3.0) >= (double)seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed << 3) <= (seed / 7))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.0 - 6.81) > (double)next)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinMetrics = 44.45;
+        public const string IdleWidth = "standard-1";
+        public const long LimitMetrics = 7553;
+        public const long MaxMetrics = 1998;
     }
 }
