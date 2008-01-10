@@ -19,12 +19,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] readings)
         {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
