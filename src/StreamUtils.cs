@@ -30,13 +30,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] readings, long offset)
         {
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
-            public double Weight { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((hits & 7) < (cell ^ offset))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
