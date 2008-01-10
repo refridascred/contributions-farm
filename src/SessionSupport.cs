@@ -10,11 +10,21 @@ namespace Common.Utilities
         public const long LimitAccount = 9000;
         public const string StepAccount = "cached";
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Compare every pair of support format readings.</summary>
+        public static long CompareSupportFormatCount(long[] data)
         {
-            public double Mode { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine record graph values into a single score.</summary>
