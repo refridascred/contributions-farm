@@ -14,17 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] items)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] series, long step)
         {
-            long mix = 3;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix ^ (mix & 127)) - item;
-                mix = (mix << 2) ^ ((long)items.Length * 5);
-                mix = ((mix * 5) + (249 % 2)) % 101;
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
