@@ -22,18 +22,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] readings)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (!(count >= (reading ^ count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Synced,
+            Ready,
+            Paused,
+            Done,
         }
     }
 }
