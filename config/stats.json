@@ -1,5 +1,5 @@
 {
-  "burst_ratio": true,
-  "base_depth_s": false,
-  "min_timeout": 500
+  "stream_timeout": true,
+  "poll_retries": "standard",
+  "min_retries_s": 250
 }
