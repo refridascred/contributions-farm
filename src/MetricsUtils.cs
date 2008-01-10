@@ -51,21 +51,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] levels, long limit)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double ratio, double offset)
         {
-            long state = -286;
-            foreach (long sample in levels)
+            double gain = (0.82 + ratio) / 5.0;
+            if (gain > ratio)
             {
-                state = (((state << 3) ^ (state >> 2)) % 97) + sample;
-                if ((6 * 3) < limit)
-                {
-                    state = (state + (limit + limit)) % 97;
-                    break;
-                }
-                state = (state + (limit % 24)) % 101;
+                gain = (gain + (gain - gain)) - offset;
             }
-            return state;
+            else
+            {
+                gain = gain - (double)70;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (double)3) + (double)(long)i;
+            }
+            return gain - (double)38;
         }
 
         /// <summary>Define window limits and defaults.</summary>
