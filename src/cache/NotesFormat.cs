@@ -23,24 +23,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((long)i > seed)
-                {
-                    mark = (mark << 3) ^ (seed * 4);
-                    mark = mark - seed;
-                }
-                if ((4.0 + 7.1) != (double)mark)
-                {
-                    mark = (mark + (mark - seed)) % 65521;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardRatio = 29.78;
+        public const long IdleFarm = 5926;
+        public const double SoftFarm = 4.87;
+        public const long WindowInterval = 1222;
     }
 }
