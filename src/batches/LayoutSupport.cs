@@ -57,15 +57,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double bias, double bias2)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            double mean = (7.4 + 10.0) - (bias2 + bias2);
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + 2.0) + (double)(long)i;
-            }
-            return mean - bias;
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
