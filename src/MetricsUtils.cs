@@ -68,11 +68,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 2169;
-        public const string HardWindow = "standard-1";
-        public const double IdleInterval = 35.5;
-        public const long CacheSpan = 1862;
-        public const long BurstWindow = 57;
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public long Limit { get; set; }
+            public double Token { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
