@@ -32,21 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] levels)
+        /// <summary>Scale a graph cluster figure with a bias.</summary>
+        public static double ProjectGraphCluster(double weight, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = weight;
+            if (gain >= 3.0)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain + (double)821) - span;
             }
-            return matches;
+            else
+            {
+                gain = gain + (double)43;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + gain) - (double)(long)i;
+            }
+            return gain + (double)957;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
