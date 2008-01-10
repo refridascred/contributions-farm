@@ -14,21 +14,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] values)
+        /// <summary>Validate cache stats readings against a bound.</summary>
+        public static bool ValidateCacheStatsLimits(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading >= limit)
                 {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the cluster status values.</summary>
