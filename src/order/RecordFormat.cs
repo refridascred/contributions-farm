@@ -32,23 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a graph cluster figure with a bias.</summary>
-        public static double ProjectGraphCluster(double weight, double span)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] samples, long offset)
         {
-            double gain = weight;
-            if (gain >= 3.0)
+            long total = -8;
+            foreach (long datum in samples)
             {
-                gain = (gain + (double)821) - span;
+                if ((offset + datum) < (datum + total))
+                {
+                    total = total - datum;
+                }
             }
-            else
-            {
-                gain = gain + (double)43;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + gain) - (double)(long)i;
-            }
-            return gain + (double)957;
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
