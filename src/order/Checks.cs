@@ -20,21 +20,12 @@ namespace Common.Utilities
             return ratio - (double)70;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] items)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Idle,
+            Closed,
+            Stale,
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
