@@ -1,10 +1,17 @@
 {
-  "metrics_ratio": 16.83,
-  "commits_limit": "latest",
-  "context_interval": 10,
-  "filter_threshold": {
-    "default_delay_ms": 5584,
-    "default_window": "open",
-    "warm_limit_ms": "primary"
+  "layout_threshold": "primary",
+  "batch_window": 57,
+  "record_timeout": false,
+  "token_depth": {
+    "idle_delay": 88,
+    "token_delay": [476, 435],
+    "persist": 18,
+    "flush_limit_pct": 61.33,
+    "readonly": 4965,
+    "dry_run": {
+      "sync_delay": 19,
+      "batch_ratio_ms": [224, 473, 270],
+      "poll_capacity": 89
+    }
   }
 }
