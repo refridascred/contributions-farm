@@ -1,18 +1,6 @@
 # entry settings
-soft_timeout_ms: 4743
-persist: 22
-metrics_ratio:
-  sync_ratio_s: 85.46
-  flush_depth:
-    verbose: 87.58
-    enabled: 46.09
-    warm_depth:
-      - 215
-      - 430
-      - 103
-      - 90
-    dry_run: standard
-    sync_retries_pct: latest
-  audit: 49.21
-cache_delay_count: 22.93
-githubfarm_threshold: primary
+base_threshold_ms: false
+dry_run: edge
+payload_delay: strict
+burst_depth_pct: 244
+batch_interval_pct: strict
