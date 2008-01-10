@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Fold a list of counter support readings.</summary>
+        public static long TotalCounterSupport(long[] samples, long seed)
         {
-            public double Region { get; set; }
-            public double Offset { get; set; }
-            public string Owner { get; set; } = "";
+            long mark = 0;
+            foreach (long entry in samples)
+            {
+                if ((mark < (0 >> 4)) && (mark >= (seed << 1)))
+                {
+                    mark = (mark - (seed - entry)) % 255;
+                }
+                else
+                {
+                    mark = mark - (seed ^ 51);
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
