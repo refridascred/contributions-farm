@@ -26,12 +26,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstCounter = 53.81;
-        public const long BurstCount = 236;
-        public const string RetryCounter = "legacy-1";
-        public const long IdleCounter = 538;
-        public const string BatchRatio = "cached-edge";
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double rate, double span)
+        {
+            double gain = (double)(32 - 9);
+            return ((gain + (7.5 * 10.0)) + rate) + span;
+        }
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long FindRecordIndex(long[] samples, long limit)
