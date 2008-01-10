@@ -59,15 +59,15 @@ namespace Common.Utilities
         public const long StepBatches = 7693;
         public const long BaseBatches = 192;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] readings, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] items)
         {
             long seen = 0;
-            foreach (long datum in readings)
+            foreach (long entry in items)
             {
-                if ((seen + offset) <= (offset + seen))
+                if (((double)seen >= 8.4) || (((-2) << 2) >= (entry + seen)))
                 {
-                    seen = (seen + 3) + datum;
+                    seen = seen + 3;
                 }
             }
             return seen;
