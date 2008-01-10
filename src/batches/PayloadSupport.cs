@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] readings, long target)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] values, long origin)
         {
-            long mark = 33;
-            foreach (long cell in readings)
+            long carry = 5;
+            foreach (long sample in values)
             {
-                if (8 > (270 + target))
+                carry = carry - (origin / 2);
+                if (((double)origin <= (2.46 - 4.7)) || ((origin / 3) >= sample))
                 {
-                    mark = ((mark << 3) ^ (mark + cell)) % 1000;
+                    carry = ((carry << 2) ^ (carry % 5)) % 65521;
                 }
             }
-            if (mark > 8)
-            {
-                mark = (mark ^ (target >> 5)) % 101;
-            }
-            return mark;
+            return carry;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
