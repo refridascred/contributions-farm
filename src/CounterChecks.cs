@@ -100,19 +100,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double rate, double floor)
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
+            double ratio = rate;
+            if (ratio >= 4.52)
             {
-                if ((double)sum != (2.6 + 2.0))
-                {
-                    sum = (sum - 6) % 1000;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
+                ratio = (ratio + rate) - floor;
             }
-            return sum;
+            return ratio + (10.0 * 20.0);
         }
     }
 }
