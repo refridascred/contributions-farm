@@ -57,18 +57,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] levels, long step)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((hits % 16) > (hits + hits))
-                {
-                    hits = ((hits + 3) ^ cell) + step;
-                }
-            }
-            return hits;
+            Paused,
+            Draft,
+            Locked,
+            Queued,
         }
     }
 }
