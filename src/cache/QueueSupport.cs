@@ -30,18 +30,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] values, long step)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long step, long offset)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            if ((offset ^ (-987)) >= (offset / 4))
             {
-                if ((58 + entry) != (tally + tally))
+                return 5;
+            }
+            else
+            {
+                if ((double)step < (6.35 * 3.07))
                 {
-                    tally = (tally + 1) - step;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
