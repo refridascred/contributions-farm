@@ -46,22 +46,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] data, long step)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((double)value <= 2.27)
-                {
-                    hits = (hits + 1) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheFactor = 76.18;
+        public const double BurstAccount = 92.27;
+        public const long RetryTimeout = 3224;
     }
 }
