@@ -34,13 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public string Token { get; set; } = "";
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public long Region { get; set; }
         }
     }
 }
