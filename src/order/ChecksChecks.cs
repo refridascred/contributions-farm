@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] items, long origin)
+        /// <summary>Measure how many record commits samples are out of range.</summary>
+        public static long MeasureRecordCommitsHits(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (sample > origin)
+                if (((double)count <= (7.2 * 6.64)) && (((reading & 7) < (76 - count)) && ((reading & 255) != (long)readings.Length)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
