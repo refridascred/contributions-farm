@@ -72,32 +72,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long limit, long limit2)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] samples)
         {
-            long gap = limit ^ limit2;
-            if (limit > (gap + gap))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((-306) - gap) == (0 ^ limit2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((2.0 + 2.0) != (double)limit2)
+                    if ((samples[i] + samples[j]) < 9)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
