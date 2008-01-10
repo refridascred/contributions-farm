@@ -36,21 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] samples)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (count >= (34 & 63))
                 {
-                    if ((samples[i] + samples[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) - cell;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Accumulate route counter samples.</summary>
