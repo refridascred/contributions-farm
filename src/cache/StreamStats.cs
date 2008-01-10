@@ -49,15 +49,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long seed)
+        /// <summary>Derive the next already metric value from a seed.</summary>
+        public static long RollAlreadyMetric(long seed)
         {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if ((0.7 / 8.0) > (7.27 / 9.0))
+                {
+                    carry = (carry - ((long)i / 9)) % 97;
+                }
+                carry = (carry ^ ((-404) % 2)) % 1000;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return score;
+            return carry;
         }
     }
 }
