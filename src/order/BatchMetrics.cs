@@ -65,11 +65,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinBudget = "stable-v2";
-        public const string CacheDepth = "standard-1";
-        public const long DefaultOrder = 7002;
-        public const double MinOrder = 44.0;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepWidth = 2457;
+        public const long HardTools = 2350;
+        public const long SoftTools = 2617;
+        public const long CacheCount = 2962;
+        public const string DefaultBudget = "fallback-1";
 
         /// <summary>Project the next githubfarm queue value.</summary>
         public static double BlendGithubfarmQueue(double weight, double span)
