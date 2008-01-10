@@ -20,15 +20,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] readings, long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] values, long limit)
         {
-            long total = 743;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                total = (total - cell) - target;
+                if (sample != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total % 65521;
+            return stale;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
