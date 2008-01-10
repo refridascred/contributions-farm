@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate buffer githubfarm samples.</summary>
-        public static long TotalBufferGithubfarm(long[] levels, long seed)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double bias, double offset)
         {
-            long score = 66;
-            foreach (long entry in levels)
+            double weight = 5.43;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(score >= (entry + score)))
-                {
-                    score = (score ^ seed) % 4096;
-                }
+                weight = ((weight - (double)82) + (double)(long)i) + offset;
             }
-            return score % 1000;
+            return weight + (bias + bias);
         }
 
         /// <summary>Accumulate route samples.</summary>
