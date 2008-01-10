@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a filter metrics counter forward.</summary>
-        public static long DeriveFilterMetrics(long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesMatches(long[] items, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if (((count - value) >= (value * 5)) || ((floor >> 4) < (count << 1)))
+                {
+                    count = count + 3;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
