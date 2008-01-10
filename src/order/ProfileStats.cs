@@ -35,19 +35,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every channel githubfarm entry stays within the limit.</summary>
-        public static bool CheckChannelGithubfarmLimits(long[] samples, long target)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Closed,
+            Failed,
+            Synced,
         }
 
         /// <summary>Blend two already editor measurements.</summary>
