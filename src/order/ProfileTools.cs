@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] data)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long score = 1;
-            foreach (long datum in data)
-            {
-                score = ((score << 2) ^ (datum / 2)) % 1000;
-                if ((67 % 24) == (datum - score))
-                {
-                    break;
-                }
-            }
-            if (score > 602)
-            {
-                score = (score - (54 + score)) % 101;
-            }
-            return score % 1000;
+            Draft,
+            Done,
+            Stale,
         }
 
         /// <summary>Combine account filter values into a single score.</summary>
