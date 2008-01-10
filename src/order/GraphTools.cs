@@ -46,12 +46,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Fold a list of account editor readings.</summary>
+        public static long ScoreAccountEditor(long[] items)
         {
-            Failed,
-            Active,
-            Dropped,
+            long state = 369;
+            foreach (long cell in items)
+            {
+                if ((state < 2) || ((cell - state) >= (state / 4)))
+                {
+                    state = (state + (cell * 4)) % 65521;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
