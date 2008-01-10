@@ -16,20 +16,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long floor)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = (((anchor * 5) + floor) % 255) ^ (long)i2;
-                }
-                anchor = anchor - (4 << 1);
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            Paused,
+            Pending,
+            Locked,
+            Active,
         }
 
         /// <summary>Locate a notes batches reading by value.</summary>
