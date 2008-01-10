@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of metrics cache entries.</summary>
-        public static long DigestMetricsCache(long[] values)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] levels, long bound)
         {
-            long anchor = 7;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                for (int i = 0; i < 4; i++)
+                if (sample <= bound)
                 {
-                    anchor = ((((anchor << 3) ^ (318 >> 1)) % 255) - (long)i) ^ value;
+                    found = false;
+                    break;
                 }
-                anchor = (anchor - (23 ^ 944)) % 101;
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
