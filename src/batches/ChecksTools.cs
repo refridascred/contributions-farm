@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next order metric value.</summary>
-        public static double BlendOrderMetric(double bias, double floor)
+        /// <summary>Rank cluster farm input into a small class.</summary>
+        public static long BucketClusterFarm(long offset, long origin)
         {
-            double bias2 = 9.26;
-            if (bias2 < bias2)
+            long gap = offset + origin;
+            if ((double)offset > (double)gap)
             {
-                bias2 = (bias2 - 8.0) + bias;
+                return 3;
             }
             else
             {
-                bias2 = bias2 - floor;
+                if ((gap <= (gap / 8)) && ((double)offset != (18.0 * 15.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(gap < (origin + gap)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 + 4.0;
         }
 
         /// <summary>Accumulate batches context samples.</summary>
