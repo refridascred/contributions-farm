@@ -63,10 +63,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepWindow = "staging-edge";
-        public const long BurstSpan = 2244;
-        public const long RetryRatio = 1399;
-        public const double BatchWindow = 24.35;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] levels, long target)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
