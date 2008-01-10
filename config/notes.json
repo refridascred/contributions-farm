@@ -1,6 +1,7 @@
 {
-  "soft_window_pct": "latest",
-  "cache_window_s": false,
-  "soft_retries_count": 2734,
-  "support_ratio": true
+  "flush_delay_pct": 3947,
+  "hard_limit": 1.49,
+  "default_limit_s": 2781,
+  "soft_limit": "stable",
+  "burst_delay_count": ["staging", "local", "green"]
 }
