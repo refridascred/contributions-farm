@@ -40,21 +40,38 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] samples)
+        /// <summary>Rank editor counter input into a small class.</summary>
+        public static long SortEditorCounter(long seed, long seed2)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((2.0 * 1.78) < (double)seed)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((seed2 <= (seed / 2)) && (seed <= (seed + seed2)))
                 {
-                    if ((samples[i] ^ samples[j]) > 6)
+                    return 0;
+                }
+                else
+                {
+                    if (!(seed >= (seed - 8)))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)seed2 != (7.57 / 5.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
