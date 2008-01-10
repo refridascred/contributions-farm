@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long bound)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long floor, long step)
         {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
+            if ((double)step > (13.0 - 9.1))
             {
-                if ((mark & 63) > (bound / 7))
-                {
-                    mark = (mark + (mark + mark)) % 4096;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((step + floor) < ((-723) + 974))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)step == (4.7 + 6.27)) || ((529 - 0) >= (step * 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step / 7) == (step / 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of route stats readings.</summary>
