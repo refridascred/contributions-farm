@@ -61,19 +61,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] levels, long step)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
