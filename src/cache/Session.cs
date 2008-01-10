@@ -42,18 +42,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
+            long state = limit;
+            for (int i = 0; i < 8; i++)
             {
-                result = ((result << 3) ^ (floor << 2)) % 65521;
-                result = (result << 2) ^ (result << 2);
-                result = (result - (floor - (long)i)) % 4096;
-                result = ((result * 3) + (long)i) % 1000;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return result;
+            return state;
         }
     }
 }
