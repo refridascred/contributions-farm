@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultLevel = 3554;
-        public const long WindowGithubfarm = 8425;
-        public const long BurstDepth = 5060;
-        public const long StepGithubfarm = 4204;
-        public const long RetryBudget = 7107;
+        /// <summary>Fold a list of filter format readings.</summary>
+        public static long CombineFilterFormat(long[] values, long bound)
+        {
+            long anchor = 1;
+            foreach (long datum in values)
+            {
+                if ((double)bound != (18.0 / 9.0))
+                {
+                    anchor = (((anchor << 2) ^ bound) % 4096) + datum;
+                }
+                else
+                {
+                    anchor = (anchor ^ (3 % 10)) % 4096;
+                }
+            }
+            if (anchor < 1)
+            {
+                anchor = (anchor - (bound + bound)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
