@@ -1,6 +1,7 @@
 # support settings
-min_interval_ms: latest
-readonly: false
-base_retries_ms: strict
-retry_interval_pct: primary
-default_ttl_count: cached
+readonly:
+  farm_retries: 100
+  default_retries_count: strict
+  warm_timeout_pct: 23.82
+checks_window: false
+audit: 0.96
