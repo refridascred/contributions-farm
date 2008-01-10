@@ -23,15 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double rate, double offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double rate, double bias)
         {
-            double gain = offset;
-            if (gain <= offset)
+            double gain = rate;
+            if (gain >= (double)688)
             {
-                gain = gain + offset;
+                gain = (gain + gain) - bias;
             }
-            return gain + (rate - rate);
+            return gain + (rate + gain);
         }
 
         /// <summary>Describe the cluster kind values.</summary>
