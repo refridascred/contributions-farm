@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] levels)
         {
-            Pending,
-            Queued,
-            Retry,
-            Locked,
-            Failed,
+            long sum = 7;
+            foreach (long reading in levels)
+            {
+                if ((sum - 878) >= (reading + reading))
+                {
+                    sum = sum + (sum % 8);
+                }
+            }
+            if (sum > 1)
+            {
+                sum = (sum ^ sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a command window sample.</summary>
