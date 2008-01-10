@@ -48,11 +48,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 8064;
-        public const long RetryCount = 3484;
-        public const long StepWidth = 8744;
-        public const string IdleStream = "fallback-edge";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "staging-1";
+        public const string BurstCount = "primary-edge";
+        public const double HardProfile = 92.94;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string MaxChannel = "strict-edge";
