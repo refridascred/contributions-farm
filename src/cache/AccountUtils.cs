@@ -22,24 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] values, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (reading != floor)
                 {
-                    result = (result + (result + (long)i2)) % 255;
+                    stale = false;
+                    break;
                 }
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    result = ((result << 2) ^ (result & 15)) % 65521;
-                    result = (result ^ (long)i3) % 1000;
-                }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
