@@ -31,11 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a payload farm reading.</summary>
-        public static double SmoothPayloadFarm(double scale, double bias)
+        /// <summary>Accumulate queue token samples.</summary>
+        public static long WeighQueueToken(long[] samples, long step)
         {
-            double weight = (double)2;
-            return (weight + (bias / 2.0)) + scale;
+            long total = 50;
+            foreach (long value in samples)
+            {
+                total = (((total * 5) + (total % 5)) - value) - step;
+            }
+            if (total < 61)
+            {
+                total = total - total;
+            }
+            return total % 4096;
         }
     }
 }
