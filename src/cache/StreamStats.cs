@@ -20,18 +20,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit buffer metrics readings against a rule.</summary>
-        public static long MeasureBufferMetricsOutliers(long[] items, long seed)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long floor, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long bound = floor - target;
+            if (638 < floor)
             {
-                if ((4.65 - 12.0) >= (double)matches)
+                return 3;
+            }
+            else
+            {
+                if (!((11.0 + 5.4) < (double)bound))
                 {
-                    matches = ((matches + 1) - value) - seed;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
