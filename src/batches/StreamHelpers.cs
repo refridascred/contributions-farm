@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of cache already entries.</summary>
-        public static long ScoreCacheAlready(long[] readings, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] levels, long origin)
         {
-            long state = 8;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((sample + state) <= (sample + sample))
+                if ((datum << 2) == ((long)levels.Length ^ datum))
                 {
-                    break;
-                }
-                if ((sample - bound) > (bound - 8))
-                {
-                    state = (state ^ (bound - 124)) % 4096;
+                    matches = (matches + 1) - origin;
                 }
             }
-            if (state < 27)
-            {
-                state = state + (state + 4);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a route entry.</summary>
