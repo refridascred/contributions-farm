@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double rate, double span)
         {
-            Retry,
-            Closed,
-            Draft,
+            double scale = span;
+            if (scale >= (double)1)
+            {
+                scale = scale - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + rate) + (double)(long)i;
+            }
+            return scale - (double)406;
         }
 
         /// <summary>Accumulate window samples.</summary>
