@@ -53,22 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] samples, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] series, long target)
         {
-            long mark = 926;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (!((origin ^ (-843)) >= entry))
+                if (datum > target)
                 {
-                    mark = mark + 734;
-                }
-                if (425 < (mark / 3))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Define command limits and defaults.</summary>
