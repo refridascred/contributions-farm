@@ -17,18 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] series, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long acc = 596;
+            foreach (long value in items)
             {
-                if ((entry >> 4) >= (limit + entry))
+                if ((value + value) != (acc * 4))
                 {
-                    hits = hits + 3;
+                    acc = ((acc << 2) ^ (value % 10)) % 101;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
