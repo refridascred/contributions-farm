@@ -1,45 +1,9 @@
 # entry settings
-warm_size: true
-hard_ttl:
-  warm_depth_ms: true
-  batch_threshold_s:
-    notes_interval: 92
-    queue_capacity:
-      - 488
-      - 480
-      - 232
-    max_depth: fallback
-    compress:
-      - latest
-      - open
-      - legacy
-  batch_depth_count:
-    - 231
-    - 158
-    - 162
-    - 359
-  cache_ratio: green
-  idle_depth_s: 9.32
-retry_retries:
-  persist: 24.94
-  base_threshold_count: standard
-  compress:
-    cache_limit_count:
-      - 314
-      - 459
-      - 98
-    soft_capacity:
-      - standard
-      - green
-      - standard
-      - stable
-    idle_retries_pct: 250
-    cache_capacity_count: true
-    format_capacity: 6871
-  stream_timeout: 94
-checks_window:
-  - 355
-  - 441
-  - 12
-persist: 84
-audit: 59.17
+dry_run: 64
+verbose: 7112
+compress: false
+stream_threshold:
+  - primary
+  - blue
+  - eu-west
+default_window: edge
