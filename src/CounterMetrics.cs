@@ -32,10 +32,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheInterval = "alpha-edge";
-        public const long SoftCount = 2549;
-        public const long HardLevel = 4705;
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public double Mode { get; set; }
+            public bool Score { get; set; }
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
+        }
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
