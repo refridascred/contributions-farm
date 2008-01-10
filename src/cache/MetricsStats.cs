@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate queue metrics samples.</summary>
-        public static long ScoreQueueMetrics(long[] levels)
+        /// <summary>Check that every checks support entry stays within the limit.</summary>
+        public static bool ValidateChecksSupportRange(long[] series, long target)
         {
-            long state = 314;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (13.0 <= (double)entry)
+                if (reading <= target)
                 {
-                    state = state - 6;
+                    stale = false;
+                    break;
                 }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
