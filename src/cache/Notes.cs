@@ -62,15 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Dropped,
-            Locked,
-            New,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 3455;
+        public const long WindowFactor = 8961;
+        public const double LimitScore = 30.15;
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long FindMetricIndex(long[] readings, long origin)
