@@ -22,21 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of payload context readings.</summary>
-        public static long MatchPayloadContextCount(long[] readings)
+        /// <summary>Accumulate githubfarm graph samples.</summary>
+        public static long TotalGithubfarmGraph(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 44;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((bound + bound) < bound)
                 {
-                    if ((readings[i] + readings[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor * 4) + anchor) % 4096;
+                    anchor = anchor - (datum % 16);
+                }
+                if ((bound / 4) > (414 % 7))
+                {
+                    anchor = (anchor - (bound + anchor)) % 65521;
                 }
             }
-            return seen;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the commits state values.</summary>
