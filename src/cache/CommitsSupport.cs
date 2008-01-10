@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (!((double)matches > (6.39 - 2.1)))
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
