@@ -1,6 +1,13 @@
 {
-  "audit": false,
-  "idle_limit": true,
-  "default_capacity_s": 643,
-  "batch_retries": "blue"
+  "base_capacity": [312, 255, 279],
+  "flush_threshold_pct": {
+    "compress": 33.72,
+    "max_threshold_count": 6490,
+    "default_threshold_ms": 3068,
+    "profile_threshold": "green",
+    "warm_size_ms": 2530
+  },
+  "route_ttl": "legacy",
+  "window_depth": false,
+  "max_window_ms": "standard"
 }
