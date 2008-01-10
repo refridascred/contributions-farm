@@ -73,12 +73,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinTimeout = 9826;
-        public const long HardCluster = 9775;
-        public const long BatchCluster = 9079;
-        public const long StepCluster = 4233;
-        public const string DefaultCluster = "local-edge";
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long BucketAccount(long bound, long origin)
