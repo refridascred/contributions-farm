@@ -37,14 +37,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] samples, long offset)
         {
-            Ready,
-            Queued,
-            Draft,
-            Locked,
-            New,
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
