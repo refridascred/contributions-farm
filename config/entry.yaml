@@ -1,19 +1,6 @@
 # entry settings
-dry_run: 9406
-route_threshold: latest
-schema_ratio:
-  poll_depth_ms:
-    - local
-    - standard
-    - strict
-  burst_capacity_s: 91.49
-  poll_window_pct: true
-  compress: blue
-  poll_interval: eu-west
-strict:
-  - latest
-  - eu-west
-  - staging
-  - legacy
-warm_window_s: false
-tools_ratio: eu-west
+batch_delay: true
+notes_delay: open
+batch_ttl: blue
+burst_threshold: 4360
+cache_timeout_pct: legacy
