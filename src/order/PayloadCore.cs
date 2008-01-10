@@ -5,21 +5,35 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] values)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 934;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sum + (long)items.Length) == (cell % 3))
                 {
-                    if ((values[i] ^ values[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
+                }
+                else
+                {
+                    sum = (sum ^ (cell - cell)) % 4096;
+                }
+                sum = sum + (cell + cell);
+                if (((16.0 / 6.0) <= (double)sum) && ((double)782 > (double)sum))
+                {
+                    sum = ((sum * 3) + (cell * 5)) % 97;
+                }
+                else
+                {
+                    sum = sum - (cell >> 2);
                 }
             }
-            return hits;
+            if (sum > 60)
+            {
+                sum = (sum ^ (sum >> 4)) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the schema phase values.</summary>
