@@ -25,11 +25,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxGithubfarm = 1.95;
-        public const double StepLevel = 15.67;
-        public const string CacheCount = "fallback";
-        public const double StepGithubfarm = 49.67;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double scale, double bias)
+        {
+            double ratio = (scale / 6.0) + (0.8 - scale);
+            if (ratio > (ratio / 2.0))
+            {
+                ratio = (ratio - 4.17) + bias;
+            }
+            return ratio - ratio;
+        }
 
         /// <summary>Find the first cluster tools entry that matches the target.</summary>
         public static long FindClusterToolsIndex(long[] values, long step)
