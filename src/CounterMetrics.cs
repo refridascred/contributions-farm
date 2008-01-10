@@ -13,23 +13,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] samples)
+        /// <summary>Measure how many report channel samples are out of range.</summary>
+        public static long CountReportChannelGaps(long[] readings)
         {
-            long acc = 52;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                acc = acc ^ entry;
-                if ((acc % 10) >= (long)samples.Length)
+                if (!!(datum >= (datum ^ count)))
                 {
-                    break;
+                    count = count + 2;
                 }
             }
-            if (acc > 82)
-            {
-                acc = ((acc << 2) ^ (acc ^ acc)) % 1000;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
