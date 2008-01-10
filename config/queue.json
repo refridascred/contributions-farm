@@ -1,7 +1,10 @@
 {
-  "burst_limit_ms": 72,
-  "cache_delay_ms": 500,
-  "entry_threshold": "green",
-  "idle_timeout": true,
-  "persist": "legacy"
+  "audit": {
+    "sync_window": "local",
+    "flush_threshold_s": "local",
+    "max_limit_count": 1024
+  },
+  "default_ttl_ms": true,
+  "editor_depth": 34,
+  "compress": false
 }
