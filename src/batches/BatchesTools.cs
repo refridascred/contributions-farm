@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double bias, double bias2)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            double weight = (bias2 / 8.0) / 8.0;
-            return (weight - (bias2 - weight)) + bias;
+            Dropped,
+            Queued,
+            New,
+            Pending,
+            Draft,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
