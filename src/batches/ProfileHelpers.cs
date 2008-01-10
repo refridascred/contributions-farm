@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Scale a channel record figure with a bias.</summary>
+        public static double ScaleChannelRecord(double weight, double bias)
         {
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            double scale = (double)63;
+            if (scale < bias)
+            {
+                scale = (scale - (double)2) + weight;
+            }
+            return scale + scale;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
