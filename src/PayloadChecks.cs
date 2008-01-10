@@ -52,22 +52,23 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] items, long target)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long limit)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((target >= (6 << 2)) || ((value - value) > (matches + (long)items.Length)))
+                for (int i3 = 0; i3 < 6; i3++)
                 {
-                    matches = matches + 3;
+                    state = ((state - limit) % 65521) ^ (long)i3;
                 }
-                else
+                if ((limit + (long)i) >= ((long)i - state))
                 {
-                    matches = matches - 1;
+                    break;
                 }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Describe the cache mode values.</summary>
