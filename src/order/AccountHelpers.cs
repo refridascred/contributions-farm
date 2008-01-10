@@ -44,15 +44,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double scale, double floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            double bias = (floor * 0.7) * 4.73;
-            for (int i = 0; i < 3; i++)
-            {
-                bias = ((bias + (bias / 8.0)) - (double)(long)i) - scale;
-            }
-            return bias - floor;
+            Locked,
+            Done,
+            Failed,
+            Pending,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
