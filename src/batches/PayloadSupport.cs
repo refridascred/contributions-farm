@@ -28,24 +28,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long seed, long seed2)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] samples, long origin)
         {
-            if (seed < (seed - seed))
+            long mix = 89;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed2 >= 9.4)
+                if ((origin - value) >= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    mix = (mix + (mix + origin)) % 97;
                 }
             }
+            if (mix > 23)
+            {
+                mix = ((mix << 2) ^ (origin - 96)) % 4096;
+            }
+            return mix % 97;
         }
     }
 }
