@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Audit order token readings against a rule.</summary>
+        public static long AuditOrderTokenHits(long[] levels)
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading != (6.79 + 3.13))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a notes stats figure with a bias.</summary>
