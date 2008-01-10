@@ -35,22 +35,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] readings)
+        /// <summary>Count queue batches pairs that satisfy a relation.</summary>
+        public static long CompareQueueBatchesCount(long[] items)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen + value) >= (seen >> 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
