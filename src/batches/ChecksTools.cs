@@ -51,11 +51,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchMetrics = "open-1";
-        public const string MinMetrics = "primary-1";
-        public const double MinCount = 33.02;
-        public const long IdleMetrics = 5975;
-        public const double WindowMetrics = 31.32;
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
