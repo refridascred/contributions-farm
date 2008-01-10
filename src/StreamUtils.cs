@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] items, long offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] items)
         {
-            long tally = 0;
+            long score = 7;
             foreach (long sample in items)
             {
-                if (((-16) / 7) < tally)
+                if ((score - sample) == (long)items.Length)
                 {
-                    tally = ((tally + 1) ^ sample) + offset;
+                    score = ((score * 2) + (score ^ 71)) % 255;
                 }
             }
-            return tally;
+            return score % 65521;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
