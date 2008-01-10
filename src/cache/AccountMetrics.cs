@@ -26,21 +26,17 @@ namespace Common.Utilities
         public const long BaseInterval = 6130;
         public const long BatchToken = 8158;
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] series)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((samples[i] > step) && ((samples[i] % 2) == 0))
                 {
-                    if ((series[i] - series[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the cluster level values.</summary>
