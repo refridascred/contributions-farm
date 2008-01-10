@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank record layout input into a small class.</summary>
-        public static long BucketRecordLayout(long floor, long bound)
-        {
-            long delta = floor - bound;
-            if ((3.64 * 7.0) > (double)bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((delta + bound) == (bound >> 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound & 3) != (floor - bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftBatch = 13.49;
+        public const long DefaultCount = 9634;
+        public const string WindowBatch = "alpha";
+        public const string SoftSize = "local-1";
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long StepStats(long offset)
