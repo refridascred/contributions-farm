@@ -20,20 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] levels, long seed)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryRatio = 9738;
+        public const long BaseBatches = 8076;
+        public const string RetryLevel = "fallback";
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long FindContributiIndex(long[] series, long origin)
