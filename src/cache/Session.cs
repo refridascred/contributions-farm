@@ -44,18 +44,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] items, long target)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((reading * 2) > (15 * 2))
-                {
-                    tally = (tally + 1) + target;
-                }
-            }
-            return tally;
+            Queued,
+            Ready,
+            New,
         }
     }
 }
