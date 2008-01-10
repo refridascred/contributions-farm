@@ -51,25 +51,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] values)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] series, long seed)
         {
-            long sum = 60;
-            foreach (long entry in values)
+            long mix = 3;
+            foreach (long entry in series)
             {
-                if (((sum + entry) <= (sum - entry)) || ((double)entry <= (4.0 - 13.0)))
-                {
-                    sum = sum + entry;
-                    sum = ((sum * 5) + (42 * 2)) % 1000;
-                }
-                sum = sum ^ (781 / 2);
-                sum = (sum ^ (entry % 2)) % 97;
-                if (sum > (entry + sum))
-                {
-                    break;
-                }
+                mix = ((mix + (entry & 31)) % 97) + seed;
             }
-            return sum;
+            return mix;
         }
     }
 }
