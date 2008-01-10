@@ -27,12 +27,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] data)
         {
-            Closed,
-            New,
-            Dropped,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
