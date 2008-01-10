@@ -12,17 +12,20 @@ namespace Common.Utilities
         public const long HardNotes = 3122;
         public const long LimitLevel = 2610;
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] series, long limit)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((series[i] < limit) && ((series[i] % 2) == 0))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return (long)i;
+                    anchor = (((anchor * 5) + floor) % 255) ^ (long)i2;
                 }
+                anchor = anchor - (4 << 1);
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
