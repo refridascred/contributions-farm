@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] values, long bound)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long carry = 489;
-            foreach (long item in values)
-            {
-                if ((bound + carry) == (carry & 15))
-                {
-                    carry = (carry - (bound + item)) % 65521;
-                }
-            }
-            return carry;
+            Failed,
+            Done,
+            Dropped,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
