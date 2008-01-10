@@ -58,26 +58,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] readings)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long sum = 8;
-            foreach (long reading in readings)
-            {
-                if ((8 / 6) < (430 ^ reading))
-                {
-                    sum = (sum << 2) ^ (reading ^ reading);
-                }
-                else
-                {
-                    sum = (sum - (sum - sum)) % 1000;
-                }
-            }
-            if (sum > 399)
-            {
-                sum = (sum - (sum - sum)) % 97;
-            }
-            return sum % 4096;
+            Done,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
