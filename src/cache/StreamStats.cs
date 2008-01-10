@@ -37,19 +37,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] samples, long step)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long acc = 54;
+            foreach (long reading in samples)
             {
-                if (item >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (((acc * 5) + acc) % 255) ^ reading;
+                acc = (acc * 4) + acc;
             }
-            return flag;
+            return acc % 4096;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
