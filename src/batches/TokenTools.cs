@@ -18,23 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] samples)
+        /// <summary>Compare every pair of queue schema readings.</summary>
+        public static long OverlapQueueSchemaCount(long[] data)
         {
-            long total = 719;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total - (value + total)) % 97;
-                if ((value < (504 % 64)) && ((2.8 + 7.5) < (double)value))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total - (6 - total)) % 255;
+                    if ((data[i] + data[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total > 7)
-            {
-                total = total - (total ^ total);
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the buffer state values.</summary>
