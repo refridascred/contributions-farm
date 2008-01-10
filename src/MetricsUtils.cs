@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long bound, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] samples)
         {
-            long step = bound - offset;
-            if ((step + bound) <= (bound & 63))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset == (15.0 - 4.0))
+                if ((sample ^ sample) <= sample)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
