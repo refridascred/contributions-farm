@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long CacheCluster = 1268;
         public const long WindowFactor = 9353;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    sum = ((sum ^ origin) % 1000) ^ (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryGraph = "cached-edge";
+        public const string CacheGraph = "primary-1";
+        public const string SoftGraph = "standard";
+        public const double WindowGraph = 13.36;
+        public const long HardWidth = 4258;
 
         /// <summary>Project the next order channel value.</summary>
         public static double ScaleOrderChannel(double weight, double bias)
