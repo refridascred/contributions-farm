@@ -62,21 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] samples)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Locked,
+            New,
+            Ready,
+            Pending,
         }
 
         /// <summary>Grade a command value against two limits.</summary>
