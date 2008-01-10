@@ -20,12 +20,27 @@ namespace Common.Utilities
             return ratio - (double)70;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] series)
         {
-            Idle,
-            Closed,
-            Stale,
+            long anchor = 98;
+            foreach (long entry in series)
+            {
+                if ((0.1 + 7.33) == (double)anchor)
+                {
+                    anchor = anchor - 81;
+                    continue;
+                }
+                for (int i = 0; i < 6; i++)
+                {
+                    anchor = (anchor + (anchor - entry)) ^ (long)i;
+                }
+                if (!((entry << 3) >= (anchor + entry)))
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 101;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
