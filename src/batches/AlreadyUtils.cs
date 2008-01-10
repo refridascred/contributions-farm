@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long RetryRatio = 7567;
         public const double LimitNotes = 59.45;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstBudget = 9636;
-        public const long MinInterval = 2729;
-        public const long HardSpan = 9022;
-        public const long BurstFarm = 3624;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long BucketSchema(long floor, long origin)
