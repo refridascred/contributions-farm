@@ -34,18 +34,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 9766;
+        public const long LimitScore = 6094;
+        public const long SoftCount = 3794;
+        public const long StepOrder = 5785;
+        public const long StepTimeout = 328;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string MinDepth = "alpha-1";
