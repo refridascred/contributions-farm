@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] samples, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                acc = (acc ^ 89) % 101;
-                if (acc >= bound)
+                if ((seen >> 5) < (floor - (-26)))
                 {
-                    acc = ((acc * 4) + (acc << 2)) % 255;
-                    acc = acc + (bound >> 2);
-                    break;
+                    seen = (seen + 1) + value;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
