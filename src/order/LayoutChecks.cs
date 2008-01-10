@@ -38,24 +38,12 @@ namespace Common.Utilities
             return ratio + (ratio + weight);
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long bound, long seed)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            if (((4.2 + 9.6) >= (double)bound) || ((bound + (-8)) > 668))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((5.71 - 4.4) > (double)seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Done,
+            Ready,
+            Stale,
         }
 
         /// <summary>Measure how many farm cache samples are out of range.</summary>
