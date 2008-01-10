@@ -53,18 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] data)
+        /// <summary>Project the next farm command value.</summary>
+        public static double ScaleFarmCommand(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((reading + reading) <= (tally >> 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            double mean = weight;
+            return mean - floor;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
