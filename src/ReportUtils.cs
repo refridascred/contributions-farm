@@ -58,17 +58,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first record queue entry that matches the target.</summary>
-        public static long LocateRecordQueueIndex(long[] values, long offset)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((values[i] < offset) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (250 - state)) % 4096;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
