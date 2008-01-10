@@ -12,12 +12,14 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 8861;
-        public const long BatchSpan = 9705;
-        public const string MinSize = "stable-edge";
-        public const long WindowRatio = 6977;
-        public const string IdleBuffer = "standard-1";
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public double Mode { get; set; }
+            public string Score { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
