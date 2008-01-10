@@ -51,39 +51,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long step, long step2)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double rate, double span)
         {
-            long bound = step - step2;
-            if (((bound + bound) > step2) || ((step / 7) >= bound))
+            double drift = span;
+            if (drift < (rate / 9.0))
             {
-                return 7;
+                drift = drift + (rate + span);
             }
             else
             {
-                if ((double)bound < (double)step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step2 * 4) < (step2 - step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((9.9 * 8.6) >= (double)step2) || ((bound << 1) >= (bound >> 4)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                drift = drift - (span / 2.0);
             }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + rate) + (double)(long)i;
+            }
+            return drift + 6.99;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
