@@ -36,19 +36,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long target)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long bound, long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 14; i++)
+            if ((double)bound != (3.37 + 2.25))
             {
-                if (((long)i - target) < (carry & 31))
-                {
-                    carry = (carry + carry) % 255;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (12 <= origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (origin <= (bound + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
