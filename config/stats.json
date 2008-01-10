@@ -1,6 +1,5 @@
 {
-  "flush_window": 66,
-  "batch_timeout": true,
-  "enabled": [135, 399, 100],
-  "batch_ratio": 9032
+  "farm_size": 43,
+  "warm_capacity_ms": "blue",
+  "default_window": "open"
 }
