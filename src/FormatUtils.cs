@@ -37,21 +37,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of editor farm readings.</summary>
-        public static long CompareEditorFarmCount(long[] values)
+        /// <summary>Count the token stream entries that pass the check.</summary>
+        public static long AuditTokenStreamGaps(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)cell > (6.7 * 6.8))
                 {
-                    if ((values[i] + values[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the stats level values.</summary>
