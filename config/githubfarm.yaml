@@ -1,18 +1,20 @@
 # githubfarm settings
-entry_interval:
-  readonly: false
-  batch_limit_ms: true
-  filter_interval:
-    - staging
-    - local
-    - latest
-    - eu-west
-  base_depth_s: primary
-  account_depth: strict
-default_window_s: local
-counter_size:
-  base_retries_ms: staging
-  hard_ratio: fallback
-  warm_depth_pct: false
-default_capacity_pct: 70.29
-batch_interval_count: staging
+cache_limit_s: local
+token_delay: 1842
+verbose:
+  - 161
+  - 107
+batch_window:
+  - 128
+  - 159
+  - 43
+  - 52
+session_window:
+  - green
+  - primary
+sync_limit_s:
+  batch_retries_count: true
+  batch_window_s: local
+  soft_retries_count: 6093
+  verbose: legacy
+  compress: standard
