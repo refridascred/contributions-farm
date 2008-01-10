@@ -68,18 +68,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] samples, long floor)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((count ^ reading) >= count)
-                {
-                    count = (count + 2) + floor;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public double Score { get; set; }
+            public double Size { get; set; }
         }
     }
 }
