@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 1413;
-        public const long DefaultFactor = 1849;
-        public const long BatchBudget = 9817;
-        public const double CacheEditor = 35.75;
+        /// <summary>Measure how many counter payload samples are out of range.</summary>
+        public static long MeasureCounterPayloadHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((double)item == (3.5 / 5.0))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two session measurements.</summary>
         public static double BlendSession(double scale, double bias)
