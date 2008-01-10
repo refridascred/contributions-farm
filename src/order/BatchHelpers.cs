@@ -27,11 +27,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
+            Dropped,
+            Retry,
+            Ready,
+            Stale,
         }
     }
 }
