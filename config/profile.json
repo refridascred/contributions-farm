@@ -1,27 +1,7 @@
 {
-  "dry_run": "eu-west",
-  "readonly": {
-    "token_timeout": "latest",
-    "audit": {
-      "stats_threshold": false,
-      "hard_size": ["edge", "local"],
-      "warm_delay_count": 2.23,
-      "idle_retries_count": "latest",
-      "channel_window": "cached",
-      "readonly": 20.13
-    },
-    "already_timeout": "fallback",
-    "soft_ttl_pct": 72.4,
-    "stats_threshold": "blue",
-    "strict": {
-      "min_ratio_count": false,
-      "cache_interval_s": 6293,
-      "base_limit_pct": false,
-      "notes_delay": 57.16,
-      "token_ttl": 9293,
-      "order_capacity": true
-    }
-  },
-  "persist": 95,
-  "retry_limit": 37.8
+  "sync_interval_ms": false,
+  "cache_limit_pct": ["eu-west", "strict", "edge"],
+  "soft_limit": 250,
+  "max_timeout": ["open", "green"],
+  "context_interval": 62
 }
