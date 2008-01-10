@@ -39,19 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] values, long step)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long seed)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long score = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (cell < step)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return ready;
+            return score;
         }
     }
 }
