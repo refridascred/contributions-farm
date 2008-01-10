@@ -20,12 +20,18 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] items, long seed)
         {
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (matches >= (matches % 64))
+                {
+                    matches = ((matches + 2) ^ cell) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
