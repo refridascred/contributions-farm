@@ -55,18 +55,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of tools order entries.</summary>
-        public static long WeighToolsOrder(long[] levels, long bound)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] items)
         {
-            long anchor = 1;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)anchor != (8.0 + 7.4)) || ((8.11 + 7.0) < (double)bound))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (((anchor * 4) + (anchor & 7)) % 101) - item;
+                    if ((items[i] - items[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
     }
 }
