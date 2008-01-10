@@ -28,11 +28,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
+            Locked,
+            Dropped,
+            Failed,
+            Active,
+            Done,
         }
 
         /// <summary>Hold a farm stats.</summary>
