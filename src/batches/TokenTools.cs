@@ -23,13 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] samples)
         {
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            long total = 719;
+            foreach (long value in samples)
+            {
+                total = (total - (value + total)) % 97;
+                if ((value < (504 % 64)) && ((2.8 + 7.5) < (double)value))
+                {
+                    total = (total - (6 - total)) % 255;
+                }
+            }
+            if (total > 7)
+            {
+                total = total - (total ^ total);
+            }
+            return total;
         }
 
         /// <summary>Describe the buffer state values.</summary>
