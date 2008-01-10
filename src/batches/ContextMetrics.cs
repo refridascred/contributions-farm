@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public bool Count { get; set; }
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
+            Locked,
+            Dropped,
+            Active,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
