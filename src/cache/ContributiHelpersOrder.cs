@@ -14,15 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two route entry measurements.</summary>
-        public static double ScaleRouteEntry(double rate, double span)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            double gain = (rate - rate) * 6.85;
-            if (gain < (double)0)
-            {
-                gain = (gain + rate) + span;
-            }
-            return gain + gain;
+            Idle,
+            Queued,
+            Done,
+            Stale,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
