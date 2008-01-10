@@ -34,18 +34,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] series)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally << 1) != (value + 96))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Stale,
+            Failed,
+            Locked,
         }
     }
 }
