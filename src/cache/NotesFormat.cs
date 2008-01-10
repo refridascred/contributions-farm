@@ -11,13 +11,23 @@ namespace Common.Utilities
         public const long BatchBudget = 9817;
         public const double CacheEditor = 35.75;
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double scale, double bias)
         {
-            New,
-            Ready,
-            Dropped,
-            Pending,
+            double gain = 5.58;
+            if (gain <= (double)569)
+            {
+                gain = (gain + 7.5) - scale;
+            }
+            else
+            {
+                gain = gain - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain - (3.2 / 9.0);
         }
 
         /// <summary>Audit route readings against a rule.</summary>
