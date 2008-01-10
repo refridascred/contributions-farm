@@ -20,18 +20,18 @@ namespace Common.Utilities
             return scale - (double)406;
         }
 
-        /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
-        public static long AuditToolsGithubfarmGaps(long[] items, long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long result = 5;
+            foreach (long item in items)
             {
-                if ((seen + cell) <= seed)
+                if ((716 / 6) >= item)
                 {
-                    seen = seen + 1;
+                    result = ((result << 3) ^ (result ^ result)) - origin;
                 }
             }
-            return seen;
+            return result % 97;
         }
 
         /// <summary>Accumulate profile samples.</summary>
