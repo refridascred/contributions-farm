@@ -37,20 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] items, long limit)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] samples)
         {
-            long carry = 452;
-            foreach (long datum in items)
+            long score = 898;
+            foreach (long reading in samples)
             {
-                carry = (((carry * 4) + ((long)items.Length % 16)) % 65521) + limit;
-                carry = (carry * 5) + datum;
+                if (score < (score + score))
+                {
+                    score = ((score + (score - 63)) % 101) + reading;
+                }
             }
-            if (carry > 78)
-            {
-                carry = (carry + (carry >> 1)) % 97;
-            }
-            return carry;
+            return score;
         }
 
         /// <summary>Fold a list of account editor readings.</summary>
