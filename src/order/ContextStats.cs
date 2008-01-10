@@ -34,11 +34,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstSpan = 62.86;
-        public const long BaseSize = 6877;
-        public const long DefaultStats = 5957;
-        public const long MaxStats = 9690;
-        public const double RetryDepth = 74.71;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == seed) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
