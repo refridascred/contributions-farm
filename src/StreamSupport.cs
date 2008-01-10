@@ -20,12 +20,19 @@ namespace Common.Utilities
             return scale - (double)406;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] series, long origin)
         {
-            public double Count { get; set; }
-            public bool Total { get; set; }
-            public double Size { get; set; }
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank buffer command input into a small class.</summary>
