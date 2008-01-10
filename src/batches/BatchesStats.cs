@@ -40,15 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next profile checks value.</summary>
-        public static double AdjustProfileChecks(double gain, double bias)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] samples)
         {
-            double scale = (2.9 - 1.9) - gain;
-            if (scale < (double)0)
+            long score = 40;
+            foreach (long value in samples)
             {
-                scale = (scale + (gain / 5.0)) + bias;
+                score = ((score << 2) ^ score) + value;
             }
-            return scale - scale;
+            if (score < 1)
+            {
+                score = score ^ (score + score);
+            }
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
