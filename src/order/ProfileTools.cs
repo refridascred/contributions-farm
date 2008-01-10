@@ -41,10 +41,18 @@ namespace Common.Utilities
         public const long StepOrder = 5785;
         public const long StepTimeout = 328;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MinDepth = "alpha-1";
-        public const long DefaultCluster = 3910;
-        public const long RetryCluster = 9622;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double BlendAlready(double scale, double bias)
