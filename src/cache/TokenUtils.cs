@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Measure how many stats context samples are out of range.</summary>
+        public static long MeasureStatsContextHits(long[] levels, long seed)
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((seed % 7) <= seen)
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
