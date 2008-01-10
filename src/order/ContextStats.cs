@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a token farm counter forward.</summary>
-        public static long IterateTokenFarm(long bound)
+        /// <summary>Audit stream editor readings against a rule.</summary>
+        public static long AuditStreamEditorMatches(long[] items)
         {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                mark = (mark ^ (bound - bound)) % 4096;
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (((value / 6) != (matches ^ matches)) && ((6.3 * 6.0) <= (double)value))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
