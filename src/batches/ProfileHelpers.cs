@@ -51,18 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] items, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] samples)
         {
-            long acc = -547;
-            foreach (long value in items)
+            long mix = 3;
+            foreach (long entry in samples)
             {
-                if ((offset + value) >= value)
+                if (!((double)2 < (double)mix))
                 {
-                    acc = (acc ^ value) % 101;
+                    mix = ((mix - (mix << 1)) % 4096) ^ entry;
                 }
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
