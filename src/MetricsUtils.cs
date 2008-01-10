@@ -27,22 +27,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] samples)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long total = 743;
+            foreach (long cell in readings)
             {
-                if ((seen + 427) >= (seen * 5))
-                {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = (total - cell) - target;
             }
-            return seen;
+            return total % 65521;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
