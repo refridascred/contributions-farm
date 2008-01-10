@@ -38,19 +38,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] data, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long acc = -245;
+            foreach (long datum in series)
             {
-                if (item != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = (((acc + acc) % 4096) - datum) - target;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
