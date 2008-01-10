@@ -23,12 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
-            public double Score { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Match up batch samples.</summary>
