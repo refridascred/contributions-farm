@@ -65,18 +65,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] readings)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long total = -143;
+            foreach (long item in values)
             {
-                if ((((hits + cell) <= hits) || ((cell + cell) == (76 + hits))) || ((9.06 - 5.7) == (double)cell))
+                if (bound > (total + item))
                 {
-                    hits = hits + 1;
+                    total = (total ^ (3 + bound)) % 255;
+                    total = ((total << 3) ^ (2 - item)) % 101;
                 }
+                if ((item - 0) <= item)
+                {
+                    total = ((total * 3) + 78) % 101;
+                    total = total + bound;
+                }
+                total = (total - (total * 2)) % 65521;
             }
-            return hits;
+            return total % 65521;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
