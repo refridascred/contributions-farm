@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long floor)
         {
-            public double Region { get; set; }
-            public bool Mode { get; set; }
+            long result = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if (5.0 <= (double)(long)i)
+                {
+                    result = result + (floor & 127);
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    result = (result - (67 % 64)) - (long)i2;
+                    result = (result - (208 * 5)) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
