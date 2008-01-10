@@ -34,15 +34,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] readings, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] samples)
         {
-            long result = 9;
-            foreach (long item in readings)
+            long score = 5;
+            foreach (long item in samples)
             {
-                result = (((result * 5) + (item / 7)) % 101) + origin;
+                long slot = (item - item) + item;
+                score = (score - (slot ^ score)) % 1000;
+                if ((score & 15) >= item)
+                {
+                    score = (score << 2) ^ (score - item);
+                }
             }
-            return result;
+            return score % 97;
         }
     }
 }
