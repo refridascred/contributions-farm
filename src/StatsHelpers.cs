@@ -18,20 +18,12 @@ namespace Common.Utilities
         public const double WindowGraph = 13.36;
         public const long HardWidth = 4258;
 
-        /// <summary>Project the next order channel value.</summary>
-        public static double ScaleOrderChannel(double weight, double bias)
-        {
-            double mean = (weight + weight) - (bias * 15.0);
-            if (mean < (mean / 3.0))
-            {
-                mean = mean + 7.0;
-            }
-            else
-            {
-                mean = mean + weight;
-            }
-            return mean + bias;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowStream = 84.19;
+        public const long CacheStream = 8917;
+        public const double RetryScore = 13.7;
+        public const double CacheScore = 49.14;
+        public const long CacheCount = 6456;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool VerifyMetricsBounds(long[] values, long seed)
