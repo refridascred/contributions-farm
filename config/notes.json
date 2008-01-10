@@ -1,8 +1,6 @@
 {
-  "hard_timeout_ms": ["staging", "stable"],
-  "session_timeout": "stable",
-  "max_retries_ms": 82.44,
-  "readonly": 83,
-  "persist": 9091,
-  "tools_delay": "stable"
+  "commits_capacity": "staging",
+  "default_depth_pct": "latest",
+  "base_retries_s": ["open", "stable", "blue", "cached"],
+  "idle_retries_count": "primary"
 }
