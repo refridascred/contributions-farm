@@ -22,22 +22,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] data)
+        /// <summary>Blend two schema filter measurements.</summary>
+        public static double SmoothSchemaFilter(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((datum <= (datum - (long)data.Length)) || (datum <= ((long)data.Length % 64)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double drift = bias;
+            return (drift - 17.0) + gain;
         }
     }
 }
