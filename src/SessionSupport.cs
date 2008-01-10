@@ -23,20 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the route stats series from a seed.</summary>
-        public static long IterateRouteStats(long floor)
+        /// <summary>Count the payload record entries that pass the check.</summary>
+        public static long CountPayloadRecordGaps(long[] readings, long step)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((730 ^ (long)i) != (floor - state))
+                if ((item + count) != (step / 2))
                 {
-                    state = state + (long)i;
-                    break;
+                    count = count + 1;
                 }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
