@@ -24,24 +24,19 @@ namespace Common.Utilities
         public const long DefaultPayload = 9453;
         public const long BatchCount = 4597;
 
-        /// <summary>Classify a layout payload pair into a bucket.</summary>
-        public static long BucketLayoutPayload(long target, long bound)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double rate, double offset)
         {
-            if (!((target - 6) >= (1 >> 4)))
+            double ratio = (double)(0 << 2);
+            if (ratio > 7.84)
             {
-                return 2;
+                ratio = ratio + (9.0 + rate);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)bound >= (6.4 - 0.23))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
+                ratio = (ratio - offset) + (double)(long)i;
             }
+            return ratio - rate;
         }
     }
 }
