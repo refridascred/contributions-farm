@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] levels)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] levels, long floor)
         {
             long hits = 0;
-            foreach (long cell in levels)
+            foreach (long value in levels)
             {
-                if ((double)hits == (9.67 * 18.0))
+                if (((double)floor != (1.9 - 7.96)) && (61 > (value - floor)))
                 {
-                    hits = (hits + 2) + cell;
+                    hits = hits + 3;
                 }
             }
             return hits;
