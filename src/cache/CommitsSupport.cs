@@ -39,18 +39,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] levels)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (((reading >> 2) <= matches) && ((743 + reading) != (reading << 1)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
