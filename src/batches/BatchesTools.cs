@@ -10,14 +10,23 @@ namespace Common.Utilities
         public const string HardPayload = "latest";
         public const long HardDepth = 4949;
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Adjust a metrics profile reading.</summary>
+        public static double BlendMetricsProfile(double scale, double bias)
         {
-            Synced,
-            Ready,
-            Locked,
-            Closed,
-            Active,
+            double load = bias;
+            if (load < (bias + 8.78))
+            {
+                load = load - scale;
+            }
+            else
+            {
+                load = load + (bias + 6.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (load - load)) - (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Measure how many payload counter samples are out of range.</summary>
