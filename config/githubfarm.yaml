@@ -1,22 +1,6 @@
 # githubfarm settings
-graph_capacity: 21.89
-max_limit:
-  - 335
-  - 500
-retry_capacity_pct:
-  warm_size_pct:
-    - green
-    - green
-  filter_depth: false
-  hard_capacity: 5776
-  cache_size:
-    - 437
-    - 422
-    - 499
-  enabled:
-    - open
-    - primary
-    - cached
-    - latest
-  min_depth_ms: blue
-compress: true
+schema_limit: 61.34
+stats_depth: local
+cache_depth_pct: false
+already_retries: false
+burst_size: 100
