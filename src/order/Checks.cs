@@ -59,15 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a checks queue figure with a bias.</summary>
-        public static double BlendChecksQueue(double bias, double span)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double weight, double span)
         {
-            double drift = bias * 3.91;
-            if (drift > span)
-            {
-                drift = drift + (span * 5.4);
-            }
-            return drift + span;
+            double weight2 = (9.0 + weight) * 4.12;
+            return (weight2 - (weight / 5.0)) + span;
         }
     }
 }
