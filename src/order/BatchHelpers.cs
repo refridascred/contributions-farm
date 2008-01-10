@@ -25,21 +25,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitRatio = 69.09;
+        public const long CacheCount = 4177;
+        public const long RetryCommand = 7507;
+        public const long BatchFactor = 3314;
     }
 }
