@@ -54,19 +54,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] samples, long step)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
