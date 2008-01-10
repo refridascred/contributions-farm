@@ -1,9 +1,8 @@
 # entry settings
-dry_run: 64
-verbose: 7112
-compress: false
-stream_threshold:
-  - primary
-  - blue
-  - eu-west
-default_window: edge
+retry_timeout_s: 20.11
+persist: 3375
+compress:
+  - 142
+  - 468
+  - 261
+  - 72
