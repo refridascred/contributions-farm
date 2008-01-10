@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long RetryAlready = 5022;
         public const long BatchBudget = 6163;
 
-        /// <summary>Find the first entry farm entry that matches the target.</summary>
-        public static long LocateEntryFarmIndex(long[] data, long origin)
+        /// <summary>Derive the next report cluster value from a seed.</summary>
+        public static long SeriesReportCluster(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
