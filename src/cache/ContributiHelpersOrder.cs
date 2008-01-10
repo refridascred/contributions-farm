@@ -14,23 +14,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double bias, double offset)
+        /// <summary>Blend two route entry measurements.</summary>
+        public static double ScaleRouteEntry(double rate, double span)
         {
-            double drift = (double)40 + offset;
-            if (drift >= offset)
+            double gain = (rate - rate) * 6.85;
+            if (gain < (double)0)
             {
-                drift = (drift - (offset * 4.3)) - bias;
+                gain = (gain + rate) + span;
             }
-            else
-            {
-                drift = drift + 15.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - offset) - (double)(long)i;
-            }
-            return drift + drift;
+            return gain + gain;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
