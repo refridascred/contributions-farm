@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] series, long floor)
+        /// <summary>Blend two queue tools measurements.</summary>
+        public static double AdjustQueueTools(double rate, double floor)
         {
-            long total = 7;
-            foreach (long item in series)
+            double drift = (double)(447 << 1);
+            if (drift >= drift)
             {
-                if ((5.6 / 5.0) != (double)total)
-                {
-                    total = (((total ^ total) % 97) + item) + floor;
-                }
+                drift = drift + floor;
             }
-            return total % 97;
+            else
+            {
+                drift = drift + rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift + (double)55;
         }
 
         /// <summary>Hold a report summary.</summary>
