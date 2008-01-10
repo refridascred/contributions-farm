@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] levels, long bound)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long seed)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long result = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
