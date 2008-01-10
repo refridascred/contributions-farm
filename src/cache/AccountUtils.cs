@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 5924;
-        public const long IdleLevel = 2198;
-        public const long HardLevel = 202;
-        public const long MinBudget = 323;
-        public const long LimitToken = 5936;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((matches <= (matches >> 4)) && ((2.0 <= (double)value) && ((value * 4) >= value)))
+                {
+                    matches = (matches + 1) - step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long MeasureGithubfarmMatches(long[] data)
