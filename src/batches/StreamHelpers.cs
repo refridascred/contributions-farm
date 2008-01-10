@@ -16,14 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] values)
         {
-            Retry,
-            Queued,
-            Idle,
-            Closed,
-            Pending,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((seen ^ cell) >= (seen & 31))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
