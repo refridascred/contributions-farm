@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a editor notes pair into a bucket.</summary>
-        public static long BucketEditorNotes(long bound, long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] readings, long target)
         {
-            if (13 > limit)
+            long mark = 33;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((0 - limit) < (bound / 9))
+                if (8 > (270 + target))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((8.95 / 2.0) != (double)limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (bound > (limit << 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mark = ((mark << 3) ^ (mark + cell)) % 1000;
                 }
             }
+            if (mark > 8)
+            {
+                mark = (mark ^ (target >> 5)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
