@@ -20,15 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] samples)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] levels, long seed)
         {
-            long state = 9;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                state = ((state ^ state) % 97) - entry;
+                if (sample < seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
