@@ -1,10 +1,18 @@
 {
-  "audit": {
-    "sync_window": "local",
-    "flush_threshold_s": "local",
-    "max_limit_count": 1024
+  "persist": {
+    "cache_size_count": 16,
+    "hard_depth_count": {
+      "sync_depth_s": false,
+      "soft_threshold_ms": 79,
+      "audit": 100,
+      "dry_run": "stable",
+      "githubfarm_capacity": [452, 493, 195, 241]
+    },
+    "burst_capacity": true,
+    "soft_threshold": "blue",
+    "flush_depth_s": false
   },
-  "default_ttl_ms": true,
-  "editor_depth": 34,
-  "compress": false
+  "metric_size": "blue",
+  "session_timeout": "latest",
+  "hard_ttl_s": 104
 }
