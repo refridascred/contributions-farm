@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepBatches = "alpha-edge";
+        public const long IdleBatches = 8104;
+        public const long DefaultSize = 8835;
+        public const long BurstScore = 4833;
+        public const string RetryFactor = "local";
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
