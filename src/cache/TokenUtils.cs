@@ -22,11 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] samples)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long total = 7;
+            foreach (long value in samples)
+            {
+                if (((-419) <= total) && (value > (total + value)))
+                {
+                    total = ((total * 3) + total) % 101;
+                }
+            }
+            if (total > 70)
+            {
+                total = total ^ (total & 7);
+            }
+            return total;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
