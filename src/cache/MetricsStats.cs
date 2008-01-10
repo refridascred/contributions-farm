@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every checks support entry stays within the limit.</summary>
-        public static bool ValidateChecksSupportRange(long[] series, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (reading <= target)
+                if (!((double)sample > (2.5 + 3.48)))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 2) - floor;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
