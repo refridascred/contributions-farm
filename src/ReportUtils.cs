@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] items, long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] series, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (items[i] <= floor)
+                if (value != floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
