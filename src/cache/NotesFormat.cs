@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Derive the next buffer notes value from a seed.</summary>
+        public static long RollBufferNotes(long step)
         {
-            Retry,
-            Synced,
-            Active,
+            long state = step;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
