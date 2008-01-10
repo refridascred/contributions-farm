@@ -68,23 +68,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double gain, double bias)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            double drift = (double)374;
-            if (drift < (drift + 7.0))
-            {
-                drift = (drift - (drift * 2.9)) - gain;
-            }
-            else
-            {
-                drift = drift + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + 16.0) - (double)(long)i;
-            }
-            return drift - 13.0;
+            Paused,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
