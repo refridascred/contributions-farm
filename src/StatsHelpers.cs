@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] values)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (2 >= (offset & 3))
                 {
-                    if ((values[i] ^ values[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Accumulate githubfarm graph samples.</summary>
