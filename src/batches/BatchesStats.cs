@@ -30,21 +30,23 @@ namespace Common.Utilities
         public const long BurstTimeout = 8310;
         public const long DefaultRoute = 7150;
 
-        /// <summary>Derive the next account metric value from a seed.</summary>
-        public static long SeriesAccountMetric(long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] samples, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
+            long mix = 121;
+            foreach (long item in samples)
             {
-                if ((14.0 + 1.57) > (double)mark)
+                if ((986 >> 1) <= (mix / 9))
                 {
-                    mark = (mark - (mark + target)) % 4096;
-                    mark = (mark - (target + target)) % 101;
-                    continue;
+                    mix = mix ^ mix;
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
+                else
+                {
+                    mix = ((mix << 2) ^ seed) % 4096;
+                }
+                mix = ((mix * 3) + item) % 97;
             }
-            return mark;
+            return mix % 1000;
         }
 
         /// <summary>Locate a filter record reading by value.</summary>
