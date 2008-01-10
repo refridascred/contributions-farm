@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] items)
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
+            long state = 246;
+            foreach (long cell in items)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                if ((double)state > (6.0 * 1.3))
+                {
+                    state = ((state * 2) + (state ^ 428)) - cell;
+                }
             }
-            return mix;
+            if (state < 764)
+            {
+                state = state - (state & 3);
+            }
+            return state;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
