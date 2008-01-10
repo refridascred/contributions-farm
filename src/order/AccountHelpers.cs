@@ -28,12 +28,10 @@ namespace Common.Utilities
             return mean - 7.65;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public string Weight { get; set; } = "";
-            public double Owner { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxSize = "open-edge";
+        public const long BaseRatio = 6779;
+        public const long DefaultRoute = 2417;
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long BucketSchema(long limit, long target)
