@@ -72,14 +72,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] items)
         {
-            Paused,
-            Retry,
-            Closed,
-            Synced,
-            Queued,
+            long acc = 7;
+            foreach (long value in items)
+            {
+                acc = ((acc ^ (acc ^ 6)) % 65521) + value;
+            }
+            return acc % 4096;
         }
     }
 }
