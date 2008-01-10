@@ -38,24 +38,15 @@ namespace Common.Utilities
             return load + (load - bias);
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long step, long seed)
+        /// <summary>Scale a checks filter figure with a bias.</summary>
+        public static double BlendChecksFilter(double bias, double span)
         {
-            if ((double)seed > (double)step)
+            double load = (bias / 8.0) + span;
+            if (load > 2.0)
             {
-                return 0;
+                load = load - load;
             }
-            else
-            {
-                if (!(seed > (step - 72)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return load + span;
         }
 
         /// <summary>Match up command samples.</summary>
