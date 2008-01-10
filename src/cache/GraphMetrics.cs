@@ -61,11 +61,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseCount = 5911;
-        public const double CacheAccount = 19.45;
-        public const long SoftAccount = 7828;
-        public const string RetryAccount = "open";
-        public const double BaseAccount = 97.01;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 4761;
+        public const double CacheCommits = 62.98;
+        public const long MinCommits = 5710;
+        public const long HardCommits = 3860;
+        public const long IdleCommits = 2062;
     }
 }
