@@ -34,18 +34,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] samples)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long origin, long bound)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long span = origin - bound;
+            if ((7.0 + 5.6) < (double)origin)
             {
-                if ((hits - (long)samples.Length) < (sample << 3))
+                return 1;
+            }
+            else
+            {
+                if ((bound << 3) > 67)
                 {
-                    hits = hits + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin << 1) == (bound ^ 791))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((span < (span + span)) && (span >= (span / 2)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
