@@ -1,5 +1,6 @@
 # support settings
-record_ttl: latest
-min_depth_ms: false
-hard_limit: standard
-dry_run: 8346
+min_interval_ms: latest
+readonly: false
+base_retries_ms: strict
+retry_interval_pct: primary
+default_ttl_count: cached
