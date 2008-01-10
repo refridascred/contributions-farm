@@ -1,14 +1,19 @@
 # entry settings
-report_interval: local
-poll_ratio_ms: 178
-warm_ttl_pct:
-  - 415
-  - 409
-  - 254
-  - 77
-batch_depth_s: edge
-already_depth:
-  - 162
-  - 384
-  - 101
-hard_ratio_count: 47.38
+dry_run: 9406
+route_threshold: latest
+schema_ratio:
+  poll_depth_ms:
+    - local
+    - standard
+    - strict
+  burst_capacity_s: 91.49
+  poll_window_pct: true
+  compress: blue
+  poll_interval: eu-west
+strict:
+  - latest
+  - eu-west
+  - staging
+  - legacy
+warm_window_s: false
+tools_ratio: eu-west
