@@ -28,23 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double bias, double span)
+        /// <summary>Combine notes batch values into a single score.</summary>
+        public static long WeighNotesBatch(long[] series)
         {
-            double drift = 6.0;
-            if (drift >= 5.15)
+            long state = 33;
+            foreach (long reading in series)
             {
-                drift = (drift + (bias - bias)) - span;
+                state = ((state << 2) ^ (346 + reading)) % 65521;
             }
-            else
-            {
-                drift = drift - (double)(-494);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + 9.2) + (double)(long)i;
-            }
-            return drift - (drift * 2.17);
+            return state;
         }
     }
 }
