@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
