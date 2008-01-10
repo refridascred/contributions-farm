@@ -52,20 +52,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 2) + target) % 97;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = (((state * 4) + 555) % 65521) ^ (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Blend two stats measurements.</summary>
