@@ -40,19 +40,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two already tools measurements.</summary>
-        public static double BlendAlreadyTools(double bias, double span)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] items, long offset)
         {
-            double ratio = (bias / 3.0) + (bias - span);
-            if (ratio < (double)31)
+            long mix = 770;
+            foreach (long entry in items)
             {
-                ratio = ratio - 6.6;
+                if ((double)offset == (5.3 + 4.0))
+                {
+                    mix = (mix - (mix & 127)) % 1000;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ entry;
+                }
             }
-            else
+            if (mix > 7)
             {
-                ratio = ratio + (bias + span);
+                mix = mix - offset;
             }
-            return ratio - (15.0 * 2.28);
+            return mix % 4096;
         }
 
         /// <summary>Roll a notes channel counter forward.</summary>
