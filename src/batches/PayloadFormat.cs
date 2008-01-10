@@ -26,38 +26,13 @@ namespace Common.Utilities
             return weight + (rate * 2.24);
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long offset, long step)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            if ((double)step >= (2.67 + 9.15))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((10.0 / 9.0) > (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset >> 5) != (offset << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)step >= 11.0)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count queue batches pairs that satisfy a relation.</summary>
