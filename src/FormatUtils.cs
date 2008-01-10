@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
