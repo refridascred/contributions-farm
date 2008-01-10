@@ -26,31 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long origin, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] readings, long limit)
         {
-            if ((3.0 / 6.0) <= (double)limit)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((41 % 5) < (origin + limit))
+                if (((5.4 / 3.0) != (double)hits) && ((double)reading >= (0.18 - 5.0)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((990 << 1) != (limit + origin)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = (hits + 3) + limit;
                 }
             }
+            return hits;
         }
     }
 }
