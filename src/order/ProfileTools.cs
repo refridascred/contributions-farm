@@ -17,24 +17,17 @@ namespace Common.Utilities
         public const string RetryWidth = "standard-v2";
         public const long MinRatio = 8683;
 
-        /// <summary>Rank filter queue input into a small class.</summary>
-        public static long RankFilterQueue(long limit, long origin)
+        /// <summary>Find the first metrics support entry that matches the target.</summary>
+        public static long LookupMetricsSupportIndex(long[] items, long seed)
         {
-            if (((origin + origin) > origin) || ((limit - origin) < 815))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin == (8.9 - 9.37))
+                if (items[i] < seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
