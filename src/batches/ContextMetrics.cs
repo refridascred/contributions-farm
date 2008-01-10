@@ -55,12 +55,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Rank report editor input into a small class.</summary>
+        public static long RankReportEditor(long origin, long origin2)
         {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
-            public bool Offset { get; set; }
+            if (!((481 >> 3) <= (origin - 415)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin2 << 3) < (73 + origin2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (origin2 <= (origin2 + origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((7.94 + 2.3) <= (double)origin2) && ((double)origin < (8.7 * 9.6)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
