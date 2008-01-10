@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double scale, double span)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double rate, double offset)
         {
-            double ratio = 0.7 + (span / 3.0);
-            if (ratio > span)
+            double bias = rate;
+            if (bias < (double)95)
             {
-                ratio = ratio + span;
+                bias = (bias + (double)71) - offset;
             }
-            return ratio - scale;
+            else
+            {
+                bias = bias - rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + (rate / 8.0);
         }
 
         /// <summary>Derive the next githubfarm batch value from a seed.</summary>
