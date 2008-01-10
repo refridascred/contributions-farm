@@ -50,14 +50,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] items)
         {
-            Locked,
-            New,
-            Queued,
-            Draft,
-            Failed,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count order stats pairs that satisfy a relation.</summary>
