@@ -44,12 +44,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long floor, long target)
         {
-            Active,
-            Queued,
-            Closed,
+            if ((target <= (843 % 5)) && (3.7 > (0.94 / 8.0)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (floor > (floor + target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target - target) > (floor + floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the payload format series from a seed.</summary>
