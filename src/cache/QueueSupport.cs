@@ -21,12 +21,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Queued,
-            Failed,
-            Ready,
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public bool Score { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
