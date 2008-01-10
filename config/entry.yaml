@@ -1,12 +1,17 @@
 # entry settings
-flush_interval_ms: 34.93
-profile_depth:
-  githubfarm_depth: false
-  warm_threshold:
-    - 138
-    - 431
-    - 471
-  tools_retries: 67.82
-  retry_retries_s: stable
-readonly: true
-soft_threshold_s: 8367
+sync_ratio_ms: 36
+batch_limit: 500
+profile_limit: 30.03
+soft_limit_ms:
+  stats_delay: green
+  default_ratio_ms: stable
+  retry_limit: green
+  verbose: edge
+  order_timeout: 50.49
+  retry_ttl: edge
+graph_threshold:
+  - 29
+  - 182
+  - 108
+  - 129
+min_size_pct: 60
