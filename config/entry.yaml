@@ -1,8 +1,12 @@
 # entry settings
-strict:
-  - 441
-  - 294
-  - 383
-  - 291
-cache_threshold_pct: 8838
-cache_capacity_count: 1024
+order_size: true
+account_limit:
+  - 175
+  - 153
+  - 206
+max_threshold_pct: 4875
+profile_depth:
+  - local
+  - fallback
+compress: 71.98
+cache_timeout_s: 7997
