@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] items)
-        {
-            long anchor = 5;
-            foreach (long item in items)
-            {
-                if ((double)item < 19.0)
-                {
-                    anchor = anchor + (anchor / 9);
-                }
-            }
-            if (anchor > 943)
-            {
-                anchor = (anchor * 3) + (anchor * 5);
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 9978;
+        public const double SoftBatch = 75.44;
+        public const string BatchScore = "open";
+        public const long RetryBatch = 514;
+        public const double CacheRatio = 91.19;
 
         /// <summary>Roll a commits channel counter forward.</summary>
         public static long StepCommitsChannel(long offset)
