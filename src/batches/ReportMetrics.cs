@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinFactor = 1197;
-        public const long RetryBatches = 9419;
-        public const long MaxBatches = 7937;
-        public const long MaxScore = 7068;
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = acc ^ acc;
+                if ((((long)i / 9) >= (acc << 3)) || (((long)i & 1) < (2 ^ 1)))
+                {
+                    acc = ((acc << 2) ^ (long)i) % 255;
+                }
+                acc = acc - acc;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyOutliers(long[] samples, long floor)
