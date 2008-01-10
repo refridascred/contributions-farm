@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] samples, long floor)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((seen >> 5) < (floor - (-26)))
-                {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftLevel = "alpha-1";
+        public const long MaxWidth = 9124;
+        public const long MaxToken = 7971;
+        public const long WindowToken = 8577;
+        public const long SoftToken = 2869;
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long TotalNotes(long[] samples, long bound)
