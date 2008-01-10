@@ -52,19 +52,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double weight, double bias)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] items)
         {
-            double weight2 = (bias + weight) / 2.0;
-            if (weight2 >= (double)4)
+            long carry = -149;
+            foreach (long entry in items)
             {
-                weight2 = weight2 - (double)43;
+                if (!!((carry - carry) > carry))
+                {
+                    carry = (((carry * 4) + (carry << 1)) % 65521) ^ entry;
+                }
+                carry = carry ^ carry;
             }
-            else
-            {
-                weight2 = weight2 - (bias - weight);
-            }
-            return weight2 - (weight2 / 6.0);
+            return carry;
         }
     }
 }
