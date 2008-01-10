@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const long RetryAlready = 5022;
         public const long BatchBudget = 6163;
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double bias, double span)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] readings, long target)
         {
-            double scale = 2.8;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                scale = ((scale + (double)(long)i) - bias) - span;
+                if (((double)matches > 5.0) || ((target >> 4) >= cell))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return scale + (double)16;
+            return matches;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
