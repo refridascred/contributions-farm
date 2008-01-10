@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] levels, long offset)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((offset - offset) <= 602)
-                {
-                    count = (count + 1) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Ready,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a route summary.</summary>
