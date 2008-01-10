@@ -21,18 +21,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] readings)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((4.37 / 2.0) > (double)item)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the notes level values.</summary>
