@@ -46,12 +46,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] levels, long bound)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
+                if (readings[i] > origin)
                 {
                     return (long)i;
                 }
