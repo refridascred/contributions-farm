@@ -13,19 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] data, long target)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Stale,
+            Paused,
+            Pending,
         }
 
         /// <summary>Accumulate cache samples.</summary>
