@@ -43,10 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 5597;
-        public const long HardLevel = 9459;
-        public const long BaseInterval = 7064;
-        public const long BatchContext = 8633;
+        /// <summary>Project the next tools format value.</summary>
+        public static double ProjectToolsFormat(double ratio, double span)
+        {
+            double scale = (span * 12.0) / 4.0;
+            if (scale > (ratio - 8.0))
+            {
+                scale = scale - (span + 4.86);
+            }
+            return scale + (scale * 7.6);
+        }
     }
 }
