@@ -19,24 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] readings)
-        {
-            long anchor = 9;
-            foreach (long cell in readings)
-            {
-                anchor = (anchor << 3) ^ (cell - anchor);
-                if ((cell ^ anchor) != (anchor & 1))
-                {
-                    anchor = (anchor - (17 >> 2)) % 4096;
-                }
-            }
-            if (anchor < 31)
-            {
-                anchor = anchor ^ ((-516) << 3);
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepBudget = "alpha";
+        public const long DefaultPayload = 9453;
+        public const long BatchCount = 4597;
 
         /// <summary>Classify a layout payload pair into a bucket.</summary>
         public static long BucketLayoutPayload(long target, long bound)
