@@ -31,12 +31,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] data)
         {
-            public double Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public double Score { get; set; }
+            long result = 939;
+            foreach (long sample in data)
+            {
+                if ((result + sample) > (result + result))
+                {
+                    result = ((result * 3) + 0) % 255;
+                }
+            }
+            return result;
         }
     }
 }
