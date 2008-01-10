@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] data, long bound)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long seed, long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            long gap = seed - floor;
+            if ((floor >> 3) < (seed + gap))
             {
-                if ((bound & 127) < 7)
+                return 0;
+            }
+            else
+            {
+                if ((gap / 6) < (7 % 10))
                 {
-                    count = (count + 3) + item;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
