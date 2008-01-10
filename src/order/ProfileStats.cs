@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Rank record layout input into a small class.</summary>
+        public static long BucketRecordLayout(long floor, long bound)
         {
-            public double Size { get; set; }
-            public long Total { get; set; }
-            public double Mode { get; set; }
-            public long Rank { get; set; }
+            long delta = floor - bound;
+            if ((3.64 * 7.0) > (double)bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((delta + bound) == (bound >> 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound & 3) != (floor - bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
