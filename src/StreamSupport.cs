@@ -20,13 +20,16 @@ namespace Common.Utilities
             return scale - (double)406;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long offset)
         {
-            Draft,
-            Paused,
-            Idle,
-            Retry,
+            long state = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                state = (state - (long)i) % 97;
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
