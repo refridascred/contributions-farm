@@ -41,15 +41,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] samples)
+        /// <summary>Roll a account format counter forward.</summary>
+        public static long SeriesAccountFormat(long offset)
         {
-            long mix = 96;
-            foreach (long entry in samples)
+            long total = offset;
+            for (int i = 0; i < 19; i++)
             {
-                mix = ((mix + (mix / 2)) % 97) ^ entry;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return mix;
+            return total;
         }
     }
 }
