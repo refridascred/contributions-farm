@@ -66,21 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardScore = 1250;
+        public const long BaseSize = 2424;
+        public const string BaseContributi = "local-v2";
+        public const long WindowContributi = 297;
+        public const long WindowSpan = 2856;
     }
 }
