@@ -79,18 +79,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] readings)
+        /// <summary>Measure how many profile window samples are out of range.</summary>
+        public static long CountProfileWindowGaps(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((matches << 3) > (matches - matches))
+                if (!!((19.0 / 7.0) == (double)count))
                 {
-                    matches = (matches + 2) + reading;
+                    count = ((count + 3) - value) + offset;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
