@@ -14,10 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 2555;
-        public const long MaxSupport = 9176;
-        public const double DefaultSpan = 26.87;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Synced,
+            Draft,
+            Active,
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long RollOrder(long seed)
