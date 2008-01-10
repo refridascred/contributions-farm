@@ -1,12 +1,7 @@
 {
-  "buffer_threshold": 78.97,
-  "max_interval_s": "open",
-  "contributi_depth": {
-    "dry_run": false,
-    "hard_retries_count": 35,
-    "max_interval_count": "local"
-  },
-  "base_retries": true,
-  "checks_timeout": 574,
-  "channel_delay": "fallback"
+  "idle_ratio_s": "blue",
+  "burst_size_s": 4645,
+  "min_ratio_count": "standard",
+  "enabled": 1688,
+  "window_depth": "edge"
 }
