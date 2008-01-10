@@ -27,11 +27,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
+            Synced,
+            Active,
+            Dropped,
+            Idle,
+            New,
         }
     }
 }
