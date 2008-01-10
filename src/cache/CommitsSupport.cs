@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of format metric readings.</summary>
-        public static long MatchFormatMetricCount(long[] items)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 74;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((4.74 - 20.0) == (double)score)
                 {
-                    if ((items[i] + items[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score * 5) + (bound + value)) % 1000;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
