@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] items, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((seed + seed) >= seed)
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a order stats.</summary>
