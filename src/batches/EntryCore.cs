@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 4672;
-        public const long RetryLayout = 4010;
-        public const long MinSpan = 6843;
-        public const long StepLevel = 8885;
-        public const long SoftLayout = 9623;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Pending,
+            Queued,
+            Retry,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string RetryGithubfarm = "latest";
