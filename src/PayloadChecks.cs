@@ -52,10 +52,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryWindow = "alpha-edge";
-        public const long RetryFactor = 5728;
-        public const long CacheWindow = 6351;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Stale,
+            Dropped,
+            Closed,
+            Done,
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string BaseFactor = "primary";
