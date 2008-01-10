@@ -60,10 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 4478;
-        public const long SoftBatches = 2155;
-        public const long IdleBatches = 7687;
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorMatches(long[] readings, long seed)
