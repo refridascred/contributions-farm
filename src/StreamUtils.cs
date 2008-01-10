@@ -62,11 +62,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 3447;
-        public const double MinScore = 31.14;
-        public const long MaxQueue = 1592;
-        public const long CacheQueue = 7043;
-        public const double DefaultWidth = 67.02;
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double rate, double offset)
+        {
+            double gain = (rate * 5.9) * 13.0;
+            if (gain > rate)
+            {
+                gain = (gain + 19.0) - offset;
+            }
+            else
+            {
+                gain = gain - rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + 11.0) + (double)(long)i;
+            }
+            return gain + 5.6;
+        }
     }
 }
