@@ -26,11 +26,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public double Count { get; set; }
-            public double Token { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
