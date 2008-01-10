@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] series, long step)
         {
-            Idle,
-            Draft,
-            Ready,
-            New,
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
