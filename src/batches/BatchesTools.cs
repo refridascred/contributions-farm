@@ -15,14 +15,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Retry,
-            Ready,
-            Done,
             Synced,
-            Pending,
+            Draft,
+            Active,
+            New,
+            Done,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
