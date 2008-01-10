@@ -58,12 +58,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long step, long bound)
         {
-            Done,
-            Idle,
-            Failed,
+            long edge = step + bound;
+            if ((step % 16) >= (edge / 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((3.61 + 5.4) <= (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step + bound) != (bound * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound < (edge % 8)) && ((step + edge) >= (step + 31)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a filter header.</summary>
