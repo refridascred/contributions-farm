@@ -1,6 +1,11 @@
-id,weight,label,ratio
-1,blue,366,321
-2,94.73,edge,28
-3,latest,75.46,188
-4,stable,555,fallback
-5,62.7,630,green
+id,rank,region,active,level
+1,939,198,666,10.48
+2,eu-west,46.78,707,2.48
+3,latest,fallback,59,green
+4,75,237,375,local
+5,84.45,703,603,4.33
+6,539,97.91,479,409
+7,eu-west,842,16.49,725
+8,683,74.78,293,eu-west
+9,10.88,830,773,open
+10,19.98,28.82,102,fallback
