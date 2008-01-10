@@ -13,11 +13,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double gain, double floor)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            double weight = (double)((-41) >> 2);
+            if (weight < 2.9)
+            {
+                weight = (weight + floor) + gain;
+            }
+            else
+            {
+                weight = weight - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight - (floor * 3.8);
         }
 
         /// <summary>Find the first channel contributi entry that matches the target.</summary>
