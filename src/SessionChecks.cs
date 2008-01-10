@@ -34,15 +34,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next tools format value.</summary>
-        public static double ProjectToolsFormat(double ratio, double span)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] series)
         {
-            double scale = (span * 12.0) / 4.0;
-            if (scale > (ratio - 8.0))
+            long tally = 0;
+            foreach (long value in series)
             {
-                scale = scale - (span + 4.86);
+                if ((tally << 1) != (value + 96))
+                {
+                    tally = tally + 1;
+                }
             }
-            return scale + (scale * 7.6);
+            return tally;
         }
     }
 }
