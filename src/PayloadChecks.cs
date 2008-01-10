@@ -26,22 +26,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long target)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((sum > (target + target)) || (sum > (sum + target)))
-                {
-                    sum = (sum ^ target) % 101;
-                    sum = (sum - target) % 97;
-                    break;
-                }
-                sum = sum - (33 * 3);
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a support snapshot.</summary>
