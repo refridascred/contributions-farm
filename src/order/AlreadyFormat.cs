@@ -43,22 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] levels)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] levels)
         {
-            long tally = 0;
+            long seen = 0;
             foreach (long datum in levels)
             {
-                if (!!((tally << 3) <= datum))
+                if (((5.0 + 11.0) >= (double)datum) && ((datum << 2) <= seen))
                 {
-                    tally = tally + 3;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
