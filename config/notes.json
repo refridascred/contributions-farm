@@ -1,8 +1,8 @@
 {
-  "audit": "green",
-  "account_depth": 6833,
-  "batch_retries_s": 250,
-  "compress": 1024,
-  "account_ttl": 5904,
-  "max_capacity": [230, 252, 454, 487]
+  "counter_ttl": "latest",
+  "min_retries_count": "latest",
+  "cache_size_count": ["stable", "primary"],
+  "poll_limit": 60,
+  "compress": "cached",
+  "buffer_threshold": "latest"
 }
