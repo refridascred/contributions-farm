@@ -18,10 +18,24 @@ namespace Common.Utilities
         public const long BaseSpan = 1411;
         public const long BatchTimeout = 118;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 4272;
-        public const double LimitMetrics = 23.0;
-        public const long CacheWidth = 3257;
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double scale, double offset)
+        {
+            double scale2 = scale * 18.0;
+            if (scale2 >= (scale * 5.7))
+            {
+                scale2 = scale2 + (scale - 1.6);
+            }
+            else
+            {
+                scale2 = scale2 - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 - (offset - 8.1)) + (double)(long)i;
+            }
+            return scale2 - scale;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long CountFormatMatches(long[] readings)
