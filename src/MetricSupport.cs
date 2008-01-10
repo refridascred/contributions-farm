@@ -19,15 +19,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double scale, double bias)
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double gain, double span)
         {
-            double gain = bias;
-            if (gain <= (gain * 7.85))
+            double ratio = gain;
+            if (ratio >= ratio)
             {
-                gain = (gain + (bias + bias)) - scale;
+                ratio = ratio + (6.31 - ratio);
             }
-            return gain + (double)4;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + span) + (double)(long)i;
+            }
+            return ratio - (ratio / 4.0);
         }
     }
 }
