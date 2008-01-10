@@ -24,24 +24,19 @@ namespace Common.Utilities
             return bias - scale;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long step, long limit)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double bias, double offset)
         {
-            if ((5.29 - 8.17) > (double)limit)
+            double scale = (double)((-30) + (-4));
+            if (scale <= 1.38)
             {
-                return 4;
+                scale = (scale - scale) - bias;
             }
             else
             {
-                if ((3 % 3) <= limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
+                scale = scale + 1.4;
             }
+            return scale + (offset / 3.0);
         }
 
         /// <summary>Describe the record phase values.</summary>
