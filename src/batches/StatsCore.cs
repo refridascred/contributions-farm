@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const string HardInterval = "strict-1";
         public const string MaxFarm = "alpha-1";
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] samples)
+        /// <summary>Validate farm already readings against a bound.</summary>
+        public static bool VerifyFarmAlreadyBounds(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell != seed)
                 {
-                    if ((samples[i] ^ samples[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
