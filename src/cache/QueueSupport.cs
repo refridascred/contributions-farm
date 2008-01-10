@@ -27,19 +27,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] data, long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long target, long seed)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long next = target ^ seed;
+            if (((next ^ target) < seed) || ((9.1 + 3.0) >= (double)seed))
             {
-                if (item < seed)
+                return 2;
+            }
+            else
+            {
+                if ((seed << 3) <= (seed / 7))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((2.0 - 6.81) > (double)next)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
