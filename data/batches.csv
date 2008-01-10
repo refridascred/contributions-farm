@@ -1,7 +1,10 @@
-id,state,ratio,token,score
-1,8.01,981,886,20.55
-2,25.51,735,71.23,green
-3,425,227,301,796
-4,469,43.26,staging,803
-5,915,primary,592,6.83
-6,green,86.66,local,36.99
+id,count,label,region
+1,722,blue,legacy
+2,111,79.44,429
+3,513,81.59,green
+4,5.9,open,28.23
+5,0,legacy,latest
+6,397,73,local
+7,176,762,open
+8,open,edge,68.07
+9,467,staging,288
