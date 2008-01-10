@@ -27,12 +27,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Count the farm order entries that pass the check.</summary>
+        public static long MeasureFarmOrderOutliers(long[] values, long origin)
         {
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum == (13.0 + 4.99))
+                {
+                    count = (count + 3) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
