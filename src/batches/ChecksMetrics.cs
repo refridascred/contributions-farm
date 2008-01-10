@@ -86,11 +86,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a report checks reading.</summary>
-        public static double ProjectReportChecks(double ratio, double floor)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            double weight = ratio;
-            return (weight - (weight / 3.0)) + floor;
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
