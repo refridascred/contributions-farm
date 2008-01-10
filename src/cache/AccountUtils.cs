@@ -19,16 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a farm buffer counter forward.</summary>
-        public static long IterateFarmBuffer(long offset)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = anchor ^ offset;
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Active,
+            Failed,
+            Stale,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
