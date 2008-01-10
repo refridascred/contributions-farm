@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine githubfarm layout values into a single score.</summary>
-        public static long CombineGithubfarmLayout(long[] levels, long target)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long state = 423;
-            foreach (long entry in levels)
-            {
-                state = (((state ^ (state + state)) % 97) ^ entry) + target;
-            }
-            if (state > 841)
-            {
-                state = (state + (state << 3)) % 101;
-            }
-            return state % 4096;
+            Failed,
+            Draft,
+            Idle,
+            Queued,
+            New,
         }
 
         /// <summary>Check that every stream buffer entry stays within the limit.</summary>
