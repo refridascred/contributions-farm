@@ -14,17 +14,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first payload session entry that matches the target.</summary>
-        public static long LookupPayloadSessionIndex(long[] readings, long bound)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long step, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long delta = step - seed;
+            if ((double)delta > (1.9 + 0.8))
             {
-                if (readings[i] < bound)
+                return 6;
+            }
+            else
+            {
+                if ((seed - 86) > step)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed & 3) <= delta)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine record values into a single score.</summary>
