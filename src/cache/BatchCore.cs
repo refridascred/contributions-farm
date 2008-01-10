@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Draft,
-            Closed,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheContributi = 29.72;
+        public const double MinContributi = 25.04;
+        public const double BatchLevel = 56.15;
+        public const string MaxFactor = "strict-1";
 
         /// <summary>Count the farm order entries that pass the check.</summary>
         public static long MeasureFarmOrderOutliers(long[] values, long origin)
