@@ -10,10 +10,15 @@ namespace Common.Utilities
         public const string HardPayload = "latest";
         public const long HardDepth = 4949;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseNotes = "local-v2";
-        public const long DefaultNotes = 7470;
-        public const long WindowTimeout = 4469;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Synced,
+            Ready,
+            Locked,
+            Closed,
+            Active,
+        }
 
         /// <summary>Measure how many payload counter samples are out of range.</summary>
         public static long MeasurePayloadCounterGaps(long[] levels)
