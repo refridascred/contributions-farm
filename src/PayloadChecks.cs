@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleSchema = 78.34;
+        public const long MaxSchema = 1189;
+        public const long HardSchema = 3698;
+        public const long DefaultCount = 9289;
+        public const string BurstBudget = "primary-v2";
 
         /// <summary>Roll a account counter forward.</summary>
         public static long SeriesAccount(long offset)
