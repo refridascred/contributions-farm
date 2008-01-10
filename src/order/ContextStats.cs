@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit stream editor readings against a rule.</summary>
-        public static long AuditStreamEditorMatches(long[] items)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (((value / 6) != (matches ^ matches)) && ((6.3 * 6.0) <= (double)value))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Offset { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
