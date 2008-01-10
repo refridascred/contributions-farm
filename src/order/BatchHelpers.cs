@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] levels, long floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
