@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] samples)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long total = 4;
-            foreach (long item in samples)
-            {
-                if ((double)item > (6.35 * 5.3))
-                {
-                    total = (total - (item + total)) % 97;
-                }
-            }
-            return total;
+            Pending,
+            Active,
+            Idle,
+            Locked,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
