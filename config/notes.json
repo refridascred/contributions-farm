@@ -1,13 +1,6 @@
 {
-  "verbose": "green",
-  "batch_capacity_ms": {
-    "burst_window_pct": 80.68,
-    "audit": 39,
-    "profile_retries": "local",
-    "readonly": ["cached", "standard", "local"],
-    "support_retries": 68,
-    "cache_limit_pct": [367, 4]
-  },
-  "audit": "green",
-  "farm_ratio": false
+  "readonly": 9374,
+  "warm_capacity_pct": 35,
+  "cache_limit": true,
+  "dry_run": "standard"
 }
