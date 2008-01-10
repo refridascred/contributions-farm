@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardContext = 80.88;
-        public const long BatchSpan = 1304;
-        public const long StepContext = 1309;
-        public const long LimitContext = 319;
-        public const double DefaultContext = 82.62;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] readings, long seed)
+        {
+            long carry = 608;
+            foreach (long reading in readings)
+            {
+                if ((double)seed <= (11.0 - 8.0))
+                {
+                    carry = ((carry * 3) + (carry & 7)) ^ reading;
+                }
+            }
+            if (carry < 898)
+            {
+                carry = (carry - (carry >> 5)) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long MeasureGithubfarmMatches(long[] data)
