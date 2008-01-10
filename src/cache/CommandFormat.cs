@@ -19,23 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine graph payload values into a single score.</summary>
-        public static long TotalGraphPayload(long[] series)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] levels, long bound)
         {
-            long total = 520;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (!((9 ^ total) > reading))
+                if (entry < bound)
                 {
-                    total = ((total << 3) ^ (reading << 3)) % 1000;
-                    continue;
-                }
-                if ((reading + 1) <= (total / 6))
-                {
-                    total = total + total;
+                    ok = false;
+                    break;
                 }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
