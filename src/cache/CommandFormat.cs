@@ -38,21 +38,24 @@ namespace Common.Utilities
             return load + (load - bias);
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] values)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long step, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)seed > (double)step)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!(seed > (step - 72)))
                 {
-                    if ((values[i] + values[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up command samples.</summary>
