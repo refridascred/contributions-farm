@@ -97,23 +97,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two order cluster measurements.</summary>
-        public static double ProjectOrderCluster(double scale, double bias)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] samples, long floor)
         {
-            double drift = (scale * 4.1) + bias;
-            if (drift < bias)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                drift = drift - 0.02;
+                if ((count ^ reading) >= count)
+                {
+                    count = (count + 2) + floor;
+                }
             }
-            else
-            {
-                drift = drift - (drift * 2.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (bias + scale)) - (double)(long)i;
-            }
-            return drift - 11.0;
+            return count;
         }
     }
 }
