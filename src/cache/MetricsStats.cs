@@ -19,17 +19,39 @@ namespace Common.Utilities
         public const long BaseBatches = 8076;
         public const string RetryLevel = "fallback";
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] series, long origin)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long offset, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long prev = offset ^ target;
+            if (((double)offset > (double)83) && ((target << 1) >= (offset / 2)))
             {
-                if ((series[i] < origin) && ((series[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((double)offset < (13.0 - 2.11))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((6 / 5) == (offset + prev))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)target < (5.0 + 11.0)) || ((target << 1) <= prev))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a stats report sample.</summary>
