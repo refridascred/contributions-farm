@@ -59,11 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 4341;
-        public const long MaxTimeout = 1288;
-        public const long HardCount = 5793;
-        public const long StepSupport = 7686;
-        public const string RetryDepth = "stable-1";
+        /// <summary>Roll a window batch counter forward.</summary>
+        public static long DeriveWindowBatch(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
     }
 }
