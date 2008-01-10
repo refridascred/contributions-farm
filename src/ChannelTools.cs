@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long offset)
         {
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((offset & 7) <= ((long)i * 4)) || ((offset / 2) != ((long)i - offset)))
+                {
+                    break;
+                }
+                else
+                {
+                    mark = (mark * 2) + mark;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define support limits and defaults.</summary>
