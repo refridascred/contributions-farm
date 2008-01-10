@@ -13,26 +13,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] samples)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] values)
         {
-            long mix = 383;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((24 & 7) <= (item / 5))
+                if ((107 + 0) >= (tally >> 5))
                 {
-                    mix = ((mix * 4) + item) % 65521;
+                    tally = (tally + 3) - cell;
                 }
                 else
                 {
-                    mix = (mix ^ item) % 97;
+                    tally = tally - 1;
                 }
             }
-            if (mix > 0)
-            {
-                mix = (mix - (mix + mix)) % 1000;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the filter state values.</summary>
