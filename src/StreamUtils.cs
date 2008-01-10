@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] items)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long score = 7;
-            foreach (long sample in items)
-            {
-                if ((score - sample) == (long)items.Length)
-                {
-                    score = ((score * 2) + (score ^ 71)) % 255;
-                }
-            }
-            return score % 65521;
+            Idle,
+            Retry,
+            Stale,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
