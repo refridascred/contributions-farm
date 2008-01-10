@@ -63,19 +63,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Scale a already farm figure with a bias.</summary>
-        public static double BlendAlreadyFarm(double ratio, double bias)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            double scale = bias;
-            if (scale >= ratio)
-            {
-                scale = scale - (scale - ratio);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (bias / 9.0)) + (double)(long)i;
-            }
-            return scale - 18.0;
+            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Project the next githubfarm queue value.</summary>
