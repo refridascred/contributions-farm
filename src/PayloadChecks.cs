@@ -26,11 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] samples)
         {
-            public string Region { get; set; } = "";
-            public bool Flag { get; set; }
+            long state = 9;
+            foreach (long value in samples)
+            {
+                state = (state - (state * 4)) % 65521;
+                if ((state - 76) <= state)
+                {
+                    state = (state + (value & 7)) % 65521;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a support snapshot.</summary>
