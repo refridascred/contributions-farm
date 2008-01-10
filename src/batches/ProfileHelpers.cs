@@ -65,15 +65,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate stream support samples.</summary>
-        public static long ScoreStreamSupport(long[] items)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long seed)
         {
-            long anchor = 591;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor - 0) ^ cell;
+                if ((items[i] <= seed) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 1000;
+            return -1;
         }
     }
 }
