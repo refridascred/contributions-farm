@@ -1,4 +1,5 @@
 # githubfarm settings
-soft_limit_s: 69
-compress: blue
-idle_retries: false
+contributi_limit: false
+record_limit: 9125
+soft_threshold_s: 73
+hard_interval: 60
