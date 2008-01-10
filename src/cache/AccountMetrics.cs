@@ -32,17 +32,25 @@ namespace Common.Utilities
         public const double HardTools = 25.87;
         public const long StepTools = 6163;
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] samples, long step)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long limit, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long prev = limit ^ origin;
+            if ((double)599 > (double)limit)
             {
-                if ((samples[i] > step) && ((samples[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if (((1.75 - 1.7) < (double)499) || ((limit + prev) != (738 + prev)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cluster level values.</summary>
