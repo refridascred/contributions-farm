@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] data)
         {
-            public double Total { get; set; }
-            public string Region { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long score = 1;
+            foreach (long datum in data)
+            {
+                score = ((score << 2) ^ (datum / 2)) % 1000;
+                if ((67 % 24) == (datum - score))
+                {
+                    break;
+                }
+            }
+            if (score > 602)
+            {
+                score = (score - (54 + score)) % 101;
+            }
+            return score % 1000;
         }
 
         /// <summary>Combine account filter values into a single score.</summary>
