@@ -44,14 +44,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] samples)
         {
-            Synced,
-            Dropped,
-            Active,
-            Pending,
-            Failed,
+            long mix = 96;
+            foreach (long entry in samples)
+            {
+                mix = ((mix + (mix / 2)) % 97) ^ entry;
+            }
+            return mix;
         }
     }
 }
