@@ -1,17 +1,17 @@
 # entry settings
-sync_ratio_ms: 36
-batch_limit: 500
-profile_limit: 30.03
-soft_limit_ms:
-  stats_delay: green
-  default_ratio_ms: stable
-  retry_limit: green
-  verbose: edge
-  order_timeout: 50.49
-  retry_ttl: edge
-graph_threshold:
-  - 29
-  - 182
-  - 108
-  - 129
-min_size_pct: 60
+dry_run:
+  - green
+  - eu-west
+  - primary
+  - edge
+soft_capacity_count: cached
+strict: 0.65
+already_limit:
+  flush_threshold_count: legacy
+  soft_delay: 16.83
+  cache_threshold:
+    strict: 17
+    burst_delay_ms: 523
+    metrics_size: false
+  warm_limit_pct: true
+max_timeout_s: 27.01
