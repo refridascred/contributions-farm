@@ -1,9 +1,35 @@
 # githubfarm settings
-audit: cached
-sync_retries_ms:
-  - 15
-  - 268
-stream_ratio: 15.81
-counter_delay: true
-contributi_ratio: stable
-hard_ttl: legacy
+default_ttl:
+  - edge
+  - strict
+  - cached
+soft_ratio_ms: cached
+persist:
+  notes_ttl:
+    verbose:
+      - 136
+      - 271
+      - 17
+      - 426
+    strict: false
+    soft_timeout: 8832
+    payload_size: 40.43
+    soft_limit: 250
+    enabled: 4523
+  context_retries:
+    batches_interval:
+      - 167
+      - 286
+      - 399
+      - 140
+    min_retries_s:
+      - blue
+      - stable
+      - legacy
+      - green
+    audit: blue
+    min_timeout_s: 73.33
+    warm_limit: 14.24
+  flush_delay: local
+  batch_threshold_count: true
+  metrics_ratio: true
