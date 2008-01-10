@@ -1,5 +1,7 @@
 {
-  "profile_threshold": "staging",
-  "warm_depth": "legacy",
-  "poll_retries": 1024
+  "soft_timeout_count": false,
+  "burst_interval_s": true,
+  "verbose": 250,
+  "warm_interval_ms": true,
+  "farm_retries": 3013
 }
