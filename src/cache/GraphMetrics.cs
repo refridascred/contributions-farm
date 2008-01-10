@@ -49,16 +49,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] readings)
         {
-            long mark = offset;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                mark = ((mark * 5) + (long)i) % 97;
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((datum % 8) < (tally ^ datum))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
