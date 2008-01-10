@@ -26,13 +26,12 @@ namespace Common.Utilities
         public const double WindowFilter = 59.74;
         public const long BurstFilter = 617;
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public string Count { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstCount = 1399;
+        public const long SoftLevel = 9508;
+        public const long BatchWindow = 1728;
+        public const long RetryLevel = 4619;
+        public const string IdleInterval = "alpha";
 
         /// <summary>Digest a series of token entries.</summary>
         public static long FoldToken(long[] samples, long origin)
