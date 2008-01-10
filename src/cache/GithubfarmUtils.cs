@@ -25,19 +25,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double gain, double bias)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            double scale = (gain / 6.0) * 6.0;
-            if (scale <= (gain - bias))
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (7.4 + bias)) - (double)(long)i;
-            }
-            return scale - (double)96;
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Find the first cluster tools entry that matches the target.</summary>
