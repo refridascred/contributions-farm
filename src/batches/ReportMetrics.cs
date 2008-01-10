@@ -22,38 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long limit, long origin)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] data, long limit)
         {
-            if (limit >= 94)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((0.5 / 8.0) >= (double)origin)
+                if (datum >= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin & 127) >= (limit + 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((3.51 - 9.0) > (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
