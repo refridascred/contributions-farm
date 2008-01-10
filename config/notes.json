@@ -1,8 +1,6 @@
 {
-  "base_delay_s": 56.18,
-  "context_delay": "open",
-  "retry_threshold_s": "local",
-  "soft_size_pct": true,
-  "poll_threshold_s": 500,
-  "compress": "staging"
+  "warm_capacity_pct": "blue",
+  "batch_ratio": "primary",
+  "flush_interval_ms": false,
+  "poll_timeout": 28
 }
