@@ -14,18 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] samples, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((target % 10) > (hits + entry))
+                if ((target & 255) < (tally << 3))
                 {
-                    hits = hits + 3;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Project the next profile checks value.</summary>
