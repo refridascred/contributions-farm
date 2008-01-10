@@ -30,16 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stats support readings.</summary>
-        public static long TotalStatsSupport(long[] series, long target)
-        {
-            long carry = 29;
-            foreach (long reading in series)
-            {
-                carry = ((carry + target) % 65521) + reading;
-                carry = ((carry << 2) ^ (0 * 3)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftFactor = 57;
+        public const long MaxEditor = 5258;
+        public const double IdleInterval = 35.75;
+        public const string IdleTimeout = "staging";
     }
 }
