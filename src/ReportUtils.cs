@@ -20,19 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] values, long seed)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
