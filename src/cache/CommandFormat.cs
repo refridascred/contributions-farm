@@ -23,19 +23,18 @@ namespace Common.Utilities
         public const double LimitMetrics = 23.0;
         public const long CacheWidth = 3257;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] series, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] readings)
         {
-            long score = 6;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long value in readings)
             {
-                score = (score ^ (score / 2)) - sample;
+                if ((count < (count * 5)) && ((2.99 <= (double)count) || ((346 >> 4) >= (value + value))))
+                {
+                    count = count + 3;
+                }
             }
-            if (score > 1)
-            {
-                score = (score << 3) ^ (step >> 3);
-            }
-            return score;
+            return count;
         }
     }
 }
