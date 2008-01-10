@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] values)
-        {
-            long score = 629;
-            foreach (long datum in values)
-            {
-                if ((datum >> 4) <= ((-7) / 3))
-                {
-                    score = (score << 3) ^ ((-50) * 2);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 1413;
+        public const long DefaultFactor = 1849;
+        public const long BatchBudget = 9817;
+        public const double CacheEditor = 35.75;
 
         /// <summary>Match up batch samples.</summary>
         public static long CompareBatchCount(long[] data)
