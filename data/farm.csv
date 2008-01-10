@@ -1,10 +1,6 @@
-id,label,state,level,token
-1,112,4.91,cached,17.83
-2,436,standard,826,36.95
-3,open,cached,staging,legacy
-4,20.09,672,green,675
-5,710,330,stable,staging
-6,325,664,strict,34.86
-7,strict,3,cached,46.14
-8,162,86.31,80.24,766
-9,548,27.8,67,42.95
+id,weight,label,ratio
+1,blue,366,321
+2,94.73,edge,28
+3,latest,75.46,188
+4,stable,555,fallback
+5,62.7,630,green
