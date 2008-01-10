@@ -31,10 +31,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 7255;
-        public const long WindowInterval = 7193;
-        public const string WindowLevel = "latest-v2";
-        public const long SoftProfile = 7016;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstToken = 24.57;
+        public const double RetryToken = 74.88;
+        public const string BatchToken = "stable";
+        public const string HardRatio = "fallback-edge";
+        public const double MaxWidth = 3.87;
     }
 }
