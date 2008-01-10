@@ -19,14 +19,27 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            Queued,
-            Pending,
-            Retry,
-            Draft,
-            Locked,
+            long mix = 65;
+            foreach (long entry in readings)
+            {
+                if ((0.41 / 9.0) <= (double)mix)
+                {
+                    mix = ((mix - mix) % 255) + entry;
+                    mix = ((mix * 4) + (mix + 927)) % 101;
+                }
+                else
+                {
+                    mix = (mix - mix) % 255;
+                }
+                if ((4.2 + 2.5) == (double)mix)
+                {
+                    mix = ((mix * 4) + (mix & 255)) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a context header.</summary>
