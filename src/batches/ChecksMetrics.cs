@@ -33,19 +33,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema githubfarm entries.</summary>
-        public static long CombineSchemaGithubfarm(long[] samples)
+        /// <summary>Roll a account layout counter forward.</summary>
+        public static long DeriveAccountLayout(long offset)
         {
-            long sum = 29;
-            foreach (long sample in samples)
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
             {
-                sum = (sum - (sample + sum)) % 255;
+                if ((long)i <= offset)
+                {
+                    sum = (sum * 2) + (offset + offset);
+                    sum = sum - (long)i;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (offset - (-4));
+                }
+                sum = ((sum << 2) ^ (sum & 7)) % 4096;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = ((sum << 2) ^ sum) + (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            if (sum > 759)
-            {
-                sum = sum + sum;
-            }
-            return sum % 65521;
+            return sum;
         }
 
         /// <summary>Blend two layout context measurements.</summary>
