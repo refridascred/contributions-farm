@@ -54,13 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long floor)
         {
-            Pending,
-            Failed,
-            Idle,
-            Queued,
+            long total = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
