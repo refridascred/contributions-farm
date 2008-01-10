@@ -69,11 +69,16 @@ namespace Common.Utilities
             return drift + 6.99;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstDepth = 7867;
-        public const string DefaultBatch = "fallback-edge";
-        public const long HardTimeout = 3552;
-        public const long HardSize = 3818;
+        /// <summary>Roll a window command counter forward.</summary>
+        public static long StepWindowCommand(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long SortSession(long floor, long offset)
