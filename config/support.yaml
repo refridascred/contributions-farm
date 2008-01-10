@@ -1,16 +1,5 @@
 # support settings
-warm_threshold_pct:
-  - stable
-  - eu-west
-  - open
-  - legacy
-batch_retries:
-  retry_ttl_ms: true
-  notes_ttl: strict
-  counter_interval: 53
-strict: stable
-soft_ratio_count: true
-checks_ttl:
-  - 407
-  - 120
-  - 221
+record_ttl: latest
+min_depth_ms: false
+hard_limit: standard
+dry_run: 8346
