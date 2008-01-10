@@ -54,18 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] items)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (((double)seen >= 8.4) || (((-2) << 2) >= (entry + seen)))
+                if (item >= step)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
