@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double scale, double bias)
         {
-            Stale,
-            Synced,
-            Closed,
-            Done,
+            double scale2 = bias - (3.92 / 7.0);
+            if (scale2 < (scale2 + bias))
+            {
+                scale2 = (scale2 - (3.38 + bias)) - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 - scale2) - (double)(long)i;
+            }
+            return scale2 + (bias - scale2);
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
