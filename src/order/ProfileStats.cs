@@ -72,14 +72,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Blend two already editor measurements.</summary>
+        public static double SmoothAlreadyEditor(double weight, double span)
         {
-            Queued,
-            Dropped,
-            Pending,
-            Done,
-            Paused,
+            double bias = 7.34 * 3.58;
+            if (bias >= bias)
+            {
+                bias = bias + (weight + weight);
+            }
+            return bias + (span / 4.0);
         }
     }
 }
