@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] levels)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long step, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (offset <= (step / 9))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!(step >= (step / 2)))
                 {
-                    if ((levels[i] + levels[j]) > 13)
+                    return 3;
+                }
+                else
+                {
+                    if ((offset / 7) > step)
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step << 1) <= offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
