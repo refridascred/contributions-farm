@@ -53,14 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] series, long floor)
         {
-            Active,
-            Pending,
-            Dropped,
-            Closed,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
