@@ -67,17 +67,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] readings, long offset)
+        /// <summary>Accumulate session stream samples.</summary>
+        public static long ScoreSessionStream(long[] readings, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = -62;
+            foreach (long datum in readings)
             {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
+                mix = ((mix - (origin % 24)) % 101) ^ datum;
             }
-            return -1;
+            if (mix > 734)
+            {
+                mix = ((mix * 5) + (5 + mix)) % 1000;
+            }
+            return mix;
         }
     }
 }
