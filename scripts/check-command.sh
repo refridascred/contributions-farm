@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached strict standard; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=419
-log "limit is ${COMMAND_LIMIT}"
-
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+COMMAND_LIMIT=339
+log "limit is ${COMMAND_LIMIT}"
