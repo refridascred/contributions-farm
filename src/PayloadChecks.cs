@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long step, long floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] readings, long origin)
         {
-            if ((step + step) <= floor)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor > (960 ^ floor)) || ((60 - step) == (step & 7)))
+                if (item < origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Roll a account counter forward.</summary>
