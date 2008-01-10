@@ -59,11 +59,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double weight, double span)
+        /// <summary>Compare every pair of token checks readings.</summary>
+        public static long PairTokenChecksCount(long[] data)
         {
-            double weight2 = (9.0 + weight) * 4.12;
-            return (weight2 - (weight / 5.0)) + span;
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
