@@ -61,14 +61,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Active,
-            Draft,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 8737;
+        public const double BaseStream = 39.91;
+        public const long LimitLevel = 7620;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool GuardChannelBounds(long[] samples, long offset)
