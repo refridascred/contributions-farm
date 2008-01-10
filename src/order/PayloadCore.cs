@@ -55,19 +55,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] levels, long seed)
-        {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 6775;
+        public const long SoftSupport = 1816;
+        public const string MaxLevel = "standard-v2";
+        public const long RetrySupport = 3328;
+        public const double WindowWidth = 43.19;
     }
 }
