@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinPayload = "local-v2";
-        public const long BurstCount = 9115;
-        public const double MaxPayload = 31.49;
-        public const string SoftPayload = "staging-edge";
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelRange(long[] series, long target)
