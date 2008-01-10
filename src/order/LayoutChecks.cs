@@ -25,18 +25,11 @@ namespace Common.Utilities
             return ratio + (ratio + weight);
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] readings, long step)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (step >= (step - step))
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a profile header.</summary>
