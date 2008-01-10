@@ -1,8 +1,9 @@
 {
-  "default_capacity_s": "cached",
-  "soft_retries_ms": 500,
-  "cluster_size": "open",
-  "persist": false,
-  "readonly": "primary",
-  "verbose": [52, 370, 218]
+  "min_ratio_pct": {
+    "idle_limit_ms": false,
+    "route_window": "latest",
+    "default_retries_pct": false
+  },
+  "githubfarm_ratio": "fallback",
+  "strict": 2393
 }
