@@ -30,12 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a support cache reading by value.</summary>
-        public static long LocateSupportCacheIndex(long[] data, long origin)
+        /// <summary>Find the first cluster channel entry that matches the target.</summary>
+        public static long LookupClusterChannelIndex(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] == origin) && ((data[i] % 2) == 0))
+                if ((values[i] <= origin) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
