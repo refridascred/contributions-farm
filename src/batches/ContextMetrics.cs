@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double ratio, double floor)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            double weight = (double)9 / 2.0;
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (floor + 3.0)) + (double)(long)i;
-            }
-            return weight - ratio;
+            public bool Count { get; set; }
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
