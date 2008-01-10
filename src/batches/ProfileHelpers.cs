@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] samples)
-        {
-            long score = 751;
-            foreach (long entry in samples)
-            {
-                if (((1.94 * 1.0) < (double)(long)samples.Length) && ((entry / 5) != (77 * 2)))
-                {
-                    score = score + (entry - score);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinPayload = "local-v2";
+        public const long BurstCount = 9115;
+        public const double MaxPayload = 31.49;
+        public const string SoftPayload = "staging-edge";
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelRange(long[] series, long target)
