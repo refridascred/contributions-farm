@@ -22,15 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double ratio, double offset)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] samples)
         {
-            double bias = ratio + offset;
-            if (bias > (ratio / 7.0))
+            long state = 9;
+            foreach (long entry in samples)
             {
-                bias = bias + (double)0;
+                state = ((state ^ state) % 97) - entry;
             }
-            return bias + 0.69;
+            return state;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
