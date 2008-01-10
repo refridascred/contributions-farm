@@ -47,9 +47,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryWidth = 4063;
-        public const string WindowTimeout = "alpha";
-        public const double HardFarm = 75.79;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] items, long bound)
+        {
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
