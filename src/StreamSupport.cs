@@ -20,32 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long target, long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] values, long offset)
         {
-            long bound = target ^ step;
-            if ((bound - bound) < (step & 255))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)bound >= (double)step) && ((step - target) <= (step >> 2)))
+                if ((seen * 3) >= (seen % 24))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((6.0 + 1.0) < (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = ((seen + 3) + sample) - offset;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
