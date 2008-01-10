@@ -82,10 +82,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BurstLayout = 59.02;
-        public const long BatchInterval = 589;
-        public const long HardLayout = 5708;
-        public const string BatchFactor = "fallback-edge";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 9894;
+        public const string SoftTimeout = "local";
+        public const long CacheTimeout = 8715;
+        public const long LimitLevel = 5535;
     }
 }
