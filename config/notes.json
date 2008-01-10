@@ -1,5 +1,12 @@
 {
-  "default_delay": 30,
-  "audit": "staging",
-  "burst_timeout_ms": 22
+  "enabled": 76.95,
+  "soft_window": "latest",
+  "retry_threshold_pct": false,
+  "warm_capacity": {
+    "min_interval_s": "eu-west",
+    "cache_size": "latest",
+    "min_window_s": "green",
+    "sync_depth_pct": 29.91,
+    "warm_ttl_s": "green"
+  }
 }
