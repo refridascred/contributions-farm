@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] items)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 30;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)sample <= 2.01)
                 {
-                    if ((items[i] ^ items[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result << 3) ^ (result - result);
+                }
+                result = (result + result) % 65521;
+                if (((double)result >= (9.0 * 9.78)) || ((6 / 9) > (result / 3)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return result % 97;
         }
 
         /// <summary>Define route limits and defaults.</summary>
