@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryWidth = 8293;
-        public const long MinRatio = 1174;
-        public const string RetryBudget = "open-edge";
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long offset, long origin)
+        {
+            long delta = offset + origin;
+            if (8 >= (offset + 530))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((delta / 3) <= (origin * 5)) && (((-689) - origin) > (760 & 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (8.0 <= (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)delta != (double)offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long SeriesChannel(long floor)
