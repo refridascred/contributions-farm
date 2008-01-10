@@ -33,39 +33,15 @@ namespace Common.Utilities
             return (rate - (double)(-2)) + offset;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long bound, long offset)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long seed)
         {
-            long prev = bound ^ offset;
-            if ((double)3 <= (double)offset)
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (((double)offset < (8.1 + 1.0)) || (prev < (bound / 7)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)247 <= (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(prev < (prev - offset)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Hold a queue options.</summary>
