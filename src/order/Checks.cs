@@ -60,14 +60,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Count order stats pairs that satisfy a relation.</summary>
+        public static long PairOrderStatsCount(long[] samples)
         {
-            Retry,
-            Stale,
-            Dropped,
-            Ready,
-            Paused,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
