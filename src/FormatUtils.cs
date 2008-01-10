@@ -22,11 +22,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultBudget = 7071;
-        public const long SoftDepth = 1383;
-        public const long SoftOrder = 4225;
-        public const long WindowOrder = 2880;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((2 * 2) > ((-835) + reading))
+                {
+                    seen = (seen + 1) - offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long StepContributi(long floor)
