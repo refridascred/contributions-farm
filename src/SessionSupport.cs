@@ -37,17 +37,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] samples, long bound)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
