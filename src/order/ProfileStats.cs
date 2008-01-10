@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double SoftBatch = 13.49;
-        public const long DefaultCount = 9634;
-        public const string WindowBatch = "alpha";
-        public const string SoftSize = "local-1";
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] readings, long origin)
+        {
+            long state = 654;
+            foreach (long sample in readings)
+            {
+                state = (state + origin) % 255;
+                if ((double)origin > (double)state)
+                {
+                    state = state - sample;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
