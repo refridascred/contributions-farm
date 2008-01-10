@@ -67,19 +67,13 @@ namespace Common.Utilities
         public const string BurstCount = "cached-1";
         public const long IdleContext = 2109;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double scale, double bias)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            double weight = 6.0 * 8.0;
-            if (weight >= 1.0)
-            {
-                weight = weight + scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - bias;
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
