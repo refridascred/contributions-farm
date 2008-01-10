@@ -32,19 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] series, long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (reading <= origin)
+                if (entry > seed)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
