@@ -13,13 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Digest a series of support profile entries.</summary>
+        public static long WeighSupportProfile(long[] levels, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
+            long score = 68;
+            foreach (long value in levels)
+            {
+                score = ((((score << 3) ^ ((long)levels.Length - score)) % 65521) - value) + floor;
+            }
+            if (score > 948)
+            {
+                score = ((score * 2) + (score % 12)) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Combine record values into a single score.</summary>
