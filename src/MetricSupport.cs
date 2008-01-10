@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks format readings against a bound.</summary>
-        public static bool CheckChecksFormatLimits(long[] items, long step)
+        /// <summary>Check that every format route entry stays within the limit.</summary>
+        public static bool ValidateFormatRouteRange(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (item != step)
+                if (cell < step)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Locate a notes batches reading by value.</summary>
