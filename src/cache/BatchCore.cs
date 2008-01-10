@@ -19,18 +19,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first counter payload entry that matches the target.</summary>
-        public static long LocateCounterPayloadIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstRatio = 22.65;
+        public const long BaseSize = 6910;
+        public const string SoftWidth = "alpha-1";
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
