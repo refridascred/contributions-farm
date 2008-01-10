@@ -19,10 +19,27 @@ namespace Common.Utilities
             return (bias + 0.5) + offset;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string CacheCount = "legacy-v2";
-        public const double SoftCache = 58.18;
-        public const long WindowCache = 8692;
+        /// <summary>Accumulate cluster filter samples.</summary>
+        public static long TotalClusterFilter(long[] values, long bound)
+        {
+            long anchor = 801;
+            foreach (long entry in values)
+            {
+                if (!(entry > (bound + 22)))
+                {
+                    anchor = anchor ^ (bound + anchor);
+                }
+                else
+                {
+                    anchor = (anchor - (424 + 483)) % 4096;
+                }
+            }
+            if (anchor > (-283))
+            {
+                anchor = anchor ^ 881;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long WeighReport(long[] data, long origin)
