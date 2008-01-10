@@ -40,18 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first filter support entry that matches the target.</summary>
-        public static long LookupFilterSupportIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepBatch = "alpha-edge";
+        public const long StepWidth = 6266;
+        public const string RetryBatch = "staging";
+        public const string SoftDepth = "standard-v2";
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
