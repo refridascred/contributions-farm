@@ -1,22 +1,8 @@
 {
-  "graph_timeout": 30,
-  "soft_ttl_s": {
-    "readonly": "strict",
-    "dry_run": "primary",
-    "poll_ttl": 85,
-    "soft_delay_s": 8388,
-    "min_threshold": "fallback"
-  },
-  "soft_size_count": 94.13,
-  "max_ttl_count": {
-    "min_timeout": 60,
-    "verbose": 1.57,
-    "stream_delay": 100,
-    "sync_threshold_pct": 60.37,
-    "notes_ratio": {
-      "readonly": true,
-      "cache_ratio": true,
-      "warm_delay_count": 9
-    }
-  }
+  "poll_interval_count": 7.17,
+  "poll_threshold_pct": ["stable", "strict", "standard"],
+  "persist": 89.27,
+  "hard_capacity_s": 66.18,
+  "warm_size": 3,
+  "base_timeout_s": 100
 }
