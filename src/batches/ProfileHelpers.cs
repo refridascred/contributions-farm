@@ -80,11 +80,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxBatches = 19.67;
-        public const double DefaultCount = 1.78;
-        public const double SoftCount = 54.46;
-        public const long MinBatches = 5387;
-        public const long IdleWidth = 384;
+        /// <summary>Blend two report batches measurements.</summary>
+        public static double ProjectReportBatches(double scale, double floor)
+        {
+            double load = floor;
+            if (load >= (double)(-46))
+            {
+                load = (load - (floor / 4.0)) + scale;
+            }
+            return load + (load + 6.0);
+        }
     }
 }
