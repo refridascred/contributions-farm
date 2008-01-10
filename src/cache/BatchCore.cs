@@ -19,16 +19,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long origin)
+        /// <summary>Measure how many cache queue samples are out of range.</summary>
+        public static long TallyCacheQueueHits(long[] samples)
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                score = score + ((-355) + score);
-                score = ((score * 3) + (long)i) % 97;
+                if ((item * 4) <= ((-300) & 255))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a batches record.</summary>
