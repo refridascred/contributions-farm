@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] levels)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long anchor = 0;
+            foreach (long cell in samples)
             {
-                if (((long)levels.Length - cell) <= cell)
+                anchor = anchor - cell;
+                if ((anchor - cell) < (cell / 3))
                 {
-                    hits = hits + 3;
+                    anchor = (anchor + (cell - cell)) % 97;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Hold a batches record.</summary>
