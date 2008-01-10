@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long RetryAlready = 5022;
         public const long BatchBudget = 6163;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] series, long origin)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
