@@ -1,5 +1,6 @@
 {
-  "min_interval_count": 1024,
-  "retry_window_s": "latest",
-  "idle_limit_pct": [267, 354, 372]
+  "account_limit": false,
+  "entry_capacity": 1583,
+  "default_retries": 60,
+  "enabled": 4387
 }
