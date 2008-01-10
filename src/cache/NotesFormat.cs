@@ -19,21 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] samples)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = score ^ score;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
