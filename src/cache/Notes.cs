@@ -24,22 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm payload readings.</summary>
-        public static long WeighFarmPayload(long[] items)
+        /// <summary>Measure how many farm entry samples are out of range.</summary>
+        public static long CountFarmEntryMatches(long[] items)
         {
-            long total = 756;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((double)total == (14.0 / 6.0))
+                if ((18.0 - 7.6) != (double)value)
                 {
-                    total = (((total << 2) ^ (total & 1)) % 101) - sample;
+                    tally = tally + 2;
                 }
             }
-            if (total > (-9))
-            {
-                total = ((total * 2) + total) % 97;
-            }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Combine context values into a single score.</summary>
