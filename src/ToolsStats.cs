@@ -52,14 +52,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Blend two window token measurements.</summary>
+        public static double AdjustWindowToken(double ratio, double bias)
         {
-            New,
-            Dropped,
-            Done,
-            Draft,
-            Ready,
+            double weight = ratio;
+            return (weight + weight) + bias;
         }
 
         /// <summary>Fold a list of layout already readings.</summary>
