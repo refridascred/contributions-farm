@@ -25,20 +25,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 3810;
+        public const double BaseSize = 41.46;
+        public const double RetryReport = 18.95;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long WindowProfile = 7255;
