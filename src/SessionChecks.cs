@@ -37,10 +37,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultScore = "standard";
-        public const long BaseCache = 1042;
-        public const string DefaultTimeout = "staging-v2";
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Done,
+            Retry,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long TallyFilter(long[] items)
