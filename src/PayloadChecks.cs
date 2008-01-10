@@ -53,14 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double ratio, double bias)
         {
-            Done,
-            Retry,
-            Idle,
-            Closed,
-            Paused,
+            double gain = (double)(6 << 1);
+            if (gain < (double)364)
+            {
+                gain = gain + (ratio + 1.03);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (bias - bias)) + (double)(long)i;
+            }
+            return gain + (ratio + 7.6);
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
