@@ -44,11 +44,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowContributi = 36.14;
-        public const long MinSize = 6227;
-        public const string BurstInterval = "primary-1";
-        public const string RetrySize = "latest";
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Paused,
+            Retry,
+            Failed,
+            Ready,
+            Done,
+        }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long SeriesContributi(long origin)
