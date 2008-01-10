@@ -87,14 +87,17 @@ namespace Common.Utilities
             return drift - 13.0;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] data, long bound)
         {
-            Done,
-            Queued,
-            Synced,
-            New,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
