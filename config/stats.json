@@ -1,7 +1,6 @@
 {
-  "warm_ratio": 7441,
-  "sync_ttl": true,
-  "warm_ttl_count": false,
-  "idle_limit_s": false,
-  "persist": 45.1
+  "flush_threshold": 81.52,
+  "metrics_delay": 4753,
+  "burst_ratio_pct": 30,
+  "cache_timeout_pct": 94.24
 }
