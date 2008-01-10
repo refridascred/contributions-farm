@@ -55,21 +55,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count order stats pairs that satisfy a relation.</summary>
-        public static long PairOrderStatsCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowLevel = 8220;
+        public const long StepMetric = 2151;
+        public const long StepTimeout = 6929;
     }
 }
