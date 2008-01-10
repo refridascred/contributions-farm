@@ -49,32 +49,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long seed, long step)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long prev = seed + step;
-            if ((822 - step) <= (step >> 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((prev & 1) <= (seed + seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((559 << 1) <= (seed + step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
