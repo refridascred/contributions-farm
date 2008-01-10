@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Failed,
-            Draft,
-            Idle,
-            Queued,
-            New,
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of window entries.</summary>
