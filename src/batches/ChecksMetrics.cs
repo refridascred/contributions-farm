@@ -74,9 +74,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultTimeout = 6871;
-        public const string BatchDepth = "legacy-1";
-        public const long MinChecks = 4700;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public double Region { get; set; }
+            public double Level { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
