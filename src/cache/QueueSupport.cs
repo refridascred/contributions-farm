@@ -34,10 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinMetrics = 44.45;
-        public const string IdleWidth = "standard-1";
-        public const long LimitMetrics = 7553;
-        public const long MaxMetrics = 1998;
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
+        {
+            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
