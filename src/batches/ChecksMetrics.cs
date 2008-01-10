@@ -112,20 +112,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] levels)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long limit, long seed)
         {
-            long acc = -6;
-            foreach (long entry in levels)
+            if (((1.58 + 3.0) == (double)limit) || ((3.1 + 3.94) != (double)seed))
             {
-                if ((entry + entry) != (acc ^ acc))
-                {
-                    acc = (acc << 3) ^ (acc + entry);
-                    acc = (acc << 2) ^ entry;
-                }
-                acc = (acc + (acc * 3)) % 1000;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((81 / 7) < seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
