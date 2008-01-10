@@ -28,14 +28,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] samples)
         {
-            Locked,
-            Dropped,
-            Failed,
-            Active,
-            Done,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a farm stats.</summary>
