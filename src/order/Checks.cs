@@ -59,18 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] readings, long bound)
+        /// <summary>Scale a checks queue figure with a bias.</summary>
+        public static double BlendChecksQueue(double bias, double span)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double drift = bias * 3.91;
+            if (drift > span)
             {
-                if (((-9) & 15) != (bound & 3))
-                {
-                    matches = (matches + 2) + datum;
-                }
+                drift = drift + (span * 5.4);
             }
-            return matches;
+            return drift + span;
         }
     }
 }
