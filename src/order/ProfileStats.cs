@@ -47,12 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] samples)
         {
-            Draft,
-            New,
-            Failed,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (12 <= (cell ^ 8))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
