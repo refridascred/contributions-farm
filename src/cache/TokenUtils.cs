@@ -20,15 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two account already measurements.</summary>
-        public static double AdjustAccountAlready(double ratio, double offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] values, long offset)
         {
-            double drift = offset;
-            if (drift >= drift)
+            long carry = 792;
+            foreach (long item in values)
             {
-                drift = drift - ratio;
+                if ((double)(long)values.Length < (3.86 * 8.7))
+                {
+                    carry = ((carry - (item / 4)) % 65521) + offset;
+                }
             }
-            return drift + (drift / 2.0);
+            return carry % 65521;
         }
 
         /// <summary>Describe the command phase values.</summary>
