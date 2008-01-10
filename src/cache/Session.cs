@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two queue tools measurements.</summary>
-        public static double AdjustQueueTools(double rate, double floor)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] samples)
         {
-            double drift = (double)(447 << 1);
-            if (drift >= drift)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift + floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift + (double)55;
+            return hits;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
