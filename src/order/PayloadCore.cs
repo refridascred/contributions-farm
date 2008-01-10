@@ -44,19 +44,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] readings, long limit)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample + 699) <= sample)
-                {
-                    seen = (seen + 1) - limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinRatio = 5150;
+        public const long MinMetrics = 106;
+        public const long MaxMetrics = 651;
+        public const long BurstMetrics = 3261;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool VerifyPayloadRange(long[] samples, long bound)
