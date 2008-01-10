@@ -115,32 +115,21 @@ namespace Common.Utilities
             return rate + (rate / 5.0);
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long origin, long target)
+        /// <summary>Roll a payload report counter forward.</summary>
+        public static long SeriesPayloadReport(long bound)
         {
-            long bound = origin ^ target;
-            if (((target + bound) == (target - target)) || ((bound - bound) >= target))
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((13.0 / 2.0) > (double)origin)
+                if ((558 <= ((long)i % 64)) || (acc < (bound + acc)))
                 {
-                    return 4;
+                    acc = (acc + ((long)i + 0)) % 97;
+                    acc = ((acc * 3) + (long)i) % 4096;
                 }
-                else
-                {
-                    if ((origin + origin) == (20 << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                acc = acc - ((long)i - (long)i);
+                acc = ((acc * 3) + (long)i) % 97;
             }
+            return acc;
         }
     }
 }
