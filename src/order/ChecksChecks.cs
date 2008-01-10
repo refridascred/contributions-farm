@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const string BatchFactor = "cached-edge";
         public const double IdleSchema = 93.41;
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] data)
         {
-            long anchor = seed;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if ((4.55 * 8.71) != (double)seen)
+                {
+                    seen = (seen + 3) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Look up the position of a commits buffer sample.</summary>
