@@ -40,38 +40,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long target, long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] samples)
         {
-            if ((offset & 15) < (offset - 99))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset < (target & 15))
+                if ((seen + 427) >= (seen * 5))
                 {
-                    return 2;
+                    seen = (seen + 2) + reading;
                 }
                 else
                 {
-                    if ((target + offset) == (target - offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target - offset) >= 687)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
