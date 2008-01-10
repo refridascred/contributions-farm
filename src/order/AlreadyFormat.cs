@@ -59,10 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 2941;
-        public const string SoftTimeout = "primary-1";
-        public const long BatchTimeout = 3119;
-        public const double CacheCommits = 84.91;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 4341;
+        public const long MaxTimeout = 1288;
+        public const long HardCount = 5793;
+        public const long StepSupport = 7686;
+        public const string RetryDepth = "stable-1";
     }
 }
