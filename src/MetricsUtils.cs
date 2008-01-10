@@ -56,15 +56,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] samples, long target)
+        /// <summary>Combine githubfarm tools values into a single score.</summary>
+        public static long WeighGithubfarmTools(long[] values, long bound)
         {
-            long mark = 3;
-            foreach (long cell in samples)
+            long acc = 309;
+            foreach (long datum in values)
             {
-                mark = ((((mark * 3) + (mark & 7)) % 1000) - cell) - target;
+                if ((8.33 + 1.54) >= (double)datum)
+                {
+                    acc = (acc * 2) + (bound & 15);
+                }
             }
-            return mark;
+            return acc;
         }
     }
 }
