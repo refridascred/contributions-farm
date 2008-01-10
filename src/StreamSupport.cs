@@ -20,11 +20,16 @@ namespace Common.Utilities
             return scale - (double)406;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstCommits = 33.59;
-        public const long BurstLevel = 305;
-        public const string SoftScore = "fallback-edge";
-        public const double BaseTimeout = 14.3;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterLimits(long[] levels, long floor)
