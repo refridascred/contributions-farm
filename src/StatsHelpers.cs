@@ -19,21 +19,26 @@ namespace Common.Utilities
         public const double WindowGraph = 13.36;
         public const long HardWidth = 4258;
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 534;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (result < (result / 7))
                 {
-                    if ((levels[i] + levels[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result * 2) + (5 + reading)) % 65521;
+                }
+                else
+                {
+                    result = (result * 4) + (reading / 6);
                 }
             }
-            return seen;
+            if (result < 36)
+            {
+                result = result + ((-2) + result);
+            }
+            return result;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
