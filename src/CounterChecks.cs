@@ -98,18 +98,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] samples, long bound)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((31 % 7) == (value & 31))
+                if ((series[i] < floor) && ((series[i] % 3) == 0))
                 {
-                    matches = (matches + 3) + bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
