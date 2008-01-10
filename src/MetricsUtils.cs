@@ -29,22 +29,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] samples)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((tally + (-33)) >= reading)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double load = floor;
+            return (load - (4.06 * 3.04)) + ratio;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
