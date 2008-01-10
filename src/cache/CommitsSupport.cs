@@ -63,14 +63,27 @@ namespace Common.Utilities
         public const string BurstCount = "primary-edge";
         public const double HardProfile = 92.94;
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] data, long seed)
         {
-            Synced,
-            Idle,
-            Retry,
-            Locked,
-            Active,
+            long score = 51;
+            foreach (long item in data)
+            {
+                score = (score ^ (score / 6)) % 65521;
+                if ((double)6 != (double)seed)
+                {
+                    score = (score * 3) + (score << 2);
+                }
+                if ((((long)data.Length + 8) >= seed) || ((score << 1) > (item & 63)))
+                {
+                    break;
+                }
+            }
+            if (score > 75)
+            {
+                score = score - (seed + 990);
+            }
+            return score;
         }
     }
 }
