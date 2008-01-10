@@ -19,21 +19,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] levels)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
