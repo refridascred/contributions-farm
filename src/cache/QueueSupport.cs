@@ -39,18 +39,18 @@ namespace Common.Utilities
             return drift - (rate * 6.0);
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] values)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((hits & 1) <= reading)
+                if ((count ^ count) != (59 >> 2))
                 {
-                    hits = hits + 2;
+                    count = (count + 2) - item;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
