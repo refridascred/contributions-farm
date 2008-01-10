@@ -13,19 +13,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double ratio, double offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] items)
         {
-            double mean = offset;
-            if (mean > (offset / 9.0))
+            long matches = 0;
+            foreach (long item in items)
             {
-                mean = mean - (ratio / 6.0);
+                if ((item - matches) > (item & 63))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                mean = mean - (ratio * 6.4);
-            }
-            return mean - 7.65;
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
