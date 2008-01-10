@@ -27,21 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] series)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((seen + step) > (5 & 3)) && ((seen * 4) >= (step - step)))
                 {
-                    if ((series[i] + series[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
