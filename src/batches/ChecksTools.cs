@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank cluster farm input into a small class.</summary>
-        public static long BucketClusterFarm(long offset, long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] samples)
         {
-            long gap = offset + origin;
-            if ((double)offset > (double)gap)
+            long total = 4;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((gap <= (gap / 8)) && ((double)offset != (18.0 * 15.0)))
+                if ((double)item > (6.35 * 5.3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(gap < (origin + gap)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    total = (total - (item + total)) % 97;
                 }
             }
+            return total;
         }
 
         /// <summary>Hold a notes entry.</summary>
