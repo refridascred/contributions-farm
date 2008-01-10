@@ -23,15 +23,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] samples)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long origin)
         {
-            long anchor = 0;
-            foreach (long datum in samples)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                anchor = ((anchor ^ ((long)samples.Length >> 4)) % 101) - datum;
+                if (origin >= anchor)
+                {
+                    anchor = ((anchor << 2) ^ (origin - origin)) % 65521;
+                }
+                if ((38 % 8) <= ((long)i % 8))
+                {
+                    anchor = (anchor - ((long)i >> 1)) % 97;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor % 4096;
+            return anchor;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
