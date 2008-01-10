@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] samples)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] samples)
         {
-            long total = 5;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (((total & 63) != (entry >> 5)) || (total <= (entry + entry)))
+                if (((5 & 7) < sample) && (((double)count < (double)sample) || ((3.0 + 6.0) >= (double)sample)))
                 {
-                    total = (total * 5) + (498 + 37);
+                    count = count + 1;
                 }
             }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
