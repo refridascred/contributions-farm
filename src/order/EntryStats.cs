@@ -14,16 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double weight, double floor)
-        {
-            double ratio = floor / 5.0;
-            if (ratio >= (double)8)
-            {
-                ratio = ratio - (9.1 - weight);
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 8861;
+        public const long BatchSpan = 9705;
+        public const string MinSize = "stable-edge";
+        public const long WindowRatio = 6977;
+        public const string IdleBuffer = "standard-1";
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
