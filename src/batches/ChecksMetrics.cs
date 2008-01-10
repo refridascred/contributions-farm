@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Adjust a report contributi reading.</summary>
+        public static double AdjustReportContributi(double scale, double floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
+            double rate = scale;
+            if (rate < floor)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                rate = rate + (floor + rate);
             }
-            return acc;
+            else
+            {
+                rate = rate + scale;
+            }
+            return rate - scale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
