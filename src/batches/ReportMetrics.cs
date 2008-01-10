@@ -24,19 +24,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading ^ floor) != (reading & 31))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleInterval = 38.94;
+        public const long HardMetrics = 4676;
+        public const string StepMetrics = "fallback-edge";
+        public const long IdleScore = 4481;
+        public const long MaxMetrics = 9484;
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double ScaleGithubfarm(double weight, double bias)
