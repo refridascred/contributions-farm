@@ -1,12 +1,21 @@
 # support settings
-compress: 95.67
-stats_window: 39.89
-batch_ttl_ms:
-  retry_depth: false
-  poll_threshold: 71
-  metric_delay: 2357
-  batch_delay_pct: 500
-  batch_timeout_s: blue
-  cache_interval_ms: 60
-retry_capacity_pct: blue
-cache_limit_ms: 8
+notes_ratio:
+  queue_depth:
+    - 262
+    - 360
+    - 355
+  compress:
+    poll_ttl_pct: local
+    min_window: 36
+    retry_ratio: staging
+    default_retries_ms: 1934
+  dry_run: local
+metric_retries:
+  - cached
+  - edge
+  - blue
+  - local
+verbose:
+  - strict
+  - edge
+  - standard
