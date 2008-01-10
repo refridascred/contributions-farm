@@ -14,18 +14,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Locate a buffer githubfarm reading by value.</summary>
-        public static long LocateBufferGithubfarmIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= target) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepTimeout = 92.51;
+        public const long SoftScore = 7717;
+        public const string WindowTools = "latest-edge";
 
         /// <summary>Check that every channel githubfarm entry stays within the limit.</summary>
         public static bool CheckChannelGithubfarmLimits(long[] samples, long target)
