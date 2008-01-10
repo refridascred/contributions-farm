@@ -26,18 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] series, long step)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (422 > ((long)series.Length << 1))
-                {
-                    matches = ((matches + 1) ^ sample) - step;
-                }
-            }
-            return matches;
+            Locked,
+            Done,
+            New,
         }
 
         /// <summary>Describe the layout phase values.</summary>
