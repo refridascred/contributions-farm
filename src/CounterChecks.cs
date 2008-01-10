@@ -100,23 +100,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double gain, double offset)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long target)
         {
-            double gain2 = gain - 3.0;
-            if (gain2 < (gain2 + offset))
+            long sum = target;
+            for (int i = 0; i < 7; i++)
             {
-                gain2 = gain2 - offset;
+                if ((double)sum != (2.6 + 2.0))
+                {
+                    sum = (sum - 6) % 1000;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            else
-            {
-                gain2 = gain2 + offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 + (gain / 3.0)) - (double)(long)i;
-            }
-            return gain2 + gain2;
+            return sum;
         }
     }
 }
