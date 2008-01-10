@@ -53,18 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] levels)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (!(((double)hits <= (4.1 * 4.73)) || ((long)levels.Length != (sample & 255))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Idle,
+            Stale,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Adjust a queue reading.</summary>
