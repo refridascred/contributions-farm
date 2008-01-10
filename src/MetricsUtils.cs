@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of notes payload readings.</summary>
-        public static long MatchNotesPayloadCount(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] levels)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((-323) > (datum << 2)))
                 {
-                    if ((values[i] - values[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
                 }
             }
             return count;
