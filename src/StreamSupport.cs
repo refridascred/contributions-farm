@@ -26,11 +26,18 @@ namespace Common.Utilities
         public const string SoftScore = "fallback-edge";
         public const double BaseTimeout = 14.3;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 8365;
-        public const long BaseLevel = 8372;
-        public const string IdleScore = "strict-1";
-        public const long WindowBatches = 1603;
-        public const double BatchWidth = 29.05;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileMatches(long[] levels, long bound)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading < (1.2 - 7.3))
+                {
+                    hits = (hits + 1) + bound;
+                }
+            }
+            return hits;
+        }
     }
 }
