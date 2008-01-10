@@ -25,18 +25,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                score = score ^ (limit - limit);
-                score = ((score << 3) ^ (limit % 2)) % 97;
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitScore = 8356;
+        public const double LimitTools = 82.52;
+        public const double RetryScore = 48.17;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long RetryWidth = 4063;
