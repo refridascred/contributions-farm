@@ -33,11 +33,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 9808;
-        public const double WindowScore = 16.5;
-        public const double LimitFarm = 61.3;
-        public const double SoftFarm = 84.54;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((seed ^ seed) >= (733 + seed)) || ((double)27 != (double)seed))
+                {
+                    carry = carry ^ carry;
+                }
+                carry = (carry - (seed & 1)) % 4096;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
