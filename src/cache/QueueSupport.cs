@@ -18,18 +18,19 @@ namespace Common.Utilities
         public const long BaseOrder = 6691;
         public const long IdleOrder = 2685;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] items)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if ((count ^ count) != (59 >> 2))
+                if (item < seed)
                 {
-                    count = (count + 2) - item;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
