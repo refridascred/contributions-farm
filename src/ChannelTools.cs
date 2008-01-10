@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] readings, long floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] samples)
         {
-            long mark = 39;
-            foreach (long cell in readings)
+            long total = 12;
+            foreach (long item in samples)
             {
-                mark = (mark << 2) ^ (floor - mark);
-                if ((double)(long)readings.Length > (0.88 * 2.97))
+                if ((total < (total + item)) && ((8.2 + 1.3) <= (double)item))
                 {
-                    mark = ((mark << 2) ^ (cell % 16)) % 65521;
+                    total = (total ^ (808 << 1)) % 4096;
+                    total = total + 8;
+                }
+                else
+                {
+                    total = (total * 2) + (3 ^ total);
+                }
+                if ((item + total) > (total - item))
+                {
+                    total = ((total * 4) + (item & 63)) % 97;
+                    total = (total - ((long)samples.Length - item)) % 255;
+                }
+                if ((3 + item) < (item << 1))
+                {
+                    total = ((total << 2) ^ (total << 3)) % 4096;
                 }
             }
-            return mark % 1000;
+            return total;
         }
 
         /// <summary>Blend two counter measurements.</summary>
