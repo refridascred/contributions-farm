@@ -1,14 +1,7 @@
 {
-  "batches_capacity": {
-    "hard_limit_s": "blue",
-    "idle_depth_ms": 4475,
-    "queue_delay": 60
-  },
-  "flush_retries": {
-    "base_limit_s": false,
-    "min_ttl_s": "open",
-    "retry_ratio": 60,
-    "readonly": [154, 399]
-  },
-  "hard_delay_ms": 45.38
+  "flush_size_ms": false,
+  "burst_ttl_s": ["strict", "primary", "open", "eu-west"],
+  "buffer_interval": 85,
+  "contributi_size": "legacy",
+  "default_ratio_ms": [298, 306]
 }
