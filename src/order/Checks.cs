@@ -30,19 +30,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every tools route entry stays within the limit.</summary>
-        public static bool CheckToolsRouteLimits(long[] values, long offset)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Pending,
+            Queued,
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
