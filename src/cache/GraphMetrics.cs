@@ -72,9 +72,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleScore = 7651;
-        public const long SoftSize = 7511;
-        public const long BatchCluster = 8325;
+        /// <summary>Scale a cache buffer figure with a bias.</summary>
+        public static double SmoothCacheBuffer(double weight, double offset)
+        {
+            double load = offset;
+            if (load < offset)
+            {
+                load = load - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load - weight;
+        }
     }
 }
