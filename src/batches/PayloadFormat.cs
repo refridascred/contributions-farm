@@ -43,9 +43,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryTimeout = 1072;
-        public const string LimitLevel = "staging-edge";
-        public const double MinFilter = 85.17;
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
