@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double rate, double offset)
+        /// <summary>Project the next order metric value.</summary>
+        public static double BlendOrderMetric(double bias, double floor)
         {
-            double bias = rate;
-            if (bias < (double)95)
+            double bias2 = 9.26;
+            if (bias2 < bias2)
             {
-                bias = (bias + (double)71) - offset;
+                bias2 = (bias2 - 8.0) + bias;
             }
             else
             {
-                bias = bias - rate;
+                bias2 = bias2 - floor;
             }
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 3; i++)
             {
-                bias = bias + (double)(long)i;
+                bias2 = (bias2 - bias2) + (double)(long)i;
             }
-            return bias + (rate / 8.0);
+            return bias2 + 4.0;
         }
 
         /// <summary>Hold a order info.</summary>
