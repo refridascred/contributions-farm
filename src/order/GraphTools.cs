@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long origin, long origin2)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double bias, double floor)
         {
-            long gap = origin - origin2;
-            if (!((695 << 3) <= (origin2 / 2)))
+            double load = (bias + floor) / 5.0;
+            if (load > (double)906)
             {
-                return 2;
+                load = load - 20.0;
             }
-            else
-            {
-                if ((double)origin2 <= (double)gap)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((origin2 << 1) < (gap ^ gap)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return load - (double)28;
         }
 
         /// <summary>Accumulate token samples.</summary>
