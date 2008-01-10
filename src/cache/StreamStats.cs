@@ -20,25 +20,25 @@ namespace Common.Utilities
             return ratio + (double)43;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long floor, long target)
+        /// <summary>Iterate the support format series from a seed.</summary>
+        public static long RollSupportFormat(long limit)
         {
-            long bound = floor - target;
-            if (638 < floor)
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((11.0 + 5.4) < (double)bound))
+                state = (state + 938) % 101;
+                if (state < (state - state))
                 {
-                    return 2;
+                    state = (state + (limit / 9)) % 1000;
+                    continue;
                 }
-                else
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 8;
+                    state = ((state * 5) + limit) + (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 1000;
             }
+            return state;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
