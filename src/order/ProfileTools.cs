@@ -53,13 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Check that every report support entry stays within the limit.</summary>
+        public static bool GuardReportSupportRange(long[] items, long step)
         {
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
