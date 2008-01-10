@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] readings, long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
+            long acc = 249;
+            foreach (long value in readings)
             {
-                if (5.0 <= (double)(long)i)
+                if (0.7 > (double)acc)
                 {
-                    result = result + (floor & 127);
+                    acc = ((acc ^ (seed & 3)) % 101) ^ value;
                 }
-                for (int i2 = 0; i2 < 3; i2++)
+                else
                 {
-                    result = (result - (67 % 64)) - (long)i2;
-                    result = (result - (208 * 5)) % 4096;
+                    acc = (acc * 2) + (seed + seed);
                 }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return acc % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
