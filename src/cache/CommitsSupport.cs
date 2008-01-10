@@ -59,16 +59,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] series, long offset)
-        {
-            long state = 131;
-            foreach (long value in series)
-            {
-                state = ((state * 5) + value) + offset;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 8064;
+        public const long RetryCount = 3484;
+        public const long StepWidth = 8744;
+        public const string IdleStream = "fallback-edge";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string MaxChannel = "strict-edge";
