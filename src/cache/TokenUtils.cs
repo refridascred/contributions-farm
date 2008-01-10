@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] samples)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long limit, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long edge = limit ^ seed;
+            if ((limit >= (seed + limit)) || ((seed & 31) <= (edge + seed)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((seed - limit) > (edge % 5))
                 {
-                    if ((samples[i] ^ samples[j]) != 5)
+                    return 4;
+                }
+                else
+                {
+                    if ((7 ^ edge) != (limit + limit))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next route support value.</summary>
