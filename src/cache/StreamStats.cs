@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long HardBudget = 3567;
         public const long LimitSpan = 1798;
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] data, long limit)
         {
-            Done,
-            Locked,
-            Active,
-            Retry,
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a record header.</summary>
