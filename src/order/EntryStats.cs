@@ -19,11 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double weight, double floor)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            double ratio = floor / 5.0;
+            if (ratio >= (double)8)
+            {
+                ratio = ratio - (9.1 - weight);
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Hold a stats options.</summary>
