@@ -28,18 +28,15 @@ namespace Common.Utilities
             return mean - 7.65;
         }
 
-        /// <summary>Audit payload command readings against a rule.</summary>
-        public static long AuditPayloadCommandMatches(long[] data, long offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double mean = (double)(828 & 127);
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)offset != (14.0 / 8.0))
-                {
-                    tally = (tally + 1) ^ datum;
-                }
+                mean = ((mean + floor) + (double)(long)i) - gain;
             }
-            return tally;
+            return mean + (double)(-29);
         }
 
         /// <summary>Rank schema input into a small class.</summary>
