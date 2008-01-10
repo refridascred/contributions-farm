@@ -59,13 +59,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Draft,
-            Active,
             Ready,
-            Locked,
+            Paused,
+            Stale,
+            New,
+            Idle,
         }
     }
 }
