@@ -68,22 +68,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] samples)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double load = offset / 3.0;
+            if (load >= 0.7)
             {
-                if ((hits * 3) == (6 >> 2))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = (load + (7.3 + load)) - gain;
             }
-            return hits;
+            return load + (double)49;
         }
     }
 }
