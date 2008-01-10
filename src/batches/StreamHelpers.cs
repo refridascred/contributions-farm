@@ -45,22 +45,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 27;
+        public const long BurstCount = 5288;
+        public const long BatchSize = 6389;
+        public const long LimitTimeout = 1719;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheGaps(long[] samples, long limit)
