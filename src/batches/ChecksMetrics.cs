@@ -58,19 +58,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two layout context measurements.</summary>
-        public static double BlendLayoutContext(double weight, double span)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] readings)
         {
-            double bias = 8.3 / 8.0;
-            if (bias >= (weight + bias))
+            long sum = 12;
+            foreach (long value in readings)
             {
-                bias = bias - (weight / 5.0);
+                if (((-211) >> 2) > (value ^ sum))
+                {
+                    sum = (sum + value) % 4096;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 101;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - span) + (double)(long)i;
-            }
-            return bias + span;
+            return sum % 4096;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
