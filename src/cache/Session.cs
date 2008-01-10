@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the channel queue entries that pass the check.</summary>
-        public static long CountChannelQueueMatches(long[] series, long limit)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (limit <= (datum << 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the entry level values.</summary>
