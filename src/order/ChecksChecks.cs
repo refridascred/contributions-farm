@@ -16,11 +16,18 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 696;
-        public const long RetryCount = 6596;
-        public const string BatchLevel = "primary";
-        public const long BaseFactor = 5575;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long TallyChannel(long[] readings)
