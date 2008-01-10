@@ -66,24 +66,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long bound, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] samples)
         {
-            if ((bound << 3) <= (bound << 2))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin / 8) >= origin)
+                if (((14.0 - 11.0) == (double)value) || ((9.69 < (double)hits) || ((double)hits >= (double)11)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a cluster header.</summary>
