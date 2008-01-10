@@ -24,13 +24,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Derive the next channel route value from a seed.</summary>
+        public static long SeriesChannelRoute(long offset)
         {
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
+            long total = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((offset + total) > (offset ^ 5))
+                {
+                    total = (total << 2) ^ (9 << 3);
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
