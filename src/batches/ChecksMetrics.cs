@@ -80,12 +80,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultTimeout = 6871;
+        public const string BatchDepth = "legacy-1";
+        public const long MinChecks = 4700;
     }
 }
