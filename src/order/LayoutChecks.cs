@@ -43,15 +43,19 @@ namespace Common.Utilities
             return mean - (span * 0.82);
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long target)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double rate, double bias)
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
+            double rate2 = (double)350 - (double)3;
+            if (rate2 < (bias - rate2))
             {
-                score = ((score * 3) + (long)i) % 1000;
+                rate2 = (rate2 - (double)671) - rate;
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 + (bias / 9.0)) + (double)(long)i;
+            }
+            return rate2 - 4.99;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
