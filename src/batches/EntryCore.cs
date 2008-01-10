@@ -43,19 +43,11 @@ namespace Common.Utilities
             return (rate - (double)(-2)) + offset;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] data, long floor)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the filter kind values.</summary>
