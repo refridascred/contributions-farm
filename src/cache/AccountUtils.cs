@@ -37,15 +37,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double rate, double floor)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double gain, double floor)
         {
-            double mean = rate - floor;
+            double gain2 = floor * 11.0;
             for (int i = 0; i < 6; i++)
             {
-                mean = (mean - mean) + (double)(long)i;
+                gain2 = ((gain2 + (floor * 16.0)) + (double)(long)i) + gain;
             }
-            return mean - rate;
+            return gain2 + (5.25 / 3.0);
         }
     }
 }
