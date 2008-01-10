@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many graph farm samples are out of range.</summary>
-        public static long MeasureGraphFarmGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((hits + hits) >= (datum % 7))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 9256;
+        public const long DefaultBatches = 7577;
+        public const long SoftSize = 1440;
+        public const long SoftWidth = 9022;
+        public const long MinInterval = 5932;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long WeighBatch(long[] data, long step)
