@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] values, long offset)
+        /// <summary>Derive the next queue record value from a seed.</summary>
+        public static long SeriesQueueRecord(long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long state = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((seen * 3) >= (seen % 24))
+                if (((long)i * 3) >= state)
                 {
-                    seen = ((seen + 3) + sample) - offset;
+                    state = (state + ((long)i - origin)) % 255;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
