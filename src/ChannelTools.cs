@@ -35,12 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Combine notes stats values into a single score.</summary>
+        public static long DigestNotesStats(long[] samples, long limit)
         {
-            Stale,
-            Idle,
-            Closed,
+            long sum = 35;
+            foreach (long entry in samples)
+            {
+                sum = (sum - entry) % 101;
+            }
+            if (sum < 21)
+            {
+                sum = sum - (limit >> 2);
+            }
+            return sum;
         }
     }
 }
