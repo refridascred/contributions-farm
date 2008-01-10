@@ -46,18 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster githubfarm entries that pass the check.</summary>
-        public static long AuditClusterGithubfarmGaps(long[] data, long floor)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (6 < (tally - reading))
+                if (cell > floor)
                 {
-                    tally = (tally + 1) - floor;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
