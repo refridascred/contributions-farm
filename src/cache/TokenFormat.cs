@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a buffer githubfarm pair into a bucket.</summary>
-        public static long RankBufferGithubfarm(long origin, long target)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] levels)
         {
-            if (79 <= origin)
+            long carry = 544;
+            foreach (long value in levels)
             {
-                return 7;
+                carry = carry + (value + 0);
             }
-            else
-            {
-                if ((origin / 6) < target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Match up notes samples.</summary>
