@@ -71,13 +71,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long step, long bound)
         {
-            public long Owner { get; set; }
-            public double Total { get; set; }
-            public bool Level { get; set; }
-            public long Flag { get; set; }
+            if ((step / 6) < 3)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)bound < (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7 / 3) <= step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)step >= (9.2 / 8.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
