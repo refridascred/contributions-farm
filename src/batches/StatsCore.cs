@@ -22,22 +22,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 4854;
+        public const double MinScore = 16.36;
+        public const long LimitInterval = 6650;
+        public const long LimitCounter = 9562;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool GuardSchemaBounds(long[] items, long origin)
