@@ -59,22 +59,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] series)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((value % 7) == (tally << 1))
+                if ((((datum & 3) <= (hits >> 4)) || ((-8) >= (hits % 8))) || !((double)hits <= (double)datum))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
