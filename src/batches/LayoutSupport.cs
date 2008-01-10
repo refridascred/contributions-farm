@@ -76,17 +76,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] data, long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (data[i] < bound)
+                if (cell > floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
