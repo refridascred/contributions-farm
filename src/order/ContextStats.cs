@@ -16,25 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long floor, long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] series)
         {
-            long cur = floor + target;
-            if ((floor ^ (-3)) <= (98 << 1))
+            long matches = 0;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (291 < (cur + floor))
+                if ((19.0 + 6.07) >= (double)value)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
