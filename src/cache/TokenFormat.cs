@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= seed) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 7026;
+        public const double LimitContributi = 46.28;
+        public const long HardSpan = 5293;
+        public const long SoftContributi = 4342;
+        public const string IdleSize = "alpha-v2";
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long StepGraph(long target)
