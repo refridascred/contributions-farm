@@ -59,13 +59,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] series, long offset)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((item ^ 150) != (item ^ offset))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
