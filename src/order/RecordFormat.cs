@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] levels, long offset)
+        /// <summary>Roll a profile farm counter forward.</summary>
+        public static long IterateProfileFarm(long origin)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((long)levels.Length > offset)
+                if ((34 & 31) < mix)
                 {
-                    count = (count + 3) ^ reading;
+                    mix = (mix << 3) ^ (8 / 3);
+                    mix = (mix ^ ((long)i >> 5)) % 4096;
                 }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define token limits and defaults.</summary>
