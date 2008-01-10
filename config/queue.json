@@ -1,6 +1,16 @@
 {
-  "warm_ratio_ms": ["strict", "standard", "open"],
-  "buffer_delay": false,
-  "persist": 74.76,
-  "base_interval_count": 1291
+  "flush_capacity": 2664,
+  "readonly": 49,
+  "batch_threshold_count": 97.61,
+  "strict": 100,
+  "audit": {
+    "soft_window_s": {
+      "default_size": "legacy",
+      "filter_interval": [163, 497, 329, 342],
+      "editor_delay": true
+    },
+    "cache_limit": false,
+    "flush_timeout_count": false,
+    "hard_size": ["latest", "edge", "blue", "blue"]
+  }
 }
