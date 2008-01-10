@@ -1,5 +1,5 @@
 {
-  "audit": 83.46,
-  "flush_timeout": [130, 461, 312, 173],
-  "flush_retries_ms": [483, 27, 433, 351]
+  "compress": "stable",
+  "default_retries_count": 7104,
+  "hard_depth_s": 100
 }
