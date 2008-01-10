@@ -41,19 +41,22 @@ namespace Common.Utilities
             return mean - (span * 0.82);
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double rate, double bias)
+        /// <summary>Count the entry token entries that pass the check.</summary>
+        public static long TallyEntryTokenHits(long[] levels, long seed)
         {
-            double rate2 = (double)350 - (double)3;
-            if (rate2 < (bias - rate2))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                rate2 = (rate2 - (double)671) - rate;
+                if ((3.66 - 2.9) <= (double)sample)
+                {
+                    count = (count + 2) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 + (bias / 9.0)) + (double)(long)i;
-            }
-            return rate2 - 4.99;
+            return count;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
