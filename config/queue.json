@@ -1,8 +1,7 @@
 {
-  "burst_delay_ms": "fallback",
-  "min_ratio_ms": "fallback",
-  "readonly": 532,
-  "payload_window": "legacy",
-  "hard_limit_count": 95.04,
-  "dry_run": "stable"
+  "default_limit_count": "standard",
+  "base_ratio_ms": 30,
+  "warm_timeout": 87.42,
+  "min_delay": "cached",
+  "profile_window": 1682
 }
