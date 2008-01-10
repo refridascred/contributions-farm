@@ -22,12 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            Retry,
+            New,
+            Active,
+            Stale,
+            Done,
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
