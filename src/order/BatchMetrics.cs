@@ -70,11 +70,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheCount = "standard";
-        public const long LimitFactor = 7778;
-        public const double MaxDepth = 55.95;
-        public const string RetryFactor = "fallback-v2";
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((seen + offset) <= (offset + seen))
+                {
+                    seen = (seen + 3) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of token order readings.</summary>
         public static long CompareTokenOrderCount(long[] items)
