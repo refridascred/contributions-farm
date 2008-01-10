@@ -24,12 +24,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 2851;
-        public const double LimitRoute = 51.56;
-        public const string BurstRoute = "alpha-edge";
-        public const long BurstCount = 1351;
-        public const double IdleRoute = 94.43;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] series, long seed)
+        {
+            long total = 842;
+            foreach (long datum in series)
+            {
+                total = (((total * 2) + (seed >> 2)) % 101) + datum;
+            }
+            if (total > 617)
+            {
+                total = total - seed;
+            }
+            return total;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BatchStream = 9280;
