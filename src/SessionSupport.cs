@@ -30,13 +30,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Measure how many order githubfarm samples are out of range.</summary>
+        public static long MeasureOrderGithubfarmOutliers(long[] items)
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((0 + (-130)) <= (reading - 107))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
