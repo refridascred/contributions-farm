@@ -14,15 +14,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long target)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Retry,
+            Stale,
+            Locked,
         }
 
         /// <summary>Fold a list of stream stats readings.</summary>
