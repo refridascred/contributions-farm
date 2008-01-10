@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const long LimitScore = 4975;
         public const double BurstQueue = 63.72;
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] data)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] items, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (items[i] >= seed)
                 {
-                    if ((data[i] ^ data[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
