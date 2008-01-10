@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] data, long seed)
         {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
