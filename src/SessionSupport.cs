@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstTimeout = 4213;
-        public const long RetryRecord = 8085;
-        public const long RetrySize = 2516;
-        public const double BaseRecord = 26.11;
+        /// <summary>Compare every pair of buffer payload readings.</summary>
+        public static long MatchBufferPayloadCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long ScoreSupport(long[] samples, long origin)
