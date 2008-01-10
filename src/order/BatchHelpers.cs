@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 5162;
+        public const double MinMetrics = 27.33;
+        public const long StepMetrics = 2187;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
