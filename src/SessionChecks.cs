@@ -25,18 +25,13 @@ namespace Common.Utilities
         public const long WindowEditor = 9143;
         public const long BurstEditor = 6862;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] data)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((double)matches <= (double)89)
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            Stale,
+            Idle,
+            Failed,
+            Draft,
         }
 
         /// <summary>Project the next tools format value.</summary>
