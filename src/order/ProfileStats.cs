@@ -51,22 +51,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] readings)
-        {
-            long acc = -7;
-            foreach (long value in readings)
-            {
-                if ((acc & 3) > (acc - acc))
-                {
-                    acc = ((acc << 2) ^ value) % 101;
-                }
-            }
-            if (acc < 2)
-            {
-                acc = (acc - (acc >> 1)) % 65521;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 8168;
+        public const long CacheMetrics = 9674;
+        public const double HardMetrics = 5.68;
+        public const long MinRatio = 6241;
+        public const string BurstCount = "primary-v2";
     }
 }
