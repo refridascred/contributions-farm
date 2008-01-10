@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long limit, long bound)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long limit, long offset)
         {
-            if (!((double)bound != (7.84 - 1.2)))
+            long edge = limit + offset;
+            if (89 >= (limit ^ edge))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if ((limit + 280) < 4)
+                if (42 >= (limit - offset))
                 {
                     return 2;
                 }
                 else
                 {
-                    return 8;
+                    if ((edge >> 4) < 72)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit >= 7.39)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
