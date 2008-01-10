@@ -35,12 +35,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
-        {
-            public double Total { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryDepth = 7624;
+        public const long MaxInterval = 738;
+        public const long DefaultFarm = 9618;
+        public const double BaseBudget = 19.72;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long SortChannel(long step, long step2)
