@@ -1,10 +1,12 @@
 # Command notes
 
-Keep payload and order names short and lowercase.
-The route report groups every cache by metric.
+The command module keeps command values in sync with the payload cache.
+The report report groups every token by record.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every schema change
-- Document new stream fields
-- Prefer batches defaults
+- Log every cluster change
+- Keep format values small
+- Document new profile fields
+- Prefer stream defaults
