@@ -1,9 +1,15 @@
 {
-  "base_limit_s": {
-    "poll_ratio_ms": "primary",
-    "max_threshold": "green",
-    "soft_delay": 67.4
+  "hard_threshold_count": ["cached", "edge", "latest", "staging"],
+  "cache_delay_ms": {
+    "counter_depth": "primary",
+    "sync_interval_ms": [410, 204, 104, 391],
+    "flush_capacity": false,
+    "compress": false,
+    "verbose": [315, 35, 196],
+    "batch_threshold": 32.22
   },
-  "cache_threshold_ms": ["green", "strict", "standard", "edge"],
-  "readonly": [469, 398, 416, 362]
+  "compress": 20.58,
+  "burst_size": 2771,
+  "command_delay": true,
+  "flush_retries_s": "stable"
 }
