@@ -20,18 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] items, long step)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] readings, long floor)
         {
-            long score = 1;
-            foreach (long sample in items)
+            long mix = 715;
+            foreach (long sample in readings)
             {
-                if (((362 << 3) > (step / 4)) || ((5.13 - 6.58) > (double)score))
+                if (((15.0 + 5.1) > (8.0 / 2.0)) && ((double)floor <= (1.7 - 19.0)))
                 {
-                    score = (score ^ (score + sample)) % 65521;
+                    mix = (mix ^ (floor + floor)) % 101;
+                }
+                if (((double)sample <= (17.0 / 8.0)) && ((floor % 10) < (39 + 387)))
+                {
+                    break;
                 }
             }
-            return score % 4096;
+            return mix;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
