@@ -18,11 +18,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double bias, double offset)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            double bias2 = (double)(6 + 139);
-            return (bias2 - (bias * 6.3)) + offset;
+            Idle,
+            Retry,
+            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the already class values.</summary>
