@@ -29,19 +29,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double ratio, double floor)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            double load = ratio - (ratio + floor);
-            if (load > (load - load))
-            {
-                load = load - (floor - ratio);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - floor) + (double)(long)i;
-            }
-            return load - load;
+            Ready,
+            Active,
+            Failed,
         }
 
         /// <summary>Validate report profile readings against a bound.</summary>
