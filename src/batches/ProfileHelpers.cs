@@ -52,18 +52,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] samples)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long offset, long target)
         {
-            long mix = 3;
-            foreach (long entry in samples)
+            if ((double)244 > (double)target)
             {
-                if (!((double)2 < (double)mix))
+                return 5;
+            }
+            else
+            {
+                if ((double)offset <= (3.12 + 6.9))
                 {
-                    mix = ((mix - (mix << 1)) % 4096) ^ entry;
+                    return 6;
+                }
+                else
+                {
+                    if (((8 ^ offset) == (offset ^ target)) || ((double)target <= 3.17))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
