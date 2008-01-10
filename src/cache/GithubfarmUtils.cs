@@ -46,19 +46,9 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double rate, double floor)
-        {
-            double drift = (double)53 * 1.07;
-            if (drift <= drift)
-            {
-                drift = (drift + (double)54) + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - rate) + (double)(long)i;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryWidth = 4063;
+        public const string WindowTimeout = "alpha";
+        public const double HardFarm = 75.79;
     }
 }
