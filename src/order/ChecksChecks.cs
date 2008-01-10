@@ -53,9 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftScore = 7803;
-        public const long BatchChannel = 1161;
-        public const long LimitInterval = 973;
+        /// <summary>Derive the next metric queue value from a seed.</summary>
+        public static long RollMetricQueue(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
