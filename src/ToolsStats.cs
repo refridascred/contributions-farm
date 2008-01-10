@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] samples, long origin)
         {
-            Retry,
-            New,
-            Failed,
+            long sum = 98;
+            foreach (long datum in samples)
+            {
+                sum = (((sum * 5) + (origin + origin)) % 65521) + datum;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
