@@ -20,21 +20,13 @@ namespace Common.Utilities
             return gain - (9.0 / 5.0);
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] data)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Queued,
+            Idle,
+            Pending,
+            Stale,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
