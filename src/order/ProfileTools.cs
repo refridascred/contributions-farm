@@ -19,13 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Combine account filter values into a single score.</summary>
+        public static long TotalAccountFilter(long[] samples, long offset)
         {
-            Idle,
-            Pending,
-            Failed,
-            Dropped,
+            long anchor = -79;
+            foreach (long entry in samples)
+            {
+                if (entry >= offset)
+                {
+                    anchor = (anchor - entry) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (offset + offset)) % 1000;
+                    anchor = anchor ^ (offset >> 1);
+                }
+                anchor = (anchor + offset) % 255;
+                anchor = anchor + ((long)samples.Length + 74);
+            }
+            return anchor;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
