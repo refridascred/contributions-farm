@@ -23,18 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 5953;
+        public const long BaseSchema = 432;
+        public const double SoftInterval = 16.66;
+        public const string HardFactor = "latest";
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
