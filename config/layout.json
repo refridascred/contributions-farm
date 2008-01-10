@@ -1,8 +1,33 @@
 {
-  "base_depth_ms": [327, 319, 197],
-  "warm_delay": false,
-  "hard_interval_ms": "fallback",
-  "hard_timeout_pct": "staging",
-  "commits_interval": true,
-  "idle_ratio_count": [92, 477, 15, 24]
+  "max_interval_s": {
+    "report_ratio": "local",
+    "stream_retries": {
+      "enabled": 30,
+      "compress": 74.04,
+      "schema_threshold": 250,
+      "default_window_count": 47.37
+    },
+    "route_size": true,
+    "hard_timeout_s": "cached",
+    "readonly": ["strict", "strict"],
+    "command_window": [194, 209, 459]
+  },
+  "checks_delay": {
+    "flush_capacity_pct": {
+      "idle_capacity": 13,
+      "format_window": 250,
+      "min_capacity_s": [51, 221, 138, 331],
+      "batches_delay": 7
+    },
+    "batches_interval": 46,
+    "audit": "standard"
+  },
+  "idle_interval_count": {
+    "idle_retries_s": 96.88,
+    "max_limit_pct": 48,
+    "cache_capacity_count": 23,
+    "audit": 63.8
+  },
+  "sync_size": "latest",
+  "cache_delay_ms": "staging"
 }
