@@ -23,16 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] values)
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                anchor = ((anchor << 3) ^ (843 + anchor)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (!((12.0 > (double)item) || ((item - 55) > (item * 2))))
+                {
+                    matches = matches + 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
