@@ -1,4 +1,18 @@
 # githubfarm settings
-min_window: 3100
-dry_run: 75.1
-base_limit_s: standard
+entry_interval:
+  readonly: false
+  batch_limit_ms: true
+  filter_interval:
+    - staging
+    - local
+    - latest
+    - eu-west
+  base_depth_s: primary
+  account_depth: strict
+default_window_s: local
+counter_size:
+  base_retries_ms: staging
+  hard_ratio: fallback
+  warm_depth_pct: false
+default_capacity_pct: 70.29
+batch_interval_count: staging
