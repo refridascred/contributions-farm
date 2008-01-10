@@ -38,18 +38,17 @@ namespace Common.Utilities
         public const long IdleCounter = 538;
         public const string BatchRatio = "cached-edge";
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] series, long step)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((hits - entry) < (step % 7)) || (0 < hits)) && (((hits / 7) >= (-315)) && ((3.26 / 5.0) != (double)entry)))
+                if ((samples[i] > limit) && ((samples[i] % 3) == 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
