@@ -53,32 +53,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a counter format pair into a bucket.</summary>
-        public static long SortCounterFormat(long origin, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] samples, long target)
         {
-            long next = origin ^ floor;
-            if ((double)next != (double)floor)
+            long mark = 3;
+            foreach (long cell in samples)
             {
-                return 3;
+                mark = ((((mark * 3) + (mark & 7)) % 1000) - cell) - target;
             }
-            else
-            {
-                if (!(floor > (1 - 8)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((next + next) != (origin % 10))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
