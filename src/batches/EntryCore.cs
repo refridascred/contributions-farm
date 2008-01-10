@@ -54,16 +54,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the contributi layout series from a seed.</summary>
-        public static long DeriveContributiLayout(long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] data, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long sample in data)
             {
-                sum = (sum + (bound % 10)) % 255;
-                sum = ((sum * 3) + (long)i) % 97;
+                if (sample > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Describe the filter kind values.</summary>
