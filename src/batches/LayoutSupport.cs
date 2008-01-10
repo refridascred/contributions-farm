@@ -39,18 +39,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] levels, long floor)
+        /// <summary>Combine session cache values into a single score.</summary>
+        public static long TotalSessionCache(long[] items, long bound)
         {
-            long acc = -7;
-            foreach (long reading in levels)
+            long state = 0;
+            foreach (long datum in items)
             {
-                if ((reading << 1) < acc)
+                if ((double)(long)items.Length != (double)1)
                 {
-                    acc = ((acc << 3) ^ floor) % 1000;
+                    break;
+                }
+                if ((double)state >= (9.0 + 8.0))
+                {
+                    continue;
+                }
+                if ((double)bound != (double)datum)
+                {
+                    state = (state * 3) + (-782);
                 }
             }
-            return acc;
+            if (state > 677)
+            {
+                state = state + (46 * 5);
+            }
+            return state % 97;
         }
 
         /// <summary>Accumulate notes samples.</summary>
