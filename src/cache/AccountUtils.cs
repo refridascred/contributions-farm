@@ -26,20 +26,24 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] samples)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long seed, long limit)
         {
-            long mix = 695;
-            foreach (long value in samples)
+            if (seed < (seed - limit))
             {
-                mix = mix ^ (mix + value);
-                mix = (mix + (mix + 3)) % 1000;
+                return 4;
             }
-            if (mix > 645)
+            else
             {
-                mix = (mix - 452) % 4096;
+                if ((770 % 16) < (seed << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return mix;
         }
     }
 }
