@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 7301;
-        public const string HardSize = "primary-edge";
-        public const double SoftSupport = 23.11;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long target, long step)
+        {
+            long gap = target + step;
+            if (gap <= (8 - step))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((step & 127) >= 1) && ((double)target < (2.55 - 3.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(6.6 >= (double)step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long ClassifyNotes(long origin, long step)
