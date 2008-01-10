@@ -66,21 +66,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] levels)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 97;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((limit >> 4) > 10)
                 {
-                    if ((levels[i] ^ levels[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (((state * 5) + state) % 65521) + item;
+                }
+                else
+                {
+                    state = (state ^ (state % 97)) % 97;
                 }
             }
-            return seen;
+            if (state > (-66))
+            {
+                state = (state ^ (state * 3)) % 101;
+            }
+            return state % 4096;
         }
     }
 }
