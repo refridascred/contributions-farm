@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order token readings against a rule.</summary>
-        public static long AuditOrderTokenHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading != (6.79 + 3.13))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 6594;
+        public const long LimitSize = 7074;
+        public const string DefaultSize = "staging-1";
+        public const long IdleOrder = 8343;
 
         /// <summary>Scale a notes stats figure with a bias.</summary>
         public static double ScaleNotesStats(double weight, double bias)
