@@ -1,17 +1,31 @@
 # entry settings
-dry_run:
-  - green
-  - eu-west
-  - primary
+burst_capacity: 3231
+strict: true
+sync_limit:
+  channel_interval: fallback
+  persist: stable
+  poll_ttl_pct: 9311
+  default_threshold_pct:
+    - 433
+    - 334
+    - 239
+    - 500
+  compress:
+    - primary
+    - blue
+    - fallback
+    - open
+  retry_retries_count:
+    - 176
+    - 290
+    - 471
+idle_retries: false
+checks_timeout:
   - edge
-soft_capacity_count: cached
-strict: 0.65
-already_limit:
-  flush_threshold_count: legacy
-  soft_delay: 16.83
-  cache_threshold:
-    strict: 17
-    burst_delay_ms: 523
-    metrics_size: false
-  warm_limit_pct: true
-max_timeout_s: 27.01
+  - eu-west
+  - open
+default_capacity:
+  - blue
+  - edge
+  - latest
+  - staging
