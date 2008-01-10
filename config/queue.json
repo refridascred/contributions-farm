@@ -1,8 +1,6 @@
 {
-  "idle_interval": "fallback",
-  "strict": 82.2,
-  "cluster_ttl": false,
-  "poll_threshold": 35.21,
-  "base_size_s": ["cached", "blue", "strict", "latest"],
-  "idle_ttl_pct": 36.75
+  "warm_ratio_ms": ["strict", "standard", "open"],
+  "buffer_delay": false,
+  "persist": 74.76,
+  "base_interval_count": 1291
 }
