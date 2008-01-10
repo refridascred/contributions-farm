@@ -112,14 +112,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] levels)
         {
-            Queued,
-            Idle,
-            Closed,
-            Synced,
-            Done,
+            long acc = -6;
+            foreach (long entry in levels)
+            {
+                if ((entry + entry) != (acc ^ acc))
+                {
+                    acc = (acc << 3) ^ (acc + entry);
+                    acc = (acc << 2) ^ entry;
+                }
+                acc = (acc + (acc * 3)) % 1000;
+            }
+            return acc;
         }
     }
 }
