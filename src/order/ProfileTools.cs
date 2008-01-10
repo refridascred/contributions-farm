@@ -52,18 +52,11 @@ namespace Common.Utilities
         public const long StepOrder = 5785;
         public const long StepTimeout = 328;
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardSize = 70.39;
+        public const double RetryContext = 70.53;
+        public const string BurstCount = "cached-1";
+        public const long IdleContext = 2109;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double BlendAlready(double scale, double bias)
