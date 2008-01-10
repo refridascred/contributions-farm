@@ -1,5 +1,6 @@
 {
-  "soft_depth_count": 2626,
-  "farm_window": [280, 67, 456, 166],
-  "soft_depth_s": 28.32
+  "dry_run": true,
+  "already_interval": "edge",
+  "strict": 8025,
+  "base_window_count": "edge"
 }
