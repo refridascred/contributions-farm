@@ -37,19 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] samples)
+        /// <summary>Count the layout metrics entries that pass the check.</summary>
+        public static long CountLayoutMetricsMatches(long[] values)
         {
-            long state = 9;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                state = (state - (state * 4)) % 65521;
-                if ((state - 76) <= state)
+                if ((double)seen > 0.48)
                 {
-                    state = (state + (value & 7)) % 65521;
+                    seen = (seen + 2) - reading;
                 }
             }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
