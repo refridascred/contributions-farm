@@ -20,11 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 4781;
-        public const long LimitFactor = 1490;
-        public const long BaseInterval = 6130;
-        public const long BatchToken = 8158;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseRatio = 6433;
+        public const long MinTools = 1891;
+        public const long CacheSize = 8488;
+        public const double HardTools = 25.87;
+        public const long StepTools = 6163;
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long FindCommitsIndex(long[] samples, long step)
