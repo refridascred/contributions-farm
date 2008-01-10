@@ -35,16 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] readings, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor << 2) ^ (90 - (long)i)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (entry > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
