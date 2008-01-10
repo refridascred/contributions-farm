@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] series, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 3;
+            foreach (long entry in items)
             {
-                if (series[i] < bound)
+                if (mix <= seed)
                 {
-                    return (long)i;
+                    mix = mix ^ (934 + mix);
+                }
+                else
+                {
+                    mix = (mix * 4) + (entry & 3);
                 }
             }
-            return -1;
+            return mix % 1000;
         }
 
         /// <summary>Describe the schema phase values.</summary>
