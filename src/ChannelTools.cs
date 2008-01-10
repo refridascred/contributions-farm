@@ -33,20 +33,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double scale, double floor)
-        {
-            double gain = scale;
-            if (gain <= (floor + floor))
-            {
-                gain = gain - (double)187;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (scale * 0.8)) + (double)(long)i;
-            }
-            return gain - scale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 9808;
+        public const double WindowScore = 16.5;
+        public const double LimitFarm = 61.3;
+        public const double SoftFarm = 84.54;
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
