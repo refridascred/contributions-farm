@@ -24,11 +24,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinSpan = 1272;
-        public const long MinCount = 3762;
-        public const long BurstTimeout = 8310;
-        public const long DefaultRoute = 7150;
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long CombineAlready(long[] samples, long seed)
