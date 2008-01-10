@@ -19,20 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long step)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] series, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (cell != target)
                 {
-                    acc = (((acc * 5) + (898 / 6)) % 101) - (long)i2;
+                    flag = false;
+                    break;
                 }
-                acc = ((acc << 2) ^ (step + acc)) % 97;
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Measure how many payload githubfarm samples are out of range.</summary>
