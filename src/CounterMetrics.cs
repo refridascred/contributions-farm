@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
+            Locked,
+            Active,
+            Synced,
+            Done,
+            Draft,
         }
 
         /// <summary>Audit schema window readings against a rule.</summary>
