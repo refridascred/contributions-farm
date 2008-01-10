@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] data, long step)
+        /// <summary>Locate a already context reading by value.</summary>
+        public static long SeekAlreadyContextIndex(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (data[i] == step)
+                if ((items[i] >= origin) && ((items[i] % 5) != 0))
                 {
                     return (long)i;
                 }
