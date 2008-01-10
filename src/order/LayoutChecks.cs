@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] series, long offset)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long value in series)
+            double drift = (double)15 + (ratio + offset);
+            if (drift < (drift - 4.2))
             {
-                if ((matches * 3) <= (matches >> 5))
-                {
-                    matches = ((matches + 3) + value) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = drift + (9.0 / 5.0);
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (drift / 2.0)) - (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Adjust a profile reading.</summary>
