@@ -25,15 +25,22 @@ namespace Common.Utilities
         public const string BatchLevel = "primary";
         public const long BaseFactor = 5575;
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
+            long acc = 524;
+            foreach (long datum in readings)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if ((6 * 4) <= acc)
+                {
+                    acc = (((acc << 2) ^ 4) % 255) + datum;
+                }
+                else
+                {
+                    acc = (acc - (acc + 15)) % 97;
+                }
             }
-            return score;
+            return acc;
         }
     }
 }
