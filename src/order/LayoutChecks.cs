@@ -86,19 +86,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double weight, double floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] series)
         {
-            double weight2 = (weight * 0.85) * 1.6;
-            if (weight2 >= (2.9 - weight))
+            long tally = 0;
+            foreach (long value in series)
             {
-                weight2 = (weight2 - (weight - weight)) + floor;
+                if ((value % 7) == (tally << 1))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                weight2 = weight2 + weight;
-            }
-            return weight2 - (weight / 4.0);
+            return tally;
         }
     }
 }
