@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((double)tally > (2.6 * 2.6)) && ((tally / 7) != (datum / 4))) || ((tally + tally) < (tally ^ 794)))
                 {
-                    if ((data[i] - data[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
