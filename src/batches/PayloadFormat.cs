@@ -37,10 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstFactor = "cached-v2";
-        public const string DefaultToken = "latest-1";
-        public const long CacheSpan = 9377;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxBudget = 2234;
+        public const long BurstCount = 779;
+        public const string BatchCache = "staging-v2";
+        public const long StepCache = 9247;
+        public const long WindowSize = 3107;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long RetryTimeout = 1072;
