@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Pending,
-            Active,
-            Idle,
-            Locked,
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a route summary.</summary>
