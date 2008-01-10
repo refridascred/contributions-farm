@@ -35,15 +35,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Roll a window payload counter forward.</summary>
-        public static long DeriveWindowPayload(long floor)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] series, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Blend two schema measurements.</summary>
