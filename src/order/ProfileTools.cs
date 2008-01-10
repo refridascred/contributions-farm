@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] values, long bound)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((item * 2) >= (matches - item))
-                {
-                    matches = (matches + 3) + bound;
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Combine account filter values into a single score.</summary>
