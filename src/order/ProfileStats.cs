@@ -14,12 +14,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetrySpan = 7351;
-        public const double IdleStats = 43.05;
-        public const long BaseFactor = 3376;
-        public const long StepRatio = 7265;
-        public const long BatchStats = 2130;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!(offset >= ((long)i + 37)))
+                {
+                    mix = (mix - (mix & 1)) % 97;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportMatches(long[] items)
