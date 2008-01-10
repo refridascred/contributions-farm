@@ -54,12 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 925;
-        public const string StepBudget = "staging";
-        public const long MaxChannel = 1519;
-        public const string DefaultChannel = "stable";
-        public const long BatchChannel = 154;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Stale,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricHits(long[] data)
