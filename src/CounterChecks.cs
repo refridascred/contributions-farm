@@ -65,19 +65,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long origin)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] samples, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
+            long total = 85;
+            foreach (long item in samples)
             {
-                if (((mix << 2) <= (origin - origin)) && ((double)origin < 5.0))
-                {
-                    mix = mix ^ (15 & 127);
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
+                total = (((total << 3) ^ (total + offset)) % 255) ^ item;
             }
-            return mix;
+            if (total < 9)
+            {
+                total = (total << 2) ^ (total - total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
