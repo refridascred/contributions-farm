@@ -14,18 +14,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] data)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((9 & 127) == (tally % 100))
+                if (series[i] > step)
                 {
-                    tally = (tally + 3) + value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine notes batch values into a single score.</summary>
