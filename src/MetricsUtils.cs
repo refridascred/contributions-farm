@@ -19,16 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
+            long carry = limit;
+            for (int i = 0; i < 21; i++)
             {
-                result = (result * 3) + result;
-                result = ((result * 3) + (long)i) % 101;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
