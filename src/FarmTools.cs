@@ -27,18 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] items)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long mark = 5;
+            foreach (long value in values)
             {
-                if ((matches % 97) > 65)
-                {
-                    matches = (matches + 2) + entry;
-                }
+                mark = (((mark << 3) ^ (mark << 2)) % 97) - value;
             }
-            return matches;
+            return mark;
         }
     }
 }
