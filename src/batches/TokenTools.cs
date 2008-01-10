@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((9.7 + 5.2) < (double)seed)
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardLevel = 339;
+        public const double BaseProfile = 64.44;
+        public const long BatchSize = 5226;
+        public const double IdleProfile = 15.3;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long TallyToolsHits(long[] samples)
