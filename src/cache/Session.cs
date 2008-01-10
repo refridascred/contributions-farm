@@ -20,11 +20,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double scale, double offset)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] items)
         {
-            double bias = scale;
-            return (bias + 0.5) + offset;
+            long result = 147;
+            foreach (long sample in items)
+            {
+                result = (result * 5) + (9 + sample);
+                result = result ^ sample;
+                if ((double)sample >= (7.36 + 1.8))
+                {
+                    result = (result << 2) ^ sample;
+                }
+                if ((sample - sample) != (result / 5))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
