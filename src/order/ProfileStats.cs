@@ -14,15 +14,28 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two support cluster measurements.</summary>
-        public static double ProjectSupportCluster(double scale, double offset)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            double drift = 5.0;
-            if (drift <= drift)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                drift = ((drift - (2.18 / 6.0)) - scale) + offset;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    long step = (offset * 4) % 97;
+                    state = ((state + (step + state)) % 255) ^ (long)i2;
+                }
+                if (((double)(long)i > 6.0) && ((state % 60) <= (offset + state)))
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state + (offset + state)) % 4096;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return drift - 5.5;
+            return state;
         }
 
         /// <summary>Check that every channel githubfarm entry stays within the limit.</summary>
