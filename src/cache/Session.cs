@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] levels, long origin)
         {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank route input into a small class.</summary>
