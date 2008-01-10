@@ -29,21 +29,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] samples)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 821;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                sum = ((sum * 4) + (sum / 4)) % 1000;
+                sum = ((sum * 2) + (step + step)) % 1000;
+                if (79 < step)
                 {
-                    if ((samples[i] ^ samples[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum ^ (cell + 81)) % 97;
+                }
+                else
+                {
+                    sum = (sum + (sum + sum)) % 255;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
