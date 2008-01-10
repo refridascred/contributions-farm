@@ -1,5 +1,5 @@
 {
-  "default_retries_ms": 1024,
-  "compress": 79.67,
-  "sync_capacity": ["latest", "latest", "blue"]
+  "base_interval": [87, 69],
+  "compress": 9,
+  "dry_run": "latest"
 }
