@@ -14,11 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] levels)
         {
-            public double Weight { get; set; }
-            public bool Count { get; set; }
+            long mark = 97;
+            foreach (long cell in levels)
+            {
+                mark = (mark - mark) % 65521;
+                if ((cell / 7) >= mark)
+                {
+                    mark = ((mark << 3) ^ mark) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
