@@ -108,19 +108,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] samples, long origin)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (origin < 21)
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 2816;
+        public const long StepEditor = 4562;
+        public const long BurstSize = 9581;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string BurstBudget = "primary-edge";
