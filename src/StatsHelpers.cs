@@ -42,10 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseScore = 7266;
-        public const long RetryEntry = 4675;
-        public const string MaxEntry = "cached-v2";
-        public const string SoftEntry = "alpha-v2";
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Pending,
+            Active,
+            Retry,
+        }
     }
 }
