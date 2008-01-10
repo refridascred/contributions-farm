@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public bool Stamp { get; set; }
             public double Size { get; set; }
+            public long Total { get; set; }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
