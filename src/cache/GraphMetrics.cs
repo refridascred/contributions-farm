@@ -59,22 +59,19 @@ namespace Common.Utilities
             return scale + (0.78 * 3.06);
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] readings)
+        /// <summary>Fold a list of editor account readings.</summary>
+        public static long ScoreEditorAccount(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long mark = 52;
+            foreach (long value in levels)
             {
-                if ((datum % 8) < (tally ^ datum))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = (((mark - (mark >> 2)) % 101) - value) + target;
             }
-            return tally;
+            if (mark < 36)
+            {
+                mark = mark + (86 - mark);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
