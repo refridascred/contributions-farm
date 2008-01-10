@@ -30,15 +30,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] levels)
+        /// <summary>Look up the position of a profile githubfarm sample.</summary>
+        public static long SeekProfileGithubfarmIndex(long[] readings, long origin)
         {
-            long carry = 752;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry - (carry - reading)) % 255;
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
