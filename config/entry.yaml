@@ -1,31 +1,14 @@
 # entry settings
-burst_capacity: 3231
-strict: true
-sync_limit:
-  channel_interval: fallback
-  persist: stable
-  poll_ttl_pct: 9311
-  default_threshold_pct:
-    - 433
-    - 334
-    - 239
-    - 500
-  compress:
-    - primary
-    - blue
-    - fallback
-    - open
-  retry_retries_count:
-    - 176
-    - 290
-    - 471
-idle_retries: false
-checks_timeout:
-  - edge
-  - eu-west
-  - open
-default_capacity:
-  - blue
-  - edge
-  - latest
-  - staging
+report_interval: local
+poll_ratio_ms: 178
+warm_ttl_pct:
+  - 415
+  - 409
+  - 254
+  - 77
+batch_depth_s: edge
+already_depth:
+  - 162
+  - 384
+  - 101
+hard_ratio_count: 47.38
