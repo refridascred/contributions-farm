@@ -25,11 +25,10 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepRatio = 8940;
-        public const double BurstSpan = 73.81;
-        public const long RetryCluster = 7345;
-        public const long StepSpan = 8545;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseDepth = 74.23;
+        public const double StepQueue = 43.83;
+        public const long LimitQueue = 8662;
 
         /// <summary>Iterate the profile stats series from a seed.</summary>
         public static long SeriesProfileStats(long offset)
