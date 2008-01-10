@@ -26,17 +26,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = (acc - acc) % 101;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 3;
+        public const long MaxMetric = 9623;
+        public const long IdleMetric = 1984;
 
         /// <summary>Roll a account format counter forward.</summary>
         public static long SeriesAccountFormat(long offset)
