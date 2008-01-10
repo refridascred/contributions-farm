@@ -13,13 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Measure how many route editor samples are out of range.</summary>
+        public static long MeasureRouteEditorOutliers(long[] series, long origin)
         {
-            Ready,
-            Stale,
-            Paused,
-            Pending,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((double)origin == (double)tally)
+                {
+                    tally = (tally + 2) - cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate cache samples.</summary>
