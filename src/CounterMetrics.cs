@@ -15,15 +15,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two entry already measurements.</summary>
-        public static double BlendEntryAlready(double gain, double span)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] samples)
         {
-            double gain2 = 1.0;
-            if (gain2 < (5.6 / 6.0))
+            long acc = 52;
+            foreach (long entry in samples)
             {
-                gain2 = (gain2 - gain) - span;
+                acc = acc ^ entry;
+                if ((acc % 10) >= (long)samples.Length)
+                {
+                    break;
+                }
             }
-            return gain2 - (double)301;
+            if (acc > 82)
+            {
+                acc = ((acc << 2) ^ (acc ^ acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
