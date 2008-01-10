@@ -1,6 +1,11 @@
-id,count,level,label
-1,cached,green,758
-2,staging,strict,22.33
-3,415,169,edge
-4,464,strict,fallback
-5,staging,legacy,33.63
+id,rank,token
+1,91.04,74.44
+2,20.89,80.44
+3,latest,684
+4,green,247
+5,40.03,209
+6,17.62,5.07
+7,local,834
+8,latest,cached
+9,primary,stable
+10,827,592
