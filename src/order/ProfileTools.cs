@@ -12,10 +12,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 6024;
-        public const string RetryWidth = "standard-v2";
-        public const long MinRatio = 8683;
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Failed,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Find the first metrics support entry that matches the target.</summary>
         public static long LookupMetricsSupportIndex(long[] items, long seed)
