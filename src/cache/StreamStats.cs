@@ -37,16 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] samples)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] levels, long seed)
         {
-            long acc = 54;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                acc = (((acc * 5) + acc) % 255) ^ reading;
-                acc = (acc * 4) + acc;
+                if (((double)seed <= (double)matches) && ((matches >> 1) < (matches + matches)))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
             }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
