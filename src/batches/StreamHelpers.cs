@@ -73,15 +73,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a window command counter forward.</summary>
-        public static long StepWindowCommand(long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] samples, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                state = ((state * 3) + (long)i) % 97;
+                if ((sample - limit) > (hits - sample))
+                {
+                    hits = hits + 3;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
