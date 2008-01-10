@@ -13,38 +13,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long limit, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] samples)
         {
-            if (limit <= (limit + origin))
+            long mix = 383;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((2.0 / 6.0) <= (double)origin)
+                if ((24 & 7) <= (item / 5))
                 {
-                    return 0;
+                    mix = ((mix * 4) + item) % 65521;
                 }
                 else
                 {
-                    if ((origin + limit) <= (30 * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (origin < (limit + 9))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mix = (mix ^ item) % 97;
                 }
             }
+            if (mix > 0)
+            {
+                mix = (mix - (mix + mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
