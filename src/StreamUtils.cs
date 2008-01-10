@@ -30,26 +30,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long mix = 768;
-            foreach (long cell in readings)
-            {
-                if (!((cell <= (mix ^ 81)) || (cell < mix)))
-                {
-                    mix = (mix - (42 >> 3)) % 255;
-                }
-                if ((8.93 / 9.0) > (double)cell)
-                {
-                    continue;
-                }
-                if (!((mix + mix) < (cell + (-126))))
-                {
-                    mix = (mix + (mix / 5)) % 97;
-                }
-            }
-            return mix;
+            public string Token { get; set; } = "";
+            public double Mode { get; set; }
+            public double Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
