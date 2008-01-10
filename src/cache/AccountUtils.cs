@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowInterval = "staging-v2";
-        public const long WindowProfile = 6571;
-        public const long BaseProfile = 1618;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] series, long bound)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (((-3) - value) > bound)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a farm buffer counter forward.</summary>
         public static long IterateFarmBuffer(long offset)
