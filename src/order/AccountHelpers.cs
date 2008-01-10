@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long step)
+        /// <summary>Fold a list of cache contributi readings.</summary>
+        public static long DigestCacheContributi(long[] readings)
         {
-            long mix = step;
-            for (int i = 0; i < 20; i++)
+            long carry = 430;
+            foreach (long item in readings)
             {
-                mix = ((mix << 3) ^ (step / 3)) % 4096;
-                mix = ((mix * 5) + (long)i) % 97;
+                carry = (carry ^ carry) - item;
+                carry = (carry + (carry * 4)) % 255;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Project the next counter value.</summary>
