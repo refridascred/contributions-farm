@@ -22,19 +22,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] data, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long acc = 90;
+            foreach (long datum in items)
             {
-                if (cell > origin)
+                for (int i = 0; i < 8; i++)
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc - (13 + target)) ^ (long)i) - datum;
                 }
+                acc = ((acc * 3) + acc) % 97;
             }
-            return ok;
+            return acc % 1000;
         }
 
         /// <summary>Describe the token status values.</summary>
