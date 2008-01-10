@@ -43,11 +43,39 @@ namespace Common.Utilities
             return (rate - (double)(-2)) + offset;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long bound, long offset)
         {
-            public double Region { get; set; }
-            public double Flag { get; set; }
+            long prev = bound ^ offset;
+            if ((double)3 <= (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)offset < (8.1 + 1.0)) || (prev < (bound / 7)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)247 <= (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(prev < (prev - offset)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up layout samples.</summary>
