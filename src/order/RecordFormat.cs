@@ -53,16 +53,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark << 3) ^ (855 & 1)) % 4096;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardCluster = 2.29;
+        public const string BaseRatio = "alpha-v2";
+        public const long BurstCluster = 8549;
     }
 }
