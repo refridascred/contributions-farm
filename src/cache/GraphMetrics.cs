@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
-        {
-            Failed,
-            Draft,
-            Idle,
-            New,
-            Paused,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 7301;
+        public const string HardSize = "primary-edge";
+        public const double SoftSupport = 23.11;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long CombineFormat(long[] readings, long floor)
