@@ -61,14 +61,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Iterate the payload format series from a seed.</summary>
+        public static long RollPayloadFormat(long target)
         {
-            Draft,
-            Closed,
-            New,
-            Queued,
-            Retry,
+            long acc = target;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = (acc ^ (acc * 5)) % 4096;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
