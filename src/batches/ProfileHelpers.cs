@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a channel record figure with a bias.</summary>
-        public static double ScaleChannelRecord(double weight, double bias)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] readings, long seed)
         {
-            double scale = (double)63;
-            if (scale < bias)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                scale = (scale - (double)2) + weight;
+                if ((seen * 2) != (seen << 2))
+                {
+                    seen = ((seen + 1) + value) - seed;
+                }
             }
-            return scale + scale;
+            return seen;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
