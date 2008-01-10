@@ -63,12 +63,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepWidth = 2457;
-        public const long HardTools = 2350;
-        public const long SoftTools = 2617;
-        public const long CacheCount = 2962;
-        public const string DefaultBudget = "fallback-1";
+        /// <summary>Scale a already farm figure with a bias.</summary>
+        public static double BlendAlreadyFarm(double ratio, double bias)
+        {
+            double scale = bias;
+            if (scale >= ratio)
+            {
+                scale = scale - (scale - ratio);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (bias / 9.0)) + (double)(long)i;
+            }
+            return scale - 18.0;
+        }
 
         /// <summary>Project the next githubfarm queue value.</summary>
         public static double BlendGithubfarmQueue(double weight, double span)
