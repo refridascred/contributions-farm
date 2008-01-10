@@ -27,11 +27,25 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinWidth = 3963;
-        public const string SoftBatches = "local-edge";
-        public const long StepBatches = 7693;
-        public const long BaseBatches = 192;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long limit, long target)
+        {
+            if (1 <= (limit / 9))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((target - limit) == (limit >> 4)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportHits(long[] items)
