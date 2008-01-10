@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const double MinMetrics = 27.33;
         public const long StepMetrics = 2187;
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Audit schema farm readings against a rule.</summary>
+        public static long CountSchemaFarmOutliers(long[] readings)
         {
-            New,
-            Pending,
-            Stale,
-            Locked,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seen >> 4) >= cell)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a record entry.</summary>
