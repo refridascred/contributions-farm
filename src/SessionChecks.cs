@@ -25,18 +25,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 412;
+        public const double MaxEditor = 93.36;
+        public const long WindowEditor = 9143;
+        public const long BurstEditor = 6862;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderMatches(long[] data)
