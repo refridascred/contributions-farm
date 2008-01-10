@@ -32,22 +32,22 @@ namespace Common.Utilities
             return (weight + weight) + bias;
         }
 
-        /// <summary>Fold a list of layout already readings.</summary>
-        public static long CombineLayoutAlready(long[] data, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] values, long limit)
         {
-            long mix = 276;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((1.1 - 9.9) < (double)reading)
+                if ((double)limit == (9.9 - 7.0))
                 {
-                    mix = (((mix * 2) + (reading * 5)) % 255) - bound;
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (mix > (-198))
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
