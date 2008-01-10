@@ -42,26 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] data, long limit)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long result = 64;
-            foreach (long value in data)
-            {
-                if ((double)value != (6.35 / 2.0))
-                {
-                    result = ((result ^ (value - result)) % 1000) + limit;
-                }
-                else
-                {
-                    result = result ^ result;
-                }
-            }
-            if (result < 4)
-            {
-                result = (result ^ (result - 305)) % 1000;
-            }
-            return result % 65521;
+            New,
+            Closed,
+            Stale,
+            Done,
         }
 
         /// <summary>Define window limits and defaults.</summary>
