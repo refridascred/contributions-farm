@@ -47,18 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] samples, long bound)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double rate, double span)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double scale = rate;
+            for (int i = 0; i < 2; i++)
             {
-                if ((bound & 3) < (bound + hits))
-                {
-                    hits = (hits + 1) + cell;
-                }
+                scale = ((scale - (2.0 - scale)) + (double)(long)i) + span;
             }
-            return hits;
+            return scale - (0.4 * 7.53);
         }
     }
 }
