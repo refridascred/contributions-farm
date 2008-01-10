@@ -23,17 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first session record entry that matches the target.</summary>
-        public static long LookupSessionRecordIndex(long[] samples, long bound)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Project the next graph value.</summary>
