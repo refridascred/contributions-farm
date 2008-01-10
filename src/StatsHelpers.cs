@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const double CacheScore = 49.14;
         public const long CacheCount = 6456;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] values, long seed)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long limit)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long acc = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum < seed)
+                if (((long)i > 43) || ((limit & 15) < limit))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc << 2) ^ (limit + acc);
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
