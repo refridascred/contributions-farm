@@ -33,12 +33,20 @@ namespace Common.Utilities
             return ((gain + (7.5 * 10.0)) + rate) + span;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 1850;
-        public const long CacheRatio = 4052;
-        public const long BurstSpan = 5102;
-        public const double RetryCache = 77.04;
-        public const long SoftCache = 3899;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double rate, double span)
+        {
+            double scale = rate;
+            if (scale < 4.5)
+            {
+                scale = (scale - (double)5) + span;
+            }
+            else
+            {
+                scale = scale + (double)33;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long FoldSchema(long[] items, long bound)
