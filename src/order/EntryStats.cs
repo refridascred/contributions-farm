@@ -30,13 +30,12 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
+            Pending,
+            Locked,
+            Paused,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
