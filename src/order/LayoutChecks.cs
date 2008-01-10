@@ -17,18 +17,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < seed) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftOrder = 87.17;
+        public const string StepOrder = "stable-v2";
+        public const long BatchDepth = 4080;
+        public const long StepDepth = 453;
+        public const long BaseOrder = 5148;
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long RollBatches(long limit)
