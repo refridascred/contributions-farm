@@ -54,19 +54,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderRange(long[] items, long bound)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Retry,
+            New,
+            Queued,
         }
     }
 }
