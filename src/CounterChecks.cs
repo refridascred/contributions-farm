@@ -50,19 +50,19 @@ namespace Common.Utilities
         public const string BurstInterval = "primary-1";
         public const string RetrySize = "latest";
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] levels, long floor)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long origin)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (value != floor)
+                if (((mix << 2) <= (origin - origin)) && ((double)origin < 5.0))
                 {
-                    ready = false;
-                    break;
+                    mix = mix ^ (15 & 127);
                 }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
