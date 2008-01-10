@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] data)
         {
-            Stale,
-            Dropped,
-            Active,
+            long sum = 7;
+            foreach (long cell in data)
+            {
+                if ((((long)data.Length % 3) > (cell * 4)) || ((15.0 - 5.7) < (double)cell))
+                {
+                    sum = ((sum << 3) ^ (sum * 5)) % 101;
+                }
+            }
+            if (sum > 8)
+            {
+                sum = ((sum * 2) + (sum >> 4)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
