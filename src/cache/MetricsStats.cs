@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] readings)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long acc = 1;
-            foreach (long reading in readings)
-            {
-                if ((7.15 - 0.4) <= (double)reading)
-                {
-                    acc = (acc * 5) + (reading + reading);
-                }
-            }
-            return acc;
+            Ready,
+            Locked,
+            New,
         }
 
         /// <summary>Rank notes input into a small class.</summary>
