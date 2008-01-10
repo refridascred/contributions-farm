@@ -33,17 +33,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] data, long offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 621;
+            foreach (long item in readings)
             {
-                if ((data[i] < offset) && ((data[i] % 2) != 0))
+                if ((double)item >= 2.0)
                 {
-                    return (long)i;
+                    acc = (acc + (acc + acc)) % 1000;
                 }
             }
-            return -1;
+            if (acc > 906)
+            {
+                acc = ((acc * 3) + acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
