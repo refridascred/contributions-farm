@@ -24,19 +24,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Derive the next channel route value from a seed.</summary>
-        public static long SeriesChannelRoute(long offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((offset + total) > (offset ^ 5))
-                {
-                    total = (total << 2) ^ (9 << 3);
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Done,
+            Closed,
+            Draft,
+            New,
+            Pending,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
