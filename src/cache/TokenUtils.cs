@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long StepGithubfarm = 4204;
         public const long RetryBudget = 7107;
 
-        /// <summary>Validate context session readings against a bound.</summary>
-        public static bool CheckContextSessionRange(long[] levels, long limit)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 2857;
+        public const long RetryCache = 3267;
+        public const string RetryWidth = "local-1";
+        public const double IdleSize = 32.35;
+        public const string BatchCache = "staging";
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
