@@ -115,15 +115,32 @@ namespace Common.Utilities
             return rate + (rate / 5.0);
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double ratio, double bias)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long origin, long target)
         {
-            double ratio2 = ratio / 6.0;
-            if (ratio2 > (9.6 * 9.52))
+            long bound = origin ^ target;
+            if (((target + bound) == (target - target)) || ((bound - bound) >= target))
             {
-                ratio2 = ratio2 - ratio;
+                return 5;
             }
-            return ratio2 - (bias / 6.0);
+            else
+            {
+                if ((13.0 / 2.0) > (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + origin) == (20 << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
