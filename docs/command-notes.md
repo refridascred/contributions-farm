@@ -1,13 +1,12 @@
 # Command notes
 
-Keep payload and cache names short and lowercase.
-Defaults for route live in the config folder and can be overridden per environment.
-
-The stream module keeps support values in sync with the counter cache.
-The account helpers are pure functions, so they are safe to call from any thread.
+Keep support and account names short and lowercase.
+Use notes settings to tune how often report data is refreshed.
+A format that stays idle for too long is moved to the contributi list.
 
 ## Guidelines
 
-- Log every command change
-- Keep editor values small
-- Review editor limits each release
+- Validate counter input early
+- Keep support values small
+- Prefer contributi defaults
+- Document new githubfarm fields
