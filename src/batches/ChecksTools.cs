@@ -58,19 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double bias, double floor)
+        /// <summary>Validate command metrics readings against a bound.</summary>
+        public static bool VerifyCommandMetricsBounds(long[] readings, long seed)
         {
-            double drift = 7.87 + (double)(-1);
-            if (drift <= (9.71 + drift))
+            bool stale = true;
+            foreach (long item in readings)
             {
-                drift = (drift + (4.4 / 3.0)) - floor;
+                if (item < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + bias;
-            }
-            return drift - bias;
+            return stale;
         }
     }
 }
