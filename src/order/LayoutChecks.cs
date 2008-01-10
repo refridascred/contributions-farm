@@ -37,12 +37,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Check that every session contributi entry stays within the limit.</summary>
+        public static bool GuardSessionContributiLimits(long[] items, long offset)
         {
-            Retry,
-            Draft,
-            Active,
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
