@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] series, long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] samples, long offset)
         {
-            long mix = 94;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (!(reading >= limit))
+                if (1.4 <= (double)reading)
                 {
-                    mix = ((mix * 5) + (50 & 15)) % 101;
+                    seen = (seen + 3) - offset;
                 }
             }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
