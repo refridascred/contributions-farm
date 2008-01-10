@@ -13,16 +13,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
+            long sum = 75;
+            foreach (long value in data)
             {
-                result = (result ^ result) % 101;
-                result = ((result * 3) + (long)i) % 65521;
+                if ((sum + sum) >= 39)
+                {
+                    sum = (sum - sum) % 255;
+                }
+                if (((value >> 3) < (769 - 922)) || ((10.0 * 0.48) <= (double)value))
+                {
+                    sum = sum + (sum << 1);
+                }
             }
-            return result;
+            if (sum < 4)
+            {
+                sum = (sum - sum) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
