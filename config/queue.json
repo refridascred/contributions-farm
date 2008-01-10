@@ -1,5 +1,7 @@
 {
-  "sync_limit_s": "fallback",
-  "record_delay": 9600,
-  "warm_ttl_pct": "stable"
+  "dry_run": "strict",
+  "compress": "green",
+  "flush_retries_s": [27, 1],
+  "context_limit": ["edge", "primary", "standard"],
+  "max_retries": 7
 }
