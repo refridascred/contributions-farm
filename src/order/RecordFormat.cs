@@ -21,12 +21,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryScore = 4851;
-        public const string SoftLevel = "staging-edge";
-        public const long CacheToken = 335;
-        public const long MinRatio = 9036;
-        public const long MaxInterval = 4378;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultScore = "standard-edge";
+        public const double WindowFilter = 59.74;
+        public const long BurstFilter = 617;
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
