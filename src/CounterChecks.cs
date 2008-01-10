@@ -51,21 +51,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Measure how many order command samples are out of range.</summary>
+        public static long CountOrderCommandMatches(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)item <= (2.3 - 1.2))
                 {
-                    if ((data[i] - data[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a layout entry.</summary>
