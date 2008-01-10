@@ -55,9 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowLevel = 8220;
-        public const long StepMetric = 2151;
-        public const long StepTimeout = 6929;
+        /// <summary>Check that every report layout entry stays within the limit.</summary>
+        public static bool GuardReportLayoutLimits(long[] values, long offset)
+        {
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
