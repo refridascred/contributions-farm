@@ -32,23 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double scale, double offset)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long offset)
         {
-            double scale2 = scale * 18.0;
-            if (scale2 >= (scale * 5.7))
+            long score = offset;
+            for (int i = 0; i < 6; i++)
             {
-                scale2 = scale2 + (scale - 1.6);
+                score = ((score << 3) ^ ((long)i & 7)) % 101;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            else
-            {
-                scale2 = scale2 - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 - (offset - 8.1)) + (double)(long)i;
-            }
-            return scale2 - scale;
+            return score;
         }
 
         /// <summary>Describe the already mode values.</summary>
