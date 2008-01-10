@@ -29,22 +29,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] series, long origin)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long floor, long floor2)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long offset = floor ^ floor2;
+            if ((offset + floor) != (offset - offset))
             {
-                if (origin < (hits - origin))
+                return 7;
+            }
+            else
+            {
+                if (!((460 >> 1) > (offset - offset)))
                 {
-                    hits = (hits + 1) + value;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)floor2 > 17.0)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((62 + offset) != (26 * 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
