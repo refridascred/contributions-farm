@@ -23,10 +23,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheWidth = "strict";
-        public const long LimitRecord = 2225;
-        public const long RetryRecord = 718;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Match up batch samples.</summary>
         public static long MatchBatchCount(long[] data)
