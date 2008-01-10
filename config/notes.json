@@ -1,6 +1,5 @@
 {
-  "commits_capacity": "staging",
-  "default_depth_pct": "latest",
-  "base_retries_s": ["open", "stable", "blue", "cached"],
-  "idle_retries_count": "primary"
+  "default_delay": true,
+  "persist": 78.04,
+  "batch_threshold_s": "primary"
 }
