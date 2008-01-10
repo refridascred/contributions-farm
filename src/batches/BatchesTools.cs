@@ -30,12 +30,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Combine filter profile values into a single score.</summary>
+        public static long FoldFilterProfile(long[] values, long limit)
         {
-            Locked,
-            Idle,
-            Done,
+            long score = 9;
+            foreach (long cell in values)
+            {
+                if (1.37 < (double)score)
+                {
+                    score = (((score ^ (score & 7)) % 97) + cell) + limit;
+                }
+            }
+            if (score > 974)
+            {
+                score = (score - (179 * 5)) % 1000;
+            }
+            return score;
         }
     }
 }
