@@ -47,17 +47,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] levels, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (levels[i] < target)
+                if ((sample + 699) <= sample)
                 {
-                    return (long)i;
+                    seen = (seen + 1) - limit;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
