@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleFactor = 4094;
-        public const double DefaultFactor = 70.91;
-        public const long BurstWidth = 6658;
+        /// <summary>Look up the position of a contributi counter sample.</summary>
+        public static long SeekContributiCounterIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool CheckBatchBounds(long[] levels, long floor)
