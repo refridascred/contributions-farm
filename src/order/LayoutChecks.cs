@@ -47,39 +47,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long bound, long origin)
-        {
-            if (bound < (origin % 8))
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound <= (origin % 97))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((9.0 / 8.0) < (double)origin) && (origin >= (origin + bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound > (bound >> 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleLayout = 91.96;
+        public const long SoftLevel = 7515;
+        public const string BatchLayout = "open";
+        public const long RetryLayout = 7701;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long AuditGithubfarmMatches(long[] series)
