@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstScore = 1345;
-        public const double RetryBudget = 88.85;
-        public const long BurstSchema = 9430;
-        public const string BatchFactor = "cached-edge";
-        public const double IdleSchema = 93.41;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] items, long origin)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorGaps(long[] data)
