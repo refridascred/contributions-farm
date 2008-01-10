@@ -23,15 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double scale, double floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] values)
         {
-            double drift = (12.0 + floor) / 3.0;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                drift = (drift + scale) - (double)(long)i;
+                if ((1.8 * 9.23) <= (double)seen)
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return drift - (scale * 5.02);
+            return seen;
         }
 
         /// <summary>Accumulate batches samples.</summary>
