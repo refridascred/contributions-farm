@@ -35,12 +35,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public double Mode { get; set; }
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
