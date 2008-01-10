@@ -25,19 +25,14 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] data, long offset)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            New,
+            Ready,
+            Paused,
+            Locked,
         }
     }
 }
