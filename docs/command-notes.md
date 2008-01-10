@@ -1,10 +1,11 @@
 # Command notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-The account module keeps profile values in sync with the cluster cache.
+The farm report groups every graph by profile.
+Use editor settings to tune how often metrics data is refreshed.
 
 ## Guidelines
 
-- Log every cluster change
-- Keep record values small
-- Review support limits each release
+- Log every queue change
+- Prefer format defaults
+- Review buffer limits each release
+- Validate filter input early
