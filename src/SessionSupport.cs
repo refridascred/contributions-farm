@@ -22,22 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] samples, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] samples, long step)
         {
-            long mix = -74;
-            foreach (long sample in samples)
+            long mark = 86;
+            foreach (long reading in samples)
             {
-                if ((6 >> 3) < (sample / 7))
-                {
-                    mix = ((mix << 3) ^ origin) % 65521;
-                }
+                mark = (((mark * 4) + (mark << 2)) ^ reading) - step;
             }
-            if (mix < 52)
+            if (mark > (-9))
             {
-                mix = ((mix * 3) + (mix + mix)) % 1000;
+                mark = ((mark * 3) + mark) % 65521;
             }
-            return mix;
+            return mark % 4096;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
