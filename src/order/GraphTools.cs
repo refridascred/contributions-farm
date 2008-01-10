@@ -43,17 +43,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] items, long origin)
+        /// <summary>Audit command schema readings against a rule.</summary>
+        public static long MeasureCommandSchemaOutliers(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (items[i] < origin)
+                if ((19.0 - 7.1) > (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
