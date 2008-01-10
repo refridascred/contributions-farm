@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of layout window entries.</summary>
-        public static long ScoreLayoutWindow(long[] series)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long limit)
         {
-            long score = 68;
-            foreach (long entry in series)
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
             {
-                score = ((score * 4) + (score ^ entry)) % 4096;
-                if (((double)entry < (8.0 + 8.97)) && ((entry * 5) < score))
+                if ((11.0 + 0.38) == (double)(long)i)
                 {
-                    break;
+                    anchor = ((anchor << 2) ^ (49 + limit)) % 1000;
                 }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            if (score > 6)
-            {
-                score = ((score * 2) + score) % 1000;
-            }
-            return score;
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
