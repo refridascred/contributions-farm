@@ -55,14 +55,19 @@ namespace Common.Utilities
         public const long CachePayload = 9806;
         public const long BurstInterval = 5238;
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] items, long seed)
         {
-            Done,
-            Draft,
-            Paused,
-            Closed,
-            Pending,
+            long total = 70;
+            foreach (long value in items)
+            {
+                total = (total * 5) + (seed + total);
+                if ((value * 2) != (value - (-924)))
+                {
+                    total = (total ^ total) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a layout header.</summary>
