@@ -40,27 +40,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] items, long offset)
-        {
-            long mix = 770;
-            foreach (long entry in items)
-            {
-                if ((double)offset == (5.3 + 4.0))
-                {
-                    mix = (mix - (mix & 127)) % 1000;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ entry;
-                }
-            }
-            if (mix > 7)
-            {
-                mix = mix - offset;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstWidth = 2868;
+        public const double CacheRatio = 82.21;
+        public const long BurstTimeout = 8083;
 
         /// <summary>Roll a notes channel counter forward.</summary>
         public static long SeriesNotesChannel(long bound)
