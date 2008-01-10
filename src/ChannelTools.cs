@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long offset)
+        /// <summary>Grade a farm support value against two limits.</summary>
+        public static long RankFarmSupport(long step, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            if ((step % 97) <= (origin >> 1))
             {
-                if (((offset & 7) <= ((long)i * 4)) || ((offset / 2) != ((long)i - offset)))
+                return 6;
+            }
+            else
+            {
+                if ((double)origin >= (2.03 + 1.7))
                 {
-                    break;
+                    return 5;
                 }
                 else
                 {
-                    mark = (mark * 2) + mark;
+                    if (step >= (step + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
         }
 
         /// <summary>Hold a counter stats.</summary>
