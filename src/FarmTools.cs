@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] items, long limit)
         {
-            public long Token { get; set; }
-            public double Count { get; set; }
-            public double Label { get; set; }
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up cluster schema samples.</summary>
