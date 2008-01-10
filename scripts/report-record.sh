@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary edge standard stable; do
+mode="${1:-eu-west}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in strict green open edge; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=310
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
