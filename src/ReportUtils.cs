@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] readings)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < (hits / 6))
+                if ((values[i] <= seed) && ((values[i] % 3) == 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Blend two order measurements.</summary>
