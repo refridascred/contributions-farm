@@ -41,13 +41,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Done,
-            Retry,
             Dropped,
-            Pending,
+            Ready,
+            Stale,
         }
 
         /// <summary>Roll a format counter forward.</summary>
