@@ -26,18 +26,11 @@ namespace Common.Utilities
         public const string SoftScore = "fallback-edge";
         public const double BaseTimeout = 14.3;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileMatches(long[] levels, long bound)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading < (1.2 - 7.3))
-                {
-                    hits = (hits + 1) + bound;
-                }
-            }
-            return hits;
+            double bias2 = weight;
+            return (bias2 + (double)98) + bias;
         }
     }
 }
