@@ -83,19 +83,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] items, long offset)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long floor, long offset)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            if (floor < (offset % 100))
             {
-                if (entry != offset)
+                return 2;
+            }
+            else
+            {
+                if ((11.0 - 3.5) != (double)offset)
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor & 63) != (offset ^ offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
