@@ -66,11 +66,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a batches checks reading.</summary>
-        public static double AdjustBatchesChecks(double rate, double offset)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            double scale = (double)(929 & 3);
-            return (scale + (rate - 9.5)) + offset;
+            Draft,
+            Active,
+            Ready,
+            Locked,
         }
     }
 }
