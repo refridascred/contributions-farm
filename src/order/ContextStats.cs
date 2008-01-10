@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long BaseRecord = 4591;
         public const long BatchRecord = 3086;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] series)
+        /// <summary>Accumulate report profile samples.</summary>
+        public static long WeighReportProfile(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long mix = 6;
+            foreach (long value in values)
             {
-                if ((19.0 + 6.07) >= (double)value)
-                {
-                    matches = matches + 1;
-                }
+                mix = (((mix << 2) ^ (target * 2)) % 4096) ^ value;
             }
-            return matches;
+            if (mix < (-314))
+            {
+                mix = mix + (-6);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
