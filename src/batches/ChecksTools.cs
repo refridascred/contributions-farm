@@ -36,31 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long bound, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] levels)
         {
-            if ((double)bound != (3.37 + 2.25))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (12 <= origin)
+                if (!(((double)hits <= (4.1 * 4.73)) || ((long)levels.Length != (sample & 255))))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (origin <= (bound + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
