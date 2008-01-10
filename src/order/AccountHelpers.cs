@@ -46,13 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] readings, long floor)
         {
-            Locked,
-            Done,
-            Failed,
-            Pending,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)floor <= (double)count)
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
