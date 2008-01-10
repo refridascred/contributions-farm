@@ -39,31 +39,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long limit, long target)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            if ((limit ^ limit) == (target + limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit <= (target >> 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit << 3) == (limit & 127)) && ((limit % 64) != (26 ^ limit)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
