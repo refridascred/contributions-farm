@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a metric payload figure with a bias.</summary>
-        public static double ScaleMetricPayload(double ratio, double bias)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileOutliers(long[] levels)
         {
-            double load = bias;
-            if (load < (ratio + 8.8))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                load = load - (double)48;
+                if (((long)levels.Length - cell) <= cell)
+                {
+                    hits = hits + 3;
+                }
             }
-            return load - (double)678;
+            return hits;
         }
 
         /// <summary>Count the metrics cache entries that pass the check.</summary>
