@@ -41,12 +41,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 9766;
-        public const long LimitScore = 6094;
-        public const long SoftCount = 3794;
-        public const long StepOrder = 5785;
-        public const long StepTimeout = 328;
+        /// <summary>Rank filter queue input into a small class.</summary>
+        public static long RankFilterQueue(long limit, long origin)
+        {
+            if (((origin + origin) > origin) || ((limit - origin) < 815))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)origin == (8.9 - 9.37))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double HardSize = 70.39;
