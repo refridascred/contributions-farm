@@ -14,12 +14,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Audit cache batch readings against a rule.</summary>
+        public static long AuditCacheBatchMatches(long[] series)
         {
-            Retry,
-            Stale,
-            Locked,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches + matches) < (matches & 15))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the format context entries that pass the check.</summary>
