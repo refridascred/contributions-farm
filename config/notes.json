@@ -1,8 +1,5 @@
 {
-  "default_limit_pct": "legacy",
-  "compress": "strict",
-  "warm_delay_pct": "blue",
-  "enabled": 72,
-  "base_limit": 39,
-  "already_ttl": [263, 456, 346, 10]
+  "poll_timeout_pct": 1579,
+  "flush_ratio_ms": "cached",
+  "already_retries": "eu-west"
 }
