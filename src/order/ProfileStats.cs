@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long offset)
+        /// <summary>Locate a buffer githubfarm reading by value.</summary>
+        public static long LocateBufferGithubfarmIndex(long[] data, long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(offset >= ((long)i + 37)))
+                if ((data[i] <= target) && ((data[i] % 3) != 0))
                 {
-                    mix = (mix - (mix & 1)) % 97;
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the metric phase values.</summary>
