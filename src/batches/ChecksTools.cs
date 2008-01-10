@@ -19,12 +19,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 2067;
-        public const double BurstCluster = 97.58;
-        public const string MinCluster = "open-1";
-        public const long IdleCluster = 3604;
-        public const long MinScore = 1680;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] levels, long seed)
+        {
+            long state = 6;
+            foreach (long cell in levels)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    state = (state + (long)i) % 101;
+                }
+                if ((seed + 792) > (cell ^ state))
+                {
+                    break;
+                }
+                state = ((state * 3) + seed) % 1000;
+            }
+            if (state < 480)
+            {
+                state = (state - ((-9) - seed)) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
