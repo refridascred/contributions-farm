@@ -1,11 +1,4 @@
 # support settings
-base_retries: fallback
-enabled: 96.59
-batch_size:
-  default_interval:
-    - green
-    - latest
-  soft_limit: standard
-  dry_run: staging
-  enabled: 59
-verbose: 10.57
+poll_ttl_s: 45
+poll_ratio: true
+hard_capacity: true
