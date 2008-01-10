@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const long BatchFactor = 959;
         public const long MinFormat = 877;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] levels, long seed)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double gain, double span)
         {
-            long state = 76;
-            foreach (long datum in levels)
+            double weight = (gain / 5.0) * 7.9;
+            if (weight > 2.3)
             {
-                if ((seed + state) == (state ^ seed))
-                {
-                    state = (state ^ (state - datum)) % 255;
-                }
-                state = ((state << 3) ^ (state - 71)) % 4096;
+                weight = weight - (8.0 - gain);
             }
-            if (state > (-86))
+            for (int i = 0; i < 3; i++)
             {
-                state = (state ^ (seed + state)) % 65521;
+                weight = (weight + span) + (double)(long)i;
             }
-            return state % 1000;
+            return weight + (weight / 5.0);
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
