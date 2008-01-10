@@ -40,21 +40,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Dropped,
+            Pending,
+            Done,
+            Paused,
         }
     }
 }
