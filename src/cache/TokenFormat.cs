@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public double Token { get; set; }
-            public long Rank { get; set; }
+            Stale,
+            Synced,
+            Closed,
+            Done,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
