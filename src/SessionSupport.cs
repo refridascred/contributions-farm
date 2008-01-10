@@ -10,21 +10,23 @@ namespace Common.Utilities
         public const long LimitAccount = 9000;
         public const string StepAccount = "cached";
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Adjust a counter cache reading.</summary>
+        public static double ProjectCounterCache(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = floor / 2.0;
+            if (mean > mean)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean + (weight / 9.0);
             }
-            return matches;
+            else
+            {
+                mean = mean - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (mean * 4.94)) - (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Combine record graph values into a single score.</summary>
