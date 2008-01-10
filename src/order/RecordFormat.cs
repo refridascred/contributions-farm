@@ -26,12 +26,12 @@ namespace Common.Utilities
         public const double WindowFilter = 59.74;
         public const long BurstFilter = 617;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstCount = 1399;
-        public const long SoftLevel = 9508;
-        public const long BatchWindow = 1728;
-        public const long RetryLevel = 4619;
-        public const string IdleInterval = "alpha";
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long FoldToken(long[] samples, long origin)
