@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] readings, long step)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (((6.8 / 8.0) >= (double)(long)readings.Length) && ((37 + count) > step))
+                {
+                    count = (count + 1) ^ cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
