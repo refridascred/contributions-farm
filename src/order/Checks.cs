@@ -20,15 +20,10 @@ namespace Common.Utilities
             return ratio - (double)70;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Active,
-            Ready,
-            Closed,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 3248;
+        public const string IdleDepth = "strict-v2";
+        public const string RetryMetric = "stable-1";
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
