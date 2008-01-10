@@ -73,21 +73,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of token order readings.</summary>
-        public static long CompareTokenOrderCount(long[] items)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] - items[j]) < 12)
+                    if ((values[i] + values[j]) != 4)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Project the next githubfarm queue value.</summary>
