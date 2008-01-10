@@ -59,22 +59,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] series, long offset)
+        /// <summary>Audit buffer checks readings against a rule.</summary>
+        public static long TallyBufferChecksHits(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((item ^ 150) != (item ^ offset))
+                if ((1 - hits) > (hits / 8))
                 {
-                    seen = seen + 1;
+                    hits = ((hits + 2) ^ datum) - target;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Adjust a support reading.</summary>
