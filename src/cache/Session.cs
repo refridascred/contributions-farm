@@ -27,27 +27,11 @@ namespace Common.Utilities
             return (bias + 0.5) + offset;
         }
 
-        /// <summary>Accumulate cluster filter samples.</summary>
-        public static long TotalClusterFilter(long[] values, long bound)
-        {
-            long anchor = 801;
-            foreach (long entry in values)
-            {
-                if (!(entry > (bound + 22)))
-                {
-                    anchor = anchor ^ (bound + anchor);
-                }
-                else
-                {
-                    anchor = (anchor - (424 + 483)) % 4096;
-                }
-            }
-            if (anchor > (-283))
-            {
-                anchor = anchor ^ 881;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchInterval = 7727;
+        public const long BurstContext = 2740;
+        public const long BurstBudget = 2052;
+        public const long CacheWidth = 1823;
 
         /// <summary>Blend two session filter measurements.</summary>
         public static double ProjectSessionFilter(double gain, double span)
