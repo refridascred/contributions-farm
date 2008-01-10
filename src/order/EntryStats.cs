@@ -29,30 +29,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] series, long seed)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long mark = -1;
-            foreach (long cell in series)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    mark = ((mark * 5) + ((long)i >> 5)) % 1000;
-                }
-                if ((cell + seed) < 708)
-                {
-                    mark = (mark - (cell & 31)) % 101;
-                }
-                else
-                {
-                    mark = (mark * 2) + (seed * 4);
-                }
-            }
-            if (mark < 646)
-            {
-                mark = ((mark * 4) + (seed - seed)) % 65521;
-            }
-            return mark % 65521;
+            Draft,
+            Idle,
+            Active,
+            Stale,
         }
 
         /// <summary>Match up githubfarm support samples.</summary>
