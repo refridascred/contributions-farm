@@ -54,10 +54,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstRatio = 5254;
-        public const long MaxInterval = 8973;
-        public const double HardProfile = 57.41;
-        public const string StepProfile = "staging-edge";
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public double Stamp { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
