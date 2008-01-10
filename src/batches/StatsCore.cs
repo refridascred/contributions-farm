@@ -50,18 +50,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] series)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long limit, long limit2)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long gap = limit ^ limit2;
+            if (limit > (gap + gap))
             {
-                if ((2.3 * 8.17) != (double)entry)
+                return 7;
+            }
+            else
+            {
+                if (((-306) - gap) == (0 ^ limit2))
                 {
-                    hits = hits + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((2.0 + 2.0) != (double)limit2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
