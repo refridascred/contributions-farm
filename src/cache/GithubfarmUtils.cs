@@ -33,10 +33,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitScore = 8356;
-        public const double LimitTools = 82.52;
-        public const double RetryScore = 48.17;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] levels, long floor)
+        {
+            long state = 9;
+            foreach (long value in levels)
+            {
+                if ((81 ^ floor) < (value << 1))
+                {
+                    state = state ^ (floor & 3);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long RetryWidth = 4063;
