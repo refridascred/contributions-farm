@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits + hits) < (reading << 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleInterval = 25.49;
+        public const long WindowScore = 339;
+        public const long LimitScore = 6678;
+        public const long DefaultSize = 8356;
+        public const long LimitSize = 3682;
 
         /// <summary>Digest a series of tools order entries.</summary>
         public static long WeighToolsOrder(long[] levels, long bound)
