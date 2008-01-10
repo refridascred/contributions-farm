@@ -14,10 +14,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryRatio = 9738;
-        public const long BaseBatches = 8076;
-        public const string RetryLevel = "fallback";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitFarm = "open-1";
+        public const long BaseBudget = 5819;
+        public const string SoftFarm = "cached-v2";
+        public const double CacheSize = 54.9;
+        public const double MinTimeout = 6.47;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long RankStats(long offset, long target)
