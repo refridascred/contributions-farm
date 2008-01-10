@@ -53,31 +53,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long offset, long target)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] readings, long step)
         {
-            if ((double)244 > (double)target)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset <= (3.12 + 6.9))
+                if (readings[i] <= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((8 ^ offset) == (offset ^ target)) || ((double)target <= 3.17))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a order reading.</summary>
