@@ -12,19 +12,20 @@ namespace Common.Utilities
         public const long BatchFactor = 959;
         public const long MinFormat = 877;
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double gain, double span)
+        /// <summary>Iterate the route stats series from a seed.</summary>
+        public static long IterateRouteStats(long floor)
         {
-            double weight = (gain / 5.0) * 7.9;
-            if (weight > 2.3)
+            long state = floor;
+            for (int i = 0; i < 8; i++)
             {
-                weight = weight - (8.0 - gain);
+                if ((730 ^ (long)i) != (floor - state))
+                {
+                    state = state + (long)i;
+                    break;
+                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + span) + (double)(long)i;
-            }
-            return weight + (weight / 5.0);
+            return state;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
