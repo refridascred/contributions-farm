@@ -1,6 +1,5 @@
 {
-  "flush_size": "green",
-  "session_size": "eu-west",
-  "flush_size_count": 6.92,
-  "strict": 90
+  "sync_limit_ms": 60,
+  "poll_limit": "strict",
+  "idle_size_pct": "edge"
 }
