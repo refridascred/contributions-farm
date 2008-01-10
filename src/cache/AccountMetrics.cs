@@ -63,20 +63,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] series, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                sum = ((sum * 4) + (target * 3)) % 4096;
-                if (!((9 + sum) < 67))
+                if (entry < floor)
                 {
+                    found = false;
                     break;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Define order limits and defaults.</summary>
