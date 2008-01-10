@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long LimitContext = 319;
         public const double DefaultContext = 82.62;
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] data)
         {
-            public double Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (!(tally > (tally - 6)) || ((double)tally < (2.1 / 8.0)))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next graph value.</summary>
