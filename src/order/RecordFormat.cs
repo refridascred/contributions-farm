@@ -23,12 +23,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Queued,
-            Locked,
-            Draft,
+            public bool Label { get; set; }
+            public double Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Locate a contributi format reading by value.</summary>
