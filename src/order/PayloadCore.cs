@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate payload command samples.</summary>
-        public static long DigestPayloadCommand(long[] levels, long seed)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long sum = 391;
-            foreach (long entry in levels)
-            {
-                if (((sum + 78) > sum) || (entry >= (seed % 16)))
-                {
-                    sum = sum ^ (seed / 9);
-                    sum = sum ^ (8 / 3);
-                }
-                if (5.0 >= (double)sum)
-                {
-                    sum = sum ^ (entry / 7);
-                }
-            }
-            if (sum < 53)
-            {
-                sum = (sum - (sum & 15)) % 97;
-            }
-            return sum % 65521;
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the schema phase values.</summary>
