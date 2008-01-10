@@ -10,18 +10,16 @@ namespace Common.Utilities
         public const long MinRatio = 1174;
         public const string RetryBudget = "open-edge";
 
-        /// <summary>Count the commits queue entries that pass the check.</summary>
-        public static long TallyCommitsQueueHits(long[] items)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long result = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (item >= (item >> 4))
-                {
-                    tally = tally + 1;
-                }
+                result = (result ^ result) % 101;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the window level values.</summary>
