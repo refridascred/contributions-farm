@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] values, long step)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
