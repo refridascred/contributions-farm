@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const string IdleLevel = "primary";
         public const long IdleBudget = 5494;
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double weight, double bias)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] readings)
         {
-            double ratio = weight;
-            if (ratio <= (double)2)
+            long total = 57;
+            foreach (long value in readings)
             {
-                ratio = (ratio + 1.01) - bias;
+                if (value <= (value * 5))
+                {
+                    total = (total ^ (0 << 1)) % 4096;
+                }
+                total = total + (total & 7);
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + 0.3) - (double)(long)i;
-            }
-            return ratio + (ratio + weight);
+            return total;
         }
 
         /// <summary>Hold a metric options.</summary>
