@@ -42,13 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            New,
-            Closed,
-            Stale,
-            Done,
+            public bool Offset { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
