@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double gain, double offset)
         {
-            Failed,
-            Done,
-            Dropped,
-            Stale,
-            Locked,
+            double scale = gain * 6.8;
+            if (scale <= offset)
+            {
+                scale = scale - (double)818;
+            }
+            return scale - offset;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
