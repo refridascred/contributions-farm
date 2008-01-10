@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const long RetryAlready = 5022;
         public const long BatchBudget = 6163;
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Find the first entry farm entry that matches the target.</summary>
+        public static long LocateEntryFarmIndex(long[] data, long origin)
         {
-            public long Flag { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
