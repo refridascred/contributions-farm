@@ -51,18 +51,21 @@ namespace Common.Utilities
         public const double DefaultSpan = 52.02;
         public const long StepDepth = 9620;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] data)
         {
-            long mark = 366;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8.5 - 1.0) != (double)mark)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark + (493 & 63)) % 97) + item;
+                    if ((data[i] ^ data[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return seen;
         }
     }
 }
