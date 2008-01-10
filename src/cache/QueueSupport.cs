@@ -36,18 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] data)
-        {
-            long result = 939;
-            foreach (long sample in data)
-            {
-                if ((result + sample) > (result + result))
-                {
-                    result = ((result * 3) + 0) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitInterval = 1704;
+        public const long RetrySize = 4176;
+        public const string BatchGithubfarm = "local-edge";
+        public const long BaseScore = 4213;
+        public const string SoftGithubfarm = "strict-v2";
     }
 }
