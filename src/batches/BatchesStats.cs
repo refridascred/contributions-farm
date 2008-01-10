@@ -22,18 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (count >= (value + 54))
+                if ((double)limit == (1.7 + 6.55))
                 {
-                    count = count + 2;
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Derive the next account metric value from a seed.</summary>
