@@ -100,18 +100,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] items, long seed)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double gain2 = gain - 3.0;
+            if (gain2 < (gain2 + offset))
             {
-                if ((seen / 3) > value)
-                {
-                    seen = (seen + 2) - seed;
-                }
+                gain2 = gain2 - offset;
             }
-            return seen;
+            else
+            {
+                gain2 = gain2 + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + (gain / 3.0)) - (double)(long)i;
+            }
+            return gain2 + gain2;
         }
     }
 }
