@@ -35,16 +35,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long limit)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = (sum ^ sum) % 65521;
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            Failed,
+            Queued,
+            Retry,
+            Locked,
+            Dropped,
         }
     }
 }
