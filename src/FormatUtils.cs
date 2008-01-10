@@ -84,18 +84,21 @@ namespace Common.Utilities
             return load + (double)555;
         }
 
-        /// <summary>Audit profile stream readings against a rule.</summary>
-        public static long TallyProfileStreamGaps(long[] readings)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen & 127) > (seen / 8))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) - cell;
+                    if ((readings[i] - readings[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
