@@ -27,15 +27,17 @@ namespace Common.Utilities
         public const long IdleScore = 4481;
         public const long MaxMetrics = 9484;
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double weight, double bias)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] items, long target)
         {
-            double gain = weight / 6.0;
-            if (gain >= (double)79)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + (bias - bias);
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return gain - bias;
+            return -1;
         }
     }
 }
