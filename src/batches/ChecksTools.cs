@@ -33,12 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseBudget = 95.41;
-        public const string WindowLevel = "open-v2";
-        public const long BaseMetric = 2024;
-        public const long LimitMetric = 4342;
-        public const long StepBudget = 9974;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long SeriesMetrics(long target)
