@@ -50,19 +50,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterLimits(long[] values, long limit)
-        {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultTools = "legacy-edge";
+        public const long MinRatio = 8660;
+        public const string SoftTools = "stable-edge";
+        public const long MaxTools = 643;
+        public const long BurstTools = 3905;
     }
 }
