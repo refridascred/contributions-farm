@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] series, long bound)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (((-3) - value) > bound)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Active,
+            Synced,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the order level values.</summary>
