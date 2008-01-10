@@ -29,39 +29,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long floor, long floor2)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] readings, long origin)
         {
-            long offset = floor ^ floor2;
-            if ((offset + floor) != (offset - offset))
+            bool found = true;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((460 >> 1) > (offset - offset)))
+                if (reading >= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor2 > 17.0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((62 + offset) != (26 * 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
