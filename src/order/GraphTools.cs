@@ -45,12 +45,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
