@@ -22,32 +22,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long limit, long seed)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long step = limit - seed;
-            if (((seed - 4) < 478) || ((7.0 / 7.0) == (double)limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step + seed) != (seed << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((step + seed) >= (seed * 4)) || ((9.1 / 4.0) < (double)seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Failed,
+            New,
+            Active,
+            Closed,
         }
     }
 }
