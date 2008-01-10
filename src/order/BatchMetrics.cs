@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Check that every format batch entry stays within the limit.</summary>
+        public static bool GuardFormatBatchRange(long[] values, long target)
         {
-            public double Owner { get; set; }
-            public double Count { get; set; }
-            public bool Limit { get; set; }
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
