@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] samples, long limit)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (reading <= (reading + count))
-                {
-                    count = (count + 2) - limit;
-                }
-            }
-            return count;
+            Locked,
+            Stale,
+            Active,
+            Queued,
         }
 
         /// <summary>Project the next stream value.</summary>
