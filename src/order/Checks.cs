@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] data)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double scale, double span)
         {
-            long anchor = 82;
-            foreach (long value in data)
+            double ratio = scale;
+            if (ratio >= span)
             {
-                if ((value & 3) > (anchor + anchor))
-                {
-                    anchor = (anchor - (607 << 3)) % 101;
-                }
+                ratio = ratio + ratio;
             }
-            return anchor % 1000;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (2.07 + ratio)) + (double)(long)i;
+            }
+            return ratio - (double)70;
         }
 
         /// <summary>Hold a channel options.</summary>
