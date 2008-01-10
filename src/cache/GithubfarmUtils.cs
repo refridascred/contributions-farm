@@ -44,22 +44,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload checks values into a single score.</summary>
-        public static long TallyPayloadChecks(long[] levels)
+        /// <summary>Find the first cluster tools entry that matches the target.</summary>
+        public static long FindClusterToolsIndex(long[] values, long step)
         {
-            long score = 345;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value % 24) > (score >> 3))
+                if (values[i] < step)
                 {
-                    score = score ^ (value & 3);
+                    return (long)i;
                 }
             }
-            if (score > 5)
-            {
-                score = (score * 2) + (score + score);
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
