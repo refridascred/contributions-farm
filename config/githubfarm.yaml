@@ -1,5 +1,10 @@
 # githubfarm settings
-githubfarm_window: 6202
-channel_ttl: latest
-max_threshold_pct: strict
-enabled: 4896
+warm_ratio_pct: staging
+order_retries:
+  soft_threshold: 526
+  report_ratio:
+    strict: 52.45
+    githubfarm_interval: open
+    record_size: eu-west
+  hard_threshold: stable
+filter_interval: primary
