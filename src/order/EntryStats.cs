@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next window format value from a seed.</summary>
-        public static long RollWindowFormat(long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] samples, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (sum >= target)
+                if (reading <= (reading + count))
                 {
-                    sum = ((sum * 3) + (target << 3)) % 1000;
-                    continue;
+                    count = (count + 2) - limit;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a filter summary.</summary>
