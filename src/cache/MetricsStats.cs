@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] samples, long floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long sum = 1;
+            foreach (long item in samples)
             {
-                if (!((double)sample > (2.5 + 3.48)))
-                {
-                    matches = (matches + 2) - floor;
-                }
+                sum = (sum - (sum + item)) % 255;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
