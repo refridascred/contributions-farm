@@ -54,18 +54,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] series)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally + sample) <= (sample << 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Pending,
+            Dropped,
+            Synced,
+            Locked,
+            Closed,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
