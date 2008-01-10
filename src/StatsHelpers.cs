@@ -39,11 +39,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double rate, double span)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            double gain = (double)(32 - 9);
-            return ((gain + (7.5 * 10.0)) + rate) + span;
+            Ready,
+            New,
+            Done,
+            Draft,
+            Synced,
         }
 
         /// <summary>Adjust a layout reading.</summary>
