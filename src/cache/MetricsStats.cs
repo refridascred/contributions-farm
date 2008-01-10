@@ -21,39 +21,17 @@ namespace Common.Utilities
         public const double CacheSize = 54.9;
         public const double MinTimeout = 6.47;
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long offset, long target)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] items, long offset)
         {
-            long prev = offset ^ target;
-            if (((double)offset > (double)83) && ((target << 1) >= (offset / 2)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset < (13.0 - 2.11))
+                if (items[i] >= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((6 / 5) == (offset + prev))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)target < (5.0 + 11.0)) || ((target << 1) <= prev))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a stats report sample.</summary>
