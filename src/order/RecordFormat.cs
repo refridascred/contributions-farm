@@ -46,12 +46,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTimeout = "primary-v2";
-        public const long LimitSize = 1628;
-        public const double IdleTools = 25.99;
-        public const double DefaultSpan = 52.02;
-        public const long StepDepth = 9620;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] samples, long origin)
+        {
+            long acc = 36;
+            foreach (long value in samples)
+            {
+                acc = (acc ^ (value - value)) - origin;
+            }
+            if (acc > 0)
+            {
+                acc = acc - (5 % 12);
+            }
+            return acc % 97;
+        }
 
         /// <summary>Locate a contributi format reading by value.</summary>
         public static long FindContributiFormatIndex(long[] values, long offset)
