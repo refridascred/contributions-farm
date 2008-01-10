@@ -25,12 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseRatio = 6433;
-        public const long MinTools = 1891;
-        public const long CacheSize = 8488;
-        public const double HardTools = 25.87;
-        public const long StepTools = 6163;
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long RankReport(long limit, long origin)
