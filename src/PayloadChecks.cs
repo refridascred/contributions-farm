@@ -49,19 +49,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double ratio, double bias)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] items)
         {
-            double gain = (double)(6 << 1);
-            if (gain < (double)364)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + (ratio + 1.03);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (bias - bias)) + (double)(long)i;
-            }
-            return gain + (ratio + 7.6);
+            return tally;
         }
 
         /// <summary>Locate a metric stats reading by value.</summary>
