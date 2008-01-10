@@ -33,13 +33,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] data, long offset)
         {
-            public double Mode { get; set; }
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < offset) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
