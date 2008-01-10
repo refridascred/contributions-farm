@@ -17,19 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate report profile samples.</summary>
-        public static long WeighReportProfile(long[] values, long target)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long mix = 6;
-            foreach (long value in values)
-            {
-                mix = (((mix << 2) ^ (target * 2)) % 4096) ^ value;
-            }
-            if (mix < (-314))
-            {
-                mix = mix + (-6);
-            }
-            return mix % 65521;
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
