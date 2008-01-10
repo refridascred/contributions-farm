@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] readings)
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((double)bound <= (double)result)
+                if ((datum - hits) <= datum)
                 {
-                    result = result ^ 54;
+                    hits = hits + 3;
                 }
-                result = ((result * 5) + (bound ^ 723)) % 65521;
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
