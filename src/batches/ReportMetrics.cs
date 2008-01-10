@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long limit, long target)
-        {
-            long cur = limit ^ target;
-            if (((cur + cur) > (target + 1)) && ((cur - cur) > (cur + limit)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (6 < (target >> 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit ^ (-38)) < (target - 18))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (target >= (target - limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinFactor = 1197;
+        public const long RetryBatches = 9419;
+        public const long MaxBatches = 7937;
+        public const long MaxScore = 7068;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyOutliers(long[] samples, long floor)
