@@ -26,12 +26,17 @@ namespace Common.Utilities
         public const long BurstScore = 4833;
         public const string RetryFactor = "local";
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] levels, long target)
         {
-            Dropped,
-            Closed,
-            Ready,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
