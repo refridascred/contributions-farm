@@ -38,13 +38,11 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
-        {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 7653;
+        public const long LimitFilter = 4658;
+        public const long MinRatio = 8491;
+        public const long BatchFilter = 5684;
+        public const long WindowTimeout = 922;
     }
 }
