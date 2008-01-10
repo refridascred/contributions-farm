@@ -18,17 +18,19 @@ namespace Common.Utilities
         public const string LimitSupport = "stable";
         public const string SoftTimeout = "local-1";
 
-        /// <summary>Iterate the commits schema series from a seed.</summary>
-        public static long IterateCommitsSchema(long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] levels, long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                long hits = (mix + 93) >> 1;
-                mix = (mix * 5) + (mix ^ hits);
-                mix = ((mix * 3) + (long)i) % 1000;
+                if (datum > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
     }
 }
