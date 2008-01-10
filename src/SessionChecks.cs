@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next checks filter value.</summary>
-        public static double SmoothChecksFilter(double gain, double offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] samples, long origin)
         {
-            double ratio = offset;
-            if (ratio < 7.9)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                ratio = ratio - (gain - 7.2);
+                if ((double)origin == (double)hits)
+                {
+                    hits = (hits + 3) ^ sample;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)46;
-            }
-            return ratio + gain;
+            return hits;
         }
 
         /// <summary>Accumulate token samples.</summary>
