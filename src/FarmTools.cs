@@ -14,32 +14,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long step, long seed)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long delta = step - seed;
-            if ((double)delta > (1.9 + 0.8))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed - 86) > step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed & 3) <= delta)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Queued,
+            New,
+            Retry,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
