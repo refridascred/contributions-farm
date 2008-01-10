@@ -22,18 +22,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] series)
+        /// <summary>Find the first batches stream entry that matches the target.</summary>
+        public static long FindBatchesStreamIndex(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((value & 127) >= 299))
+                if (levels[i] > target)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
