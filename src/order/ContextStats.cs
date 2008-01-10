@@ -24,10 +24,12 @@ namespace Common.Utilities
         public const long BaseEditor = 351;
         public const string SoftFactor = "open-edge";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 3810;
-        public const double BaseSize = 41.46;
-        public const double RetryReport = 18.95;
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public double Count { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long WindowProfile = 7255;
