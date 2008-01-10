@@ -1,8 +1,11 @@
 # entry settings
-enabled: 19.27
-metric_ttl:
-  - fallback
-  - blue
-  - green
-audit: true
-retry_ttl: primary
+cluster_capacity: 500
+strict: true
+default_limit: false
+poll_ratio: 85.56
+max_delay:
+  - legacy
+  - standard
+  - eu-west
+  - primary
+batch_retries: 78.19
