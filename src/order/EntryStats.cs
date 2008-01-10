@@ -34,21 +34,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up githubfarm support samples.</summary>
-        public static long MatchGithubfarmSupportCount(long[] readings)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] data, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 3;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (((carry << 2) ^ floor) % 101) ^ reading;
             }
-            return hits;
+            return carry;
         }
     }
 }
