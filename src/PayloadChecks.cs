@@ -68,21 +68,17 @@ namespace Common.Utilities
             return gain + (ratio + 7.6);
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] items)
+        /// <summary>Locate a metric stats reading by value.</summary>
+        public static long LocateMetricStatsIndex(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (samples[i] <= limit)
                 {
-                    if ((items[i] + items[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
