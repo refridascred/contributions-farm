@@ -30,16 +30,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long seed)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] levels)
         {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
+            long carry = 752;
+            foreach (long reading in levels)
             {
-                acc = ((acc * 3) + seed) % 97;
-                acc = ((acc * 5) + (long)i) % 1000;
+                carry = (carry - (carry - reading)) % 255;
             }
-            return acc;
+            return carry % 97;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
