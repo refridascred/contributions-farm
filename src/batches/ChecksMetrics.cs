@@ -53,12 +53,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] samples, long floor)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] data, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] <= floor)
+                if ((data[i] > step) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
