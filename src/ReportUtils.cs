@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] series, long floor)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftScore = 5.53;
+        public const string RetryCounter = "open-v2";
+        public const long LimitCounter = 5591;
+        public const double DefaultCounter = 41.63;
+        public const double DefaultBudget = 25.56;
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
