@@ -43,17 +43,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] items, long origin)
+        /// <summary>Check that every tools route entry stays within the limit.</summary>
+        public static bool CheckToolsRouteLimits(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (items[i] > origin)
+                if (cell >= offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
