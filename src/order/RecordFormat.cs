@@ -28,22 +28,12 @@ namespace Common.Utilities
         public const long MinRatio = 9036;
         public const long MaxInterval = 4378;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] items)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long score = 73;
-            foreach (long reading in items)
-            {
-                if ((reading << 1) <= (reading << 2))
-                {
-                    score = score ^ reading;
-                }
-                else
-                {
-                    score = (score * 2) + (score - reading);
-                }
-            }
-            return score;
+            public string Count { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of token entries.</summary>
