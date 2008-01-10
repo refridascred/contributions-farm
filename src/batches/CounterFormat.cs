@@ -28,14 +28,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            Draft,
-            Done,
-            Stale,
-            Retry,
-            New,
+            public double Owner { get; set; }
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
