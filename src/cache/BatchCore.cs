@@ -24,20 +24,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] series, long seed)
-        {
-            long total = 842;
-            foreach (long datum in series)
-            {
-                total = (((total * 2) + (seed >> 2)) % 101) + datum;
-            }
-            if (total > 617)
-            {
-                total = total - seed;
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFactor = 3010;
+        public const long MinFilter = 3542;
+        public const string DefaultFilter = "cached-1";
+        public const double WindowFactor = 62.23;
+        public const double MaxFilter = 54.72;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BatchStream = 9280;
