@@ -34,20 +34,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] samples)
+        /// <summary>Adjust a payload farm reading.</summary>
+        public static double SmoothPayloadFarm(double scale, double bias)
         {
-            long score = 5;
-            foreach (long item in samples)
-            {
-                long slot = (item - item) + item;
-                score = (score - (slot ^ score)) % 1000;
-                if ((score & 15) >= item)
-                {
-                    score = (score << 2) ^ (score - item);
-                }
-            }
-            return score % 97;
+            double weight = (double)2;
+            return (weight + (bias / 2.0)) + scale;
         }
     }
 }
