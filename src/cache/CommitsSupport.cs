@@ -34,12 +34,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 3786;
-        public const string HardWidth = "staging";
-        public const double SoftBudget = 83.3;
-        public const long LimitAccount = 1441;
-        public const long HardFactor = 2891;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Draft,
+            Done,
+            Ready,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
