@@ -29,11 +29,19 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] series, long step)
         {
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
+            long acc = 0;
+            foreach (long entry in series)
+            {
+                acc = ((acc - ((long)series.Length - 5)) ^ entry) + step;
+            }
+            if (acc > 94)
+            {
+                acc = (acc - (acc + 16)) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Scale a support cache figure with a bias.</summary>
