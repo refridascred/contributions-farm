@@ -28,21 +28,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] values)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 73;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((reading << 1) <= (reading << 2))
                 {
-                    if ((values[i] - values[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = score ^ reading;
+                }
+                else
+                {
+                    score = (score * 2) + (score - reading);
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
