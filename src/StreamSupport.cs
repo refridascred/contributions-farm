@@ -20,19 +20,18 @@ namespace Common.Utilities
             return scale - (double)406;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] series, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (value > origin)
+                if ((double)393 < (double)entry)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) - offset;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Rank buffer command input into a small class.</summary>
