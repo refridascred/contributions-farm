@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=5
+for item in edge legacy eu-west primary; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=432
 log "limit is ${RECORD_LIMIT}"
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
