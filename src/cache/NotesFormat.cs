@@ -23,13 +23,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            Active,
-            Draft,
-            Closed,
-            Synced,
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
