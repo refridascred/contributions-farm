@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next already graph value from a seed.</summary>
-        public static long IterateAlreadyGraph(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleLevel = 253;
+        public const double WindowRatio = 54.74;
+        public const long MaxTools = 1633;
+        public const long SoftSize = 528;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BurstAccount = 6472;
