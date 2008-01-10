@@ -1,4 +1,4 @@
 # support settings
-flush_window_count: primary
-soft_limit_count: false
-support_limit: strict
+enabled: cached
+strict: false
+flush_threshold_count: 2303
