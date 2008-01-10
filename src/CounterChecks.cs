@@ -65,39 +65,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long origin, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] readings)
         {
-            long edge = origin - target;
-            if ((origin >> 4) > (origin + origin))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((edge ^ target) > (edge + edge))
+                if ((((hits + cell) <= hits) || ((cell + cell) == (76 + hits))) || ((9.06 - 5.7) == (double)cell))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((26 / 3) == (6 + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target + origin) >= (target ^ target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
