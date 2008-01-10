@@ -1,5 +1,10 @@
 {
-  "flush_depth_ms": "primary",
-  "report_interval": ["eu-west", "cached", "local", "stable"],
-  "channel_ratio": "local"
+  "metrics_ratio": 16.83,
+  "commits_limit": "latest",
+  "context_interval": 10,
+  "filter_threshold": {
+    "default_delay_ms": 5584,
+    "default_window": "open",
+    "warm_limit_ms": "primary"
+  }
 }
