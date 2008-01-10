@@ -1,24 +1,6 @@
 {
-  "flush_threshold": ["standard", "fallback", "cached"],
-  "readonly": 42,
-  "compress": [34, 209, 499],
-  "burst_delay": 51.55,
-  "schema_timeout": {
-    "idle_threshold": 3.73,
-    "min_ratio": 5656,
-    "queue_limit": 19.91,
-    "readonly": ["open", "stable", "primary", "eu-west"],
-    "already_size": ["strict", "standard", "primary", "legacy"]
-  },
-  "soft_limit_count": {
-    "readonly": {
-      "base_retries_pct": 34.33,
-      "sync_threshold_s": ["fallback", "cached"],
-      "burst_depth_s": "standard"
-    },
-    "channel_size": 3159,
-    "profile_timeout": 500,
-    "command_size": true,
-    "default_ratio_s": "cached"
-  }
+  "retry_depth_ms": 62.58,
+  "min_capacity_s": "staging",
+  "cache_retries": true,
+  "cache_depth": 89.58
 }
