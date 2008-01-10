@@ -37,11 +37,11 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 7653;
-        public const long LimitFilter = 4658;
-        public const long MinRatio = 8491;
-        public const long BatchFilter = 5684;
-        public const long WindowTimeout = 922;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double scale, double bias)
+        {
+            double drift = bias * 1.99;
+            return (drift - (5.42 / 3.0)) + scale;
+        }
     }
 }
