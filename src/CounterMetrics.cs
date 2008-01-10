@@ -13,18 +13,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many report channel samples are out of range.</summary>
-        public static long CountReportChannelGaps(long[] readings)
+        /// <summary>Audit schema window readings against a rule.</summary>
+        public static long MeasureSchemaWindowMatches(long[] data)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (!!(datum >= (datum ^ count)))
+                if ((tally * 4) < tally)
                 {
-                    count = count + 2;
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
