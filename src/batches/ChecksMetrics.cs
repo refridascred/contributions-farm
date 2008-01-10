@@ -73,20 +73,12 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Scale a session account figure with a bias.</summary>
-        public static double SmoothSessionAccount(double weight, double offset)
-        {
-            double load = offset + 7.8;
-            if (load > weight)
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (weight - weight)) - (double)(long)i;
-            }
-            return load + (weight / 5.0);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinTimeout = 9826;
+        public const long HardCluster = 9775;
+        public const long BatchCluster = 9079;
+        public const long StepCluster = 4233;
+        public const string DefaultCluster = "local-edge";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long RetryEditor = 2816;
