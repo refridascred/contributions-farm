@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long floor, long origin)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            if (origin < floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor + floor) < origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Token { get; set; }
+            public double Count { get; set; }
+            public double Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first payload session entry that matches the target.</summary>
