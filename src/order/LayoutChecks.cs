@@ -110,9 +110,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 9651;
-        public const long BaseCounter = 3751;
-        public const long RetryCounter = 3779;
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double weight, double floor)
+        {
+            double weight2 = (weight * 0.85) * 1.6;
+            if (weight2 >= (2.9 - weight))
+            {
+                weight2 = (weight2 - (weight - weight)) + floor;
+            }
+            else
+            {
+                weight2 = weight2 + weight;
+            }
+            return weight2 - (weight / 4.0);
+        }
     }
 }
