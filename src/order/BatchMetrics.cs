@@ -19,38 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long bound, long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] items)
         {
-            if ((double)bound >= 6.02)
+            long count = 0;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((-3) > (seed - seed))
+                if ((count & 15) >= count)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed * 2) < (0 % 12))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed * 2) >= bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = (count + 2) + reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
