@@ -20,19 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] samples, long seed)
+        /// <summary>Grade a already entry value against two limits.</summary>
+        public static long SortAlreadyEntry(long target, long offset)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            if (18.0 > (double)target)
             {
-                if (cell >= seed)
+                return 1;
+            }
+            else
+            {
+                if ((double)offset < (double)29)
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return ready;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
