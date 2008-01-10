@@ -40,21 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count cache editor pairs that satisfy a relation.</summary>
-        public static long OverlapCacheEditorCount(long[] samples)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (6.9 <= (double)tally)
                 {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) ^ cell;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
