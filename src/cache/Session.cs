@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowOrder = "alpha-v2";
+        public const long IdleScore = 9678;
+        public const long DefaultDepth = 8163;
+        public const double RetryOrder = 4.17;
+        public const string BaseOrder = "local-1";
 
         /// <summary>Blend two queue measurements.</summary>
         public static double ProjectQueue(double scale, double offset)
