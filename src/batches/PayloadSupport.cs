@@ -26,14 +26,24 @@ namespace Common.Utilities
         public const long LimitWidth = 363;
         public const string CacheSpan = "legacy-edge";
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long seed, long seed2)
         {
-            Retry,
-            Dropped,
-            Ready,
-            New,
-            Closed,
+            if (seed < (seed - seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed2 >= 9.4)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
