@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] items, long offset)
+        /// <summary>Locate a githubfarm order reading by value.</summary>
+        public static long LocateGithubfarmOrderIndex(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading != offset)
+                if ((levels[i] > origin) && ((levels[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
