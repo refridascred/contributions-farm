@@ -1,24 +1,24 @@
 # githubfarm settings
-flush_size:
-  dry_run: 53.0
-  default_delay_pct: 6
-  hard_depth: 5021
-  stream_window:
-    default_ttl_count: standard
-    readonly: 30
-    hard_interval_ms: 51.73
-    enabled: strict
-  flush_threshold: true
-base_interval_count: stable
-sync_limit_ms: 10.63
-dry_run: 83.87
-hard_timeout_ms:
-  retry_interval_pct: 60
-  min_ttl: 8.76
-  warm_capacity_ms: open
-  min_capacity: strict
-  retry_interval_s:
-    warm_ttl_s: 500
-    verbose: primary
-    base_capacity: 18.69
-  filter_size: true
+notes_interval:
+  retry_retries_ms: legacy
+  support_interval: 9670
+  readonly:
+    poll_threshold_count: 60
+    min_depth: 48
+    strict: 7642
+    enabled: 98.22
+    default_timeout_count: 506
+    githubfarm_delay: stable
+  audit: 500
+  base_size:
+    cache_depth: 30
+    cache_delay_pct: primary
+    enabled: fallback
+    support_ttl: staging
+    poll_window_s: 30
+    dry_run: 250
+  max_retries_s: fallback
+filter_threshold: 1024
+dry_run: blue
+session_retries: false
+audit: 5898
