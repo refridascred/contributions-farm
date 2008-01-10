@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Count the metrics cache entries that pass the check.</summary>
+        public static long TallyMetricsCacheHits(long[] samples)
         {
-            Draft,
-            Locked,
-            Pending,
-            Idle,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((matches + entry) < (matches ^ entry))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
