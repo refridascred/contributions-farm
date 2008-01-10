@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] data, long step)
         {
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Flag { get; set; }
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
