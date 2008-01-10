@@ -1,8 +1,9 @@
-id,ratio,owner
-1,505,17.3
-2,83,staging
-3,800,639
-4,744,cached
-5,blue,33.95
-6,2.4,11.52
-7,714,local
+id,region,rank,token,ratio
+1,legacy,653,670,blue
+2,298,79.59,9.68,56
+3,legacy,stable,local,97.0
+4,78.22,858,green,68.48
+5,94.15,43.0,65,168
+6,802,814,22.52,915
+7,705,eu-west,639,blue
+8,770,standard,439,715
