@@ -31,18 +31,28 @@ namespace Common.Utilities
         public const long BaseBudget = 8766;
         public const string RetryLevel = "primary-1";
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] data)
+        /// <summary>Fold a list of checks farm readings.</summary>
+        public static long ScoreChecksFarm(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long result = 679;
+            foreach (long sample in series)
             {
-                if ((double)sample > (13.0 / 4.0))
+                if (sample <= (sample - sample))
                 {
-                    matches = matches + 1;
+                    long matches = sample;
+                    result = ((result * 5) + (matches & 15)) % 255;
+                    continue;
+                }
+                if (5.9 < (double)result)
+                {
+                    result = (result ^ (result & 127)) % 4096;
+                }
+                if ((sample / 9) >= (result >> 5))
+                {
+                    break;
                 }
             }
-            return matches;
+            return result;
         }
     }
 }
