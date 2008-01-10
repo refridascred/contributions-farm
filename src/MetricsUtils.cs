@@ -31,19 +31,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] values, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (sample != limit)
+                if ((tally + (-33)) >= reading)
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
