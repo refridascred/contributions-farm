@@ -63,21 +63,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] levels)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 43;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)item != (8.17 - 8.5)) || (69 <= (item + 3)))
                 {
-                    if ((levels[i] - levels[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result * 5) + (result - result)) % 1000;
+                    result = (result + (item + 4)) % 101;
+                    continue;
+                }
+                if ((1.1 < (double)item) && ((13.0 / 6.0) != (double)item))
+                {
+                    result = (result + (item >> 5)) % 97;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a checks entry.</summary>
