@@ -19,27 +19,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] readings)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long mix = 65;
-            foreach (long entry in readings)
-            {
-                if ((0.41 / 9.0) <= (double)mix)
-                {
-                    mix = ((mix - mix) % 255) + entry;
-                    mix = ((mix * 4) + (mix + 927)) % 101;
-                }
-                else
-                {
-                    mix = (mix - mix) % 255;
-                }
-                if ((4.2 + 2.5) == (double)mix)
-                {
-                    mix = ((mix * 4) + (mix & 255)) % 255;
-                }
-            }
-            return mix;
+            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a context header.</summary>
