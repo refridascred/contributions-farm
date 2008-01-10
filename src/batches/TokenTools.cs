@@ -32,18 +32,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] samples)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((19.0 + 13.0) <= (double)seen)
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
+            Dropped,
+            Stale,
+            Locked,
+            Active,
+            Done,
         }
     }
 }
