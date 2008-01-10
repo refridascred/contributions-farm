@@ -1,7 +1,17 @@
 # githubfarm settings
-poll_size: 77.33
-max_timeout_ms: edge
-dry_run: local
-graph_ratio: primary
-batch_window: 78.55
-batch_delay_count: 59.12
+dry_run:
+  flush_interval_ms: open
+  flush_threshold_s: staging
+  verbose:
+    verbose: 917
+    channel_ratio: 250
+    commits_ratio: 29.47
+    base_depth_pct: 90.69
+  command_retries: 5064
+  route_delay:
+    - 411
+    - 241
+  soft_ratio_pct: 3145
+farm_interval: 60
+cache_capacity_pct: 75
+poll_limit_count: 12.65
