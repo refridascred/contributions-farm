@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long WindowToken = 8577;
         public const long SoftToken = 2869;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] samples, long bound)
+        /// <summary>Derive the next context window value from a seed.</summary>
+        public static long DeriveContextWindow(long seed)
         {
-            long state = 286;
-            foreach (long datum in samples)
+            long result = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)datum < (16.0 * 3.1)) && ((datum / 8) == (bound * 2)))
+                if ((result * 5) <= seed)
                 {
-                    state = state + (datum >> 3);
+                    continue;
                 }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return state % 4096;
+            return result;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
