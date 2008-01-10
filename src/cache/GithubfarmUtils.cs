@@ -34,19 +34,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] samples, long target)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Describe the metric kind values.</summary>
