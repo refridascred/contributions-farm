@@ -67,15 +67,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster already samples.</summary>
-        public static long TallyClusterAlready(long[] series)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long target, long limit)
         {
-            long result = 91;
-            foreach (long datum in series)
+            long gap = target - limit;
+            if ((target + limit) <= (target / 8))
             {
-                result = (result - (datum - result)) % 255;
+                return 0;
             }
-            return result % 1000;
+            else
+            {
+                if (!((double)gap > (3.5 / 2.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((6.54 + 0.4) >= (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)target >= (4.3 / 9.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
