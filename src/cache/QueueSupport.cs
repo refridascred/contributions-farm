@@ -29,18 +29,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] levels)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((10.0 - 1.9) > (double)count)
+                if (origin < (hits - origin))
                 {
-                    count = (count + 3) ^ datum;
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
