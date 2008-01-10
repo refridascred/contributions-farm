@@ -20,20 +20,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long limit, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 11; i++)
+            long gap = limit ^ step;
+            if ((limit - gap) < (step + limit))
             {
-                double bias = (double)origin - (7.0 - 0.9);
-                if (bias > 11.0)
-                {
-                    break;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if (((limit % 10) != (6 ^ step)) && ((6.0 + 18.0) > (double)limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
