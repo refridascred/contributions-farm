@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleEntry = "open-edge";
-        public const double HardLevel = 92.87;
-        public const long LimitEntry = 7965;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long offset, long limit)
+        {
+            long span = offset - limit;
+            if ((span + 545) < (7 ^ 340))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((34 - offset) == (limit + limit)) || (2 > (span + offset)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long CountCacheMatches(long[] readings, long seed)
