@@ -36,15 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long limit)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] data)
         {
-            long state = limit;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
     }
 }
