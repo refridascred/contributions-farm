@@ -10,21 +10,25 @@ namespace Common.Utilities
         public const long LimitAccount = 9000;
         public const string StepAccount = "cached";
 
-        /// <summary>Compare every pair of support format readings.</summary>
-        public static long CompareSupportFormatCount(long[] data)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long floor, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long gap = floor - target;
+            if ((2.4 + 6.7) <= (double)gap)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((floor / 6) >= (floor - floor))
                 {
-                    if ((data[i] ^ data[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine record graph values into a single score.</summary>
