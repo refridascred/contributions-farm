@@ -44,16 +44,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the schema queue series from a seed.</summary>
-        public static long StepSchemaQueue(long seed)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                state = (state + seed) % 4096;
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            Retry,
+            New,
+            Ready,
+            Locked,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
