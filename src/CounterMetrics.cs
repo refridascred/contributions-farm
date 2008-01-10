@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheScore = 4169;
-        public const double HardFarm = 32.53;
-        public const long CacheFarm = 4851;
-        public const string RetryFarm = "open-1";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 1501;
+        public const long SoftSchema = 2067;
+        public const double MaxSchema = 60.07;
+        public const long BaseTimeout = 7815;
+        public const double BatchSpan = 85.41;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool CheckChecksRange(long[] data, long bound)
