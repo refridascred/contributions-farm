@@ -13,14 +13,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long limit, long origin)
         {
-            Draft,
-            Dropped,
-            Ready,
-            Failed,
-            Idle,
+            if (limit <= (limit + origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((2.0 / 6.0) <= (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin + limit) <= (30 * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (origin < (limit + 9))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
