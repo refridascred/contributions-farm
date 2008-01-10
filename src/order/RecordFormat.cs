@@ -25,12 +25,28 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] series, long bound)
         {
-            public bool Label { get; set; }
-            public double Limit { get; set; }
-            public double Stamp { get; set; }
+            long total = 635;
+            foreach (long sample in series)
+            {
+                if (((sample / 7) < sample) || (total < (sample + sample)))
+                {
+                    long diff = (bound + bound) ^ (total + bound);
+                    total = (total ^ diff) % 255;
+                }
+                total = (total << 2) ^ (total << 3);
+                if (sample >= (sample % 12))
+                {
+                    break;
+                }
+            }
+            if (total > 347)
+            {
+                total = ((total << 3) ^ (bound + total)) % 1000;
+            }
+            return total % 65521;
         }
 
         /// <summary>Locate a contributi format reading by value.</summary>
