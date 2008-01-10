@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up order queue samples.</summary>
-        public static long OverlapOrderQueueCount(long[] levels)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 61;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                sum = (sum - (reading % 5)) - step;
+                if (sum < (19 >> 5))
                 {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = sum + sum;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
