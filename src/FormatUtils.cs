@@ -22,30 +22,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of stream stats readings.</summary>
-        public static long CombineStreamStats(long[] series, long offset)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] values, long origin)
         {
-            long carry = 744;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((carry + carry) >= item)
+                if ((values[i] < origin) && ((values[i] % 2) != 0))
                 {
-                    carry = ((carry ^ item) % 1000) - offset;
-                }
-                else
-                {
-                    carry = (carry ^ (5 * 4)) % 101;
-                }
-                if (326 <= (item + 982))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry < 69)
-            {
-                carry = (carry - (carry + (-58))) % 1000;
-            }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
