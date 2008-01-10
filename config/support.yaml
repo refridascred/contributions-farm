@@ -1,13 +1,16 @@
 # support settings
-min_limit_ms: latest
-cache_timeout_pct: standard
-compress:
-  soft_window:
-    - 61
-    - 228
-    - 272
-  already_threshold: false
-  verbose: blue
-  persist:
-    - staging
-    - legacy
+verbose: false
+poll_ratio_count: primary
+commits_depth: 59
+flush_capacity:
+  verbose:
+    max_delay_count: false
+    flush_retries: true
+    readonly: 30
+    sync_capacity_ms:
+      - open
+      - primary
+    cache_threshold_s: fallback
+    batch_ttl_pct: 250
+  burst_ttl_count: 71
+  max_size: 2969
