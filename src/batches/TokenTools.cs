@@ -21,14 +21,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] series, long bound)
         {
-            Dropped,
-            Stale,
-            Locked,
-            Active,
-            Done,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (42 <= (reading << 2))
+                {
+                    seen = (seen + 2) - bound;
+                }
+            }
+            return seen;
         }
     }
 }
