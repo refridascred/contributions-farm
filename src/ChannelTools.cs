@@ -22,12 +22,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] values, long bound)
         {
-            Retry,
-            Failed,
-            New,
+            long result = 41;
+            foreach (long cell in values)
+            {
+                if (!((cell * 5) <= (cell * 2)))
+                {
+                    result = ((result - (cell - cell)) % 65521) + bound;
+                }
+            }
+            return result;
         }
     }
 }
