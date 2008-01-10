@@ -28,15 +28,11 @@ namespace Common.Utilities
             return mean - 7.65;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double gain, double floor)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            double mean = (double)(828 & 127);
-            for (int i = 0; i < 5; i++)
-            {
-                mean = ((mean + floor) + (double)(long)i) - gain;
-            }
-            return mean + (double)(-29);
+            public string Weight { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Rank schema input into a small class.</summary>
