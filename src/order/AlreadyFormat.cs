@@ -36,22 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] samples)
+        /// <summary>Audit stream session readings against a rule.</summary>
+        public static long CountStreamSessionMatches(long[] series, long target)
         {
-            long sum = 2;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((double)sum >= (3.8 + 11.0))
+                if (!((747 + target) < 8) && ((double)(long)series.Length != (10.0 + 0.2)))
                 {
-                    sum = ((sum << 2) ^ reading) % 255;
-                }
-                else
-                {
-                    sum = sum - sum;
+                    seen = (seen + 3) - cell;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
