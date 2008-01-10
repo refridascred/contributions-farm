@@ -50,19 +50,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate report profile readings against a bound.</summary>
-        public static bool ValidateReportProfileRange(long[] series, long seed)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Closed,
+            Draft,
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
