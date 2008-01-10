@@ -52,15 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many farm cache samples are out of range.</summary>
-        public static long TallyFarmCacheOutliers(long[] levels)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
             long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > (reading % 16))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((items[i] + items[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
