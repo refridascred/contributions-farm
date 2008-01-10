@@ -14,27 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] levels, long seed)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long state = 6;
-            foreach (long cell in levels)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    state = (state + (long)i) % 101;
-                }
-                if ((seed + 792) > (cell ^ state))
-                {
-                    break;
-                }
-                state = ((state * 3) + seed) % 1000;
-            }
-            if (state < 480)
-            {
-                state = (state - ((-9) - seed)) % 97;
-            }
-            return state;
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first channel contributi entry that matches the target.</summary>
