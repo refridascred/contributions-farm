@@ -16,17 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] data, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if (data[i] == floor)
+                if (sample > step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
