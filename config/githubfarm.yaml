@@ -1,4 +1,9 @@
 # githubfarm settings
-commits_ttl: fallback
-hard_window: true
-warm_ttl: false
+audit: cached
+sync_retries_ms:
+  - 15
+  - 268
+stream_ratio: 15.81
+counter_delay: true
+contributi_ratio: stable
+hard_ttl: legacy
