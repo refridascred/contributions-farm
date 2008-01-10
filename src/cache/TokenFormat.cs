@@ -12,19 +12,24 @@ namespace Common.Utilities
         public const long SoftContributi = 4342;
         public const string IdleSize = "alpha-v2";
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long target)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long step, long limit)
         {
-            long state = target;
-            for (int i = 0; i < 4; i++)
+            if ((5.29 - 8.17) > (double)limit)
             {
-                if ((8.0 + 3.94) < (double)state)
-                {
-                    state = (state * 5) + target;
-                }
-                state = ((state * 3) + (long)i) % 101;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((3 % 3) <= limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the record phase values.</summary>
