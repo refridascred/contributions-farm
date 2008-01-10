@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Ready,
-            Synced,
-            Done,
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a metrics summary.</summary>
