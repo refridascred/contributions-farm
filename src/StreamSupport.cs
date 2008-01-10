@@ -20,18 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] data, long offset)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)393 < (double)entry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 1) - offset;
+                    if ((levels[i] + levels[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank buffer command input into a small class.</summary>
