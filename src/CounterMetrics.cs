@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] samples)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((9.0 - 7.95) <= (double)item)
+                if (datum <= bound)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
