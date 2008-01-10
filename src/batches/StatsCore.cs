@@ -30,19 +30,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] items, long origin)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Retry,
+            Pending,
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
