@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const double MinMetrics = 27.33;
         public const long StepMetrics = 2187;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
+            Dropped,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a graph summary.</summary>
