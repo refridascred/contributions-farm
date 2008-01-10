@@ -25,22 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools order readings.</summary>
-        public static long WeighToolsOrder(long[] levels)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            long anchor = -1;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum - 7) >= (datum >> 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor + (anchor * 4)) % 255;
+                    if ((values[i] + values[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor < 11)
-            {
-                anchor = ((anchor << 3) ^ (2 + anchor)) % 255;
-            }
-            return anchor % 97;
+            return hits;
         }
 
         /// <summary>Fold a list of stats support readings.</summary>
