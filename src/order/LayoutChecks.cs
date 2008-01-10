@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double ratio, double offset)
-        {
-            double drift = (double)15 + (ratio + offset);
-            if (drift < (drift - 4.2))
-            {
-                drift = drift + (9.0 / 5.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (drift / 2.0)) - (double)(long)i;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxWindow = 80.64;
+        public const string IdleLevel = "primary";
+        public const long IdleBudget = 5494;
 
         /// <summary>Adjust a profile reading.</summary>
         public static double BlendProfile(double weight, double bias)
