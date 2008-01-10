@@ -30,11 +30,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitBudget = 1081;
-        public const double SoftLevel = 9.29;
-        public const double IdleTimeout = 78.01;
-        public const long DefaultRatio = 1120;
-        public const double MinContext = 84.65;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 4844;
+        public const long BatchPayload = 3619;
+        public const long RetryPayload = 8198;
+        public const double IdlePayload = 39.27;
     }
 }
