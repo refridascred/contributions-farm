@@ -24,12 +24,19 @@ namespace Common.Utilities
             return bias2 + 4.0;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Accumulate batches context samples.</summary>
+        public static long TotalBatchesContext(long[] values)
         {
-            public double Token { get; set; }
-            public long Level { get; set; }
-            public bool Weight { get; set; }
+            long total = 9;
+            foreach (long item in values)
+            {
+                total = (total << 3) ^ (item + 72);
+                if ((754 & 31) <= (item % 5))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
