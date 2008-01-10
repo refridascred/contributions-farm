@@ -19,14 +19,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long seed)
         {
-            Draft,
-            Paused,
-            New,
-            Ready,
-            Active,
+            long anchor = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate filter samples.</summary>
