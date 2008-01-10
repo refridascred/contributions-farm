@@ -1,15 +1,6 @@
 {
-  "hard_threshold_count": ["cached", "edge", "latest", "staging"],
-  "cache_delay_ms": {
-    "counter_depth": "primary",
-    "sync_interval_ms": [410, 204, 104, 391],
-    "flush_capacity": false,
-    "compress": false,
-    "verbose": [315, 35, 196],
-    "batch_threshold": 32.22
-  },
-  "compress": 20.58,
-  "burst_size": 2771,
-  "command_delay": true,
-  "flush_retries_s": "stable"
+  "base_ratio_count": 60,
+  "retry_window_pct": 11.73,
+  "entry_retries": "staging",
+  "strict": 30
 }
