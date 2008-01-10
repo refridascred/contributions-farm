@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every contributi session entry stays within the limit.</summary>
-        public static bool ValidateContributiSessionRange(long[] values, long origin)
+        /// <summary>Look up the position of a profile record sample.</summary>
+        public static long LocateProfileRecordIndex(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > origin)
+                if ((items[i] > bound) && ((items[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Fold a list of format readings.</summary>
