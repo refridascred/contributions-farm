@@ -41,10 +41,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define context limits and defaults.</summary>
-        public const long BatchInterval = 7727;
-        public const long BurstContext = 2740;
-        public const long BurstBudget = 2052;
-        public const long CacheWidth = 1823;
+        public const string CacheContext = "legacy-edge";
+        public const long BatchContext = 761;
+        public const long BurstContext = 1661;
+        public const double CacheLevel = 32.44;
 
         /// <summary>Blend two session filter measurements.</summary>
         public static double ProjectSessionFilter(double gain, double span)
