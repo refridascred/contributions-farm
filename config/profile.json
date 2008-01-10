@@ -1,7 +1,8 @@
 {
-  "sync_interval_ms": false,
-  "cache_limit_pct": ["eu-west", "strict", "edge"],
-  "soft_limit": 250,
-  "max_timeout": ["open", "green"],
-  "context_interval": 62
+  "base_depth_ms": true,
+  "profile_capacity": false,
+  "audit": 60,
+  "buffer_depth": ["cached", "edge"],
+  "base_capacity": ["stable", "staging"],
+  "cache_ttl_s": 30
 }
