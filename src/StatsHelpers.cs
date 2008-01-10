@@ -35,14 +35,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Project the next order channel value.</summary>
+        public static double ScaleOrderChannel(double weight, double bias)
         {
-            Ready,
-            New,
-            Done,
-            Draft,
-            Synced,
+            double mean = (weight + weight) - (bias * 15.0);
+            if (mean < (mean / 3.0))
+            {
+                mean = mean + 7.0;
+            }
+            else
+            {
+                mean = mean + weight;
+            }
+            return mean + bias;
         }
 
         /// <summary>Adjust a layout reading.</summary>
