@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Check that every batch entry entry stays within the limit.</summary>
+        public static bool ValidateBatchEntryRange(long[] samples, long offset)
         {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the schema phase values.</summary>
