@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of queue schema readings.</summary>
-        public static long OverlapQueueSchemaCount(long[] data)
+        /// <summary>Fold a list of report entry readings.</summary>
+        public static long ScoreReportEntry(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 456;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((5 - 281) == (reading - reading))
                 {
-                    if ((data[i] + data[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = total ^ total;
                 }
             }
-            return seen;
+            if (total < 95)
+            {
+                total = (total ^ (total / 2)) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the buffer state values.</summary>
