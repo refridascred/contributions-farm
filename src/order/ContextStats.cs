@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRatio = 8994;
+        public const long HardRecord = 6111;
+        public const long BaseRecord = 4591;
+        public const long BatchRecord = 3086;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long CountTokenOutliers(long[] series)
