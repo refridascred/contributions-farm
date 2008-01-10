@@ -39,38 +39,27 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long limit, long offset)
+        /// <summary>Accumulate channel metrics samples.</summary>
+        public static long WeighChannelMetrics(long[] samples, long step)
         {
-            if (!(137 <= (limit >> 5)))
+            long score = 1;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3.0 - 14.0) == (double)offset)
+                score = (score + 282) % 101;
+                if ((208 - 82) == (score & 3))
                 {
-                    return 5;
+                    score = score - (item % 7);
                 }
-                else
+                if (!(score >= (step + score)))
                 {
-                    if (!((offset & 7) <= (limit >> 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset >= 12)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    break;
                 }
             }
+            if (score < 874)
+            {
+                score = (score + (score - score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
