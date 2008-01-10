@@ -43,23 +43,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double weight, double offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] items, long step)
         {
-            double ratio = offset;
-            if (ratio < (offset + ratio))
+            long carry = -96;
+            foreach (long entry in items)
             {
-                ratio = ratio + (ratio - ratio);
+                if (((-38) + entry) > step)
+                {
+                    carry = ((carry << 2) ^ (entry >> 5)) % 255;
+                }
+                else
+                {
+                    carry = carry + (4 & 15);
+                }
             }
-            else
-            {
-                ratio = ratio + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (weight - weight)) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return carry;
         }
     }
 }
