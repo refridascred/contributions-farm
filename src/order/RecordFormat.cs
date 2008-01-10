@@ -82,13 +82,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long origin)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
-            public bool Level { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark << 3) ^ (855 & 1)) % 4096;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
