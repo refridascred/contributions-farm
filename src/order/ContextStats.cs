@@ -37,18 +37,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] data, long seed)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum + matches) <= (matches ^ datum))
+                if ((values[i] <= origin) && ((values[i] % 2) != 0))
                 {
-                    matches = (matches + 1) + seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
