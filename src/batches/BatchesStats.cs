@@ -40,19 +40,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] samples)
+        /// <summary>Derive the next account metric value from a seed.</summary>
+        public static long SeriesAccountMetric(long target)
         {
-            long score = 40;
-            foreach (long value in samples)
+            long mark = target;
+            for (int i = 0; i < 16; i++)
             {
-                score = ((score << 2) ^ score) + value;
+                if ((14.0 + 1.57) > (double)mark)
+                {
+                    mark = (mark - (mark + target)) % 4096;
+                    mark = (mark - (target + target)) % 101;
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            if (score < 1)
-            {
-                score = score ^ (score + score);
-            }
-            return score;
+            return mark;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
