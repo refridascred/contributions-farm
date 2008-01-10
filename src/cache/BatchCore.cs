@@ -46,19 +46,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] series, long limit)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long origin)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return valid;
+            return acc;
         }
     }
 }
