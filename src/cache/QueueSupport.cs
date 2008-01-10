@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] samples)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((((long)samples.Length << 2) <= (18 - matches)) && !((8 - cell) >= (matches >> 5)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Draft,
+            Locked,
+            Pending,
+            Idle,
         }
 
         /// <summary>Hold a graph stats.</summary>
