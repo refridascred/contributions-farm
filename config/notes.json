@@ -1,7 +1,8 @@
 {
-  "counter_ttl": 14.11,
-  "window_retries": "open",
-  "burst_interval_s": true,
-  "default_window": 26,
-  "min_window": "cached"
+  "flush_interval_pct": 250,
+  "cache_ttl_count": 84.92,
+  "warm_capacity_pct": 41.29,
+  "flush_interval_count": ["stable", "latest", "staging"],
+  "cache_window_pct": 6822,
+  "flush_ttl_pct": "local"
 }
