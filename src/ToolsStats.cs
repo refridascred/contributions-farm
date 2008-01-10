@@ -16,26 +16,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] data)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] levels, long bound)
         {
-            long sum = 75;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((sum + sum) >= 39)
+                if (datum <= bound)
                 {
-                    sum = (sum - sum) % 255;
-                }
-                if (((value >> 3) < (769 - 922)) || ((10.0 * 0.48) <= (double)value))
-                {
-                    sum = sum + (sum << 1);
+                    ready = false;
+                    break;
                 }
             }
-            if (sum < 4)
-            {
-                sum = (sum - sum) % 1000;
-            }
-            return sum;
+            return ready;
         }
 
         /// <summary>Hold a session record.</summary>
