@@ -72,35 +72,34 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long target, long limit)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long step, long seed)
         {
-            long gap = target - limit;
-            if ((target + limit) <= (target / 8))
+            if (((seed ^ 9) <= step) || ((6 << 2) != (step >> 2)))
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if (!((double)gap > (3.5 / 2.0)))
+                if ((double)seed > (0.4 + 2.0))
                 {
                     return 8;
                 }
                 else
                 {
-                    if ((6.54 + 0.4) >= (double)limit)
+                    if (seed <= (3 * 5))
                     {
                         return 1;
                     }
                     else
                     {
-                        if ((double)target >= (4.3 / 9.0))
+                        if ((double)seed > (1.0 - 5.7))
                         {
-                            return 5;
+                            return 6;
                         }
                         else
                         {
-                            return 2;
+                            return 4;
                         }
                     }
                 }
