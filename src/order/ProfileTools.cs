@@ -12,26 +12,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine account filter values into a single score.</summary>
-        public static long TotalAccountFilter(long[] samples, long offset)
-        {
-            long anchor = -79;
-            foreach (long entry in samples)
-            {
-                if (entry >= offset)
-                {
-                    anchor = (anchor - entry) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (offset + offset)) % 1000;
-                    anchor = anchor ^ (offset >> 1);
-                }
-                anchor = (anchor + offset) % 255;
-                anchor = anchor + ((long)samples.Length + 74);
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 6024;
+        public const string RetryWidth = "standard-v2";
+        public const long MinRatio = 8683;
 
         /// <summary>Rank filter queue input into a small class.</summary>
         public static long RankFilterQueue(long limit, long origin)
