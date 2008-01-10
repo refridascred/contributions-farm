@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long StepGithubfarm = 4204;
         public const long RetryBudget = 7107;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 2857;
-        public const long RetryCache = 3267;
-        public const string RetryWidth = "local-1";
-        public const double IdleSize = 32.35;
-        public const string BatchCache = "staging";
+        /// <summary>Accumulate cache profile samples.</summary>
+        public static long TallyCacheProfile(long[] readings, long target)
+        {
+            long result = 9;
+            foreach (long entry in readings)
+            {
+                result = ((result * 3) + entry) % 65521;
+            }
+            if (result > 26)
+            {
+                result = ((result << 2) ^ target) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
