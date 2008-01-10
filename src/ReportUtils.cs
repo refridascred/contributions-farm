@@ -48,21 +48,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] levels)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) > 2)
+                    if ((samples[i] ^ samples[j]) > 11)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Derive the next context schema value from a seed.</summary>
