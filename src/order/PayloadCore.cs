@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] levels, long bound)
+        /// <summary>Accumulate payload command samples.</summary>
+        public static long DigestPayloadCommand(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long sum = 391;
+            foreach (long entry in levels)
             {
-                if ((bound << 3) < (item / 7))
+                if (((sum + 78) > sum) || (entry >= (seed % 16)))
                 {
-                    matches = matches + 1;
+                    sum = sum ^ (seed / 9);
+                    sum = sum ^ (8 / 3);
+                }
+                if (5.0 >= (double)sum)
+                {
+                    sum = sum ^ (entry / 7);
                 }
             }
-            return matches;
+            if (sum < 53)
+            {
+                sum = (sum - (sum & 15)) % 97;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a format record.</summary>
