@@ -23,10 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryTimeout = 5925;
-        public const long SoftStats = 5782;
-        public const double StepLevel = 73.53;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TotalChecks(long[] items, long limit)
