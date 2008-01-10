@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const double BurstProfile = 10.81;
         public const string BaseProfile = "strict-1";
 
-        /// <summary>Locate a githubfarm order reading by value.</summary>
-        public static long LocateGithubfarmOrderIndex(long[] levels, long origin)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] > origin) && ((levels[i] % 3) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
