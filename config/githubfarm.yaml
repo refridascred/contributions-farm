@@ -1,20 +1,23 @@
 # githubfarm settings
-cache_limit_s: local
-token_delay: 1842
-verbose:
-  - 161
-  - 107
-batch_window:
-  - 128
-  - 159
-  - 43
-  - 52
-session_window:
-  - green
-  - primary
-sync_limit_s:
-  batch_retries_count: true
-  batch_window_s: local
-  soft_retries_count: 6093
-  verbose: legacy
-  compress: standard
+command_depth: staging
+channel_ratio: eu-west
+persist: strict
+verbose: 42.84
+warm_delay_s:
+  max_window_count: cached
+  batch_timeout: 7572
+  default_ttl_count:
+    hard_delay: 92
+    max_retries_pct:
+      - 350
+      - 97
+      - 116
+    base_window: fallback
+    tools_limit: 9576
+    batch_timeout_pct:
+      - 365
+      - 449
+  cache_delay: 15.79
+  retry_limit_count:
+    - 461
+    - 328
