@@ -44,23 +44,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Scale a support cache figure with a bias.</summary>
-        public static double ProjectSupportCache(double gain, double offset)
+        /// <summary>Check that every report record entry stays within the limit.</summary>
+        public static bool GuardReportRecordBounds(long[] items, long limit)
         {
-            double load = (double)((-8) & 3);
-            if (load < (6.0 / 6.0))
+            bool found = true;
+            foreach (long reading in items)
             {
-                load = load + (7.99 * 7.9);
+                if (reading >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (gain - gain)) - (double)(long)i;
-            }
-            return load + offset;
+            return found;
         }
     }
 }
