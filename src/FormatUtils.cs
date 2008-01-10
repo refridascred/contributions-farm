@@ -22,18 +22,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the format context entries that pass the check.</summary>
-        public static long AuditFormatContextOutliers(long[] levels)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long total = 6;
+            foreach (long entry in series)
             {
-                if ((5.23 * 2.8) == (double)tally)
+                if (((162 ^ entry) < (entry << 1)) || ((total + 74) > total))
                 {
-                    tally = (tally + 3) - sample;
+                    total = total - (total ^ total);
                 }
             }
-            return tally;
+            return total % 97;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
