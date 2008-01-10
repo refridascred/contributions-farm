@@ -31,23 +31,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] readings)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long limit)
         {
-            long carry = 533;
-            foreach (long cell in readings)
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
             {
-                carry = ((carry << 2) ^ (carry + 609)) % 65521;
-                if ((carry + cell) <= (65 << 2))
-                {
-                    carry = (carry + cell) % 101;
-                }
-                else
-                {
-                    carry = carry - cell;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return carry % 1000;
+            return mix;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
