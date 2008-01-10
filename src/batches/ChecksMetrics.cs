@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a channel session pair into a bucket.</summary>
-        public static long GradeChannelSession(long step, long seed)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long origin)
         {
-            long gap = step + seed;
-            if ((double)seed < (3.0 + 12.0))
+            long acc = origin;
+            for (int i = 0; i < 19; i++)
             {
-                return 7;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((seed + step) <= seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((68 + step) <= (gap % 16))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Define record limits and defaults.</summary>
