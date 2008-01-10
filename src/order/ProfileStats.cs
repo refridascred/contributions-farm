@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (datum > (count + datum))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetrySpan = 7351;
+        public const double IdleStats = 43.05;
+        public const long BaseFactor = 3376;
+        public const long StepRatio = 7265;
+        public const long BatchStats = 2130;
 
         /// <summary>Adjust a batches reading.</summary>
         public static double AdjustBatches(double gain, double floor)
