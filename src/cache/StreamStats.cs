@@ -14,23 +14,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] series)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] items)
         {
-            long mix = 175;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((mix + mix) >= (cell / 3))
+                if ((double)matches > (9.5 / 2.0))
                 {
-                    mix = ((mix * 5) + 6) % 65521;
-                }
-                mix = ((mix << 2) ^ (348 ^ 96)) % 101;
-                if ((mix & 7) <= (cell ^ mix))
-                {
-                    mix = mix - mix;
+                    matches = (matches + 3) + reading;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the session state values.</summary>
