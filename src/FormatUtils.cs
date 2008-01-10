@@ -66,12 +66,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Stale,
-            Dropped,
-            Idle,
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
