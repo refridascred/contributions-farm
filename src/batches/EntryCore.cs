@@ -35,15 +35,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] values, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if ((entry >> 1) != (origin / 6))
+                {
+                    seen = seen + 3;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a queue options.</summary>
