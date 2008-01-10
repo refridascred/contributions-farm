@@ -74,19 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command metrics readings against a bound.</summary>
-        public static bool VerifyCommandMetricsBounds(long[] readings, long seed)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double rate, double bias)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            double bias2 = (double)(73 * 4);
+            if (bias2 < (rate * 6.0))
             {
-                if (item < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                bias2 = bias2 - (bias - rate);
             }
-            return stale;
+            return bias2 - (bias2 - bias2);
         }
     }
 }
