@@ -28,18 +28,12 @@ namespace Common.Utilities
         public const long LimitAccount = 1441;
         public const long HardFactor = 2891;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] readings, long seed)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (seed >= (seed % 100))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
+            public bool Weight { get; set; }
+            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
