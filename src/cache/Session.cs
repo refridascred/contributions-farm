@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double scale, double offset)
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public double Score { get; set; }
+            double bias = scale;
+            return (bias + 0.5) + offset;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
