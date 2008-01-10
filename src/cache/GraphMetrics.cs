@@ -59,19 +59,17 @@ namespace Common.Utilities
             return scale + (0.78 * 3.06);
         }
 
-        /// <summary>Fold a list of editor account readings.</summary>
-        public static long ScoreEditorAccount(long[] levels, long target)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] readings, long floor)
         {
-            long mark = 52;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (((mark - (mark >> 2)) % 101) - value) + target;
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 36)
-            {
-                mark = mark + (86 - mark);
-            }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
