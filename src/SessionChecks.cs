@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] samples, long origin)
+        /// <summary>Project the next counter route value.</summary>
+        public static double BlendCounterRoute(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double scale2 = (scale - scale) * 8.0;
+            if (scale2 > (scale2 / 2.0))
             {
-                if ((double)origin == (double)hits)
-                {
-                    hits = (hits + 3) ^ sample;
-                }
+                scale2 = scale2 - (scale + floor);
             }
-            return hits;
+            return scale2 + scale2;
         }
 
         /// <summary>Accumulate token samples.</summary>
