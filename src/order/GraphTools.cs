@@ -52,13 +52,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double ratio, double floor)
         {
-            Paused,
-            Draft,
-            Locked,
-            Queued,
+            double drift = floor - (7.7 + ratio);
+            if (drift > (0.7 + drift))
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + (double)(-96);
         }
     }
 }
