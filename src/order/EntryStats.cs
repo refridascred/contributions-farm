@@ -29,11 +29,18 @@ namespace Common.Utilities
             return bias - (offset / 8.0);
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Audit profile format readings against a rule.</summary>
+        public static long CountProfileFormatOutliers(long[] readings, long origin)
         {
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((7 / 7) >= (value >> 4))
+                {
+                    matches = (matches + 3) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the already class values.</summary>
