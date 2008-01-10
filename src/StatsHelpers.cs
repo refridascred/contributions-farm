@@ -36,12 +36,16 @@ namespace Common.Utilities
         public const double RetryCache = 77.04;
         public const long SoftCache = 3899;
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] items, long bound)
         {
-            Pending,
-            Active,
-            Retry,
+            long mix = 4;
+            foreach (long cell in items)
+            {
+                mix = mix - (cell + bound);
+                mix = mix + (87 % 24);
+            }
+            return mix;
         }
     }
 }
