@@ -1,5 +1,13 @@
 {
-  "default_delay": true,
-  "persist": 78.04,
-  "batch_threshold_s": "primary"
+  "context_depth": {
+    "soft_capacity_pct": "latest",
+    "graph_timeout": "latest",
+    "already_depth": 41.64,
+    "enabled": 72.09
+  },
+  "strict": "eu-west",
+  "support_window": 30,
+  "entry_retries": ["green", "stable", "blue"],
+  "soft_size_s": [168, 434, 306, 206],
+  "burst_size": "edge"
 }
