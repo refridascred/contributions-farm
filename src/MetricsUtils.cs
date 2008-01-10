@@ -68,13 +68,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Classify a counter format pair into a bucket.</summary>
+        public static long SortCounterFormat(long origin, long floor)
         {
-            public long Limit { get; set; }
-            public double Token { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            long next = origin ^ floor;
+            if ((double)next != (double)floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(floor > (1 - 8)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((next + next) != (origin % 10))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
