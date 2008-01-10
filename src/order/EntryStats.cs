@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            Locked,
-            Stale,
-            Active,
-            Queued,
+            public double Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
