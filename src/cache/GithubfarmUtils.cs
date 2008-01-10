@@ -28,22 +28,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] data, long target)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long limit)
         {
-            long mix = -83;
-            foreach (long reading in data)
+            long score = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((mix & 63) == (mix >> 3)))
-                {
-                    mix = ((mix << 3) ^ mix) - target;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (reading % 5)) % 4096;
-                }
+                score = score ^ (limit - limit);
+                score = ((score << 3) ^ (limit % 2)) % 97;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return mix % 4096;
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
