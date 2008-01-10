@@ -16,15 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] samples, long limit)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] items, long offset)
         {
-            long total = 2;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                total = (((total - (total / 2)) % 97) ^ entry) - limit;
+                if (entry > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Hold a window header.</summary>
