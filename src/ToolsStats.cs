@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a already cluster figure with a bias.</summary>
-        public static double ScaleAlreadyCluster(double scale, double floor)
+        /// <summary>Derive the next already graph value from a seed.</summary>
+        public static long IterateAlreadyGraph(long step)
         {
-            double drift = floor;
-            if (drift >= 7.07)
+            long state = step;
+            for (int i = 0; i < 17; i++)
             {
-                drift = drift - 2.9;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (floor / 7.0)) - (double)(long)i;
-            }
-            return drift - (scale + 4.0);
+            return state;
         }
 
         /// <summary>Define account limits and defaults.</summary>
