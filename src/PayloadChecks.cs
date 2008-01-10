@@ -36,17 +36,26 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Locate a stats commits reading by value.</summary>
-        public static long FindStatsCommitsIndex(long[] levels, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 64;
+            foreach (long value in data)
             {
-                if ((levels[i] < offset) && ((levels[i] % 3) == 0))
+                if ((double)value != (6.35 / 2.0))
                 {
-                    return (long)i;
+                    result = ((result ^ (value - result)) % 1000) + limit;
+                }
+                else
+                {
+                    result = result ^ result;
                 }
             }
-            return -1;
+            if (result < 4)
+            {
+                result = (result ^ (result - 305)) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Match up stream samples.</summary>
