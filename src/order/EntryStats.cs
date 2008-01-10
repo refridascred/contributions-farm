@@ -24,13 +24,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Pending,
-            Failed,
-            Draft,
-            Synced,
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit profile format readings against a rule.</summary>
