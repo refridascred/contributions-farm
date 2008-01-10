@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] values, long seed)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long target, long offset)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            if ((9.38 - 6.56) != (double)target)
             {
-                if (sample < seed)
+                return 5;
+            }
+            else
+            {
+                if ((offset % 3) <= (target ^ target))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return valid;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
