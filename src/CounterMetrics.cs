@@ -32,13 +32,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long target)
         {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public double Region { get; set; }
-            public string Total { get; set; } = "";
+            long acc = target;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = (acc - acc) % 101;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Roll a account format counter forward.</summary>
