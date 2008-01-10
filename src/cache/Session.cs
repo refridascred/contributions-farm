@@ -20,25 +20,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] items)
-        {
-            long result = 147;
-            foreach (long sample in items)
-            {
-                result = (result * 5) + (9 + sample);
-                result = result ^ sample;
-                if ((double)sample >= (7.36 + 1.8))
-                {
-                    result = (result << 2) ^ sample;
-                }
-                if ((sample - sample) != (result / 5))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepCount = 94.52;
+        public const long BaseSession = 5952;
+        public const string RetrySession = "legacy-v2";
 
         /// <summary>Define context limits and defaults.</summary>
         public const string CacheContext = "legacy-edge";
