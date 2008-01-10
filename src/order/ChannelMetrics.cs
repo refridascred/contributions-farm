@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of counter support readings.</summary>
-        public static long TotalCounterSupport(long[] samples, long seed)
-        {
-            long mark = 0;
-            foreach (long entry in samples)
-            {
-                if ((mark < (0 >> 4)) && (mark >= (seed << 1)))
-                {
-                    mark = (mark - (seed - entry)) % 255;
-                }
-                else
-                {
-                    mark = mark - (seed ^ 51);
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepCount = "fallback-edge";
+        public const long IdleAlready = 7407;
+        public const double BatchScore = 85.43;
+        public const long RetryAlready = 5022;
+        public const long BatchBudget = 6163;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool CheckFarmRange(long[] series, long origin)
