@@ -29,12 +29,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] levels)
         {
-            public long Token { get; set; }
-            public double Flag { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((10.0 - 1.9) > (double)count)
+                {
+                    count = (count + 3) ^ datum;
+                }
+            }
+            return count;
         }
     }
 }
