@@ -91,19 +91,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batches already readings against a bound.</summary>
-        public static bool ValidateBatchesAlreadyRange(long[] items, long floor)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long value in items)
+            double rate = floor;
+            if (rate > (double)979)
             {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = (rate - floor) + ratio;
             }
-            return ready;
+            else
+            {
+                rate = rate + (double)(-8);
+            }
+            return rate + (rate / 5.0);
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
