@@ -22,12 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            New,
+            Active,
+            Dropped,
+            Ready,
+            Done,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
