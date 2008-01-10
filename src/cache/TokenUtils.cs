@@ -29,14 +29,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long seed)
         {
-            New,
-            Closed,
-            Idle,
-            Paused,
-            Queued,
+            long acc = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)acc < (2.3 + 6.0))
+                {
+                    acc = ((acc * 4) + (-88)) % 101;
+                    acc = ((acc * 4) + acc) % 4096;
+                }
+                acc = (acc - ((-82) + acc)) % 1000;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
