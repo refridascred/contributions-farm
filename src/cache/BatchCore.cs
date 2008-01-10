@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] series)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long sum = 935;
-            foreach (long entry in series)
-            {
-                sum = ((sum - sum) % 65521) ^ entry;
-            }
-            return sum % 1000;
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
