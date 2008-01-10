@@ -35,19 +35,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] data, long bound)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Pending,
+            Active,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a metrics summary.</summary>
