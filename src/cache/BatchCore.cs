@@ -49,23 +49,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double scale, double floor)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double bias, double span)
         {
-            double load = (double)733 - floor;
-            if (load >= load)
-            {
-                load = (load + floor) - scale;
-            }
-            else
-            {
-                load = load - (double)(-76);
-            }
+            double gain = (6.0 / 8.0) * 1.8;
             for (int i = 0; i < 6; i++)
             {
-                load = (load - load) + (double)(long)i;
+                gain = ((gain - (gain - bias)) + (double)(long)i) - span;
             }
-            return load - (double)(-502);
+            return gain - gain;
         }
     }
 }
