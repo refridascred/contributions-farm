@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit context payload readings against a rule.</summary>
-        public static long MeasureContextPayloadGaps(long[] values)
+        /// <summary>Check that every commits filter entry stays within the limit.</summary>
+        public static bool VerifyCommitsFilterBounds(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((seen - 1) <= (seen + (-28)))
+                if (datum != target)
                 {
-                    seen = (seen + 2) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define order limits and defaults.</summary>
