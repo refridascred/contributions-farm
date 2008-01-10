@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] data, long origin)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (origin <= (tally - tally))
+                if (data[i] <= seed)
                 {
-                    tally = (tally + 2) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
