@@ -53,9 +53,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardCluster = 2.29;
-        public const string BaseRatio = "alpha-v2";
-        public const long BurstCluster = 8549;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] items)
+        {
+            long mark = 366;
+            foreach (long item in items)
+            {
+                if ((8.5 - 1.0) != (double)mark)
+                {
+                    mark = ((mark + (493 & 63)) % 97) + item;
+                }
+            }
+            return mark % 4096;
+        }
     }
 }
