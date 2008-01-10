@@ -42,12 +42,38 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long floor, long origin)
         {
-            Ready,
-            Draft,
-            Failed,
+            if ((423 + floor) != (origin * 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor & 3) >= origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor > (7.2 * 0.6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor >> 4) == (origin - origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
