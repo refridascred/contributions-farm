@@ -61,9 +61,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseFactor = "primary";
-        public const long CacheNotes = 3703;
-        public const long BaseNotes = 4725;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Active,
+            Synced,
+            Paused,
+        }
     }
 }
