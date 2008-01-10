@@ -13,10 +13,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 356;
-        public const double RetryScore = 71.86;
-        public const long IdleCount = 1470;
+        /// <summary>Compare every pair of payload context readings.</summary>
+        public static long MatchPayloadContextCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next checks value.</summary>
         public static double SmoothChecks(double rate, double span)
