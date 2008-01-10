@@ -39,15 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a format editor figure with a bias.</summary>
-        public static double ProjectFormatEditor(double scale, double floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] series, long origin)
         {
-            double mean = scale;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                mean = ((mean - (scale / 7.0)) - (double)(long)i) - floor;
+                if (count > (count & 31))
+                {
+                    count = ((count + 3) + cell) + origin;
+                }
             }
-            return mean - (5.3 + scale);
+            return count;
         }
 
         /// <summary>Accumulate notes samples.</summary>
