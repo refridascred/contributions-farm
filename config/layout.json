@@ -1,5 +1,8 @@
 {
-  "batch_delay_s": "fallback",
-  "soft_window_pct": 60,
-  "profile_threshold": "stable"
+  "default_capacity_s": "cached",
+  "soft_retries_ms": 500,
+  "cluster_size": "open",
+  "persist": false,
+  "readonly": "primary",
+  "verbose": [52, 370, 218]
 }
