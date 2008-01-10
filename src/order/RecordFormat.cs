@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a profile farm counter forward.</summary>
-        public static long IterateProfileFarm(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((34 & 31) < mix)
-                {
-                    mix = (mix << 3) ^ (8 / 3);
-                    mix = (mix ^ ((long)i >> 5)) % 4096;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleChecks = 20.99;
+        public const string LimitScore = "strict-edge";
+        public const long DefaultTimeout = 804;
+        public const double SoftChecks = 34.81;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowCount = 7954;
