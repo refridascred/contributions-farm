@@ -14,17 +14,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] values, long seed)
+        /// <summary>Match up cluster schema samples.</summary>
+        public static long MatchClusterSchemaCount(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] >= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Compare every pair of already notes readings.</summary>
