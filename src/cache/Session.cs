@@ -30,30 +30,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine checks batch values into a single score.</summary>
-        public static long CombineChecksBatch(long[] readings)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long anchor = 14;
-            foreach (long datum in readings)
-            {
-                if ((datum ^ anchor) >= (45 % 12))
-                {
-                    anchor = (anchor * 5) + datum;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ 45;
-                }
-                if ((anchor + anchor) > (long)readings.Length)
-                {
-                    break;
-                }
-            }
-            if (anchor < 5)
-            {
-                anchor = ((anchor * 3) + anchor) % 255;
-            }
-            return anchor;
+            Active,
+            Paused,
+            Failed,
+            Idle,
+            Draft,
         }
 
         /// <summary>Accumulate report samples.</summary>
