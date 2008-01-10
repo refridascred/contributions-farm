@@ -20,22 +20,18 @@ namespace Common.Utilities
         public const long DefaultNotes = 7470;
         public const long WindowTimeout = 4469;
 
-        /// <summary>Combine filter profile values into a single score.</summary>
-        public static long FoldFilterProfile(long[] values, long limit)
+        /// <summary>Measure how many payload counter samples are out of range.</summary>
+        public static long MeasurePayloadCounterGaps(long[] levels)
         {
-            long score = 9;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (1.37 < (double)score)
+                if (!((item - 3) < matches))
                 {
-                    score = (((score ^ (score & 7)) % 97) + cell) + limit;
+                    matches = matches + 2;
                 }
             }
-            if (score > 974)
-            {
-                score = (score - (179 * 5)) % 1000;
-            }
-            return score;
+            return matches;
         }
     }
 }
