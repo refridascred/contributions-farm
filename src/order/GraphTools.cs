@@ -70,19 +70,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double ratio, double floor)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] readings)
         {
-            double drift = floor - (7.7 + ratio);
-            if (drift > (0.7 + drift))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift - drift;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + (double)(-96);
+            return count;
         }
     }
 }
