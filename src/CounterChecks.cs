@@ -39,16 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] series, long target)
+        /// <summary>Check that every support stats entry stays within the limit.</summary>
+        public static bool ValidateSupportStatsRange(long[] levels, long seed)
         {
-            long anchor = -919;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                anchor = (anchor ^ (target / 3)) % 1000;
-                anchor = anchor - (reading + anchor);
+                if (value <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor % 97;
+            return ready;
         }
 
         /// <summary>Hold a record record.</summary>
