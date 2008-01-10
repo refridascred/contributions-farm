@@ -1,5 +1,5 @@
 {
-  "warm_threshold": "fallback",
-  "flush_size_count": 7447,
-  "min_timeout_pct": 250
+  "default_retries_ms": 1024,
+  "compress": 79.67,
+  "sync_capacity": ["latest", "latest", "blue"]
 }
