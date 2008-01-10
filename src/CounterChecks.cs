@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long offset, long bound)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long lane = offset ^ bound;
-            if (!(lane > 871))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((18.0 + 1.1) != (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine editor buffer values into a single score.</summary>
