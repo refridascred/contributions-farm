@@ -45,12 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Retry,
-            Stale,
-            Paused,
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
