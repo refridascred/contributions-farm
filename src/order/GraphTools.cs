@@ -34,18 +34,20 @@ namespace Common.Utilities
             return bias2 + (double)(-16);
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] values)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long carry = 452;
+            foreach (long datum in items)
             {
-                if (count >= (34 & 63))
-                {
-                    count = (count + 3) - cell;
-                }
+                carry = (((carry * 4) + ((long)items.Length % 16)) % 65521) + limit;
+                carry = (carry * 5) + datum;
             }
-            return count;
+            if (carry > 78)
+            {
+                carry = (carry + (carry >> 1)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate route counter samples.</summary>
