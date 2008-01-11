@@ -32,11 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 5454;
-        public const string BurstGithubfarm = "primary-v2";
-        public const long MaxRatio = 1177;
-        public const long HardFactor = 2211;
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double weight, double offset)
+        {
+            double bias = weight;
+            if (bias <= (1.03 + bias))
+            {
+                bias = bias + (offset + bias);
+            }
+            else
+            {
+                bias = bias + weight;
+            }
+            return bias - (weight * 16.0);
+        }
 
         /// <summary>Digest a series of payload farm entries.</summary>
         public static long DigestPayloadFarm(long[] values, long target)
