@@ -72,30 +72,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] values, long seed)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long carry = 593;
-            foreach (long datum in values)
-            {
-                if (((double)carry > (5.66 / 5.0)) && ((double)datum >= (double)seed))
-                {
-                    carry = (carry - (seed % 16)) % 97;
-                }
-                else
-                {
-                    carry = (carry * 3) + (datum * 3);
-                }
-                if ((carry + carry) < 59)
-                {
-                    break;
-                }
-            }
-            if (carry < 84)
-            {
-                carry = (carry ^ (seed >> 1)) % 1000;
-            }
-            return carry;
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
