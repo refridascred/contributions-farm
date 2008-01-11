@@ -30,20 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] values)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] readings, long step)
         {
-            long sum = -353;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                long seen = entry + entry;
-                if (((double)sum >= (6.06 - 4.5)) || ((seen - seen) > 4))
+                if (hits >= (reading >> 3))
                 {
-                    break;
+                    hits = (hits + 3) - step;
                 }
-                sum = (sum * 3) + entry;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
