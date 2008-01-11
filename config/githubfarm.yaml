@@ -1,5 +1,11 @@
 # githubfarm settings
-counter_timeout: 54.82
-already_size: 4044
-channel_threshold: cached
-enabled: true
+cache_capacity_s: local
+hard_interval_pct: 100
+base_depth: 71.12
+account_delay:
+  - 293
+  - 26
+  - 84
+  - 294
+window_threshold: 16.06
+persist: 1024
