@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 1718;
-        public const long BurstContributi = 6712;
-        public const long WindowBudget = 9037;
-        public const long MinTimeout = 3110;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardTimeout = 7722;
+        public const long MinRecord = 8485;
+        public const long WindowBudget = 710;
+        public const long BaseSize = 7565;
+        public const long BurstBudget = 1068;
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
