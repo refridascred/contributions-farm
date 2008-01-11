@@ -60,11 +60,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleFactor = 48.27;
-        public const long DefaultOrder = 5036;
-        public const double LimitOrder = 10.0;
-        public const long BatchSize = 9450;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long floor, long target)
+        {
+            if ((target - 58) > floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target >= floor) || ((target << 3) != (floor * 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((3 >> 4) != (floor % 12)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long WindowCount = 4856;
