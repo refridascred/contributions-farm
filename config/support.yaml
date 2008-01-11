@@ -1,21 +1,11 @@
 # support settings
-token_limit: 776
-soft_size:
-  - 270
-  - 475
-  - 431
-  - 263
-persist: primary
-warm_ttl_ms: 2136
-idle_interval: true
-hard_timeout_count:
-  persist: 9
-  batch_limit: false
-  format_window:
-    audit: staging
-    enabled: 1024
-    githubfarm_interval: stable
-    buffer_timeout: 87
-  default_capacity_count: 98
-  enabled: true
-  default_ttl: green
+base_ratio_pct: 43.57
+warm_depth: staging
+batch_ttl:
+  batch_capacity_count: 3
+  batch_threshold_s: strict
+  soft_timeout_count: 9458
+  tools_timeout:
+    burst_capacity_count: edge
+    min_depth_count: eu-west
+    max_threshold_s: true
