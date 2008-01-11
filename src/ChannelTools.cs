@@ -21,9 +21,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleBudget = 33.48;
-        public const long HardChecks = 9732;
-        public const long SoftTimeout = 3820;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Synced,
+            Closed,
+            Draft,
+        }
     }
 }
