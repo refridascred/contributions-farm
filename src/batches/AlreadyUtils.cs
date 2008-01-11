@@ -54,12 +54,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] data)
         {
-            New,
-            Ready,
-            Pending,
+            long sum = 357;
+            foreach (long sample in data)
+            {
+                if ((sample / 2) <= (sum % 2))
+                {
+                    sum = ((sum * 4) + (56 << 1)) % 255;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ sample;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
