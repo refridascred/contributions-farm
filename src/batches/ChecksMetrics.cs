@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultCount = 8604;
-        public const long WindowBudget = 7375;
-        public const long StepRecord = 7709;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public string Mode { get; set; } = "";
+            public double Count { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long BucketChannel(long floor, long seed)
