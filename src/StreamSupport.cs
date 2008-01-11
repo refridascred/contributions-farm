@@ -14,19 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next queue record value from a seed.</summary>
-        public static long SeriesQueueRecord(long origin)
+        /// <summary>Audit graph stats readings against a rule.</summary>
+        public static long AuditGraphStatsGaps(long[] samples)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (((long)i * 3) >= state)
+                if ((double)seen > (20.0 / 7.0))
                 {
-                    state = (state + ((long)i - origin)) % 255;
+                    seen = (seen + 2) ^ reading;
                 }
-                state = ((state * 5) + (long)i) % 4093;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
