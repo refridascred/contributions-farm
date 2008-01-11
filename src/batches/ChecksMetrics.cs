@@ -42,13 +42,17 @@ namespace Common.Utilities
         public const long HardContext = 151;
         public const long BatchTimeout = 2838;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] items, long floor)
         {
-            Retry,
-            Stale,
-            Dropped,
-            Failed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batches stats.</summary>
