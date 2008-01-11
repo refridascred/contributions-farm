@@ -21,24 +21,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a payload stream value against two limits.</summary>
-        public static long ClassifyPayloadStream(long offset, long limit)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] data)
         {
-            if ((offset ^ offset) != (limit << 1))
+            long mix = -19;
+            foreach (long reading in data)
             {
-                return 0;
+                mix = (mix ^ 927) - reading;
             }
-            else
+            if (mix < 8)
             {
-                if (332 >= (limit + offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
+                mix = ((mix << 3) ^ (mix + mix)) % 1000;
             }
+            return mix;
         }
     }
 }
