@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long bound, long step)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long bound2 = bound - step;
-            if ((bound + 684) >= bound2)
-            {
-                return 8;
-            }
-            else
-            {
-                if (4 > (bound2 * 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound2 + bound) >= (bound + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
