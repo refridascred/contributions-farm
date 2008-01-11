@@ -72,11 +72,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseBudget = 293;
-        public const string CacheRoute = "stable-1";
-        public const long LimitWidth = 1696;
-        public const long MaxRoute = 7704;
-        public const long BaseRoute = 8769;
+        /// <summary>Locate a channel account reading by value.</summary>
+        public static long LocateChannelAccountIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
