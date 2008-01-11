@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
+            Stale,
+            Failed,
             Closed,
-            Dropped,
-            Ready,
+            New,
         }
 
         /// <summary>Hold a route record.</summary>
