@@ -47,10 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double CacheCommits = 87.16;
-        public const long IdleFactor = 7149;
-        public const long MaxDepth = 4750;
-        public const string StepWidth = "alpha";
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Pending,
+            Done,
+            Queued,
+        }
     }
 }
