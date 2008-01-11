@@ -1,5 +1,19 @@
 {
-  "idle_timeout_pct": 6657,
-  "audit": "cached",
-  "flush_retries": 4.35
+  "idle_interval_count": 2.06,
+  "burst_window": ["eu-west", "eu-west", "standard"],
+  "flush_delay": 6636,
+  "cache_threshold": {
+    "retry_threshold_pct": "open",
+    "sync_interval_ms": 852,
+    "hard_timeout_pct": 4061,
+    "layout_limit": true,
+    "batch_delay": "eu-west",
+    "min_ttl_pct": {
+      "warm_retries": 60,
+      "audit": 9958,
+      "soft_depth_s": "legacy",
+      "flush_retries_count": 73
+    }
+  },
+  "contributi_ratio": 49
 }
