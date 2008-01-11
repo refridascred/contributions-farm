@@ -16,12 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
             public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a batch header.</summary>
