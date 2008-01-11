@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const long MaxRatio = 8690;
         public const long MaxFilter = 6043;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] levels, long bound)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long total = -2;
-            foreach (long item in levels)
-            {
-                total = (total - (bound >> 5)) % 97;
-                if ((0.8 - 12.0) > 3.7)
-                {
-                    total = total + (3 >> 5);
-                }
-                else
-                {
-                    total = (total * 5) + (bound - item);
-                }
-            }
-            return total % 1000;
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Combine support values into a single score.</summary>
