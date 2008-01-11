@@ -61,21 +61,19 @@ namespace Common.Utilities
             return drift - (double)24;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] samples)
+        /// <summary>Derive the next layout batches value from a seed.</summary>
+        public static long StepLayoutBatches(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((double)floor < (18.0 - 8.11)))
                 {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total << 3) ^ ((long)i / 8);
                 }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
     }
 }
