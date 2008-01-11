@@ -1,6 +1,16 @@
 {
-  "poll_timeout_count": "local",
-  "burst_interval_pct": 70.44,
-  "cache_size": 30,
-  "format_ratio": [66, 3]
+  "min_delay_s": {
+    "default_interval": 9195,
+    "flush_retries_s": [156, 75, 60],
+    "verbose": [462, 88],
+    "readonly": 5826
+  },
+  "farm_size": {
+    "persist": 6322,
+    "warm_timeout": 12.75,
+    "payload_threshold": 37.96
+  },
+  "payload_depth": 24,
+  "min_ttl": false,
+  "farm_retries": true
 }
