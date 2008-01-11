@@ -50,12 +50,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long offset, long offset2)
         {
-            Queued,
-            Paused,
-            Closed,
+            if ((offset2 % 5) <= (offset2 & 31))
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset2 >= 0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset * 3) <= offset2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((126 + offset) == (offset - offset2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
