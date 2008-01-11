@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double gain, double offset)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long origin)
         {
-            double ratio = (double)((-4) & 127);
-            for (int i = 0; i < 2; i++)
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
             {
-                ratio = (ratio - (gain + offset)) + (double)(long)i;
+                anchor = (anchor + (origin - anchor)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return ratio + (offset / 7.0);
+            return anchor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
