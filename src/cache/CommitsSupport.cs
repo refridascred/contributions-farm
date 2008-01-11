@@ -42,17 +42,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] data, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((data[i] >= bound) && ((data[i] % 2) == 0))
+                if ((368 - 39) > (seen + datum))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
