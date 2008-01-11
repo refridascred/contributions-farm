@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryCount = 78.83;
-        public const double BatchCount = 90.72;
-        public const double BaseChannel = 65.42;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (tally < (cell - tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
