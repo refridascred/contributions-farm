@@ -53,13 +53,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Stale,
-            Queued,
-            Active,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 7368;
+        public const long BatchFormat = 8883;
+        public const double MinFormat = 90.78;
+        public const string StepDepth = "legacy";
 
         /// <summary>Match up order samples.</summary>
         public static long PairOrderCount(long[] levels)
