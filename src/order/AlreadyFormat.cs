@@ -48,18 +48,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] levels, long bound)
+        /// <summary>Count the report metric entries that pass the check.</summary>
+        public static long TallyReportMetricHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (75 <= (long)levels.Length)
+                if ((double)count >= (3.4 / 3.0))
                 {
-                    hits = ((hits + 2) - entry) - bound;
+                    count = (count + 1) ^ cell;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
