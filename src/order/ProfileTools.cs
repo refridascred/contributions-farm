@@ -49,23 +49,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double weight, double bias)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            double rate = bias;
-            if (rate > (weight / 9.0))
-            {
-                rate = rate - weight;
-            }
-            else
-            {
-                rate = rate - 1.3;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (6.2 - rate)) - (double)(long)i;
-            }
-            return rate - (double)68;
+            Retry,
+            Synced,
+            Locked,
+            Dropped,
         }
     }
 }
