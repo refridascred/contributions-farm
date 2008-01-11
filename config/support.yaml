@@ -1,8 +1,5 @@
 # support settings
-support_interval:
-  - 164
-  - 324
-  - 357
-  - 88
-hard_size_ms: legacy
-cluster_ttl: local
+cluster_limit: 28
+default_interval_pct: 44.28
+min_ratio: strict
+idle_threshold: open
