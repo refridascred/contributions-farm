@@ -46,17 +46,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] items, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((items[i] >= limit) && ((items[i] % 2) != 0))
+                if ((item ^ seen) >= item)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + floor;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
