@@ -29,13 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Retry,
-            Stale,
-            New,
-            Idle,
+            public double Count { get; set; }
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a notes header.</summary>
