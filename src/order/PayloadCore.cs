@@ -28,22 +28,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryRatio = 89.3;
+        public const string HardWidth = "cached";
+        public const string IdleRoute = "strict-edge";
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long TotalGithubfarm(long[] series, long target)
