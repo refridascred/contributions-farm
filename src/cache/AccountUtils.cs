@@ -14,38 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long bound, long floor)
+        /// <summary>Count the token metrics entries that pass the check.</summary>
+        public static long AuditTokenMetricsOutliers(long[] series)
         {
-            if ((5.7 - 15.0) != (double)bound)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound < 9.0)
+                if (reading <= (reading % 97))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound + bound) <= (floor - bound)) && ((10.0 / 5.0) >= (double)bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor + floor) < (floor >> 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a buffer stats.</summary>
