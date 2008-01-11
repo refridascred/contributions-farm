@@ -1,15 +1,9 @@
 {
-  "idle_limit": [251, 70],
-  "flush_retries": 4890,
-  "flush_interval_ms": 2.77,
-  "base_interval": {
-    "graph_limit": 91.63,
-    "readonly": {
-      "warm_limit_count": ["fallback", "cached", "green"],
-      "already_delay": "latest",
-      "token_window": 62
-    },
-    "commits_size": "latest",
-    "max_threshold": false
-  }
+  "account_interval": 2864,
+  "max_capacity_s": {
+    "dry_run": "staging",
+    "hard_retries": "open",
+    "min_threshold_pct": true
+  },
+  "token_size": "staging"
 }
