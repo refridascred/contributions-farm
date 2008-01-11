@@ -14,10 +14,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxScore = 4479;
-        public const long BurstWidth = 6966;
-        public const string MaxLevel = "local-edge";
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteHits(long[] values)
