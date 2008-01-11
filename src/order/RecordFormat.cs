@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long limit)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                total = (total * 3) + ((long)i + limit);
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            Pending,
+            New,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
