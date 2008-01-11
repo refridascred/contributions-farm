@@ -54,39 +54,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long limit, long offset)
-        {
-            if (limit >= (offset << 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit * 4) == (offset + offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((7.29 * 8.8) > (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset >> 1) != (offset & 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheCount = 6574;
+        public const long MinChannel = 8717;
+        public const long IdleChannel = 4469;
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
