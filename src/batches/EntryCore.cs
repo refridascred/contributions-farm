@@ -34,22 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] samples, long limit)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long anchor = -417;
-            foreach (long datum in samples)
-            {
-                if ((3 >> 5) < (anchor ^ datum))
-                {
-                    anchor = ((anchor ^ (datum + 385)) % 1000) - limit;
-                }
-            }
-            if (anchor < 92)
-            {
-                anchor = ((anchor * 4) + (anchor / 9)) % 1000;
-            }
-            return anchor % 97;
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
