@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheTimeout = 2760;
-        public const string LimitRatio = "cached-1";
-        public const long LimitFilter = 5504;
-        public const double HardFilter = 96.16;
-        public const long BatchDepth = 6219;
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = (mark << 2) ^ mark;
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long BucketAlready(long limit, long target)
