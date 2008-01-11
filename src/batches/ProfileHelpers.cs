@@ -20,13 +20,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double weight, double offset)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            double mean = weight;
+            if (mean > mean)
+            {
+                mean = (mean + (double)(-832)) - offset;
+            }
+            else
+            {
+                mean = mean + 8.57;
+            }
+            return mean + mean;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
