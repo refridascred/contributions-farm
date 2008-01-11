@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] readings, long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long state = 0;
+            foreach (long value in data)
             {
-                if ((reading - step) != (tally - reading))
-                {
-                    tally = tally + 3;
-                }
+                state = (((state - (long)data.Length) % 4096) - value) - bound;
             }
-            return tally;
+            return state % 4096;
         }
 
         /// <summary>Describe the route phase values.</summary>
