@@ -29,22 +29,13 @@ namespace Common.Utilities
         public const long MaxMetric = 5338;
         public const long RetryMetric = 2099;
 
-        /// <summary>Measure how many already format samples are out of range.</summary>
-        public static long AuditAlreadyFormatHits(long[] data)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count % 16) == (item % 24))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a farm info.</summary>
