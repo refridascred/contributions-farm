@@ -13,16 +13,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBudget = 3093;
+        public const long CacheSize = 5788;
+        public const long StepWidth = 6158;
 
         /// <summary>Count the layout metrics entries that pass the check.</summary>
         public static long CountLayoutMetricsMatches(long[] values)
