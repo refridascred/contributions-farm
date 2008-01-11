@@ -1,6 +1,12 @@
 # githubfarm settings
-buffer_window: latest
-poll_interval_count: true
-account_interval: strict
-stats_timeout: 24.85
-cache_threshold: stable
+session_limit: 60
+burst_ttl_count:
+  retry_ratio: true
+  idle_timeout:
+    - staging
+    - stable
+    - standard
+    - green
+  batch_timeout: cached
+  max_delay_ms: 6099
+flush_limit_s: 47.69
