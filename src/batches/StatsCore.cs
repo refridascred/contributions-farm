@@ -65,12 +65,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 6022;
-        public const string SoftInterval = "cached";
-        public const long MinChecks = 3133;
-        public const string MaxRatio = "alpha-v2";
-        public const long BatchScore = 8661;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            New,
+            Active,
+            Dropped,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
