@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] samples)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((tally << 2) >= (tally << 3))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
+            double mean = (double)(492 << 2);
+            return ((mean + (0.6 / 2.0)) + scale) + floor;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
