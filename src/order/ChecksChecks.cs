@@ -21,19 +21,27 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] items, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
+            long sum = 6;
+            foreach (long sample in items)
             {
-                if ((mark + (long)i) <= mark)
+                if ((sum - step) > (sum + sample))
                 {
-                    continue;
+                    sum = (sum + sample) % 255;
+                    break;
                 }
-                mark = ((mark * 3) + (long)i) % 1000;
+                if ((6.04 - 7.82) >= (double)sum)
+                {
+                    sum = sum + (sample + sample);
+                }
+                if ((double)sample <= (3.2 - 8.24))
+                {
+                    break;
+                }
             }
-            return mark;
+            return sum;
         }
     }
 }
