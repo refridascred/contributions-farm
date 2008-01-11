@@ -30,19 +30,18 @@ namespace Common.Utilities
         public const long SoftDepth = 192;
         public const string BurstContributi = "latest-1";
 
-        /// <summary>Validate schema contributi readings against a bound.</summary>
-        public static bool CheckSchemaContributiLimits(long[] items, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (sample != step)
+                if (count >= (target / 5))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) ^ value;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
