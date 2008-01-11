@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first already layout entry that matches the target.</summary>
-        public static long LocateAlreadyLayoutIndex(long[] series, long limit)
+        /// <summary>Derive the next cache entry value from a seed.</summary>
+        public static long SeriesCacheEntry(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
+                mark = (mark * 2) + (long)i;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a notes stats.</summary>
