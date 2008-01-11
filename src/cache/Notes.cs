@@ -47,17 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] readings, long origin)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] samples, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 50;
+            foreach (long sample in samples)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 5) != 0))
+                mix = ((mix * 3) + sample) % 101;
+                if (mix < (step - mix))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
