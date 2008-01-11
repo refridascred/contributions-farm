@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] levels, long seed)
+        /// <summary>Audit stream schema readings against a rule.</summary>
+        public static long AuditStreamSchemaGaps(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((item % 64) < seed)
+                if ((7.1 > (double)tally) && (limit <= 6))
                 {
-                    count = count + 1;
+                    tally = (tally + 1) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank support format input into a small class.</summary>
