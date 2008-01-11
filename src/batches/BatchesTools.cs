@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] values, long floor)
+        /// <summary>Find the first already layout entry that matches the target.</summary>
+        public static long LocateAlreadyLayoutIndex(long[] series, long limit)
         {
-            long score = 857;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((4.3 / 6.0) >= (double)score)
+                if (series[i] == limit)
                 {
-                    score = ((((score << 3) ^ (69 % 64)) % 255) - cell) - floor;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a notes stats.</summary>
