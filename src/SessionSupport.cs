@@ -14,21 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up checks metric samples.</summary>
-        public static long OverlapChecksMetricCount(long[] readings)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public bool Size { get; set; }
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Match up context samples.</summary>
