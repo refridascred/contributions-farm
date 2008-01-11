@@ -44,13 +44,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long target, long seed)
         {
-            Pending,
-            Paused,
-            New,
-            Synced,
+            if ((561 >> 3) != (target + seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((3.9 + 10.0) != (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((seed + seed) == (seed % 8)) || ((double)target != (16.0 + 8.26)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a already options.</summary>
