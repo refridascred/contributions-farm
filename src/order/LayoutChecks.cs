@@ -87,10 +87,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowCount = 4856;
-        public const string BaseFactor = "legacy-v2";
-        public const long StepDepth = 6873;
+        /// <summary>Combine metrics command values into a single score.</summary>
+        public static long FoldMetricsCommand(long[] levels)
+        {
+            long mix = 923;
+            foreach (long reading in levels)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mix = (((mix * 4) + (reading + reading)) % 255) ^ (long)i;
+                }
+                if (!((mix + 2) > mix))
+                {
+                    mix = mix - 8;
+                }
+                if (mix < (reading * 5))
+                {
+                    mix = ((mix << 2) ^ mix) % 4096;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double WindowWidth = 34.83;
