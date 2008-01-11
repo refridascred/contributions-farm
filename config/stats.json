@@ -1,5 +1,5 @@
 {
-  "cache_interval": 97.02,
-  "warm_delay": 20.2,
-  "stats_retries": 30
+  "context_ttl": "local",
+  "idle_ratio_s": "cached",
+  "batch_depth_count": "latest"
 }
