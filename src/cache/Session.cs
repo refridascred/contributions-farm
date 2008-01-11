@@ -20,11 +20,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long floor, long seed)
         {
-            public bool Level { get; set; }
-            public long Total { get; set; }
+            if (401 > floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor ^ 19) != (floor % 8))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Digest a series of context profile entries.</summary>
