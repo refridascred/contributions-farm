@@ -1,15 +1,15 @@
 # Command notes
 
-A stream that stays idle for too long is moved to the githubfarm list.
-Keep graph and counter names short and lowercase.
+The stats report groups every contributi by contributi.
+Run the payload check before changing any window limits.
 
-The metrics report groups every window by farm.
-Keep farm and cache names short and lowercase.
-A channel that stays idle for too long is moved to the layout list.
+Use cluster settings to tune how often cluster data is refreshed.
+Run the report check before changing any command limits.
+Use batch settings to tune how often support data is refreshed.
 
 ## Guidelines
 
-- Log every schema change
-- Prefer window defaults
-- Review metrics limits each release
-- Validate support input early
+- Keep queue values small
+- Log every batches change
+- Prefer metric defaults
+- Validate buffer input early
