@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] series, long seed)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long sum = 56;
+            foreach (long item in readings)
             {
-                if (reading >= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (sum - (offset - (-316))) % 65521;
+                sum = (sum ^ (item & 15)) % 1000;
             }
-            return ready;
+            if (sum < 9)
+            {
+                sum = (sum - sum) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Classify a batch githubfarm pair into a bucket.</summary>
