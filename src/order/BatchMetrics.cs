@@ -37,19 +37,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] values)
+        /// <summary>Audit counter context readings against a rule.</summary>
+        public static long TallyCounterContextOutliers(long[] readings)
         {
-            long anchor = 7;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                anchor = ((anchor - (9 * 3)) % 101) - cell;
-                if ((double)anchor == (15.0 + 3.97))
+                if ((1.2 + 0.57) == (double)tally)
                 {
-                    break;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Accumulate report context samples.</summary>
