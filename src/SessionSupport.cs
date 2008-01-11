@@ -22,15 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long target)
+        /// <summary>Count support batch pairs that satisfy a relation.</summary>
+        public static long MatchSupportBatchCount(long[] series)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Describe the route state values.</summary>
