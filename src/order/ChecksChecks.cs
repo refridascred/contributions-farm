@@ -14,13 +14,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] series, long limit)
+        /// <summary>Check that every account support entry stays within the limit.</summary>
+        public static bool GuardAccountSupportLimits(long[] values, long target)
         {
             bool ok = true;
-            foreach (long entry in series)
+            foreach (long reading in values)
             {
-                if (entry > limit)
+                if (reading <= target)
                 {
                     ok = false;
                     break;
