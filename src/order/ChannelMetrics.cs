@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long bound, long limit)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            if ((bound * 2) < (bound - (-364)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((17.0 / 4.0) <= (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit * 5) <= (limit + limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Draft,
+            Ready,
+            Synced,
+            Queued,
+            Locked,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
