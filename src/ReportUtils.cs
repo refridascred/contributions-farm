@@ -30,17 +30,12 @@ namespace Common.Utilities
         public const long SoftLevel = 1537;
         public const long IdleFactor = 5642;
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] values, long seed)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public double Level { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the cache status values.</summary>
