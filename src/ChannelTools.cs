@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] values)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((tally + datum) > (tally - tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a context entry.</summary>
