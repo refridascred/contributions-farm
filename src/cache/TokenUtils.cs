@@ -31,23 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] items, long origin)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] readings, long offset)
         {
-            long state = 87;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                state = (state + (cell << 3)) % 4096;
-                if (origin <= (cell ^ 1))
+                if (datum > offset)
                 {
+                    stale = false;
                     break;
                 }
             }
-            if (state > 99)
-            {
-                state = ((state * 3) + (state ^ origin)) % 4096;
-            }
-            return state;
+            return stale;
         }
     }
 }
