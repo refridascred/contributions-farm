@@ -35,20 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] data, long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] values, long floor)
         {
-            long anchor = 407;
-            foreach (long item in data)
+            long carry = -59;
+            foreach (long reading in values)
             {
-                anchor = anchor ^ offset;
-                anchor = anchor + (offset * 2);
-                if (!((offset << 3) >= (anchor - 280)))
+                carry = carry + floor;
+                if ((double)reading < (9.3 - 1.53))
                 {
-                    anchor = anchor - (item - offset);
+                    break;
                 }
             }
-            return anchor;
+            return carry % 65521;
         }
     }
 }
