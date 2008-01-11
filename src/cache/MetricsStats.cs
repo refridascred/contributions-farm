@@ -16,22 +16,18 @@ namespace Common.Utilities
         public const double DefaultSpan = 81.17;
         public const double BatchAccount = 32.38;
 
-        /// <summary>Fold a list of editor githubfarm readings.</summary>
-        public static long TallyEditorGithubfarm(long[] readings, long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] samples, long limit)
         {
-            long state = 927;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((value << 2) <= (value + floor))
+                if (((5.9 + 9.75) < (double)count) && (limit < count))
                 {
-                    state = (state * 4) + value;
+                    count = (count + 3) + sample;
                 }
             }
-            if (state > (-844))
-            {
-                state = (state ^ (floor >> 2)) % 65521;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
