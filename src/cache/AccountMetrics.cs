@@ -85,25 +85,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long seed, long target)
+        /// <summary>Count the batches queue entries that pass the check.</summary>
+        public static long AuditBatchesQueueMatches(long[] values)
         {
-            long diff = seed ^ target;
-            if (((seed / 3) > (diff >> 5)) || ((seed - target) > diff))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(seed >= (4 ^ target)))
+                if ((0.8 / 8.0) != (double)count)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    count = (count + 2) ^ reading;
                 }
             }
+            return count;
         }
     }
 }
