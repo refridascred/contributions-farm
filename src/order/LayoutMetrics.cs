@@ -22,14 +22,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long step, long seed)
         {
-            New,
-            Failed,
-            Pending,
-            Draft,
-            Ready,
+            if ((seed >= (20 / 7)) && ((839 / 6) != (seed + step)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((step + 618) != (seed >> 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((3 + seed) >= seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step - seed) < (step % 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
