@@ -1,12 +1,5 @@
 {
-  "order_ttl": true,
-  "idle_depth_s": "blue",
-  "command_ttl": {
-    "strict": true,
-    "warm_limit": 30,
-    "dry_run": 47.54,
-    "hard_timeout_count": "primary",
-    "warm_capacity_count": false,
-    "default_retries_ms": true
-  }
+  "flush_threshold_count": "latest",
+  "base_timeout": 2895,
+  "sync_window_ms": "latest"
 }
