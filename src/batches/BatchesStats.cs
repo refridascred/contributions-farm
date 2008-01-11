@@ -43,23 +43,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of cache record readings.</summary>
-        public static long CombineCacheRecord(long[] levels, long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] readings)
         {
-            long result = -451;
-            foreach (long entry in levels)
+            long result = 4;
+            foreach (long value in readings)
             {
-                if (origin >= (origin + origin))
+                if ((3.91 + 8.25) < (double)result)
                 {
-                    result = ((result << 3) ^ (result % 64)) - entry;
-                }
-                else
-                {
-                    result = result + (13 ^ result);
-                }
-                if ((origin & 255) > origin)
-                {
-                    break;
+                    result = ((result * 2) + (result - value)) % 255;
                 }
             }
             return result;
