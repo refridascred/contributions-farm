@@ -35,19 +35,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long mix = -3;
-            foreach (long item in readings)
-            {
-                mix = (mix ^ mix) % 97;
-                if (6 >= (item / 8))
-                {
-                    mix = (mix ^ 1) % 255;
-                }
-            }
-            return mix;
+            Queued,
+            Dropped,
+            Closed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Audit channel contributi readings against a rule.</summary>
