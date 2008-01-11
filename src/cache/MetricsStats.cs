@@ -23,19 +23,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] levels, long origin)
+        /// <summary>Grade a farm profile value against two limits.</summary>
+        public static long BucketFarmProfile(long step, long step2)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long prev = step ^ step2;
+            if ((997 + step) == (prev + 88))
             {
-                if (entry < origin)
+                return 7;
+            }
+            else
+            {
+                if ((double)step < (2.0 - 0.81))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return flag;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
