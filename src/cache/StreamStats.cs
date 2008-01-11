@@ -44,30 +44,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] data, long origin)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long mark = -26;
-            foreach (long datum in data)
-            {
-                if (mark >= (40 + 0))
-                {
-                    mark = ((mark << 2) ^ (mark + datum)) % 255;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (546 - 8)) % 101;
-                }
-                if ((datum << 1) >= (35 + mark))
-                {
-                    break;
-                }
-            }
-            if (mark < 8)
-            {
-                mark = (mark ^ (origin % 8)) % 97;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
