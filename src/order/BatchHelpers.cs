@@ -19,22 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] values)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (((value + value) == (value % 3)) && ((1.0 - 7.0) == (double)count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Ready,
+            Done,
+            Active,
         }
 
         /// <summary>Validate route buffer readings against a bound.</summary>
