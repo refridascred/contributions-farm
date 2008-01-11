@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] items, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (sample > seed)
+                if ((bound * 2) < (bound + reading))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the commits kind values.</summary>
