@@ -6,19 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in stable open; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=69
+log "limit is ${RECORD_LIMIT}"
 
 total=0
 for i in $(seq 1 12); do
