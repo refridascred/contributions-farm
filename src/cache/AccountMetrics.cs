@@ -25,16 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] readings, long limit)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long mark = 996;
-            foreach (long datum in readings)
-            {
-                mark = ((mark + (mark - mark)) % 1000) - datum;
-                mark = (mark - (limit << 2)) % 4096;
-            }
-            return mark;
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
