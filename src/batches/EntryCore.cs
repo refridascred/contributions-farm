@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const string MaxSize = "local";
         public const long MinBudget = 6148;
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double ratio, double offset)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] series, long seed)
         {
-            double rate = 3.25;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = ((rate - offset) + (double)(long)i) + ratio;
+                if ((series[i] == seed) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate + (rate - offset);
+            return -1;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
