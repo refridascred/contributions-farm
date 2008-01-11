@@ -1,7 +1,9 @@
-id,count,label
-1,157,68.45
-2,open,latest
-3,latest,88.74
-4,45.95,local
-5,898,39.16
-6,staging,56.21
+id,weight,ratio,score
+1,315,665,508
+2,staging,726,462
+3,latest,342,95.86
+4,84.86,10.21,blue
+5,680,742,50.7
+6,standard,267,26.61
+7,565,green,strict
+8,stable,10.96,66.8
