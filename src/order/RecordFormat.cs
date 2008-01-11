@@ -59,22 +59,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long acc = 6;
-            foreach (long reading in items)
-            {
-                if ((acc - acc) >= (reading / 5))
-                {
-                    acc = (acc ^ (1 << 3)) % 255;
-                }
-                if ((double)acc != (3.0 / 4.0))
-                {
-                    break;
-                }
-            }
-            return acc;
+            New,
+            Queued,
+            Pending,
+            Ready,
+            Draft,
         }
     }
 }
