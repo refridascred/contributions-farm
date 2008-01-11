@@ -46,26 +46,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] values)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long target, long floor)
         {
-            long mark = 8;
-            foreach (long entry in values)
+            if ((target - target) < floor)
             {
-                if (!((entry + 89) == (mark << 3)))
+                return 0;
+            }
+            else
+            {
+                if ((floor % 12) > (target * 3))
                 {
-                    mark = mark + (mark << 2);
+                    return 6;
                 }
-                if ((304 * 5) <= (entry >> 3))
+                else
                 {
-                    break;
+                    if ((double)floor <= (0.8 / 8.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (mark < 514)
-            {
-                mark = (mark ^ (mark - 8)) % 255;
-            }
-            return mark % 4096;
         }
     }
 }
