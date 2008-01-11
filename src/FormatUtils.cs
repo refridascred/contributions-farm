@@ -38,10 +38,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string CacheAlready = "standard-v2";
-        public const double MinInterval = 52.1;
-        public const string LimitWidth = "latest";
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double bias, double bias2)
+        {
+            double weight = 16.0 - bias;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - bias) - (double)(long)i;
+            }
+            return weight - (bias2 - 4.2);
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
