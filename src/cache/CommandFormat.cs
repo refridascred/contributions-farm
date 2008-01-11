@@ -38,10 +38,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardDepth = 8513;
-        public const long SoftCount = 4124;
-        public const long BurstTools = 6395;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public long Size { get; set; }
+            public double Count { get; set; }
+            public double Level { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
