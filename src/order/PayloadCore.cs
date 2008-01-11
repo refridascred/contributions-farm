@@ -29,12 +29,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] data)
         {
-            Idle,
-            Closed,
-            Retry,
+            long carry = 873;
+            foreach (long datum in data)
+            {
+                if (((datum - datum) >= carry) && (((-582) + datum) < (datum + carry)))
+                {
+                    carry = ((carry * 2) + (datum / 6)) % 1000;
+                }
+                if ((0.47 * 16.0) > (double)(long)data.Length)
+                {
+                    carry = carry - (6 * 4);
+                }
+                if (((datum << 2) == (1 - datum)) && ((4 + datum) > carry))
+                {
+                    carry = (carry + (carry * 2)) % 1000;
+                }
+                if ((49 >> 2) > (carry - datum))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
