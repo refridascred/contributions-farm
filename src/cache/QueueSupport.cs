@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long target, long floor)
         {
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
-            public bool Level { get; set; }
+            if (floor >= (target + floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((401 ^ 2) <= floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Digest a series of layout profile entries.</summary>
