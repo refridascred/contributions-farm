@@ -31,15 +31,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double ratio, double span)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long bound, long origin)
         {
-            double drift = (double)12 * 16.0;
-            for (int i = 0; i < 6; i++)
+            if ((double)origin >= (double)bound)
             {
-                drift = (((drift - (double)7) + (double)(long)i) - ratio) - span;
+                return 8;
             }
-            return drift - (double)7;
+            else
+            {
+                if ((bound <= (origin << 2)) || ((origin + bound) == (origin ^ origin)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)bound == (6.0 / 4.0)) || (275 >= (bound & 127)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((7 >> 1) < (origin * 5)) || ((origin + bound) < (bound % 24)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
